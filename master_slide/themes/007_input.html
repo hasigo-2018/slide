@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>007 成約率を科学する（The Science of CRO）【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>成約率を科学する<span>The Science of CRO</span><span>【理論編】</span></h1>
+                <p>CTAとEFOの設計原則を心理学とデータで解き明かす</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ「良いデザイン」なのに<br>成約しないのか？</h2>
+            <p>見た目の美しさと「行動させる力」は別物である</p>
+        </div>
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>3つの柱</h3>
+                <p><strong>1. CRO基礎理論</strong><br>
+                なぜ人は「行動しない」のか？意思決定の心理メカニズム</p>
+            <p><strong>2. CTA設計の原則</strong><br>
+            どこに、どんなボタンを、どんな言葉で置くか</p>
+            
+            <p><strong>3. EFO鉄則</strong><br>
+            フォームで離脱させない設計の科学</p>
+            
+            <div class="highlight-box">
+                💡 これまで学んだ視線誘導・コントラスト・近接の法則がすべて活きる
+            </div>
+        </div>
+        </div>
+        <!-- スライド4: セクション区切り - CRO基礎 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 1<br><span style="font-size: 1.5em;">CRO基礎理論</span></h2>
+            <p>成約の心理学と意思決定フレームワーク</p>
+        </div>
+        <!-- スライド5: CROとは何か -->
+        <div class="slide-container big-concept-layout">
+            <h2>CRO<br><span style="font-size: 0.5em;">Conversion Rate Optimization</span></h2>
+            <p>「来た人」を「行動する人」に変える技術</p>
+        </div>
+        <!-- スライド6: 成約の方程式 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">成約の方程式</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 背景 -->
+                    <!-- <rect x="0" y="0" width="800" height="300" fill="#1a1a2e"/> -->
+                <!-- 方程式の要素 -->
+                <rect x="25" y="100" width="160" height="100" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                <text x="105" y="140" text-anchor="middle" fill="white" font-size="16" font-weight="bold">動機</text>
+                <text x="105" y="165" text-anchor="middle" fill="#00d4ff" font-size="14">Motivation</text>
+                
+                <text x="220" y="162" text-anchor="middle" fill="white" font-size="36">×</text>
+                
+                <rect x="255" y="100" width="160" height="100" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                <text x="335" y="140" text-anchor="middle" fill="white" font-size="16" font-weight="bold">能力</text>
+                <text x="335" y="165" text-anchor="middle" fill="#ff6b6b" font-size="14">Ability</text>
+                
+                <text x="450" y="162" text-anchor="middle" fill="white" font-size="36">×</text>
+                
+                <rect x="485" y="100" width="160" height="100" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2" rx="8"/>
+                <text x="565" y="140" text-anchor="middle" fill="white" font-size="16" font-weight="bold">きっかけ</text>
+                <text x="565" y="165" text-anchor="middle" fill="#4ecdc4" font-size="14">Trigger</text>
+                
+                <text x="675" y="162" text-anchor="middle" fill="white" font-size="36">=</text>
+                
+                <circle cx="735" cy="150" r="35" fill="#ffd93d" opacity="0.3" stroke="#ffd93d" stroke-width="2"/>
+                <text x="735" y="145" text-anchor="middle" fill="white" font-size="14" font-weight="bold">行動</text>
+                <text x="735" y="165" text-anchor="middle" fill="#ffd93d" font-size="12">Action</text>
+                
+                <!-- Fogg Behavior Model ラベル -->
+                <text x="400" y="250" text-anchor="middle" fill="#888" font-size="14">BJ Fogg の行動モデル（Fogg Behavior Model）</text>
+            </svg>
+            
+            <p style="text-align: center; margin-top: 1.5rem;">3つの要素が同時に揃った瞬間に、人は行動する</p>
+        </div>
+        </div>
+        <!-- スライド7: 3要素の詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">成約を阻む3つの壁</h2>
+            <div class="content-block">
+                <h3>1. 動機の壁（Motivation）</h3>
+                <p>「欲しいけど、今じゃなくていい」→ 緊急性・希少性の欠如</p>
+            <h3>2. 能力の壁（Ability）</h3>
+            <p>「やりたいけど、面倒くさい」→ フォームが長い、手順が複雑</p>
+            
+            <h3>3. きっかけの壁（Trigger）</h3>
+            <p>「どこを押せばいいかわからない」→ CTAが見つからない</p>
+            
+            <div class="highlight-box">
+                ⚠️ どれか1つでもゼロなら、成約もゼロ。掛け算であることが重要
+            </div>
+        </div>
+        </div>
+        <!-- スライド8: CROの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CROは「壁を低くする」技術</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                <!-- <rect x="0" y="0" width="800" height="350" fill="#1a1a2e"/> -->
+                <!-- Before側 -->
+                <text x="200" y="40" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">❌ 最適化前</text>
+                
+                <!-- 壁（高い） -->
+                <rect x="80" y="80" width="60" height="180" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="2" rx="4"/>
+                <text x="110" y="175" text-anchor="middle" fill="white" font-size="12">動機</text>
+                
+                <rect x="170" y="60" width="60" height="200" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="2" rx="4"/>
+                <text x="200" y="165" text-anchor="middle" fill="white" font-size="12">能力</text>
+                
+                <rect x="260" y="100" width="60" height="160" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="2" rx="4"/>
+                <text x="290" y="185" text-anchor="middle" fill="white" font-size="12">きっかけ</text>
+                
+                <!-- 人（つまずいている） -->
+                <circle cx="50" cy="245" r="15" fill="#888"/>
+                <line x1="50" y1="260" x2="50" y2="295" stroke="#888" stroke-width="3"/>
+                <line x1="50" y1="275" x2="30" y2="260" stroke="#888" stroke-width="3"/>
+                <line x1="50" y1="275" x2="70" y2="260" stroke="#888" stroke-width="3"/>
+                
+                <!-- 矢印 -->
+                <path d="M 380 175 L 420 175" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrowhead)"/>
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#ffd93d"/>
+                    </marker>
+                </defs>
+                
+                <!-- After側 -->
+                <text x="600" y="40" text-anchor="middle" fill="#4ecdc4" font-size="16" font-weight="bold">✅ 最適化後</text>
+                
+                <!-- 壁（低い） -->
+                <rect x="480" y="200" width="60" height="60" fill="#4ecdc4" opacity="0.3" stroke="#4ecdc4" stroke-width="2" rx="4"/>
+                <text x="510" y="235" text-anchor="middle" fill="white" font-size="12">動機</text>
+                
+                <rect x="570" y="210" width="60" height="50" fill="#4ecdc4" opacity="0.3" stroke="#4ecdc4" stroke-width="2" rx="4"/>
+                <text x="600" y="240" text-anchor="middle" fill="white" font-size="12">能力</text>
+                
+                <rect x="660" y="220" width="60" height="40" fill="#4ecdc4" opacity="0.3" stroke="#4ecdc4" stroke-width="2" rx="4"/>
+                <text x="690" y="245" text-anchor="middle" fill="white" font-size="12">きっかけ</text>
+                
+                <!-- 人（スムーズに進む） -->
+                <circle cx="450" cy="245" r="15" fill="#4ecdc4"/>
+                <line x1="450" y1="260" x2="450" y2="295" stroke="#4ecdc4" stroke-width="3"/>
+                <line x1="450" y1="275" x2="435" y2="290" stroke="#4ecdc4" stroke-width="3"/>
+                <line x1="450" y1="275" x2="465" y2="290" stroke="#4ecdc4" stroke-width="3"/>
+                
+                <!-- ゴール -->
+                <rect x="740" y="200" width="40" height="60" fill="#ffd93d" opacity="0.3" stroke="#ffd93d" stroke-width="2" rx="4"/>
+                <text x="760" y="235" text-anchor="middle" fill="#ffd93d" font-size="12">成約</text>
+                
+                <!-- 説明 -->
+                <text x="400" y="330" text-anchor="middle" fill="#888" font-size="14">CTA = きっかけを最適化 ／ EFO = 能力の壁を下げる</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド9: セクション区切り - CTA -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 2<br><span style="font-size: 1.5em;">CTA設計の原則</span></h2>
+            <p>配置・デザイン・文言の科学</p>
+        </div>
+        <!-- スライド10: CTAとは -->
+        <div class="slide-container big-concept-layout">
+            <h2>CTA<br><span style="font-size: 0.5em;">Call To Action</span></h2>
+            <p>ユーザーに「次の一歩」を踏み出させる装置</p>
+        </div>
+        <!-- スライド11: CTA配置の原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CTA配置の3つの原則</h2>
+            <div class="content-block">
+                <h3>原則1：視線の終着点に置く</h3>
+                <p>F型・Z型パターンの終点にCTAを配置する（視線誘導理論の応用）</p>
+            <h3>原則2：意思決定の直後に置く</h3>
+            <p>価値提案・ベネフィット説明の直下。「欲しい」と思った瞬間を逃さない</p>
+            
+            <h3>原則3：スクロールを考慮する</h3>
+            <p>ファーストビュー + 各セクション末尾 + ページ最下部の「3点配置」</p>
+            
+            <div class="highlight-box">
+                💡 「1ページ1CTA」は誤解。複数配置が基本だが、すべて同じ行動に導く
+            </div>
+        </div>
+        </div>
+        <!-- スライド12: 視線誘導とCTA配置 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">視線誘導 × CTA配置</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- <rect x="0" y="0" width="800" height="400" fill="#1a1a2e"/> -->
+                <!-- Z型パターン -->
+                <text x="200" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Z型（LP向け）</text>
+                
+                <rect x="50" y="50" width="300" height="320" fill="#2a2a4e" stroke="#444" stroke-width="1" rx="8"/>
+                
+                <!-- Z型の視線 -->
+                <circle cx="80" cy="80" r="8" fill="#00d4ff"/>
+                <text x="80" y="85" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="bold">1</text>
+                
+                <line x1="88" y1="80" x2="312" y2="80" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <circle cx="320" cy="80" r="8" fill="#00d4ff"/>
+                <text x="320" y="85" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="bold">2</text>
+                
+                <line x1="312" y1="88" x2="88" y2="192" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <circle cx="80" cy="200" r="8" fill="#00d4ff"/>
+                <text x="80" y="205" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="bold">3</text>
+                
+                <line x1="88" y1="200" x2="312" y2="200" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- CTA位置 -->
+                <rect x="260" y="310" width="80" height="40" fill="#ff6b6b" rx="6"/>
+                <text x="300" y="335" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CTA</text>
+                <circle cx="300" cy="330" r="25" fill="none" stroke="#ffd93d" stroke-width="2" stroke-dasharray="4,4"/>
+                
+                <!-- F型パターン -->
+                <text x="600" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">F型（情報サイト向け）</text>
+                
+                <rect x="450" y="50" width="300" height="320" fill="#2a2a4e" stroke="#444" stroke-width="1" rx="8"/>
+                
+                <!-- F型の視線 -->
+                <circle cx="480" cy="80" r="8" fill="#00d4ff"/>
+                <text x="480" y="85" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="bold">1</text>
+                
+                <line x1="488" y1="80" x2="712" y2="80" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <line x1="480" y1="88" x2="480" y2="152" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <circle cx="480" cy="160" r="8" fill="#00d4ff"/>
+                <text x="480" y="165" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="bold">2</text>
+                
+                <line x1="488" y1="160" x2="620" y2="160" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <line x1="480" y1="168" x2="480" y2="312" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- CTA位置（サイドバー） -->
+                <rect x="660" y="140" width="80" height="40" fill="#ff6b6b" rx="6"/>
+                <text x="700" y="165" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CTA</text>
+                <circle cx="700" cy="160" r="25" fill="none" stroke="#ffd93d" stroke-width="2" stroke-dasharray="4,4"/>
+            </svg>
+            
+            <p style="text-align: center; margin-top: 1rem; color: #ffd93d;">黄色の円 = 視線が自然に集まるCTA配置ポイント</p>
+        </div>
+        </div>
+        <!-- スライド13: CTAデザインの原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CTAデザイン：コントラストの法則</h2>
+            <div class="content-block">
+                <h3>なぜコントラストが必要か</h3>
+                <p>人間の視覚は「差異」に反応する。周囲と同化したボタンは存在しないのと同じ</p>
+            <h3>コントラストを作る3要素</h3>
+            <ul>
+                <li><strong>色：</strong>ページの基調色と補色関係にする</li>
+                <li><strong>サイズ：</strong>周囲のテキストの2〜3倍の存在感</li>
+                <li><strong>余白：</strong>ボタン周囲に十分な空間を確保</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：ブランドカラーをそのままCTAに使う<br>
+                → 同系色で埋もれる。CTAは「例外」として目立たせる
+            </div>
+        </div>
+        </div>
+        <!-- スライド14: CTAの色選定 -->
+        <div class="slide-container">
+            <h2 class="slide-title">CTA色選定：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（同系色）</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/> -->
+                    <!-- ページモック -->
+                    <rect x="25" y="20" width="300" height="210" fill="#2563eb" rx="8"/>
+                    
+                    <!-- ヘッダー -->
+                    <rect x="45" y="40" width="100" height="15" fill="#3b82f6" rx="2"/>
+                    
+                    <!-- コンテンツ -->
+                    <rect x="45" y="75" width="260" height="10" fill="#3b82f6" rx="2"/>
+                    <rect x="45" y="95" width="220" height="10" fill="#3b82f6" rx="2"/>
+                    <rect x="45" y="115" width="240" height="10" fill="#3b82f6" rx="2"/>
+                    
+                    <!-- CTA（埋もれている） -->
+                    <rect x="100" y="160" width="150" height="45" fill="#3b82f6" rx="6"/>
+                    <text x="175" y="188" text-anchor="middle" fill="#93c5fd" font-size="14">お問い合わせ</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #ff6b6b;">問題：青系ページに青ボタン → 埋没</p>
+            </div>
+            <div>
+                <h3>✅ After（補色コントラスト）</h3>
+                <svg class="generated-art" viewBox="0 0 350 250">
+                    <!-- <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/> -->
+                    
+                    <!-- ページモック -->
+                    <rect x="25" y="20" width="300" height="210" fill="#2563eb" rx="8"/>
+                    
+                    <!-- ヘッダー -->
+                    <rect x="45" y="40" width="100" height="15" fill="#3b82f6" rx="2"/>
+                    
+                    <!-- コンテンツ -->
+                    <rect x="45" y="75" width="260" height="10" fill="#3b82f6" rx="2"/>
+                    <rect x="45" y="95" width="220" height="10" fill="#3b82f6" rx="2"/>
+                    <rect x="45" y="115" width="240" height="10" fill="#3b82f6" rx="2"/>
+                    
+                    <!-- CTA（目立つ） -->
+                    <rect x="100" y="160" width="150" height="45" fill="#f97316" rx="6"/>
+                    <text x="175" y="188" text-anchor="middle" fill="white" font-size="14" font-weight="bold">お問い合わせ</text>
+                    
+                    <!-- 強調エフェクト -->
+                    <circle cx="175" cy="182" r="40" fill="none" stroke="#ffd93d" stroke-width="2" opacity="0.5"/>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #4ecdc4;">改善：青の補色オレンジ → 視線を奪う</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド15: CTAサイズの原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CTAサイズ：フィッツの法則</h2>
+            <div class="content-block">
+                <h3>フィッツの法則とは</h3>
+                <p>「ターゲットが大きいほど、距離が近いほど、クリックしやすい」<br>
+                → UIデザインの基本法則（1954年、心理学者ポール・フィッツ）</p>
+            <h3>CTAサイズの目安</h3>
+            <ul>
+                <li><strong>最小：</strong>44×44px（Apple Human Interface Guidelines）</li>
+                <li><strong>推奨：</strong>横幅200px以上、高さ50px以上</li>
+                <li><strong>モバイル：</strong>親指でタップしやすいサイズ（48px以上）</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 「大きすぎて品がない」より「小さくて押せない」の方が致命的
+            </div>
+        </div>
+        </div>
+        <!-- スライド16: CTAサイズ比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">CTAサイズ：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（小さすぎる）</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/> -->
+                    <!-- コンテンツエリア -->
+                    <rect x="25" y="20" width="300" height="210" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- テキスト -->
+                    <rect x="45" y="50" width="260" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="72" width="220" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="94" width="240" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="116" width="200" height="12" fill="#444" rx="2"/>
+                    
+                    <!-- 小さいCTA -->
+                    <rect x="135" y="160" width="80" height="28" fill="#ff6b6b" rx="4"/>
+                    <text x="175" y="179" text-anchor="middle" fill="white" font-size="10">詳細はこちら</text>
+                    
+                    <!-- サイズ表示 -->
+                    <text x="175" y="210" text-anchor="middle" fill="#888" font-size="11">80×28px</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #ff6b6b;">問題：モバイルでタップしにくい</p>
+            </div>
+            <div>
+                <h3>✅ After（適切なサイズ）</h3>
+                <svg class="generated-art" viewBox="0 0 350 250">
+                    <!-- <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/> -->
+                    
+                    <!-- コンテンツエリア -->
+                    <rect x="25" y="20" width="300" height="210" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- テキスト -->
+                    <rect x="45" y="50" width="260" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="72" width="220" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="94" width="240" height="12" fill="#444" rx="2"/>
+                    <rect x="45" y="116" width="200" height="12" fill="#444" rx="2"/>
+                    
+                    <!-- 適切なサイズのCTA -->
+                    <rect x="75" y="150" width="200" height="50" fill="#4ecdc4" rx="8"/>
+                    <text x="175" y="181" text-anchor="middle" fill="white" font-size="14" font-weight="bold">無料で相談する</text>
+                    
+                    <!-- サイズ表示 -->
+                    <text x="175" y="220" text-anchor="middle" fill="#888" font-size="11">200×50px</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #4ecdc4;">改善：押しやすく、存在感がある</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド17: CTA文言の原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CTA文言：行動を具体化する</h2>
+            <div class="content-block">
+                <h3>効果的な文言の3条件</h3>
+                <ul>
+                    <li><strong>動詞で始める：</strong>「〜する」で行動を明示</li>
+                    <li><strong>ベネフィットを含める：</strong>押した後に得られる価値</li>
+                    <li><strong>ハードルを下げる：</strong>「無料」「たった1分」「簡単」</li>
+                </ul>
+            <h3>変換例</h3>
+            <p>❌「送信」→ ✅「無料で見積もりを受け取る」<br>
+            ❌「詳細」→ ✅「3分で料金を確認する」<br>
+            ❌「こちら」→ ✅「今すぐ相談予約（無料）」</p>
+            
+            <div class="highlight-box">
+                ⚠️ 「こちら」「詳細」「送信」は最悪の文言。何が起こるか不明瞭
+            </div>
+        </div>
+        </div>
+        <!-- スライド18: CTA文言比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">CTA文言：具体性の効果</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 曖昧な文言</h3>
+                    <svg class="generated-art" viewBox="0 0 350 300">
+                        <!-- <rect x="0" y="0" width="350" height="300" fill="#1a1a2e"/> -->
+                    <rect x="75" y="30" width="200" height="50" fill="#666" rx="8"/>
+                    <text x="175" y="61" text-anchor="middle" fill="white" font-size="14">送信</text>
+                    
+                    <rect x="75" y="100" width="200" height="50" fill="#666" rx="8"/>
+                    <text x="175" y="131" text-anchor="middle" fill="white" font-size="14">詳細はこちら</text>
+                    
+                    <rect x="75" y="170" width="200" height="50" fill="#666" rx="8"/>
+                    <text x="175" y="201" text-anchor="middle" fill="white" font-size="14">クリック</text>
+                    
+                    <rect x="75" y="240" width="200" height="50" fill="#666" rx="8"/>
+                    <text x="175" y="271" text-anchor="middle" fill="white" font-size="14">次へ</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #ff6b6b;">何が起こるか不明 → 不安で押せない</p>
+            </div>
+            <div>
+                <h3>✅ 具体的な文言</h3>
+                <svg class="generated-art" viewBox="0 0 350 300">
+                    <!-- <rect x="0" y="0" width="350" height="300" fill="#1a1a2e"/> -->
+                    
+                    <rect x="50" y="30" width="250" height="50" fill="#4ecdc4" rx="8"/>
+                    <text x="175" y="61" text-anchor="middle" fill="white" font-size="14" font-weight="bold">無料で見積もりを受け取る</text>
+                    
+                    <rect x="50" y="100" width="250" height="50" fill="#4ecdc4" rx="8"/>
+                    <text x="175" y="131" text-anchor="middle" fill="white" font-size="14" font-weight="bold">料金プランを確認する</text>
+                    
+                    <rect x="50" y="170" width="250" height="50" fill="#4ecdc4" rx="8"/>
+                    <text x="175" y="201" text-anchor="middle" fill="white" font-size="14" font-weight="bold">30秒で無料診断スタート</text>
+                    
+                    <rect x="50" y="240" width="250" height="50" fill="#4ecdc4" rx="8"/>
+                    <text x="175" y="271" text-anchor="middle" fill="white" font-size="14" font-weight="bold">今すぐ相談予約（無料）</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #4ecdc4;">得られる価値が明確 → 安心して押せる</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド19: セクション区切り - EFO -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 3<br><span style="font-size: 1.5em;">EFO鉄則</span></h2>
+            <p>Entry Form Optimization ─ 離脱を防ぐフォーム設計</p>
+        </div>
+        <!-- スライド20: EFOの重要性 -->
+        <div class="slide-container big-concept-layout">
+            <h2>フォームは<br>「最後の関門」</h2>
+            <p>CTAを押した人の70%がフォームで離脱する</p>
+        </div>
+        <!-- スライド21: EFO3つの柱 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">EFO最適化の3つの柱</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- <rect x="0" y="0" width="800" height="300" fill="#1a1a2e"/> -->
+                <!-- 3つの柱 -->
+                <rect x="60" y="80" width="200" height="160" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="12"/>
+                <text x="160" y="130" text-anchor="middle" fill="white" font-size="18" font-weight="bold">項目削減</text>
+                <text x="160" y="160" text-anchor="middle" fill="#ff6b6b" font-size="13">心理的ハードルを</text>
+                <text x="160" y="180" text-anchor="middle" fill="#ff6b6b" font-size="13">下げる</text>
+                <text x="160" y="220" text-anchor="middle" fill="#888" font-size="12">「これだけでいいの？」</text>
+                
+                <rect x="300" y="80" width="200" height="160" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2" rx="12"/>
+                <text x="400" y="130" text-anchor="middle" fill="white" font-size="18" font-weight="bold">入力補助</text>
+                <text x="400" y="160" text-anchor="middle" fill="#4ecdc4" font-size="13">認知負荷を</text>
+                <text x="400" y="180" text-anchor="middle" fill="#4ecdc4" font-size="13">軽減する</text>
+                <text x="400" y="220" text-anchor="middle" fill="#888" font-size="12">「迷わず入力できる」</text>
+                
+                <rect x="540" y="80" width="200" height="160" fill="#ffd93d" opacity="0.2" stroke="#ffd93d" stroke-width="2" rx="12"/>
+                <text x="640" y="130" text-anchor="middle" fill="white" font-size="18" font-weight="bold">マイクロコピー</text>
+                <text x="640" y="160" text-anchor="middle" fill="#ffd93d" font-size="13">不安と疑問を</text>
+                <text x="640" y="180" text-anchor="middle" fill="#ffd93d" font-size="13">解消する</text>
+                <text x="640" y="220" text-anchor="middle" fill="#888" font-size="12">「安心して進める」</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド22: 項目削減 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">鉄則1：項目削減 ─ 近接の法則を活用</h2>
+            <div class="content-block">
+                <h3>なぜ項目数が重要か</h3>
+                <p>項目が1つ増えるごとに、完了率は約10%低下する（HubSpot調査）</p>
+            <h3>削減の判断基準</h3>
+            <ul>
+                <li><strong>必須か任意か：</strong>「あったら便利」は削除候補</li>
+                <li><strong>後から聞けるか：</strong>成約後に確認できる情報は不要</li>
+                <li><strong>統合できるか：</strong>姓名を「氏名」1欄に、住所を郵便番号自動入力に</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 近接の法則：関連項目をグループ化し、視覚的な塊を減らす<br>
+                → 「5項目」より「2グループ×2〜3項目」の方が心理的に軽い
+            </div>
+        </div>
+        </div>
+        <!-- スライド23: 項目削減 Before/After -->
+        <div class="slide-container">
+            <h2 class="slide-title">項目削減：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（11項目）</h3>
+                    <svg class="generated-art" viewBox="0 0 350 400">
+                        <!-- <rect x="0" y="0" width="350" height="400" fill="#1a1a2e"/> -->
+                    <!-- フォーム枠 -->
+                    <rect x="25" y="15" width="300" height="370" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- 項目（密集） -->
+                    <text x="45" y="45" fill="#888" font-size="10">姓</text>
+                    <rect x="45" y="50" width="120" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="180" y="45" fill="#888" font-size="10">名</text>
+                    <rect x="180" y="50" width="120" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="95" fill="#888" font-size="10">メールアドレス</text>
+                    <rect x="45" y="100" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="145" fill="#888" font-size="10">電話番号</text>
+                    <rect x="45" y="150" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="195" fill="#888" font-size="10">会社名</text>
+                    <rect x="45" y="200" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="245" fill="#888" font-size="10">部署名</text>
+                    <rect x="45" y="250" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="295" fill="#888" font-size="10">役職</text>
+                    <rect x="45" y="300" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="345" fill="#888" font-size="10">お問い合わせ内容</text>
+                    <rect x="45" y="350" width="255" height="25" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <!-- 警告 -->
+                    <text x="175" y="395" text-anchor="middle" fill="#ff6b6b" font-size="11">さらに3項目が画面外に...</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #ff6b6b;">問題：多すぎて離脱</p>
+            </div>
+            <div>
+                <h3>✅ After（4項目・2グループ）</h3>
+                <svg class="generated-art" viewBox="0 0 350 400">
+                    <!-- <rect x="0" y="0" width="350" height="400" fill="#1a1a2e"/> -->
+                    
+                    <!-- フォーム枠 -->
+                    <rect x="25" y="15" width="300" height="370" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- グループ1 -->
+                    <text x="45" y="50" fill="#4ecdc4" font-size="12" font-weight="bold">お客様情報</text>
+                    <rect x="40" y="55" width="270" height="110" fill="#4ecdc4" opacity="0.1" rx="6"/>
+                    
+                    <text x="55" y="80" fill="#888" font-size="10">お名前</text>
+                    <rect x="55" y="85" width="240" height="28" fill="#1a1a2e" rx="4" stroke="#4ecdc4"/>
+                    
+                    <text x="55" y="130" fill="#888" font-size="10">メールアドレス</text>
+                    <rect x="55" y="135" width="240" height="28" fill="#1a1a2e" rx="4" stroke="#4ecdc4"/>
+                    
+                    <!-- グループ2 -->
+                    <text x="45" y="195" fill="#ffd93d" font-size="12" font-weight="bold">ご相談内容</text>
+                    <rect x="40" y="200" width="270" height="130" fill="#ffd93d" opacity="0.1" rx="6"/>
+                    
+                    <text x="55" y="225" fill="#888" font-size="10">会社名（任意）</text>
+                    <rect x="55" y="230" width="240" height="28" fill="#1a1a2e" rx="4" stroke="#ffd93d"/>
+                    
+                    <text x="55" y="275" fill="#888" font-size="10">ご相談内容</text>
+                    <rect x="55" y="280" width="240" height="35" fill="#1a1a2e" rx="4" stroke="#ffd93d"/>
+                    
+                    <!-- CTA -->
+                    <rect x="75" y="345" width="200" height="35" fill="#4ecdc4" rx="6"/>
+                    <text x="175" y="368" text-anchor="middle" fill="white" font-size="12" font-weight="bold">無料で相談する</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #4ecdc4;">改善：グループ化で心理負担軽減</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド24: 入力補助 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">鉄則2：入力補助 ─ 認知負荷を下げる</h2>
+            <div class="content-block">
+                <h3>入力補助の5つの技術</h3>
+                <ul>
+                    <li><strong>プレースホルダー：</strong>入力例を薄く表示（例：example@mail.com）</li>
+                    <li><strong>リアルタイムバリデーション：</strong>入力中に正誤を即フィードバック</li>
+                    <li><strong>自動フォーマット：</strong>電話番号のハイフン、郵便番号から住所補完</li>
+                    <li><strong>入力タイプ指定：</strong>メールならキーボードを@付きに、電話なら数字のみに</li>
+                    <li><strong>進捗表示：</strong>ステップ数や完了率を可視化</li>
+                </ul>
+            <div class="highlight-box">
+                ⚠️ プレースホルダーだけをラベル代わりにしない<br>
+                → 入力後に「何の欄だったか」わからなくなる
+            </div>
+        </div>
+        </div>
+        <!-- スライド25: リアルタイムバリデーション -->
+        <div class="slide-container">
+            <h2 class="slide-title">リアルタイムバリデーション：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（送信後エラー）</h3>
+                    <svg class="generated-art" viewBox="0 0 350 280">
+                        <!-- <rect x="0" y="0" width="350" height="280" fill="#1a1a2e"/> -->
+                    <rect x="25" y="15" width="300" height="250" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- エラーメッセージ（上部にまとめて） -->
+                    <rect x="40" y="25" width="270" height="50" fill="#ff6b6b" opacity="0.2" rx="4"/>
+                    <text x="55" y="45" fill="#ff6b6b" font-size="10">・メールアドレスが正しくありません</text>
+                    <text x="55" y="60" fill="#ff6b6b" font-size="10">・電話番号を入力してください</text>
+                    
+                    <!-- 入力欄（どれがエラーかわかりにくい） -->
+                    <text x="45" y="100" fill="#888" font-size="10">お名前</text>
+                    <rect x="45" y="105" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#444"/>
+                    
+                    <text x="45" y="150" fill="#888" font-size="10">メールアドレス</text>
+                    <rect x="45" y="155" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#ff6b6b" stroke-width="2"/>
+                    
+                    <text x="45" y="200" fill="#888" font-size="10">電話番号</text>
+                    <rect x="45" y="205" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#ff6b6b" stroke-width="2"/>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #ff6b6b;">問題：全部入力後に戻される</p>
+            </div>
+            <div>
+                <h3>✅ After（即時フィードバック）</h3>
+                <svg class="generated-art" viewBox="0 0 350 280">
+                    <!-- <rect x="0" y="0" width="350" height="280" fill="#1a1a2e"/> -->
+                    
+                    <rect x="25" y="15" width="300" height="250" fill="#2a2a4e" rx="8"/>
+                    
+                    <!-- 入力欄（即時フィードバック付き） -->
+                    <text x="45" y="50" fill="#888" font-size="10">お名前</text>
+                    <rect x="45" y="55" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#4ecdc4" stroke-width="2"/>
+                    <text x="280" y="74" fill="#4ecdc4" font-size="14">✓</text>
+                    
+                    <text x="45" y="105" fill="#888" font-size="10">メールアドレス</text>
+                    <rect x="45" y="110" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#ff6b6b" stroke-width="2"/>
+                    <text x="45" y="152" fill="#ff6b6b" font-size="10">@以降を入力してください</text>
+                    
+                    <text x="45" y="180" fill="#888" font-size="10">電話番号</text>
+                    <rect x="45" y="185" width="255" height="28" fill="#1a1a2e" rx="4" stroke="#4ecdc4" stroke-width="2"/>
+                    <text x="280" y="204" fill="#4ecdc4" font-size="14">✓</text>
+                    <text x="45" y="227" fill="#888" font-size="10">090-1234-5678</text>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #4ecdc4;">改善：その場で修正できる</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド26: マイクロコピー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">鉄則3：マイクロコピー ─ 不安を解消する言葉</h2>
+            <div class="content-block">
+                <h3>マイクロコピーとは</h3>
+                <p>ボタン、ラベル、エラー文言、補足テキストなど、UIに添える短いコピー</p>
+            <h3>効果的なマイクロコピーの原則</h3>
+            <ul>
+                <li><strong>安心感を与える：</strong>「入力情報は暗号化されます」「営業電話はしません」</li>
+                <li><strong>期待値を設定：</strong>「1分で完了」「24時間以内に返信」</li>
+                <li><strong>エラーは解決策を示す：</strong>「〜が正しくありません」→「〜の形式で入力してください」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 マイクロコピーは「心の声に先回りして答える」技術<br>
+                ユーザーが不安に思う前に、安心材料を提示する
+            </div>
+        </div>
+        </div>
+        <!-- スライド27: マイクロコピー例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">マイクロコピー：Before vs After</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- <rect x="0" y="0" width="800" height="350" fill="#1a1a2e"/> -->
+                <!-- Before -->
+                <text x="200" y="30" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">❌ Before</text>
+                
+                <rect x="50" y="50" width="300" height="130" fill="#2a2a4e" rx="8"/>
+                <text x="70" y="80" fill="#888" font-size="12">メールアドレス</text>
+                <rect x="70" y="90" width="260" height="30" fill="#1a1a2e" rx="4" stroke="#444"/>
+                
+                <rect x="120" y="140" width="160" height="35" fill="#666" rx="6"/>
+                <text x="200" y="163" text-anchor="middle" fill="white" font-size="12">送信</text>
+                
+                <!-- エラー（冷たい） -->
+                <rect x="50" y="200" width="300" height="50" fill="#ff6b6b" opacity="0.2" rx="4"/>
+                <text x="200" y="230" text-anchor="middle" fill="#ff6b6b" font-size="12">入力エラーがあります</text>
+                
+                <!-- After -->
+                <text x="600" y="30" text-anchor="middle" fill="#4ecdc4" font-size="16" font-weight="bold">✅ After</text>
+                
+                <rect x="450" y="50" width="300" height="180" fill="#2a2a4e" rx="8"/>
+                <text x="470" y="80" fill="#888" font-size="12">メールアドレス</text>
+                <rect x="470" y="90" width="260" height="30" fill="#1a1a2e" rx="4" stroke="#4ecdc4"/>
+                <text x="470" y="135" fill="#888" font-size="10">🔒 入力情報は暗号化して送信されます</text>
+                
+                <rect x="520" y="160" width="160" height="35" fill="#4ecdc4" rx="6"/>
+                <text x="600" y="183" text-anchor="middle" fill="white" font-size="12" font-weight="bold">無料で資料を受け取る</text>
+                <text x="600" y="210" text-anchor="middle" fill="#888" font-size="10">⏱ 入力は30秒・営業電話なし</text>
+                
+                <!-- エラー（親切） -->
+                <rect x="450" y="270" width="300" height="60" fill="#ffd93d" opacity="0.2" rx="4"/>
+                <text x="600" y="295" text-anchor="middle" fill="#ffd93d" font-size="12">メールアドレスに@が含まれていません</text>
+                <text x="600" y="315" text-anchor="middle" fill="#888" font-size="10">例：yourname@example.com の形式で入力してください</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド28: セクション区切り - まとめ -->
+        <div class="slide-container section-title-layout">
+            <h2>Summary<br><span style="font-size: 1.5em;">まとめ</span></h2>
+            <p>成約率を科学する ─ 理論の整理</p>
+        </div>
+        <!-- スライド29: CRO全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">成約の方程式 ─ 全体像</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- <rect x="0" y="0" width="800" height="350" fill="#1a1a2e"/> -->
+                <!-- 中央の成約 -->
+                <circle cx="400" cy="145" r="50" fill="#ffd93d" opacity="0.3" stroke="#ffd93d" stroke-width="2"/>
+                <text x="400" y="140" text-anchor="middle" fill="white" font-size="16" font-weight="bold">成約</text>
+                <text x="400" y="160" text-anchor="middle" fill="#ffd93d" font-size="12">Conversion</text>
+                
+                <!-- 動機 -->
+                <circle cx="150" cy="70" r="60" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2"/>
+                <text x="150" y="65" text-anchor="middle" fill="white" font-size="14" font-weight="bold">動機</text>
+                <text x="150" y="85" text-anchor="middle" fill="#00d4ff" font-size="10">価値提案・緊急性</text>
+                <line x1="205" y1="95" x2="355" y2="130" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4,4"/>
+                
+                <!-- CTA（きっかけ） -->
+                <circle cx="650" cy="70" r="60" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2"/>
+                <text x="650" y="65" text-anchor="middle" fill="white" font-size="14" font-weight="bold">CTA</text>
+                <text x="650" y="85" text-anchor="middle" fill="#ff6b6b" font-size="10">配置・デザイン・文言</text>
+                <line x1="595" y1="95" x2="445" y2="130" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,4"/>
+                
+                <!-- EFO（能力） -->
+                <circle cx="400" cy="270" r="60" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2"/>
+                <text x="400" y="265" text-anchor="middle" fill="white" font-size="14" font-weight="bold">EFO</text>
+                <text x="400" y="285" text-anchor="middle" fill="#4ecdc4" font-size="10">項目削減・入力補助・MC</text>
+                <line x1="400" y1="210" x2="400" y2="195" stroke="#4ecdc4" stroke-width="1" stroke-dasharray="4,4"/>
+                
+                <!-- 関連理論 -->
+                <text x="150" y="150" text-anchor="middle" fill="#888" font-size="10">色彩心理</text>
+                <text x="650" y="150" text-anchor="middle" fill="#888" font-size="10">視線誘導 / コントラスト</text>
+                <text x="400" y="345" text-anchor="middle" fill="#888" font-size="10">近接の法則</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド30: チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">CRO改善チェックリスト</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>CTA配置</h3>
+                    <p>視線の終着点に<br>置いているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>CTAデザイン</h3>
+                    <p>色・サイズで<br>十分に目立つか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✍️</div>
+                    <h3>CTA文言</h3>
+                    <p>動詞＋ベネフィットで<br>具体的か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📝</div>
+                    <h3>EFO</h3>
+                    <p>項目数は最小限？<br>入力補助はあるか？</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド31: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：実践編へ</h2>
+            <div class="content-block">
+                <h3>理論編で学んだこと</h3>
+                <ul>
+                    <li>成約の方程式（動機 × 能力 × きっかけ）</li>
+                    <li>CTA設計の原則（配置・色・サイズ・文言）</li>
+                    <li>EFO鉄則（項目削減・入力補助・マイクロコピー）</li>
+                </ul>
+                <h3>実践編で体験すること</h3>
+                <ul>
+                    <li>Figma：ワイヤーフレームでCTA配置を設計</li>
+                    <li>Canva：実際のCTAボタンをデザイン</li>
+                    <li>フォーム改善：Before/Afterを自分で作成</li>
+                </ul>
+            
+                <div class="highlight-box">
+                    💡 理論を知っているだけでは成約率は上がらない。<br>
+                    実践編で「手を動かして」体得しよう
+                </div>
+            </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "BJ Foggの行動モデルで、行動が起こる条件は？",
+                options: [
+                    "動機が高ければ必ず行動する",
+                    "能力があれば行動する",
+                    "動機 × 能力 × きっかけ が同時に揃う",
+                    "きっかけさえあれば行動する"
+                ],
+                correct: 2,
+                explanation: "行動は3要素の掛け算です。どれか1つでもゼロなら行動は起きません。CROはこの3つの壁を同時に低くする技術です。"
+            },
+            {
+                question: "CTAボタンの色選定で最も効果的なアプローチは？",
+                options: [
+                    "ブランドカラーをそのまま使う",
+                    "ページの基調色と補色関係にする",
+                    "常に赤色が最も目立つ",
+                    "できるだけ落ち着いた色にする"
+                ],
+                correct: 1,
+                explanation: "CTAはページ内で「例外」として目立たせる必要があります。基調色と補色関係にすることで、視覚的コントラストが生まれ、視線を引きつけます。"
+            },
+            {
+                question: "効果的なCTA文言の条件として正しくないものは？",
+                options: [
+                    "動詞で始める",
+                    "ベネフィットを含める",
+                    "「詳細はこちら」のように短くする",
+                    "ハードルを下げる言葉を添える"
+                ],
+                correct: 2,
+                explanation: "「詳細はこちら」は何が起こるか不明確で、ユーザーに不安を与えます。「無料で見積もりを受け取る」のように、得られる価値を具体的に示すことが重要です。"
+            },
+            {
+                question: "フォーム項目数と完了率の関係で正しいのは？",
+                options: [
+                    "項目数は完了率に影響しない",
+                    "項目が1つ増えるごとに完了率は約10%低下する",
+                    "項目が多いほど信頼感が上がり完了率も上がる",
+                    "5項目までなら影響はない"
+                ],
+                correct: 1,
+                explanation: "HubSpotの調査によると、フォーム項目が1つ増えるごとに完了率は約10%低下します。必要最小限の項目に絞ることがEFOの基本です。"
+            },
+            {
+                question: "LPの成約率を改善するとき、最初に確認すべきことは？",
+                options: [
+                    "デザインの美しさ",
+                    "CTAが視線の終着点にあり、十分なコントラストがあるか",
+                    "ページの読み込み速度",
+                    "SNSシェアボタンの有無"
+                ],
+                correct: 1,
+                explanation: "いくら美しいページでも、CTAが見つからなければ成約しません。視線誘導とコントラストの原則に基づいてCTAが適切に配置されているかを最初に確認すべきです。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

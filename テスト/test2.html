@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デザインは「設計」である - Lecture Slides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- CORE CSS --- */
+        * { box-sizing: border-box; }
+        body { background-color: #000; margin: 0; height: 100vh; width: 100vw; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        #presentation-wrapper { position: relative; width: 1280px; height: 720px; }
+        .slide-container { align-items: center; background-color: #121212; border-radius: 0; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); display: none; flex-direction: column; font-family: 'Inter', 'Noto Sans JP', sans-serif; height: 720px; justify-content: center; overflow: hidden; padding: 60px; position: absolute; top: 0; left: 0; width: 1280px; color: #fff; z-index: 0; }
+        .slide-container.active { display: flex; z-index: 10; animation: fadeIn 0.5s ease; }
+        .slide-container.bleed-image-layout.active { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; padding: 0; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Backgrounds & Decorations */
+        .slide-container::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(62,184,255,0.1) 0%, rgba(0,0,0,0) 70%); z-index: 0; }
+        .slide-container::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%); z-index: 0; }
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: 'Inter', 'Noto Sans JP', sans-serif; margin: 0; line-height: 1.2; }
+        .slide-container h1 { font-size: 72px; font-weight: 800; background: linear-gradient(90deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        .slide-container .slide-title { font-size: 42px; font-weight: 600; color: #fff; width: 100%; text-align: left; border-left: 6px solid #00d4ff; padding-left: 20px; margin-bottom: 30px; }
+        .slide-container h3 { font-size: 28px; font-weight: 700; color: #00d4ff; margin-bottom: 15px; }
+        .slide-container p, .slide-container li { font-size: 20px; line-height: 1.8; color: #e0e0e0; font-family: 'Inter', 'Noto Sans JP', sans-serif; margin-bottom: 10px; }
+        ul { padding-left: 30px; }
+        
+        /* --- LAYOUTS (EXISTING) --- */
+        .full-bg-image { padding: 0; background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%), linear-gradient(135deg, #121212 0%, #1a1a1a 100%); }
+        .full-bg-image .content-overlay { background: rgba(0, 0, 0, 0.4); padding: 80px; border-radius: 20px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .full-bg-image h2 { font-size: 80px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        
+        .section-title-layout { text-align: center; border: 2px solid #333; padding: 80px; border-radius: 20px; background: rgba(255,255,255,0.03); width: 80%; }
+        .section-title-layout h2 { font-size: 64px; color: #fff; margin-bottom: 30px; }
+        .section-title-layout hr { width: 100px; height: 4px; background: linear-gradient(90deg, #00d4ff, #ff0080); border: none; margin: 0 auto 30px auto; }
+
+        .two-column.tiled { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; height: 80%; }
+        .two-column.tiled > div { background: rgba(255, 255, 255, 0.05); border: 1px solid #333; border-radius: 12px; padding: 40px; display: flex; flex-direction: column; justify-content: flex-start; }
+        
+        .slide-container.bleed-image-layout .content-container { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .slide-container.bleed-image-layout .image-container { height: 100%; width: 100%; background: #1e1e1e; display: flex; align-items: center; justify-content: center; border-left: 1px solid #333; position: relative; overflow: hidden; }
+        
+        .tiled-content { display: flex; gap: 30px; width: 100%; justify-content: center; }
+        .tile { flex: 1; background: #1e1e1e; border-radius: 12px; padding: 30px; text-align: center; border: 1px solid #333; }
+        .tile .icon { font-size: 50px; margin-bottom: 20px; display: inline-block; width: 80px; height: 80px; line-height: 80px; border-radius: 50%; background: rgba(255,255,255,0.05); color: #00d4ff; }
+
+        /* --- NEW LAYOUTS (ADDED) --- */
+        /* 1. Standard Content (Left Title, Right Content OR Full block) */
+        .standard-content-layout { align-items: flex-start; justify-content: flex-start; padding-top: 100px; }
+        .standard-content-layout .content-block { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 40px; width: 100%; border: 1px solid #333; }
+        
+        /* 2. Big Concept (Impact) */
+        .big-concept-layout { text-align: center; }
+        .big-concept-layout h2 { font-size: 90px; line-height: 1.1; background: linear-gradient(45deg, #00d4ff, #00ff9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; }
+        .big-concept-layout p { font-size: 28px; max-width: 800px; margin: 0 auto; color: #fff; }
+
+        /* 3. Three Column (for 3 points) */
+        .three-column { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; height: 75%; }
+        .three-column > div { background: rgba(255, 255, 255, 0.05); border: 1px solid #333; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; }
+
+        /* Utilities */
+        .highlight-box { background: rgba(0, 212, 255, 0.1); border-left: 4px solid #00d4ff; padding: 20px; margin-top: 20px; font-size: 22px; color: #fff; }
+        svg.generated-art { width: 80%; height: 80%; z-index: 2; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .footer-copyright { position: absolute; bottom: 20px; left: 20px; font-size: 10px; color: rgba(255, 255, 255, 0.5); }
+        .control-hint { position: fixed; bottom: 20px; right: 20px; color: #444; font-size: 12px; pointer-events: none; z-index: 9999; }
+    </style>
+</head>
+<body>
+
+<div id="presentation-wrapper">
+    <!-- Slide 1: Title -->
+    <div class="slide-container full-bg-image active">
+        <div class="content-overlay">
+            <h2>デザインは「設計」である</h2>
+            <p style="font-size: 28px; margin-top: 30px; color: #fff;">センスではなく、ロジックで解決する</p>
+            <p style="font-size: 18px; margin-top: 20px; color: #aaa;">非デザイナーのための実践的デザイン思考</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Agenda -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">本日のアジェンダ</h2>
+        <div class="content-block">
+            <ul>
+                <li><strong>第1章:</strong> デザインとアートの違い - なぜ「センス」という言葉が誤解を生むのか</li>
+                <li><strong>第2章:</strong> デザインの4原則 - 誰でも使える基本ルール</li>
+                <li><strong>第3章:</strong> 視線誘導の科学 - Fの法則とZの法則</li>
+                <li><strong>第4章:</strong> ゲシュタルト心理学 - 人間の認知を理解する</li>
+                <li><strong>第5章:</strong> 認知負荷の軽減 - ユーザーに優しいデザイン</li>
+                <li><strong>第6章:</strong> 実践ワークショップ - 学んだ原則を使ってみよう</li>
+            </ul>
+            <div class="highlight-box">
+                💡 今日のゴール: 「センスがない」という言い訳を捨て、論理的にデザインできるようになる
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Section Title - Chapter 1 -->
+    <div class="slide-container section-title-layout">
+        <h2>第1章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">Art vs Design<br>自己表現と課題解決の違い</p>
+    </div>
+
+    <!-- Slide 4: Problem Statement -->
+    <div class="slide-container big-concept-layout">
+        <h2>「センスがないから<br>デザインできない」</h2>
+        <p>この考え方が、あなたのデザイン能力を<br>制限している最大の要因です</p>
+    </div>
+
+    <!-- Slide 5: Art vs Design Comparison -->
+    <div class="slide-container">
+        <h2 class="slide-title">Art（アート）とDesign（デザイン）の本質的な違い</h2>
+        <div class="two-column tiled">
+            <div>
+                <h3><i class="fas fa-palette"></i> Art（アート）</h3>
+                <ul>
+                    <li><strong>目的:</strong> 自己表現、感情の伝達</li>
+                    <li><strong>評価軸:</strong> 主観的、個人の感性</li>
+                    <li><strong>成功指標:</strong> 感動、驚き、美的体験</li>
+                    <li><strong>プロセス:</strong> 直感的、実験的</li>
+                    <li><strong>対象:</strong> 不特定多数の鑑賞者</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 18px; color: #aaa;">アートは「問いを投げかける」もの</p>
+            </div>
+            <div>
+                <h3><i class="fas fa-compass-drafting"></i> Design（デザイン）</h3>
+                <ul>
+                    <li><strong>目的:</strong> 課題解決、機能の最適化</li>
+                    <li><strong>評価軸:</strong> 客観的、使いやすさ</li>
+                    <li><strong>成功指標:</strong> 目標達成、行動変容</li>
+                    <li><strong>プロセス:</strong> 論理的、体系的</li>
+                    <li><strong>対象:</strong> 特定のユーザー</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 18px; color: #aaa;">デザインは「答えを提示する」もの</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Design as Engineering -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">デザインは「設計」= エンジニアリングである</h2>
+        <div class="content-block">
+            <p style="margin-bottom: 25px;">デザインという言葉の語源は「de-sign（記号を解く）」であり、本質的には問題解決のための設計行為です。</p>
+            <ul>
+                <li><strong>要件定義:</strong> ユーザーは誰か？何を達成したいか？どんな制約があるか？</li>
+                <li><strong>情報設計:</strong> 伝えたい情報をどう整理し、優先順位をつけるか？</li>
+                <li><strong>視覚設計:</strong> 情報を視覚的にどう表現すれば理解しやすいか？</li>
+                <li><strong>検証・改善:</strong> 実際に使ってもらい、問題点を発見して改善する</li>
+            </ul>
+            <div class="highlight-box">
+                ✅ センスではなく「手順」として捉えることで、誰でも再現可能になる
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Section Title - Chapter 2 -->
+    <div class="slide-container section-title-layout">
+        <h2>第2章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">デザインの4原則<br>プロが必ず守る基本ルール</p>
+    </div>
+
+    <!-- Slide 8: Four Principles Overview -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2 class="slide-title">デザインの4原則とは</h2>
+            <p>Robin Williamsが提唱した、あらゆるデザインに適用できる普遍的な原則です。これらを守るだけで、デザインの品質は劇的に向上します。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>近接（Proximity）:</strong> 関連する要素をグループ化する</li>
+                <li><strong>整列（Alignment）:</strong> 要素を揃えて配置する</li>
+                <li><strong>反復（Repetition）:</strong> パターンを繰り返す</li>
+                <li><strong>対比（Contrast）:</strong> 違いを明確にする</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <svg class="generated-art" viewBox="0 0 400 400">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00ff9d;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <!-- Proximity -->
+                <g transform="translate(50, 50)">
+                    <circle cx="20" cy="20" r="8" fill="url(#grad1)"/>
+                    <circle cx="40" cy="20" r="8" fill="url(#grad1)"/>
+                    <circle cx="30" cy="35" r="8" fill="url(#grad1)"/>
+                    <text x="0" y="60" fill="#fff" font-size="12">近接</text>
+                </g>
+                <!-- Alignment -->
+                <g transform="translate(250, 50)">
+                    <rect x="0" y="0" width="60" height="8" fill="url(#grad1)"/>
+                    <rect x="0" y="15" width="60" height="8" fill="url(#grad1)"/>
+                    <rect x="0" y="30" width="60" height="8" fill="url(#grad1)"/>
+                    <text x="0" y="55" fill="#fff" font-size="12">整列</text>
+                </g>
+                <!-- Repetition -->
+                <g transform="translate(50, 200)">
+                    <rect x="0" y="0" width="15" height="15" fill="url(#grad1)" rx="2"/>
+                    <rect x="20" y="0" width="15" height="15" fill="url(#grad1)" rx="2"/>
+                    <rect x="40" y="0" width="15" height="15" fill="url(#grad1)" rx="2"/>
+                    <text x="0" y="30" fill="#fff" font-size="12">反復</text>
+                </g>
+                <!-- Contrast -->
+                <g transform="translate(250, 200)">
+                    <circle cx="30" cy="10" r="5" fill="url(#grad1)"/>
+                    <circle cx="30" cy="25" r="12" fill="#ff0080"/>
+                    <text x="0" y="50" fill="#fff" font-size="12">対比</text>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Slide 9: Proximity -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">原則1: 近接（Proximity）</h2>
+        <div class="content-block">
+            <h3>関連する要素は近くに、無関係な要素は離す</h3>
+            <p>人間の脳は、近くにあるものを自動的に「関連している」と認識します。この心理を利用して、情報を視覚的にグループ化しましょう。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>良い例:</strong> 商品名と価格を近づけ、次の商品との間に余白を設ける</li>
+                <li><strong>悪い例:</strong> すべての要素が均等に配置され、何がグループなのか分からない</li>
+                <li><strong>実践のコツ:</strong> 余白を「捨てるスペース」ではなく「グループを作る道具」として使う</li>
+                <li><strong>効果:</strong> 情報の理解速度が最大40%向上するという研究結果も</li>
+            </ul>
+            <div class="highlight-box">
+                📌 余白は「何もない空間」ではなく、意味を持つデザイン要素
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Alignment -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">原則2: 整列（Alignment）</h2>
+        <div class="content-block">
+            <h3>すべての要素に「見えない線」を通す</h3>
+            <p>整列とは、要素同士を目に見えない線で結び、秩序と統一感を生み出す技術です。プロのデザインは必ず何らかの整列を持っています。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>左揃え:</strong> 最も一般的。可読性が高く、安定感がある（推奨）</li>
+                <li><strong>中央揃え:</strong> フォーマルな印象。タイトルや短いテキストに適している</li>
+                <li><strong>右揃え:</strong> 特殊な場合のみ。日付や補足情報など</li>
+                <li><strong>両端揃え:</strong> 新聞や書籍。Webでは避けるべき（単語間の空白が不自然）</li>
+                <li><strong>実践:</strong> グリッドシステムを使い、8pxや12pxの倍数で配置する</li>
+            </ul>
+            <div class="highlight-box">
+                ⚠️ 1つのデザイン内で複数の整列パターンを混在させない
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Repetition -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">原則3: 反復（Repetition）</h2>
+        <div class="content-block">
+            <h3>パターンを繰り返して統一感を作る</h3>
+            <p>同じスタイルを繰り返すことで、デザインに一貫性が生まれ、ブランド認知も高まります。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>色の反復:</strong> ブランドカラーを見出し、アイコン、ボタンに統一して使用</li>
+                <li><strong>フォントの反復:</strong> 見出しは常に同じフォントファミリー、サイズ体系</li>
+                <li><strong>余白の反復:</strong> 要素間の余白を16px、32px、64pxなど規則的に</li>
+                <li><strong>形状の反復:</strong> ボタンの角丸、カードの影など、同じスタイルを維持</li>
+                <li><strong>効果:</strong> ユーザーが「学習」でき、操作性が向上する</li>
+            </ul>
+            <div class="highlight-box">
+                💡 デザインシステムやスタイルガイドは、この「反復」を体系化したもの
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Contrast -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">原則4: 対比（Contrast）</h2>
+        <div class="content-block">
+            <h3>重要な情報を「目立たせる」技術</h3>
+            <p>対比が弱いと、すべてが同じ重要度に見え、何も伝わりません。強い対比で階層を作りましょう。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>サイズの対比:</strong> 見出し48px、本文16px → 3倍の差で明確な階層</li>
+                <li><strong>色の対比:</strong> 黒背景に白文字、または明度差を大きく（WCAG AA基準: 4.5:1以上）</li>
+                <li><strong>太さの対比:</strong> 見出しはBold（700）、本文はRegular（400）</li>
+                <li><strong>形状の対比:</strong> 直線的なレイアウトに1つだけ円形要素を配置</li>
+                <li><strong>注意点:</strong> 中途半端な対比は逆効果。「似ているけど違う」が最も悪い</li>
+            </ul>
+            <div class="highlight-box">
+                ❌ NG: 見出し18px、本文16px → 差が小さすぎて階層が不明瞭
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Section Title - Chapter 3 -->
+    <div class="slide-container section-title-layout">
+        <h2>第3章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">視線誘導の科学<br>Fの法則とZの法則</p>
+    </div>
+
+    <!-- Slide 14: Eye Tracking Science -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">人間の視線は予測可能である</h2>
+        <div class="content-block">
+            <p>アイトラッキング調査により、人間がWebページや紙面を見る際の視線の動きには明確なパターンがあることが判明しています。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>Nielsen Norman Groupの研究:</strong> 232人のユーザーを対象に視線追跡を実施</li>
+                <li><strong>結果:</strong> テキスト量が多いページでは「Fパターン」、画像中心では「Zパターン」が出現</li>
+                <li><strong>重要性:</strong> このパターンを理解し、重要な情報を適切な位置に配置することで、情報伝達効率が向上</li>
+                <li><strong>文化的差異:</strong> 左→右読みの文化（欧米、日本）での話。右→左読みの文化では逆転</li>
+            </ul>
+            <div class="highlight-box">
+                🔬 科学的根拠に基づく配置 = センスではなくデータ
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: F-Pattern -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2 class="slide-title">Fの法則（F-Pattern）</h2>
+            <p><strong>適用場面:</strong> テキスト量が多いページ（ブログ、記事、ニュースサイト）</p>
+            <p style="margin-top: 20px;"><strong>視線の動き:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>1. 左上から右へ水平移動（Fの上の横棒）</li>
+                <li>2. 少し下がって再び左から右へ（Fの真ん中の横棒）</li>
+                <li>3. 左側を垂直に下へスキャン（Fの縦棒）</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>設計のポイント:</strong></p>
+            <ul>
+                <li>最も重要な情報は左上に配置</li>
+                <li>見出しや小見出しを左揃えに</li>
+                <li>各段落の最初の2〜3語が重要</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <svg class="generated-art" viewBox="0 0 300 400">
+                <defs>
+                    <linearGradient id="fGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00ff9d;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                <!-- F Pattern -->
+                <rect x="20" y="30" width="260" height="15" fill="url(#fGrad)" rx="5"/>
+                <rect x="20" y="80" width="200" height="15" fill="url(#fGrad)" rx="5"/>
+                <rect x="20" y="130" width="15" height="220" fill="url(#fGrad)" rx="5"/>
+                <text x="150" y="380" fill="#fff" font-size="24" font-weight="bold" text-anchor="middle">F パターン</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Slide 16: Z-Pattern -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2 class="slide-title">Zの法則（Z-Pattern）</h2>
+            <p><strong>適用場面:</strong> テキストが少なく、ビジュアル中心のページ（LP、広告、ポスター）</p>
+            <p style="margin-top: 20px;"><strong>視線の動き:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>1. 左上から右上へ水平移動（Zの上の横線）</li>
+                <li>2. 右上から左下へ斜め移動（Zの斜線）</li>
+                <li>3. 左下から右下へ水平移動（Zの下の横線）</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>設計のポイント:</strong></p>
+            <ul>
+                <li>左上: ロゴ・ブランド名</li>
+                <li>右上: CTA（お問い合わせボタンなど）</li>
+                <li>中央: メインビジュアル・キャッチコピー</li>
+                <li>右下: 最終的なアクションボタン</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <svg class="generated-art" viewBox="0 0 300 400">
+                <defs>
+                    <linearGradient id="zGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff0080;stop-opacity:0.3" />
+                    </linearGradient>
+                    <linearGradient id="zGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff0080;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#ff0080;stop-opacity:0.8" />
+                    </linearGradient>
+                </defs>
+                <!-- Z Pattern -->
+                <rect x="20" y="30" width="260" height="15" fill="url(#zGrad1)" rx="5"/>
+                <path d="M 270 45 L 40 280" stroke="#ff0080" stroke-width="15" fill="none" opacity="0.6"/>
+                <rect x="20" y="280" width="260" height="15" fill="url(#zGrad2)" rx="5"/>
+                <text x="150" y="380" fill="#fff" font-size="24" font-weight="bold" text-anchor="middle">Z パターン</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Slide 17: Applying Eye Tracking -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">視線誘導を実践に活かす</h2>
+        <div class="content-block">
+            <h3>具体的な配置戦略</h3>
+            <ul>
+                <li><strong>ヒートマップツールを使う:</strong> Hotjar、Microsoft Clarityなどで実際のユーザー行動を確認</li>
+                <li><strong>優先順位マッピング:</strong> 伝えたい情報TOP3を視線の「ホットゾーン」に配置</li>
+                <li><strong>スクロールを前提にしない:</strong> 最重要情報はファーストビュー（スクロールせずに見える範囲）に</li>
+                <li><strong>左側を活用:</strong> 日本語は左→右読みなので、左側の情報が最も注目される</li>
+                <li><strong>画像の視線方向:</strong> 人物写真の視線を誘導したい方向に向ける（目線は強力な視線誘導）</li>
+            </ul>
+            <div class="highlight-box">
+                📊 データに基づく配置で、クリック率が平均25%〜40%向上
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Section Title - Chapter 4 -->
+    <div class="slide-container section-title-layout">
+        <h2>第4章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">ゲシュタルト心理学<br>人間の認知を理解する</p>
+    </div>
+
+    <!-- Slide 19: Gestalt Psychology Intro -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">ゲシュタルト心理学とは</h2>
+        <div class="content-block">
+            <p>20世紀初頭にドイツで生まれた心理学の一派。「人間は部分ではなく全体として認識する」という原理に基づきます。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>語源:</strong> Gestalt = ドイツ語で「形態、全体像」</li>
+                <li><strong>中心概念:</strong> 人間の脳は、バラバラの要素を自動的に「まとまり」として認識しようとする</li>
+                <li><strong>デザインへの応用:</strong> この認知の法則を理解することで、意図した通りに情報を伝達できる</li>
+                <li><strong>主要な法則:</strong> 近接、類似、閉合、連続、図と地、共通運命の6つ</li>
+            </ul>
+            <div class="highlight-box">
+                🧠 脳は「意味を見つけよう」とする。その性質を利用するのがデザイン
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 20: Gestalt Principles -->
+    <div class="slide-container">
+        <h2 class="slide-title">ゲシュタルトの法則（主要6原則）</h2>
+        <div class="three-column">
+            <div>
+                <h3>1. 近接の法則</h3>
+                <p>近くにある要素は関連していると認識される</p>
+                <svg viewBox="0 0 100 100" style="width: 100%; height: 120px; margin: 15px 0;">
+                    <circle cx="20" cy="30" r="5" fill="#00d4ff"/>
+                    <circle cx="35" cy="30" r="5" fill="#00d4ff"/>
+                    <circle cx="70" cy="30" r="5" fill="#00d4ff"/>
+                    <circle cx="85" cy="30" r="5" fill="#00d4ff"/>
+                </svg>
+            </div>
+            <div>
+                <h3>2. 類似の法則</h3>
+                <p>似た特徴を持つ要素はグループとして認識される</p>
+                <svg viewBox="0 0 100 100" style="width: 100%; height: 120px; margin: 15px 0;">
+                    <circle cx="15" cy="30" r="5" fill="#00d4ff"/>
+                    <rect x="32" y="25" width="10" height="10" fill="#ff0080"/>
+                    <circle cx="55" cy="30" r="5" fill="#00d4ff"/>
+                    <rect x="72" y="25" width="10" height="10" fill="#ff0080"/>
+                </svg>
+            </div>
+            <div>
+                <h3>3. 閉合の法則</h3>
+                <p>不完全な図形でも脳が補完して認識する</p>
+                <svg viewBox="0 0 100 100" style="width: 100%; height: 120px; margin: 15px 0;">
+                    <path d="M 20 20 Q 50 10 80 20 L 80 50" stroke="#00d4ff" stroke-width="3" fill="none"/>
+                    <path d="M 20 50 L 20 20" stroke="#00d4ff" stroke-width="3" fill="none" stroke-dasharray="5,3"/>
+                </svg>
+            </div>
+        </div>
+        <div class="three-column" style="margin-top: 20px;">
+            <div>
+                <h3>4. 連続の法則</h3>
+                <p>滑らかに続く線は1つのグループとして認識される</p>
+            </div>
+            <div>
+                <h3>5. 図と地の法則</h3>
+                <p>視覚情報を「前景」と「背景」に分けて認識する</p>
+            </div>
+            <div>
+                <h3>6. 共通運命の法則</h3>
+                <p>同じ方向に動く要素は関連していると認識される</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 21: Gestalt in Practice -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">ゲシュタルトをデザインに応用する</h2>
+        <div class="content-block">
+            <h3>実践的な活用例</h3>
+            <ul>
+                <li><strong>近接 × カード型UI:</strong> 関連情報（画像、タイトル、説明）を1枚のカードにまとめることで、視覚的なグループ化</li>
+                <li><strong>類似 × ナビゲーション:</strong> 同じカテゴリーのメニュー項目を同じ色・サイズで統一し、認識を助ける</li>
+                <li><strong>閉合 × ローディング:</strong> 不完全な円形プログレスバーでも、脳が「円」として認識し、進行状況を理解できる</li>
+                <li><strong>連続 × スクロール誘導:</strong> 画面下部に切れた要素を配置し、「続きがある」ことを暗示</li>
+                <li><strong>図と地 × モーダル:</strong> 背景を暗くすることで、前面のダイアログに注意を集中させる</li>
+            </ul>
+            <div class="highlight-box">
+                💡 ユーザーは「教えられなくても理解できる」デザインを求めている
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 22: Section Title - Chapter 5 -->
+    <div class="slide-container section-title-layout">
+        <h2>第5章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">認知負荷の軽減<br>ユーザーに優しいデザイン</p>
+    </div>
+
+    <!-- Slide 23: Cognitive Load Theory -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">認知負荷とは</h2>
+        <div class="content-block">
+            <p>人間の作業記憶（ワーキングメモリー）には限界があります。一度に処理できる情報量を超えると、理解や判断が困難になります。</p>
+            <ul style="margin-top: 20px;">
+                <li><strong>マジカルナンバー7±2:</strong> 人間が一度に保持できる情報のチャンク数は5〜9個</li>
+                <li><strong>認知負荷の種類:</strong> 内在的負荷（タスク自体の複雑さ）、外在的負荷（提示方法の問題）、関連負荷（学習への負荷）</li>
+                <li><strong>デザインの役割:</strong> 外在的負荷を最小化し、ユーザーが本質的なタスクに集中できるようにする</li>
+                <li><strong>過負荷の症状:</strong> 選択肢が多すぎる、情報が整理されていない、操作手順が分からない</li>
+            </ul>
+            <div class="highlight-box">
+                ⚠️ 「機能が多い = 良いデザイン」ではない。むしろ逆
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 24: Reducing Cognitive Load -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">認知負荷を減らす7つの戦略</h2>
+        <div class="content-block">
+            <ul>
+                <li><strong>1. 情報の階層化:</strong> 重要度に応じて視覚的な強弱をつける（タイポグラフィ、色、サイズ）</li>
+                <li><strong>2. チャンキング:</strong> 情報を意味のある塊に分割（電話番号: 090-1234-5678）</li>
+                <li><strong>3. プログレッシブディスクロージャー:</strong> 必要な時に必要な情報だけ表示（アコーディオン、ステップ形式）</li>
+                <li><strong>4. 一貫性の維持:</strong> 同じ操作は同じ見た目、同じ場所に（学習コストの削減）</li>
+                <li><strong>5. デフォルト値の提供:</strong> よく使う選択肢を事前選択しておく（フォーム入力の負担軽減）</li>
+                <li><strong>6. 視覚的な手がかり:</strong> アイコン、色分け、番号付けで情報を構造化</li>
+                <li><strong>7. エラー防止:</strong> ミスが起きにくい設計（確認ダイアログ、入力制約）</li>
+            </ul>
+            <div class="highlight-box">
+                🎯 ユーザーに「考えさせない」ことが最高のUX
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 25: Hick's Law -->
+    <div class="slide-container bleed-image-layout">
+        <div class="content-container">
+            <h2 class="slide-title">ヒックの法則</h2>
+            <p><strong>定義:</strong> 選択肢が増えるほど、意思決定に時間がかかる</p>
+            <p style="margin-top: 20px;"><strong>数式:</strong> RT = a + b log₂(n)<br>
+            <span style="font-size: 16px; color: #aaa;">RT=反応時間、n=選択肢の数</span></p>
+            <p style="margin-top: 20px;"><strong>実例:</strong></p>
+            <ul>
+                <li>Netflixのカテゴリー分類（ジャンルで絞り込み）</li>
+                <li>Amazonの段階的な商品検索</li>
+                <li>レストランメニューの「おすすめ」表示</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>デザインへの示唆:</strong></p>
+            <ul>
+                <li>選択肢は7個以内に抑える</li>
+                <li>カテゴリー分けで階層化</li>
+                <li>推奨オプションを明示</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <defs>
+                    <linearGradient id="hickGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff0080;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <!-- Axes -->
+                <line x1="50" y1="250" x2="350" y2="250" stroke="#666" stroke-width="2"/>
+                <line x1="50" y1="250" x2="50" y2="50" stroke="#666" stroke-width="2"/>
+                <!-- Curve -->
+                <path d="M 50 240 Q 150 150 350 80" stroke="url(#hickGrad)" stroke-width="4" fill="none"/>
+                <!-- Labels -->
+                <text x="200" y="280" fill="#fff" font-size="16" text-anchor="middle">選択肢の数</text>
+                <text x="20" y="150" fill="#fff" font-size="16" text-anchor="middle" transform="rotate(-90 20 150)">決定時間</text>
+                <text x="200" y="30" fill="#00d4ff" font-size="20" font-weight="bold" text-anchor="middle">選択肢↑ = 時間↑</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Slide 26: Section Title - Chapter 6 -->
+    <div class="slide-container section-title-layout">
+        <h2>第6章</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">実践ワークショップ<br>学んだ原則を使ってみよう</p>
+    </div>
+
+    <!-- Slide 27: Workshop Exercise -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">演習: 名刺デザインを改善する</h2>
+        <div class="content-block">
+            <h3>課題設定</h3>
+            <p>以下の「悪い名刺デザイン」を、今日学んだ原則を使って改善してください。</p>
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p style="font-size: 18px;"><strong>悪い例の特徴:</strong></p>
+                <ul>
+                    <li>すべてのテキストが中央揃え</li>
+                    <li>名前と役職の文字サイズが同じ</li>
+                    <li>連絡先情報が均等に配置され、グループ化されていない</li>
+                    <li>余白が少なく、窮屈な印象</li>
+                </ul>
+            </div>
+            <h3>改善のチェックリスト</h3>
+            <ul>
+                <li>✅ 近接: 関連情報（電話とメール、住所）をグループ化</li>
+                <li>✅ 整列: 左揃えまたは右揃えに統一</li>
+                <li>✅ 反復: 会社カラーを複数箇所で使用</li>
+                <li>✅ 対比: 名前を大きく、役職を小さく（階層を作る）</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 28: Before/After Comparison -->
+    <div class="slide-container">
+        <h2 class="slide-title">Before / After 比較</h2>
+        <div class="two-column tiled">
+            <div>
+                <h3 style="color: #ff0080;">❌ Before（悪い例）</h3>
+                <ul style="font-size: 18px;">
+                    <li>対比が弱い（名前が目立たない）</li>
+                    <li>整列がバラバラ（中央、左、右が混在）</li>
+                    <li>近接が意識されていない（余白が均等）</li>
+                    <li>反復がない（フォント、色が統一されていない）</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 16px; color: #aaa;">結果: どこを見ればいいか分からず、記憶に残らない</p>
+            </div>
+            <div>
+                <h3 style="color: #00d4ff;">✅ After（良い例）</h3>
+                <ul style="font-size: 18px;">
+                    <li>名前を48pxに拡大、役職は18px（明確な階層）</li>
+                    <li>左揃えに統一（読みやすさ向上）</li>
+                    <li>連絡先をグループ化（余白で分離）</li>
+                    <li>ブランドカラーを名前とロゴに反復</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 16px; color: #aaa;">結果: 一目で情報を把握でき、プロフェッショナルな印象</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 29: Design Process -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">デザインの実践プロセス（5ステップ）</h2>
+        <div class="content-block">
+            <h3>センスに頼らない、体系的なアプローチ</h3>
+            <ul style="margin-top: 20px;">
+                <li><strong>Step 1 - 目的の明確化:</strong> 何を伝えたいか？誰に？どんな行動を起こしてほしいか？</li>
+                <li><strong>Step 2 - 情報の優先順位付け:</strong> 伝えたい情報をリスト化し、重要度順に並べる（TOP3を明確に）</li>
+                <li><strong>Step 3 - ワイヤーフレーム作成:</strong> 装飾なしで配置だけ決める（箱と線だけでOK）</li>
+                <li><strong>Step 4 - 4原則の適用:</strong> 近接、整列、反復、対比を意識して配置を調整</li>
+                <li><strong>Step 5 - 検証と改善:</strong> 第三者に見てもらい、意図が伝わるかテスト</li>
+            </ul>
+            <div class="highlight-box">
+                🔄 デザインは「一発で完璧」を目指さない。反復改善が基本
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 30: Common Mistakes -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">よくある失敗パターンと対策</h2>
+        <div class="content-block">
+            <ul>
+                <li><strong>❌ すべてを目立たせようとする:</strong> 結果的に何も目立たない。<br>
+                <span style="color: #00d4ff;">✅ 対策:</span> 1つだけを目立たせ、他は抑える（主役と脇役を決める）</li>
+                
+                <li><strong>❌ 余白を「無駄」だと思う:</strong> 情報を詰め込みすぎて息苦しいデザインに。<br>
+                <span style="color: #00d4ff;">✅ 対策:</span> 余白は「情報を整理する道具」として意図的に使う</li>
+                
+                <li><strong>❌ フォントを多用する:</strong> 3種類以上のフォントで統一感が崩れる。<br>
+                <span style="color: #00d4ff;">✅ 対策:</span> フォントファミリーは2種類まで（見出し用、本文用）</li>
+                
+                <li><strong>❌ 色を感覚で選ぶ:</strong> 可読性やアクセシビリティの問題が発生。<br>
+                <span style="color: #00d4ff;">✅ 対策:</span> コントラスト比チェッカーを使用（WCAG基準を満たす）</li>
+                
+                <li><strong>❌ トレンドを盲目的に追う:</strong> 本質を無視した表面的なデザインに。<br>
+                <span style="color: #00d4ff;">✅ 対策:</span> まず原則を守り、その上でトレンドを取り入れる</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 31: Tools and Resources -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">デザインを支援するツール</h2>
+        <div class="content-block">
+            <h3>センスを補完する実用ツール</h3>
+            <ul>
+                <li><strong>配色ツール:</strong> Adobe Color, Coolors.co（調和の取れた配色を自動生成）</li>
+                <li><strong>フォント選定:</strong> Google Fonts, Font Pair（相性の良いフォントの組み合わせ）</li>
+                <li><strong>コントラストチェック:</strong> WebAIM Contrast Checker（アクセシビリティ確認）</li>
+                <li><strong>グリッドシステム:</strong> 960 Grid System, Bootstrap Grid（整列を簡単に）</li>
+                <li><strong>アイコン:</strong> Font Awesome, Material Icons（統一感のあるアイコンセット）</li>
+                <li><strong>モックアップ:</strong> Figma, Canva（プロトタイプ作成）</li>
+                <li><strong>インスピレーション:</strong> Dribbble, Behance（優れたデザイン事例の研究）</li>
+            </ul>
+            <div class="highlight-box">
+                🛠️ ツールは「センスの代わり」ではなく「原則を実装する手段」
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 32: Summary -->
+    <div class="slide-container">
+        <h2 class="slide-title">まとめ: デザインは誰でも学べるスキル</h2>
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>マインドセット</h3>
+                <p>デザインは「センス」ではなく「設計」である</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                <h3>原則の理解</h3>
+                <p>4原則、視線誘導、ゲシュタルト、認知負荷</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>反復練習</h3>
+                <p>実践→フィードバック→改善のサイクル</p>
+            </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 40px; text-align: center;">
+            <p style="font-size: 24px; margin: 0;"><strong>「センスがない」は言い訳にならない</strong></p>
+            <p style="font-size: 18px; margin-top: 10px;">論理と原則に基づくデザインは、誰でも習得可能です</p>
+        </div>
+    </div>
+
+    <!-- Slide 33: Action Plan -->
+    <div class="slide-container standard-content-layout">
+        <h2 class="slide-title">明日から始めるアクションプラン</h2>
+        <div class="content-block">
+            <h3>今日学んだことを定着させるために</h3>
+            <ul>
+                <li><strong>今週中:</strong> 自分の名刺、スライド、資料を4原則で見直す（1つでOK）</li>
+                <li><strong>今月中:</strong> お気に入りのWebサイト3つを分析（どの原則が使われているか特定）</li>
+                <li><strong>3ヶ月以内:</strong> 小規模プロジェクトで学んだ原則を実践（チーム内資料、プレゼン等）</li>
+                <li><strong>継続的に:</strong> デザイン事例を日常的に観察する習慣をつける（広告、看板、UI等）</li>
+                <li><strong>仲間を作る:</strong> 社内でデザイン勉強会を開催し、フィードバックし合う</li>
+            </ul>
+            <div class="highlight-box">
+                📚 推奨書籍: 「ノンデザイナーズ・デザインブック」Robin Williams著
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 34: Quiz Introduction -->
+    <div class="slide-container section-title-layout">
+        <h2>理解度チェック</h2>
+        <hr>
+        <p style="font-size: 32px; color: #e0e0e0;">Quiz Time!<br>学んだ知識を確認しましょう</p>
+    </div>
+
+    <!-- Slide 35: Final Message -->
+    <div class="slide-container big-concept-layout">
+        <h2>Design is not<br>about Talent.<br>It's about Logic.</h2>
+        <p>デザインは才能ではなく、論理である。<br>今日からあなたもデザイナーです。</p>
+    </div>
+
+</div>
+
+<div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+
+<script>
+    let currentSlideIndex = 0;
+    let quizMode = false;
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+    const slides = document.querySelectorAll('.slide-container');
+    const wrapper = document.getElementById('presentation-wrapper');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+        currentSlideIndex = index;
+    }
+
+    function nextSlide() {
+        if (quizMode) return;
+        if (currentSlideIndex < slides.length - 1) {
+            showSlide(currentSlideIndex + 1);
+        }
+    }
+
+    function prevSlide() {
+        if (quizMode) return;
+        if (currentSlideIndex > 0) {
+            showSlide(currentSlideIndex - 1);
+        }
+    }
+
+    function addCopyright() {
+        const allSlides = document.querySelectorAll('.slide-container');
+        allSlides.forEach(slide => {
+            const footer = document.createElement('div');
+            footer.className = 'footer-copyright';
+            footer.innerText = '【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。©︎ ACT HOUSE ®︎ All Rights Reserved.';
+            slide.appendChild(footer);
+        });
+    }
+
+    const questions = [
+        {
+            question: "デザインとアートの最も本質的な違いは何ですか?",
+            options: [
+                "デザインは美しく、アートは醜い",
+                "デザインは課題解決、アートは自己表現",
+                "デザインは簡単で、アートは難しい",
+                "デザインは仕事、アートは趣味"
+            ],
+            correct: 1,
+            explanation: "デザインは特定の課題を解決するための設計行為であり、アートは自己表現や感情の伝達を目的とします。この違いを理解することが、論理的なデザイン思考の第一歩です。"
+        },
+        {
+            question: "デザインの4原則に含まれないものはどれですか?",
+            options: [
+                "近接（Proximity）",
+                "反復（Repetition）",
+                "装飾（Decoration）",
+                "対比（Contrast）"
+            ],
+            correct: 2,
+            explanation: "デザインの4原則は「近接、整列、反復、対比」です。装飾は原則ではなく、むしろ過度な装飾は認知負荷を高める原因となります。"
+        },
+        {
+            question: "Fの法則が最も適用されるコンテンツタイプはどれですか?",
+            options: [
+                "画像中心のランディングページ",
+                "テキスト量が多いブログ記事",
+                "動画コンテンツ",
+                "音声コンテンツ"
+            ],
+            correct: 1,
+            explanation: "Fの法則は、テキスト量が多いページでユーザーの視線が「F」の形を描くパターンです。ブログ記事やニュースサイトなど、読み物コンテンツで顕著に現れます。"
+        },
+        {
+            question: "ゲシュタルトの「近接の法則」を正しく説明しているものはどれですか?",
+            options: [
+                "似た色の要素は関連していると認識される",
+                "近くにある要素は関連していると認識される",
+                "大きな要素は重要だと認識される",
+                "動く要素は注目される"
+            ],
+            correct: 1,
+            explanation: "近接の法則は、物理的に近くに配置された要素を人間の脳が自動的にグループとして認識する心理現象です。この原理を利用して情報を視覚的に整理できます。"
+        },
+        {
+            question: "認知負荷を軽減するために最も効果的な手法はどれですか?",
+            options: [
+                "できるだけ多くの機能を一度に表示する",
+                "情報を階層化し、必要な時に必要な情報だけ表示する",
+                "すべてのテキストを大きくする",
+                "色を多用してカラフルにする"
+            ],
+            correct: 1,
+            explanation: "プログレッシブディスクロージャー（段階的開示）により、ユーザーは一度に処理する情報量が減り、認知負荷が軽減されます。必要な情報を必要なタイミングで提示することが重要です。"
+        }
+    ];
+
+    function startQuiz() {
+        if (quizMode) return;
+        quizMode = true;
+        currentQuizIndex = 0;
+        quizScore = 0;
+        showQuizQuestion();
+    }
+
+    function showQuizQuestion() {
+        const q = questions[currentQuizIndex];
+        const quizHTML = `
+            <div class="slide-container active" id="quiz-slide" style="display: flex;">
+                <h2 class="slide-title">Quiz ${currentQuizIndex + 1} / ${questions.length}</h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 40px; width: 100%; border: 1px solid #333;">
+                    <h3 style="font-size: 28px; margin-bottom: 30px; color: #fff;">${q.question}</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        ${q.options.map((opt, i) => `
+                            <button onclick="checkAnswer(${i})" style="
+                                background: rgba(0, 212, 255, 0.1);
+                                border: 2px solid #00d4ff;
+                                border-radius: 10px;
+                                padding: 20px;
+                                color: #fff;
+                                font-size: 20px;
+                                cursor: pointer;
+                                text-align: left;
+                                transition: all 0.3s;
+                                font-family: 'Inter', 'Noto Sans JP', sans-serif;
+                            " onmouseover="this.style.background='rgba(0, 212, 255, 0.2)'" onmouseout="this.style.background='rgba(0, 212, 255, 0.1)'">
+                                ${String.fromCharCode(65 + i)}. ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <p style="margin-top: 30px; color: #aaa; font-size: 16px;">現在のスコア: ${quizScore} / ${currentQuizIndex}</p>
+                </div>
+            </div>
+        `;
+        wrapper.innerHTML = quizHTML;
+    }
+
+    function checkAnswer(selected) {
+        const q = questions[currentQuizIndex];
+        const isCorrect = selected === q.correct;
+        if (isCorrect) quizScore++;
+
+        const resultHTML = `
+            <div class="slide-container active" id="quiz-result" style="display: flex;">
+                <h2 class="slide-title">${isCorrect ? '✅ 正解!' : '❌ 不正解'}</h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 40px; width: 100%; border: 1px solid #333;">
+                    <div style="background: ${isCorrect ? 'rgba(0, 255, 157, 0.1)' : 'rgba(255, 0, 128, 0.1)'}; border-left: 4px solid ${isCorrect ? '#00ff9d' : '#ff0080'}; padding: 20px; margin-bottom: 30px; border-radius: 5px;">
+                        <p style="font-size: 22px; color: #fff; margin: 0;">
+                            ${isCorrect ? '素晴らしい! 正解です。' : '正解は: ' + String.fromCharCode(65 + q.correct) + '. ' + q.options[q.correct]}
+                        </p>
+                    </div>
+                    <h3 style="font-size: 24px; margin-bottom: 15px; color: #00d4ff;">解説</h3>
+                    <p style="font-size: 20px; line-height: 1.8; color: #e0e0e0;">${q.explanation}</p>
+                    <button onclick="nextQuiz()" style="
+                        background: linear-gradient(135deg, #00d4ff, #00ff9d);
+                        border: none;
+                        border-radius: 10px;
+                        padding: 15px 40px;
+                        color: #000;
+                        font-size: 20px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        margin-top: 30px;
+                        font-family: 'Inter', 'Noto Sans JP', sans-serif;
+                    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" style="transition: transform 0.3s;">
+                        ${currentQuizIndex < questions.length - 1 ? '次の問題へ →' : '結果を見る'}
+                    </button>
+                </div>
+            </div>
+        `;
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function nextQuiz() {
+        currentQuizIndex++;
+        if (currentQuizIndex < questions.length) {
+            showQuizQuestion();
+        } else {
+            showQuizResult();
+        }
+    }
+
+    function showQuizResult() {
+        const percentage = Math.round((quizScore / questions.length) * 100);
+        let message = '';
+        let color = '';
+        
+        if (percentage >= 80) {
+            message = '素晴らしい! デザイン原則を完全に理解しています。';
+            color = '#00ff9d';
+        } else if (percentage >= 60) {
+            message = '良い結果です! 基本は理解できています。';
+            color = '#00d4ff';
+        } else {
+            message = '復習をお勧めします。もう一度スライドを見直しましょう。';
+            color = '#ff0080';
+        }
+
+        const resultHTML = `
+            <div class="slide-container active" style="display: flex; text-align: center;">
+                <h2 class="slide-title" style="text-align: center; border: none; padding: 0;">Quiz 完了!</h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 60px; width: 80%; border: 1px solid #333;">
+                    <div style="font-size: 80px; font-weight: 800; background: linear-gradient(45deg, #00d4ff, #00ff9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;">
+                        ${quizScore} / ${questions.length}
+                    </div>
+                    <p style="font-size: 32px; color: ${color}; margin-bottom: 30px;">${percentage}% 正解</p>
+                    <p style="font-size: 24px; color: #fff; margin-bottom: 40px;">${message}</p>
+                    <button onclick="exitQuiz()" style="
+                        background: linear-gradient(135deg, #00d4ff, #00ff9d);
+                        border: none;
+                        border-radius: 10px;
+                        padding: 15px 40px;
+                        color: #000;
+                        font-size: 20px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        font-family: 'Inter', 'Noto Sans JP', sans-serif;
+                        margin-right: 15px;
+                    ">スライドに戻る</button>
+                    <button onclick="startQuiz()" style="
+                        background: rgba(255,255,255,0.1);
+                        border: 2px solid #fff;
+                        border-radius: 10px;
+                        padding: 15px 40px;
+                        color: #fff;
+                        font-size: 20px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        font-family: 'Inter', 'Noto Sans JP', sans-serif;
+                    ">もう一度挑戦</button>
+                </div>
+            </div>
+        `;
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function exitQuiz() {
+        quizMode = false;
+        wrapper.innerHTML = '';
+        slides.forEach(s => wrapper.appendChild(s));
+        showSlide(currentSlideIndex);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (quizMode) return;
+        
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            showSlide(0);
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            showSlide(slides.length - 1);
+        } else if (e.key === 'q' || e.key === 'Q') {
+            e.preventDefault();
+            startQuiz();
+        }
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    wrapper.addEventListener('touchend', (e) => {
+        if (quizMode) return;
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+            nextSlide();
+        } else if (touchEndX - touchStartX > 50) {
+            prevSlide();
+        }
+    });
+
+    // Initialize
+    addCopyright();
+    showSlide(0);
+</script>
+</body>
+</html>

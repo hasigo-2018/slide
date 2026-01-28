@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>006 Atomic Designとコンポーネント指向【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>Atomic Designと<br>コンポーネント指向<span>【理論編】</span></h1>
+                <p>パーツの再利用で実現する、一貫性のあるUI設計</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ同じサービスなのに<br>ページごとにボタンの色が違うのか？</h2>
+            <p>「一貫性の欠如」がユーザー体験を損なう</p>
+        </div>
+        <!-- スライド3: 問題の具体化 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">UIの「バラバラ問題」</h2>
+            <div class="content-block">
+                <h3>こんな経験はありませんか？</h3>
+                <ul>
+                    <li>トップページと詳細ページでボタンのデザインが違う</li>
+                    <li>同じ「送信」なのに、青だったり緑だったりする</li>
+                    <li>フォントサイズが画面ごとに微妙に異なる</li>
+                    <li>修正のたびに全ページをチェックする必要がある</li>
+                </ul>
+            <h3>なぜこうなるのか？</h3>
+            <p>ページ単位で「その都度デザイン」しているから。<br>
+            部品として管理していないため、統一感が保てない。</p>
+            
+            <div class="highlight-box">
+                💡 解決策：UIを「部品（コンポーネント）」として設計する
+            </div>
+        </div>
+        </div>
+        <!-- スライド4: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>アジェンダ</h3>
+                <ul>
+                    <li><strong>1. コンポーネント指向とは</strong> - 部品化という発想</li>
+                    <li><strong>2. Atomic Designの5階層</strong> - 原子から画面へ</li>
+                    <li><strong>3. なぜ一貫性が生まれるのか</strong> - 仕組みの理解</li>
+                    <li><strong>4. 実務での活用ポイント</strong> - ビジュアルアーキテクトの視点</li>
+                </ul>
+            <div class="highlight-box">
+                🎯 ゴール：UIを「部品の組み合わせ」として捉える思考法を身につける
+            </div>
+        </div>
+        </div>
+        <!-- スライド5: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 1</h2>
+            <p>コンポーネント指向とは何か</p>
+        </div>
+        <!-- スライド6: コンポーネント指向の定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>コンポーネント指向<br>Component-Oriented</h2>
+            <p>UIを「再利用可能な部品」の集合として設計する考え方</p>
+        </div>
+        <!-- スライド7: レゴブロックのメタファー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">レゴブロックで考える</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- 左側：バラバラのブロック -->
+                    <text x="150" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">部品（コンポーネント）</text>
+                <!-- ブロック1 -->
+                <rect x="50" y="60" width="60" height="40" fill="#00d4ff" rx="4"/>
+                <rect x="60" y="50" width="15" height="15" fill="#00d4ff" rx="2"/>
+                <rect x="85" y="50" width="15" height="15" fill="#00d4ff" rx="2"/>
+                
+                <!-- ブロック2 -->
+                <rect x="130" y="80" width="80" height="40" fill="#ff6b6b" rx="4"/>
+                <rect x="140" y="70" width="15" height="15" fill="#ff6b6b" rx="2"/>
+                <rect x="165" y="70" width="15" height="15" fill="#ff6b6b" rx="2"/>
+                <rect x="190" y="70" width="15" height="15" fill="#ff6b6b" rx="2"/>
+                
+                <!-- ブロック3 -->
+                <rect x="80" y="140" width="100" height="40" fill="#ffd93d" rx="4"/>
+                <rect x="90" y="130" width="15" height="15" fill="#ffd93d" rx="2"/>
+                <rect x="115" y="130" width="15" height="15" fill="#ffd93d" rx="2"/>
+                <rect x="140" y="130" width="15" height="15" fill="#ffd93d" rx="2"/>
+                <rect x="165" y="130" width="15" height="15" fill="#ffd93d" rx="2"/>
+                
+                <!-- ブロック4 -->
+                <rect x="60" y="200" width="60" height="40" fill="#6bcb77" rx="4"/>
+                <rect x="70" y="190" width="15" height="15" fill="#6bcb77" rx="2"/>
+                <rect x="95" y="190" width="15" height="15" fill="#6bcb77" rx="2"/>
+                
+                <!-- 矢印 -->
+                <path d="M280 150 L350 150" stroke="#00d4ff" stroke-width="3" fill="none"/>
+                <polygon points="350,145 365,150 350,155" fill="#00d4ff"/>
+                <text x="320" y="130" text-anchor="middle" fill="#888" font-size="14">組み合わせる</text>
+                
+                <!-- 右側：組み立てられた構造 -->
+                <text x="550" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">画面（UI）</text>
+                
+                <!-- 組み立てられたブロック -->
+                <rect x="450" y="60" width="200" height="200" fill="none" stroke="#444" stroke-width="2" rx="8"/>
+                
+                <!-- ヘッダー部分 -->
+                <rect x="460" y="70" width="180" height="40" fill="#00d4ff" rx="4"/>
+                <rect x="470" y="60" width="15" height="15" fill="#00d4ff" rx="2"/>
+                <rect x="495" y="60" width="15" height="15" fill="#00d4ff" rx="2"/>
+                
+                <!-- メイン部分 -->
+                <rect x="460" y="120" width="180" height="50" fill="#ff6b6b" rx="4"/>
+                
+                <!-- コンテンツ部分 -->
+                <rect x="460" y="180" width="85" height="70" fill="#ffd93d" rx="4"/>
+                <rect x="555" y="180" width="85" height="70" fill="#6bcb77" rx="4"/>
+            </svg>
+            
+            <p style="text-align: center; margin-top: 1.5rem; color: #ccc;">
+                同じ部品を何度でも使える → 一貫性が自然に生まれる
+            </p>
+        </div>
+        </div>
+        <!-- スライド8: 従来手法との比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">従来のデザイン vs コンポーネント指向</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 従来：ページ単位設計</h3>
+                    <svg class="generated-art" viewBox="0 0 350 175">
+                        <!-- ページA -->
+                        <rect x="20" y="30" width="90" height="120" fill="none" stroke="#666" stroke-width="2" rx="4"/>
+                        <text x="65" y="20" text-anchor="middle" fill="#888" font-size="12">ページA</text>
+                        <rect x="30" y="45" width="70" height="20" fill="#00d4ff" rx="3"/>
+                        <rect x="30" y="75" width="70" height="40" fill="#444" rx="3"/>
+                        <rect x="30" y="125" width="70" height="15" fill="#ff6b6b" rx="3"/>
+                    <!-- ページB -->
+                    <rect x="130" y="30" width="90" height="120" fill="none" stroke="#666" stroke-width="2" rx="4"/>
+                    <text x="175" y="20" text-anchor="middle" fill="#888" font-size="12">ページB</text>
+                    <rect x="140" y="45" width="70" height="20" fill="#00a8cc" rx="3"/>
+                    <rect x="140" y="75" width="70" height="40" fill="#444" rx="3"/>
+                    <rect x="140" y="125" width="70" height="15" fill="#ff8585" rx="3"/>
+                    
+                    <!-- ページC -->
+                    <rect x="240" y="30" width="90" height="120" fill="none" stroke="#666" stroke-width="2" rx="4"/>
+                    <text x="285" y="20" text-anchor="middle" fill="#888" font-size="12">ページC</text>
+                    <rect x="250" y="45" width="70" height="20" fill="#0099aa" rx="3"/>
+                    <rect x="250" y="75" width="70" height="40" fill="#444" rx="3"/>
+                    <rect x="250" y="125" width="70" height="15" fill="#ff5555" rx="3"/>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #ff6b6b; text-align: center;">微妙に色が違う...<br>修正が大変...</p>
+            </div>
+            <div>
+                <h3>✅ コンポーネント指向</h3>
+                <svg class="generated-art" viewBox="0 0 350 175">
+                    <!-- 部品ライブラリ -->
+                    <rect x="20" y="30" width="80" height="100" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,3" rx="4"/>
+                    <text x="60" y="20" text-anchor="middle" fill="#00d4ff" font-size="11">部品ライブラリ</text>
+                    <rect x="30" y="45" width="60" height="15" fill="#00d4ff" rx="2"/>
+                    <rect x="30" y="70" width="60" height="15" fill="#ff6b6b" rx="2"/>
+                    <rect x="30" y="95" width="60" height="15" fill="#ffd93d" rx="2"/>
+                    
+                    <!-- 矢印 -->
+                    <path d="M110 80 L140 50" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M110 80 L140 80" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M110 80 L140 110" stroke="#00d4ff" stroke-width="2"/>
+                    
+                    <!-- ページA -->
+                    <rect x="150" y="20" width="60" height="80" fill="none" stroke="#666" stroke-width="1" rx="3"/>
+                    <rect x="155" y="28" width="50" height="12" fill="#00d4ff" rx="2"/>
+                    <rect x="155" y="48" width="50" height="25" fill="#444" rx="2"/>
+                    <rect x="155" y="78" width="50" height="12" fill="#ff6b6b" rx="2"/>
+                    
+                    <!-- ページB -->
+                    <rect x="220" y="50" width="60" height="80" fill="none" stroke="#666" stroke-width="1" rx="3"/>
+                    <rect x="225" y="58" width="50" height="12" fill="#00d4ff" rx="2"/>
+                    <rect x="225" y="78" width="50" height="25" fill="#444" rx="2"/>
+                    <rect x="225" y="108" width="50" height="12" fill="#ff6b6b" rx="2"/>
+                    
+                    <!-- ページC -->
+                    <rect x="290" y="30" width="60" height="80" fill="none" stroke="#666" stroke-width="1" rx="3"/>
+                    <rect x="295" y="38" width="50" height="12" fill="#00d4ff" rx="2"/>
+                    <rect x="295" y="58" width="50" height="25" fill="#444" rx="2"/>
+                    <rect x="295" y="88" width="50" height="12" fill="#ff6b6b" rx="2"/>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #6bcb77; text-align: center;">すべて同じ部品！<br>1箇所直せば全部直る</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド9: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 2</h2>
+            <p>Atomic Design：5つの階層</p>
+        </div>
+        <!-- スライド10: Atomic Designの概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Atomic Designとは</h2>
+            <div class="content-block">
+                <h3>Brad Frost氏が2013年に提唱</h3>
+                <p>UIを「化学」になぞらえて5つの階層で整理する設計手法。<br>
+                原子（Atom）が結合して分子（Molecule）になり、さらに大きな構造を作る—この自然界の仕組みをUIデザインに応用。</p>
+            <h3>5つの階層</h3>
+            <ul>
+                <li><strong>Atoms（原子）</strong> - これ以上分解できない最小単位</li>
+                <li><strong>Molecules（分子）</strong> - 原子の組み合わせ</li>
+                <li><strong>Organisms（生体）</strong> - 分子の組み合わせ</li>
+                <li><strong>Templates（テンプレート）</strong> - 生体の配置構造</li>
+                <li><strong>Pages（ページ）</strong> - 実際のコンテンツが入った状態</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 小さな部品から大きな画面へ「積み上げる」発想
+            </div>
+        </div>
+        </div>
+        <!-- スライド11: 5階層の全体図 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">5階層の全体像</h2>
+            <div class="content-block svg-centered">
+                <svg id="_レイヤー_1" data-name="レイヤー_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 900 250">
+                <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+                <defs><style>.st0, .st1 {fill: #fff;font-family: Arial-BoldMT, Arial;font-weight: 700;}.st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10 {isolation: isolate;}.st0, .st8 {font-size: 14px;}.st1 {font-size: 13px;}.st2 {fill: #666;font-size: 10px;}.st2, .st4, .st11 {font-family: KozGoPr6N-Regular-83pv-RKSJ-H, 'Kozuka Gothic Pr6N';}.st12, .st9 {fill: #ffd93d;}.st13 {stroke: #ffd93d;}.st13, .st14, .st15, .st16 {stroke-width: 2px;}.st3 {fill: #a855f7;}.st3, .st6, .st7, .st9, .st10 {opacity: .2;}.st4 {font-size: 11px;}.st4, .st5 {fill: #888;}.st17, .st8, .st10 {fill: #00d4ff;}.st5 {font-size: 12px;}.st6, .st18 {fill: #6bcb77;}.st19, .st7 {fill: #ff6b6b;}.st14 {stroke: #6bcb77;}.st15 {stroke: #ff6b6b;}.st16 {stroke: #00d4ff;}.st20 {font-family: ArialMT, Arial;}</style></defs>
+                <circle class="st10" cx="60" cy="60" r="40"/>
+                <text class="st0" transform="translate(38.6 64.9)"><tspan x="0" y="0">Atoms</tspan></text>
+                <text class="st2" transform="translate(24.9 158.6)"><tspan x="0" y="0">ボタン、入力欄</tspan><tspan x="-5" y="14">ラベル、アイコン</tspan></text>
+                <g>
+                    <path class="st16" d="M113.7,60h60"/>
+                    <polygon class="st17" points="173.7 55 181.7 60 173.7 65 173.7 55"/>
+                </g>
+                <circle class="st6" cx="240.3" cy="60" r="45"/>
+                <text class="st1" transform="translate(208.8 64.6)"><tspan x="0" y="0">Molecules</tspan></text>
+                <text class="st4" transform="translate(229.4 139.1)"><tspan x="0" y="0">分子</tspan></text>
+                <text class="st2" transform="translate(210.4 158.5)"><tspan x="0" y="0">検索フォーム</tspan><tspan x="10" y="14">ナビ項目</tspan></text>
+                <g>
+                    <path class="st14" d="M299,60h60"/>
+                    <polygon class="st18" points="359 55 367 60 359 65 359 55"/>
+                </g>
+                <circle class="st9" cx="430.7" cy="60" r="50"/>
+                <text class="st1" transform="translate(396.7 63.4)"><tspan x="0" y="0">Organisms</tspan></text>
+                <text class="st4" transform="translate(419.5 139.3)"><tspan x="0" y="0">生体</tspan></text>
+                <text class="st2" transform="translate(410.9 158.8)"><tspan x="0" y="0">ヘッダー</tspan><tspan x="-5" y="14">商品カード</tspan></text>
+                <g>
+                    <path class="st13" d="M494.3,60h60"/>
+                    <polygon class="st12" points="554.3 55 562.3 60 554.3 65 554.3 55"/>
+                </g>
+                <circle class="st7" cx="631" cy="60" r="55"/>
+                <text class="st1" transform="translate(599 63.4)"><tspan x="0" y="0">Templates</tspan></text>
+                <text class="st4" transform="translate(598.1 139.6)"><tspan x="0" y="0">テンプレート</tspan></text>
+                <text class="st2" transform="translate(595.4 158.4)"><tspan x="0" y="0">レイアウト構造</tspan><tspan x="-5" y="14">ワイヤーフレーム</tspan></text>
+                <g>
+                    <path class="st15" d="M699.7,60h60"/>
+                    <polygon class="st19" points="759.7 55 767.7 60 759.7 65 759.7 55"/>
+                </g>
+                <ellipse class="st3" cx="840.7" cy="60" rx="59.3" ry="60"/>
+                <text class="st0" transform="translate(819.9 63.5)"><tspan x="0" y="0">Pages</tspan></text>
+                <text class="st2" transform="translate(815.7 158.4)"><tspan x="0" y="0">実際の画面</tspan><tspan x="-10" y="14">コンテンツ入り</tspan></text>
+                <text class="st4" transform="translate(49.1 138.6)"><tspan x="0" y="0">原子</tspan></text>
+                <text class="st4" transform="translate(824.1 139.5)"><tspan x="0" y="0">ページ</tspan></text>
+                <text class="st8" transform="translate(263.1 225.5)"><tspan class="st11" x="0" y="0">小さい</tspan><tspan class="st20" x="42" y="0" xml:space="preserve"> → → → → → → → → → → → → → → → → </tspan><tspan class="st11" x="332.1" y="0">大きい</tspan></text>
+                <text class="st5" transform="translate(266.9 246.8)"><tspan class="st11" x="0" y="0">抽象的</tspan><tspan class="st20" x="36" y="0" xml:space="preserve"> → → → → → → → → → → → → → → → → → → → </tspan><tspan class="st11" x="330.7" y="0">具体的</tspan></text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド12: Atoms -->
+        <div class="slide-container big-concept-layout">
+            <h2>Atoms（原子）</h2>
+            <p>これ以上分解できない、UIの最小単位</p>
+        </div>
+        <!-- スライド13: Atomsの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Atoms：最小部品の例</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- ボタン -->
+                    <g>
+                        <rect x="50" y="40" width="120" height="45" fill="#00d4ff" rx="6"/>
+                        <text x="110" y="70" text-anchor="middle" fill="white" font-size="14" font-weight="bold">送信する</text>
+                        <text x="110" y="110" text-anchor="middle" fill="#888" font-size="12">ボタン</text>
+                    </g>
+                <!-- 入力フィールド -->
+                <g>
+                    <rect x="200" y="40" width="180" height="45" fill="#2a2a2a" stroke="#444" stroke-width="2" rx="6"/>
+                    <text x="220" y="68" fill="#666" font-size="14">メールアドレス</text>
+                    <text x="290" y="110" text-anchor="middle" fill="#888" font-size="12">入力フィールド</text>
+                </g>
+                
+                <!-- ラベル -->
+                <g>
+                    <text x="430" y="68" fill="white" font-size="16" font-weight="bold">お名前 *</text>
+                    <text x="455" y="110" text-anchor="middle" fill="#888" font-size="12">ラベル</text>
+                </g>
+                
+                <!-- アイコン -->
+                <g>
+                    <circle cx="560" cy="62" r="22" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="560" y="70" text-anchor="middle" fill="#00d4ff" font-size="20">🔍</text>
+                    <text x="560" y="110" text-anchor="middle" fill="#888" font-size="12">アイコン</text>
+                </g>
+                
+                <!-- チェックボックス -->
+                <g>
+                    <rect x="620" y="45" width="24" height="24" fill="none" stroke="#6bcb77" stroke-width="2" rx="4"/>
+                    <text x="656" y="64" fill="white" font-size="14">同意する</text>
+                    <text x="660" y="110" text-anchor="middle" fill="#888" font-size="12">チェックボックス</text>
+                </g>
+                
+                <!-- 色 -->
+                <g>
+                    <circle cx="80" cy="180" r="25" fill="#00d4ff"/>
+                    <text x="80" y="230" text-anchor="middle" fill="#888" font-size="12">ブランドカラー</text>
+                </g>
+                
+                <!-- フォント -->
+                <g>
+                    <text x="180" y="190" fill="white" font-size="24" font-weight="bold">Aa</text>
+                    <text x="195" y="230" text-anchor="middle" fill="#888" font-size="12">フォント</text>
+                </g>
+                
+                <!-- 余白 -->
+                <g>
+                    <rect x="280" y="160" width="60" height="50" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="4,2"/>
+                    <text x="292" y="190" fill="#666" font-size="11">16px</text>
+                    <text x="310" y="230" text-anchor="middle" fill="#888" font-size="12">余白（スペース）</text>
+                </g>
+                
+                <!-- リンク -->
+                <g>
+                    <text x="400" y="190" fill="#00d4ff" font-size="16" text-decoration="underline">詳しく見る →</text>
+                    <text x="455" y="230" text-anchor="middle" fill="#888" font-size="12">リンク</text>
+                </g>
+                
+                <!-- 区切り線 -->
+                <g>
+                    <line x1="550" y1="185" x2="700" y2="185" stroke="#444" stroke-width="2"/>
+                    <text x="625" y="230" text-anchor="middle" fill="#888" font-size="12">区切り線</text>
+                </g>
+            </svg>
+            
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                💡 Atomsは単体では意味を成さない。他と組み合わせて初めて機能する
+            </div>
+        </div>
+        </div>
+        <!-- スライド14: Molecules -->
+        <div class="slide-container big-concept-layout">
+            <h2>Molecules（分子）</h2>
+            <p>原子を組み合わせた、単一機能を持つグループ</p>
+        </div>
+        <!-- スライド15: Moleculesの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Molecules：原子の組み合わせ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- 検索フォーム -->
+                    <g>
+                        <text x="180" y="30" text-anchor="middle" fill="#6bcb77" font-size="14" font-weight="bold">検索フォーム</text>
+                    <!-- 囲み -->
+                    <rect x="30" y="45" width="300" height="80" fill="none" stroke="#6bcb77" stroke-width="2" stroke-dasharray="5,3" rx="8"/>
+                    
+                    <!-- 入力フィールド -->
+                    <rect x="50" y="65" width="180" height="40" fill="#2a2a2a" stroke="#444" stroke-width="2" rx="6"/>
+                    <text x="70" y="92" fill="#666" font-size="13">キーワードを入力</text>
+                    
+                    <!-- 検索ボタン -->
+                    <rect x="240" y="65" width="70" height="40" fill="#00d4ff" rx="6"/>
+                    <text x="275" y="92" text-anchor="middle" fill="white" font-size="13">検索</text>
+                    
+                    <!-- 構成要素 -->
+                    <text x="180" y="150" text-anchor="middle" fill="#888" font-size="11">入力フィールド + ボタン</text>
+                </g>
+                
+                <!-- ナビゲーション項目 -->
+                <g>
+                    <text x="570" y="30" text-anchor="middle" fill="#6bcb77" font-size="14" font-weight="bold">ナビゲーション項目</text>
+                    
+                    <!-- 囲み -->
+                    <rect x="430" y="45" width="280" height="80" fill="none" stroke="#6bcb77" stroke-width="2" stroke-dasharray="5,3" rx="8"/>
+                    
+                    <!-- アイコン -->
+                    <circle cx="480" cy="85" r="18" fill="#2a2a2a" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="480" y="92" text-anchor="middle" fill="#00d4ff" font-size="16">🏠</text>
+                    
+                    <!-- テキスト -->
+                    <text x="520" y="82" fill="white" font-size="15" font-weight="bold">ホーム</text>
+                    <text x="520" y="100" fill="#888" font-size="11">トップページへ戻る</text>
+                    
+                    <!-- 矢印 -->
+                    <text x="680" y="90" fill="#666" font-size="18">→</text>
+                    
+                    <!-- 構成要素 -->
+                    <text x="570" y="150" text-anchor="middle" fill="#888" font-size="11">アイコン + ラベル + 説明</text>
+                </g>
+                
+                <!-- フォームグループ -->
+                <g>
+                    <text x="180" y="190" text-anchor="middle" fill="#6bcb77" font-size="14" font-weight="bold">フォームグループ</text>
+                    
+                    <!-- 囲み -->
+                    <rect x="30" y="205" width="300" height="100" fill="none" stroke="#6bcb77" stroke-width="2" stroke-dasharray="5,3" rx="8"/>
+                    
+                    <!-- ラベル -->
+                    <text x="50" y="235" fill="white" font-size="14" font-weight="bold">メールアドレス *</text>
+                    
+                    <!-- 入力フィールド -->
+                    <rect x="50" y="250" width="260" height="40" fill="#2a2a2a" stroke="#444" stroke-width="2" rx="6"/>
+                    <text x="70" y="277" fill="#666" font-size="13">example@email.com</text>
+                    
+                    <!-- 構成要素 -->
+                    <text x="180" y="330" text-anchor="middle" fill="#888" font-size="11">ラベル + 入力フィールド</text>
+                </g>
+                
+                <!-- SNSシェアボタン -->
+                <g>
+                    <text x="570" y="190" text-anchor="middle" fill="#6bcb77" font-size="14" font-weight="bold">ソーシャルシェア</text>
+                    
+                    <!-- 囲み -->
+                    <rect x="430" y="205" width="280" height="100" fill="none" stroke="#6bcb77" stroke-width="2" stroke-dasharray="5,3" rx="8"/>
+                    
+                    <!-- シェアボタン群 -->
+                    <circle cx="490" cy="260" r="22" fill="#1DA1F2"/>
+                    <text x="490" y="267" text-anchor="middle" fill="white" font-size="14">X</text>
+                    
+                    <circle cx="550" cy="260" r="22" fill="#4267B2"/>
+                    <text x="550" y="267" text-anchor="middle" fill="white" font-size="14">f</text>
+                    
+                    <circle cx="610" cy="260" r="22" fill="#0077B5"/>
+                    <text x="610" y="267" text-anchor="middle" fill="white" font-size="14">in</text>
+                    
+                    <circle cx="670" cy="260" r="22" fill="#25D366"/>
+                    <text x="670" y="267" text-anchor="middle" fill="white" font-size="12">📱</text>
+                    
+                    <!-- 構成要素 -->
+                    <text x="570" y="330" text-anchor="middle" fill="#888" font-size="11">複数のボタン（アイコン付き）</text>
+                </g>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド16: Organisms -->
+        <div class="slide-container big-concept-layout">
+            <h2>Organisms（生体）</h2>
+            <p>分子を組み合わせた、独立して機能するセクション</p>
+        </div>
+        <!-- スライド17: Organismsの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Organisms：意味のあるセクション</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 380">
+                    <!-- ヘッダー -->
+                    <g>
+                        <text x="400" y="25" text-anchor="middle" fill="#ffd93d" font-size="14" font-weight="bold">ヘッダー（Organism）</text>
+                    <!-- ヘッダー背景 -->
+                    <rect x="50" y="40" width="700" height="70" fill="#1a1a1a" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    
+                    <!-- ロゴ -->
+                    <rect x="70" y="55" width="100" height="40" fill="#00d4ff" rx="4"/>
+                    <text x="120" y="82" text-anchor="middle" fill="white" font-size="14" font-weight="bold">LOGO</text>
+                    
+                    <!-- ナビゲーション（Molecule） -->
+                    <text x="260" y="80" fill="white" font-size="13">ホーム</text>
+                    <text x="340" y="80" fill="#888" font-size="13">製品</text>
+                    <text x="410" y="80" fill="#888" font-size="13">料金</text>
+                    <text x="480" y="80" fill="#888" font-size="13">会社概要</text>
+                    
+                    <!-- 検索フォーム（Molecule） -->
+                    <rect x="560" y="55" width="120" height="35" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="4"/>
+                    <text x="580" y="78" fill="#666" font-size="11">検索...</text>
+                    <text x="660" y="78" fill="#00d4ff" font-size="14">🔍</text>
+                    
+                    <!-- CTAボタン（Atom） -->
+                    <rect x="690" y="55" width="50" height="35" fill="#ff6b6b" rx="4"/>
+                    <text x="715" y="78" text-anchor="middle" fill="white" font-size="11">登録</text>
+                </g>
+                
+                <!-- 構成説明 -->
+                <text x="400" y="135" text-anchor="middle" fill="#888" font-size="11">ロゴ（Atom） + ナビ（Molecule） + 検索（Molecule） + ボタン（Atom）</text>
+                
+                <!-- 商品カード -->
+                <g>
+                    <text x="180" y="175" text-anchor="middle" fill="#ffd93d" font-size="14" font-weight="bold">商品カード（Organism）</text>
+                    
+                    <!-- カード背景 -->
+                    <rect x="50" y="190" width="260" height="170" fill="#1a1a1a" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    
+                    <!-- 画像エリア -->
+                    <rect x="60" y="200" width="240" height="80" fill="#333" rx="4"/>
+                    <text x="180" y="245" text-anchor="middle" fill="#666" font-size="12">商品画像</text>
+                    
+                    <!-- タイトル -->
+                    <text x="70" y="305" fill="white" font-size="14" font-weight="bold">商品名がここに入る</text>
+                    
+                    <!-- 価格 -->
+                    <text x="70" y="330" fill="#00d4ff" font-size="16" font-weight="bold">¥12,800</text>
+                    
+                    <!-- カートボタン -->
+                    <rect x="200" y="315" width="90" height="30" fill="#6bcb77" rx="4"/>
+                    <text x="245" y="336" text-anchor="middle" fill="white" font-size="11">カートに入れる</text>
+                </g>
+                
+                <!-- フッター -->
+                <g>
+                    <text x="580" y="175" text-anchor="middle" fill="#ffd93d" font-size="14" font-weight="bold">フッター（Organism）</text>
+                    
+                    <!-- フッター背景 -->
+                    <rect x="400" y="190" width="350" height="170" fill="#1a1a1a" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    
+                    <!-- カラム1 -->
+                    <text x="440" y="220" fill="white" font-size="12" font-weight="bold">サービス</text>
+                    <text x="440" y="245" fill="#888" font-size="11">機能紹介</text>
+                    <text x="440" y="265" fill="#888" font-size="11">料金プラン</text>
+                    <text x="440" y="285" fill="#888" font-size="11">導入事例</text>
+                    
+                    <!-- カラム2 -->
+                    <text x="550" y="220" fill="white" font-size="12" font-weight="bold">サポート</text>
+                    <text x="550" y="245" fill="#888" font-size="11">ヘルプセンター</text>
+                    <text x="550" y="265" fill="#888" font-size="11">お問い合わせ</text>
+                    <text x="550" y="285" fill="#888" font-size="11">よくある質問</text>
+                    
+                    <!-- カラム3 -->
+                    <text x="660" y="220" fill="white" font-size="12" font-weight="bold">会社情報</text>
+                    <text x="660" y="245" fill="#888" font-size="11">会社概要</text>
+                    <text x="660" y="265" fill="#888" font-size="11">採用情報</text>
+                    <text x="660" y="285" fill="#888" font-size="11">プレスリリース</text>
+                    
+                    <!-- SNSリンク -->
+                    <circle cx="460" cy="340" r="12" fill="#333"/>
+                    <circle cx="495" cy="340" r="12" fill="#333"/>
+                    <circle cx="530" cy="340" r="12" fill="#333"/>
+                    
+                    <!-- コピーライト -->
+                    <text x="660" y="345" fill="#666" font-size="10">© 2024 Company Inc.</text>
+                </g>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド18: Templates -->
+        <div class="slide-container big-concept-layout">
+            <h2>Templates（テンプレート）</h2>
+            <p>Organismsの配置構造。コンテンツが入る「枠組み」</p>
+        </div>
+        <!-- スライド19: Templatesの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Templates：レイアウトの骨格</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- テンプレート枠 -->
+                    <rect x="200" y="20" width="400" height="360" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                <!-- ヘッダー領域 -->
+                <rect x="210" y="30" width="380" height="50" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="400" y="60" text-anchor="middle" fill="#888" font-size="12">Header（Organism）</text>
+                
+                <!-- ヒーローエリア -->
+                <rect x="210" y="90" width="380" height="80" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="400" y="135" text-anchor="middle" fill="#888" font-size="12">Hero Section（Organism）</text>
+                
+                <!-- 3カラムコンテンツ -->
+                <rect x="210" y="180" width="120" height="100" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="270" y="235" text-anchor="middle" fill="#888" font-size="10">Card</text>
+                
+                <rect x="340" y="180" width="120" height="100" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="400" y="235" text-anchor="middle" fill="#888" font-size="10">Card</text>
+                
+                <rect x="470" y="180" width="120" height="100" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="530" y="235" text-anchor="middle" fill="#888" font-size="10">Card</text>
+                
+                <!-- フッター領域 -->
+                <rect x="210" y="290" width="380" height="80" fill="#2a2a2a" stroke="#666" stroke-width="1" stroke-dasharray="4,2" rx="4"/>
+                <text x="400" y="335" text-anchor="middle" fill="#888" font-size="12">Footer（Organism）</text>
+                
+                <!-- 注釈 -->
+                <text x="100" y="100" text-anchor="middle" fill="#ff6b6b" font-size="11">まだ実際の</text>
+                <text x="100" y="120" text-anchor="middle" fill="#ff6b6b" font-size="11">コンテンツは</text>
+                <text x="100" y="140" text-anchor="middle" fill="#ff6b6b" font-size="11">入っていない</text>
+                
+                <path d="M150 120 L200 120" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="3,2"/>
+                
+                <text x="700" y="200" text-anchor="middle" fill="#888" font-size="11">ワイヤー</text>
+                <text x="700" y="220" text-anchor="middle" fill="#888" font-size="11">フレームに</text>
+                <text x="700" y="240" text-anchor="middle" fill="#888" font-size="11">近い状態</text>
+                
+                <path d="M600 220 L650 220" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+            </svg>
+            
+            <div class="highlight-box" style="margin-top: 1rem;">
+                💡 Templateは「どこに何を置くか」の設計図。実データは入らない
+            </div>
+        </div>
+        </div>
+        <!-- スライド20: Pages -->
+        <div class="slide-container big-concept-layout">
+            <h2>Pages（ページ）</h2>
+            <p>Templateに実際のコンテンツが入った、完成形</p>
+        </div>
+        <!-- スライド21: Pagesの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Pages：実際の画面</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- ページ枠 -->
+                    <rect x="200" y="20" width="400" height="360" fill="#1a1a1a" stroke="#a855f7" stroke-width="2" rx="8"/>
+                <!-- ヘッダー（実コンテンツ入り） -->
+                <rect x="210" y="30" width="380" height="50" fill="#0d0d0d" rx="4"/>
+                <rect x="220" y="42" width="60" height="26" fill="#00d4ff" rx="3"/>
+                <text x="250" y="60" text-anchor="middle" fill="white" font-size="10" font-weight="bold">LOGO</text>
+                <text x="320" y="58" fill="white" font-size="10">ホーム</text>
+                <text x="370" y="58" fill="#888" font-size="10">製品</text>
+                <text x="415" y="58" fill="#888" font-size="10">料金</text>
+                <rect x="520" y="42" width="60" height="26" fill="#ff6b6b" rx="3"/>
+                <text x="550" y="60" text-anchor="middle" fill="white" font-size="9">無料登録</text>
+                
+                <!-- ヒーロー（実コンテンツ入り） -->
+                <rect x="210" y="90" width="380" height="80" fill="linear-gradient(#1a1a2e, #16213e)" rx="4"/>
+                <text x="400" y="120" text-anchor="middle" fill="white" font-size="16" font-weight="bold">業務効率を3倍に</text>
+                <text x="400" y="142" text-anchor="middle" fill="#888" font-size="11">AIが自動でタスクを整理・優先順位付け</text>
+                <rect x="340" y="150" width="120" height="28" fill="#00d4ff" rx="4"/>
+                <text x="400" y="169" text-anchor="middle" fill="white" font-size="11">今すぐ始める →</text>
+                
+                <!-- 商品カード（実コンテンツ入り） -->
+                <rect x="210" y="180" width="120" height="100" fill="#2a2a2a" rx="4"/>
+                <rect x="215" y="185" width="110" height="45" fill="#333"/>
+                <text x="270" y="250" text-anchor="middle" fill="white" font-size="10" font-weight="bold">スタータープラン</text>
+                <text x="270" y="268" text-anchor="middle" fill="#00d4ff" font-size="12">¥980/月</text>
+                
+                <rect x="340" y="180" width="120" height="100" fill="#2a2a2a" stroke="#00d4ff" stroke-width="2" rx="4"/>
+                <rect x="345" y="185" width="110" height="45" fill="#333"/>
+                <text x="400" y="250" text-anchor="middle" fill="white" font-size="10" font-weight="bold">プロプラン</text>
+                <text x="400" y="268" text-anchor="middle" fill="#00d4ff" font-size="12">¥2,980/月</text>
+                
+                <rect x="470" y="180" width="120" height="100" fill="#2a2a2a" rx="4"/>
+                <rect x="475" y="185" width="110" height="45" fill="#333"/>
+                <text x="530" y="250" text-anchor="middle" fill="white" font-size="10" font-weight="bold">エンタープライズ</text>
+                <text x="530" y="268" text-anchor="middle" fill="#00d4ff" font-size="12">お問い合わせ</text>
+                
+                <!-- フッター（実コンテンツ入り） -->
+                <rect x="210" y="290" width="380" height="80" fill="#0d0d0d" rx="4"/>
+                <text x="260" y="315" fill="white" font-size="9" font-weight="bold">サービス</text>
+                <text x="260" y="330" fill="#666" font-size="8">機能紹介</text>
+                <text x="260" y="345" fill="#666" font-size="8">料金プラン</text>
+                
+                <text x="360" y="315" fill="white" font-size="9" font-weight="bold">サポート</text>
+                <text x="360" y="330" fill="#666" font-size="8">ヘルプ</text>
+                <text x="360" y="345" fill="#666" font-size="8">FAQ</text>
+                
+                <text x="460" y="315" fill="white" font-size="9" font-weight="bold">会社情報</text>
+                <text x="460" y="330" fill="#666" font-size="8">会社概要</text>
+                <text x="460" y="345" fill="#666" font-size="8">採用情報</text>
+                
+                <text x="540" y="360" fill="#444" font-size="8">© 2024 TaskFlow Inc.</text>
+                
+                <!-- 注釈 -->
+                <text x="100" y="200" text-anchor="middle" fill="#a855f7" font-size="11">実際の</text>
+                <text x="100" y="220" text-anchor="middle" fill="#a855f7" font-size="11">テキスト・画像</text>
+                <text x="100" y="240" text-anchor="middle" fill="#a855f7" font-size="11">が入っている</text>
+                
+                <path d="M150 220 L200 220" stroke="#a855f7" stroke-width="1" stroke-dasharray="3,2"/>
+                
+                <text x="700" y="200" text-anchor="middle" fill="#888" font-size="11">ユーザーが</text>
+                <text x="700" y="220" text-anchor="middle" fill="#888" font-size="11">実際に見る</text>
+                <text x="700" y="240" text-anchor="middle" fill="#888" font-size="11">画面</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド22: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 3</h2>
+            <p>なぜ一貫性が生まれるのか</p>
+        </div>
+        <!-- スライド23: 一貫性のメカニズム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">一貫性が生まれる仕組み</h2>
+            <div class="content-block">
+                <h3>「同じ部品を使い回す」から一貫性が生まれる</h3>
+                <p>Atomic Designでは、最小単位（Atoms）から段階的に組み上げる。<br>
+                つまり、どのページでも「同じボタン」「同じフォーム」が使われる。</p>
+            <h3>具体的なメカニズム</h3>
+            <ul>
+                <li><strong>色の一貫性</strong> - ブランドカラーをAtomとして定義 → 全ページで同じ色</li>
+                <li><strong>操作感の一貫性</strong> - ボタンのサイズ・形状が統一 → ユーザーが迷わない</li>
+                <li><strong>情報構造の一貫性</strong> - カード、リストの形式が統一 → 学習コストが下がる</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 一貫性は「努力して作る」ものではなく「仕組みで自然に生まれる」もの
+            </div>
+        </div>
+        </div>
+        <!-- スライド24: 修正の波及効果 -->
+        <div class="slide-container">
+            <h2 class="slide-title">1箇所の修正が全体に反映される</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 従来：個別修正</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <!-- ページ群 -->
+                        <rect x="30" y="30" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                        <rect x="40" y="60" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    <rect x="120" y="30" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                    <rect x="130" y="60" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    
+                    <rect x="210" y="30" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                    <rect x="220" y="60" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    
+                    <!-- 修正矢印 -->
+                    <text x="65" y="150" text-anchor="middle" fill="#ff6b6b" font-size="12">修正①</text>
+                    <path d="M65 135 L65 125" stroke="#ff6b6b" stroke-width="2"/>
+                    
+                    <text x="155" y="150" text-anchor="middle" fill="#ff6b6b" font-size="12">修正②</text>
+                    <path d="M155 135 L155 125" stroke="#ff6b6b" stroke-width="2"/>
+                    
+                    <text x="245" y="150" text-anchor="middle" fill="#ff6b6b" font-size="12">修正③</text>
+                    <path d="M245 135 L245 125" stroke="#ff6b6b" stroke-width="2"/>
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #ff6b6b; text-align: center;">3回の作業が必要<br><span style="color: #888;">漏れ・ミスのリスク大</span></p>
+            </div>
+            <div>
+                <h3>✅ コンポーネント：一括修正</h3>
+                <svg class="generated-art" viewBox="0 0 350 200">
+                    <!-- 部品 -->
+                    <rect x="130" y="10" width="60" height="30" fill="#00d4ff" stroke="#6bcb77" stroke-width="3" rx="4"/>
+                    <text x="160" y="30" text-anchor="middle" fill="white" font-size="10">Button</text>
+                    
+                    <!-- 修正矢印（1回） -->
+                    <text x="220" y="30" fill="#6bcb77" font-size="12">← 修正1回</text>
+                    
+                    <!-- 波及矢印 -->
+                    <path d="M130 50 L70 80" stroke="#6bcb77" stroke-width="2"/>
+                    <path d="M160 50 L160 80" stroke="#6bcb77" stroke-width="2"/>
+                    <path d="M190 50 L250 80" stroke="#6bcb77" stroke-width="2"/>
+                    
+                    <!-- ページ群 -->
+                    <rect x="30" y="90" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                    <rect x="40" y="120" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    
+                    <rect x="120" y="90" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                    <rect x="130" y="120" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    
+                    <rect x="210" y="90" width="70" height="90" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+                    <rect x="220" y="120" width="50" height="20" fill="#00d4ff" rx="3"/>
+                    
+                </svg>
+                <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #6bcb77; text-align: center;">自動で全ページに反映</span></p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド25: ブランド一貫性への応用 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブランドアイデンティティとの関係</h2>
+            <div class="content-block">
+                <h3>Atomic Designはブランドの「守り手」</h3>
+                <p>ブランドカラー、フォント、余白などをAtomsとして定義すれば、<br>
+                誰がどのページを作っても、ブランドの一貫性が保たれる。</p>
+            <h3>デザインシステムとしての活用</h3>
+            <ul>
+                <li><strong>デザイントークン</strong> - 色・サイズ・余白を「変数」として管理</li>
+                <li><strong>コンポーネントライブラリ</strong> - 承認済みの部品を共有</li>
+                <li><strong>ガイドライン</strong> - 使い方のルールを明文化</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 Atomic Design = ブランドガイドラインを「実装可能な形」にしたもの
+            </div>
+        </div>
+        </div>
+        <!-- スライド26: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 4</h2>
+            <p>ビジュアルアーキテクトの視点</p>
+        </div>
+        <!-- スライド27: ビジュアルアーキテクトの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「設計者」としての判断基準</h2>
+            <div class="content-block">
+                <h3>ツールを使わなくても、この思考法は使える</h3>
+                <p>Atomic Designは「FigmaやReactを使うエンジニア向け」と思われがちだが、<br>
+                本質は「UIを階層構造で捉える思考法」。企画・ディレクションでも活きる。</p>
+            <h3>ビジュアルアーキテクトが判断すべきこと</h3>
+            <ul>
+                <li><strong>粒度の決定</strong> - どこまで細かく部品化するか</li>
+                <li><strong>再利用の範囲</strong> - どの部品を共通化するか</li>
+                <li><strong>例外の許容</strong> - 一貫性を崩してでも変えるべきか</li>
+                <li><strong>命名規則</strong> - チームで共有できる名前をつける</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：すべてを細かく部品化しすぎて、かえって複雑になる
+            </div>
+        </div>
+        </div>
+        <!-- スライド28: 実務での判断例 -->
+        <div class="slide-container">
+            <h2 class="slide-title">実務での判断：どこまで共通化するか</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>✅ 共通化すべき</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <rect x="20" y="20" width="310" height="160" fill="#1a1a1a" stroke="#6bcb77" stroke-width="2" rx="8"/>
+                    <text x="175" y="50" text-anchor="middle" fill="#6bcb77" font-size="13" font-weight="bold">頻繁に使う要素</text>
+                    
+                    <rect x="40" y="70" width="80" height="30" fill="#00d4ff" rx="4"/>
+                    <text x="80" y="90" text-anchor="middle" fill="white" font-size="11">主要ボタン</text>
+                    
+                    <rect x="140" y="70" width="80" height="30" fill="#333" stroke="#00d4ff" stroke-width="1" rx="4"/>
+                    <text x="180" y="90" text-anchor="middle" fill="#00d4ff" font-size="11">副ボタン</text>
+                    
+                    <rect x="240" y="70" width="70" height="30" fill="#2a2a2a" rx="4"/>
+                    <text x="275" y="90" text-anchor="middle" fill="white" font-size="11">入力欄</text>
+                    
+                    <text x="40" y="130" fill="#888" font-size="11">• フォーム部品</text>
+                    <text x="40" y="150" fill="#888" font-size="11">• ナビゲーション</text>
+                    <text x="40" y="170" fill="#888" font-size="11">• カードレイアウト</text>
+                </svg>
+            </div>
+            <div>
+                <h3>❌ 共通化不要</h3>
+                <svg class="generated-art" viewBox="0 0 350 200">
+                    <rect x="20" y="20" width="310" height="160" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    
+                    <text x="175" y="50" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="bold">1回しか使わない要素</text>
+                    
+                    <rect x="60" y="70" width="200" height="50" fill="#333" rx="4"/>
+                    <text x="160" y="100" text-anchor="middle" fill="#888" font-size="11">特別なキャンペーンバナー</text>
+                    
+                    <text x="40" y="145" fill="#888" font-size="11">• 季節限定のビジュアル</text>
+                    <text x="40" y="165" fill="#888" font-size="11">• 1ページ限定のレイアウト</text>
+                </svg>
+            </div>
+        </div>
+        </div>
+        <!-- スライド29: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">Atomic Design 5階層のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon" style="color: #00d4ff;">⚛️</div>
+                    <h3>Atoms</h3>
+                    <p>最小単位<br>ボタン、入力欄、ラベル</p>
+                </div>
+                <div class="tile">
+                    <div class="icon" style="color: #6bcb77;">🔗</div>
+                    <h3>Molecules</h3>
+                    <p>原子の組み合わせ<br>検索フォーム、ナビ項目</p>
+                </div>
+                <div class="tile">
+                    <div class="icon" style="color: #ffd93d;">🧬</div>
+                    <h3>Organisms</h3>
+                    <p>独立セクション<br>ヘッダー、商品カード</p>
+                </div>
+                <div class="tile">
+                    <div class="icon" style="color: #ff6b6b;">📐</div>
+                    <h3>Templates</h3>
+                    <p>配置構造<br>レイアウトの骨格</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #00d4ff; font-weight: bold;">
+                Pages = Templateに実コンテンツを入れた完成形
+            </p>
+        </div>
+        <!-- スライド30: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：実践編へ</h2>
+            <div class="content-block">
+                <h3>理論編で学んだこと</h3>
+                <ul>
+                    <li>UIは「部品の組み合わせ」として設計できる</li>
+                    <li>5つの階層（Atoms → Molecules → Organisms → Templates → Pages）</li>
+                    <li>同じ部品を使い回すことで、一貫性が自然に生まれる</li>
+                    <li>ビジュアルアーキテクトは「どこまで共通化するか」を判断する</li>
+                </ul>
+            <h3>実践編で体験すること</h3>
+            <ul>
+                <li><strong>Figma</strong> - コンポーネントの作成と管理</li>
+                <li><strong>Canva</strong> - テンプレートを使った効率的なデザイン</li>
+                <li><strong>Gemini</strong> - AIを使った部品設計の壁打ち</li>
+            </ul>
+            
+            <div class="highlight-box">
+                🎯 実践編では、実際にツールを使って「部品化」を体験します
+            </div>
+        </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Atomic Designにおける「Atoms（原子）」の特徴として正しいものは？",
+                options: [
+                    "複数の機能を持つ複合要素",
+                    "これ以上分解できない最小単位",
+                    "ページ全体のレイアウト構造",
+                    "実際のコンテンツが入った状態"
+                ],
+                correct: 1,
+                explanation: "Atomsはボタン、入力フィールド、ラベルなど、UIを構成する最小単位です。単体では意味を成さず、他の要素と組み合わせて初めて機能します。"
+            },
+            {
+                question: "「検索フォーム」（入力欄＋ボタン）はAtomic Designのどの階層に該当しますか？",
+                options: [
+                    "Atoms（原子）",
+                    "Molecules（分子）",
+                    "Organisms（生体）",
+                    "Templates（テンプレート）"
+                ],
+                correct: 1,
+                explanation: "検索フォームは、入力フィールド（Atom）とボタン（Atom）を組み合わせた単一機能のグループです。これはMolecules（分子）の典型例です。"
+            },
+            {
+                question: "ヘッダー（ロゴ＋ナビゲーション＋検索フォーム＋ボタン）はどの階層ですか？",
+                options: [
+                    "Atoms（原子）",
+                    "Molecules（分子）",
+                    "Organisms（生体）",
+                    "Pages（ページ）"
+                ],
+                correct: 2,
+                explanation: "ヘッダーは複数のMolecules（ナビゲーション、検索フォームなど）とAtoms（ロゴ、ボタン）を組み合わせた、独立して機能するセクションです。これはOrganisms（生体）に該当します。"
+            },
+            {
+                question: "TemplatesとPagesの違いとして正しいものは？",
+                options: [
+                    "Templatesの方がPagesより大きい",
+                    "Templatesにはコンテンツが入り、Pagesは空の状態",
+                    "Templatesは配置構造、Pagesは実コンテンツが入った状態",
+                    "TemplatesとPagesは同じもの"
+                ],
+                correct: 2,
+                explanation: "Templatesは「どこに何を置くか」というレイアウトの骨格（ワイヤーフレームに近い状態）です。Pagesはそこに実際のテキストや画像が入った完成形です。"
+            },
+            {
+                question: "Atomic Designによって「一貫性」が生まれる根本的な理由は？",
+                options: [
+                    "デザイナーが意識的に統一するから",
+                    "同じ部品（コンポーネント）を再利用するから",
+                    "ページ数が少なくなるから",
+                    "色の数を制限するから"
+                ],
+                correct: 1,
+                explanation: "Atomic Designでは、最小単位（Atoms）から段階的に組み上げるため、どのページでも「同じボタン」「同じフォーム」が使われます。これにより、意識的に統一しなくても、仕組みとして一貫性が自然に生まれます。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

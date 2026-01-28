@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>022 社会的証明とアンカリング効果【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>社会的証明と<br>アンカリング効果<span>【理論編】</span></h1>
+                <p>「選ばれている実績」と「比較対象」で行動を促すUI設計の心理学</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ「他の人も使っている」と<br>安心するのか？</h2>
+            <p>人間の意思決定には、自分では気づかない「認知のショートカット」が働いている</p>
+        </div>
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のアジェンダ</h2>
+            <div class="content-block">
+                <h3>理論編で学ぶこと</h3>
+                <ul>
+                    <li><strong>認知心理学的背景</strong>：なぜ人は「みんなの選択」に影響されるのか</li>
+                    <li><strong>社会的証明の種類</strong>：数字、レビュー、導入事例、リアルタイム通知</li>
+                    <li><strong>アンカリング効果</strong>：比較対象が判断を変えるメカニズム</li>
+                    <li><strong>UI配置の原則</strong>：どこに何を置くと効果的か</li>
+                    <li><strong>信頼性と倫理</strong>：ダークパターンを避ける誠実な設計</li>
+                </ul>
+            <div class="highlight-box">
+                🎯 ゴール：「なぜ効くのか」を理解し、誠実かつ効果的なUI判断ができるようになる
+            </div>
+        </div>
+        </div>
+        <!-- スライド4: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 1</h2>
+            <p>認知心理学的背景<br>〜人はなぜ「他者の選択」に従うのか〜</p>
+        </div>
+        <!-- スライド5: 社会的証明の定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>社会的証明<br><span style="font-size: 0.5em; color: #00d4ff;">Social Proof</span></h2>
+            <p>不確実な状況で、他者の行動を「正しい選択の手がかり」として参照する心理傾向</p>
+        </div>
+        <!-- スライド6: 社会的証明のメカニズム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ社会的証明が働くのか</h2>
+            <div class="content-block">
+                <h3>進化心理学的な根拠</h3>
+                <p>人類は集団で生存してきた。集団の行動に従うことは、未知のリスクを避ける合理的な戦略だった。この本能は現代でも意思決定に影響を与える。</p>
+            <h3>認知負荷の軽減</h3>
+            <p>すべての選択肢を自分で評価するのは膨大なコストがかかる。「多くの人が選んでいる」という情報は、評価を省略できる便利なショートカットになる。</p>
+            
+            <h3>不確実性の低減</h3>
+            <p>「失敗したくない」という心理が働くとき、他者の成功事例は安心材料になる。特に高額商品や初めての体験で顕著に現れる。</p>
+            
+            <div class="highlight-box">
+                💡 人は「考えるコスト」を減らしたい生き物である
+            </div>
+        </div>
+        </div>
+        <!-- スライド7: アンカリング効果の定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>アンカリング効果<br><span style="font-size: 0.5em; color: #00d4ff;">Anchoring Effect</span></h2>
+            <p>最初に提示された情報（アンカー）が、その後の判断の基準点になる認知バイアス</p>
+        </div>
+        <!-- スライド8: アンカリングのメカニズム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アンカリングが働くメカニズム</h2>
+            <div class="content-block">
+                <h3>カーネマンの実験（1974年）</h3>
+                <p>被験者に「国連加盟国のうちアフリカの国の割合は？」と質問。事前にルーレットで見た数字（10または65）によって、回答が大きく変わった。10を見た群は平均25%、65を見た群は平均45%と回答。</p>
+            <h3>なぜ修正できないのか</h3>
+            <p>人は最初の情報を起点に「調整」しようとするが、その調整は不十分になる傾向がある。これを「不十分な調整」と呼ぶ。アンカーが無関係な数字でも影響を受けてしまう。</p>
+            
+            <h3>UIへの示唆</h3>
+            <p>価格、数量、期間など、ユーザーが「判断」する場面では、最初に何を見せるかが結果を左右する。</p>
+            
+            <div class="highlight-box">
+                ⚠️ アンカリングは無意識に働く。「自分は影響されない」と思っている人も例外ではない
+            </div>
+        </div>
+        </div>
+        <!-- スライド9: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 2</h2>
+            <p>社会的証明の種類とUIパターン</p>
+        </div>
+        <!-- スライド10: 社会的証明の5類型 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">社会的証明の5つの類型</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- 中央の円 -->
+                    <circle cx="400" cy="175" r="60" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="400" y="170" text-anchor="middle" fill="white" font-size="14" font-weight="bold">社会的</text>
+                    <text x="400" y="190" text-anchor="middle" fill="white" font-size="14" font-weight="bold">証明</text>
+                <!-- 数字の実績 -->
+                <circle cx="200" cy="80" r="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2"/>
+                <text x="200" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">数字の実績</text>
+                <text x="200" y="95" text-anchor="middle" fill="#aaa" font-size="10">10万人が利用</text>
+                <line x1="250" y1="100" x2="340" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+                
+                <!-- ユーザーレビュー -->
+                <circle cx="600" cy="80" r="50" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2"/>
+                <text x="600" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">レビュー</text>
+                <text x="600" y="95" text-anchor="middle" fill="#aaa" font-size="10">★4.8 / 5.0</text>
+                <line x1="550" y1="100" x2="460" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+                
+                <!-- 導入事例 -->
+                <circle cx="150" cy="270" r="50" fill="#a29bfe" opacity="0.2" stroke="#a29bfe" stroke-width="2"/>
+                <text x="150" y="265" text-anchor="middle" fill="white" font-size="12" font-weight="bold">導入事例</text>
+                <text x="150" y="285" text-anchor="middle" fill="#aaa" font-size="10">○○社が採用</text>
+                <line x1="200" y1="250" x2="350" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+                
+                <!-- メディア掲載 -->
+                <circle cx="400" cy="320" r="50" fill="#fdcb6e" opacity="0.2" stroke="#fdcb6e" stroke-width="2"/>
+                <text x="400" y="315" text-anchor="middle" fill="white" font-size="12" font-weight="bold">メディア</text>
+                <text x="400" y="335" text-anchor="middle" fill="#aaa" font-size="10">日経新聞掲載</text>
+                <line x1="400" y1="270" x2="400" y2="235" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+                
+                <!-- リアルタイム通知 -->
+                <circle cx="650" cy="270" r="50" fill="#e17055" opacity="0.2" stroke="#e17055" stroke-width="2"/>
+                <text x="650" y="265" text-anchor="middle" fill="white" font-size="12" font-weight="bold">リアルタイム</text>
+                <text x="650" y="285" text-anchor="middle" fill="#aaa" font-size="10">今3人が閲覧中</text>
+                <line x1="600" y1="250" x2="450" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="4"/>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド11: 数字の実績 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">類型①：数字の実績</h2>
+            <div class="content-block">
+                <h3>効果的な数字の見せ方</h3>
+                <ul>
+                    <li><strong>具体性</strong>：「多くの」より「127,482人」が信頼される</li>
+                    <li><strong>文脈</strong>：「業界シェア43%」のように比較軸を示す</li>
+                    <li><strong>更新性</strong>：リアルタイムカウンターで「今も増えている」感</li>
+                </ul>
+            <h3>適用場面（UIタイプ別）</h3>
+            <p><strong>LP</strong>：ファーストビュー直下の実績バー<br>
+            <strong>EC</strong>：「○○個売れました」の販売実績<br>
+            <strong>SaaS</strong>：「○○社が導入」の企業数<br>
+            <strong>アプリ</strong>：ダウンロード数、アクティブユーザー数</p>
+            
+            <div class="highlight-box">
+                ⚠️ 注意：根拠のない数字や誤解を招く切り取りは信頼を損なう
+            </div>
+        </div>
+        </div>
+        <!-- スライド12: レビューと評価 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">類型②：レビューと評価</h2>
+            <div class="content-block">
+                <h3>信頼されるレビューの条件</h3>
+                <ul>
+                    <li><strong>実名・顔写真</strong>：匿名より信頼度が高い</li>
+                    <li><strong>具体的なエピソード</strong>：「良かった」より「○○が解決した」</li>
+                    <li><strong>ネガティブも含める</strong>：星5だけは逆に不自然</li>
+                </ul>
+            <h3>星評価の認知心理学</h3>
+            <p>人は「4.7」と「4.8」の違いより「4.0と4.5」の違いを大きく感じる。また、レビュー件数が少ない高評価より、件数が多い中評価のほうが信頼される傾向がある。</p>
+            
+            <h3>UIへの示唆</h3>
+            <p>星評価は「評価 + 件数」をセットで表示する。「★4.6（2,847件）」のように。</p>
+            
+            <div class="highlight-box">
+                💡 完璧すぎるレビューは疑われる。リアリティが信頼を生む
+            </div>
+        </div>
+        </div>
+        <!-- スライド13: 導入事例とロゴ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">類型③：導入事例とロゴバナー</h2>
+            <div class="content-block">
+                <h3>権威の転移効果</h3>
+                <p>有名企業のロゴを並べることで、その企業の信頼性が自社にも転移する。これは「ハロー効果」の応用である。</p>
+            <h3>効果的なロゴ配置の原則</h3>
+            <ul>
+                <li><strong>数より質</strong>：無名企業10社より有名企業3社</li>
+                <li><strong>業界の多様性</strong>：「IT企業だけ」より「金融・製造・小売」</li>
+                <li><strong>視認性</strong>：ロゴはグレースケールで統一すると洗練される</li>
+            </ul>
+            
+            <h3>ケーススタディの深さ</h3>
+            <p><strong>浅い</strong>：ロゴだけ並べる（弱い証明）<br>
+            <strong>中程度</strong>：社名＋一言コメント<br>
+            <strong>深い</strong>：課題→導入→成果のストーリー（強い証明）</p>
+            
+            <div class="highlight-box">
+                ⚠️ 許可なくロゴを使用することは法的リスクがある
+            </div>
+        </div>
+        </div>
+        <!-- スライド14: リアルタイム通知 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">類型④：リアルタイム通知</h2>
+            <div class="content-block">
+                <h3>FOMO（Fear Of Missing Out）の活用</h3>
+                <p>「今、他の人が行動している」という情報は、取り残される恐怖を喚起する。これにより即時の行動を促す効果がある。</p>
+            <h3>UIパターン例</h3>
+            <ul>
+                <li>「東京のユーザーが今購入しました」（EC）</li>
+                <li>「現在12人がこのページを閲覧中」（予約サイト）</li>
+                <li>「残り3席」（イベント・チケット）</li>
+                <li>「○○さんがいいねしました」（SNS）</li>
+            </ul>
+            
+            <h3>適切な使用と乱用の境界</h3>
+            <p>真実の情報をリアルタイムで伝えることは有効。しかし、虚偽の数字や過度な煽りは「ダークパターン」となり、長期的な信頼を損なう。</p>
+            
+            <div class="highlight-box">
+                ⚠️ 「残り1席」が常に表示されているサイトは信頼されない
+            </div>
+        </div>
+        </div>
+        <!-- スライド15: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 3</h2>
+            <p>アンカリング効果のUI活用</p>
+        </div>
+        <!-- スライド16: 価格のアンカリング -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">価格におけるアンカリング</h2>
+            <div class="content-block">
+                <h3>基本原理</h3>
+                <p>最初に高い価格を見せることで、次に見せる価格が「お得」に感じられる。これは無意識に働くため、合理的な消費者でも影響を受ける。</p>
+            <h3>UIでの実装パターン</h3>
+            <ul>
+                <li><strong>取り消し線価格</strong>：<span style="text-decoration: line-through; color: #888;">¥12,000</span> → ¥7,800</li>
+                <li><strong>比較テーブル</strong>：高額プランを左に配置</li>
+                <li><strong>まとめ買い割引</strong>：単品価格を先に提示</li>
+            </ul>
+            
+            <h3>なぜ効くのか</h3>
+            <p>人は絶対値で価格を判断できない。「高いか安いか」は常に比較対象との相対評価になる。アンカーを設定することで、その比較軸をデザイナーが誘導できる。</p>
+            
+            <div class="highlight-box">
+                💡 「何と比較させるか」をデザインすることが価格設計の本質
+            </div>
+        </div>
+        </div>
+        <!-- スライド17: プラン設計のアンカリング -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プラン設計：3択の法則</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 410">
+                    <!-- プランA（デコイ） -->
+                    <rect x="50" y="80" width="200" height="280" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="8"/>
+                    <text x="150" y="120" text-anchor="middle" fill="#888" font-size="14">BASIC</text>
+                    <text x="150" y="170" text-anchor="middle" fill="white" font-size="28" font-weight="bold">¥980</text>
+                    <text x="150" y="195" text-anchor="middle" fill="#666" font-size="12">/月</text>
+                    <line x1="80" y1="220" x2="220" y2="220" stroke="#333" stroke-width="1"/>
+                    <text x="150" y="250" text-anchor="middle" fill="#666" font-size="12">機能A</text>
+                    <text x="150" y="275" text-anchor="middle" fill="#666" font-size="12">機能B</text>
+                    <text x="150" y="300" text-anchor="middle" fill="#444" font-size="12">機能C ✕</text>
+                    <text x="150" y="325" text-anchor="middle" fill="#444" font-size="12">機能D ✕</text>
+                <!-- プランB（ターゲット）- おすすめ -->
+                <rect x="300" y="50" width="200" height="320" fill="#00d4ff" fill-opacity="0.1" stroke="#00d4ff" stroke-width="3" rx="8"/>
+                <rect x="330" y="30" width="140" height="25" fill="#00d4ff" rx="12"/>
+                <text x="400" y="48" text-anchor="middle" fill="#0a0a0f" font-size="11" font-weight="bold">RECOMMENDED</text>
+                <text x="400" y="100" text-anchor="middle" fill="#00d4ff" font-size="14">STANDARD</text>
+                <text x="400" y="150" text-anchor="middle" fill="white" font-size="32" font-weight="bold">¥1,980</text>
+                <text x="400" y="175" text-anchor="middle" fill="#666" font-size="12">/月</text>
+                <line x1="330" y1="200" x2="470" y2="200" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+                <text x="400" y="230" text-anchor="middle" fill="#00d4ff" font-size="12">機能A ✓</text>
+                <text x="400" y="255" text-anchor="middle" fill="#00d4ff" font-size="12">機能B ✓</text>
+                <text x="400" y="280" text-anchor="middle" fill="#00d4ff" font-size="12">機能C ✓</text>
+                <text x="400" y="305" text-anchor="middle" fill="#444" font-size="12">機能D ✕</text>
+                <rect x="340" y="330" width="120" height="30" fill="#00d4ff" rx="4"/>
+                <text x="400" y="350" text-anchor="middle" fill="#0a0a0f" font-size="12" font-weight="bold">選択する</text>
+                
+                <!-- プランC（アンカー） -->
+                <rect x="550" y="80" width="200" height="280" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="8"/>
+                <text x="650" y="120" text-anchor="middle" fill="#888" font-size="14">PREMIUM</text>
+                <text x="650" y="170" text-anchor="middle" fill="white" font-size="28" font-weight="bold">¥4,980</text>
+                <text x="650" y="195" text-anchor="middle" fill="#666" font-size="12">/月</text>
+                <line x1="580" y1="220" x2="720" y2="220" stroke="#333" stroke-width="1"/>
+                <text x="650" y="250" text-anchor="middle" fill="#666" font-size="12">機能A ✓</text>
+                <text x="650" y="275" text-anchor="middle" fill="#666" font-size="12">機能B ✓</text>
+                <text x="650" y="300" text-anchor="middle" fill="#666" font-size="12">機能C ✓</text>
+                <text x="650" y="325" text-anchor="middle" fill="#666" font-size="12">機能D ✓</text>
+                
+                <!-- 説明ラベル -->
+                <text x="150" y="398" text-anchor="middle" fill="#666" font-size="14">機能不足で選ばれにくい</text>
+                <text x="400" y="400" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">最も選ばれる</text>
+                <text x="650" y="398" text-anchor="middle" fill="#666" font-size="14">高価格のアンカー役</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド18: デコイ効果 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">デコイ効果（おとり効果）</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>選択肢Aと選択肢Bの間で迷っているとき、Bに近いがBより劣る選択肢C（デコイ）を加えると、Bが選ばれやすくなる現象。</p>
+            <h3>メカニズム</h3>
+            <p>人は「比較しやすいもの同士」を比較する傾向がある。デコイ（おとり）があることで、ターゲットの選択肢が「明らかに優れている」と判断しやすくなる。</p>
+            
+            <h3>プラン設計への応用</h3>
+            <p><strong>例：映画館のポップコーン</strong><br>
+            S: 300円 / M: 650円 / L: 700円<br>
+            Mの存在がLを「たった50円でこんなに増える」と感じさせ、L購入を促進する。</p>
+            
+            <div class="highlight-box">
+                💡 3つの選択肢があるとき、真ん中が最も選ばれやすい（妥協効果）
+            </div>
+        </div>
+        </div>
+        <!-- スライド19: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 4</h2>
+            <p>UI配置の原則<br>〜どこに何を置くと効果的か〜</p>
+        </div>
+        <!-- スライド20: 配置の原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">社会的証明の配置原則</h2>
+            <div class="content-block">
+                <h3>ファーストビュー直下</h3>
+                <p>ユーザーが最初に「これは信頼できるか？」と判断するタイミング。実績数字やロゴバナーを配置することで、離脱を防ぐ。</p>
+            <h3>CTA（行動喚起）の直前</h3>
+            <p>ボタンを押す直前は「本当にこれでいいのか？」という不安が高まる瞬間。レビューや導入事例で背中を押す。</p>
+            
+            <h3>価格表示の周辺</h3>
+            <p>価格を見た瞬間に「高い」と感じさせないために、価値を証明する情報を近接配置する。</p>
+            
+            <h3>フォーム入力中</h3>
+            <p>長いフォームの途中で離脱を防ぐため、進捗バーの近くに「○○人が完了」などの情報を配置。</p>
+            
+            <div class="highlight-box">
+                💡 「不安が生まれる瞬間」に「安心材料」を配置する
+            </div>
+        </div>
+        </div>
+        <!-- スライド21: 配置の図解 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">LPにおける配置マップ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 450">
+                    <!-- LP枠 -->
+                    <rect x="200" y="20" width="400" height="420" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="8"/>
+                <!-- ファーストビュー -->
+                <rect x="210" y="30" width="380" height="100" fill="#2a2a3e" stroke="#00d4ff" stroke-width="1" rx="4"/>
+                <text x="400" y="60" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ファーストビュー</text>
+                <text x="400" y="85" text-anchor="middle" fill="#00d4ff" font-size="11">キャッチコピー + CTA</text>
+                <text x="400" y="105" text-anchor="middle" fill="#888" font-size="10">実績数字をここに</text>
+                
+                <!-- 矢印と説明 -->
+                <line x1="600" y1="80" x2="650" y2="80" stroke="#00d4ff" stroke-width="2"/>
+                <text x="660" y="75" fill="#00d4ff" font-size="10">← 信頼構築</text>
+                <text x="660" y="90" fill="#666" font-size="9">10万人が利用</text>
+                
+                <!-- ロゴバナー -->
+                <rect x="210" y="140" width="380" height="40" fill="#222" stroke="#333" stroke-width="1" rx="4"/>
+                <text x="400" y="165" text-anchor="middle" fill="#666" font-size="11">導入企業ロゴ</text>
+                
+                <!-- 機能説明 -->
+                <rect x="210" y="190" width="380" height="80" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                <text x="400" y="220" text-anchor="middle" fill="#888" font-size="11">機能・特徴の説明</text>
+                <text x="400" y="245" text-anchor="middle" fill="#666" font-size="10">（論理的説得）</text>
+                
+                <!-- レビューセクション -->
+                <rect x="210" y="280" width="380" height="60" fill="#2a2a3e" stroke="#4ecdc4" stroke-width="1" rx="4"/>
+                <text x="400" y="305" text-anchor="middle" fill="#4ecdc4" font-size="11">ユーザーレビュー</text>
+                <text x="400" y="325" text-anchor="middle" fill="#888" font-size="10">★4.8（2,847件）</text>
+                
+                <!-- 矢印と説明 -->
+                <line x1="600" y1="310" x2="650" y2="310" stroke="#4ecdc4" stroke-width="2"/>
+                <text x="660" y="305" fill="#4ecdc4" font-size="10">← 不安解消</text>
+                <text x="660" y="320" fill="#666" font-size="9">購入前の背中押し</text>
+                
+                <!-- CTA -->
+                <rect x="280" y="360" width="240" height="50" fill="#00d4ff" rx="8"/>
+                <text x="400" y="392" text-anchor="middle" fill="#0a0a0f" font-size="14" font-weight="bold">無料で始める</text>
+                
+                <!-- 矢印と説明 -->
+                <line x1="600" y1="385" x2="650" y2="385" stroke="#ff6b6b" stroke-width="2"/>
+                <text x="660" y="380" fill="#ff6b6b" font-size="10">← CTA直前に</text>
+                <text x="660" y="395" fill="#666" font-size="9">社会的証明を配置</text>
+                
+                <!-- 補足 -->
+                <text x="400" y="430" text-anchor="middle" fill="#888" font-size="9">「○○人が今週登録」などのリアルタイム情報も有効</text>
+                
+                <!-- 左側の注釈 -->
+                <text x="190" y="80" text-anchor="end" fill="#666" font-size="9">認知</text>
+                <text x="190" y="165" text-anchor="end" fill="#666" font-size="9">権威</text>
+                <text x="190" y="230" text-anchor="end" fill="#666" font-size="9">理解</text>
+                <text x="190" y="310" text-anchor="end" fill="#666" font-size="9">信頼</text>
+                <text x="190" y="385" text-anchor="end" fill="#666" font-size="9">行動</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド22: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 5</h2>
+            <p>信頼性の演出と倫理<br>〜ダークパターンを避ける〜</p>
+        </div>
+        <!-- スライド23: 信頼される数字の見せ方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">信頼される数字の見せ方</h2>
+            <div class="content-block">
+                <h3>具体性が信頼を生む</h3>
+                <p>「約10万人」より「127,482人」のほうが信頼される。端数があることで「実際に数えた」印象を与える。ただし、虚偽の具体性は発覚したときのダメージが大きい。</p>
+            <h3>出典と時点を明記する</h3>
+            <p>「2024年3月時点」「自社調べ」「○○調査より」など、数字の根拠を示すことで透明性が高まる。</p>
+            
+            <h3>切り取り方に注意</h3>
+            <ul>
+                <li><strong>危険</strong>：満足度98%（回答者10人）</li>
+                <li><strong>誠実</strong>：満足度92%（回答者1,247人）</li>
+            </ul>
+            <p>サンプル数が少ない高評価より、サンプル数が多い中程度の評価のほうが信頼される。</p>
+            
+            <div class="highlight-box">
+                ⚠️ 「技術的には嘘ではない」数字は、長期的に信頼を損なう
+            </div>
+        </div>
+        </div>
+        <!-- スライド24: ダークパターンの境界 -->
+        <div class="slide-container">
+            <h2 class="slide-title">ダークパターンとの境界線</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>✅ 誠実なUI</h3>
+                    <ul style="font-size: 0.95rem; line-height: 1.8;">
+                        <li>実際の購入データに基づく「人気No.1」</li>
+                        <li>リアルタイムの在庫数表示</li>
+                        <li>検証可能なレビュー</li>
+                        <li>明確な比較基準を持つ価格表示</li>
+                        <li>ユーザーの利益になる推奨</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>❌ ダークパターン</h3>
+                    <ul style="font-size: 0.95rem; line-height: 1.8;">
+                        <li>常に表示される「残り1点」</li>
+                        <li>架空の「○○さんが購入」通知</li>
+                        <li>自作自演のレビュー</li>
+                        <li>存在しない「通常価格」からの割引</li>
+                        <li>解約を困難にするUI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 2rem;">
+                💡 判断基準：「この手法をユーザーに説明したとき、不信感を持たれないか？」
+            </div>
+        </div>
+        <!-- スライド25: 長期的な信頼構築 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ誠実さが競争優位になるか</h2>
+            <div class="content-block">
+                <h3>短期 vs 長期の視点</h3>
+                <p>ダークパターンは短期的にはコンバージョンを上げるかもしれない。しかし、ユーザーが「騙された」と感じた瞬間、その企業への信頼は不可逆的に損なわれる。</p>
+            <h3>口コミの時代のリスク</h3>
+            <p>SNSとレビューサイトの普及により、ネガティブな体験は瞬時に拡散される。「あのサイト、嘘の在庫表示してた」という情報は、広告費では打ち消せない。</p>
+            
+            <h3>法規制の強化</h3>
+            <p>EUのDSA（デジタルサービス法）やGDPRなど、ダークパターンに対する規制は世界的に強化されている。日本でも景品表示法による摘発事例が増加。</p>
+            
+            <h3>設計者としての責任</h3>
+            <p>UIを設計する立場にある以上、「効果があるから」という理由だけで手法を採用すべきではない。ユーザーの利益と事業の利益が両立する設計を目指す。</p>
+            
+            <div class="highlight-box">
+                💡 誠実なUIは「制約」ではなく「差別化要因」になりうる
+            </div>
+        </div>
+        </div>
+        <!-- スライド26: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">理論編のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🧠</div>
+                    <h3>社会的証明</h3>
+                    <p>人は不確実な状況で<br>他者の行動を参照する</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚓</div>
+                    <h3>アンカリング</h3>
+                    <p>最初に見た情報が<br>判断の基準点になる</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📍</div>
+                    <h3>配置の原則</h3>
+                    <p>不安が生まれる瞬間に<br>安心材料を配置する</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚖️</div>
+                    <h3>倫理的設計</h3>
+                    <p>誠実さは制約ではなく<br>長期的な競争優位</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド27: 実践編への橋渡し -->
+        <div class="slide-container big-concept-layout">
+            <h2>理論を理解した今、<br>次は「実装」へ</h2>
+            <p>実践編では、Canva・Figma・Gemini・Nano banana proを使って<br>社会的証明とアンカリングを組み込んだUIを実際に作ります</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "社会的証明が働く根本的な理由として、最も適切なものは？",
+                options: [
+                    "人は他人の真似をしたがる性格だから",
+                    "不確実な状況で認知コストを下げるため",
+                    "マーケティングに慣れているから",
+                    "数字が好きだから"
+                ],
+                correct: 1,
+                explanation: "社会的証明は、進化の過程で身につけた「認知のショートカット」です。すべての選択肢を自分で評価するコストを避け、他者の行動を参考にすることでリスクを下げようとする心理が働いています。"
+            },
+            {
+                question: "アンカリング効果について正しい説明はどれか？",
+                options: [
+                    "最初に見た情報が、その後の判断に影響を与える",
+                    "高い価格を見ると必ず購入を避ける",
+                    "3つの選択肢があると必ず真ん中を選ぶ",
+                    "レビューの星の数だけが購買に影響する"
+                ],
+                correct: 0,
+                explanation: "アンカリング効果とは、最初に提示された情報（アンカー）が、その後の判断の基準点になる認知バイアスです。無関係な数字でさえ影響を与えることがカーネマンの実験で証明されています。"
+            },
+            {
+                question: "プラン設計で「3択の法則」が効果的な理由は？",
+                options: [
+                    "選択肢が多いほど満足度が上がるから",
+                    "高額プランがアンカーとなり、中間プランがお得に感じられるから",
+                    "必ず最安プランが選ばれるから",
+                    "ユーザーは比較が嫌いだから"
+                ],
+                correct: 1,
+                explanation: "高額プランがアンカーとして機能し、中間プランが「バランスが良い」と感じられます。また、最安プランは機能不足で選ばれにくく設計されることで、中間プランへの誘導が強化されます（妥協効果）。"
+            },
+            {
+                question: "社会的証明をUIに配置する最も効果的なタイミングは？",
+                options: [
+                    "ページの一番下に必ず配置する",
+                    "ユーザーが不安を感じる瞬間（CTA直前、価格表示周辺など）",
+                    "ファーストビューにだけ配置すれば十分",
+                    "ランダムに配置するほうが効果的"
+                ],
+                correct: 1,
+                explanation: "社会的証明は「不安が生まれる瞬間」に配置することで最大の効果を発揮します。具体的には、ファーストビュー直下（信頼構築）、価格表示周辺、CTA直前（行動の背中押し）などが効果的です。"
+            },
+            {
+                question: "ダークパターンと誠実なUIの境界線を判断する基準として最も適切なものは？",
+                options: [
+                    "コンバージョン率が上がるかどうか",
+                    "競合他社も使っているかどうか",
+                    "この手法をユーザーに説明したとき、不信感を持たれないか",
+                    "法律で明確に禁止されているかどうか"
+                ],
+                correct: 2,
+                explanation: "ダークパターンの判断基準は「ユーザーに手法を説明したとき、不信感を持たれないか」です。法律で禁止されていなくても、ユーザーを欺く意図があれば長期的な信頼を損ない、口コミでネガティブな評価が広がるリスクがあります。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

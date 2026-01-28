@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Design is Science</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Settings --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #000; 
+            height: 100vh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+            font-feature-settings: "palt" 1, "zero" 1;
+            letter-spacing: .05em;
+            overflow: hidden;
+        }
+
+        /* --- Slide Deck Container --- */
+        .slide-deck {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: calc(100vh * 16 / 9);
+            background-color: #121212; 
+            position: relative;
+            box-shadow: 0 0 80px rgba(0, 100, 255, 0.15);
+            overflow: hidden;
+            container-type: inline-size;
+            color: #e0e0e0;
+        }
+
+        /* --- Common Background --- */
+        .bg-accent {
+            position: absolute; top: 0; right: 0; width: 35%; height: 100%;
+            background: linear-gradient(135deg, #0f4c81, #007bff);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 0; opacity: 0.6; pointer-events: none;
+        }
+
+        /* --- Slide Transition --- */
+        .slide {
+            display: none;
+            width: 100%; height: 100%;
+            padding: 5cqw 6cqw;
+            flex-direction: column;
+            position: relative; z-index: 1;
+        }
+        .slide.active { display: flex; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Typography --- */
+        h1 { font-size: 4cqw; line-height: 1.1; font-weight: 800; color: #fff; margin-bottom: 0.2em; }
+        h2 { font-size: 1.8cqw; color: #4dabf7; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8em; }
+        h3 { font-size: 1.6cqw; color: #fff; margin-bottom: 0.5em; font-weight: 700; }
+        p { font-size: 1.5cqw; line-height: 1.6; color: #b0b0b0; margin-bottom: 1em; }
+        
+        ul { list-style: none; }
+        ul li { font-size: 1.5cqw; color: #d0d0d0; margin-bottom: 0.5em; padding-left: 1.2em; position: relative; }
+        ul li::before { content: "▶"; color: #4dabf7; position: absolute; left: 0; font-size: 0.8em; top: 0.2em; }
+
+        /* --- Layout Utilities --- */
+        .center-content { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .text-center { text-align: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; height: 100%; align-items: center; }
+        .mt-auto { margin-top: auto; }
+        .img-fluid { max-width: 100%; height: auto; border-radius: 1cqw; border: 2px solid #333; }
+
+        /* --- Specific Components --- */
+        
+        /* 1. Comparison (NG/OK) */
+        .comparison-box {
+            background: #1e1e1e; padding: 2cqw; border-radius: 1cqw; height: 100%;
+            border-top: 6px solid #555;
+        }
+        .comparison-box.ok { border-top-color: #4dabf7; background: rgba(77, 171, 247, 0.05); }
+        .comparison-box.ng { border-top-color: #e03131; background: rgba(224, 49, 49, 0.05); }
+        .tag { display: inline-block; padding: 0.2em 0.6em; border-radius: 4px; font-size: 1cqw; font-weight: bold; margin-bottom: 1cqw; }
+        .tag.ok { background: #4dabf7; color: #000; }
+        .tag.ng { background: #e03131; color: #fff; }
+
+        /* 2. Prompt Recipe */
+        .prompt-container {
+            background: #222; border-radius: 1cqw; padding: 2cqw;
+            border: 1px solid #333; position: relative; font-family: monospace;
+        }
+        .prompt-label {
+            position: absolute; top: -0.8em; left: 1em; background: #4dabf7; 
+            color: #000; padding: 0 0.5em; font-size: 1cqw; font-weight: bold; border-radius: 2px;
+        }
+        .prompt-text { color: #ccc; font-size: 1.4cqw; line-height: 1.6; white-space: pre-wrap; }
+        .var { color: #4dabf7; font-weight: bold; } /* 変数強調 */
+
+        /* 4. Process Flow */
+        .flow-container { display: flex; justify-content: space-between; margin-top: 3cqw; }
+        .flow-step { 
+            flex: 1; background: #1e1e1e; padding: 1.5cqw; border-radius: 0.5cqw; 
+            position: relative; margin-right: 3cqw; border: 1px solid #333;
+        }
+        .flow-step:last-child { margin-right: 0; }
+        .flow-step:not(:last-child)::after {
+            content: "→"; position: absolute; right: -2.2cqw; top: 50%; transform: translateY(-50%);
+            color: #4dabf7; font-size: 2cqw; font-weight: bold;
+        }
+        .step-num { color: #4dabf7; font-weight: bold; font-size: 1.2cqw; display: block; margin-bottom: 0.5em; }
+
+        /* Footer */
+        .footer { position: absolute; bottom: 3%; left: 6%; font-size: .8cqw; color: #666; }
+        .page-indicator { position: absolute; bottom: 3%; right: 4%; font-size: 1cqw; color: #555; }
+
+    </style>
+</head>
+<body>
+
+<div class="slide-deck">
+    <div class="bg-accent"></div>
+
+    <section class="slide active">
+        <div class="center-content">
+            <div style="max-width: 75%;">
+                <h2 style="margin-bottom: 0.5em;">Day 1 Theme</h2>
+                <h1 style="font-size: 5cqw;">デザインは「設計」である</h1>
+                <p style="margin-top: 1em; color: #888;">AIの完全掌握とデザインの基礎理論</p>
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Day 1 Goals</h2>
+        <h1>本日の学習目標</h1>
+        <div style="margin-top: 2cqw;">
+            <p>「感覚」ではなく「論理」でデザインを支配するための基礎を築きます。</p>
+            <ul style="margin-top: 2cqw;">
+                <li>
+                    <strong style="color:#fff;">1. 定義の理解</strong><br>
+                    <span style="font-size: 0.9em; color: #999;">Art(自己表現)とDesign(課題解決)の違いを明確に定義する。</span>
+                </li>
+                <li style="margin-top: 1em;">
+                    <strong style="color:#fff;">2. 視覚心理学の基礎</strong><br>
+                    <span style="font-size: 0.9em; color: #999;">視線誘導(F/Zの法則)や認知負荷の概念を学ぶ。</span>
+                </li>
+                <li style="margin-top: 1em;">
+                    <strong style="color:#fff;">3. AIによる言語化（ハンズオン）</strong><br>
+                    <span style="font-size: 0.9em; color: #999;">既存の有名広告をAIに分析させ、優れた点を視覚心理学の観点から言語化させる。</span>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Concept Definition</h2>
+        <h1>Art vs Design</h1>
+        <div class="grid-2">
+            <img src="image_0.png" alt="Art (Self-Expression) vs Design (Problem-Solving) infographic" class="img-fluid">
+            
+            <div style="display: flex; flex-direction: column; gap: 2cqw; height: 100%;">
+                <div class="comparison-box ng" style="flex: 1;">
+                    <span class="tag ng">Art (自己表現)</span>
+                    <h3>起点は「自分」</h3>
+                    <ul>
+                        <li>目的は「問い」や感情の表現</li>
+                        <li>解釈は受け手に委ねられる</li>
+                        <li>ビジネスの課題解決は主目的ではない</li>
+                    </ul>
+                </div>
+                <div class="comparison-box ok" style="flex: 1;">
+                    <span class="tag ok">Design (課題解決)</span>
+                    <h3>起点は「他者 (ユーザー/課題)」</h3>
+                    <ul>
+                        <li>目的は「答え」の提示と行動変容</li>
+                        <li>明確な意図とロジックに基づく「設計」</li>
+                        <li>認知負荷を下げ、目的へ誘導する</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Visual Psychology</h2>
+        <h1>視線誘導の科学</h1>
+        <div class="grid-2">
+            <div>
+                <h3>認知負荷と視線の法則</h3>
+                <p>ユーザーは無意識のうちに特定のパターンで情報をスキャンします。これを理解し、意図的に視線を誘導することが「設計」の鍵です。</p>
+                <ul style="margin-top: 1.5cqw;">
+                    <li>
+                        <strong>Fの法則 (F-Pattern)</strong><br>
+                        テキスト中心のページで見られる。左上から開始し、上部を横に、次に少し下を横に、最後に左端を縦に見る動き。
+                    </li>
+                    <li style="margin-top: 1em;">
+                        <strong>Zの法則 (Z-Pattern)</strong><br>
+                        画像や視覚要素が多いページで見られる。左上→右上→左下→右下へと視線が移動する動き。
+                    </li>
+                </ul>
+            </div>
+            <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                 <img src="image_1.png" alt="Infographic illustrating F-Pattern and Z-Pattern eye-tracking movements" class="img-fluid" style="max-height: 80%;">
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Hands-on</h2>
+        <h1>AIによる広告分析ワークフロー</h1>
+        <p>既存の優れた広告をAIに分析させ、「なぜ優れているか」を論理的に言語化する訓練を行います。</p>
+        <div class="flow-container" style="margin-top: 4cqw;">
+            <div class="flow-step">
+                <span class="step-num">Step 01</span>
+                <h3>素材準備</h3>
+                <p style="font-size: 1.2cqw;">分析したい有名広告の画像を用意する。</p>
+            </div>
+            <div class="flow-step">
+                <span class="step-num">Step 02</span>
+                <h3>AIへの分析指示</h3>
+                <p style="font-size: 1.2cqw;">画像をAIにアップロードし、視覚心理学に基づいた分析を指示する。</p>
+            </div>
+            <div class="flow-step">
+                <span class="step-num">Step 03</span>
+                <h3>ロジックの吸収</h3>
+                <p style="font-size: 1.2cqw;">出力から「配色」「構図」の根拠を学び、自身の言葉で言語化する。</p>
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Engineering</h2>
+        <h1>分析用プロンプト例</h1>
+        <p>AIから視覚心理学に基づいた具体的な回答を引き出すための指示例です。</p>
+        
+        <div class="prompt-container" style="margin-top: 3cqw;">
+            <div class="prompt-label">Analysis Prompt</div>
+            <div class="prompt-text">
+あなたは熟練した<span class="var">アートディレクター</span>兼<span class="var">認知心理学者</span>です。
+アップロードした画像を分析し、以下の点についてレポートしてください。
+
+# 分析項目:
+1. **第一印象と視線誘導:** ユーザーの視線誘導の設計意図を解説してください。
+2. **色彩心理:** 色彩がターゲットに与える心理的影響を分析してください。
+3. **認知負荷への配慮:** 情報整理の工夫を言語化してください。
+4. **結論:** 視覚心理学の観点からこのデザインの優位性をまとめてください。
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <section class="slide">
+        <h2>Wrap-up</h2>
+        <h1>まとめと次回予告</h1>
+        <div class="grid-2">
+            <div>
+                <h3>本日のまとめ</h3>
+                <ul style="font-size: 1.2em; margin-top: 1.5cqw;">
+                    <li style="margin-bottom: 1em;">デザインは課題解決のための論理的な「設計」である。</li>
+                    <li style="margin-bottom: 1em;">視線には法則があり、意図的にコントロールできる。</li>
+                    <li style="margin-bottom: 1em;">AIはデザインの背後にあるロジックを言語化する強力なパートナー。</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #4dabf7;">次回予告 (Day 2)</h3>
+                <p style="font-size: 1.8cqw; font-weight: bold; margin-top: 1em;">生成AI (Nano Banana Pro) の完全制御</p>
+                <ul style="font-size: 1.2em; margin-top: 1.5cqw;">
+                    <li>プロンプトによる照明・画角・スタイルの指定</li>
+                    <li>シード値固定によるトーンの統一</li>
+                    <li>複雑な概念を正確に出力する訓練</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。&nbsp;©︎ ACT HOUSE ®︎ All Rights Reserved. </div>
+    </section>
+
+    <div class="page-indicator" id="pageIndicator"></div>
+
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const pageIndicator = document.getElementById('pageIndicator');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        slides[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        pageIndicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') showSlide(currentSlide + 1);
+        if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+    });
+
+    showSlide(0);
+</script>
+
+</body>
+</html>

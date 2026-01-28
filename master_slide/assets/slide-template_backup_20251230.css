@@ -1,0 +1,497 @@
+/* ========================================
+    Lecture Slides Template - CSS (修正版)
+======================================== */
+
+/* --- CORE RESET --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    -webkit-font-feature-settings: 'palt';
+    -moz-font-feature-settings: 'palt';
+    -ms-font-feature-settings: 'palt';
+    font-feature-settings: 'palt';
+}
+
+/* --- PRESENTATION CONTAINER --- */
+#presentation-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+/* Responsive: 16:9アスペクト比維持 */
+@media (min-aspect-ratio: 16/9) {
+    #presentation-wrapper {
+        height: 100vh;
+        width: calc(100vh * 16 / 9);
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #presentation-wrapper {
+        width: 100vw;
+        height: calc(100vw * 9 / 16);
+    }
+}
+
+/* --- SLIDE CONTAINER BASE --- */
+.slide-container {
+    align-items: center;
+    background-color: #121212;
+    border-radius: 0;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    padding: clamp(4rem, 8vh, 8rem) clamp(4rem, 5vw, 8rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 0;
+    /* 修正: 非アクティブスライドを完全に隠す */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slide-container.active {
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    /* 修正: アクティブスライドを表示 */
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.slide-container.bleed-image-layout.active {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    padding: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- DECORATIVE BACKGROUNDS --- */
+/* .slide-container::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(62,184,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    z-index: 0;
+} */
+
+/* .slide-container::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 35%;
+    height: 35%;
+    background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%); 
+    z-index: 0;
+} */
+
+.slide-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.slide-container h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    background: linear-gradient(90deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+}
+.slide-container h1 span {
+    display: block;
+    font-size: clamp(3rem, 3.2vw, 4.5rem);
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+
+.slide-container .slide-title {
+    font-size: clamp(3rem, 2.916666vw, 4rem);
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+    text-align: left;
+    border-left: 6px solid #00d4ff;
+    padding-left: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+.slide-container h3 {
+    font-size: clamp(2rem, 2.0833333vw, 3rem);
+    font-weight: 700;
+    color: #00d4ff;
+    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+}
+
+.slide-container p + h3,
+.slide-container ul + h3 {
+    margin-top: clamp(1.5rem, 3vh, 2rem);
+}
+.slide-container h4 {
+    font-size: clamp(2rem, 2.0833333vw, 3rem);
+    font-weight: 700;
+    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+}
+
+.slide-container p, .slide-container li {
+    font-size: clamp(1.2rem, 1.666666vw, 2.4rem);
+    line-height: 1.8;
+    color: #e0e0e0;
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+}
+
+ul {
+    padding-left: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* --- LAYOUT: FULL BACKGROUND IMAGE (TITLE) --- */
+.full-bg-image {
+    padding: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%),
+                linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    justify-content: center;
+    align-items: center;
+}
+
+.full-bg-image .content-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 5vw, 4rem);
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 80%;
+}
+
+.full-bg-image h1,
+.full-bg-image h2 {
+    font-size: clamp(6rem, 6.4vw, 9rem);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* --- LAYOUT: SECTION TITLE --- */
+.section-title-layout {
+    text-align: center;
+    /* border: 2px solid #333; */
+    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3rem);
+    border-radius: 20px;
+    /* 修正: 背景を不透明に */
+    background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+    /* width: 80%; */
+}
+
+.section-title-layout h2 {
+    font-size: clamp(5rem, 5vw, 7rem);
+    color: #fff;
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+.section-title-layout hr {
+    width: clamp(80px, 10vw, 100px);
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #ff0080);
+    border: none;
+    margin: 0 auto clamp(1.5rem, 3vh, 2rem) auto;
+}
+
+/* --- LAYOUT: TWO COLUMN --- */
+.two-column.tiled {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    width: 100%;
+    /* height: 80%; */
+}
+
+.two-column.tiled > div {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: clamp(1.5rem, 3vh, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* --- LAYOUT: THREE COLUMN --- */
+.three-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    width: 100%;
+    height: 75%;
+}
+
+.three-column > div {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: clamp(1rem, 2.5vh, 2rem);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- LAYOUT: BLEED IMAGE --- */
+.slide-container.bleed-image-layout .content-container {
+    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.slide-container.bleed-image-layout .image-container {
+    height: 100%;
+    width: 100%;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- LAYOUT: TILED CONTENT --- */
+.tiled-content {
+    /* 修正: 縦方向の配置を追加 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+/* 修正: タイルグリッド用の新しいクラス */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.5rem, 3vw, 2rem);
+    width: 100%;
+    margin-top: clamp(1.5rem, 3vh, 2rem);
+}
+
+.tile {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: clamp(1.5rem, 3vh, 2rem);
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.tile h3 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: #00d4ff;
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+}
+
+.tile p {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    line-height: 1.6;
+}
+
+.tile .icon {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    display: inline-block;
+    width: clamp(60px, 8vw, 80px);
+    height: clamp(60px, 8vw, 80px);
+    line-height: clamp(60px, 8vw, 80px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    color: #00d4ff;
+}
+
+/* --- LAYOUT: STANDARD CONTENT --- */
+.standard-content-layout {
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* padding-top: clamp(3rem, 2.916666vw, 4rem); */
+}
+
+.standard-content-layout .content-block {
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+    padding: clamp(1.5rem, 3vh, 2.5rem);
+    width: 100%;
+    border: 1px solid #333;
+}
+
+/* --- LAYOUT: BIG CONCEPT --- */
+.big-concept-layout {
+    text-align: center;
+}
+
+.big-concept-layout h2 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.1;
+    background: linear-gradient(45deg, #00d4ff, #00ff9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+}
+
+.big-concept-layout p {
+    font-size: clamp(1.2rem, 2vw, 1.75rem);
+    max-width: 80%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+/* --- UTILITIES --- */
+.highlight-box {
+    background: rgba(0, 212, 255, 0.1);
+    border-left: 4px solid #00d4ff;
+    padding: clamp(1rem, 2vh, 1.5rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+    font-size: clamp(1rem, 1.25vw, 2rem);
+    color: #fff;
+}
+
+svg.generated-art {
+    width: 80%;
+    height: 80%;
+    z-index: 2;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+.footer-copyright {
+    position: absolute;
+    bottom: clamp(0.8rem, 2vh, 1.5rem);
+    left: clamp(0.8rem, 2vw, 1.5rem);
+    font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 100;
+}
+
+.control-hint {
+    position: fixed;
+    bottom: clamp(1rem, 2vh, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
+    color: #444;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.slide-number {
+    position: absolute;
+    bottom: clamp(0.8rem, 2vh, 1.5rem);
+    right: clamp(0.8rem, 2vw, 1.5rem);
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.4);
+    z-index: 100;
+}
+
+/* ================================================
+コピーボタン機能（追加分）
+================================================ */
+
+/* プロンプトボックス */
+.prompt-box {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: clamp(1rem, 2vh, 1.5rem);
+    margin: clamp(1rem, 2vh, 1.5rem) 0;
+}
+
+.prompt-content {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1rem, 1.25vw, 2rem);
+    line-height: 1.6;
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-right: clamp(5rem, 10vw, 8rem);
+}
+
+.copy-btn {
+    position: absolute;
+    top: clamp(0.5rem, 1vh, 0.8rem);
+    right: clamp(0.5rem, 1vw, 0.8rem);
+    padding: clamp(0.4rem, 0.8vh, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem);
+    background: linear-gradient(135deg, #00d4ff, #00ff9d);
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, #00ff9d, #00d4ff);
+}
+
+.copy-btn i {
+    font-size: clamp(0.8rem, 1.3vw, 1rem);
+}

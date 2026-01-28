@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>015 カスタムAI（Gem）の構築基礎【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>カスタムAI（Gem）の<br>構築基礎<span>【理論編】</span></h1>
+                <p>自分だけのデザインアシスタントを設計する</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>毎回、同じ指示を<br>打ち込んでいませんか？</h2>
+            <p>その繰り返し作業、自動化できます</p>
+        </div>
+        <!-- スライド3: 具体的な問題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">デザイン作業で起きている非効率</h2>
+            <div class="content-block">
+                <h3>こんな経験はありませんか？</h3>
+                <ul>
+                    <li>「ターゲットは30代女性で、信頼感を重視して…」と毎回入力</li>
+                    <li>「HEXコード付きで提案して」を何度も追記</li>
+                    <li>「日本語で回答して」を忘れて英語で返ってくる</li>
+                    <li>前回のやり取りを覚えていないので、また説明し直し</li>
+                </ul>
+            <div class="highlight-box">
+                💡 これらは「毎回同じプロンプトを書いている」という問題です
+            </div>
+        </div>
+        </div>
+        <!-- スライド4: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のアジェンダ</h2>
+            <div class="content-block">
+                <h3>理論編で学ぶこと</h3>
+                <ul>
+                    <li><strong>Part 1：</strong>Gemとは何か — 通常のGeminiとの違い</li>
+                    <li><strong>Part 2：</strong>なぜカスタマイズが必要か — 設計思想</li>
+                    <li><strong>Part 3：</strong>Gemに何を教え込むか — 設計の4要素</li>
+                    <li><strong>Part 4：</strong>良いGemと悪いGemの違い — 設計原則</li>
+                    <li><strong>Part 5：</strong>デザイン用途別の設計パターン</li>
+                </ul>
+            <p style="margin-top: 2rem; color: #888;">実践編では、実際にGemを作成し、テスト・改善を行います</p>
+        </div>
+        </div>
+        <!-- スライド5: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 1</h2>
+            <p>Gemとは何か</p>
+        </div>
+        <!-- スライド6: Gemの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Gem =<br>「事前指示」を記憶した<br>カスタムGemini</h2>
+            <p>あなた専用のAIアシスタントを作る機能</p>
+        </div>
+        <!-- スライド7: 通常のGeminiとの比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">通常のGemini vs Gem</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>通常のGemini</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- ユーザーアイコン -->
+                        <circle cx="60" cy="60" r="25" fill="#00d4ff" opacity="0.3"/>
+                        <text x="60" y="65" text-anchor="middle" fill="white" font-size="12">あなた</text>
+                    <!-- 毎回の長い指示 -->
+                    <rect x="100" y="30" width="200" height="60" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="200" y="55" text-anchor="middle" fill="white" font-size="11">毎回：ターゲットは○○で</text>
+                    <text x="200" y="75" text-anchor="middle" fill="white" font-size="11">HEXコード付きで…</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M200 100 L200 130" stroke="#888" stroke-width="2" marker-end="url(#arrow1)"/>
+                    
+                    <!-- Geminiアイコン -->
+                    <circle cx="200" cy="170" r="30" fill="#4285f4" opacity="0.3"/>
+                    <text x="200" y="175" text-anchor="middle" fill="white" font-size="12">Gemini</text>
+                    
+                    <defs>
+                        <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#888"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <!-- 問題点 -->
+                <p>❌ 毎回リセット</p>
+            </div>
+            <div>
+                <h3>Gem（カスタムAI）</h3>
+                <svg class="generated-art" viewBox="0 0 350 250">
+                    <!-- ユーザーアイコン -->
+                    <circle cx="60" cy="60" r="25" fill="#00d4ff" opacity="0.3"/>
+                    <text x="60" y="65" text-anchor="middle" fill="white" font-size="12">あなた</text>
+                    
+                    <!-- 短い指示 -->
+                    <rect x="100" y="40" width="120" height="40" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="160" y="65" text-anchor="middle" fill="white" font-size="11">本題だけ入力</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M160 90 L160 110" stroke="#888" stroke-width="2" marker-end="url(#arrow2)"/>
+                    
+                    <!-- Gemアイコン（事前指示付き） -->
+                    <rect x="120" y="120" width="160" height="80" fill="#9b59b6" opacity="0.2" stroke="#9b59b6" stroke-width="2" rx="12"/>
+                    <text x="200" y="145" text-anchor="middle" fill="white" font-size="11">Gem</text>
+                    <text x="200" y="165" text-anchor="middle" fill="#9b59b6" font-size="10">事前指示を記憶済み</text>
+                    <text x="200" y="185" text-anchor="middle" fill="#888" font-size="9">ターゲット・出力形式など</text>
+                    
+                    <defs>
+                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#888"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <!-- 結果 -->
+                <p>✅ 常に最適な回答</p>
+            </div>
+        </div>
+        </div>
+        <!-- スライド8: Gemの本質 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Gemの本質：「システムプロンプト」の保存</h2>
+            <div class="content-block">
+                <h3>過去の講義で学んだこと</h3>
+                <p>良いプロンプトには「役割」「背景」「制約」「出力形式」が必要でした。</p>
+            <h3>Gemがやっていること</h3>
+            <p>これらの<strong>「毎回同じ部分」を事前に保存</strong>し、あなたが入力する「本題」と自動的に組み合わせます。</p>
+            
+            <div class="highlight-box">
+                📝 つまりGemとは「プロンプトテンプレートの自動適用機能」です
+            </div>
+        </div>
+        </div>
+        <!-- スライド9: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 2</h2>
+            <p>なぜカスタマイズが必要か</p>
+        </div>
+        <!-- スライド10: カスタマイズの必要性 -->
+        <div class="slide-container big-concept-layout">
+            <h2>汎用AIは<br>「誰にでも60点」の回答</h2>
+            <p>あなた専用にすれば「90点」になる</p>
+        </div>
+        <!-- スライド11: 汎用vs専用の比較 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">汎用Gemini vs カスタムGem</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 汎用Gemini側 -->
+                    <rect x="50" y="50" width="300" height="200" fill="#ff6b6b" opacity="0.1" stroke="#ff6b6b" stroke-width="2" rx="12"/>
+                    <text x="200" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">汎用Gemini</text>
+                <text x="200" y="120" text-anchor="middle" fill="#888" font-size="12">「カラーパレットを提案して」</text>
+                <text x="200" y="145" text-anchor="middle" fill="#888" font-size="11">↓</text>
+                <text x="200" y="170" text-anchor="middle" fill="#ff6b6b" font-size="11">・ターゲット不明で汎用的な提案</text>
+                <text x="200" y="190" text-anchor="middle" fill="#ff6b6b" font-size="11">・HEXコードがない場合も</text>
+                <text x="200" y="210" text-anchor="middle" fill="#ff6b6b" font-size="11">・毎回追加説明が必要</text>
+                <text x="200" y="235" text-anchor="middle" fill="#ff6b6b" font-size="14">60点</text>
+                
+                <!-- 矢印 -->
+                <path d="M380 150 L420 150" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrow3)"/>
+                
+                <!-- カスタムGem側 -->
+                <rect x="450" y="50" width="300" height="200" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                <text x="600" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">カスタムGem</text>
+                
+                <text x="600" y="120" text-anchor="middle" fill="#888" font-size="12">「カラーパレットを提案して」</text>
+                <text x="600" y="145" text-anchor="middle" fill="#888" font-size="11">↓</text>
+                <text x="600" y="170" text-anchor="middle" fill="#00d4ff" font-size="11">・事前設定のターゲットに最適化</text>
+                <text x="600" y="190" text-anchor="middle" fill="#00d4ff" font-size="11">・必ずHEXコード付き</text>
+                <text x="600" y="210" text-anchor="middle" fill="#00d4ff" font-size="11">・追加説明不要で即実用</text>
+                <text x="600" y="235" text-anchor="middle" fill="#00d4ff" font-size="14">90点</text>
+                
+                <defs>
+                    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#00d4ff"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド12: 時間節約の効果 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">カスタマイズの3つのメリット</h2>
+            <div class="content-block">
+                <h3>1. 時間の節約</h3>
+                <p>毎回50文字の指示を省略 → 1日10回使えば500文字 = 約5分の節約/日</p>
+            <h3>2. 品質の安定</h3>
+            <p>同じ基準で常に回答されるため、出力のブレがなくなる</p>
+            
+            <h3>3. 専門性の向上</h3>
+            <p>デザイン用語や業界知識を教え込むことで、より専門的な回答が得られる</p>
+            
+            <div class="highlight-box">
+                💡 Gemは「育てる」もの。使い込むほど、あなたに最適化されます
+            </div>
+        </div>
+        </div>
+        <!-- スライド13: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 3</h2>
+            <p>Gemに何を教え込むか</p>
+        </div>
+        <!-- スライド14: 設計の4要素 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Gem設計の4要素<br><span style="font-size: 0.6em; color: #00d4ff;">役割・知識・制約・出力形式</span></h2>
+            <p>この4つを定義すれば、Gemは完成する</p>
+        </div>
+        <!-- スライド15: 要素1 - 役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">要素①：役割（Role）</h2>
+            <div class="content-block">
+                <h3>Gemに「何者か」を定義する</h3>
+                <p>役割を明確にすることで、回答のトーンと視点が決まります。</p>
+            <h3>デザインボットの役割例</h3>
+            <ul>
+                <li>「あなたはシニアUIデザイナーです」</li>
+                <li>「あなたはブランディング専門のコンサルタントです」</li>
+                <li>「あなたは非デザイナー向けにアドバイスするメンターです」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：役割を曖昧にする<br>
+                ✅ 正解：専門性と対象者を明記する
+            </div>
+        </div>
+        </div>
+        <!-- スライド16: 要素2 - 知識 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">要素②：知識（Knowledge）</h2>
+            <div class="content-block">
+                <h3>Gemに「何を知っているか」を教える</h3>
+                <p>あなたのプロジェクトや基準を事前に共有します。</p>
+            <h3>教え込む知識の例</h3>
+            <ul>
+                <li>ターゲット層の詳細（30代女性、都心在住、IT企業勤務）</li>
+                <li>ブランドカラー（#00d4ff、#1a1a2e など）</li>
+                <li>避けるべきスタイル（チープ感、子供っぽさ）</li>
+                <li>参考にすべきブランド（Apple、無印良品 など）</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 知識は具体的であるほど、回答の精度が上がります
+            </div>
+        </div>
+        </div>
+        <!-- スライド17: 要素3 - 制約 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">要素③：制約（Constraints）</h2>
+            <div class="content-block">
+                <h3>Gemに「やってはいけないこと」を定義する</h3>
+                <p>望まない出力を防ぐためのルールを設定します。</p>
+            <h3>制約の例</h3>
+            <ul>
+                <li>「英語では回答しない」</li>
+                <li>「3色以上のパレットは提案しない」</li>
+                <li>「専門用語を使う場合は必ず説明を添える」</li>
+                <li>「理由なしで提案しない」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：制約を設けず、毎回「〜しないで」と追記<br>
+                ✅ 正解：事前に制約として定義しておく
+            </div>
+        </div>
+        </div>
+        <!-- スライド18: 要素4 - 出力形式 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">要素④：出力形式（Output Format）</h2>
+            <div class="content-block">
+                <h3>Gemに「どう答えるか」を指定する</h3>
+                <p>回答の構造とフォーマットを統一します。</p>
+            <h3>出力形式の例</h3>
+            <ul>
+                <li>「カラーは必ずHEXコードで表記」</li>
+                <li>「提案は3案まで、各案に理由を添える」</li>
+                <li>「フォント名は英語表記と日本語代替を併記」</li>
+                <li>「最後に『確認事項』として質問を1つ添える」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 出力形式を統一すると、後続作業（Canvaへの適用など）が効率化
+            </div>
+        </div>
+        </div>
+        <!-- スライド19: 4要素のまとめ図解 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4要素の関係性</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- 中央のGem -->
+                    <circle cx="400" cy="175" r="70" fill="#9b59b6" opacity="0.3" stroke="#9b59b6" stroke-width="3"/>
+                    <text x="400" y="170" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Gem</text>
+                    <text x="400" y="195" text-anchor="middle" fill="#9b59b6" font-size="12">デザインボット</text>
+                <!-- 役割（左上） -->
+                <rect x="80" y="30" width="150" height="80" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                <text x="155" y="65" text-anchor="middle" fill="white" font-size="14" font-weight="bold">① 役割</text>
+                <text x="155" y="90" text-anchor="middle" fill="#888" font-size="11">「何者か」</text>
+                <line x1="230" y1="90" x2="335" y2="140" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- 知識（右上） -->
+                <rect x="570" y="30" width="150" height="80" fill="#f39c12" opacity="0.2" stroke="#f39c12" stroke-width="2" rx="12"/>
+                <text x="645" y="65" text-anchor="middle" fill="white" font-size="14" font-weight="bold">② 知識</text>
+                <text x="645" y="90" text-anchor="middle" fill="#888" font-size="11">「何を知っているか」</text>
+                <line x1="570" y1="90" x2="465" y2="140" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- 制約（左下） -->
+                <rect x="80" y="240" width="150" height="80" fill="#e74c3c" opacity="0.2" stroke="#e74c3c" stroke-width="2" rx="12"/>
+                <text x="155" y="275" text-anchor="middle" fill="white" font-size="14" font-weight="bold">③ 制約</text>
+                <text x="155" y="300" text-anchor="middle" fill="#888" font-size="11">「やってはいけない」</text>
+                <line x1="230" y1="260" x2="335" y2="210" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+                
+                <!-- 出力形式（右下） -->
+                <rect x="570" y="240" width="150" height="80" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="2" rx="12"/>
+                <text x="645" y="275" text-anchor="middle" fill="white" font-size="14" font-weight="bold">④ 出力形式</text>
+                <text x="645" y="300" text-anchor="middle" fill="#888" font-size="11">「どう答えるか」</text>
+                <line x1="570" y1="260" x2="465" y2="210" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド20: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 4<span>良いGemと悪いGemの違い</span></h2>
+        </div>
+        <!-- スライド21: 良いGemの特徴 -->
+        <div class="slide-container">
+            <h2 class="slide-title">良いGem vs 悪いGem</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 悪いGemの指示例</h3>
+                    <p style="background: rgba(255,107,107,0.1); padding: 1rem; border-radius: 8px; font-size: clamp(1.5rem, 2vw, 2rem); line-height: 1.6; width: 100%;">
+                        「デザインを手伝ってください。いい感じにしてください。」
+                    </p>
+                    <p style="font-size: clamp(1.5rem, 2vw, 2rem); margin-top: 1rem; color: #ff6b6b;">
+                        問題点：<br>
+                        ・役割が不明<br>
+                        ・「いい感じ」の基準がない<br>
+                        ・出力形式の指定なし
+                    </p>
+                </div>
+                <div>
+                    <h3>✅ 良いGemの指示例</h3>
+                    <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px; font-size: clamp(1.5rem, 2vw, 2rem); line-height: 1.6; width: 100%;">
+                        「あなたは非デザイナー向けのUIコンサルタントです。30代ビジネスパーソン向けのデザインを提案します。カラーはHEXコードで、理由を必ず添えてください。」
+                    </p>
+                    <p style="font-size: clamp(1.5rem, 2vw, 2rem); margin-top: 1rem; color: #00d4ff;">
+                        改善点：<br>
+                        ・役割が明確<br>
+                        ・ターゲットが具体的<br>
+                        ・出力形式が統一
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド22: 設計原則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Gem設計の3原則</h2>
+            <div class="content-block">
+                <h3>原則①：具体的であること</h3>
+                <p>「良いデザイン」ではなく「30代女性が信頼を感じるデザイン」と書く</p>
+            <h3>原則②：一貫性があること</h3>
+            <p>役割・知識・制約・出力形式が矛盾しないように設計する</p>
+            
+            <h3>原則③：改善可能であること</h3>
+            <p>最初から完璧を目指さず、使いながら調整する前提で作る</p>
+            
+            <div class="highlight-box">
+                💡 Gemは「一度作って終わり」ではなく「育てていく」ものです
+            </div>
+        </div>
+        </div>
+        <!-- スライド23: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 5<span>デザイン用途別の設計パターン</span></h2>
+        </div>
+        <!-- スライド24: 用途別パターン -->
+        <div class="slide-container">
+            <h2 class="slide-title">デザインボットの4つの型</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>カラー提案型</h3>
+                    <p>ターゲットに最適な<br>配色を提案</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔤</div>
+                    <h3>フォント選定型</h3>
+                    <p>ブランドに合う<br>書体を推薦</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📐</div>
+                    <h3>レイアウト評価型</h3>
+                    <p>デザインの改善点を<br>指摘・提案</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🖼️</div>
+                    <h3>画像プロンプト型</h3>
+                    <p>AI画像生成用の<br>プロンプトを作成</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド25: 各型の設計例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">型別：設計のポイント</h2>
+            <div class="content-block">
+                <h3>🎨 カラー提案型</h3>
+                <p>知識に「色彩心理」「業界別の定番カラー」を教え込む。出力は必ずHEXコード。</p>
+            <h3>🔤 フォント選定型</h3>
+            <p>知識に「フォントのカテゴリ（セリフ/サンセリフ等）」「Google Fontsのリスト」を教え込む。</p>
+            
+            <h3>📐 レイアウト評価型</h3>
+            <p>知識に「4つのデザイン原則」「視線誘導パターン」を教え込む。評価は原則ベースで。</p>
+            
+            <h3>🖼️ 画像プロンプト型</h3>
+            <p>知識に「効果的なプロンプト構造」「避けるべきワード」を教え込む。英語で出力。</p>
+        </div>
+        </div>
+        <!-- スライド26: まとめ -->
+        <div class="slide-container">
+            <h2 class="slide-title">本日のまとめ</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">💎</div>
+                    <h3>Gemとは</h3>
+                    <p>事前指示を記憶した<br>カスタムGemini</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>なぜ必要か</h3>
+                    <p>汎用60点を<br>専用90点に</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔧</div>
+                    <h3>4つの要素</h3>
+                    <p>役割・知識<br>制約・出力形式</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📈</div>
+                    <h3>設計原則</h3>
+                    <p>具体的・一貫性<br>改善可能</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド27: 実践編への橋渡し -->
+        <div class="slide-container big-concept-layout">
+            <h2>次は実践編<br><span style="font-size: 0.5em; color: #00d4ff;">実際にGemを作成し、テスト・改善を行います</span></h2>
+            <p>理論を理解した今、手を動かしてみましょう</p>
+        </div>
+
+         <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Gemと通常のGeminiの最大の違いは何ですか？",
+                options: [
+                    "処理速度が速い",
+                    "事前指示を記憶している",
+                    "画像生成ができる",
+                    "インターネット検索ができる"
+                ],
+                correct: 1,
+                explanation: "Gemは「事前指示（システムプロンプト）」を保存し、毎回自動的に適用するカスタムAIです。毎回同じ指示を入力する必要がなくなります。"
+            },
+            {
+                question: "Gem設計の4要素として正しい組み合わせは？",
+                options: [
+                    "速度・精度・コスト・品質",
+                    "役割・知識・制約・出力形式",
+                    "入力・処理・出力・評価",
+                    "目的・手段・結果・改善"
+                ],
+                correct: 1,
+                explanation: "Gemは「役割（何者か）」「知識（何を知っているか）」「制約（やってはいけないこと）」「出力形式（どう答えるか）」の4要素で設計します。"
+            },
+            {
+                question: "「制約」を設定する目的は何ですか？",
+                options: [
+                    "回答を短くする",
+                    "望まない出力を防ぐ",
+                    "処理を高速化する",
+                    "コストを削減する"
+                ],
+                correct: 1,
+                explanation: "制約は「やってはいけないこと」を定義し、望まない出力（英語での回答、理由なしの提案など）を事前に防ぎます。"
+            },
+            {
+                question: "良いGemの設計原則として正しくないものは？",
+                options: [
+                    "具体的であること",
+                    "一貫性があること",
+                    "最初から完璧であること",
+                    "改善可能であること"
+                ],
+                correct: 2,
+                explanation: "Gemは「育てる」ものです。最初から完璧を目指すのではなく、使いながら調整する前提で設計することが重要です。"
+            },
+            {
+                question: "デザインボットの「レイアウト評価型」に教え込むべき知識は？",
+                options: [
+                    "色彩心理と業界別カラー",
+                    "Google Fontsのリスト",
+                    "4つのデザイン原則と視線誘導パターン",
+                    "効果的なプロンプト構造"
+                ],
+                correct: 2,
+                explanation: "レイアウト評価型のGemには「整列・近接・反復・コントラスト」の4原則と「F型・Z型」などの視線誘導パターンを教え込み、原則ベースで評価させます。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

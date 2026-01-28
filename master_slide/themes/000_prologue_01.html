@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講義スライド - [テーマ名]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>分解と分析<span>【番外編】</span></h1>
+                <p>「なんとなく良い」から「〇〇だから良い」へ</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>「なんかいい感じ」<br>で止まっていませんか？</h2>
+            <p>デザインを「見る目」は、言葉にする力で磨かれる</p>
+        </div>
+
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日のゴール</h2>
+            <div class="content-block">
+                <h3>この講義で身につけること</h3>
+                <p><strong>「なんとなく」からの脱却</strong> ― デザインにはロジックがあることを知る</p>
+                
+                <h3>学ぶ内容</h3>
+                <ul>
+                    <li><strong>言語化フレームワーク</strong>：デザインを分析する3つの質問</li>
+                    <li><strong>デザインの4原則</strong>：言語化のための共通言語</li>
+                    <li><strong>実例で練習</strong>：看板・バナー・Webサイトを読み解く</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 本編に入る前の「準備運動」です。肩の力を抜いて進めましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション区切り - 言語化フレームワーク -->
+        <div class="slide-container section-title-layout">
+            <h2>SECTION 1</h2>
+            <p>言語化フレームワーク<br>― 3つの質問で「見る目」を養う</p>
+        </div>
+
+        <!-- スライド5: なぜ言語化が必要か -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ「言語化」が必要なのか</h2>
+            <div class="content-block">
+                <h3>言語化できないと起きる問題</h3>
+                <ul>
+                    <li>デザイナーに「なんか違う」しか伝えられない</li>
+                    <li>自分で修正するとき、どこを直せばいいかわからない</li>
+                    <li>良いデザインを見ても、再現できない</li>
+                </ul>
+                
+                <h3>言語化できると得られるもの</h3>
+                <ul>
+                    <li>フィードバックが具体的になり、修正が早く終わる</li>
+                    <li>「センス」に頼らず、論理的に判断できる</li>
+                    <li>AIツールへの指示も的確になる</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 「言語化」は才能ではなく、フレームワークで身につくスキルです
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: 3つの質問フレームワーク -->
+        <div class="slide-container big-concept-layout">
+            <h2>デザインを分析する<br>3つの質問</h2>
+            <p>この3つに答えるだけで、デザインが「読める」ようになる</p>
+        </div>
+
+        <!-- スライド7: 3つの質問 詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">言語化フレームワーク：3つの質問</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 背景 -->
+                    <rect x="0" y="0" width="800" height="320" fill="none"/>
+                    
+                    <!-- 質問1 -->
+                    <rect x="30" y="40" width="220" height="240" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="140" y="85" text-anchor="middle" fill="#00d4ff" font-size="48" font-weight="bold">1</text>
+                    <text x="140" y="130" text-anchor="middle" fill="white" font-size="20" font-weight="bold">誰向け？</text>
+                    <text x="140" y="165" text-anchor="middle" fill="#aaa" font-size="14">Who is the target?</text>
+                    <line x1="60" y1="185" x2="220" y2="185" stroke="#444" stroke-width="1"/>
+                    <text x="140" y="215" text-anchor="middle" fill="#ccc" font-size="13">年齢・性別・職業</text>
+                    <text x="140" y="240" text-anchor="middle" fill="#ccc" font-size="13">ライフスタイル</text>
+                    <text x="140" y="265" text-anchor="middle" fill="#ccc" font-size="13">悩み・欲求</text>
+                    
+                    <!-- 質問2 -->
+                    <rect x="290" y="40" width="220" height="240" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="2" rx="12"/>
+                    <text x="400" y="85" text-anchor="middle" fill="#a855f7" font-size="48" font-weight="bold">2</text>
+                    <text x="400" y="130" text-anchor="middle" fill="white" font-size="20" font-weight="bold">何を伝えたい？</text>
+                    <text x="400" y="165" text-anchor="middle" fill="#aaa" font-size="14">What's the message?</text>
+                    <line x1="320" y1="185" x2="480" y2="185" stroke="#444" stroke-width="1"/>
+                    <text x="400" y="215" text-anchor="middle" fill="#ccc" font-size="13">メインメッセージ</text>
+                    <text x="400" y="240" text-anchor="middle" fill="#ccc" font-size="13">行動してほしいこと</text>
+                    <text x="400" y="265" text-anchor="middle" fill="#ccc" font-size="13">与えたい印象</text>
+                    
+                    <!-- 質問3 -->
+                    <rect x="550" y="40" width="220" height="240" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="2" rx="12"/>
+                    <text x="660" y="85" text-anchor="middle" fill="#f97316" font-size="48" font-weight="bold">3</text>
+                    <text x="660" y="130" text-anchor="middle" fill="white" font-size="20" font-weight="bold">なぜこの表現？</text>
+                    <text x="660" y="165" text-anchor="middle" fill="#aaa" font-size="14">Why this design?</text>
+                    <line x1="580" y1="185" x2="740" y2="185" stroke="#444" stroke-width="1"/>
+                    <text x="660" y="215" text-anchor="middle" fill="#ccc" font-size="13">色・フォント・形</text>
+                    <text x="660" y="240" text-anchor="middle" fill="#ccc" font-size="13">レイアウト</text>
+                    <text x="660" y="265" text-anchor="middle" fill="#ccc" font-size="13">写真・イラスト</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド8: フレームワークの使い方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フレームワークの使い方</h2>
+            <div class="content-block">
+                <h3>順番が大事</h3>
+                <p><strong>1 → 2 → 3</strong> の順で考えることで、デザインの「意図」が見えてくる</p>
+                
+                <h3>具体例：カフェの看板を見たとき</h3>
+                <ul>
+                    <li><strong>❶ 誰向け？</strong> → 20〜30代の女性、インスタ映えを気にする層</li>
+                    <li><strong>❷ 何を伝えたい？</strong> → おしゃれで落ち着ける空間があること</li>
+                    <li><strong>❸ なぜこの表現？</strong> → パステルカラーと手書き風フォントで「柔らかさ」を演出</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「なぜこの色？」に答えるには、まず「誰向け？」がわかっていないとダメ
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: セクション区切り - 4原則 -->
+        <div class="slide-container section-title-layout">
+            <h2>SECTION 2</h2>
+            <p>デザインの4原則<br>― 言語化のための共通言語</p>
+        </div>
+
+        <!-- スライド10: 4原則とは -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">デザインの4原則とは</h2>
+            <div class="content-block">
+                <h3>「なぜこの表現？」を説明する道具</h3>
+                <p>3つ目の質問に答えるとき、この4つの視点を使うと具体的に説明できます。</p>
+                
+                <h3>4つの原則</h3>
+                <ul>
+                    <li><strong>近接（Proximity）</strong>：関連する要素は近づける</li>
+                    <li><strong>整列（Alignment）</strong>：見えない線で揃える</li>
+                    <li><strong>反復（Repetition）</strong>：同じルールを繰り返す</li>
+                    <li><strong>対比（Contrast）</strong>：重要なものは大きく差をつける</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    📚 出典：Robin Williams『ノンデザイナーズ・デザインブック』（CRAP原則）
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: 近接 (Proximity) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則1: 近接 (Proximity)</h2>
+                <p><strong>関連する要素をグループ化する</strong></p>
+                <ul>
+                    <li>関連する情報は近くに配置</li>
+                    <li>異なるグループは離して配置</li>
+                    <li>視覚的なグルーピングで理解を助ける</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 言語化例：「商品名と価格がグループ化されていて、情報が探しやすい」
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例 -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: 等間隔で配置</text>
+                    <circle cx="100" cy="130" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <circle cx="100" cy="190" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <circle cx="100" cy="250" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    
+                    <!-- 良い例 -->
+                    <text x="220" y="80" fill="#00ff9d" font-size="14" font-weight="bold">OK: グループ化</text>
+                    <rect x="240" y="100" width="120" height="80" fill="rgba(0,255,157,0.05)" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <circle cx="270" cy="120" r="15" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="1"/>
+                    <circle cx="270" cy="155" r="15" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="1"/>
+                    <text x="300" y="125" fill="#fff" font-size="10">グループA</text>
+                    <text x="300" y="160" fill="#fff" font-size="10">グループA</text>
+                    
+                    <circle cx="270" cy="220" r="15" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="300" y="225" fill="#fff" font-size="10">グループB</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド12: 整列 (Alignment) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則2: 整列 (Alignment)</h2>
+                <p><strong>すべての要素を意図的に揃える</strong></p>
+                <ul>
+                    <li>左揃え・中央揃え・右揃えのいずれかに統一</li>
+                    <li>バラバラな配置は「雑」「不安定」に見える</li>
+                    <li>見えない線（グリッド）を意識する</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 言語化例：「左揃えで統一されていて、視線が自然に流れる」
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例 -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: バラバラな配置</text>
+                    <rect x="50" y="100" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <rect x="70" y="140" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <rect x="55" y="180" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    
+                    <!-- 良い例 -->
+                    <text x="50" y="280" fill="#00ff9d" font-size="14" font-weight="bold">OK: 左揃えで統一</text>
+                    <rect x="50" y="300" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    <rect x="50" y="340" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    <rect x="50" y="380" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    
+                    <!-- 揃え線 -->
+                    <line x1="50" y1="290" x2="50" y2="420" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド13: 反復 (Repetition) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則3: 反復 (Repetition)</h2>
+                <p><strong>同じスタイルを繰り返して統一感を出す</strong></p>
+                <ul>
+                    <li>色・フォント・サイズ・余白を統一</li>
+                    <li>見出しのスタイル、アイコンの使い方を揃える</li>
+                    <li>ブランドアイデンティティの構築にも重要</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 言語化例：「同じ色とフォントが使われていて、統一感がある」
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例: バラバラなスタイル -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: スタイルがバラバラ</text>
+                    
+                    <circle cx="80" cy="130" r="20" fill="#ff6b6b" opacity="0.3"/>
+                    <text x="110" y="137" fill="#fff" font-size="16">見出し1</text>
+                    
+                    <rect x="60" y="170" width="30" height="30" fill="#4ecdc4" opacity="0.3"/>
+                    <text x="100" y="190" fill="#fff" font-size="20" font-style="italic">見出し2</text>
+                    
+                    <polygon points="70,230 90,220 90,240" fill="#ffe66d" opacity="0.3"/>
+                    <text x="100" y="237" fill="#fff" font-size="14" font-weight="normal">見出し3</text>
+                    
+                    <!-- 良い例: 統一されたスタイル -->
+                    <text x="50" y="310" fill="#00ff9d" font-size="14" font-weight="bold">OK: スタイルを統一</text>
+                    
+                    <circle cx="80" cy="360" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="367" fill="#fff" font-size="18" font-weight="600">見出し1</text>
+                    
+                    <circle cx="80" cy="410" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="417" fill="#fff" font-size="18" font-weight="600">見出し2</text>
+                    
+                    <circle cx="80" cy="460" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="467" fill="#fff" font-size="18" font-weight="600">見出し3</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド14: コントラスト (Contrast) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則4: 対比 (Contrast)</h2>
+                <p><strong>違いを明確にして情報を際立たせる</strong></p>
+                <ul>
+                    <li>サイズ・色・太さで差をつける</li>
+                    <li>「弱いコントラスト」は中途半端で逆効果</li>
+                    <li>思い切って差をつけることが重要</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 言語化例：「CTAボタンだけ色が違うので、押すべき場所がすぐわかる」
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 弱いコントラスト -->
+                    <text x="200" y="100" text-anchor="middle" fill="#ff0080" font-size="14" font-weight="bold">NG: 弱いコントラスト</text>
+                    <text x="200" y="150" text-anchor="middle" fill="#888" font-size="28">見出し</text>
+                    <text x="200" y="185" text-anchor="middle" fill="#777" font-size="22">本文テキスト</text>
+                    
+                    <!-- 強いコントラスト -->
+                    <text x="200" y="280" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">OK: 強いコントラスト</text>
+                    <text x="200" y="340" text-anchor="middle" fill="#fff" font-size="42" font-weight="bold">見出し</text>
+                    <text x="200" y="380" text-anchor="middle" fill="#888" font-size="16">本文テキスト</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド15: 4原則を「言語化」に活かす -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4原則を「言語化」に活かす</h2>
+            <div class="content-block">
+                <h3>Before：感覚的な表現</h3>
+                <p>「このバナー、なんか見やすい」「ごちゃごちゃしてない」</p>
+                
+                <h3>After：4原則を使った表現</h3>
+                <ul>
+                    <li>「<strong>近接</strong>：商品名と価格がグループ化されていて、情報が探しやすい」</li>
+                    <li>「<strong>整列</strong>：左揃えで統一されていて、視線が自然に流れる」</li>
+                    <li>「<strong>反復</strong>：同じ色とフォントが使われていて、統一感がある」</li>
+                    <li>「<strong>対比</strong>：CTAボタンだけ色が違うので、押すべき場所がすぐわかる」</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 4原則は「共通言語」。デザイナーとの会話でも使える
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: セクション区切り - 実例分析 -->
+        <div class="slide-container section-title-layout">
+            <h2>SECTION 3</h2>
+            <p>実例で練習<br>― 3つの質問 × 4原則を使ってみる</p>
+        </div>
+
+        <!-- スライド17: 事例1 - 看板 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">事例①：街中の看板（飲食店）</h2>
+            <div class="content-block">
+                <h3>高級感のある和食店 vs 気軽な居酒屋</h3>
+                
+                <h3>3つの質問で分析</h3>
+                <ul style="list-style: none;">
+                    <li><strong>❶ 誰向け？</strong><br>
+                        高級店 → 40〜60代、接待や記念日利用<br>
+                        居酒屋 → 20〜40代、仕事帰りのサラリーマン</li>
+                    <li><strong>❷ 何を伝えたい？</strong><br>
+                        高級店 → 特別な体験、こだわりの食材<br>
+                        居酒屋 → 気軽さ、コスパの良さ</li>
+                    <li><strong>❸ なぜこの表現？</strong><br>
+                        高級店 → 黒背景 × 金文字 × 余白多め（<strong>対比</strong>と<strong>整列</strong>）<br>
+                        居酒屋 → 赤黄色 × 手書き風 × 情報ぎっしり（<strong>近接</strong>で価格を強調）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    👀 ターゲットが違えば、「正解」のデザインも違う
+                </div>
+
+                <!-- 画像プレースホルダー -->
+                <div class="two-column tiled" style="margin-top: 1.5rem;">
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+                        <div style="color: #888; font-size: clamp(1.5rem, 2vw, 2rem); margin-top: 0.5rem; margin-bottom: 2rem;">高級和食店の看板</div>
+                        <div style="background: #1a1a2e; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                            <img src="../assets/images/img_000_prologue_01-01.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+                        </div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+                        <div style="color: #888; font-size: clamp(1.5rem, 2vw, 2rem); margin-top: 0.5rem; margin-bottom: 2rem;">気軽な居酒屋の看板</div>
+                        <div style="background: #1a1a2e; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                            <img src="../assets/images/img_000_prologue_01-02.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: 事例2 - バナー -->
+        <div class="slide-container">
+            <h2 class="slide-title">事例②：Webバナー（Good vs Bad）</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Bad</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <rect x="0" y="0" width="350" height="200" fill="#2a2a3e" rx="8"/>
+                        <!-- ごちゃごちゃしたレイアウト -->
+                        <text x="30" y="35" fill="#e74c3c" font-size="14">★期間限定★</text>
+                        <text x="180" y="50" fill="#f1c40f" font-size="18">SALE</text>
+                        <text x="60" y="80" fill="#fff" font-size="12">最大50%OFF</text>
+                        <text x="200" y="75" fill="#3498db" font-size="11">送料無料</text>
+                        <text x="100" y="110" fill="#fff" font-size="16">今すぐチェック！</text>
+                        <rect x="40" y="130" width="100" height="30" fill="#e74c3c" rx="4"/>
+                        <text x="90" y="150" text-anchor="middle" fill="#fff" font-size="11">購入する</text>
+                        <rect x="180" y="125" width="120" height="35" fill="#3498db" rx="4"/>
+                        <text x="240" y="148" text-anchor="middle" fill="#fff" font-size="12">詳細を見る</text>
+                        <text x="280" y="190" fill="#888" font-size="9">～3/31まで</text>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #f87171;">
+                        問題点：<br>
+                        ・整列なし（バラバラ配置）<br>
+                        ・対比が弱い（どれが重要？）<br>
+                        ・CTAが2つで迷う
+                    </p>
+                </div>
+                <div>
+                    <h3>✅ Good</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <rect x="0" y="0" width="350" height="200" fill="#1a1a2e" rx="8"/>
+                        <!-- 整理されたレイアウト -->
+                        <text x="175" y="40" text-anchor="middle" fill="#888" font-size="12">期間限定 ～3/31</text>
+                        <text x="175" y="80" text-anchor="middle" fill="#fff" font-size="28" font-weight="bold">最大50%OFF</text>
+                        <text x="175" y="105" text-anchor="middle" fill="#00d4ff" font-size="14">送料無料キャンペーン中</text>
+                        <rect x="100" y="130" width="150" height="45" fill="#00d4ff" rx="8"/>
+                        <text x="175" y="158" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">今すぐ購入</text>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #4ade80;">
+                        改善点：<br>
+                        ・整列：中央揃えで統一<br>
+                        ・対比：50%OFFを最大サイズ<br>
+                        ・近接：関連情報をグループ化
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: 事例3 - Webサイト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">事例③：WebサイトのLP</h2>
+            <div class="content-block">
+                <h3>SaaS製品のランディングページを分析</h3>
+                
+                <h3>3つの質問で読み解く</h3>
+                <ul style="list-style: none;"></ul>
+                    <li><strong>❶ 誰向け？</strong> → 中小企業の経営者・管理職、業務効率化に悩む人</li>
+                    <li><strong>❷ 何を伝えたい？</strong> → この製品で時間とコストが削減できる</li>
+                    <li><strong>❸ なぜこの表現？</strong> → 4原則（近接・整列・反復・対比）を徹底しているから</li>
+                </ul>
+                
+                <h3>4原則で分解</h3>
+                <ul>
+                    <li><strong>近接</strong>：「機能」「料金」「事例」がセクションで明確に分離</li>
+                    <li><strong>整列</strong>：全要素が左揃え or 中央揃えで統一</li>
+                    <li><strong>反復</strong>：ブランドカラー（青）がボタン・見出し・アイコンに一貫使用</li>
+                    <li><strong>対比</strong>：CTAボタンだけオレンジ色で目立たせている</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「なんとなくプロっぽい」の正体は、4原則の徹底
+                </div>
+                
+                <!-- Good vs Bad 比較 -->
+                <div class="two-column tiled" style="margin-top: 1.5rem;">
+                    <div>
+                        <h3>❌ Bad</h3>
+                        <svg class="generated-art" viewBox="0 0 350 450">
+                            <!-- ブラウザフレーム -->
+                            <rect x="0" y="0" width="350" height="450" fill="#1a1a2e" rx="8"/>
+                            <rect x="0" y="0" width="350" height="25" fill="#2a2a3e" rx="8"/>
+                            <rect x="0" y="17" width="350" height="10" fill="#2a2a3e"/>
+                            <circle cx="15" cy="12" r="5" fill="#ff5f57"/>
+                            <circle cx="32" cy="12" r="5" fill="#febc2e"/>
+                            <circle cx="49" cy="12" r="5" fill="#28c840"/>
+                            
+                            <!-- ヘッダー（整列バラバラ） -->
+                            <rect x="10" y="35" width="60" height="12" fill="#666" rx="2"/>
+                            <rect x="250" y="35" width="40" height="10" fill="#555" rx="2"/>
+                            <rect x="300" y="37" width="35" height="10" fill="#555" rx="2"/>
+                            
+                            <!-- ヒーローセクション（整列・近接なし） -->
+                            <text x="30" y="80" fill="#888" font-size="10">業務効率化ツール</text>
+                            <text x="175" y="110" text-anchor="middle" fill="#aaa" font-size="16">時間とコストを削減</text>
+                            <text x="100" y="135" fill="#666" font-size="9">中小企業向けの最適なソリューション</text>
+                            
+                            <!-- CTAボタン（埋もれている・色バラバラ） -->
+                            <rect x="50" y="150" width="80" height="25" fill="#4a7c59" rx="4"/>
+                            <text x="90" y="167" text-anchor="middle" fill="#fff" font-size="9">無料で始める</text>
+                            <rect x="200" y="148" width="90" height="28" fill="#5a5a8a" rx="4"/>
+                            <text x="245" y="166" text-anchor="middle" fill="#fff" font-size="9">詳細を見る</text>
+                            
+                            <!-- 機能セクション（近接なし・色バラバラ） -->
+                            <text x="175" y="205" text-anchor="middle" fill="#888" font-size="11">主な機能</text>
+                            
+                            <rect x="20" y="220" width="90" height="70" fill="rgba(106,90,205,0.2)" stroke="#6a5acd" stroke-width="1" rx="4"/>
+                            <circle cx="65" cy="240" r="12" fill="#6a5acd" opacity="0.5"/>
+                            <rect x="35" y="260" width="60" height="6" fill="#666" rx="1"/>
+                            <rect x="40" y="272" width="50" height="4" fill="#555" rx="1"/>
+                            
+                            <rect x="130" y="225" width="90" height="70" fill="rgba(60,179,113,0.2)" stroke="#3cb371" stroke-width="1" rx="4"/>
+                            <rect x="155" y="240" width="24" height="24" fill="#3cb371" opacity="0.5" rx="4"/>
+                            <rect x="145" y="272" width="60" height="6" fill="#666" rx="1"/>
+                            <rect x="155" y="282" width="40" height="4" fill="#555" rx="1"/>
+                            
+                            <rect x="240" y="218" width="90" height="70" fill="rgba(255,140,0,0.2)" stroke="#ff8c00" stroke-width="1" rx="4"/>
+                            <polygon points="285,235 275,255 295,255" fill="#ff8c00" opacity="0.5"/>
+                            <rect x="255" y="265" width="60" height="6" fill="#666" rx="1"/>
+                            <rect x="260" y="275" width="50" height="4" fill="#555" rx="1"/>
+                            
+                            <!-- 料金セクション（区切りが曖昧） -->
+                            <text x="50" y="320" fill="#888" font-size="11">料金プラン</text>
+                            
+                            <rect x="20" y="330" width="100" height="50" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1" rx="4"/>
+                            <text x="70" y="350" text-anchor="middle" fill="#aaa" font-size="10">スタンダード</text>
+                            <text x="70" y="368" text-anchor="middle" fill="#888" font-size="12">¥980/月</text>
+                            
+                            <rect x="125" y="335" width="100" height="50" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1" rx="4"/>
+                            <text x="175" y="355" text-anchor="middle" fill="#aaa" font-size="10">プロ</text>
+                            <text x="175" y="373" text-anchor="middle" fill="#888" font-size="12">¥2,980/月</text>
+                            
+                            <rect x="230" y="328" width="100" height="50" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1" rx="4"/>
+                            <text x="280" y="348" text-anchor="middle" fill="#aaa" font-size="10">エンタープライズ</text>
+                            <text x="280" y="366" text-anchor="middle" fill="#888" font-size="12">お問い合わせ</text>
+                            
+                            <!-- フッター -->
+                            <rect x="0" y="410" width="350" height="40" fill="#222"/>
+                            <rect x="20" y="425" width="50" height="6" fill="#444" rx="1"/>
+                            <rect x="150" y="425" width="40" height="6" fill="#444" rx="1"/>
+                            <rect x="280" y="425" width="50" height="6" fill="#444" rx="1"/>
+                        </svg>
+                        <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #f87171;">
+                            問題点：<br>
+                            ・整列が混在（左・中央バラバラ）<br>
+                            ・色に統一感なし（緑・紫・オレンジ混在）<br>
+                            ・CTAが埋もれて目立たない<br>
+                            ・セクション間の余白が不均一
+                        </p>
+                    </div>
+                    <div>
+                        <h3>✅ Good</h3>
+                        <svg class="generated-art" viewBox="0 0 350 450">
+                            <!-- ブラウザフレーム -->
+                            <rect x="0" y="0" width="350" height="450" fill="#1a1a2e" rx="8"/>
+                            <rect x="0" y="0" width="350" height="25" fill="#2a2a3e" rx="8"/>
+                            <rect x="0" y="17" width="350" height="10" fill="#2a2a3e"/>
+                            <circle cx="15" cy="12" r="5" fill="#ff5f57"/>
+                            <circle cx="32" cy="12" r="5" fill="#febc2e"/>
+                            <circle cx="49" cy="12" r="5" fill="#28c840"/>
+                            
+                            <!-- ヘッダー（整列統一） -->
+                            <rect x="20" y="35" width="60" height="12" fill="#3b82f6" rx="2"/>
+                            <rect x="220" y="37" width="35" height="10" fill="#555" rx="2"/>
+                            <rect x="265" y="37" width="35" height="10" fill="#555" rx="2"/>
+                            <rect x="310" y="37" width="25" height="10" fill="#555" rx="2"/>
+                            
+                            <!-- ヒーローセクション（中央揃え統一・近接） -->
+                            <text x="175" y="75" text-anchor="middle" fill="#3b82f6" font-size="10">業務効率化ツール</text>
+                            <text x="175" y="100" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">時間とコストを削減</text>
+                            <text x="175" y="120" text-anchor="middle" fill="#888" font-size="10">中小企業向けの最適なソリューション</text>
+                            
+                            <!-- CTAボタン（対比で目立つ） -->
+                            <rect x="100" y="135" width="150" height="35" fill="#f97316" rx="6"/>
+                            <text x="175" y="158" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">無料で始める</text>
+                            
+                            <!-- 機能セクション（近接でグループ化・反復で色統一） -->
+                            <line x1="30" y1="190" x2="320" y2="190" stroke="#333" stroke-width="1"/>
+                            <text x="175" y="210" text-anchor="middle" fill="#fff" font-size="12">主な機能</text>
+                            
+                            <rect x="20" y="225" width="95" height="70" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1" rx="4"/>
+                            <circle cx="67" cy="245" r="12" fill="#3b82f6" opacity="0.3"/>
+                            <rect x="37" y="265" width="60" height="6" fill="#888" rx="1"/>
+                            <rect x="42" y="277" width="50" height="4" fill="#666" rx="1"/>
+                            
+                            <rect x="127" y="225" width="95" height="70" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1" rx="4"/>
+                            <circle cx="175" cy="245" r="12" fill="#3b82f6" opacity="0.3"/>
+                            <rect x="145" y="265" width="60" height="6" fill="#888" rx="1"/>
+                            <rect x="150" y="277" width="50" height="4" fill="#666" rx="1"/>
+                            
+                            <rect x="235" y="225" width="95" height="70" fill="rgba(59,130,246,0.1)" stroke="#3b82f6" stroke-width="1" rx="4"/>
+                            <circle cx="282" cy="245" r="12" fill="#3b82f6" opacity="0.3"/>
+                            <rect x="252" y="265" width="60" height="6" fill="#888" rx="1"/>
+                            <rect x="257" y="277" width="50" height="4" fill="#666" rx="1"/>
+                            
+                            <!-- 料金セクション（明確に分離・整列統一） -->
+                            <line x1="30" y1="315" x2="320" y2="315" stroke="#333" stroke-width="1"/>
+                            <text x="175" y="335" text-anchor="middle" fill="#fff" font-size="12">料金プラン</text>
+                            
+                            <rect x="20" y="350" width="95" height="55" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1" rx="4"/>
+                            <text x="67" y="370" text-anchor="middle" fill="#aaa" font-size="10">スタンダード</text>
+                            <text x="67" y="390" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">¥980/月</text>
+                            
+                            <rect x="127" y="350" width="95" height="55" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2" rx="4"/>
+                            <text x="175" y="365" text-anchor="middle" fill="#3b82f6" font-size="8">人気</text>
+                            <text x="175" y="380" text-anchor="middle" fill="#aaa" font-size="10">プロ</text>
+                            <text x="175" y="398" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">¥2,980/月</text>
+                            
+                            <rect x="235" y="350" width="95" height="55" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1" rx="4"/>
+                            <text x="282" y="370" text-anchor="middle" fill="#aaa" font-size="10">エンタープライズ</text>
+                            <text x="282" y="390" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">お問い合わせ</text>
+                            
+                            <!-- フッター -->
+                            <rect x="0" y="420" width="350" height="30" fill="#222"/>
+                            <rect x="20" y="432" width="50" height="6" fill="#444" rx="1"/>
+                            <rect x="150" y="432" width="40" height="6" fill="#444" rx="1"/>
+                            <rect x="280" y="432" width="50" height="6" fill="#444" rx="1"/>
+                        </svg>
+                        <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 1rem; color: #4ade80;">
+                            改善点：<br>
+                            ・整列：中央揃えで統一<br>
+                            ・反復：青で色を統一<br>
+                            ・対比：CTAだけオレンジで目立つ<br>
+                            ・近接：セクション間に区切り線
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド20: 実践のコツ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">言語化を習慣にするコツ</h2>
+            <div class="content-block">
+                <h3>日常でできるトレーニング</h3>
+                <ul>
+                    <li><strong>電車の中吊り広告</strong>：3つの質問を頭の中で回答してみる</li>
+                    <li><strong>コンビニの商品棚</strong>：なぜこのパッケージはこの色？</li>
+                    <li><strong>スマホのアプリ</strong>：なぜこのボタンは大きい？</li>
+                </ul>
+                
+                <h3>やってはいけないこと</h3>
+                <ul>
+                    <li>❌ 「好き/嫌い」で終わらせる</li>
+                    <li>❌ 「おしゃれ/ダサい」で片付ける</li>
+                    <li>❌ 理由を考えずに「いいね」する</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 最初は時間がかかっても、慣れれば一瞬で分析できるようになる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: まとめ - タイル -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">今日のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>3つの質問</h3>
+                    <p>誰向け？<br>何を伝えたい？<br>なぜこの表現？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📐</div>
+                    <h3>4原則</h3>
+                    <p>近接・整列<br>反復・対比</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">💬</div>
+                    <h3>言語化</h3>
+                    <p>「なんとなく」を<br>「〇〇だから」に</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔄</div>
+                    <h3>習慣化</h3>
+                    <p>日常で見かける<br>デザインを分析</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: 次のステップ -->
+        <div class="slide-container big-concept-layout">
+            <h2>次のステップ</h2>
+            <p>本編では「自分で作る」ためのスキルを学びます。<br>今日の「見る目」が、作る力の土台になります。</p>
+        </div>
+
+         <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "デザインを分析する3つの質問の正しい順番は？",
+                options: [
+                    "なぜこの表現？ → 誰向け？ → 何を伝えたい？",
+                    "誰向け？ → 何を伝えたい？ → なぜこの表現？",
+                    "何を伝えたい？ → なぜこの表現？ → 誰向け？",
+                    "どれから始めても同じ"
+                ],
+                correct: 1,
+                explanation: "まず「誰向け？」でターゲットを特定し、次に「何を伝えたい？」でメッセージを確認、最後に「なぜこの表現？」で手法を分析します。この順番でなければ、デザインの意図を正しく理解できません。"
+            },
+            {
+                question: "「近接（Proximity）」の原則が意味することは？",
+                options: [
+                    "すべての要素を均等に配置する",
+                    "関連する情報をグループ化して近づける",
+                    "重要な情報を大きく表示する",
+                    "同じデザイン要素を繰り返す"
+                ],
+                correct: 1,
+                explanation: "近接の原則は、関連する要素を物理的に近づけることで、視覚的なグループを作ります。これにより情報の関連性が直感的にわかりやすくなります。"
+            },
+            {
+                question: "高級和食店と気軽な居酒屋の看板デザインが異なる理由は？",
+                options: [
+                    "デザイナーの好みが違うから",
+                    "予算が違うから",
+                    "ターゲットと伝えたいメッセージが違うから",
+                    "流行が違うから"
+                ],
+                correct: 2,
+                explanation: "デザインはターゲット（誰向け？）と伝えたいメッセージ（何を伝えたい？）によって「正解」が変わります。高級店と居酒屋では、求める顧客層も与えたい印象も異なるため、デザインも変わります。"
+            },
+            {
+                question: "Webバナーで「CTAボタンだけ色を変える」のは、どの原則の適用？",
+                options: [
+                    "近接（Proximity）",
+                    "整列（Alignment）",
+                    "反復（Repetition）",
+                    "対比（Contrast）"
+                ],
+                correct: 3,
+                explanation: "対比（Contrast）は、重要な要素を他と明確に差別化することで、視線を誘導します。CTAボタンの色を変えることで「ここを押してほしい」というメッセージを視覚的に伝えています。"
+            },
+            {
+                question: "「なんかいい感じ」を「〇〇だから良い」に変えるために必要なことは？",
+                options: [
+                    "デザインの勉強を何年もする",
+                    "高価なデザインツールを買う",
+                    "3つの質問と4原則で言語化する習慣をつける",
+                    "デザイナーに任せる"
+                ],
+                correct: 2,
+                explanation: "言語化は才能ではなくスキルです。3つの質問（誰向け？何を伝えたい？なぜこの表現？）と4原則（近接・整列・反復・対比）というフレームワークを使えば、誰でもデザインを論理的に分析できるようになります。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

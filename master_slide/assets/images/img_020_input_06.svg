@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 400">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #ccc;
+        font-size: 10px;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11 {
+        isolation: isolate;
+      }
+
+      .st0, .st3, .st7, .st9 {
+        font-family: KozGoPr6N-Regular-83pv-RKSJ-H, 'Kozuka Gothic Pr6N';
+      }
+
+      .st1 {
+        fill: #fff;
+        font-family: KozGoPr6N-Bold-83pv-RKSJ-H, 'Kozuka Gothic Pr6N';
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .st2, .st5, .st8 {
+        opacity: .3;
+      }
+
+      .st2, .st7, .st11 {
+        fill: #a855f7;
+      }
+
+      .st3, .st5, .st6 {
+        fill: #4ecdc4;
+      }
+
+      .st3, .st6, .st7, .st9, .st10, .st11 {
+        font-size: 12px;
+      }
+
+      .st6, .st10, .st11 {
+        font-family: ArialMT, Arial;
+      }
+
+      .st8, .st9, .st10 {
+        fill: #00d4ff;
+      }
+    </style>
+  </defs>
+  <polygon class="st2" points="400 31 311.8 131 488.2 131 400 31"/>
+  <g class="st4">
+    <text class="st1" transform="translate(379 96)"><tspan x="0" y="0">判断力</tspan></text>
+  </g>
+  <g class="st4">
+    <text class="st0" transform="translate(355 116)"><tspan x="0" y="0">良し悪しを見極める</tspan></text>
+  </g>
+  <polygon class="st8" points="310 133 205.9 251 594.1 251 490 133 310 133"/>
+  <g>
+    <g class="st4">
+      <text class="st1" transform="translate(372 185.5)"><tspan x="0" y="0">言語化力</tspan></text>
+    </g>
+    <g class="st4">
+      <text class="st0" transform="translate(345 205.5)"><tspan x="0" y="0">理由を論理的に説明する</tspan></text>
+    </g>
+  </g>
+  <polygon class="st5" points="204.1 253 100 371 700 371 595.9 253 204.1 253"/>
+  <g>
+    <g class="st4">
+      <text class="st1" transform="translate(386 305.5)"><tspan x="0" y="0">知識</tspan></text>
+    </g>
+    <g class="st4">
+      <text class="st0" transform="translate(345 325.5)"><tspan x="0" y="0">原則・理論・ツール操作</tspan></text>
+    </g>
+  </g>
+  <g class="st4">
+    <text class="st11" transform="translate(487.8 85.9)"><tspan x="0" y="0">← </tspan></text>
+    <text class="st7" transform="translate(503.1 86.2)"><tspan x="0" y="0">ディレクション</tspan></text>
+  </g>
+  <g class="st4">
+    <text class="st10" transform="translate(593.7 195.8)"><tspan x="0" y="0">← </tspan></text>
+    <text class="st9" transform="translate(609 196.1)"><tspan x="0" y="0">フィードバック</tspan></text>
+  </g>
+  <g class="st4">
+    <text class="st6" transform="translate(699.5 315.5)"><tspan x="0" y="0">← </tspan></text>
+    <text class="st3" transform="translate(714.8 315.8)"><tspan x="0" y="0">基礎理解</tspan></text>
+  </g>
+</svg>

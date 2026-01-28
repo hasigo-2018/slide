@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理論編 - デザイン原則講義</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- CORE CSS --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        
+        #presentation-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100%;
+            aspect-ratio: 16 / 9;
+        }
+        
+        @media (min-aspect-ratio: 16/9) {
+            #presentation-wrapper {
+                height: 100vh;
+                width: calc(100vh * 16 / 9);
+            }
+        }
+        
+        @media (max-aspect-ratio: 16/9) {
+            #presentation-wrapper {
+                width: 100vw;
+                height: calc(100vw * 9 / 16);
+            }
+        }
+        
+        .slide-container {
+            align-items: center;
+            background-color: #121212;
+            border-radius: 0;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            height: 100%;
+            justify-content: center;
+            overflow: hidden;
+            padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 5vw, 4rem);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            z-index: 0;
+        }
+        
+        .slide-container.active {
+            display: flex;
+            z-index: 10;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide-container.bleed-image-layout.active {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+            padding: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(62,184,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 35%;
+            height: 35%;
+            background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .slide-container h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+        }
+        
+        .slide-container .slide-title {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 600;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            border-left: 6px solid #00d4ff;
+            padding-left: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .slide-container h3 {
+            font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+        }
+        
+        .slide-container p, .slide-container li {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+        }
+        
+        ul {
+            padding-left: clamp(1.5rem, 3vw, 2rem);
+        }
+        
+        .full-bg-image {
+            padding: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%),
+                        linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .full-bg-image .content-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 5vw, 4rem);
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 80%;
+        }
+        
+        .full-bg-image h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        .section-title-layout {
+            text-align: center;
+            border: 2px solid #333;
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+            background: rgba(255,255,255,0.03);
+            width: 80%;
+        }
+        
+        .section-title-layout h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .section-title-layout hr {
+            width: clamp(80px, 10vw, 100px);
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080);
+            border: none;
+            margin: 0 auto clamp(1.5rem, 3vh, 2rem) auto;
+        }
+
+        .two-column.tiled {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+            height: 80%;
+        }
+        
+        .two-column.tiled > div {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vh, 2.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .slide-container.bleed-image-layout .content-container {
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .slide-container.bleed-image-layout .image-container {
+            height: 100%;
+            width: 100%;
+            background: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tiled-content {
+            display: flex;
+            gap: clamp(1.5rem, 3vw, 2rem);
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .tile {
+            flex: 1;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vh, 2rem);
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .tile .icon {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+            display: inline-block;
+            width: clamp(60px, 8vw, 80px);
+            height: clamp(60px, 8vw, 80px);
+            line-height: clamp(60px, 8vw, 80px);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            color: #00d4ff;
+        }
+
+        .standard-content-layout {
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: clamp(4rem, 8vh, 6rem);
+        }
+        
+        .standard-content-layout .content-block {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: clamp(1.5rem, 3vh, 2.5rem);
+            width: 100%;
+            border: 1px solid #333;
+        }
+        
+        .big-concept-layout {
+            text-align: center;
+        }
+        
+        .big-concept-layout h2 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            background: linear-gradient(45deg, #00d4ff, #00ff9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .big-concept-layout p {
+            font-size: clamp(1.2rem, 2vw, 1.75rem);
+            max-width: 80%;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(1rem, 2.5vw, 2rem);
+            width: 100%;
+            height: 75%;
+        }
+        
+        .three-column > div {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: clamp(1rem, 2.5vh, 2rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid #00d4ff;
+            padding: clamp(1rem, 2vh, 1.5rem);
+            margin-top: clamp(1rem, 2vh, 1.5rem);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            color: #fff;
+        }
+        
+        svg.generated-art {
+            width: 80%;
+            height: 80%;
+            z-index: 2;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+        
+        .footer-copyright {
+            position: absolute;
+            bottom: clamp(0.8rem, 2vh, 1.5rem);
+            left: clamp(0.8rem, 2vw, 1.5rem);
+            font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 100;
+        }
+        
+        .control-hint {
+            position: fixed;
+            bottom: clamp(1rem, 2vh, 1.5rem);
+            right: clamp(1rem, 2vw, 1.5rem);
+            color: #444;
+            font-size: clamp(0.6rem, 1vw, 0.75rem);
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: clamp(0.8rem, 2vh, 1.5rem);
+            right: clamp(0.8rem, 2vw, 1.5rem);
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<div id="presentation-wrapper">
+
+<!-- スライド1: タイトル -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h2>デザイン4原則</h2>
+        <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); margin-top: 1.5rem;">
+            センスに頼らないデザインの基礎
+        </p>
+    </div>
+</div>
+
+<!-- スライド2: 問題提起 -->
+<div class="slide-container big-concept-layout">
+    <h2>「デザインセンスがない」<br>は、本当か？</h2>
+    <p>デザインは感覚ではなく、学べる論理体系です</p>
+</div>
+
+<!-- スライド3: アジェンダ -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">本日学ぶこと</h2>
+    <div class="content-block">
+        <ul>
+            <li><strong>デザインとアートの違い</strong> - なぜデザインは論理なのか</li>
+            <li><strong>4つのデザイン原則</strong> - 整列、近接、反復、コントラスト</li>
+            <li><strong>認知科学の基礎</strong> - 人間の脳はどう情報を処理するか</li>
+            <li><strong>実践への応用</strong> - 明日から使える具体的な手法</li>
+        </ul>
+        <div class="highlight-box">
+            💡 今日学ぶ原則は、すべてのビジュアルコミュニケーションに応用できます
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: デザインの定義 -->
+<div class="slide-container bleed-image-layout">
+    <div class="content-container">
+        <h2 class="slide-title">デザインとは何か</h2>
+        <h3>アートとの違い</h3>
+        <p><strong>アート：</strong>自己表現、感情の発露、解釈は自由</p>
+        <p><strong>デザイン：</strong>問題解決、明確な目的、意図した反応を引き出す</p>
+        <div class="highlight-box">
+            デザインは「誰に、何を、どう伝えるか」を設計する工学です
+        </div>
+    </div>
+    <div class="image-container">
+        <svg class="generated-art" viewBox="0 0 400 300">
+            <!-- アート側 -->
+            <rect x="20" y="50" width="160" height="200" fill="none" stroke="#ff0080" stroke-width="2" rx="8"/>
+            <text x="100" y="30" text-anchor="middle" fill="#ff0080" font-size="16" font-weight="bold">アート</text>
+            <circle cx="100" cy="120" r="30" fill="#ff0080" opacity="0.3"/>
+            <path d="M 70 180 Q 100 150 130 180" stroke="#ff0080" stroke-width="3" fill="none"/>
+            <text x="100" y="230" text-anchor="middle" fill="#e0e0e0" font-size="12">自由な解釈</text>
+            
+            <!-- デザイン側 -->
+            <rect x="220" y="50" width="160" height="200" fill="none" stroke="#00d4ff" stroke-width="2" rx="8"/>
+            <text x="300" y="30" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">デザイン</text>
+            <rect x="260" y="90" width="80" height="50" fill="#00d4ff" opacity="0.3" rx="4"/>
+            <rect x="260" y="150" width="80" height="30" fill="#00d4ff" opacity="0.5" rx="4"/>
+            <text x="300" y="230" text-anchor="middle" fill="#e0e0e0" font-size="12">明確な目的</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド5: なぜ原則が必要か -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">なぜデザイン原則が必要なのか</h2>
+    <div class="content-block">
+        <h3>認知科学からの答え</h3>
+        <p>人間の脳は、情報を処理する際に特定のパターンを好みます。これは生存本能に根ざした進化の結果です。</p>
+        
+        <h3>デザイン原則が果たす役割</h3>
+        <ul>
+            <li><strong>認知負荷の軽減：</strong>脳が情報を理解するコストを下げる</li>
+            <li><strong>視覚的秩序：</strong>混沌とした情報に構造を与える</li>
+            <li><strong>意図の伝達：</strong>重要な情報を確実に届ける</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⚠️ 原則を無視すると、どんなに美しい装飾でも「読みにくい」デザインになります
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 4原則の全体像 -->
+<div class="slide-container">
+    <h2 class="slide-title">4つのデザイン原則</h2>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon">⊞</div>
+            <h3>整列</h3>
+            <p>Alignment</p>
+        </div>
+        <div class="tile">
+            <div class="icon">⊡</div>
+            <h3>近接</h3>
+            <p>Proximity</p>
+        </div>
+        <div class="tile">
+            <div class="icon">⊚</div>
+            <h3>反復</h3>
+            <p>Repetition</p>
+        </div>
+        <div class="tile">
+            <div class="icon">◐</div>
+            <h3>コントラスト</h3>
+            <p>Contrast</p>
+        </div>
+    </div>
+</div>
+
+<!-- === 整列（Alignment） === -->
+
+<!-- スライド7: 整列 - 定義 -->
+<div class="slide-container section-title-layout">
+    <h2>整列（Alignment）</h2>
+    <hr>
+    <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #e0e0e0;">
+        すべての要素を見えない線で揃える
+    </p>
+</div>
+
+<!-- スライド8: 整列 - 詳細解説 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">整列の効果</h2>
+    <div class="content-block">
+        <h3>なぜ必要か</h3>
+        <p>整列されていない要素は、脳に「無秩序」というシグナルを送ります。これにより、情報の信頼性が低下し、読む意欲が失われます。</p>
+        
+        <h3>どう使うか</h3>
+        <ul>
+            <li><strong>ステップ1：</strong>見えないグリッド線を想定する</li>
+            <li><strong>ステップ2：</strong>すべての要素の左端（または右端）を同じ位置に揃える</li>
+            <li><strong>ステップ3：</strong>中央揃えは最小限に（タイトルのみなど）</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：左揃えと中央揃えを混在させる → 視線の動きが複雑になり疲れる
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: 整列 - Before/After -->
+<div class="slide-container">
+    <h2 class="slide-title">整列：Before vs After</h2>
+    <div class="two-column tiled">
+        <div>
+            <h3>❌ Before（整列なし）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- バラバラな配置 -->
+                <text x="50" y="50" fill="#e0e0e0" font-size="16" font-weight="bold">山田太郎</text>
+                <text x="80" y="100" fill="#e0e0e0" font-size="12">営業部 マネージャー</text>
+                <text x="60" y="150" fill="#e0e0e0" font-size="11">Tel: 03-1234-5678</text>
+                <text x="90" y="190" fill="#e0e0e0" font-size="11">yamada@example.com</text>
+                <text x="40" y="230" fill="#e0e0e0" font-size="10">株式会社サンプル</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">問題点：要素がバラバラで視線が定まらない</p>
+        </div>
+        <div>
+            <h3>✅ After（整列適用）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- 左揃えで統一 -->
+                <line x1="50" y1="30" x2="50" y2="250" stroke="#00d4ff" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
+                <text x="50" y="50" fill="#e0e0e0" font-size="16" font-weight="bold">山田太郎</text>
+                <text x="50" y="80" fill="#e0e0e0" font-size="12">営業部 マネージャー</text>
+                <text x="50" y="140" fill="#e0e0e0" font-size="11">Tel: 03-1234-5678</text>
+                <text x="50" y="170" fill="#e0e0e0" font-size="11">yamada@example.com</text>
+                <text x="50" y="230" fill="#e0e0e0" font-size="10">株式会社サンプル</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">改善点：すべての要素が同じ軸に揃い、秩序が生まれる</p>
+        </div>
+    </div>
+</div>
+
+<!-- === 近接（Proximity） === -->
+
+<!-- スライド10: 近接 - 定義 -->
+<div class="slide-container section-title-layout">
+    <h2>近接（Proximity）</h2>
+    <hr>
+    <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #e0e0e0;">
+        関連する要素をグループ化する
+    </p>
+</div>
+
+<!-- スライド11: 近接 - 詳細解説 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">近接の効果</h2>
+    <div class="content-block">
+        <h3>なぜ必要か</h3>
+        <p>人間の脳は「近くにあるものは関連している」と自動的に判断します（ゲシュタルト心理学の「近接の法則」）。物理的な距離が、論理的な関係性を表します。</p>
+        
+        <h3>どう使うか</h3>
+        <ul>
+            <li><strong>ステップ1：</strong>情報を意味のあるグループに分類する</li>
+            <li><strong>ステップ2：</strong>グループ内の要素を近づける（余白を狭く）</li>
+            <li><strong>ステップ3：</strong>グループ間の余白を広げる（明確な分離）</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：すべての要素間の余白を均等にする → グループが識別できない
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: 近接 - Before/After -->
+<div class="slide-container">
+    <h2 class="slide-title">近接：Before vs After</h2>
+    <div class="two-column tiled">
+        <div>
+            <h3>❌ Before（近接なし）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- 均等な余白 -->
+                <text x="50" y="50" fill="#e0e0e0" font-size="14" font-weight="bold">連絡先</text>
+                <text x="50" y="90" fill="#e0e0e0" font-size="11">Tel: 03-1234-5678</text>
+                <text x="50" y="130" fill="#e0e0e0" font-size="11">Fax: 03-1234-5679</text>
+                <text x="50" y="170" fill="#e0e0e0" font-size="11">yamada@example.com</text>
+                <text x="50" y="210" fill="#e0e0e0" font-size="11">〒100-0001 東京都...</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">問題点：どれが関連しているか不明瞭</p>
+        </div>
+        <div>
+            <h3>✅ After（近接適用）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- グループ化された配置 -->
+                <text x="50" y="40" fill="#e0e0e0" font-size="14" font-weight="bold">連絡先</text>
+                
+                <rect x="45" y="55" width="200" height="55" fill="#00d4ff" opacity="0.1" rx="4"/>
+                <text x="50" y="75" fill="#e0e0e0" font-size="11">Tel: 03-1234-5678</text>
+                <text x="50" y="95" fill="#e0e0e0" font-size="11">Fax: 03-1234-5679</text>
+                
+                <rect x="45" y="125" width="200" height="45" fill="#00d4ff" opacity="0.1" rx="4"/>
+                <text x="50" y="145" fill="#e0e0e0" font-size="11">yamada@example.com</text>
+                
+                <rect x="45" y="185" width="250" height="25" fill="#00d4ff" opacity="0.1" rx="4"/>
+                <text x="50" y="200" fill="#e0e0e0" font-size="11">〒100-0001 東京都...</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">改善点：電話・メール・住所が明確に区別される</p>
+        </div>
+    </div>
+</div>
+
+<!-- === 反復（Repetition） === -->
+
+<!-- スライド13: 反復 - 定義 -->
+<div class="slide-container section-title-layout">
+    <h2>反復（Repetition）</h2>
+    <hr>
+    <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #e0e0e0;">
+        一貫性を持って要素を繰り返す
+    </p>
+</div>
+
+<!-- スライド14: 反復 - 詳細解説 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">反復の効果</h2>
+    <div class="content-block">
+        <h3>なぜ必要か</h3>
+        <p>反復はブランドアイデンティティを確立し、視覚的統一感を生み出します。同じ要素を繰り返すことで、プロフェッショナルな印象と信頼感を与えます。</p>
+        
+        <h3>どう使うか</h3>
+        <ul>
+            <li><strong>ステップ1：</strong>フォントを2〜3種類に限定する（見出し・本文・アクセント）</li>
+            <li><strong>ステップ2：</strong>ブランドカラーを決め、一貫して使用する</li>
+            <li><strong>ステップ3：</strong>形状やパターンを繰り返す（ボタンの角丸、区切り線など）</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：ページごとに異なるフォント・色を使う → バラバラな印象に
+        </div>
+    </div>
+</div>
+
+<!-- スライド15: 反復 - Before/After -->
+<div class="slide-container">
+    <h2 class="slide-title">反復：Before vs After</h2>
+    <div class="two-column tiled">
+        <div>
+            <h3>❌ Before（反復なし）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- バラバラなスタイル -->
+                <rect x="50" y="50" width="100" height="40" fill="#ff6b6b" rx="0"/>
+                <text x="100" y="75" text-anchor="middle" fill="white" font-size="12">ボタン1</text>
+                
+                <circle cx="100" cy="130" r="20" fill="#4ecdc4"/>
+                <text x="100" y="135" text-anchor="middle" fill="white" font-size="10">ボタン2</text>
+                
+                <rect x="50" y="180" width="120" height="30" fill="#95e1d3" rx="15"/>
+                <text x="110" y="200" text-anchor="middle" fill="#333" font-size="14" font-family="serif">ボタン3</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">問題点：形・色・フォントがバラバラで統一感なし</p>
+        </div>
+        <div>
+            <h3>✅ After（反復適用）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- 統一されたスタイル -->
+                <rect x="50" y="50" width="100" height="40" fill="#00d4ff" rx="8"/>
+                <text x="100" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ボタン1</text>
+                
+                <rect x="50" y="110" width="100" height="40" fill="#00d4ff" rx="8"/>
+                <text x="100" y="135" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ボタン2</text>
+                
+                <rect x="50" y="170" width="100" height="40" fill="#00d4ff" rx="8"/>
+                <text x="100" y="195" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ボタン3</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">改善点：同じ形・色・フォントを繰り返し、一貫性が生まれる</p>
+        </div>
+    </div>
+</div>
+
+<!-- === コントラスト（Contrast） === -->
+
+<!-- スライド16: コントラスト - 定義 -->
+<div class="slide-container section-title-layout">
+    <h2>コントラスト（Contrast）</h2>
+    <hr>
+    <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #e0e0e0;">
+        重要な要素を際立たせる
+    </p>
+</div>
+
+<!-- スライド17: コントラスト - 詳細解説 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">コントラストの効果</h2>
+    <div class="content-block">
+        <h3>なぜ必要か</h3>
+        <p>コントラストは視覚的なヒエラルキーを作り、重要な情報に視線を誘導します。差がなければ、すべてが同じ重要度に見え、何も伝わりません。</p>
+        
+        <h3>どう使うか</h3>
+        <ul>
+            <li><strong>サイズのコントラスト：</strong>見出しは本文の2〜3倍大きく</li>
+            <li><strong>色のコントラスト：</strong>重要なボタンは目立つ色に</li>
+            <li><strong>太さのコントラスト：</strong>強調したいテキストは太字（Bold）に</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：すべてを同じサイズ・色にする → 「何が重要か」が伝わらない
+        </div>
+    </div>
+</div>
+
+<!-- スライド18: コントラスト - Before/After -->
+<div class="slide-container">
+    <h2 class="slide-title">コントラスト：Before vs After</h2>
+    <div class="two-column tiled">
+        <div>
+            <h3>❌ Before（コントラストなし）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- すべて同じサイズ・色 -->
+                <text x="50" y="80" fill="#999" font-size="14">セミナー申込</text>
+                <text x="50" y="120" fill="#999" font-size="14">2025年1月15日</text>
+                <text x="50" y="160" fill="#999" font-size="14">定員30名</text>
+                <rect x="50" y="180" width="120" height="30" fill="#666" rx="4"/>
+                <text x="110" y="200" text-anchor="middle" fill="#999" font-size="14">申し込む</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">問題点：すべて同じ重要度に見える</p>
+        </div>
+        <div>
+            <h3>✅ After（コントラスト適用）</h3>
+            <svg class="generated-art" viewBox="0 0 400 300">
+                <!-- サイズ・色・太さで差をつける -->
+                <text x="50" y="70" fill="#fff" font-size="24" font-weight="bold">セミナー申込</text>
+                <text x="50" y="110" fill="#e0e0e0" font-size="14">2025年1月15日</text>
+                <text x="50" y="140" fill="#e0e0e0" font-size="14">定員30名</text>
+                <rect x="50" y="170" width="150" height="50" fill="#00d4ff" rx="8"/>
+                <text x="125" y="200" text-anchor="middle" fill="#000" font-size="18" font-weight="bold">申し込む</text>
+            </svg>
+            <p style="font-size: 1rem; margin-top: 1rem;">改善点：タイトルとボタンが明確に際立つ</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド19: 補足理論 - ゲシュタルト心理学 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">補足：ゲシュタルト心理学</h2>
+    <div class="content-block">
+        <h3>人間の視覚認知の法則</h3>
+        <ul>
+            <li><strong>近接の法則：</strong>近くにあるものは関連していると認識する</li>
+            <li><strong>類同の法則：</strong>似ているものは同じグループと認識する</li>
+            <li><strong>閉合の法則：</strong>不完全な図形でも補完して認識する</li>
+            <li><strong>連続の法則：</strong>滑らかに続く線は一つのまとまりと認識する</li>
+        </ul>
+        <div class="highlight-box">
+            💡 4つのデザイン原則は、これらの認知法則を実務に応用したものです
+        </div>
+    </div>
+</div>
+
+<!-- スライド20: 補足理論 - 視線誘導 -->
+<div class="slide-container bleed-image-layout">
+    <div class="content-container">
+        <h2 class="slide-title">視線誘導のパターン</h2>
+        <h3>F型パターン（縦長レイアウト）</h3>
+        <p>Webページや文書は、左上から右、次に左下へ移動するF字型の視線で読まれます。</p>
+        
+        <h3>Z型パターン（横長レイアウト）</h3>
+        <p>プレゼンやポスターは、左上→右上→左下→右下のZ字型で視線が移動します。</p>
+        
+        <div class="highlight-box">
+            💡 重要な情報は、視線の開始点（左上）と終点（右下）に配置する
+        </div>
+    </div>
+    <div class="image-container">
+        <svg class="generated-art" viewBox="0 0 400 400">
+            <!-- F型パターン -->
+            <text x="50" y="30" fill="#00d4ff" font-size="14" font-weight="bold">F型（縦長）</text>
+            <path d="M 50 60 L 180 60 M 50 60 L 50 180 M 50 120 L 150 120" 
+                  stroke="#00d4ff" stroke-width="4" fill="none" marker-end="url(#arrowF)"/>
+            
+            <!-- Z型パターン -->
+            <text x="50" y="250" fill="#ff0080" font-size="14" font-weight="bold">Z型（横長）</text>
+            <path d="M 50 280 L 180 280 L 50 360 L 180 360" 
+                  stroke="#ff0080" stroke-width="4" fill="none" marker-end="url(#arrowZ)"/>
+            
+            <defs>
+                <marker id="arrowF" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#00d4ff"/>
+                </marker>
+                <marker id="arrowZ" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#ff0080"/>
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド21: まとめ - 4原則の復習 -->
+<div class="slide-container">
+    <h2 class="slide-title">4原則のまとめ</h2>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon">⊞</div>
+            <h3>整列</h3>
+            <p>要素を揃えて<br>秩序を作る</p>
+        </div>
+        <div class="tile">
+            <div class="icon">⊡</div>
+            <h3>近接</h3>
+            <p>関連要素を<br>グループ化</p>
+        </div>
+        <div class="tile">
+            <div class="icon">⊚</div>
+            <h3>反復</h3>
+            <p>一貫性を持って<br>繰り返す</p>
+        </div>
+        <div class="tile">
+            <div class="icon">◐</div>
+            <h3>コントラスト</h3>
+            <p>重要な要素を<br>際立たせる</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド22: 次のステップ -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">明日から実践できること</h2>
+    <div class="content-block">
+        <h3>今日学んだことを活かす3つのステップ</h3>
+        <ul>
+            <li><strong>ステップ1：</strong>既存の資料を4原則でチェックする<br>
+                <span style="font-size: 0.9rem; color: #999;">→ PowerPoint、Word文書、メールを見直してみましょう</span>
+            </li>
+            <li><strong>ステップ2：</strong>新しく作る資料で意識的に適用する<br>
+                <span style="font-size: 0.9rem; color: #999;">→ まずは「整列」だけでも劇的に変わります</span>
+            </li>
+            <li><strong>ステップ3：</strong>デザインツールで実践する<br>
+                <span style="font-size: 0.9rem; color: #999;">→ Canva、Figmaなどで手を動かして体得しましょう</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            💡 「センスがない」は言い訳になりません。今日から論理的にデザインできます。
+        </div>
+    </div>
+</div>
+
+<!-- スライド23: 終わり -->
+<div class="slide-container big-concept-layout">
+    <h2>デザインは<br>学べる技術です</h2>
+    <p>ご清聴ありがとうございました</p>
+</div>
+
+</div>
+
+<div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide-container');
+    const wrapper = document.getElementById('presentation-wrapper');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+        updateSlideNumbers();
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        showSlide(currentSlideIndex);
+    }
+
+    function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        showSlide(currentSlideIndex);
+    }
+
+    function updateSlideNumbers() {
+        const numbers = document.querySelectorAll('.slide-number');
+        numbers.forEach((num, i) => {
+            num.textContent = `${i + 1} / ${slides.length}`;
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'q' || e.key === 'Q') {
+            e.preventDefault();
+            startQuiz();
+        }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    wrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) prevSlide();
+    }
+
+    wrapper.addEventListener('click', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        if (clickX > rect.width / 2) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    });
+
+    const questions = [
+        {
+            question: "整列（Alignment）の主な目的は？",
+            options: [
+                "見た目を美しくする",
+                "視覚的な秩序と関連性を作る",
+                "スペースを埋める",
+                "カラフルにする"
+            ],
+            correct: 1,
+            explanation: "整列の目的は、要素間に視覚的な秩序を生み出し、情報の関連性を明確にすることです。単なる装飾ではありません。"
+        },
+        {
+            question: "近接（Proximity）の原則で、関連する要素はどうすべきですか？",
+            options: [
+                "できるだけ離す",
+                "ランダムに配置",
+                "グループ化して近づける",
+                "すべて中央に集める"
+            ],
+            correct: 2,
+            explanation: "関連する要素は物理的に近づけることで、視覚的なグループとして認識され、情報の理解が容易になります。"
+        },
+        {
+            question: "反復（Repetition）が生み出す効果は？",
+            options: [
+                "一貫性と統一感",
+                "変化と驚き",
+                "複雑さと深み",
+                "ランダムな印象"
+            ],
+            correct: 0,
+            explanation: "反復は、デザイン全体に一貫性と統一感を生み出します。色、フォント、形状などを繰り返すことで、プロフェッショナルな印象を与えます。"
+        },
+        {
+            question: "コントラスト（Contrast）を作る主な方法は？",
+            options: [
+                "すべて同じサイズにする",
+                "サイズ、色、フォントに差をつける",
+                "できるだけ似た色を使う",
+                "すべて小さく表示する"
+            ],
+            correct: 1,
+            explanation: "コントラストは、サイズ、色、フォント、太さなどに明確な差をつけることで生まれます。これにより重要な情報が際立ちます。"
+        },
+        {
+            question: "名刺デザインで最も優先すべき原則の組み合わせは？",
+            options: [
+                "整列 + 近接",
+                "反復 + コントラスト",
+                "すべて同等に重要",
+                "コントラストのみ"
+            ],
+            correct: 2,
+            explanation: "4つの原則はすべて相互に関連しており、どれか1つだけでは不十分です。整列で秩序を作り、近接で情報をグループ化し、反復で一貫性を持たせ、コントラストで重要情報を際立たせる必要があります。"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+        if (questions.length === 0) {
+            alert('クイズが設定されていません');
+            return;
+        }
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            showQuizResult();
+            return;
+        }
+
+        const q = questions[currentQuestionIndex];
+        const quizHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: clamp(2rem, 4vh, 3rem);">
+                    Quiz ${currentQuestionIndex + 1} / ${questions.length}
+                </h2>
+                <p style="font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin-bottom: clamp(2rem, 4vh, 3rem); max-width: 90%;">
+                    ${q.question}
+                </p>
+                <div id="quiz-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); width: 90%; max-width: 800px;">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="checkAnswer(${i})"
+                                style="padding: clamp(1rem, 2vh, 1.5rem);
+                                       font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+                                       background: rgba(255,255,255,0.1);
+                                       border: 2px solid #00d4ff;
+                                       color: white;
+                                       border-radius: 8px;
+                                       cursor: pointer;
+                                       transition: all 0.3s;">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        wrapper.innerHTML = quizHTML;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const q = questions[currentQuestionIndex];
+        const isCorrect = selectedIndex === q.correct;
+        
+        if (isCorrect) score++;
+        
+        const resultHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="color: ${isCorrect ? '#00ff9d' : '#ff0080'}; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: clamp(1.5rem, 3vh, 2rem);">
+                    ${isCorrect ? '正解！' : '不正解'}
+                </h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(1.5rem, 3vh, 2.5rem); max-width: 90%; width: 800px; text-align: left;">
+                    <p style="font-size: clamp(1rem, 1.8vw, 1.3rem); margin-bottom: clamp(1rem, 2vh, 1.5rem); color: #fff;">
+                        <strong>正解:</strong> ${q.options[q.correct]}
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 1.5vw, 1.1rem); line-height: 1.8; color: #e0e0e0;">
+                        ${q.explanation}
+                    </p>
+                </div>
+                <button onclick="nextQuestion()"
+                        style="margin-top: clamp(2rem, 4vh, 3rem);
+                               padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(2rem, 4vw, 3rem);
+                               font-size: clamp(1rem, 1.8vw, 1.3rem);
+                               background: linear-gradient(90deg, #00d4ff, #00ff9d);
+                               border: none;
+                               color: #000;
+                               font-weight: bold;
+                               border-radius: 8px;
+                               cursor: pointer;">
+                    次へ
+                </button>
+            </div>
+        `;
+        
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function showQuizResult() {
+        const percentage = Math.round((score / questions.length) * 100);
+        const resultHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: clamp(2rem, 4vh, 3rem);">
+                    クイズ終了！
+                </h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(2rem, 4vh, 3rem); max-width: 90%; width: 600px;">
+                    <p style="font-size: clamp(2rem, 4vw, 3rem); font-weight: bold; color: #00d4ff; margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+                        ${score} / ${questions.length} 問正解
+                    </p>
+                    <p style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: #fff;">
+                        正答率: ${percentage}%
+                    </p>
+                </div>
+                <button onclick="location.reload()"
+                        style="margin-top: clamp(2rem, 4vh, 3rem);
+                               padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(2rem, 4vw, 3rem);
+                               font-size: clamp(1rem, 1.8vw, 1.3rem);
+                               background: linear-gradient(90deg, #00d4ff, #00ff9d);
+                               border: none;
+                               color: #000;
+                               font-weight: bold;
+                               border-radius: 8px;
+                               cursor: pointer;">
+                    最初から
+                </button>
+            </div>
+        `;
+        
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function addCopyright() {
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const footer = document.createElement('div');
+            footer.className = 'footer-copyright';
+            footer.innerText = '【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。©︎ ACT HOUSE ®︎ All Rights Reserved.';
+            slide.appendChild(footer);
+            
+            const slideNum = document.createElement('div');
+            slideNum.className = 'slide-number';
+            slideNum.textContent = `${index + 1} / ${slides.length}`;
+            slide.appendChild(slideNum);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        addCopyright();
+        showSlide(0);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg class="generated-art" viewBox="0 0 800 120">
+                    <!-- <rect width="800" height="120" fill="#1a1a2e"/> -->
+                    
+                    <!-- フロー図 -->
+                    <rect x="50" y="35" width="180" height="50" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="140" y="65" text-anchor="middle" fill="white" font-size="13" font-weight="bold">興味を引く</text>
+                    
+                    <path d="M240 60 L290 60" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                    
+                    <rect x="300" y="35" width="180" height="50" fill="#ffd700" opacity="0.3" stroke="#ffd700" stroke-width="2" rx="8"/>
+                    <text x="390" y="65" text-anchor="middle" fill="white" font-size="13" font-weight="bold">納得させる</text>
+                    
+                    <path d="M490 60 L540 60" stroke="#ffd700" stroke-width="2" marker-end="url(#arrow3)"/>
+                    
+                    <rect x="550" y="35" width="180" height="50" fill="#4ecdc4" opacity="0.3" stroke="#4ecdc4" stroke-width="2" rx="8"/>
+                    <text x="640" y="65" text-anchor="middle" fill="white" font-size="13" font-weight="bold">行動させる</text>
+                    
+                    <defs>
+                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#00d4ff"/>
+                        </marker>
+                        <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#ffd700"/>
+                        </marker>
+                    </defs>
+                </svg>

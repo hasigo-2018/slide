@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>017 ロジック・プロンプトの実践応用【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ロジック・プロンプトの<br>実践応用<span>【実践編】</span></h1>
+                <p>マーケティング戦略をAI用の論理指示書に翻訳する</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 導入 - 今日のゴール -->
+        <div class="slide-container big-concept-layout">
+            <h2>戦略 → プロンプト → ビジュアル</h2>
+            <p>この一連の流れを、自力で再現できるようになる</p>
+        </div>
+
+        <!-- スライド3: 演習の全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日の演習フロー</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <!-- 演習1 -->
+                    <rect x="50" y="50" width="160" height="90" fill="#ff6b9d" opacity="0.2" stroke="#ff6b9d" stroke-width="2" rx="8"/>
+                    <text x="130" y="80" text-anchor="middle" fill="#ff6b9d" font-size="14" font-weight="bold">演習1</text>
+                    <text x="130" y="100" text-anchor="middle" fill="white" font-size="12">ペルソナ分析</text>
+                    <text x="130" y="118" text-anchor="middle" fill="#ccc" font-size="10">「誰に売るか」を具体化</text>
+                    
+                    <!-- 矢印1 -->
+                    <line x1="210" y1="95" x2="240" y2="95" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead-flow)"/>
+                    
+                    <!-- 演習2 -->
+                    <rect x="240" y="50" width="160" height="90" fill="#ffd93d" opacity="0.2" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    <text x="320" y="80" text-anchor="middle" fill="#ffd93d" font-size="14" font-weight="bold">演習2</text>
+                    <text x="320" y="100" text-anchor="middle" fill="white" font-size="12">競合分析</text>
+                    <text x="320" y="118" text-anchor="middle" fill="#ccc" font-size="10">「どう差別化するか」を特定</text>
+                    
+                    <!-- 矢印2 -->
+                    <line x1="400" y1="95" x2="430" y2="95" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead-flow)"/>
+                    
+                    <!-- 演習3 -->
+                    <rect x="430" y="50" width="160" height="90" fill="#6bcf7f" opacity="0.2" stroke="#6bcf7f" stroke-width="2" rx="8"/>
+                    <text x="510" y="80" text-anchor="middle" fill="#6bcf7f" font-size="14" font-weight="bold">演習3</text>
+                    <text x="510" y="100" text-anchor="middle" fill="white" font-size="12">施策提案</text>
+                    <text x="510" y="118" text-anchor="middle" fill="#ccc" font-size="10">「何をするか」を決定</text>
+                    
+                    <!-- 矢印3 -->
+                    <line x1="590" y1="95" x2="620" y2="95" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowhead-flow)"/>
+                    
+                    <!-- 演習4 -->
+                    <rect x="620" y="50" width="130" height="90" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="685" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">演習4</text>
+                    <text x="685" y="100" text-anchor="middle" fill="white" font-size="12">ビジュアル生成</text>
+                    <text x="685" y="118" text-anchor="middle" fill="#ccc" font-size="10">整合性を検証</text>
+                    
+                    <!-- 下部：使用ツール -->
+                    <rect x="150" y="180" width="500" height="70" fill="rgba(255,255,255,0.03)" stroke="#444" stroke-width="1" rx="8"/>
+                    <text x="400" y="205" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">使用ツール</text>
+                    <text x="400" y="230" text-anchor="middle" fill="white" font-size="12">演習1〜3：Gemini（戦略分析・プロンプト生成） ／ 演習4：Nano Banana Pro（画像生成）</text>
+                    
+                    <defs>
+                        <marker id="arrowhead-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#00d4ff" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド4: 演習の題材 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習の題材：架空の新商品</h2>
+            <div class="content-block">
+                <h3>設定</h3>
+                <p>あなたは、以下の新商品のマーケティング担当者です。</p>
+                
+                <div style="background: rgba(0,212,255,0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>商品名：</strong>TimeSaver Pro（タイムセーバー プロ）</p>
+                    <p><strong>カテゴリ：</strong>スマート調理家電（自動調理鍋）</p>
+                    <p><strong>価格帯：</strong>39,800円（税込）</p>
+                    <p><strong>特徴：</strong>AIが献立を提案し、材料を入れるだけで調理完了</p>
+                </div>
+                
+                <h3>演習のゴール</h3>
+                <p>この商品のマーケティング戦略を、ロジック・プロンプトを使ってAIと一緒に策定し、<br>最終的に「戦略と整合性のある」プロモーション画像を生成します。</p>
+                
+                <div class="highlight-box">
+                    💡 自分の商品に置き換えて実践することも可能です
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+            演習1：ペルソナ分析（Gemini）
+        ======================================== -->
+
+        <!-- スライド5: セクションタイトル - 演習1 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習1<br><span style="font-size: 0.6em;">ペルソナ分析プロンプトの作成</span></h2>
+        </div>
+
+        <!-- スライド6: 演習1 - 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題①：ペルソナ分析</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>「入力・処理・出力」を明確に分離したロジック・プロンプトで、<br>ターゲット顧客のペルソナを3タイプ生成する</p>
+                
+                <h3>課題内容</h3>
+                <p>TimeSaver Proの購買意欲が高い顧客層を、ペルソナとして具体化します</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ツール：</strong>Gemini（https://gemini.google.com/app）</li>
+                    <li><strong>出力数：</strong>3タイプのペルソナ</li>
+                    <li><strong>必須項目：</strong>名前、年齢、職業、悩み、購買トリガー</li>
+                    <li><strong>制作時間：</strong>10分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 次のスライドのプロンプトをコピーして開始！
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: 演習1 - 手順1（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1：ペルソナ分析プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        【入力】
+        商品：TimeSaver Pro（スマート自動調理鍋）
+        価格：39,800円
+        特徴：AIが献立提案、材料を入れるだけで調理完了
+        競合：ホットクック、クックフォーミー
+
+        【処理】
+        以下の観点で、購買意欲の高い顧客層を3タイプに分類してください：
+        1. ライフステージ（独身/共働き/子育て世帯など）
+        2. 時間に関する悩み（何に時間を取られているか）
+        3. 調理に対する態度（好き/苦手/効率重視など）
+
+        【出力】
+        各ペルソナについて以下の形式で記述：
+        - 名前（架空）、年齢、職業
+        - 家族構成
+        - 平日のタイムスケジュール概要
+        - 調理に関する具体的な悩み（3つ）
+        - この商品を買う決め手になるポイント
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「ターゲットを教えて」だけでは曖昧な回答しか得られない<br>
+                    ✅ 正解：分類の「軸」と出力の「形式」を明示する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: 演習1 - 手順2（結果の評価） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2：結果の評価と改良</h2>
+            <div class="content-block">
+                <h3>生成されたペルソナを評価する観点</h3>
+                <ul>
+                    <li><strong>具体性：</strong>「忙しい」ではなく「朝7時出勤、帰宅は20時」のように具体的か</li>
+                    <li><strong>差別化：</strong>3タイプが明確に異なるライフスタイルを持っているか</li>
+                    <li><strong>購買動機：</strong>「この商品を買う理由」が論理的につながっているか</li>
+                </ul>
+                
+                <h3>不足があれば追加プロンプト</h3>
+                <p style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-size: 1.1rem;">
+                    「ペルソナ2の『購買の決め手』をもう少し具体的にしてください。<br>
+                    特に、競合商品ではなくTimeSaver Proを選ぶ理由を明確にしてください」
+                </p>
+                
+                <div class="highlight-box">
+                    💡 1回で完璧な回答は出ない。対話的に精度を上げていく
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: 演習1 - チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">完成チェック：ペルソナ分析</h2>
+            <div class="tile-grid">
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ff6b9d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ff6b9d;">入力の明確さ</h3>
+                    <p>商品情報と競合が<br>具体的に記述されているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ffd93d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ffd93d;">処理の指定</h3>
+                    <p>分類の「軸」が<br>明示されているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #6bcf7f;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #6bcf7f;">出力の形式</h3>
+                    <p>必要な項目が<br>すべて指定されているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #00d4ff;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #00d4ff;">結果の質</h3>
+                    <p>3タイプが明確に<br>差別化されているか</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+            演習2：競合分析（Gemini）
+        ======================================== -->
+
+        <!-- スライド10: セクションタイトル - 演習2 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習2<br><span style="font-size: 0.6em;">競合分析プロンプトの作成</span></h2>
+        </div>
+
+        <!-- スライド11: 演習2 - 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題②：競合分析</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>4P（Product/Price/Place/Promotion）の軸で競合を比較し、<br>TimeSaver Proの差別化ポイントを特定する</p>
+                
+                <h3>課題内容</h3>
+                <p>演習1で作成したペルソナを踏まえ、競合との違いを明確化します</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ツール：</strong>Gemini（継続して使用）</li>
+                    <li><strong>比較対象：</strong>ホットクック、クックフォーミー</li>
+                    <li><strong>出力形式：</strong>比較表 + 差別化案3つ</li>
+                    <li><strong>制作時間：</strong>10分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 演習1の結果を「入力」として活用する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: 演習2 - 手順1（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1：競合分析プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        【入力】
+        自社商品：TimeSaver Pro（39,800円、AI献立提案+自動調理）
+        競合A：ホットクック（シャープ、約5万円、無水調理が強み）
+        競合B：クックフォーミー（ティファール、約3万円、圧力調理が強み）
+        ターゲット：[演習1で特定したペルソナの要約を入れる]
+
+        【処理】
+        4P（Product/Price/Place/Promotion）の観点で3商品を比較し、
+        以下を分析してください：
+        1. 各社の強み・弱み
+        2. 市場で「空いているポジション」
+        3. TimeSaver Proが勝てる領域
+
+        【出力】
+        1. 4P比較表（3商品×4項目）
+        2. 差別化可能なポジショニング案を3つ
+        3. 各ポジショニング案の根拠（ターゲットのニーズとの接続）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「競合と比較して」だけでは比較軸がバラバラになる<br>
+                    ✅ 正解：4Pという「フレームワーク」を明示して軸を統一する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: 演習2 - 手順2（結果の評価） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2：結果の評価と深掘り</h2>
+            <div class="content-block">
+                <h3>生成された分析を評価する観点</h3>
+                <ul>
+                    <li><strong>比較の公平性：</strong>自社に都合の良い比較になっていないか</li>
+                    <li><strong>ポジショニングの独自性：</strong>「高品質」「便利」など曖昧ではないか</li>
+                    <li><strong>ペルソナとの接続：</strong>演習1のターゲットに刺さる差別化か</li>
+                </ul>
+                
+                <h3>深掘りのための追加プロンプト例</h3>
+                <p style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-size: 1.1rem;">
+                    「ポジショニング案2の『時短×AI提案』について、<br>
+                    具体的にどんなメッセージで訴求すべきか、<br>
+                    ペルソナ1（共働き夫婦）向けに3案提案してください」
+                </p>
+                
+                <div class="highlight-box">
+                    💡 良い分析が出たら、さらに「具体化」のプロンプトで深掘りする
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド14: 演習2 - チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">完成チェック：競合分析</h2>
+            <div class="tile-grid">
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ff6b9d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ff6b9d;">フレームワーク活用</h3>
+                    <p>4Pの軸で<br>統一的に比較できているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ffd93d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ffd93d;">前演習との接続</h3>
+                    <p>ペルソナ情報が<br>入力に含まれているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #6bcf7f;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #6bcf7f;">差別化の具体性</h3>
+                    <p>「便利」ではなく<br>具体的な価値を表現できているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #00d4ff;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #00d4ff;">根拠の明示</h3>
+                    <p>なぜその差別化が<br>有効か説明されているか</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+            演習3：施策提案（Gemini）
+        ======================================== -->
+
+        <!-- スライド15: セクションタイトル - 演習3 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習3<br><span style="font-size: 0.6em;">施策提案プロンプトの作成</span></h2>
+        </div>
+
+        <!-- スライド16: 演習3 - 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題③：施策提案</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>ペルソナと差別化ポイントを踏まえ、<br>具体的なプロモーション施策を5案生成する</p>
+                
+                <h3>課題内容</h3>
+                <p>演習1・2の結果を統合し、実行可能な施策プランを策定します</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ツール：</strong>Gemini（継続して使用）</li>
+                    <li><strong>予算想定：</strong>月額100万円</li>
+                    <li><strong>出力形式：</strong>施策5案を評価軸付きで</li>
+                    <li><strong>制作時間：</strong>10分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 演習1・2の結果を「入力」として引き継ぐことで、一貫性のある戦略になる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: 演習3 - 手順1（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1：施策提案プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-3">
+        【入力】
+        商品：TimeSaver Pro（スマート自動調理鍋、39,800円）
+        ターゲット：[演習1のペルソナ要約]
+        差別化ポイント：[演習2で決めたポジショニング]
+        予算：月額100万円
+        期間：3ヶ月のキャンペーン
+
+        【処理】
+        AISAS（認知→興味→検索→行動→共有）の各段階で
+        有効な施策を検討してください。
+        特に「興味→検索」の転換率を上げる施策を重視。
+
+        【出力】
+        施策5案を以下の形式で提案：
+        | 施策名 | 概要 | 想定コスト | 期待効果 | 実行難易度 | AISAS段階 |
+
+        さらに、5案の中で「最初に実行すべき施策」を1つ選び、
+        その理由を説明してください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-3', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「施策を考えて」だけでは予算や目的に合わない案が出る<br>
+                    ✅ 正解：制約条件と評価軸を明示して、比較可能な形式で出力させる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: 演習3 - 手順2（結果の評価） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2：施策の精査と選定</h2>
+            <div class="content-block">
+                <h3>生成された施策を評価する観点</h3>
+                <ul>
+                    <li><strong>ペルソナとの整合性：</strong>ターゲットが実際に接触するチャネルか</li>
+                    <li><strong>差別化との一貫性：</strong>競合分析で決めた訴求軸と合っているか</li>
+                    <li><strong>実行可能性：</strong>100万円/月の予算で本当に実行できるか</li>
+                </ul>
+                
+                <h3>施策を具体化する追加プロンプト例</h3>
+                <p style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-size: 1.1rem;">
+                    「施策3のInstagram広告について、<br>
+                    具体的なクリエイティブの方向性を3パターン提案してください。<br>
+                    各パターンで使用すべきビジュアルの特徴も含めて」
+                </p>
+                
+                <div class="highlight-box">
+                    💡 この「クリエイティブの方向性」が、次の演習4（画像生成）のインプットになる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: 演習3 - チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">完成チェック：施策提案</h2>
+            <div class="tile-grid">
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ff6b9d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ff6b9d;">戦略の一貫性</h3>
+                    <p>ペルソナ・差別化と<br>施策が論理的につながっているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ffd93d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ffd93d;">評価軸の明示</h3>
+                    <p>コスト・効果・難易度が<br>比較可能な形式になっているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #6bcf7f;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #6bcf7f;">実行優先度</h3>
+                    <p>「最初に何をすべきか」が<br>明確になっているか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #00d4ff;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #00d4ff;">次ステップへの接続</h3>
+                    <p>クリエイティブの方向性が<br>言語化されているか</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+            演習4：ビジュアル生成（Nano Banana Pro）
+        ======================================== -->
+
+        <!-- スライド20: セクションタイトル - 演習4 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習4<br><span style="font-size: 0.6em;">戦略と整合性のあるビジュアル生成</span></h2>
+        </div>
+
+        <!-- スライド21: 演習4 - 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題④：プロモーション画像生成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>演習1〜3で策定した戦略を「視覚的に表現」し、<br>ペルソナ・差別化・施策との整合性を検証する</p>
+                
+                <h3>課題内容</h3>
+                <p>Instagram広告用のビジュアルを、戦略に基づいて生成します</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ツール：</strong>Nano Banana Pro（https://gemini.google.com/app）</li>
+                    <li><strong>サイズ：</strong>1080×1080px（Instagram正方形）</li>
+                    <li><strong>必須要素：</strong>演習3で決めたクリエイティブの方向性を反映</li>
+                    <li><strong>制作時間：</strong>15分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 ここが今日の最終検証。戦略がビジュアルに正しく翻訳されているか確認
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: 演習4 - 手順1（プロンプト変換） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1：戦略→画像プロンプトへの変換</h2>
+            <div class="content-block">
+                <h3>まずGeminiで画像プロンプトを生成</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-4">
+        【入力】
+        商品：TimeSaver Pro（スマート自動調理鍋）
+        ターゲット：[演習1のペルソナ（例：30代共働き夫婦、帰宅20時）]
+        差別化：[演習2のポジショニング（例：「献立を考える時間」もゼロに）]
+        施策：Instagram広告（ペルソナの「夕食準備のストレス」に訴求）
+
+        【処理】
+        上記の戦略を視覚的に表現するための
+        画像生成AIプロンプトを作成してください。
+        以下の要素を含めること：
+        1. シーン設定（どんな場面か）
+        2. 照明と色調（どんな雰囲気か）
+        3. 構図（何を中心に見せるか）
+        4. 除外要素（生成してほしくないもの）
+
+        【出力】
+        Nano Banana Pro用の英語プロンプト（150語以内）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-4', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：戦略を無視して「おしゃれな画像」を求めてしまう<br>
+                    ✅ 正解：ペルソナ・差別化・施策を「入力」として明示する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド23: 演習4 - 手順2（画像生成） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2：Nano Banana Proで画像生成</h2>
+            <div class="content-block">
+                <h3>生成されたプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-flux-1">
+        Modern kitchen scene at evening, warm ambient lighting,
+        smart cooking appliance on countertop with steam rising,
+        fresh vegetables nearby, clean minimalist design,
+        Japanese home interior style, cozy atmosphere,
+        soft golden hour light from window,
+        no people visible, product hero shot,
+        high-end lifestyle photography,
+        shallow depth of field, premium quality,
+        --ar 1:1
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-flux-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <h3>生成後の確認ポイント</h3>
+                <ul>
+                    <li>ペルソナの生活シーンをイメージできるか</li>
+                    <li>「時短」「AI」の価値が視覚的に伝わるか</li>
+                    <li>競合商品の広告と差別化されているか</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド24: 演習4 - 整合性検証 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3：戦略との整合性検証</h2>
+            <div class="content-block">
+                <h3>生成画像を戦略で評価する</h3>
+                
+                <div style="background: rgba(0,212,255,0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>✓ ペルソナ整合性：</strong>30代共働き夫婦が「自分のキッチン」と感じられるか</p>
+                    <p><strong>✓ 差別化整合性：</strong>「AI献立提案」の価値が視覚的に表現されているか</p>
+                    <p><strong>✓ 施策整合性：</strong>Instagramのフィードで目を引くビジュアルか</p>
+                </div>
+                
+                <h3>整合性がない場合の修正方法</h3>
+                <ul>
+                    <li><strong>ペルソナとズレ：</strong>シーン設定を修正（例：もっと生活感を出す）</li>
+                    <li><strong>差別化とズレ：</strong>商品の特徴を強調（例：AIインターフェースを追加）</li>
+                    <li><strong>施策とズレ：</strong>構図や色調を調整（例：もっと明るく温かみを）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「きれいな画像」ではなく「戦略を体現した画像」かどうかが判断基準
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド25: 演習4 - チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">完成チェック：ビジュアル生成</h2>
+            <div class="tile-grid">
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ff6b9d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ff6b9d;">ペルソナ整合</h3>
+                    <p>ターゲットが<br>「自分ごと」と感じるか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #ffd93d;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #ffd93d;">差別化整合</h3>
+                    <p>競合と明確に<br>異なる印象を与えるか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #6bcf7f;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #6bcf7f;">施策整合</h3>
+                    <p>想定チャネルで<br>効果的なビジュアルか</p>
+                </div>
+                <div class="tile" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border: 2px solid #00d4ff;">
+                    <div class="icon">✓</div>
+                    <h3 style="color: #00d4ff;">再現可能性</h3>
+                    <p>プロンプトを調整すれば<br>シリーズ展開できるか</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+            まとめ
+        ======================================== -->
+
+        <!-- スライド26: 全体の振り返り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の演習で体験したこと</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- フロー全体 -->
+                    <rect x="50" y="80" width="700" height="140" fill="rgba(0,212,255,0.05)" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4" rx="8"/>
+                    
+                    <!-- 各演習 -->
+                    <rect x="70" y="100" width="140" height="80" fill="#ff6b9d" opacity="0.2" stroke="#ff6b9d" stroke-width="2" rx="8"/>
+                    <text x="140" y="130" text-anchor="middle" fill="#ff6b9d" font-size="12" font-weight="bold">演習1</text>
+                    <text x="140" y="150" text-anchor="middle" fill="white" font-size="11">ペルソナ分析</text>
+                    <text x="140" y="168" text-anchor="middle" fill="#ccc" font-size="9">誰に売るか</text>
+                    
+                    <text x="230" y="140" fill="#00d4ff" font-size="20">→</text>
+                    
+                    <rect x="250" y="100" width="140" height="80" fill="#ffd93d" opacity="0.2" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    <text x="320" y="130" text-anchor="middle" fill="#ffd93d" font-size="12" font-weight="bold">演習2</text>
+                    <text x="320" y="150" text-anchor="middle" fill="white" font-size="11">競合分析</text>
+                    <text x="320" y="168" text-anchor="middle" fill="#ccc" font-size="9">どう差別化するか</text>
+                    
+                    <text x="410" y="140" fill="#00d4ff" font-size="20">→</text>
+                    
+                    <rect x="430" y="100" width="140" height="80" fill="#6bcf7f" opacity="0.2" stroke="#6bcf7f" stroke-width="2" rx="8"/>
+                    <text x="500" y="130" text-anchor="middle" fill="#6bcf7f" font-size="12" font-weight="bold">演習3</text>
+                    <text x="500" y="150" text-anchor="middle" fill="white" font-size="11">施策提案</text>
+                    <text x="500" y="168" text-anchor="middle" fill="#ccc" font-size="9">何をするか</text>
+                    
+                    <text x="590" y="140" fill="#00d4ff" font-size="20">→</text>
+                    
+                    <rect x="610" y="100" width="120" height="80" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="670" y="130" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">演習4</text>
+                    <text x="670" y="150" text-anchor="middle" fill="white" font-size="11">ビジュアル生成</text>
+                    <text x="670" y="168" text-anchor="middle" fill="#ccc" font-size="9">整合性検証</text>
+                    
+                    <!-- 下部メッセージ -->
+                    <text x="400" y="260" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">すべてが「入力・処理・出力」の構造でつながっている</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド27: 学びのポイント -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の学び：3つのポイント</h2>
+            <div class="content-block">
+                <h3>1. ロジック・プロンプトは「翻訳」である</h3>
+                <p>ビジネス目的を、AIが理解できる「入力・処理・出力」の構造に翻訳する技術</p>
+                
+                <h3>2. 演習はチェーンでつながる</h3>
+                <p>前の演習の「出力」が、次の演習の「入力」になる。<br>だから一貫性のある戦略が生まれる。</p>
+                
+                <h3>3. ビジュアルは戦略の「検証」である</h3>
+                <p>「きれいな画像」ではなく「戦略を体現した画像」かどうかが判断基準。<br>整合性がなければ、戦略かプロンプトのどちらかに問題がある。</p>
+                
+                <div class="highlight-box">
+                    💡 今日学んだプロセスは、自分の商品・サービスにそのまま応用できます
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド28: まとめ -->
+        <div class="slide-container big-concept-layout">
+            <h2>マーケティング × AI</h2>
+            <p>戦略を論理的に構造化すれば、<br>AIは強力なパートナーになる</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "ペルソナ分析プロンプトで「処理」に含めるべき内容は？",
+                options: [
+                    "商品名と価格",
+                    "顧客層を分類する「軸」（ライフステージ、悩み、態度など）",
+                    "ペルソナの名前と年齢",
+                    "出力するペルソナの人数"
+                ],
+                correct: 1,
+                explanation: "「処理」層には、AIにどのような分析を行わせるかを指定します。ライフステージ、悩み、態度などの「分類軸」を明示することで、体系的なペルソナが生成されます。商品情報は入力、ペルソナの形式は出力に該当します。"
+            },
+            {
+                question: "競合分析で「4P」を指定する主な理由は？",
+                options: [
+                    "AIの処理速度を上げるため",
+                    "比較の軸を統一し、漏れなく分析するため",
+                    "出力を短くするため",
+                    "専門用語を使って権威を出すため"
+                ],
+                correct: 1,
+                explanation: "フレームワーク（4P）を指定することで、Product/Price/Place/Promotionという統一された軸で比較でき、分析の漏れを防げます。フレームワークなしでは、AIが勝手に選んだバラバラな軸で分析されてしまいます。"
+            },
+            {
+                question: "演習1→演習2→演習3とプロンプトをつなげる際、最も重要なことは？",
+                options: [
+                    "毎回新しいプロンプトを作ること",
+                    "前の演習の「出力」を次の演習の「入力」に含めること",
+                    "すべての演習を1つのプロンプトにまとめること",
+                    "演習ごとに異なるツールを使うこと"
+                ],
+                correct: 1,
+                explanation: "前の演習の出力（ペルソナ情報、差別化ポイントなど）を次の演習の入力に含めることで、一貫性のある戦略が構築できます。これがロジック・プロンプトの「チェーン」の考え方です。"
+            },
+            {
+                question: "生成した画像の「戦略との整合性」を検証する際、最も重要な観点は？",
+                options: [
+                    "画像の解像度が高いか",
+                    "ペルソナ・差別化・施策と論理的につながっているか",
+                    "競合よりも派手なビジュアルか",
+                    "最新のデザイントレンドを反映しているか"
+                ],
+                correct: 1,
+                explanation: "ビジュアルは戦略の「視覚的表現」です。ターゲット（ペルソナ）が共感できるか、競合との違い（差別化）が伝わるか、想定チャネル（施策）で効果的かという3つの観点で検証することが重要です。"
+            },
+            {
+                question: "今日の演習全体を通じて学んだ「ロジック・プロンプト」の本質は？",
+                options: [
+                    "長いプロンプトを書く技術",
+                    "ビジネス目的をAIが理解できる構造に翻訳する技術",
+                    "AIに自由に考えさせる技術",
+                    "画像を大量に生成する技術"
+                ],
+                correct: 1,
+                explanation: "ロジック・プロンプトの本質は「翻訳」です。ビジネス目的（売上を上げたい、顧客を理解したい）を、AIが正確に処理できる「入力・処理・出力」の構造に変換する技術が、今日学んだことの核心です。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

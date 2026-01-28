@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Slides Master</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- デザインシステム --- */
+        * { box-sizing: border-box; }
+        body { background-color: #000; margin: 0; height: 100vh; width: 100vw; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        #presentation-wrapper { position: relative; width: 1280px; height: 720px; }
+        .slide-container { align-items: center; background-color: #121212; border-radius: 0; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); display: none; flex-direction: column; font-family: 'Noto Sans JP', sans-serif; height: 720px; justify-content: center; overflow: hidden; padding: 60px; position: absolute; top: 0; left: 0; width: 1280px; color: #fff; z-index: 0; }
+        .slide-container.active { display: flex; z-index: 10; animation: fadeIn 0.5s ease; }
+        .slide-container.bleed-image-layout.active { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; padding: 0; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Background Shapes */
+        .slide-container::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(62,184,255,0.1) 0%, rgba(0,0,0,0) 70%); z-index: 0; }
+        .slide-container::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%); z-index: 0; }
+        .slide-container > * { position: relative; z-index: 1; }
+        /* Typography */
+        h1, h2, h3 { font-family: 'Poppins', 'Noto Sans JP', sans-serif; margin: 0; line-height: 1.2; }
+        .slide-container h1 { font-size: 72px; font-weight: 800; background: linear-gradient(90deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        .slide-container .slide-title { font-size: 48px; font-weight: 600; color: #fff; width: 100%; text-align: left; border-left: 6px solid #00d4ff; padding-left: 20px; margin-bottom: 40px; }
+        .slide-container h3 { font-size: 28px; font-weight: 700; color: #00d4ff; margin-bottom: 15px; }
+        .slide-container p, .slide-container li { font-size: 20px; line-height: 1.6; color: #e0e0e0; font-family: 'Noto Sans JP', sans-serif; }
+        /* Layouts */
+        .content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; justify-content: center; }
+        .full-bg-image { padding: 0; background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%), linear-gradient(135deg, #121212 0%, #1a1a1a 100%); }
+        .full-bg-image .content-overlay { background: rgba(0, 0, 0, 0.4); padding: 80px; border-radius: 20px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .full-bg-image h2 { font-size: 80px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        .full-bg-image p { font-size: 32px; color: #00d4ff; font-weight: 600; }
+        .section-title-layout { text-align: center; border: 2px solid #333; padding: 80px; border-radius: 20px; background: rgba(255,255,255,0.03); }
+        .section-title-layout h2 { font-size: 64px; color: #fff; margin-bottom: 30px; }
+        .section-title-layout hr { width: 100px; height: 4px; background: linear-gradient(90deg, #00d4ff, #ff0080); border: none; margin: 0 auto 30px auto; }
+        .section-title-layout p { font-size: 24px; color: #aaa; }
+        .two-column.tiled { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; height: 100%; }
+        .two-column.tiled > div { background: rgba(255, 255, 255, 0.05); border: 1px solid #333; border-radius: 12px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .two-column.tiled h3 { font-size: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 25px; }
+        .slide-container.bleed-image-layout .content-container { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .slide-container.bleed-image-layout .image-container { height: 100%; width: 100%; background: #1e1e1e; display: flex; align-items: center; justify-content: center; border-left: 1px solid #333; position: relative; overflow: hidden; }
+        .slide-container.bleed-image-layout .image-container::before { content: ''; position: absolute; width: 200%; height: 200%; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; transform: rotate(15deg); }
+        .slide-container.bleed-image-layout .bleed-text-side p { font-size: 22px; margin-bottom: 20px; }
+        .highlight-box { background: rgba(0, 212, 255, 0.1); border-left: 4px solid #00d4ff; padding: 20px; margin-top: 20px; font-size: 18px; color: #e0e0e0; }
+        svg.generated-art { width: 80%; height: 80%; z-index: 2; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .tiled-content { display: flex; gap: 30px; width: 100%; justify-content: center; }
+        .tile { flex: 1; background: #1e1e1e; border-radius: 12px; padding: 30px; text-align: center; border: 1px solid #333; transition: transform 0.3s ease; }
+        .tile .icon { font-size: 50px; margin-bottom: 20px; display: inline-block; width: 80px; height: 80px; line-height: 80px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+        .tile:nth-child(1) .icon { color: #00d4ff; } 
+        .tile:nth-child(2) .icon { color: #ff0080; } 
+        .tile:nth-child(3) .icon { color: #ffe600; } 
+        .tile:nth-child(4) .icon { color: #00ff9d; } 
+        .tile h3 { color: #fff; font-size: 22px; } .tile p { font-size: 16px; color: #aaa; }
+        .qa-layout { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+        .qa-layout h2 { font-size: 100px; background: linear-gradient(90deg, #00d4ff, #ff0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; }
+        .footer-copyright { position: absolute; bottom: 20px; left: 20px; font-size: 10px; color: rgba(255, 255, 255, 0.5); z-index: 100; pointer-events: none; font-family: 'Noto Sans JP', sans-serif; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+        .control-hint { position: fixed; bottom: 20px; right: 20px; color: #444; font-size: 12px; pointer-events: none; z-index: 9999; }
+    </style>
+</head>
+<body>
+
+<div id="presentation-wrapper">
+    <div class="slide-container full-bg-image">
+    <div class="content-overlay">
+        <h2>デザインは「設計」である</h2>
+        <p>〜センスを捨て、ロジックで支配する視覚情報のエンジニアリング〜</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h3>本日のゴール</h3>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-check"></i></div>
+            <h3>「なんとなく」の卒業</h3>
+            <p>すべての配置、色、文字に明確な理由（エビデンス）を答えられるようになる。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-star"></i></div>
+            <h3>視覚心理の活用</h3>
+            <p>人間の脳が情報を処理する仕組みを理解し、思い通りに視線を誘導する。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <h3>AIを部下にする</h3>
+            <p>AIを「描く人」として使いこなし、自分は「設計者」として振る舞う。</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="section-title-layout">
+        <h2>01. なぜ「デザイン＝設計」なのか？</h2>
+        <hr>
+        <p>センスという言葉の裏にある「論理性」を解き明かします。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="two-column tiled">
+        <div>
+            <h3>Art（自己表現）</h3>
+            <p>アーティストの感情や思想を形にするもの。答えは観客に委ねられ、主観的な美しさが尊重されます。正解がないことが価値になります。</p>
+        </div>
+        <div>
+            <h3>Design（課題解決）</h3>
+            <p>特定の目的を達成するための手段。誰に何を伝え、どう動いてもらうかを「設計」することです。目的が達成できなければ、それは失敗です。</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="160" height="160" fill="#f0f0f0" />
+            <line x1="100" y1="20" x2="100" y2="180" stroke="#333" stroke-width="2" />
+            <line x1="20" y1="100" x2="180" y2="100" stroke="#333" stroke-width="2" />
+            <circle cx="100" cy="100" r="30" fill="#4A90E2" opacity="0.5" />
+        </svg>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>デザインの目的は「情報の交通整理」</h3>
+        <p>デザインの役割は、溢れる情報の中に「道」を作ることです。受け手が迷わないように、どれが重要で、次にどこを見ればいいのかを明示します。標識のない交差点で事故が起きるように、設計されていない資料は読み手の脳を疲弊させ、情報を遮断させます。優れたデザインとは、見た目が豪華なことではなく、情報がスムーズに脳へ届く「摩擦のない設計」を指すのです。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="section-title-layout">
+        <h2>02. 脳をハックする「視覚心理学」</h2>
+        <hr>
+        <p>人間が無意識に反応してしまう「視線の法則」を学びます。</p>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(20,50)">
+                <circle cx="0" cy="0" r="10" fill="#FF6B6B" />
+                <rect x="20" y="-10" width="20" height="20" fill="#FF6B6B" />
+                <polygon points="60,-10 70,10 50,10" fill="#FF6B6B" />
+            </g>
+            <text x="20" y="100" font-size="12">複雑 ＝ 脳が拒絶</text>
+        </svg>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>認知負荷を最小化する</h3>
+        <p>人間の脳は、一度に処理できる情報の量に限界があります。これを「認知負荷」と呼びます。要素がバラバラに配置されていたり、色の数が多すぎたりすると、脳は「理解するのにエネルギーが必要だ」と判断し、読むのをやめてしまいます。デザインのエンジニアリングにおいて最も重要なのは、この負荷をいかに削ぎ落とし、重要な情報だけを浮き彫りにするかという引き算の思考なのです。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h3>一瞬で伝える「優先順位」</h3>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-1"></i></div>
+            <h3>最大の情報 (Hero)</h3>
+            <p>最も伝えたい核心。キャッチコピーやメイン画像。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-2"></i></div>
+            <h3>補足情報 (Sub)</h3>
+            <p>核心を支える理由やメリット。中見出しなど。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-3"></i></div>
+            <h3>詳細情報 (Body)</h3>
+            <p>納得するためのデータや文章。最後に見る部分。</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="160" height="160" fill="none" stroke="#ccc" />
+            <path d="M40,40 L160,40 L40,160 L160,160" stroke="#FF6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+        </svg>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>紙媒体の王道「Zの法則」</h3>
+        <p>チラシやパンフレットなど、全体を一目で見渡せる媒体では、視線は左上→右上→左下→右下の順に「Z」の文字を描くように動きます。このため、左上にはロゴや最も重要なキャッチコピーを配置し、右下には「問い合わせ」や「購入」といった最終的なアクションボタンを置くのが定石です。この流れに逆らった配置をしてしまうと、読み手は違和感を覚え、情報の取りこぼしが発生してしまいます。</p>
+    </div>
+</div>
+
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="160" height="160" fill="none" stroke="#ccc" />
+            <path d="M40,40 L160,40 M40,80 L140,80 M40,40 L40,160" stroke="#4A90E2" stroke-width="4" fill="none" />
+        </svg>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>Web・SNSの王道「Fの法則」</h3>
+        <p>スマートフォンの画面やニュースサイトなど、縦にスクロールする媒体では、視線は「F」の形に動きます。上部は横に読みますが、下に行くにつれて左端だけを流し読み（スキャニング）するようになります。つまり、Webデザインでは「左端」に重要なキーワードやアイコンを並べることが不可欠です。右側に重要な情報を置いても、スクロールの速さに負けて見逃される確率が極めて高くなるため注意が必要です。</p>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="80" r="40" fill="#333" />
+            <text x="80" y="150" font-size="10">大きい方に視線が止まる</text>
+        </svg>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>視線を止める「重心」の作り方</h3>
+        <p>視線は流れるだけでなく、「重いもの（目立つもの）」に引き寄せられます。これを「視覚的重心」と呼びます。大きな写真、鮮やかな色、太い文字などが重心となります。あえて特定の場所に強い重心を作ることで、流れる視線を意図的にストップさせ、そこにある情報を熟読させることが可能になります。ページ全体が均一な重さだと、視線はどこにも止まらずに通り過ぎてしまうため、強弱をつけることが設計の肝です。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="section-title-layout">
+        <h2>03. 機能としての「色」と「文字」</h2>
+        <hr>
+        <p>装飾ではなく、メッセージを補強するツールとしての扱い方。</p>
+    </div>
+</div>
+
+[Image showing a color wheel with emotional keywords like Red: Excitement, Blue: Trust]
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <div style="display:flex; flex-wrap:wrap; width:100px;">
+            <div style="width:50px; height:50px; background:#FF0000;"></div>
+            <div style="width:50px; height:50px; background:#0000FF;"></div>
+            <div style="width:50px; height:50px; background:#008000;"></div>
+            <div style="width:50px; height:50px; background:#FFFF00;"></div>
+        </div>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>色は「感情」へのショートカット</h3>
+        <p>色は言語よりも速く、脳の感情を司る部分に届きます。赤は情熱や警告、青は誠実さや冷静さ、緑は安心や持続可能性といったイメージを瞬時に想起させます。デザインの設計においては、自分の好きな色を選ぶのではなく、「ターゲットにどのような感情を抱かせたいか」から逆算して色を決定します。この選択を間違うと、どれだけロジカルな文章を書いても、直感的な違和感によって説得力が半減してしまいます。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h3>70:25:5 の法則</h3>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon" style="color:#ccc;"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Base (70%)</h3>
+            <p>背景色。最も面積が広く、全体の明るさや雰囲気を決めます。</p>
+        </div>
+        <div class="tile">
+            <div class="icon" style="color:#4A90E2;"><i class="fa-solid fa-palette"></i></div>
+            <h3>Main (25%)</h3>
+            <p>ブランドカラー。あなたの個性を象徴する色です。</p>
+        </div>
+        <div class="tile">
+            <div class="icon" style="color:#FF6B6B;"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h3>Accent (5%)</h3>
+            <p>強調色。ボタンや重要なポイント。メインの反対色を選びます。</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="two-column tiled">
+        <div>
+            <h3 style="font-family:serif;">明朝体 / Serif</h3>
+            <p>信頼、伝統、高級感、情緒的。長い文章でも疲れにくく、高級ブランドやフォーマルな文書に適しています。人の感情に訴えかけたい時に有効です。</p>
+        </div>
+        <div>
+            <h3 style="font-family:sans-serif; font-weight:bold;">ゴシック体 / Sans-serif</h3>
+            <p>機能、モダン、力強さ、親しみ。視認性が高く、一瞬で情報を読み取らせるWebやSNS、プレゼン資料に適しています。ビジネスの標準的な選択です。</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <div style="border:1px solid #333; padding:40px;">
+            <div style="background:#eee; height:20px; width:100%;"></div>
+        </div>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>余白は「情報の境界線」である</h3>
+        <p>初心者は「空いているスペースがもったいない」と情報を詰め込みがちですが、それは大きな間違いです。余白は単なる「空き」ではなく、情報と情報を区別するための強力なツールです。適切な余白があることで、脳は「ここからここが一つのグループだ」と瞬時に認識できます。つまり、余白をコントロールすることは、情報の優先順位をコントロールすることと同義なのです。高級店ほど空間が広いのと同じく、適切な余白は「上質さ」も演出します。</p>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="two-column tiled">
+        <div>
+            <h3>Before: 情報の羅列</h3>
+            <p>すべての文字が同じ大きさ。色が多すぎてどこを見ていいか不明。余白がなく窮屈で、読む前に「疲れる」印象を与える状態。</p>
+        </div>
+        <div>
+            <h3>After: 設計された情報</h3>
+            <p>優先順位に基づいた文字の強弱。視線誘導（Z/F）に沿った配置。70:25:5の配色ルール。脳が喜ぶ「摩擦ゼロ」のデザイン。</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <h3>ビジュアル・アーキテクチャ 3原則</h3>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>脳に優しく</h3>
+            <p>認知負荷を減らし、3秒で内容が伝わる設計を目指す。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>視線を操る</h3>
+            <p>Z/Fの法則を活用し、読み手の目の動きを先回りする。</p>
+        </div>
+        <div class="tile">
+            <div class="icon"><i class="fa-solid fa-ruler-combined"></i></div>
+            <h3>すべてに根拠を</h3>
+            <p>色もフォントも配置も、「なんとなく」を完全に排除する。</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout">
+    <div class="image-container">
+        <i class="fa-solid fa-clipboard-question" style="font-size:100px; color:#4A90E2;"></i>
+    </div>
+    <div class="content-container bleed-text-side">
+        <h3>理解度チェック・クイズ</h3>
+        <p>ここまでの「論理」が身についているか確認しましょう。正解することよりも、「なぜその答えになるのか」を言語化できるかどうかが重要です。非デザイナーがプロの設計視点を持つための最初の関門です。準備はいいですか？</p>
+    </div>
+</div>
+
+<div class="slide-container full-bg-image">
+    <div class="content-overlay">
+        <h2>Part 1 終了：10分間の休憩</h2>
+        <p>後半は、この論理を「AI」でどう形にするかを実践します。</p>
+    </div>
+</div>
+</div>
+
+<div class="control-hint">Use Arrows/Space to Navigate</div>
+
+<script>
+    /* ★ここに生成されたクイズデータ（const questions = [...]）を貼り付けてください★ */
+    const quizData = [
+  {
+    question: "チラシを見た時、人の視線が無意識に動く軌跡を何と呼ぶ？",
+    options: ["Aの法則", "Zの法則", "Sの法則", "Fの法則"],
+    answer: "Zの法則",
+    explanation: "チラシなどの紙媒体では、左上から右上、左下、右下へと『Z』の形で視線が動きます。"
+  },
+  {
+    question: "配色黄金比『70:25:5』における『5』が指す役割は？",
+    options: ["ベースカラー", "メインカラー", "アクセントカラー", "背景色"],
+    answer: "アクセントカラー",
+    explanation: "全体の5%に鮮やかなアクセントカラーを置くことで、最も重要なポイントへ視線を誘導します。"
+  },
+  {
+    question: "信頼感や伝統、高級感を演出するのに適したフォントの種類は？",
+    options: ["丸ゴシック体", "ゴシック体", "明朝体", "手書き風フォント"],
+    answer: "明朝体",
+    explanation: "明朝体（セリフ体）は、歴史的な背景から信頼感やフォーマルな印象を強く与えます。"
+  },
+  {
+    question: "「余白」が持つ最も重要な役割は何？",
+    options: ["紙代の節約", "情報の境界線を作り、グループを認識させる", "単なる空きスペース", "絵を描くための場所"],
+    answer: "情報の境界線を作り、グループを認識させる",
+    explanation: "適切な余白は情報のまとまりを脳に認識させ、認知負荷を下げる役割があります。"
+  }
+];
+
+    /* --- スライド動作ロジック --- */
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide-container');
+    const wrapper = document.getElementById('presentation-wrapper');
+
+    function updateSlideVisibility() {
+        // 再取得（後から貼り付けられた要素を認識するため）
+        const currentSlides = document.querySelectorAll('.slide-container');
+        if (currentSlides.length === 0) return;
+        
+        currentSlides.forEach((slide, index) => {
+            if (index === currentSlideIndex) { slide.classList.add('active'); } 
+            else { slide.classList.remove('active'); }
+        });
+    }
+
+    function goToNextSlide() {
+        const currentSlides = document.querySelectorAll('.slide-container');
+        if (currentSlideIndex < currentSlides.length - 1) { currentSlideIndex++; updateSlideVisibility(); }
+    }
+    function goToPrevSlide() {
+        if (currentSlideIndex > 0) { currentSlideIndex--; updateSlideVisibility(); }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        switch(e.key) {
+            case 'ArrowRight': case ' ': case 'Enter': if (document.activeElement.tagName !== 'BUTTON') { goToNextSlide(); } break;
+            case 'ArrowLeft': goToPrevSlide(); break;
+        }
+    });
+
+    function scalePresentation() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const baseWidth = 1280; const baseHeight = 720;
+        const scale = Math.min(windowWidth / baseWidth, windowHeight / baseHeight);
+        wrapper.style.transform = `scale(${scale})`;
+    }
+    window.addEventListener('resize', scalePresentation);
+    
+    function addCopyright() {
+        const currentSlides = document.querySelectorAll('.slide-container');
+        currentSlides.forEach(slide => {
+            if(!slide.querySelector('.footer-copyright')){
+                const footer = document.createElement('div');
+                footer.className = 'footer-copyright';
+                footer.innerText = '【Confidential 社外秘】 ©︎ ACT HOUSE ®︎ All Rights Reserved.';
+                slide.appendChild(footer);
+            }
+        });
+    }
+
+    window.onload = function() {
+        addCopyright();
+        updateSlideVisibility();
+        scalePresentation();
+    };
+</script>
+</body>
+</html>

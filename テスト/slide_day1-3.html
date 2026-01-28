@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 Slide Templates</title>
+    <style>
+        /* --- Base Settings --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #000; 
+            height: 100vh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- Slide Deck Container --- */
+        .slide-deck {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: calc(100vh * 16 / 9);
+            background-color: #121212; 
+            position: relative;
+            box-shadow: 0 0 80px rgba(0, 100, 255, 0.15);
+            overflow: hidden;
+            container-type: inline-size;
+            color: #e0e0e0;
+        }
+
+        /* --- Common Background --- */
+        .bg-accent {
+            position: absolute; top: 0; right: 0; width: 35%; height: 100%;
+            background: linear-gradient(135deg, #0f4c81, #007bff);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 0; opacity: 0.6; pointer-events: none;
+        }
+
+        /* --- Slide Transition --- */
+        .slide {
+            display: none;
+            width: 100%; height: 100%;
+            padding: 5cqw 6cqw;
+            flex-direction: column;
+            position: relative; z-index: 1;
+        }
+        .slide.active { display: flex; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Typography --- */
+        h1 { font-size: 4cqw; line-height: 1.1; font-weight: 800; color: #fff; margin-bottom: 0.2em; }
+        h2 { font-size: 1.8cqw; color: #4dabf7; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8em; }
+        h3 { font-size: 1.6cqw; color: #fff; margin-bottom: 0.5em; font-weight: 700; }
+        p { font-size: 1.5cqw; line-height: 1.6; color: #b0b0b0; margin-bottom: 1em; }
+        
+        ul { list-style: none; }
+        ul li { font-size: 1.5cqw; color: #d0d0d0; margin-bottom: 0.5em; padding-left: 1.2em; position: relative; }
+        ul li::before { content: "▶"; color: #4dabf7; position: absolute; left: 0; font-size: 0.8em; top: 0.2em; }
+
+        /* --- Layout Utilities --- */
+        .center-content { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .text-center { text-align: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; height: 100%; align-items: center; }
+        .mt-auto { margin-top: auto; }
+
+        /* --- Specific Components --- */
+        
+        /* 1. Comparison (NG/OK) */
+        .comparison-box {
+            background: #1e1e1e; padding: 2cqw; border-radius: 1cqw; height: 100%;
+            border-top: 6px solid #555;
+        }
+        .comparison-box.ok { border-top-color: #4dabf7; background: rgba(77, 171, 247, 0.05); }
+        .comparison-box.ng { border-top-color: #e03131; background: rgba(224, 49, 49, 0.05); }
+        .tag { display: inline-block; padding: 0.2em 0.6em; border-radius: 4px; font-size: 1cqw; font-weight: bold; margin-bottom: 1cqw; }
+        .tag.ok { background: #4dabf7; color: #000; }
+        .tag.ng { background: #e03131; color: #fff; }
+
+        /* 2. Prompt Recipe */
+        .prompt-container {
+            background: #222; border-radius: 1cqw; padding: 2cqw;
+            border: 1px solid #333; position: relative; font-family: monospace;
+        }
+        .prompt-label {
+            position: absolute; top: -0.8em; left: 1em; background: #4dabf7; 
+            color: #000; padding: 0 0.5em; font-size: 1cqw; font-weight: bold; border-radius: 2px;
+        }
+        .prompt-text { color: #ccc; font-size: 1.4cqw; line-height: 1.6; white-space: pre-wrap; }
+        .var { color: #4dabf7; font-weight: bold; } /* 変数強調 */
+
+        /* 3. Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 1cqw; font-size: 1.4cqw; }
+        th { text-align: left; padding: 0.8em; border-bottom: 2px solid #4dabf7; color: #fff; }
+        td { padding: 0.8em; border-bottom: 1px solid #333; color: #ccc; }
+        tr:last-child td { border-bottom: none; }
+
+        /* 4. Process Flow */
+        .flow-container { display: flex; justify-content: space-between; margin-top: 3cqw; }
+        .flow-step { 
+            flex: 1; background: #1e1e1e; padding: 1.5cqw; border-radius: 0.5cqw; 
+            position: relative; margin-right: 3cqw; border: 1px solid #333;
+        }
+        .flow-step:last-child { margin-right: 0; }
+        .flow-step:not(:last-child)::after {
+            content: "→"; position: absolute; right: -2.2cqw; top: 50%; transform: translateY(-50%);
+            color: #4dabf7; font-size: 2cqw; font-weight: bold;
+        }
+        .step-num { color: #4dabf7; font-weight: bold; font-size: 1.2cqw; display: block; margin-bottom: 0.5em; }
+
+        /* 5. Big Statement */
+        .big-statement { font-size: 6cqw; font-weight: 800; line-height: 1.2; color: #fff; }
+
+        /* 12. Quiz Component */
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2cqw;
+            margin-top: 1cqw;
+        }
+        .quiz-option {
+            background: #1e1e1e;
+            padding: 1.5cqw 2cqw;
+            border: 1px solid #333;
+            border-radius: 0.8cqw;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .quiz-option:hover {
+            border-color: #4dabf7;
+            background: #252525;
+        }
+        .quiz-label {
+            color: #4dabf7;
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        /* 正解発表エリア（detailsタグを利用） */
+        details.answer-reveal {
+            margin-top: auto; /* 下部に配置 */
+            width: 100%;
+            border: 1px dashed #444;
+            border-radius: 0.5cqw;
+            background: #111;
+            transition: all 0.3s;
+        }
+        details.answer-reveal[open] {
+            border-style: solid;
+            border-color: #0f4c81;
+            background: #0d1b2a;
+        }
+        summary.answer-btn {
+            padding: 1cqw;
+            cursor: pointer;
+            color: #888;
+            font-size: 1.2cqw;
+            list-style: none; /* 三角アイコンを消す */
+            text-align: center;
+            font-weight: bold;
+        }
+        summary.answer-btn:hover { color: #fff; }
+        /* summaryのデフォルトマーカーを消すハック */
+        summary.answer-btn::-webkit-details-marker { display: none; }
+        .answer-content {
+            padding: 1cqw 2cqw 2cqw;
+            border-top: 1px solid #0f4c81;
+            color: #ccc;
+            font-size: 1.4cqw;
+            animation: fadeIn 0.3s ease;
+        }
+        .correct-text { color: #4dabf7; font-weight: bold; font-size: 1.2em; margin-bottom: 0.5em; display: block; }
+
+        /* Footer */
+        .footer { position: absolute; bottom: 3%; left: 6%; font-size: .8cqw; color: #666; }
+        .page-indicator { position: absolute; bottom: 3%; right: 4%; font-size: 1cqw; color: #555; }
+
+    </style>
+</head>
+<body>
+
+<div class="slide-deck">
+    <div class="bg-accent"></div>
+
+    <section class="slide active">
+        <div class="center-content">
+            <div style="max-width: 80%;">
+                <h2 style="margin-bottom: 0.5em;">Month 01 : Visual Logic & AI</h2>
+                <h1 style="font-size: 5cqw;">Day 1: Kickoff</h1>
+                <p style="margin-top: 1em; color: #888;">テーマ：「オペレーター」からの脱却</p>
+            </div>
+        </div>
+        <div class="footer">Confidential | Day 01</div>
+    </section>
+
+    <section class="slide">
+        <div class="center-content text-center">
+            <h2 style="color: #4dabf7; margin-bottom: 1em;">Core Mission</h2>
+            <p class="big-statement">
+                "Don't just Operate.<br>Engineer it."
+            </p>
+            <p style="margin-top: 2em; color: #777;">
+                ツールを使えるだけの「オペレーター」はAIに代替されます。<br>
+                我々が目指すのは、AIを指揮し、意図を持って設計する「エンジニアリング」です。
+            </p>
+        </div>
+        <div class="footer">Confidential | Day 01</div>
+    </section>
+
+    <section class="slide">
+        <h2>Environment</h2>
+        <h1>Tool Setup Marathon</h1>
+        <div class="grid-2">
+            <div style="display: flex; flex-direction: column; gap: 1cqw;">
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #4dabf7;">
+                    <h3>Communication</h3>
+                    <p style="margin:0; font-size: 1.2cqw;">Discord (報告・連絡・相談)</p>
+                </div>
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #007bff;">
+                    <h3>Creative Tools</h3>
+                    <p style="margin:0; font-size: 1.2cqw;">Figma, Canva (デザイン・資料作成)</p>
+                </div>
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #0f4c81;">
+                    <h3>AI Partners</h3>
+                    <p style="margin:0; font-size: 1.2cqw;">Gemini 3.0 (脳), Nano Banana (手)</p>
+                </div>
+            </div>
+            <div class="checklist-container">
+                <div class="checklist-label">Day 1 Quest</div>
+                <div style="margin-top: 1em;">
+                    <div class="check-item"><span class="check-box"></span> Discordで自己紹介投稿</div>
+                    <div class="check-item"><span class="check-box"></span> Gemini 3.0 ログイン確認</div>
+                    <div class="check-item"><span class="check-box"></span> Nano Banana アカウント作成</div>
+                    <div class="check-item"><span class="check-box"></span> Figma / Canva 招待承諾</div>
+                    <div class="check-item"><span class="check-box"></span> 課題：ダサい広告を見つけてくる</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Confidential | Day 01</div>
+    </section>
+
+    <section class="slide">
+        <div class="center-content">
+            <h2 style="color: #666; font-size: 1.5cqw;">Day 02 : Logic First</h2>
+            <h1 style="font-size: 4.5cqw; border-left: 8px solid #4dabf7; padding-left: 0.5em;">Design is Calculation.<br>Not Sense.</h1>
+            <p style="margin-top: 1em; color: #ccc;">デザインは「感性」ではなく「計算」です。</p>
+        </div>
+        <div class="footer">Confidential | Day 02</div>
+    </section>
+
+    <section class="slide">
+        <h2>Logic 01</h2>
+        <h1>The 70:25:5 Rule</h1>
+        <div class="grid-3" style="margin-top: 2cqw;">
+            <div class="card" style="border-top-color: #eee; background: #333;">
+                <h3>Base Color (70%)</h3>
+                <p style="font-size: 1.2cqw;">
+                    背景や余白。<br>
+                    主張せず、コンテンツを支える色。
+                </p>
+            </div>
+            <div class="card" style="border-top-color: #4dabf7; background: #1e1e1e;">
+                <h3>Main Color (25%)</h3>
+                <p style="font-size: 1.2cqw;">
+                    ブランドのイメージカラー。<br>
+                    全体の印象を決定づける色。
+                </p>
+            </div>
+            <div class="card" style="border-top-color: #e03131; background: #2a2a2a;">
+                <h3>Accent Color (5%)</h3>
+                <p style="font-size: 1.2cqw;">
+                    「見てほしい場所」にだけ使う色。<br>
+                    使いすぎるとノイズになる。
+                </p>
+            </div>
+        </div>
+        <p style="margin-top: 2cqw; text-align: center; color: #888;">※ 本日のワークでは、この比率を厳守して作成します。</p>
+        <div class="footer">Confidential | Day 02</div>
+    </section>
+
+    <section class="slide">
+        <h2>Visual Check</h2>
+        <h1>Logic vs Sensation</h1>
+        <div class="grid-2">
+            <div class="comparison-box ng">
+                <span class="tag ng">感覚で作った例 (NG)</span>
+                <h3>情報が散らかる</h3>
+                <ul>
+                    <li>空いている場所に置いただけ</li>
+                    <li>色が4色以上使われている</li>
+                    <li>フォントサイズがバラバラ</li>
+                </ul>
+            </div>
+            <div class="comparison-box ok">
+                <span class="tag ok">計算で作った例 (OK)</span>
+                <h3>視線が誘導される</h3>
+                <ul>
+                    <li>「揃える・まとめる」が徹底されている</li>
+                    <li>70:25:5 の配色ルール遵守</li>
+                    <li>Zの法則に沿った配置</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">Confidential | Day 02</div>
+    </section>
+
+    <section class="slide">
+        <div class="center-content">
+            <h2 style="color: #666; font-size: 1.5cqw;">Day 03 : AI Matrix</h2>
+            <h1 style="font-size: 4.5cqw; border-left: 8px solid #4dabf7; padding-left: 0.5em;">Judgment Matrix</h1>
+            <p style="margin-top: 1em; color: #ccc;">「自分でやる」ことと「AIに任せる」ことの線引き。</p>
+        </div>
+        <div class="footer">Confidential | Day 03</div>
+    </section>
+
+    <section class="slide">
+        <h2>Workflow Strategy</h2>
+        <h1>Who does what?</h1>
+        <div class="grid-2">
+            <div style="display: flex; flex-direction: column; gap: 1cqw;">
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #4dabf7;">
+                    <h3>0→1 Idea (発想)</h3>
+                    <p style="margin:0; font-size: 1.2cqw;"><strong style="color:#4dabf7;">Gemini 3.0</strong> : 案を100個出させる。<br>人間は「選ぶ」だけ。</p>
+                </div>
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #4dabf7;">
+                    <h3>Material (素材)</h3>
+                    <p style="margin:0; font-size: 1.2cqw;"><strong style="color:#4dabf7;">Nano Banana</strong> : 写真・イラスト生成。<br>人間は「撮りに行かない・描かない」。</p>
+                </div>
+                <div style="background: #2a2a2a; padding: 1.5cqw; border-left: 4px solid #fff;">
+                    <h3>Layout (構成)</h3>
+                    <p style="margin:0; font-size: 1.2cqw;"><strong style="color:#fff;">Human (Canva/Figma)</strong> : <br>Day2の「ロジック」を使って配置する。</p>
+                </div>
+            </div>
+            <div class="prompt-container">
+                <div class="prompt-label">Gemini Prompt Recipe</div>
+                <div class="prompt-text">
+あなたはプロのクリエイティブディレクターです。
+以下のターゲットに向けたWebバナーの
+「キャッチコピー案」を<span class="var">20個</span>出してください。
+
+# Target:
+<span class="var">20代後半、キャリアに悩む営業職</span>
+
+# Goal:
+<span class="var">クリックして「無料相談」に申し込ませる</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Confidential | Day 03</div>
+    </section>
+
+    <section class="slide">
+        <h2>Day 3 Challenge</h2>
+        <h1>30min Time Attack</h1>
+        <div class="flow-container">
+            <div class="flow-step">
+                <span class="step-num">00:00 - 05:00</span>
+                <h3>Gemini (Brain)</h3>
+                <p style="font-size: 1.1cqw;">企画・キャッチコピー出し。<br>3案に絞り込む。</p>
+            </div>
+            <div class="flow-step">
+                <span class="step-num">05:00 - 15:00</span>
+                <h3>Nano Banana (Hand)</h3>
+                <p style="font-size: 1.1cqw;">メインビジュアル生成。<br>プロンプトを高速で試行錯誤。</p>
+            </div>
+            <div class="flow-step">
+                <span class="step-num">15:00 - 30:00</span>
+                <h3>Canva (Finish)</h3>
+                <p style="font-size: 1.1cqw;">配置と文字組み。<br>70:25:5ルールで仕上げる。</p>
+            </div>
+        </div>
+        <div style="margin-top: 3cqw; text-align: center; color: #e03131; font-weight: bold; font-size: 1.5cqw;">
+            WARNING: 30分で強制終了。未完成でも提出すること。
+        </div>
+        <div class="footer">Confidential | Day 03</div>
+    </section>
+
+    <div class="page-indicator" id="pageIndicator"></div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const pageIndicator = document.getElementById('pageIndicator');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        slides[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        pageIndicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') showSlide(currentSlide + 1);
+        if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+    });
+
+    showSlide(0);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>020 第1か月の総括と「100日実践」への展望【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>第1か月の総括と<br>「100日実践」への展望<span>【実践編】</span></h1>
+                <p>あなた専用の「100日設計図」を完成させる</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 実践編の目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">実践編のゴール</h2>
+            <div class="content-block">
+                <h3>今日持ち帰るもの</h3>
+                <p>この実践編を終えると、あなた専用の「100日設計図」が完成します。</p>
+                
+                <h3>4つのワークで設計図を作る</h3>
+                <ul>
+                    <li><strong>ワーク①：</strong>5カテゴリ自己評価 — 自分のスキルを数値化する</li>
+                    <li><strong>ワーク②：</strong>4象限マッピング — 強みと伸びしろを可視化する</li>
+                    <li><strong>ワーク③：</strong>3つの問いへの回答 — 戦略の軸を言語化する</li>
+                    <li><strong>ワーク④：</strong>100日マイルストーン — 週単位の計画を立てる</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 所要時間：約45分（各ワーク10分 + 振り返り5分）
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: セクション区切り - ワーク① -->
+        <div class="slide-container section-title-layout">
+            <h2>ワーク①<br>5カテゴリ自己評価</h2>
+            <p>第1か月で得たスキルを数値化する</p>
+        </div>
+
+        <!-- スライド4: ワーク①の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ワーク①：5カテゴリ自己評価</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>第1か月で学んだ19テーマを5カテゴリに分け、各カテゴリの習熟度を1〜5で自己採点します。</p>
+                
+                <h3>評価基準</h3>
+                <ul>
+                    <li><strong>1：</strong>ほとんど理解できていない / 実践できない</li>
+                    <li><strong>2：</strong>概念は理解したが、自信を持って使えない</li>
+                    <li><strong>3：</strong>基本的なことはできる / 説明もある程度できる</li>
+                    <li><strong>4：</strong>自信を持って使える / 他者に教えられる</li>
+                    <li><strong>5：</strong>応用も自在 / 自分なりの工夫ができる</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 制限時間：5分 / 💡 直感で採点してOK
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド5: 5カテゴリの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">5カテゴリの評価項目</h2>
+            <div class="content-block">
+                <h3>各カテゴリで問いかける質問</h3>
+                <ul>
+                    <li><strong>設計思考（1〜5）：</strong>「このデザインは なぜ 良いのか？」を論理的に説明できるか</li>
+                    <li><strong>表現技術（1〜5）：</strong>Figma / Canvaで意図通りの形を作れるか</li>
+                    <li><strong>AI活用（1〜5）：</strong>AIに適切な指示を出して、狙った成果物を得られるか</li>
+                    <li><strong>実践力（1〜5）：</strong>制限時間内に80点のクオリティを出せるか</li>
+                    <li><strong>統合力（1〜5）：</strong>複数の原則・要素を組み合わせて判断できるか</li>
+                </ul>
+                <div class="highlight-box">
+                    📝 紙またはメモアプリに「設計思考：3」のように記録してください
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: Geminiで自己評価を深掘り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Geminiで自己評価を深掘りする</h2>
+            <div class="content-block">
+                <h3>自己評価の「根拠」を言語化する</h3>
+                <p>採点した数字だけでは曖昧です。Geminiを使って「なぜその点数なのか」を深掘りしましょう。</p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        私はArt & Science講座を1か月受講しました。以下の5カテゴリで自己評価をしています。
+
+        【私の自己評価】
+        - 設計思考：[あなたの点数]/5
+        - 表現技術：[あなたの点数]/5
+        - AI活用：[あなたの点数]/5
+        - 実践力：[あなたの点数]/5
+        - 統合力：[あなたの点数]/5
+
+        各カテゴリについて、以下を質問してください：
+        1. その点数をつけた具体的な理由は？
+        2. 自信があるポイントは何？
+        3. 不安を感じるポイントは何？
+
+        1つずつ順番に質問してください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    💡 Geminiの質問に答えることで、自分でも気づかなかった強み・弱みが見えてきます
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: ワーク①のチェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">ワーク① 完了チェック</h2>
+            <div class="tiled-content">
+                <div class="tile-grid">
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>設計思考</h3>
+                        <p>点数と<br>その根拠を<br>記録した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>表現技術</h3>
+                        <p>点数と<br>その根拠を<br>記録した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>AI活用</h3>
+                        <p>点数と<br>その根拠を<br>記録した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>実践・統合</h3>
+                        <p>点数と<br>その根拠を<br>記録した</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: セクション区切り - ワーク② -->
+        <div class="slide-container section-title-layout">
+            <h2>ワーク②<br>4象限マッピング</h2>
+            <p>強みと伸びしろを可視化する</p>
+        </div>
+
+        <!-- スライド9: ワーク②の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ワーク②：4象限マッピング</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>19テーマを「好き/苦手意識」×「得意/苦手」の4象限に配置し、戦略的な優先順位をつけます。</p>
+                
+                <h3>4象限の意味</h3>
+                <ul>
+                    <li><strong>左上（好き×得意）：</strong>強み → 100日実践の「武器」として活用</li>
+                    <li><strong>右上（苦手意識×得意）：</strong>可能性 → 思い込みを外す</li>
+                    <li><strong>左下（好き×苦手）：</strong>成長余地 → 100日で重点強化</li>
+                    <li><strong>右下（苦手意識×苦手）：</strong>外注候補 → AIや他者に任せる</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 制限時間：10分 / 📝 紙に4象限を描いてテーマを配置
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: 19テーマのリスト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">配置する19テーマ</h2>
+            <div class="content-block">
+                <h3>各テーマを4象限のどこに置くか考える</h3>
+                <ul>
+                    <li>デザインは「設計」である / 生成AI完全制御 / 色彩と文字</li>
+                    <li>ブランド・アイデンティティ / Figmaによる骨格設計</li>
+                    <li>Atomic Designとコンポーネント / CRO理論</li>
+                    <li>モバイルファースト / 写真加工（Canva×AI）</li>
+                    <li>SNS特化型デザイン / LPのビジュアル戦略</li>
+                    <li>ポートフォリオと人間の感性 / 言語化ドリル（1）（2）</li>
+                    <li>カスタムAI（Gem）構築 / 80点を30分でタイムアタック</li>
+                    <li>ロジック・プロンプト / クライアント提案シミュレーション</li>
+                    <li>最新AIツール実験室</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 全部配置しなくてOK。特に印象に残っているテーマから始めましょう
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: Geminiで4象限を整理 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Geminiで4象限を整理する</h2>
+            <div class="content-block">
+                <h3>配置の妥当性をGeminiと壁打ちする</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        私はArt & Science講座で学んだテーマを4象限に配置しました。妥当性を確認してください。
+
+        【4象限の定義】
+        - 左上（強み）：好き × 得意
+        - 右上（可能性）：苦手意識 × 得意
+        - 左下（成長余地）：好き × 苦手
+        - 右下（外注候補）：苦手意識 × 苦手
+
+        【私の配置】
+        - 強み：[配置したテーマ]
+        - 可能性：[配置したテーマ]
+        - 成長余地：[配置したテーマ]
+        - 外注候補：[配置したテーマ]
+
+        以下を教えてください：
+        1. この配置で気になる点はありますか？
+        2. 「強み」を活かす具体的な方法は？
+        3. 「成長余地」を100日で伸ばすには何をすべき？
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ 自分の配置が「本当にそうか？」をGeminiと対話して確認する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: ワーク②のチェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">ワーク② 完了チェック</h2>
+            <div class="tiled-content">
+                <div class="tile-grid">
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>強み</h3>
+                        <p>100日で<br>武器にする<br>テーマを特定</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>可能性</h3>
+                        <p>思い込みを<br>外すべき<br>テーマを特定</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>成長余地</h3>
+                        <p>100日で<br>重点強化する<br>テーマを特定</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>外注候補</h3>
+                        <p>AIや他者に<br>任せる<br>テーマを特定</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: セクション区切り - ワーク③ -->
+        <div class="slide-container section-title-layout">
+            <h2>ワーク③<br>3つの問いへの回答</h2>
+            <p>戦略の軸を言語化する</p>
+        </div>
+
+        <!-- スライド14: ワーク③の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ワーク③：3つの問いへの回答</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>100日実践の「軸」となる3つの問いに、自分の言葉で回答します。</p>
+                
+                <h3>3つの問い</h3>
+                <ul>
+                    <li><strong>問い1：</strong>何を「カタチ」にしたいか？（クラウドソーシング / 起業準備 / イベント / クラファン）</li>
+                    <li><strong>問い2：</strong>どの「強み」を武器にするか？（ワーク②で特定した強み）</li>
+                    <li><strong>問い3：</strong>100日後、どんな自分になっていたいか？（具体的なシーン）</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 制限時間：10分 / 📝 各問いに2〜3文で回答
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: 問い1の深掘り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">問い1：何を「カタチ」にしたいか？</h2>
+            <div class="content-block">
+                <h3>4つの道から選ぶ（または組み合わせる）</h3>
+                <ul>
+                    <li><strong>クラウドソーシング：</strong>CW / ランサーズ / ココナラ / Upworkで実績を積む</li>
+                    <li><strong>起業準備：</strong>自社サービス / ブランドの立ち上げ準備</li>
+                    <li><strong>イベント開催：</strong>ワークショップ / 勉強会 / コミュニティ形成</li>
+                    <li><strong>クラウドファンディング：</strong>プロダクト / コンテンツを資金調達しながら作る</li>
+                </ul>
+                
+                <h3>選択のポイント</h3>
+                <p>「やりたいこと」と「できること」の交差点を探す。100日で現実的に達成できる範囲を意識する。</p>
+                
+                <div class="highlight-box">
+                    💡 迷ったら「最もワクワクする道」を選ぶ。モチベーションが継続の鍵。
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: 問い2・3の深掘り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">問い2・3：強みと未来像</h2>
+            <div class="content-block">
+                <h3>問い2：どの「強み」を武器にするか？</h3>
+                <p>ワーク②で左上（強み）に配置したテーマの中から、100日で最も活用したいものを1〜2つ選ぶ。</p>
+                
+                <h3>問い3：100日後、どんな自分になっていたいか？</h3>
+                <p>具体的なシーンで描く。例えば：</p>
+                <ul>
+                    <li>「社内会議でデザイン案にフィードバックを出し、採用される」</li>
+                    <li>「クラウドソーシングで3件の案件を完了し、評価4.5以上を獲得」</li>
+                    <li>「自分のワークショップに10人が参加してくれる」</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    📝 抽象的な目標（「成長したい」）ではなく、具体的なシーンで書く
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: Geminiで戦略を壁打ち -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Geminiで戦略を壁打ちする</h2>
+            <div class="content-block">
+                <h3>3つの問いへの回答を検証する</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-3">
+        私は100日間のArt & Science実践計画を立てています。以下の戦略を検証してください。
+
+        【問い1：何をカタチにしたいか】
+        [あなたの回答]
+
+        【問い2：武器にする強み】
+        [あなたの回答]
+
+        【問い3：100日後の自分】
+        [あなたの回答]
+
+        以下を教えてください：
+        1. この戦略の強みは何ですか？
+        2. リスクや懸念点はありますか？
+        3. 最初の1週間で何をすべきですか？
+        4. 途中で挫折しそうなポイントと対策は？
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-3', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ Geminiの指摘を鵜呑みにせず、自分の判断で取捨選択する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: ワーク③のチェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">ワーク③ 完了チェック</h2>
+            <div class="tiled-content">
+                <div class="tile-grid">
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>問い1</h3>
+                        <p>何をカタチに<br>するか<br>決めた</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>問い2</h3>
+                        <p>武器にする<br>強みを<br>特定した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>問い3</h3>
+                        <p>100日後の<br>具体的シーンを<br>描いた</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>検証</h3>
+                        <p>Geminiで<br>戦略を<br>壁打ちした</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: セクション区切り - ワーク④ -->
+        <div class="slide-container section-title-layout">
+            <h2>ワーク④<br>100日マイルストーン</h2>
+            <p>週単位の計画を立てる</p>
+        </div>
+
+        <!-- スライド20: ワーク④の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ワーク④：100日マイルストーン</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>100日を「4つのフェーズ」に分け、各フェーズの達成目標を設定します。</p>
+                
+                <h3>100日の4フェーズ</h3>
+                <ul>
+                    <li><strong>Day 1-25（準備期）：</strong>環境構築 / 最初の一歩を踏み出す</li>
+                    <li><strong>Day 26-50（実行期）：</strong>本格的に取り組む / 最初の成果を出す</li>
+                    <li><strong>Day 51-75（加速期）：</strong>フィードバックを反映 / 量をこなす</li>
+                    <li><strong>Day 76-100（仕上げ期）：</strong>成果を形にする / 振り返りと次の計画</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 制限時間：10分 / 📝 各フェーズに1つの達成目標を設定
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: フェーズ別目標の例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ別目標の例</h2>
+            <div class="content-block">
+                <h3>クラウドソーシングを選んだ場合</h3>
+                <ul>
+                    <li><strong>準備期：</strong>プロフィール作成 / ポートフォリオ3点用意 / 最初の提案を送る</li>
+                    <li><strong>実行期：</strong>初案件を受注・納品 / 評価を獲得</li>
+                    <li><strong>加速期：</strong>3件目の案件を完了 / リピーター獲得を狙う</li>
+                    <li><strong>仕上げ期：</strong>5件以上の実績 / 月1万円以上の収入</li>
+                </ul>
+                
+                <h3>イベント開催を選んだ場合</h3>
+                <ul>
+                    <li><strong>準備期：</strong>コンテンツ企画 / 集客チャネル決定 / 告知開始</li>
+                    <li><strong>実行期：</strong>初回イベント開催 / 参加者フィードバック収集</li>
+                    <li><strong>加速期：</strong>2回目開催 / 改善点を反映</li>
+                    <li><strong>仕上げ期：</strong>3回目開催 / コミュニティ形成の基盤完成</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド22: Geminiで計画を具体化 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Geminiで計画を具体化する</h2>
+            <div class="content-block">
+                <h3>週単位のタスクに落とし込む</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-4">
+        私は100日間のArt & Science実践計画を立てています。以下の目標を週単位のタスクに分解してください。
+
+        【選んだ道】
+        [クラウドソーシング / 起業準備 / イベント / クラファン]
+
+        【4フェーズの目標】
+        - Day 1-25：[あなたの目標]
+        - Day 26-50：[あなたの目標]
+        - Day 51-75：[あなたの目標]
+        - Day 76-100：[あなたの目標]
+
+        【私の強み】
+        [ワーク②で特定した強み]
+
+        【週に使える時間】
+        約[X]時間
+
+        上記を踏まえて、各フェーズを週単位（約3-4週間ずつ）のタスクに分解してください。
+        各週のタスクは具体的で、私の強みを活かせるものにしてください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-4', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    💡 Geminiの提案をベースに、自分の状況に合わせて調整する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド23: ワーク④のチェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">ワーク④ 完了チェック</h2>
+            <div class="tiled-content">
+                <div class="tile-grid">
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>準備期</h3>
+                        <p>Day 1-25の<br>目標を<br>設定した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>実行期</h3>
+                        <p>Day 26-50の<br>目標を<br>設定した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>加速期</h3>
+                        <p>Day 51-75の<br>目標を<br>設定した</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✓</div>
+                        <h3>仕上げ期</h3>
+                        <p>Day 76-100の<br>目標を<br>設定した</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: セクション区切り - まとめ -->
+        <div class="slide-container section-title-layout">
+            <h2>まとめ<span>100日設計図の完成</span></h2>
+            <p>持ち帰るものを確認する</p>
+        </div>
+
+        <!-- スライド25: 設計図の全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">あなたの「100日設計図」</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 420">
+                    <!-- タイトル -->
+                    <text x="400" y="35" text-anchor="middle" fill="white" font-size="18" font-weight="bold">100日設計図</text>
+                    
+                    <!-- ワーク①: 自己評価 -->
+                    <rect x="50" y="60" width="160" height="100" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="130" y="90" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">ワーク①</text>
+                    <text x="130" y="110" text-anchor="middle" fill="white" font-size="11">5カテゴリ自己評価</text>
+                    <text x="130" y="130" text-anchor="middle" fill="#aaa" font-size="10">現在地の数値化</text>
+                    <text x="130" y="150" text-anchor="middle" fill="#aaa" font-size="10">強み・弱みの根拠</text>
+                    
+                    <!-- 矢印1 -->
+                    <line x1="210" y1="110" x2="250" y2="110" stroke="#666" stroke-width="2"/>
+                    <polygon points="250,105 260,110 250,115" fill="#666"/>
+                    
+                    <!-- ワーク②: 4象限 -->
+                    <rect x="260" y="60" width="160" height="100" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2" rx="8"/>
+                    <text x="340" y="90" text-anchor="middle" fill="#4ecdc4" font-size="12" font-weight="bold">ワーク②</text>
+                    <text x="340" y="110" text-anchor="middle" fill="white" font-size="11">4象限マッピング</text>
+                    <text x="340" y="130" text-anchor="middle" fill="#aaa" font-size="10">強み・伸びしろの可視化</text>
+                    <text x="340" y="150" text-anchor="middle" fill="#aaa" font-size="10">優先順位の決定</text>
+                    
+                    <!-- 矢印2 -->
+                    <line x1="420" y1="110" x2="460" y2="110" stroke="#666" stroke-width="2"/>
+                    <polygon points="460,105 470,110 460,115" fill="#666"/>
+                    
+                    <!-- ワーク③: 戦略 -->
+                    <rect x="470" y="60" width="160" height="100" fill="#ffd93d" opacity="0.2" stroke="#ffd93d" stroke-width="2" rx="8"/>
+                    <text x="550" y="90" text-anchor="middle" fill="#ffd93d" font-size="12" font-weight="bold">ワーク③</text>
+                    <text x="550" y="110" text-anchor="middle" fill="white" font-size="11">3つの問いへの回答</text>
+                    <text x="550" y="130" text-anchor="middle" fill="#aaa" font-size="10">何をカタチにするか</text>
+                    <text x="550" y="150" text-anchor="middle" fill="#aaa" font-size="10">武器と未来像</text>
+                    
+                    <!-- 矢印3 -->
+                    <line x1="630" y1="110" x2="670" y2="110" stroke="#666" stroke-width="2"/>
+                    <polygon points="670,105 680,110 670,115" fill="#666"/>
+                    
+                    <!-- ワーク④: 計画 -->
+                    <rect x="680" y="60" width="100" height="100" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="8"/>
+                    <text x="730" y="90" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">ワーク④</text>
+                    <text x="730" y="110" text-anchor="middle" fill="white" font-size="11">マイルストーン</text>
+                    <text x="730" y="130" text-anchor="middle" fill="#aaa" font-size="10">週単位の</text>
+                    <text x="730" y="145" text-anchor="middle" fill="#aaa" font-size="10">タスク</text>
+                    
+                    <!-- 下部: 4フェーズタイムライン -->
+                    <line x1="50" y1="220" x2="750" y2="220" stroke="#666" stroke-width="2"/>
+                    
+                    <!-- フェーズ1 -->
+                    <rect x="50" y="240" width="170" height="80" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" rx="4"/>
+                    <circle cx="135" cy="220" r="8" fill="#00d4ff"/>
+                    <text x="135" y="265" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="bold">Day 1-25</text>
+                    <text x="135" y="285" text-anchor="middle" fill="white" font-size="10">準備期</text>
+                    <text x="135" y="305" text-anchor="middle" fill="#aaa" font-size="9">環境構築・最初の一歩</text>
+                    
+                    <!-- フェーズ2 -->
+                    <rect x="230" y="240" width="170" height="80" fill="#4ecdc4" opacity="0.15" stroke="#4ecdc4" stroke-width="1" rx="4"/>
+                    <circle cx="315" cy="220" r="8" fill="#4ecdc4"/>
+                    <text x="315" y="265" text-anchor="middle" fill="#4ecdc4" font-size="11" font-weight="bold">Day 26-50</text>
+                    <text x="315" y="285" text-anchor="middle" fill="white" font-size="10">実行期</text>
+                    <text x="315" y="305" text-anchor="middle" fill="#aaa" font-size="9">本格取組・最初の成果</text>
+                    
+                    <!-- フェーズ3 -->
+                    <rect x="410" y="240" width="170" height="80" fill="#ffd93d" opacity="0.15" stroke="#ffd93d" stroke-width="1" rx="4"/>
+                    <circle cx="495" cy="220" r="8" fill="#ffd93d"/>
+                    <text x="495" y="265" text-anchor="middle" fill="#ffd93d" font-size="11" font-weight="bold">Day 51-75</text>
+                    <text x="495" y="285" text-anchor="middle" fill="white" font-size="10">加速期</text>
+                    <text x="495" y="305" text-anchor="middle" fill="#aaa" font-size="9">改善・量をこなす</text>
+                    
+                    <!-- フェーズ4 -->
+                    <rect x="590" y="240" width="160" height="80" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="1" rx="4"/>
+                    <circle cx="670" cy="220" r="8" fill="#a855f7"/>
+                    <text x="670" y="265" text-anchor="middle" fill="#a855f7" font-size="11" font-weight="bold">Day 76-100</text>
+                    <text x="670" y="285" text-anchor="middle" fill="white" font-size="10">仕上げ期</text>
+                    <text x="670" y="305" text-anchor="middle" fill="#aaa" font-size="9">成果を形に・振り返り</text>
+                    
+                    <!-- ゴール -->
+                    <rect x="200" y="350" width="400" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="400" y="380" text-anchor="middle" fill="white" font-size="14" font-weight="bold">🎯 社内でデザイン判断ができるビジュアル・アーキテクトに</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド26: 最終チェックリスト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">持ち帰りチェックリスト</h2>
+            <div class="content-block">
+                <h3>今日の成果物を確認する</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><strong>□ 5カテゴリ自己評価：</strong>各カテゴリの点数と根拠をメモした</li>
+                    <li><strong>□ 4象限マップ：</strong>19テーマを配置し、強み・伸びしろを特定した</li>
+                    <li><strong>□ 3つの問いへの回答：</strong>何をカタチにするか / 武器 / 未来像を言語化した</li>
+                    <li><strong>□ 100日マイルストーン：</strong>4フェーズの目標を設定した</li>
+                    <li><strong>□ Geminiとの壁打ち記録：</strong>戦略の検証と週単位タスクの分解をした</li>
+                </ul>
+                <div class="highlight-box">
+                    📁 これらを1つのドキュメントにまとめて保存しておきましょう
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド27: 最終メッセージ -->
+        <div class="slide-container big-concept-layout">
+            <h2>設計図は「決意表明」<br>行動は「証明」</h2>
+            <p>100日後、この設計図を振り返ったとき、何を感じるか。それは今日からの行動で決まる。</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "5カテゴリ自己評価で「3」をつける基準として正しいのはどれですか？",
+                options: [
+                    "概念は理解したが、自信を持って使えない",
+                    "基本的なことはできる / 説明もある程度できる",
+                    "自信を持って使える / 他者に教えられる",
+                    "ほとんど理解できていない"
+                ],
+                correct: 1,
+                explanation: "「3」は「基本的なことはできる / 説明もある程度できる」レベルです。中間点として、実践で使える最低ラインを示します。"
+            },
+            {
+                question: "4象限マッピングで「左下（好き×苦手）」に配置されたテーマはどう扱うべきですか？",
+                options: [
+                    "100日実践の武器として積極活用する",
+                    "AIや他者に任せて外注する",
+                    "100日で重点強化する成長余地として取り組む",
+                    "思い込みを外して再評価する"
+                ],
+                correct: 2,
+                explanation: "「好き×苦手」は成長余地です。好きなことは練習を続けやすいため、100日で重点的に強化することで伸ばせます。"
+            },
+            {
+                question: "100日マイルストーンの「準備期（Day 1-25）」で重視すべきことは何ですか？",
+                options: [
+                    "大きな成果を出すこと",
+                    "環境構築と最初の一歩を踏み出すこと",
+                    "フィードバックを反映して改善すること",
+                    "成果を形にして振り返ること"
+                ],
+                correct: 1,
+                explanation: "準備期は「環境構築と最初の一歩」を重視します。いきなり大きな成果を求めず、継続できる土台を作ることが重要です。"
+            },
+            {
+                question: "Geminiで戦略を壁打ちする際に最も重要な姿勢は何ですか？",
+                options: [
+                    "Geminiの提案をすべて採用する",
+                    "Geminiの指摘を鵜呑みにせず、自分の判断で取捨選択する",
+                    "Geminiに完璧な計画を作ってもらう",
+                    "Geminiの回答をそのままドキュメントにコピーする"
+                ],
+                correct: 1,
+                explanation: "AIの提案は参考情報です。最終的な判断は自分で行い、自分の状況に合わせて取捨選択することが「判断力」の第一歩です。"
+            },
+            {
+                question: "「設計図は決意表明、行動は証明」というメッセージが意味することは何ですか？",
+                options: [
+                    "計画を立てることが最も重要である",
+                    "計画なしに行動すべきである",
+                    "計画は意思を示すものであり、実際の行動で価値が決まる",
+                    "完璧な計画ができるまで行動しない方がよい"
+                ],
+                correct: 2,
+                explanation: "設計図（計画）は「やる」という意思表明に過ぎません。その計画を実行する行動こそが、100日後の自分を決定します。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

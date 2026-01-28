@@ -1,0 +1,12 @@
+font-size: clamp(1.5rem, 2vw, 2rem);
+
+font-size: clamp(1.25rem, 1.25vw, 1.75rem);
+
+font-size: clamp(1rem, 1.041666vw, 1.5rem);
+
+
+▼理論編のイメージ
+<img src="../assets/images/img_020_input_16.svg" alt="Gemini Interface Screenshot" width="100%" height="100%">
+
+▼実践編のイメージ
+<img src="../assets/images/img_011_handson_01.png" alt="Gemini Interface Screenshot" width="100%" height="100%">

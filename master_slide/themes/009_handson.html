@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009 現実を拡張する写真加工（Canva × AI）【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>現実を拡張する写真加工<span>Canva × AI</span><span>【実践編】</span></h1>
+                <p>自撮り・商品写真をスタジオ撮影レベルに変える</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 演習フロー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の演習フロー</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 200">
+                    <!-- 背景 -->
+                    <!-- <rect width="800" height="200" fill="#0a0a0a"/> -->
+                    
+                    <!-- 演習1 -->
+                    <rect x="50" y="50" width="160" height="100" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="130" y="85" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">演習1</text>
+                    <text x="130" y="110" text-anchor="middle" fill="#fff" font-size="12">人物写真</text>
+                    <text x="130" y="130" text-anchor="middle" fill="#888" font-size="11">→ 白背景ポートレート</text>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M220 100 L280 100" stroke="#888" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+                    
+                    <!-- Gemini -->
+                    <rect x="290" y="60" width="100" height="80" fill="#1a1a2e" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <text x="340" y="95" text-anchor="middle" fill="#00ff9d" font-size="12">Gemini</text>
+                    <text x="340" y="115" text-anchor="middle" fill="#888" font-size="10">方針検討</text>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M400 100 L460 100" stroke="#888" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+                    
+                    <!-- Canva -->
+                    <rect x="470" y="60" width="100" height="80" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="520" y="95" text-anchor="middle" fill="#ff6b6b" font-size="12">Canva</text>
+                    <text x="520" y="115" text-anchor="middle" fill="#888" font-size="10">加工実行</text>
+                    
+                    <!-- 矢印3 -->
+                    <path d="M580 100 L640 100" stroke="#888" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+                    
+                    <!-- 演習2 -->
+                    <rect x="650" y="50" width="120" height="100" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="710" y="85" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">演習2</text>
+                    <text x="710" y="110" text-anchor="middle" fill="#fff" font-size="12">商品写真</text>
+                    <text x="710" y="130" text-anchor="middle" fill="#888" font-size="11">→ 高級感黒背景</text>
+                    
+                    <!-- 矢印マーカー -->
+                    <defs>
+                        <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    🎯 理論編で学んだ判断基準を、実際の加工で検証する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: セクション区切り - 演習1 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習1<br>人物写真 → 白背景ポートレート</h2>
+            <p>自撮りをプロフィール写真レベルに変換</p>
+        </div>
+
+        <!-- スライド4: Gemini - 方針検討（人物） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 1：Geminiで加工方針を検討</h2>
+            <div class="content-block">
+                <h3>なぜ先にGeminiを使うのか？</h3>
+                <p>いきなり加工を始めると、「何をどこまで加工すべきか」が曖昧になります。<br>
+                Geminiで方針を言語化してから作業することで、判断がブレません。</p>
+                
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        以下の人物写真をプロフィール用に加工したいです。
+
+        【現状】
+        - 撮影場所：自宅のリビング（生活感のある背景）
+        - 照明：自然光（窓から）
+        - 服装：ビジネスカジュアル
+
+        【目標】
+        - 用途：LinkedInプロフィール / 社内ポータル
+        - 印象：清潔感、信頼感、親しみやすさ
+
+        以下を提案してください：
+        1. 背景をどう処理すべきか（白/グレー/ぼかし）
+        2. 残すべき要素と削除すべき要素
+        3. 加工の優先順位（まず何から着手すべきか）
+        4. 注意すべきポイント（不自然になりやすい箇所）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ 「きれいにして」では曖昧すぎる。用途と目標を具体的に伝える
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド5: Gemini - 回答の読み方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 2：Geminiの回答を判断基準に変換</h2>
+            <div class="content-block">
+                <h3>Geminiの回答例と解釈</h3>
+                
+                <p><strong>背景処理の提案：</strong></p>
+                <ul>
+                    <li>「白背景」→ Canvaの背景リムーバー + 白塗りつぶし</li>
+                    <li>「ぼかし」→ 背景リムーバー + グラデーション背景</li>
+                </ul>
+                
+                <p><strong>削除すべき要素：</strong></p>
+                <ul>
+                    <li>生活感のあるもの（家具、雑貨、洗濯物）</li>
+                    <li>他の人物が写り込んでいる場合</li>
+                </ul>
+                
+                <p><strong>残すべき要素：</strong></p>
+                <ul>
+                    <li>人物の輪郭・髪の毛（自然なエッジを保つ）</li>
+                    <li>服装のディテール</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 Geminiの回答を「Canvaでの操作手順」に翻訳する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: Canva - ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Canva</h2>
+                <div class="content-block">
+                    <p><strong>初回アクセス：</strong></p>
+                    <p style="color: #00d4ff;">https://www.canva.com/</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>今日使う機能：</strong></p>
+                    <ul>
+                        <li><strong>背景リムーバー：</strong>人物を自動で切り抜き</li>
+                        <li><strong>生成塗りつぶし：</strong>背景の差し替え・拡張</li>
+                        <li><strong>マジック消しゴム：</strong>不要オブジェクトの削除</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        💡 Pro版が必要ですが、無料トライアルで試せます
+                    </div>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_009_handson_01.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド7: Canva - 手順1 背景リムーバー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 3：背景リムーバーで切り抜き</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Canvaで新規デザイン作成（1080×1080px または用途に合わせたサイズ）</p>
+                <p><strong>2.</strong> 自撮り写真をアップロード</p>
+                <p><strong>3.</strong> 写真を選択 →「写真を編集」→「背景リムーバー」をクリック</p>
+                <p><strong>4.</strong> 自動処理完了を待つ（数秒）</p>
+                
+                <h3>理論編との関連</h3>
+                <p>背景リムーバーは「背景全体の差し替え」を可能にします。<br>
+                理論編で学んだ「Level 3：大規模な変更」に該当しますが、人物切り抜きはAIが得意な処理です。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：髪の毛のエッジが雑なまま進める<br>
+                    ✅ 正解：「復元」ブラシで髪の毛の境界を丁寧に調整
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: Canva - 手順2 白背景追加 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 3：白背景を追加</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 左メニュー「素材」→「図形」→ 四角形を選択</p>
+                <p><strong>2.</strong> キャンバス全体を覆うサイズに拡大</p>
+                <p><strong>3.</strong> 色を「白（#FFFFFF）」に変更</p>
+                <p><strong>4.</strong> 右クリック →「背面へ移動」→「最背面へ」</p>
+                
+                <h3>プロフェッショナルに見せるコツ</h3>
+                <ul>
+                    <li><strong>純白 vs オフホワイト：</strong>純白（#FFFFFF）は清潔感、オフホワイト（#F5F5F5）は柔らかさ</li>
+                    <li><strong>グラデーション：</strong>上部を白、下部を薄いグレーにすると奥行きが出る</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：背景と人物の境界がくっきりしすぎる<br>
+                    ✅ 正解：影を追加するか、わずかにぼかしを入れて自然に
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: Canva - 手順3 影と仕上げ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 3：影を追加して自然に仕上げる</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 切り抜いた人物画像を選択</p>
+                <p><strong>2.</strong> 「写真を編集」→「影付き」エフェクトを選択</p>
+                <p><strong>3.</strong> 影の強度を「20〜30%」程度に調整（自然さを優先）</p>
+                <p><strong>4.</strong> 全体を確認し、書き出し（PNG推奨）</p>
+                
+                <h3>スタジオ撮影との違いを埋める</h3>
+                <ul>
+                    <li><strong>照明の一貫性：</strong>元写真の光の方向と影の方向を合わせる</li>
+                    <li><strong>コントラスト：</strong>必要に応じて明るさ・コントラストを微調整</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「スタジオ撮影っぽさ」は影と光の一貫性で決まる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: 演習1 チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">演習1 完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>切り抜き精度</h3>
+                    <p>髪の毛のエッジが<br>自然か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>背景の均一性</h3>
+                    <p>ムラや境界線が<br>見えないか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>影の自然さ</h3>
+                    <p>光源と影の方向が<br>一致しているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>用途適合</h3>
+                    <p>LinkedIn等の<br>規定サイズか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: セクション区切り - 演習2 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習2<br>商品写真 → 高級感のある黒背景</h2>
+            <p>スマホ撮影をEC商品ページレベルに変換</p>
+        </div>
+
+        <!-- スライド12: Gemini - 方針検討（商品） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 1：Geminiで加工方針を検討</h2>
+            <div class="content-block">
+                <h3>商品写真特有の考慮点</h3>
+                <p>人物写真と違い、商品写真は「商品そのものの質感」を正確に伝える必要があります。<br>
+                過度な加工は「実物と違う」クレームの原因になります。</p>
+                
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        以下の商品写真を高級感のあるEC商品ページ用に加工したいです。
+
+        【現状】
+        - 商品：[腕時計 / アクセサリー / 化粧品など]
+        - 撮影環境：自宅のテーブル上（木目背景）
+        - 照明：室内照明（やや黄色がかっている）
+
+        【目標】
+        - 用途：ECサイトの商品ページ / SNS広告
+        - 印象：高級感、洗練された雰囲気、購買意欲を刺激
+
+        以下を提案してください：
+        1. 背景の処理方法（黒背景 / グラデーション / 反射面）
+        2. 商品の質感を損なわない加工の限界
+        3. 高級感を演出するための追加要素（影、光沢など）
+        4. 避けるべき加工（商品の信頼性を損なうもの）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ 商品カテゴリを具体的に伝えることで、適切な提案が得られる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: Gemini - 商品写真の判断基準 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 2：商品写真加工の判断基準</h2>
+            <div class="content-block">
+                <h3>許容される加工</h3>
+                <ul>
+                    <li><strong>背景の差し替え：</strong>商品の色味を変えない範囲で</li>
+                    <li><strong>影の追加：</strong>商品の形状を際立たせる</li>
+                    <li><strong>不要物の削除：</strong>ホコリ、指紋、背景の雑貨</li>
+                    <li><strong>明るさ・コントラスト調整：</strong>実物に近づける範囲で</li>
+                </ul>
+                
+                <h3>避けるべき加工</h3>
+                <ul>
+                    <li><strong>商品の色を変える：</strong>実物と違うとクレームに</li>
+                    <li><strong>傷や汚れを消す：</strong>中古品の場合は詐欺になる</li>
+                    <li><strong>サイズ感を変える：</strong>誤解を招く</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 理論編の倫理的考慮：「この加工は購入者を欺くか？」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド14: Canva - 手順1 背景リムーバー（商品） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 3：商品を切り抜く</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Canvaで新規デザイン作成（1200×1200px：ECサイト推奨サイズ）</p>
+                <p><strong>2.</strong> 商品写真をアップロード</p>
+                <p><strong>3.</strong> 「写真を編集」→「背景リムーバー」</p>
+                <p><strong>4.</strong> 商品のエッジを確認し、「消去」「復元」ブラシで調整</p>
+                
+                <h3>商品写真特有の注意点</h3>
+                <ul>
+                    <li><strong>透明な部分：</strong>ガラス、宝石などは自動切り抜きが苦手</li>
+                    <li><strong>反射：</strong>金属製品の反射は手動で調整が必要</li>
+                    <li><strong>細いパーツ：</strong>アクセサリーのチェーンなどは慎重に</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：自動切り抜きの結果をそのまま使う<br>
+                    ✅ 正解：必ずエッジを拡大して確認・調整
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: Canva - 手順2 黒背景とグラデーション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 3：高級感のある黒背景を作成</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 左メニュー「素材」→「図形」→ 四角形を選択</p>
+                <p><strong>2.</strong> キャンバス全体を覆うサイズに拡大</p>
+                <p><strong>3.</strong> 色を設定：</p>
+                <ul>
+                    <li><strong>純黒：</strong>#000000（モダン、シャープ）</li>
+                    <li><strong>ダークグレー：</strong>#1a1a1a（やや柔らかい）</li>
+                    <li><strong>グラデーション：</strong>上部 #2a2a2a → 下部 #000000（奥行き感）</li>
+                </ul>
+                <p><strong>4.</strong> 右クリック →「最背面へ」</p>
+                
+                <h3>高級感を高めるテクニック</h3>
+                <p>商品の下に微かな反射面を作ると、宙に浮いて見えず自然になります。</p>
+                
+                <div class="highlight-box">
+                    💡 黒背景は商品の色が映えるが、暗い商品は沈んでしまう
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: Canva - 手順3 影と反射 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 3：影と反射で高級感を演出</h2>
+            <div class="content-block">
+                <h3>操作手順（影の追加）</h3>
+                <p><strong>1.</strong> 切り抜いた商品画像を選択</p>
+                <p><strong>2.</strong> 「写真を編集」→「影付き」</p>
+                <p><strong>3.</strong> 影の設定：</p>
+                <ul>
+                    <li><strong>方向：</strong>下方向（商品が浮いているように）</li>
+                    <li><strong>ぼかし：</strong>中程度（シャープすぎると不自然）</li>
+                    <li><strong>距離：</strong>小さめ（商品に近い影）</li>
+                </ul>
+                
+                <h3>操作手順（反射面の作成 - 上級）</h3>
+                <p><strong>1.</strong> 商品画像を複製</p>
+                <p><strong>2.</strong> 複製を上下反転 →「透明度」を20%程度に</p>
+                <p><strong>3.</strong> 元画像の下に配置（反射に見える）</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：影を強くしすぎてコントラストが崩れる<br>
+                    ✅ 正解：影は「存在を感じる」程度の控えめさ
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: 演習2 チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">演習2 完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>切り抜き精度</h3>
+                    <p>商品のエッジが<br>滑らかか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>色の正確さ</h3>
+                    <p>実物と同じ色味が<br>再現されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>高級感</h3>
+                    <p>背景と影が<br>洗練された印象か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>信頼性</h3>
+                    <p>過度な加工で<br>誤解を招かないか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: Before/After 比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">Before / After：加工の効果</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before：スマホ撮影のまま</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect width="350" height="250" fill="#0a0a0a"/> -->
+                        <!-- 背景（生活感） -->
+                        <rect x="25" y="25" width="300" height="200" fill="#8B7355" rx="4"/>
+                        <!-- 木目パターン -->
+                        <line x1="25" y1="60" x2="325" y2="60" stroke="#7A6548" stroke-width="2"/>
+                        <line x1="25" y1="100" x2="325" y2="100" stroke="#7A6548" stroke-width="2"/>
+                        <line x1="25" y1="140" x2="325" y2="140" stroke="#7A6548" stroke-width="2"/>
+                        <line x1="25" y1="180" x2="325" y2="180" stroke="#7A6548" stroke-width="2"/>
+                        <!-- 商品（腕時計イメージ） -->
+                        <ellipse cx="175" cy="125" rx="50" ry="50" fill="#333" stroke="#888" stroke-width="3"/>
+                        <ellipse cx="175" cy="125" rx="40" ry="40" fill="#1a1a1a"/>
+                        <line x1="175" y1="95" x2="175" y2="125" stroke="#fff" stroke-width="2"/>
+                        <line x1="175" y1="125" x2="195" y2="125" stroke="#fff" stroke-width="1"/>
+                        <!-- 雑貨（問題要素） -->
+                        <rect x="260" y="80" width="40" height="60" fill="#666" opacity="0.7"/>
+                        <circle cx="70" cy="170" r="20" fill="#AA8866" opacity="0.7"/>
+                        <text x="175" y="245" text-anchor="middle" fill="#ff6b6b" font-size="12" style="font-size: ;">生活感・雑貨が写り込み</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ After：高級感のある仕上がり</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect width="350" height="250" fill="#0a0a0a"/> -->
+                        <!-- 背景（黒グラデーション） -->
+                        <defs>
+                            <linearGradient id="luxuryBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2a2a2a"/>
+                                <stop offset="100%" style="stop-color:#000000"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="25" y="25" width="300" height="200" fill="url(#luxuryBg)" rx="4"/>
+                        <!-- 商品（腕時計イメージ） -->
+                        <ellipse cx="175" cy="115" rx="55" ry="55" fill="#333" stroke="#00d4ff" stroke-width="2"/>
+                        <ellipse cx="175" cy="115" rx="45" ry="45" fill="#1a1a1a"/>
+                        <line x1="175" y1="80" x2="175" y2="115" stroke="#fff" stroke-width="2"/>
+                        <line x1="175" y1="115" x2="200" y2="115" stroke="#fff" stroke-width="1"/>
+                        <!-- 影 -->
+                        <ellipse cx="175" cy="190" rx="60" ry="10" fill="#000" opacity="0.5"/>
+                        <!-- 反射 -->
+                        <ellipse cx="175" cy="200" rx="50" ry="8" fill="#333" opacity="0.2"/>
+                        <text x="175" y="245" text-anchor="middle" fill="#00ff9d" font-size="12">背景クリーン・影で高級感</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: セクション区切り - まとめ -->
+        <div class="slide-container section-title-layout">
+            <h2>まとめ</h2>
+            <p>実践編の振り返り</p>
+        </div>
+
+        <!-- スライド20: まとめタイル -->
+        <div class="slide-container">
+            <h2 class="slide-title">今日の学び</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">💬</div>
+                    <h3>Gemini先行</h3>
+                    <p>加工前に方針を<br>言語化する</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✂️</div>
+                    <h3>切り抜き精度</h3>
+                    <p>自動処理後は<br>必ず手動調整</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>背景の選択</h3>
+                    <p>用途に合わせて<br>白 or 黒を判断</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✨</div>
+                    <h3>影と光</h3>
+                    <p>自然さと高級感の<br>バランス</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ</h2>
+            <div class="content-block">
+                <h3>今日の成果物を活用する</h3>
+                <ul>
+                    <li><strong>人物写真：</strong>LinkedIn、社内ポータル、名刺に使用</li>
+                    <li><strong>商品写真：</strong>ECサイト、SNS広告、カタログに使用</li>
+                </ul>
+                
+                <h3>さらに学ぶべきこと</h3>
+                <ul>
+                    <li><strong>生成塗りつぶし応用：</strong>背景拡張で16:9バナーを作成</li>
+                    <li><strong>マジック消しゴム：</strong>部分的な不要物削除</li>
+                    <li><strong>一括処理：</strong>複数商品を同じスタイルで加工</li>
+                </ul>
+                
+                <h3>理論編との接続を意識する</h3>
+                <p>今日学んだ操作は「手段」です。常に「この加工は目的に合っているか？」という判断基準を忘れないでください。</p>
+                
+                <div class="highlight-box">
+                    🎯 Visual Architectは「できる」ではなく「判断できる」
+                </div>
+            </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "自撮り写真をプロフィール用に加工する前に、Geminiで確認すべきことは？",
+                options: [
+                    "最新のトレンド背景色",
+                    "用途・目標・削除すべき要素の整理",
+                    "Canvaの操作方法",
+                    "他の人のプロフィール写真の事例"
+                ],
+                correct: 1,
+                explanation: "いきなり加工を始めると判断がブレます。Geminiで用途（LinkedIn等）、目標（信頼感等）、削除すべき要素を言語化してから作業することで、一貫した判断ができます。"
+            },
+            {
+                question: "Canvaの背景リムーバーを使用後、最も重要な確認ポイントは？",
+                options: [
+                    "ファイルサイズが小さくなったか",
+                    "髪の毛や細いパーツのエッジが自然か",
+                    "背景が完全に透明になったか",
+                    "処理時間が短かったか"
+                ],
+                correct: 1,
+                explanation: "自動切り抜きは髪の毛や細いパーツのエッジが雑になりやすいです。必ず拡大して確認し、「復元」ブラシで手動調整することがプロフェッショナルな仕上がりの鍵です。"
+            },
+            {
+                question: "商品写真を高級感のある黒背景にする際、避けるべき加工は？",
+                options: [
+                    "商品の下に微かな影を追加する",
+                    "背景をグラデーションにする",
+                    "商品の色味を鮮やかに変更する",
+                    "反射面を演出する"
+                ],
+                correct: 2,
+                explanation: "商品の色味を変更すると、実物と違うとしてクレームの原因になります。理論編で学んだ倫理的考慮として、「購入者を欺く加工」は避けるべきです。"
+            },
+            {
+                question: "白背景のポートレートで「スタジオ撮影っぽさ」を出すために最も重要なのは？",
+                options: [
+                    "背景を純白にする",
+                    "人物を大きく配置する",
+                    "影と光の方向を一致させる",
+                    "高解像度で書き出す"
+                ],
+                correct: 2,
+                explanation: "スタジオ撮影との違いは、照明の一貫性です。元写真の光の方向と追加する影の方向を合わせることで、自然で洗練された印象になります。"
+            },
+            {
+                question: "理論編と実践編を通じて、Visual Architectに最も求められるスキルは？",
+                options: [
+                    "Canvaのすべての機能を使いこなす",
+                    "最短時間で加工を完了する",
+                    "「加工すべきか」の判断基準を持つ",
+                    "トレンドに合わせたスタイルを適用する"
+                ],
+                correct: 2,
+                explanation: "Visual Architectの役割は「加工できる」ではなく「加工すべきか判断できる」ことです。Geminiで方針を言語化し、理論編の判断基準を適用することが、単なるツール操作者との違いです。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

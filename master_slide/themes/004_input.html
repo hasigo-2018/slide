@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004 ブランド・アイデンティティのシステム化【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ブランド・アイデンティティ<br>のシステム化<span>【理論編】</span></h1>
+                <p>世界観を「設計」し、一貫性を「仕組み」で守る</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜブランドは<br>「崩壊」するのか？</h2>
+            <p>担当者が変わるたびに色が変わり、部署ごとにフォントが違う。<br>それは「センス」の問題ではなく、「システム」の不在が原因です。</p>
+        </div>
+
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のアジェンダ</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 1.5rem; margin-bottom: 1rem;">
+                    <strong>第1章</strong>：ブランドの階層構造を理解する
+                </div>
+                <div class="highlight-box" style="background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 1.5rem; margin-bottom: 1rem;">
+                    <strong>第2章</strong>：MVV（ミッション・ビジョン・バリュー）の設計
+                </div>
+                <div class="highlight-box" style="background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 1.5rem; margin-bottom: 1rem;">
+                    <strong>第3章</strong>：トンマナを言語化するフレームワーク
+                </div>
+                <div class="highlight-box" style="background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 1.5rem; margin-bottom: 1rem;">
+                    <strong>第4章</strong>：ビジュアルシステムの設計根拠
+                </div>
+                <div class="highlight-box" style="background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 1.5rem;">
+                    <strong>第5章</strong>：一貫性を保つ仕組み
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: 章区切り - 第1章 -->
+        <div class="slide-container section-title-layout">
+            <h2>第1章<br>ブランドの階層構造</h2>
+            <p>なぜ「ロゴを作る」だけでは不十分なのか</p>
+        </div>
+
+        <!-- スライド5: ブランドピラミッド概念 -->
+        <div class="slide-container big-concept-layout">
+            <h2>ブランドは<br>「ピラミッド」である</h2>
+            <p>表層のデザインは、深層の思想から生まれる</p>
+        </div>
+
+        <!-- スライド6: ブランドピラミッド図解 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブランドピラミッドの構造</h2>
+            <div class="content-block svg-centered" style="height: -webkit-fill-available;">
+                <svg class="generated-art" viewBox="0 0 800 500">
+                    <!-- ピラミッド本体 -->
+                    <polygon points="400,50 150,450 650,450" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    
+                    <!-- 階層線 -->
+                    <line x1="200" y1="350" x2="600" y2="350" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="250" y1="250" x2="550" y2="250" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="300" y1="150" x2="500" y2="150" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,5"/>
+                    
+                    <!-- 階層ラベル -->
+                    <text x="400" y="100" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">MVV</text>
+                    <text x="400" y="125" text-anchor="middle" fill="#888" font-size="12">ミッション・ビジョン・バリュー</text>
+                    
+                    <text x="400" y="200" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">パーソナリティ</text>
+                    <text x="400" y="225" text-anchor="middle" fill="#888" font-size="12">ブランドの人格・性格</text>
+                    
+                    <text x="400" y="300" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">ビジュアルアイデンティティ</text>
+                    <text x="400" y="325" text-anchor="middle" fill="#888" font-size="12">ロゴ・カラー・タイポグラフィ</text>
+                    
+                    <text x="400" y="400" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">表現・タッチポイント</text>
+                    <text x="400" y="425" text-anchor="middle" fill="#888" font-size="12">広告・Web・店舗・製品</text>
+                    
+                    <!-- 矢印（上から下へ派生） -->
+                    <path d="M 680 100 L 680 420" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="720" y="260" fill="#ff6b6b" font-size="14" transform="rotate(90, 720, 260)">派生・展開</text>
+                    
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#ff6b6b"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p style="text-align: center; margin-top: 1rem; color: #888;">上位層が定まらないと、下位層がブレる</p>
+            </div>
+        </div>
+
+        <!-- スライド7: Appleの事例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">事例：Appleのブランドピラミッド</h2>
+            <div class="content-block svg-centered" style="height: -webkit-fill-available;">
+                <svg class="generated-art" viewBox="0 0 800 390">
+                    <!-- 階層ボックス -->
+                    <rect x="250" y="20" width="300" height="70" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="50" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">MVV</text>
+                    <text x="400" y="72" text-anchor="middle" fill="white" font-size="12">"Think Different" — 創造性で世界を変える</text>
+                    
+                    <rect x="200" y="110" width="400" height="70" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="140" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">パーソナリティ</text>
+                    <text x="400" y="162" text-anchor="middle" fill="white" font-size="12">革新的・シンプル・プレミアム・洗練</text>
+                    
+                    <rect x="150" y="200" width="500" height="70" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="230" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">ビジュアルアイデンティティ</text>
+                    <text x="400" y="252" text-anchor="middle" fill="white" font-size="12">モノクロロゴ / San Francisco / 余白の美学</text>
+                    
+                    <rect x="100" y="290" width="600" height="70" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="320" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">表現</text>
+                    <text x="400" y="342" text-anchor="middle" fill="white" font-size="12">ミニマルな製品 / Apple Store / 製品発表会</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M 400 90 L 400 105" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <path d="M 400 180 L 400 195" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <path d="M 400 270 L 400 285" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow2)"/>
+                    
+                    <defs>
+                        <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    💡 すべての表現が「Think Different」から一貫して派生している
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: 階層を無視した失敗 -->
+        <div class="slide-container">
+            <h2 class="slide-title" style="grid-column: 1 / -1;">階層を無視するとどうなるか</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ よくある失敗パターン</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <rect x="50" y="15" width="250" height="45" fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                        <text x="175" y="43" text-anchor="middle" fill="#ff6b6b" font-size="14">いきなりロゴを作る</text>
+                        
+                        <path d="M 175 65 L 175 80" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <rect x="50" y="85" width="250" height="45" fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                        <text x="175" y="113" text-anchor="middle" fill="#ff6b6b" font-size="14">色を「なんとなく」決める</text>
+                        
+                        <path d="M 175 135 L 175 150" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <rect x="50" y="155" width="250" height="40" fill="rgba(255,107,107,0.3)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                        <text x="175" y="180" text-anchor="middle" fill="#ff6b6b" font-size="12">担当者ごとにバラバラ…</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ 正しいアプローチ</h3>
+                    <svg class="generated-art" viewBox="0 0 350 200">
+                        <rect x="50" y="15" width="250" height="45" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                        <text x="175" y="43" text-anchor="middle" fill="#00d4ff" font-size="14">MVVを言語化する</text>
+                        
+                        <path d="M 175 65 L 175 80" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow3)"/>
+                        
+                        <rect x="50" y="85" width="250" height="45" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                        <text x="175" y="113" text-anchor="middle" fill="#00d4ff" font-size="14">パーソナリティを定義</text>
+                        
+                        <path d="M 175 135 L 175 150" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow3)"/>
+                        
+                        <rect x="50" y="155" width="250" height="40" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                        <text x="175" y="180" text-anchor="middle" fill="#00d4ff" font-size="12">VIが自然と決まる</text>
+                        
+                        <defs>
+                            <marker id="arrow3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: 章区切り - 第2章 -->
+        <div class="slide-container section-title-layout">
+            <h2>第2章<br>MVVの設計</h2>
+            <p>ブランドの「存在理由」を言葉にする</p>
+        </div>
+
+        <!-- スライド10: MVVとは -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">MVVの3つの要素</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- Mission -->
+                    <rect x="50" y="50" width="200" height="250" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="150" y="90" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">Mission</text>
+                    <text x="150" y="120" text-anchor="middle" fill="white" font-size="14">使命</text>
+                    <line x1="80" y1="140" x2="220" y2="140" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                    <text x="150" y="170" text-anchor="middle" fill="#888" font-size="13">「なぜ存在するのか」</text>
+                    <text x="150" y="200" text-anchor="middle" fill="#888" font-size="13">社会に対する約束</text>
+                    <text x="150" y="250" text-anchor="middle" fill="#666" font-size="11">例：Googleの</text>
+                    <text x="150" y="270" text-anchor="middle" fill="#666" font-size="11">"世界中の情報を整理する"</text>
+                    
+                    <!-- Vision -->
+                    <rect x="300" y="50" width="200" height="250" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="400" y="90" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">Vision</text>
+                    <text x="400" y="120" text-anchor="middle" fill="white" font-size="14">ビジョン</text>
+                    <line x1="330" y1="140" x2="470" y2="140" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                    <text x="400" y="170" text-anchor="middle" fill="#888" font-size="13">「どこを目指すのか」</text>
+                    <text x="400" y="200" text-anchor="middle" fill="#888" font-size="13">将来の理想像</text>
+                    <text x="400" y="250" text-anchor="middle" fill="#666" font-size="11">例：Teslaの</text>
+                    <text x="400" y="270" text-anchor="middle" fill="#666" font-size="11">"持続可能なエネルギーへの移行"</text>
+                    
+                    <!-- Values -->
+                    <rect x="550" y="50" width="200" height="250" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="650" y="90" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">Values</text>
+                    <text x="650" y="120" text-anchor="middle" fill="white" font-size="14">価値観</text>
+                    <line x1="580" y1="140" x2="720" y2="140" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                    <text x="650" y="170" text-anchor="middle" fill="#888" font-size="13">「何を大切にするか」</text>
+                    <text x="650" y="200" text-anchor="middle" fill="#888" font-size="13">行動の判断基準</text>
+                    <text x="650" y="250" text-anchor="middle" fill="#666" font-size="11">例：Patagoniaの</text>
+                    <text x="650" y="270" text-anchor="middle" fill="#666" font-size="11">"環境への責任"</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド11: MVV設計フレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">MVV設計の問いかけフレームワーク</h2>
+            <div class="content-block">
+                <h3>Mission を見つける3つの質問</h3>
+                <ul>
+                    <li>あなたの事業がなくなったら、誰が困るのか？</li>
+                    <li>お金以外で、何を社会に提供しているのか？</li>
+                    <li>100年後も変わらない、存在意義は何か？</li>
+                </ul>
+                
+                <h3>Vision を描く3つの質問</h3>
+                <ul>
+                    <li>10年後、顧客の生活はどう変わっているか？</li>
+                    <li>業界の「当たり前」をどう変えたいか？</li>
+                    <li>成功したとき、世界はどう違っているか？</li>
+                </ul>
+                
+                <h3>Values を定める3つの質問</h3>
+                <ul>
+                    <li>困難な判断を迫られたとき、何を優先するか？</li>
+                    <li>採用で「スキルより重視する資質」は何か？</li>
+                    <li>絶対に妥協しないことは何か？</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド12: 無印良品の事例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">事例：無印良品のMVV</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 380">
+                    <!-- 中央のブランド名 -->
+                    <rect x="300" y="10" width="200" height="50" fill="rgba(139,90,43,0.3)" stroke="#8B5A2B" stroke-width="2" rx="8"/>
+                    <text x="400" y="42" text-anchor="middle" fill="white" font-size="18" font-weight="bold">無印良品</text>
+                    
+                    <!-- Mission -->
+                    <rect x="50" y="100" width="220" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="160" y="130" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">Mission</text>
+                    <text x="160" y="160" text-anchor="middle" fill="white" font-size="12">"これでいい"という</text>
+                    <text x="160" y="180" text-anchor="middle" fill="white" font-size="12">満足を提供する</text>
+                    <text x="160" y="205" text-anchor="middle" fill="#888" font-size="10">→ 過剰を排し、本質を届ける</text>
+                    
+                    <!-- Vision -->
+                    <rect x="290" y="100" width="220" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="130" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">Vision</text>
+                    <text x="400" y="160" text-anchor="middle" fill="white" font-size="12">感じ良いくらしの</text>
+                    <text x="400" y="180" text-anchor="middle" fill="white" font-size="12">実現</text>
+                    <text x="400" y="205" text-anchor="middle" fill="#888" font-size="10">→ 生活全般を豊かにする</text>
+                    
+                    <!-- Values -->
+                    <rect x="530" y="100" width="220" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="640" y="130" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">Values</text>
+                    <text x="640" y="160" text-anchor="middle" fill="white" font-size="12">素材の選択・工程の見直し</text>
+                    <text x="640" y="180" text-anchor="middle" fill="white" font-size="12">包装の簡略化</text>
+                    <text x="640" y="205" text-anchor="middle" fill="#888" font-size="10">→ 無駄を省く姿勢</text>
+                    
+                    <!-- 派生矢印 -->
+                    <path d="M 400 230 L 400 260" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow4)"/>
+                    
+                    <!-- 表現への展開 -->
+                    <rect x="150" y="270" width="500" height="90" fill="rgba(139,90,43,0.1)" stroke="#8B5A2B" stroke-width="1" rx="8"/>
+                    <text x="400" y="300" text-anchor="middle" fill="#8B5A2B" font-size="14" font-weight="bold">MVVから派生したVI・表現</text>
+                    <text x="400" y="330" text-anchor="middle" fill="#888" font-size="12">無彩色 / 素材感のある紙 / 余白 / シンプルな棚 / 「わけあって、安い。」</text>
+                    
+                    <defs>
+                        <marker id="arrow4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド13: 章区切り - 第3章 -->
+        <div class="slide-container section-title-layout">
+            <h2>第3章<br>トンマナを言語化する<br>フレームワーク</h2>
+            <p>「なんとなく」を「明確な言葉」に変える</p>
+        </div>
+
+        <!-- スライド14: なぜ言語化が必要か -->
+        <div class="slide-container big-concept-layout">
+            <h2>言語化されていないものは<br>共有できない</h2>
+            <p>「カッコよくして」「もっとポップに」では、10人が10通りの解釈をする</p>
+        </div>
+
+        <!-- スライド15: フレームワーク1 - ブランドパーソナリティ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フレームワーク①：ブランドパーソナリティ</h2>
+            <div class="content-block svg-centered">
+                <h3>「もしブランドが人だったら？」</h3>
+                <p>ブランドを人格として捉え、性格特性を言語化する手法</p>
+                
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <!-- 5つの性格軸 -->
+                    <rect x="30" y="50" width="140" height="80" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="100" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">誠実さ</text>
+                    <text x="100" y="100" text-anchor="middle" fill="#888" font-size="10">Sincerity</text>
+                    <text x="100" y="120" text-anchor="middle" fill="#666" font-size="9">正直・健全・陽気</text>
+                    
+                    <rect x="185" y="50" width="140" height="80" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="255" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">刺激</text>
+                    <text x="255" y="100" text-anchor="middle" fill="#888" font-size="10">Excitement</text>
+                    <text x="255" y="120" text-anchor="middle" fill="#666" font-size="9">大胆・活発・革新的</text>
+                    
+                    <rect x="340" y="50" width="140" height="80" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="410" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">能力</text>
+                    <text x="410" y="100" text-anchor="middle" fill="#888" font-size="10">Competence</text>
+                    <text x="410" y="120" text-anchor="middle" fill="#666" font-size="9">信頼性・知性・成功</text>
+                    
+                    <rect x="495" y="50" width="140" height="80" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="565" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">洗練</text>
+                    <text x="565" y="100" text-anchor="middle" fill="#888" font-size="10">Sophistication</text>
+                    <text x="565" y="120" text-anchor="middle" fill="#666" font-size="9">上流階級・魅力的</text>
+                    
+                    <rect x="650" y="50" width="140" height="80" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="720" y="80" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">頑丈さ</text>
+                    <text x="720" y="100" text-anchor="middle" fill="#888" font-size="10">Ruggedness</text>
+                    <text x="720" y="120" text-anchor="middle" fill="#666" font-size="9">アウトドア・タフ</text>
+                    
+                    <!-- Jennifer Aakerのモデル注釈 -->
+                    <text x="400" y="180" text-anchor="middle" fill="#666" font-size="11">※ Jennifer Aaker のブランドパーソナリティモデル（1997）</text>
+                    
+                    <!-- 例 -->
+                    <rect x="200" y="200" width="400" height="60" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="1" rx="8"/>
+                    <text x="400" y="225" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="bold">例：Nikeのパーソナリティ</text>
+                    <text x="400" y="245" text-anchor="middle" fill="#888" font-size="11">刺激（大胆・活発）＋ 能力（成功）＋ 頑丈さ（タフ）</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド16: フレームワーク2 - ボイス＆トーン -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フレームワーク②：ボイス＆トーン</h2>
+            <div class="content-block svg-centered">
+                <h3>Voice（声）= 一貫した性格 / Tone（調子）= 状況に応じた表現</h3>
+                
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- Voice -->
+                    <rect x="50" y="30" width="300" height="130" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="200" y="60" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">Voice（声）</text>
+                    <text x="200" y="90" text-anchor="middle" fill="white" font-size="13">常に変わらないブランドの人格</text>
+                    <text x="200" y="120" text-anchor="middle" fill="#888" font-size="11">例：「フレンドリーで親しみやすい」</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#888" font-size="11">「専門的だが偉そうでない」</text>
+                    
+                    <!-- Tone -->
+                    <rect x="450" y="30" width="300" height="130" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="2" rx="12"/>
+                    <text x="600" y="60" text-anchor="middle" fill="#ff6b6b" font-size="18" font-weight="bold">Tone（調子）</text>
+                    <text x="600" y="90" text-anchor="middle" fill="white" font-size="13">状況・文脈に応じた調整</text>
+                    <text x="600" y="120" text-anchor="middle" fill="#888" font-size="11">お祝い → 明るく弾む</text>
+                    <text x="600" y="145" text-anchor="middle" fill="#888" font-size="11">お詫び → 真摯で落ち着いた</text>
+                    
+                    <!-- 例：Mailchimp -->
+                    <rect x="100" y="190" width="600" height="100" fill="rgba(255,199,0,0.1)" stroke="#FFC700" stroke-width="1" rx="8"/>
+                    <text x="400" y="220" text-anchor="middle" fill="#FFC700" font-size="14" font-weight="bold">例：Mailchimpのボイス＆トーン</text>
+                    <text x="400" y="250" text-anchor="middle" fill="white" font-size="12">Voice：「ユーモアがあり、少し風変わりだが、決してふざけすぎない」</text>
+                    <text x="400" y="275" text-anchor="middle" fill="#888" font-size="11">→ 成功時は祝福ジョーク、エラー時は冷静なガイド</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド17: フレームワーク3 - ムードボード言語化 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フレームワーク③：ムードボード → 言語化</h2>
+            <div class="content-block svg-centered">
+                <h3>ビジュアルを「形容詞」に変換する</h3>
+                
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- ステップ1 -->
+                    <rect x="50" y="30" width="200" height="140" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="150" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Step 1</text>
+                    <text x="150" y="85" text-anchor="middle" fill="white" font-size="12">イメージを集める</text>
+                    <rect x="70" y="100" width="40" height="30" fill="#4a4a4a" rx="4"/>
+                    <rect x="120" y="100" width="40" height="30" fill="#6a6a6a" rx="4"/>
+                    <rect x="170" y="100" width="40" height="30" fill="#8a8a8a" rx="4"/>
+                    <text x="150" y="155" text-anchor="middle" fill="#888" font-size="10">写真・色・テクスチャ</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M 260 100 L 300 100" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow5)"/>
+                    
+                    <!-- ステップ2 -->
+                    <rect x="310" y="30" width="200" height="140" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="410" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Step 2</text>
+                    <text x="410" y="85" text-anchor="middle" fill="white" font-size="12">形容詞を抽出</text>
+                    <text x="410" y="115" text-anchor="middle" fill="#888" font-size="11">「温かみのある」</text>
+                    <text x="410" y="135" text-anchor="middle" fill="#888" font-size="11">「洗練された」</text>
+                    <text x="410" y="155" text-anchor="middle" fill="#888" font-size="11">「親しみやすい」</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M 520 100 L 560 100" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow5)"/>
+                    
+                    <!-- ステップ3 -->
+                    <rect x="570" y="30" width="200" height="140" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="670" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Step 3</text>
+                    <text x="670" y="85" text-anchor="middle" fill="white" font-size="12">対義語で境界を明確化</text>
+                    <text x="670" y="115" text-anchor="middle" fill="#888" font-size="11">温かみ ↔ クール</text>
+                    <text x="670" y="135" text-anchor="middle" fill="#888" font-size="11">洗練 ↔ カジュアル</text>
+                    <text x="670" y="155" text-anchor="middle" fill="#888" font-size="11">親しみ ↔ 権威的</text>
+                    
+                    <!-- 結果 -->
+                    <rect x="200" y="200" width="400" height="120" fill="rgba(255,199,0,0.1)" stroke="#FFC700" stroke-width="2" rx="8"/>
+                    <text x="400" y="230" text-anchor="middle" fill="#FFC700" font-size="14" font-weight="bold">言語化されたトンマナ</text>
+                    <text x="400" y="260" text-anchor="middle" fill="white" font-size="12">「私たちは温かみがありながらも洗練されている。</text>
+                    <text x="400" y="285" text-anchor="middle" fill="white" font-size="12">親しみやすいが、カジュアルすぎない。」</text>
+                    
+                    <defs>
+                        <marker id="arrow5" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド18: 章区切り - 第4章 -->
+        <div class="slide-container section-title-layout">
+            <h2>第4章<br>ビジュアルシステムの<br>設計根拠</h2>
+            <p>「なぜその色？」に答えられるデザイン</p>
+        </div>
+
+        <!-- スライド19: ロゴレギュレーション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ロゴレギュレーションの設計</h2>
+            <div class="content-block svg-centered">
+                <h3>なぜレギュレーションが必要か</h3>
+                <p>ロゴは「最も見られるブランド資産」。一貫性の乱れが最も目立つ部分です。</p>
+                
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <!-- 4つの要素 -->
+                    <rect x="30" y="30" width="170" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="115" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">クリアスペース</text>
+                    <rect x="55" y="80" width="60" height="40" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+                    <rect x="65" y="90" width="40" height="20" fill="#00d4ff" rx="2"/>
+                    <text x="115" y="140" text-anchor="middle" fill="#888" font-size="10">ロゴ周囲の余白規定</text>
+                    
+                    <rect x="220" y="30" width="170" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="305" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">最小使用サイズ</text>
+                    <rect x="270" y="80" width="30" height="15" fill="#00d4ff" rx="2"/>
+                    <text x="320" y="92" fill="#888" font-size="10">← 24px以上</text>
+                    <text x="305" y="140" text-anchor="middle" fill="#888" font-size="10">視認性を保つ最小値</text>
+                    
+                    <rect x="410" y="30" width="170" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="495" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">カラーバリエーション</text>
+                    <rect x="440" y="80" width="25" height="15" fill="#00d4ff" rx="2"/>
+                    <rect x="470" y="80" width="25" height="15" fill="#333" stroke="#888" stroke-width="1" rx="2"/>
+                    <rect x="500" y="80" width="25" height="15" fill="white" stroke="#888" stroke-width="1" rx="2"/>
+                    <text x="495" y="140" text-anchor="middle" fill="#888" font-size="10">使用可能な色展開</text>
+                    
+                    <rect x="600" y="30" width="170" height="120" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="685" y="60" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">禁止事項</text>
+                    <rect x="650" y="80" width="30" height="15" fill="#00d4ff" rx="2" transform="rotate(15, 665, 87)"/>
+                    <line x1="640" y1="75" x2="690" y2="100" stroke="#ff6b6b" stroke-width="2"/>
+                    <text x="685" y="140" text-anchor="middle" fill="#888" font-size="10">変形・色変更の禁止例</text>
+                    
+                    <!-- 下部の注釈 -->
+                    <rect x="150" y="180" width="500" height="80" fill="rgba(255,199,0,0.1)" stroke="#FFC700" stroke-width="1" rx="8"/>
+                    <text x="400" y="210" text-anchor="middle" fill="#FFC700" font-size="12" font-weight="bold">💡 レギュレーションの本質</text>
+                    <text x="400" y="235" text-anchor="middle" fill="#888" font-size="11">「なぜこのルールなのか」を説明できることが重要</text>
+                    <text x="400" y="250" text-anchor="middle" fill="#888" font-size="10">例：クリアスペース = ロゴの"呼吸"を確保し、埋没を防ぐ</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド20: カラーシステム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">カラーシステムの設計</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- カラーパレット構造 -->
+                    <text x="400" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">カラーパレットの階層構造</text>
+                    
+                    <!-- Primary -->
+                    <rect x="50" y="60" width="200" height="100" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="150" y="90" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Primary Color</text>
+                    <text x="150" y="115" text-anchor="middle" fill="white" font-size="11">ブランドを象徴する色</text>
+                    <text x="150" y="140" text-anchor="middle" fill="#888" font-size="10">使用率：60〜70%</text>
+                    
+                    <!-- Secondary -->
+                    <rect x="300" y="60" width="200" height="100" fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="400" y="90" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">Secondary Color</text>
+                    <text x="400" y="115" text-anchor="middle" fill="white" font-size="11">補助・アクセント</text>
+                    <text x="400" y="140" text-anchor="middle" fill="#888" font-size="10">使用率：20〜30%</text>
+                    
+                    <!-- Neutral -->
+                    <rect x="550" y="60" width="200" height="100" fill="rgba(128,128,128,0.2)" stroke="#888" stroke-width="2" rx="8"/>
+                    <text x="650" y="90" text-anchor="middle" fill="#888" font-size="14" font-weight="bold">Neutral Color</text>
+                    <text x="650" y="115" text-anchor="middle" fill="white" font-size="11">背景・テキスト</text>
+                    <text x="650" y="140" text-anchor="middle" fill="#888" font-size="10">グレースケール系</text>
+                    
+                    <!-- 使用ルール -->
+                    <rect x="100" y="190" width="600" height="130" fill="rgba(0,0,0,0.3)" stroke="#444" stroke-width="1" rx="8"/>
+                    <text x="400" y="220" text-anchor="middle" fill="white" font-size="14" font-weight="bold">カラーシステム設計のポイント</text>
+                    
+                    <text x="130" y="250" fill="#00d4ff" font-size="12">①</text>
+                    <text x="150" y="250" fill="#888" font-size="11">色の「意味」を定義（例：赤=警告、緑=成功）</text>
+                    
+                    <text x="130" y="275" fill="#00d4ff" font-size="12">②</text>
+                    <text x="150" y="275" fill="#888" font-size="11">アクセシビリティ基準を満たすコントラスト比（WCAG 4.5:1以上）</text>
+                    
+                    <text x="130" y="300" fill="#00d4ff" font-size="12">③</text>
+                    <text x="150" y="300" fill="#888" font-size="11">明度・彩度のバリエーション（10%刻みなど）を事前定義</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド21: タイポグラフィシステム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">タイポグラフィシステムの設計</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- フォントペアリング -->
+                    <rect x="50" y="30" width="340" height="150" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="220" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">フォントペアリングの原則</text>
+                    
+                    <text x="80" y="95" fill="white" font-size="24" font-weight="bold">見出し</text>
+                    <text x="200" y="95" fill="#888" font-size="12">← インパクト重視</text>
+                    
+                    <text x="80" y="130" fill="white" font-size="14">本文テキスト Body Text</text>
+                    <text x="260" y="130" fill="#888" font-size="12">← 可読性重視</text>
+                    
+                    <text x="220" y="165" text-anchor="middle" fill="#666" font-size="10">コントラストを持たせつつ、調和を保つ</text>
+                    
+                    <!-- タイプスケール -->
+                    <rect x="410" y="30" width="340" height="150" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="580" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">タイプスケール（比率設計）</text>
+                    
+                    <text x="440" y="90" fill="white" font-size="24">H1 = 32px</text>
+                    <text x="440" y="115" fill="white" font-size="18">H2 = 24px</text>
+                    <text x="440" y="135" fill="white" font-size="14">H3 = 18px</text>
+                    <text x="440" y="155" fill="white" font-size="12">Body = 16px</text>
+                    <text x="630" y="120" fill="#888" font-size="10">×1.333</text>
+                    <text x="630" y="140" fill="#888" font-size="10">(Perfect Fourth)</text>
+                    
+                    <!-- 使用ルール -->
+                    <rect x="100" y="200" width="600" height="120" fill="rgba(0,0,0,0.3)" stroke="#444" stroke-width="1" rx="8"/>
+                    <text x="400" y="230" text-anchor="middle" fill="white" font-size="14" font-weight="bold">タイポグラフィ設計のポイント</text>
+                    
+                    <text x="130" y="260" fill="#00d4ff" font-size="12">①</text>
+                    <text x="150" y="260" fill="#888" font-size="11">使用フォントは2〜3種類に制限（見出し・本文・アクセント）</text>
+                    
+                    <text x="130" y="285" fill="#00d4ff" font-size="12">②</text>
+                    <text x="150" y="285" fill="#888" font-size="11">行間（line-height）は文字サイズの1.5〜1.8倍</text>
+                    
+                    <text x="130" y="310" fill="#00d4ff" font-size="12">③</text>
+                    <text x="150" y="310" fill="#888" font-size="11">Webと印刷でフォントの代替ルールを明記</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド22: 写真スタイル -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">写真スタイルの定義</h2>
+            <div class="content-block svg-centered">
+                <h3>写真の「世界観」を言語化する</h3>
+                
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 定義すべき要素 -->
+                    <rect x="30" y="30" width="230" height="110" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="145" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">被写体</text>
+                    <text x="145" y="85" text-anchor="middle" fill="#888" font-size="11">人物中心 or 製品中心</text>
+                    <text x="145" y="105" text-anchor="middle" fill="#888" font-size="11">生活シーン or スタジオ</text>
+                    <text x="145" y="125" text-anchor="middle" fill="#888" font-size="11">多様性への配慮</text>
+                    
+                    <rect x="285" y="30" width="230" height="110" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">ライティング</text>
+                    <text x="400" y="85" text-anchor="middle" fill="#888" font-size="11">自然光 or スタジオ光</text>
+                    <text x="400" y="105" text-anchor="middle" fill="#888" font-size="11">ハイキー or ローキー</text>
+                    <text x="400" y="125" text-anchor="middle" fill="#888" font-size="11">影の強さ・方向</text>
+                    
+                    <rect x="540" y="30" width="230" height="110" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="655" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">色調・フィルター</text>
+                    <text x="655" y="85" text-anchor="middle" fill="#888" font-size="11">暖色系 or 寒色系</text>
+                    <text x="655" y="105" text-anchor="middle" fill="#888" font-size="11">彩度の高低</text>
+                    <text x="655" y="125" text-anchor="middle" fill="#888" font-size="11">統一フィルターの有無</text>
+                    
+                    <!-- 事例 -->
+                    <rect x="100" y="160" width="600" height="120" fill="rgba(255,199,0,0.1)" stroke="#FFC700" stroke-width="1" rx="8"/>
+                    <text x="400" y="190" text-anchor="middle" fill="#FFC700" font-size="12" font-weight="bold">事例：Airbnbの写真スタイル</text>
+                    <text x="400" y="220" text-anchor="middle" fill="white" font-size="11">「本物の人々が本物の場所で過ごす瞬間」を撮る</text>
+                    <text x="400" y="245" text-anchor="middle" fill="#888" font-size="10">自然光 / 生活感のあるシーン / 過度なレタッチ禁止 / 多様な人種・年齢</text>
+                    <text x="400" y="265" text-anchor="middle" fill="#666" font-size="10">→ 「ホテルのパンフレット」ではなく「友人の家に泊まる」感覚を表現</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド23: イラストスタイル -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">イラストスタイルの定義</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- スタイル軸 -->
+                    <text x="400" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">イラストスタイルを定義する4つの軸</text>
+                    
+                    <!-- 軸1：線 -->
+                    <rect x="30" y="60" width="170" height="100" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="115" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">線の処理</text>
+                    <text x="115" y="115" text-anchor="middle" fill="#888" font-size="10">アウトラインあり/なし</text>
+                    <text x="115" y="135" text-anchor="middle" fill="#888" font-size="10">線の太さ・ラフさ</text>
+                    
+                    <!-- 軸2：形 -->
+                    <rect x="220" y="60" width="170" height="100" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="305" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">形状</text>
+                    <text x="305" y="115" text-anchor="middle" fill="#888" font-size="10">幾何学的/有機的</text>
+                    <text x="305" y="135" text-anchor="middle" fill="#888" font-size="10">角丸の程度</text>
+                    
+                    <!-- 軸3：色 -->
+                    <rect x="410" y="60" width="170" height="100" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="495" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">色彩</text>
+                    <text x="495" y="115" text-anchor="middle" fill="#888" font-size="10">ブランドカラー準拠</text>
+                    <text x="495" y="135" text-anchor="middle" fill="#888" font-size="10">グラデーション有無</text>
+                    
+                    <!-- 軸4：人物 -->
+                    <rect x="600" y="60" width="170" height="100" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="685" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">人物表現</text>
+                    <text x="685" y="115" text-anchor="middle" fill="#888" font-size="10">顔の描写レベル</text>
+                    <text x="685" y="135" text-anchor="middle" fill="#888" font-size="10">体型・肌色の多様性</text>
+                    
+                    <!-- 事例 -->
+                    <rect x="100" y="180" width="600" height="120" fill="rgba(100,100,255,0.1)" stroke="#6464ff" stroke-width="1" rx="8"/>
+                    <text x="400" y="210" text-anchor="middle" fill="#6464ff" font-size="12" font-weight="bold">事例：Slackのイラストスタイル</text>
+                    <text x="400" y="240" text-anchor="middle" fill="white" font-size="11">「仕事を楽しく、チームをつなぐ」を視覚化</text>
+                    <text x="400" y="265" text-anchor="middle" fill="#888" font-size="10">丸みを帯びた形状 / 明るいパステル / 顔は簡略化 / 動きのあるポーズ</text>
+                    <text x="400" y="285" text-anchor="middle" fill="#666" font-size="10">→ 「堅苦しいビジネスツール」ではなく「親しみやすいコミュニケーション」を表現</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド24: アイコンシステム -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アイコンシステムの設計</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 統一ルール -->
+                    <text x="400" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">アイコン設計の統一ルール</text>
+                    
+                    <!-- グリッドシステム -->
+                    <rect x="50" y="60" width="220" height="130" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="160" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">グリッドシステム</text>
+                    <rect x="100" y="105" width="60" height="60" fill="none" stroke="#444" stroke-width="1"/>
+                    <line x1="100" y1="125" x2="160" y2="125" stroke="#444" stroke-width="0.5"/>
+                    <line x1="100" y1="145" x2="160" y2="145" stroke="#444" stroke-width="0.5"/>
+                    <line x1="120" y1="105" x2="120" y2="165" stroke="#444" stroke-width="0.5"/>
+                    <line x1="140" y1="105" x2="140" y2="165" stroke="#444" stroke-width="0.5"/>
+                    <circle cx="130" cy="135" r="20" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="160" y="180" text-anchor="middle" fill="#888" font-size="10">24×24 / 32×32 など</text>
+                    
+                    <!-- 線の太さ -->
+                    <rect x="290" y="60" width="220" height="130" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">ストローク統一</text>
+                    <line x1="340" y1="120" x2="380" y2="120" stroke="white" stroke-width="1.5"/>
+                    <text x="395" y="124" fill="#888" font-size="10">1.5px</text>
+                    <line x1="340" y1="145" x2="380" y2="145" stroke="white" stroke-width="2"/>
+                    <text x="395" y="149" fill="#888" font-size="10">2px</text>
+                    <text x="400" y="180" text-anchor="middle" fill="#888" font-size="10">全アイコンで線幅を統一</text>
+                    
+                    <!-- 角の処理 -->
+                    <rect x="530" y="60" width="220" height="130" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="640" y="90" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">角の処理</text>
+                    <rect x="580" y="110" width="30" height="30" fill="none" stroke="white" stroke-width="2" rx="0"/>
+                    <text x="595" y="160" fill="#888" font-size="9">シャープ</text>
+                    <rect x="630" y="110" width="30" height="30" fill="none" stroke="white" stroke-width="2" rx="4"/>
+                    <text x="645" y="160" fill="#888" font-size="9">丸み</text>
+                    <rect x="680" y="110" width="30" height="30" fill="none" stroke="white" stroke-width="2" rx="15"/>
+                    <text x="695" y="160" fill="#888" font-size="9">完全丸</text>
+                    <text x="640" y="180" text-anchor="middle" fill="#888" font-size="10">ブランドトーンに合わせて統一</text>
+                    
+                    <!-- 注意点 -->
+                    <rect x="150" y="210" width="500" height="80" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="1" rx="8"/>
+                    <text x="400" y="240" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="bold">⚠️ よくある間違い</text>
+                    <text x="400" y="265" text-anchor="middle" fill="#888" font-size="11">複数のアイコンライブラリを混在させる → 統一感が崩壊</text>
+                    <text x="400" y="280" text-anchor="middle" fill="#666" font-size="10">解決策：1つのライブラリを選ぶ or カスタムで全て作成</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド25: 章区切り - 第5章 -->
+        <div class="slide-container section-title-layout">
+            <h2>第5章<br>一貫性を保つ仕組み</h2>
+            <p>「属人化」から「システム化」へ</p>
+        </div>
+
+        <!-- スライド26: ガイドライン化の意義 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜガイドラインが必要か</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- Before: 属人化 -->
+                    <rect x="50" y="30" width="300" height="120" fill="rgba(255,107,107,0.1)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="200" y="60" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">❌ ガイドラインがない状態</text>
+                    <text x="200" y="90" text-anchor="middle" fill="#888" font-size="11">・担当者の「センス」に依存</text>
+                    <text x="200" y="110" text-anchor="middle" fill="#888" font-size="11">・人が変わるとブランドが変わる</text>
+                    <text x="200" y="130" text-anchor="middle" fill="#888" font-size="11">・「なぜこの色？」に答えられない</text>
+                    
+                    <!-- After: システム化 -->
+                    <rect x="450" y="30" width="300" height="120" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="600" y="60" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">✅ ガイドラインがある状態</text>
+                    <text x="600" y="90" text-anchor="middle" fill="#888" font-size="11">・誰が作っても同じ品質</text>
+                    <text x="600" y="110" text-anchor="middle" fill="#888" font-size="11">・判断基準が明文化されている</text>
+                    <text x="600" y="130" text-anchor="middle" fill="#888" font-size="11">・新人でも即戦力になれる</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M 360 90 L 440 90" stroke="#FFC700" stroke-width="3" marker-end="url(#arrow6)"/>
+                    <text x="400" y="110" text-anchor="middle" fill="#FFC700" font-size="10">システム化</text>
+                    
+                    <!-- 下部メッセージ -->
+                    <rect x="150" y="180" width="500" height="100" fill="rgba(255,199,0,0.1)" stroke="#FFC700" stroke-width="2" rx="8"/>
+                    <text x="400" y="215" text-anchor="middle" fill="#FFC700" font-size="14" font-weight="bold">ガイドラインの本質</text>
+                    <text x="400" y="245" text-anchor="middle" fill="white" font-size="12">「これはダメ」のリストではなく</text>
+                    <text x="400" y="268" text-anchor="middle" fill="white" font-size="12">「なぜこうするのか」の説明書</text>
+                    
+                    <defs>
+                        <marker id="arrow6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#FFC700"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド27: チェックリスト思考 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブランド適合チェックの考え方</h2>
+            <div class="content-block svg-centered">
+                <h3>制作物を公開する前に確認すべき観点</h3>
+                
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <!-- チェック項目 -->
+                    <rect x="50" y="30" width="700" height="220" fill="rgba(0,0,0,0.3)" stroke="#444" stroke-width="1" rx="8"/>
+                    
+                    <text x="80" y="65" fill="#00d4ff" font-size="14">□</text>
+                    <text x="110" y="65" fill="white" font-size="13" font-weight="bold">MVVとの整合性</text>
+                    <text x="110" y="85" fill="#888" font-size="11">このデザインはブランドの使命・価値観を体現しているか？</text>
+                    
+                    <text x="80" y="115" fill="#00d4ff" font-size="14">□</text>
+                    <text x="110" y="115" fill="white" font-size="13" font-weight="bold">パーソナリティの一致</text>
+                    <text x="110" y="135" fill="#888" font-size="11">ブランドを「人」として見たとき、この表現は自然か？</text>
+                    
+                    <text x="80" y="165" fill="#00d4ff" font-size="14">□</text>
+                    <text x="110" y="165" fill="white" font-size="13" font-weight="bold">VIルールの遵守</text>
+                    <text x="110" y="185" fill="#888" font-size="11">ロゴ・カラー・タイポグラフィはレギュレーション通りか？</text>
+                    
+                    <text x="80" y="215" fill="#00d4ff" font-size="14">□</text>
+                    <text x="110" y="215" fill="white" font-size="13" font-weight="bold">既存資産との一貫性</text>
+                    <text x="110" y="235" fill="#888" font-size="11">他のタッチポイント（Web、店舗、広告）と並べて違和感がないか？</text>
+                </svg>
+                
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    💡 チェックリストは「ダメ出しの道具」ではなく「品質を担保する仕組み」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド28: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">ブランド・アイデンティティ システム化のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <h3>🏗️ 階層構造</h3>
+                    <p>MVV → パーソナリティ → VI → 表現の順に設計する</p>
+                </div>
+                <div class="tile">
+                    <h3>📝 MVV設計</h3>
+                    <p>「なぜ存在するか」「どこを目指すか」「何を大切にするか」を言語化</p>
+                </div>
+                <div class="tile">
+                    <h3>🎨 言語化</h3>
+                    <p>パーソナリティ / ボイス＆トーン / ムードボード変換で世界観を明文化</p>
+                </div>
+                <div class="tile">
+                    <h3>🔧 VIシステム</h3>
+                    <p>ロゴ・カラー・タイポ・写真・イラスト・アイコンを「理由付き」で設計</p>
+                </div>
+                <div class="tile">
+                    <h3>📋 ガイドライン</h3>
+                    <p>属人化を防ぎ、誰でも同じ品質を出せる仕組みを作る</p>
+                </div>
+                <div class="tile">
+                    <h3>🔄 一貫性</h3>
+                    <p>チェックリストで継続的にブランド適合を確認する</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド29: 実践編への橋渡し -->
+        <div class="slide-container big-concept-layout">
+            <h2>理論を理解したら<br>次は「実践」へ</h2>
+            <p>【実践編】では、実際にブランドガイドラインを<br>作成するワークショップを行います</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "ブランドピラミッドで最上位に位置し、すべての表現の源となるものは？",
+                options: [
+                    "ロゴデザイン",
+                    "MVV（ミッション・ビジョン・バリュー）",
+                    "カラーパレット",
+                    "タイポグラフィ"
+                ],
+                correct: 1,
+                explanation: "ブランドピラミッドの最上位はMVV（ミッション・ビジョン・バリュー）です。ここから派生してパーソナリティ、VI、表現へと展開されます。ロゴやカラーはVIの一部であり、MVVから導き出されるべきものです。"
+            },
+            {
+                question: "「Voice」と「Tone」の違いとして正しいものは？",
+                options: [
+                    "Voiceは音声、Toneは文字のこと",
+                    "Voiceは一貫した性格、Toneは状況に応じた調整",
+                    "Voiceは社外向け、Toneは社内向け",
+                    "VoiceとToneは同じ意味"
+                ],
+                correct: 1,
+                explanation: "Voice（声）はブランドの一貫した性格・人格であり、常に変わりません。一方、Tone（調子）は状況や文脈に応じて調整されます。例えば、お祝いの場面では明るいトーン、謝罪の場面では真摯なトーンを使い分けます。"
+            },
+            {
+                question: "ロゴレギュレーションにおける「クリアスペース」の目的は？",
+                options: [
+                    "印刷コストを削減するため",
+                    "ロゴの視認性を確保し、他要素に埋没するのを防ぐため",
+                    "デザイナーの作業を簡単にするため",
+                    "法的な商標保護のため"
+                ],
+                correct: 1,
+                explanation: "クリアスペースは、ロゴ周囲に確保すべき余白の規定です。これによりロゴの視認性を確保し、他の要素に埋もれて認識しづらくなることを防ぎます。ロゴの『呼吸』を確保すると表現されることもあります。"
+            },
+            {
+                question: "カラーシステムにおいて「Primary Color」の使用率の目安は？",
+                options: [
+                    "10〜20%",
+                    "30〜40%",
+                    "60〜70%",
+                    "90〜100%"
+                ],
+                correct: 2,
+                explanation: "Primary Color（主要色）はブランドを象徴する色であり、全体の60〜70%程度の使用率が目安です。Secondary Color（補助色）は20〜30%、残りはNeutral Color（中間色）で構成するのが一般的なバランスです。"
+            },
+            {
+                question: "ブランドガイドラインの本質的な役割として最も適切なものは？",
+                options: [
+                    "デザイナーの自由を制限するルールブック",
+                    "「なぜこうするのか」の理由を説明し、誰でも同じ品質を出せる仕組み",
+                    "競合他社との差別化を図るためのマーケティング資料",
+                    "経営陣向けのブランド価値報告書"
+                ],
+                correct: 1,
+                explanation: "ガイドラインは単なる禁止事項のリストではなく、「なぜこうするのか」の理由を明文化した説明書です。これにより属人化を防ぎ、担当者が変わっても誰でも同じ品質のブランド表現ができる仕組みを作ることが本質的な役割です。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

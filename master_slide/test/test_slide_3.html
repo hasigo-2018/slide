@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実践編 - Canva名刺デザイン演習</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- CORE CSS --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        
+        #presentation-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100%;
+            aspect-ratio: 16 / 9;
+        }
+        
+        @media (min-aspect-ratio: 16/9) {
+            #presentation-wrapper {
+                height: 100vh;
+                width: calc(100vh * 16 / 9);
+            }
+        }
+        
+        @media (max-aspect-ratio: 16/9) {
+            #presentation-wrapper {
+                width: 100vw;
+                height: calc(100vw * 9 / 16);
+            }
+        }
+        
+        .slide-container {
+            align-items: center;
+            background-color: #121212;
+            border-radius: 0;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            height: 100%;
+            justify-content: center;
+            overflow: hidden;
+            padding: clamp(2rem, 5vh, 4rem) clamp(2rem, 5vw, 4rem);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            z-index: 0;
+        }
+        
+        .slide-container.active {
+            display: flex;
+            z-index: 10;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide-container.bleed-image-layout.active {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+            padding: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(62,184,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 35%;
+            height: 35%;
+            background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .slide-container h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+        }
+        
+        .slide-container .slide-title {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 600;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            border-left: 6px solid #00d4ff;
+            padding-left: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .slide-container h3 {
+            font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+        }
+        
+        .slide-container p, .slide-container li {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+        }
+        
+        ul {
+            padding-left: clamp(1.5rem, 3vw, 2rem);
+        }
+        
+        .full-bg-image {
+            padding: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%),
+                        linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .full-bg-image .content-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 5vw, 4rem);
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 80%;
+        }
+        
+        .full-bg-image h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        .section-title-layout {
+            text-align: center;
+            border: 2px solid #333;
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3rem);
+            border-radius: 20px;
+            background: rgba(255,255,255,0.03);
+            width: 80%;
+        }
+        
+        .section-title-layout h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .section-title-layout hr {
+            width: clamp(80px, 10vw, 100px);
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080);
+            border: none;
+            margin: 0 auto clamp(1.5rem, 3vh, 2rem) auto;
+        }
+
+        .two-column.tiled {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+            height: 80%;
+        }
+        
+        .two-column.tiled > div {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vh, 2.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .slide-container.bleed-image-layout .content-container {
+            padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .slide-container.bleed-image-layout .image-container {
+            height: 100%;
+            width: 100%;
+            background: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tiled-content {
+            display: flex;
+            gap: clamp(1.5rem, 3vw, 2rem);
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .tile {
+            flex: 1;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vh, 2rem);
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .tile .icon {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: clamp(1rem, 2vh, 1.5rem);
+            display: inline-block;
+            width: clamp(60px, 8vw, 80px);
+            height: clamp(60px, 8vw, 80px);
+            line-height: clamp(60px, 8vw, 80px);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            color: #00d4ff;
+        }
+
+        .standard-content-layout {
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: clamp(4rem, 8vh, 6rem);
+        }
+        
+        .standard-content-layout .content-block {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: clamp(1.5rem, 3vh, 2.5rem);
+            width: 100%;
+            border: 1px solid #333;
+        }
+        
+        .big-concept-layout {
+            text-align: center;
+        }
+        
+        .big-concept-layout h2 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.1;
+            background: linear-gradient(45deg, #00d4ff, #00ff9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: clamp(1.5rem, 3vh, 2rem);
+        }
+        
+        .big-concept-layout p {
+            font-size: clamp(1.2rem, 2vw, 1.75rem);
+            max-width: 80%;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(1rem, 2.5vw, 2rem);
+            width: 100%;
+            height: 75%;
+        }
+        
+        .three-column > div {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: clamp(1rem, 2.5vh, 2rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-box {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid #00d4ff;
+            padding: clamp(1rem, 2vh, 1.5rem);
+            margin-top: clamp(1rem, 2vh, 1.5rem);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            color: #fff;
+        }
+        
+        svg.generated-art {
+            width: 80%;
+            height: 80%;
+            z-index: 2;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+        
+        .footer-copyright {
+            position: absolute;
+            bottom: clamp(0.8rem, 2vh, 1.5rem);
+            left: clamp(0.8rem, 2vw, 1.5rem);
+            font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 100;
+        }
+        
+        .control-hint {
+            position: fixed;
+            bottom: clamp(1rem, 2vh, 1.5rem);
+            right: clamp(1rem, 2vw, 1.5rem);
+            color: #444;
+            font-size: clamp(0.6rem, 1vw, 0.75rem);
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: clamp(0.8rem, 2vh, 1.5rem);
+            right: clamp(0.8rem, 2vw, 1.5rem);
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<div id="presentation-wrapper">
+
+<!-- スライド1: ツール紹介 - Canva -->
+<div class="slide-container bleed-image-layout active">
+    <div class="content-container">
+        <h2 class="slide-title">ツール紹介：Canva</h2>
+        <p><strong>用途：</strong>プロ級のデザインを誰でも簡単に作成できるビジュアルデザインツール</p>
+        <p><strong>初回アクセス：</strong><a href="https://www.canva.com" style="color: #00d4ff;">https://www.canva.com</a> にアクセス</p>
+        <p><strong>今日使う機能：</strong></p>
+        <ul>
+            <li><strong>テンプレート選択：</strong>名刺用のベーステンプレートを選ぶ</li>
+            <li><strong>テキスト編集：</strong>既存のテキストを自分の情報に置き換え</li>
+            <li><strong>整列ツール：</strong>要素を揃えるガイドライン機能</li>
+        </ul>
+        <div class="highlight-box">
+            💡 無料プランで十分使えます（アカウント登録のみ）
+        </div>
+    </div>
+    <div class="image-container">
+        <div style="color: #666; font-size: 18px; text-align: center; padding: 40px; line-height: 1.8;">
+            [画像生成プロンプト]<br><br>
+            "Canva dashboard interface screenshot, business card template library view, modern design tool UI with template thumbnails grid, clean professional interface, bright workspace, teal and purple accent colors, user-friendly layout, professional photography style"
+        </div>
+    </div>
+</div>
+
+<!-- スライド2: 演習課題提示 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習課題：名刺デザイン改善</h2>
+    <div class="content-block">
+        <h3>目標</h3>
+        <p>4つのデザイン原則（整列・近接・反復・コントラスト）を使って、読みやすく信頼感のある名刺を作る</p>
+        
+        <h3>課題内容</h3>
+        <p>架空または自分の名刺を、デザイン原則を意識して作成します</p>
+        
+        <h3>制約条件</h3>
+        <ul>
+            <li><strong>サイズ：</strong>91mm × 55mm（日本標準サイズ）</li>
+            <li><strong>必須情報：</strong>名前、役職、会社名、電話、メールアドレス</li>
+            <li><strong>使用する原則：</strong>整列、近接、反復、コントラスト（すべて）</li>
+            <li><strong>制作時間：</strong>15分</li>
+        </ul>
+        
+        <div class="highlight-box">
+            ⏱️ タイマーをセットして、集中して取り組みましょう！
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 手順1 - テンプレート選択 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">手順 1/3：テンプレート選択とテキスト入力</h2>
+    <div class="content-block">
+        <h3>操作手順</h3>
+        <p><strong>1.</strong> Canvaにログイン → 検索バーに「名刺」と入力</p>
+        <p><strong>2.</strong> シンプルなテンプレートを選択（装飾が少ないものを推奨）</p>
+        <p><strong>3.</strong> テキストをクリックして、自分の情報に置き換える</p>
+        
+        <h3>デザイン原則との関連</h3>
+        <p>この段階では、まず情報を入力します。次のステップで4つの原則を適用していきます。</p>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：最初から装飾が多いテンプレートを選ぶ<br>
+            ✅ 正解：シンプルなものを選び、自分で原則を適用して仕上げる
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: 手順2 - 整列と近接 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">手順 2/3：整列と近接の適用</h2>
+    <div class="content-block">
+        <h3>操作手順</h3>
+        <p><strong>1.</strong> すべてのテキストを選択 → 左揃え（または右揃え）に統一</p>
+        <p><strong>2.</strong> 連絡先情報（電話・メール）をグループ化して近づける</p>
+        <p><strong>3.</strong> 表示 → ルーラーとガイド → ガイドラインを表示（整列の確認用）</p>
+        
+        <h3>デザイン原則との関連</h3>
+        <p><strong>整列：</strong>すべての要素を同じ軸（見えない線）に揃えることで、視覚的な秩序を作ります。</p>
+        <p><strong>近接：</strong>関連する情報（電話とメール）を物理的に近づけることで、グループとして認識されやすくなります。</p>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：中央揃えと左揃えを混在させる<br>
+            ✅ 正解：どちらか一方に統一する（左揃えが読みやすい）
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: 手順3 - 反復とコントラスト -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">手順 3/3：反復とコントラストの適用</h2>
+    <div class="content-block">
+        <h3>操作手順</h3>
+        <p><strong>1.</strong> フォントを2種類に絞る（見出し用・本文用）</p>
+        <p><strong>2.</strong> 名前だけサイズを大きく（24pt以上を推奨）</p>
+        <p><strong>3.</strong> ブランドカラーを1〜2色選び、アクセントとして使う（名前、役職など）</p>
+        
+        <h3>デザイン原則との関連</h3>
+        <p><strong>反復：</strong>同じフォント・色を一貫して使うことで、プロフェッショナルな統一感が生まれます。</p>
+        <p><strong>コントラスト：</strong>名前を大きく、太くすることで、最も重要な情報が際立ちます。</p>
+        
+        <div class="highlight-box">
+            ⚠️ よくある間違い：3種類以上のフォントを使う、すべて同じサイズ<br>
+            ✅ 正解：フォントは2種類まで、名前は他より2〜3倍大きく
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: チェックリスト -->
+<div class="slide-container">
+    <h2 class="slide-title">完成チェック：4つの原則</h2>
+    <div class="tiled-content">
+        <div class="tile">
+            <div class="icon">✓</div>
+            <h3>整列</h3>
+            <p>すべての要素が<br>同じ軸に揃っているか？</p>
+        </div>
+        <div class="tile">
+            <div class="icon">✓</div>
+            <h3>近接</h3>
+            <p>関連情報が<br>グループ化されているか？</p>
+        </div>
+        <div class="tile">
+            <div class="icon">✓</div>
+            <h3>反復</h3>
+            <p>色・フォント・形に<br>一貫性があるか？</p>
+        </div>
+        <div class="tile">
+            <div class="icon">✓</div>
+            <h3>コントラスト</h3>
+            <p>名前が他より<br>明確に際立っているか？</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 補足・次のステップ -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">補足：さらに良くするためのヒント</h2>
+    <div class="content-block">
+        <h3>余白の使い方</h3>
+        <p>名刺は小さいので、情報を詰め込みすぎないことが重要です。余白（ホワイトスペース）は「贅沢」ではなく「必須」です。</p>
+        
+        <h3>カラーパレットの選び方</h3>
+        <p>Canvaの「カラーパレット生成」機能を使うか、Adobe Colorなどで調和の取れた色の組み合わせを選びましょう。</p>
+        
+        <h3>次のステップ</h3>
+        <ul>
+            <li><strong>PDFでダウンロード：</strong>印刷用に高解像度で保存</li>
+            <li><strong>フィードバックをもらう：</strong>同僚や友人に見せて意見を聞く</li>
+            <li><strong>他のデザインにも応用：</strong>バナー、ポスター、プレゼン資料</li>
+        </ul>
+        
+        <div class="highlight-box">
+            💡 今日学んだ4原則は、すべてのデザインに応用できる普遍的な法則です
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide-container');
+    const wrapper = document.getElementById('presentation-wrapper');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+        updateSlideNumbers();
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        showSlide(currentSlideIndex);
+    }
+
+    function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        showSlide(currentSlideIndex);
+    }
+
+    function updateSlideNumbers() {
+        const numbers = document.querySelectorAll('.slide-number');
+        numbers.forEach((num, i) => {
+            num.textContent = `${i + 1} / ${slides.length}`;
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'q' || e.key === 'Q') {
+            e.preventDefault();
+            startQuiz();
+        }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    wrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) prevSlide();
+    }
+
+    wrapper.addEventListener('click', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        if (clickX > rect.width / 2) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    });
+
+    const questions = [
+        {
+            question: "Canvaで名刺を作成中、連絡先情報（電話・メール）を配置します。どの原則を最優先すべきですか？",
+            options: [
+                "反復：すべての文字を同じフォントにする",
+                "近接：電話番号とメールアドレスを近づける",
+                "コントラスト：背景色を変える",
+                "整列：すべて中央揃えにする"
+            ],
+            correct: 1,
+            explanation: "関連する情報（連絡先）はグループ化して近接させることで、視認性が向上します。これは近接の原則の典型的な適用例です。"
+        },
+        {
+            question: "名刺で名前を目立たせるために最も効果的な方法は？",
+            options: [
+                "カラフルな背景を追加する",
+                "サイズを大きくし、太字にする（コントラスト）",
+                "たくさんの装飾を加える",
+                "フォントの種類を増やす"
+            ],
+            correct: 1,
+            explanation: "コントラストの原則を適用し、名前のサイズを大きく、太字にすることで、最も重要な情報として際立たせることができます。"
+        },
+        {
+            question: "Canvaでテンプレートを選ぶ際の推奨は？",
+            options: [
+                "装飾が多く派手なテンプレート",
+                "シンプルで自分で原則を適用できるテンプレート",
+                "アニメーション付きのテンプレート",
+                "できるだけ複雑なデザイン"
+            ],
+            correct: 1,
+            explanation: "シンプルなテンプレートを選び、自分で4つの原則を適用することで、デザインの理解が深まり、意図したメッセージを正確に伝えられます。"
+        },
+        {
+            question: "名刺で使用するフォントの数は？",
+            options: [
+                "できるだけ多く（5種類以上）",
+                "2種類まで（見出し用・本文用）",
+                "1種類のみ",
+                "毎回変える"
+            ],
+            correct: 1,
+            explanation: "フォントは2種類まで（見出し用・本文用）に限定することで、反復の原則を適用し、統一感とプロフェッショナルな印象を与えます。"
+        },
+        {
+            question: "名刺デザインで余白（ホワイトスペース）は？",
+            options: [
+                "無駄なので詰め込むべき",
+                "必須の要素",
+                "上級者向けのテクニック",
+                "印刷コストを上げるだけ"
+            ],
+            correct: 1,
+            explanation: "余白は「贅沢」ではなく「必須」です。適切な余白は情報を整理し、読みやすさを向上させる重要な要素です。"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+        if (questions.length === 0) {
+            alert('クイズが設定されていません');
+            return;
+        }
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            showQuizResult();
+            return;
+        }
+
+        const q = questions[currentQuestionIndex];
+        const quizHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: clamp(2rem, 4vh, 3rem);">
+                    Quiz ${currentQuestionIndex + 1} / ${questions.length}
+                </h2>
+                <p style="font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin-bottom: clamp(2rem, 4vh, 3rem); max-width: 90%;">
+                    ${q.question}
+                </p>
+                <div id="quiz-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); width: 90%; max-width: 800px;">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="checkAnswer(${i})"
+                                style="padding: clamp(1rem, 2vh, 1.5rem);
+                                       font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+                                       background: rgba(255,255,255,0.1);
+                                       border: 2px solid #00d4ff;
+                                       color: white;
+                                       border-radius: 8px;
+                                       cursor: pointer;
+                                       transition: all 0.3s;">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        wrapper.innerHTML = quizHTML;
+    }
+
+    function checkAnswer(selectedIndex) {
+        const q = questions[currentQuestionIndex];
+        const isCorrect = selectedIndex === q.correct;
+        
+        if (isCorrect) score++;
+        
+        const resultHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="color: ${isCorrect ? '#00ff9d' : '#ff0080'}; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: clamp(1.5rem, 3vh, 2rem);">
+                    ${isCorrect ? '正解！' : '不正解'}
+                </h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(1.5rem, 3vh, 2.5rem); max-width: 90%; width: 800px; text-align: left;">
+                    <p style="font-size: clamp(1rem, 1.8vw, 1.3rem); margin-bottom: clamp(1rem, 2vh, 1.5rem); color: #fff;">
+                        <strong>正解:</strong> ${q.options[q.correct]}
+                    </p>
+                    <p style="font-size: clamp(0.9rem, 1.5vw, 1.1rem); line-height: 1.8; color: #e0e0e0;">
+                        ${q.explanation}
+                    </p>
+                </div>
+                <button onclick="nextQuestion()"
+                        style="margin-top: clamp(2rem, 4vh, 3rem);
+                               padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(2rem, 4vw, 3rem);
+                               font-size: clamp(1rem, 1.8vw, 1.3rem);
+                               background: linear-gradient(90deg, #00d4ff, #00ff9d);
+                               border: none;
+                               color: #000;
+                               font-weight: bold;
+                               border-radius: 8px;
+                               cursor: pointer;">
+                    次へ
+                </button>
+            </div>
+        `;
+        
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    function showQuizResult() {
+        const percentage = Math.round((score / questions.length) * 100);
+        const resultHTML = `
+            <div class="slide-container active big-concept-layout" style="z-index: 10000;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: clamp(2rem, 4vh, 3rem);">
+                    クイズ終了！
+                </h2>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(2rem, 4vh, 3rem); max-width: 90%; width: 600px;">
+                    <p style="font-size: clamp(2rem, 4vw, 3rem); font-weight: bold; color: #00d4ff; margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+                        ${score} / ${questions.length} 問正解
+                    </p>
+                    <p style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: #fff;">
+                        正答率: ${percentage}%
+                    </p>
+                </div>
+                <button onclick="location.reload()"
+                        style="margin-top: clamp(2rem, 4vh, 3rem);
+                               padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(2rem, 4vw, 3rem);
+                               font-size: clamp(1rem, 1.8vw, 1.3rem);
+                               background: linear-gradient(90deg, #00d4ff, #00ff9d);
+                               border: none;
+                               color: #000;
+                               font-weight: bold;
+                               border-radius: 8px;
+                               cursor: pointer;">
+                    最初から
+                </button>
+            </div>
+        `;
+        
+        wrapper.innerHTML = resultHTML;
+    }
+
+    function addCopyright() {
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const footer = document.createElement('div');
+            footer.className = 'footer-copyright';
+            footer.innerText = '【Confidential 社外秘】 本書の無断使用・転載・販売等を固く禁じます。©︎ ACT HOUSE ®︎ All Rights Reserved.';
+            slide.appendChild(footer);
+            
+            const slideNum = document.createElement('div');
+            slideNum.className = 'slide-number';
+            slideNum.textContent = `${index + 1} / ${slides.length}`;
+            slide.appendChild(slideNum);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        addCopyright();
+        showSlide(0);
+    });
+</script>
+</body>
+</html>

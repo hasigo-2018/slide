@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>026 一貫性を生む「デザインシステム」の構築【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>デザインシステム構築<span>【実践編】</span></h1>
+                <p>FigmaとGeminiで作る、崩れないコンポーネントライブラリ</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 実践編の目標 -->
+        <div class="slide-container big-concept-layout">
+            <h2>今日のゴール</h2>
+            <p>架空カフェ「SLOW DRIP」の<br>デザインシステムを0から構築する</p>
+        </div>
+
+        <!-- スライド3: 演習の全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">実践演習の流れ（4ツール統合）</h2>
+            <div class="content-block">
+                <h3>今日作るもの</h3>
+                <p>「SLOW DRIP」というカフェのブランディングとWebサイトのデザインシステムを構築します。</p>
+                
+                <h3>使用するツール</h3>
+                <ul>
+                    <li><strong>Gemini：</strong>ブランド戦略、命名規則、運用ガイドラインの策定</li>
+                    <li><strong>Figma：</strong>Atoms〜Organismsの実装、コンポーネント化</li>
+                    <li><strong>Canva：</strong>実際のマーケティング素材への適用テスト</li>
+                    <li><strong>Nano banana pro：</strong>ブランドイメージに合った画像素材の生成</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 総制作時間：90分（各ツール20-25分）
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: 演習1 - Gemini セクション開始 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習1：Geminiで<br>ブランド戦略を策定</h2>
+        </div>
+
+        <!-- スライド5: Geminiツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Gemini</h2>
+                <p><strong>用途：</strong>ブランド戦略の策定、命名規則の決定、運用ガイドラインの作成</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>ブランド分析：</strong>ターゲット層とブランドアイデンティティの定義</li>
+                    <li><strong>命名規則生成：</strong>BEMベースのコンポーネント命名ルール策定</li>
+                    <li><strong>運用ルール策定：</strong>デザインシステムの更新・管理ガイドライン作成</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Geminiは「なぜそうするのか」の理由を説明させることが重要
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_026_handson_01.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド6: Gemini演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ブランド基盤の策定</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>AIを使って、デザインシステムの「なぜそうするのか」を明確にする。</p>
+                
+                <h3>課題内容</h3>
+                <p>「SLOW DRIP」というカフェのブランド戦略を策定し、デザインシステムの命名規則と運用ルールを決定します。</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ブランドコンセプト：</strong>「ゆっくり、丁寧に、一杯ずつ」</li>
+                    <li><strong>ターゲット：</strong>30-40代、質を重視するビジネスパーソン</li>
+                    <li><strong>避けたい印象：</strong>チェーン店感、安っぽさ、騒がしさ</li>
+                    <li><strong>制作時間：</strong>20分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 Geminiに「理由」を説明させることで、主観ではなく根拠のある判断ができる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: Gemini手順1 - ブランド分析 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 3：ブランド分析プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        以下の条件でカフェブランドのデザイン戦略を分析してください：
+
+        店名：SLOW DRIP
+        コンセプト：ゆっくり、丁寧に、一杯ずつ
+        ターゲット：30-40代、質を重視するビジネスパーソン
+        避けたい印象：チェーン店感、安っぽさ、騒がしさ
+
+        以下を提案してください：
+        1. ブランドカラー3色（HEXコード付き）と選定理由
+        2. フォントの方向性（セリフ/サンセリフ）と理由
+        3. デザイントーン（ミニマル/リッチ/ナチュラルなど）
+        4. 各提案が「なぜターゲットに響くのか」の心理的根拠
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「良い色を教えて」だけでは汎用的な回答しか得られない<br>
+                    ✅ 正解：ターゲット、コンセプト、制約を明示して具体的な根拠を求める
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: Gemini手順2 - 命名規則策定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 3：命名規則策定プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        以下の条件で、デザインシステムのコンポーネント命名規則を策定してください：
+
+        プロジェクト：SLOW DRIP カフェのWebサイト
+        管理するコンポーネント：ボタン、カード、フォーム、ナビゲーション、ヘッダー、フッター
+
+        要件：
+        1. BEM（Block Element Modifier）方式をベースにする
+        2. 100個のコンポーネントがあっても管理できる拡張性
+        3. デザイナーとエンジニアの両方が理解できる明確さ
+        4. 見た目ではなく「役割」で命名
+
+        以下を出力してください：
+        1. 命名規則のルール（具体例付き）
+        2. NG例とOK例の比較表
+        3. バリエーション管理のルール（Primary/Secondary/Tertiaryなど）
+        4. 新しいコンポーネントを追加する際の判断基準
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「Button1」「Button2」のような連番命名<br>
+                    ✅ 正解：「Button--primary」「Button--secondary」のように役割で命名
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: Gemini手順3 - 運用ガイドライン策定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 3：運用ガイドライン策定</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-3">
+        デザインシステムの運用ガイドラインを策定してください：
+
+        状況：
+        - チーム規模：デザイナー2名、エンジニア3名
+        - プロジェクト期間：6ヶ月（その後も継続運用）
+        - 想定ページ数：初期50ページ、最終的に200ページ
+
+        以下のルールを策定してください：
+        1. コンポーネント追加のプロセス（誰が承認するか）
+        2. コンポーネント変更時のバージョン管理ルール
+        3. 使われていないコンポーネントの削除基準
+        4. デザインシステムの定期監査（いつ、何をチェックするか）
+        5. 新メンバーへのオンボーディング手順
+
+        各ルールには「なぜそうするのか」の理由も含めてください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-3', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    💡 運用ルールがないと、デザインシステムは「作って終わり」で放置される
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: Gemini演習チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">Gemini演習：完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>ブランド戦略</h3>
+                    <p>カラー、フォント、トーンに<br>心理的根拠があるか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>命名規則</h3>
+                    <p>役割ベースの命名で<br>拡張性があるか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>運用ルール</h3>
+                    <p>追加・変更・削除の<br>プロセスが明確か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>根拠の明確さ</h3>
+                    <p>すべての判断に<br>「なぜ」があるか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: 演習2 - Figma セクション開始 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習2：Figmaで<br>コンポーネントライブラリ構築</h2>
+        </div>
+
+        <!-- スライド12: Figmaツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Figma</h2>
+                <p><strong>用途：</strong>デザイントークン設定、Atoms〜Organismsの実装、バリエーション管理</p>
+                <p><strong>初回アクセス：</strong>https://figma.com（無料プランで可）</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>Variables：</strong>デザイントークン（色・スペーシング）の一元管理</li>
+                    <li><strong>Components：</strong>Atoms〜Organismsのコンポーネント化</li>
+                    <li><strong>Variants：</strong>Primary/Secondary/Tertiaryのバリエーション管理</li>
+                    <li><strong>Auto Layout：</strong>レスポンシブ対応の自動調整</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Figmaの「Component」機能がAtomic Designの実装そのもの
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_026_handson_02.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド13: Figma演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：Atoms〜Organismsの実装</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>Geminiで決めたブランド戦略と命名規則に基づいて、実際に使えるコンポーネントライブラリを作る。</p>
+                
+                <h3>課題内容</h3>
+                <p>SLOW DRIPのデザインシステムを、Figmaで段階的に実装します。</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>実装する階層：</strong>Atoms（3種）、Molecules（2種）、Organisms（1種）</li>
+                    <li><strong>命名規則：</strong>Geminiで策定したBEMベースのルールを適用</li>
+                    <li><strong>バリエーション：</strong>各Atomにつき最大3種類まで</li>
+                    <li><strong>制作時間：</strong>25分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 「作る」だけでなく「管理できる状態で作る」ことが目標
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド14: Figma手順1 - デザイントークン設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 6：デザイントークンの設定</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Figmaで新規ファイル作成 → 右パネルから「Local variables」を開く</p>
+                <p><strong>2.</strong> Geminiで決めたカラーを「Color」変数として登録：</p>
+                <ul style="margin-left: 2rem; font-size: 0.95rem;">
+                    <li>color/primary → #2C3E50（例：深いネイビー）</li>
+                    <li>color/secondary → #95A5A6（例：落ち着いたグレー）</li>
+                    <li>color/accent → #D4AF37（例：ゴールド）</li>
+                </ul>
+                <p><strong>3.</strong> スペーシングを「Number」変数として登録：</p>
+                <ul style="margin-left: 2rem; font-size: 0.95rem;">
+                    <li>spacing/xs → 4</li>
+                    <li>spacing/sm → 8</li>
+                    <li>spacing/md → 16</li>
+                    <li>spacing/lg → 24</li>
+                </ul>
+                
+                <h3>デザイン原則との関連</h3>
+                <p>この操作は「反復（Repetition）」の原則を適用しています。変数化することで、色やスペーシングが全体で一貫して使われます。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：直接HEXコードを入力してしまう<br>
+                    ✅ 正解：必ず変数として登録し、再利用可能にする
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: Figma手順2 - Atoms作成（ボタン） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 6：Atoms作成（ボタン）</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Rectangleツール（R）で 120×45px の四角形を作成</p>
+                <p><strong>2.</strong> 角丸を 8px に設定</p>
+                <p><strong>3.</strong> 塗りに Variables から「color/primary」を適用</p>
+                <p><strong>4.</strong> Textツール（T）で「Button」と入力し、中央配置</p>
+                <p><strong>5.</strong> 全体を選択 → 右クリック → 「Create component」</p>
+                <p><strong>6.</strong> コンポーネント名を「Button」に変更</p>
+                <p><strong>7.</strong> 右パネルから「Add variant」をクリック</p>
+                <p><strong>8.</strong> Variant property を「Type」に設定し、値を「Primary / Secondary / Tertiary」に</p>
+                
+                <h3>デザイン原則との関連</h3>
+                <p>「整列（Alignment）」でテキストを中央配置、「コントラスト（Contrast）」でPrimary/Secondaryに視覚的差異をつけます。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：Variantを使わず別々のコンポーネントを作る<br>
+                    ✅ 正解：同じ役割のバリエーションは1つのコンポーネントで管理
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: Figma手順3 - Atoms作成（入力欄） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 6：Atoms作成（入力欄）</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Rectangleツール（R）で 240×45px の四角形を作成</p>
+                <p><strong>2.</strong> 塗りを「なし」、枠線を 2px、色を「color/primary」に設定</p>
+                <p><strong>3.</strong> 角丸を 8px に設定（ボタンと統一）</p>
+                <p><strong>4.</strong> Textツール（T）で「メールアドレスを入力」とプレースホルダーを入力</p>
+                <p><strong>5.</strong> テキスト色を「color/secondary」（グレー）に変更</p>
+                <p><strong>6.</strong> 全体を選択 → 「Create component」 → 名前を「Input」に</p>
+                <p><strong>7.</strong> Variantで「State = Default / Focused / Error」を作成</p>
+                
+                <h3>なぜ3つの状態が必要か</h3>
+                <p>入力欄は「デフォルト」「フォーカス時」「エラー時」で見た目が変わります。これを事前に定義することで、エンジニアとの連携がスムーズになります。</p>
+                
+                <div class="highlight-box">
+                    💡 Stateを定義しておくと、インタラクションデザインの抜け漏れを防げる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: Figma手順4 - Molecules作成（検索フォーム） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 6：Molecules作成（検索フォーム）</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 作成済みの「Input」コンポーネントをインスタンスとして配置</p>
+                <p><strong>2.</strong> 作成済みの「Button」コンポーネントをインスタンスとして配置</p>
+                <p><strong>3.</strong> 両方を選択 → Shift + A（Auto Layout）</p>
+                <p><strong>4.</strong> Auto Layoutの設定：</p>
+                <ul style="margin-left: 2rem; font-size: 0.95rem;">
+                    <li>Direction: Horizontal</li>
+                    <li>Spacing: Variables → spacing/sm (8px)</li>
+                    <li>Padding: Variables → spacing/md (16px)</li>
+                </ul>
+                <p><strong>5.</strong> 全体を選択 → 「Create component」 → 名前を「SearchForm」に</p>
+                
+                <h3>デザイン原則との関連</h3>
+                <p>「近接（Proximity）」の原則で、関連する要素（入力欄とボタン）をグループ化します。spacing/smで8pxの間隔を空けることで、視覚的なまとまりを作ります。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：手動で配置して数値を直接入力<br>
+                    ✅ 正解：Auto LayoutとVariablesで自動調整される仕組みを作る
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: Figma手順5 - Organisms作成（ヘッダー） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 5 / 6：Organisms作成（ヘッダー）</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Frameツール（F）で 1440×80px のフレームを作成（ヘッダーの土台）</p>
+                <p><strong>2.</strong> 左側にロゴ用のテキスト「SLOW DRIP」を配置（フォント: セリフ系、サイズ: 24px）</p>
+                <p><strong>3.</strong> 中央にナビゲーションリンク（ホーム、メニュー、店舗情報）をテキストで配置</p>
+                <p><strong>4.</strong> 右側に「SearchForm」コンポーネントのインスタンスを配置</p>
+                <p><strong>5.</strong> フレーム全体を選択 → Auto Layout適用 → Space between</p>
+                <p><strong>6.</strong> 全体を選択 → 「Create component」 → 名前を「Header」に</p>
+                
+                <h3>なぜOrganismsとして切り出すか</h3>
+                <p>ヘッダーは「すべてのページで共通」のセクションです。Organismsとして定義することで、1箇所修正すれば全ページに反映されます。</p>
+                
+                <div class="highlight-box">
+                    💡 「再利用される意味のあるまとまり」がOrganismsの判断基準
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: Figma手順6 - 命名規則の適用確認 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 6 / 6：命名規則の適用確認</h2>
+            <div class="content-block">
+                <h3>確認項目</h3>
+                <p>作成したコンポーネントが、Geminiで策定した命名規則に従っているか確認します。</p>
+                
+                <h3>チェックリスト</h3>
+                <ul>
+                    <li><strong>Atoms：</strong>Button, Input, Label など単体で意味を持つ名前</li>
+                    <li><strong>Variants：</strong>Button--primary, Button--secondary のように「--」でバリエーションを表現</li>
+                    <li><strong>Molecules：</strong>SearchForm のように機能が明確な名前</li>
+                    <li><strong>Organisms：</strong>Header のようにセクション名</li>
+                    <li><strong>避けるべき命名：</strong>Button1, BlueButton, BigCard など見た目ベースの名前</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 命名規則を守らないと、後から「このButtonはどこで使うの?」と混乱する<br>
+                    ✅ 名前を見ただけで「役割」が分かることが重要
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド20: Figma演習チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">Figma演習：完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>デザイントークン</h3>
+                    <p>色・スペーシングが<br>Variables化されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Atoms</h3>
+                    <p>ボタン・入力欄が<br>Variantsで管理されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Molecules/Organisms</h3>
+                    <p>Auto Layoutで<br>自動調整される仕組みか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>命名規則</h3>
+                    <p>役割ベースの命名で<br>一貫性があるか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: 演習3 - Canva セクション開始 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習3：Canvaで<br>マーケティング素材への適用</h2>
+        </div>
+
+        <!-- スライド22: Canvaツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Canva</h2>
+                <p><strong>用途：</strong>デザインシステムの実用性テスト、マーケティング素材への適用</p>
+                <p><strong>初回アクセス：</strong>https://canva.com</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>Brand Kit：</strong>デザイントークン（カラー・フォント）の登録</li>
+                    <li><strong>カスタムテンプレート：</strong>Atomsを使い回すテンプレート作成</li>
+                    <li><strong>一括生成：</strong>複数サイズのSNS投稿を一括作成</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Canvaでの実用テストで「本当に使えるシステムか」を検証
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_026_handson_03.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド23: Canva演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：Instagram投稿の作成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>FigmaとGeminiで作ったデザインシステムが、実際のマーケティング素材でも機能するかテストする。</p>
+                
+                <h3>課題内容</h3>
+                <p>SLOW DRIPの「新メニュー告知」Instagram投稿（1080×1080px）を作成します。</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>使用する要素：</strong>Figmaで作ったButton, 色・フォントを再現</li>
+                    <li><strong>必須情報：</strong>新メニュー名、価格、提供開始日</li>
+                    <li><strong>デザイン原則：</strong>整列・近接・反復・コントラストをすべて適用</li>
+                    <li><strong>制作時間：</strong>15分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 「デザインシステムに従えば、迷わず作れる」ことを体験
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: Canva手順1 - Brand Kit設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 3：Brand Kitの設定</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Canvaにログイン → 左サイドバーから「Brand Kit」を開く</p>
+                <p><strong>2.</strong> 「Add brand colors」をクリックし、Geminiで決めた3色を登録：</p>
+                <ul style="margin-left: 2rem; font-size: 0.95rem;">
+                    <li>Primary: #2C3E50</li>
+                    <li>Secondary: #95A5A6</li>
+                    <li>Accent: #D4AF37</li>
+                </ul>
+                <p><strong>3.</strong> 「Brand fonts」でフォントを登録（セリフ系 + サンセリフ系）</p>
+                <p><strong>4.</strong> 「Add logo」でSLOW DRIPのロゴをアップロード（またはテキストで作成）</p>
+                
+                <h3>デザイン原則との関連</h3>
+                <p>Brand Kitは「反復（Repetition）」の実装です。色やフォントを登録することで、すべての素材で一貫性が保たれます。</p>
+                
+                <div class="highlight-box">
+                    💡 Brand Kitは「デザイントークンのCanva版」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド25: Canva手順2 - Instagram投稿作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 3：Instagram投稿の作成</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 「Create a design」 → 「Instagram Post (Square)」を選択</p>
+                <p><strong>2.</strong> 背景にBrand Kitの「Secondary」色を適用</p>
+                <p><strong>3.</strong> 上部にロゴを配置（左揃え、margin: 40px）</p>
+                <p><strong>4.</strong> 中央に新メニュー名（例：「コールドブリュー ラテ」）を大きく配置</p>
+                <p><strong>5.</strong> 価格と提供開始日を近接させて配置（グループ化）</p>
+                <p><strong>6.</strong> 下部にCTAボタン風のテキスト（例：「詳しくはこちら」）をAccent色で配置</p>
+                
+                <h3>4つの原則の適用</h3>
+                <ul>
+                    <li><strong>整列：</strong>左揃えで視覚的な秩序</li>
+                    <li><strong>近接：</strong>価格と日付をグループ化</li>
+                    <li><strong>反復：</strong>Brand Kitの色・フォントを使用</li>
+                    <li><strong>コントラスト：</strong>CTAをAccent色で強調</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「なんとなく配置」してしまう<br>
+                    ✅ 正解：4つの原則を意識して配置する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド26: Canva手順3 - 複数サイズへの展開 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 3：複数サイズへの展開</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 作成したデザインを選択 → 上部メニューから「Resize」をクリック</p>
+                <p><strong>2.</strong> 「Instagram Story (1080×1920)」「Facebook Post (1200×630)」を選択</p>
+                <p><strong>3.</strong> 「Copy and resize」をクリック</p>
+                <p><strong>4.</strong> 自動生成された各サイズを確認し、必要に応じて微調整</p>
+                
+                <h3>なぜ複数サイズへの展開が重要か</h3>
+                <p>デザインシステムの「再利用性」をテストします。1つ作れば複数サイズに展開できる = スケーラビリティが高いシステムです。</p>
+                
+                <div class="highlight-box">
+                    💡 デザインシステムがあれば、1つ作るだけで10個の素材が作れる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド27: Canva演習チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">Canva演習：完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Brand Kit</h3>
+                    <p>色・フォントが<br>登録されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>4つの原則</h3>
+                    <p>整列・近接・反復・コントラスト<br>すべて適用されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>複数サイズ</h3>
+                    <p>Instagram/Facebookなど<br>複数に展開できたか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>迷いのなさ</h3>
+                    <p>デザインシステムに従い<br>迷わず作れたか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド28: 演習4 - Nano banana pro セクション開始 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習4：Nano banana proで<br>ブランドイメージの視覚化</h2>
+        </div>
+
+        <!-- スライド29: Nano banana proツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Nano banana pro</h2>
+                <p><strong>用途：</strong>ブランドイメージに合った画像素材の生成</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>画像生成：</strong>プロンプトから高品質な画像を生成</li>
+                    <li><strong>スタイル指定：</strong>ブランドトーンに合った視覚表現</li>
+                    <li><strong>用途別生成：</strong>背景素材、アイキャッチ、アイコンなど</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 デザインシステムには「色・フォント」だけでなく「ビジュアルトーン」も含まれる
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_026_handson_04.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド30: Nano banana pro演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ブランドイメージ画像の生成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>「SLOW DRIP」のブランドコンセプトを視覚化した画像を生成し、デザインシステムのビジュアルトーンを確立する。</p>
+                
+                <h3>課題内容</h3>
+                <p>Webサイトのヒーローセクション用背景画像を生成します。</p>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>ブランドコンセプト：</strong>ゆっくり、丁寧に、一杯ずつ</li>
+                    <li><strong>トーン：</strong>ミニマル、落ち着いた、高級感</li>
+                    <li><strong>避けるべき要素：</strong>賑やかさ、ポップさ、チープさ</li>
+                    <li><strong>用途：</strong>Webサイト背景（横長、1920×1080px相当）</li>
+                    <li><strong>制作時間：</strong>15分</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 「ブランドらしさ」を言語化し、AIに伝える能力を養う
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド31: Nano banana pro手順1 - プロンプト作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 2：効果的なプロンプト作成</h2>
+            <div class="content-block">
+                <h3>Gemini Imagenに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-flux-1">
+        Minimalist coffee shop interior,
+        single cup of pour-over coffee on wooden counter,
+        soft natural morning light from large window,
+        muted earth tones color palette,
+        clean simple composition with negative space,
+        high-end artisanal aesthetic,
+        shallow depth of field bokeh background,
+        no people visible,
+        professional food photography style,
+        calm and contemplative atmosphere,
+        --ar 16:9
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-flux-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <h3>プロンプトの構造</h3>
+                <ul>
+                    <li><strong>主題：</strong>Minimalist coffee shop interior</li>
+                    <li><strong>具体的な要素：</strong>single cup of pour-over coffee</li>
+                    <li><strong>雰囲気：</strong>soft natural morning light, calm atmosphere</li>
+                    <li><strong>スタイル：</strong>professional food photography</li>
+                    <li><strong>制約：</strong>no people visible（人物を入れない）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「カフェの画像」だけでは不十分<br>
+                    ✅ 正解：トーン、雰囲気、スタイルまで具体的に指定
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド32: Nano banana pro手順2 - 生成と評価 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 2：生成とデザイン原則での評価</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Geminiのチャット画面にプロンプトを入力</p>
+                <p><strong>2.</strong> 生成された4枚の画像を確認</p>
+                <p><strong>3.</strong> 各画像を4つのデザイン原則で評価：</p>
+                <ul style="margin-left: 2rem; font-size: 0.95rem;">
+                    <li><strong>整列：</strong>視線の流れが整っているか</li>
+                    <li><strong>近接：</strong>関連する要素（カップとソーサーなど）がグループ化されているか</li>
+                    <li><strong>反復：</strong>ブランドカラー（アースカラー）が反映されているか</li>
+                    <li><strong>コントラスト：</strong>主役（コーヒー）が際立っているか</li>
+                </ul>
+                <p><strong>4.</strong> 最も適切な1枚を選択し、ダウンロード</p>
+                
+                <h3>選定基準</h3>
+                <p>「美しい」だけでなく、「SLOW DRIPのブランドコンセプトを体現しているか」で判断します。</p>
+                
+                <div class="highlight-box">
+                    💡 AI生成画像も、デザイン原則で評価・選定する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド33: Nano banana pro演習チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">Nano banana pro演習：完成チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>プロンプト</h3>
+                    <p>トーン・雰囲気・スタイルが<br>具体的に指定されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>ブランド整合性</h3>
+                    <p>生成画像が<br>ブランドコンセプトと合致しているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>4つの原則</h3>
+                    <p>整列・近接・反復・コントラスト<br>で評価できたか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>実用性</h3>
+                    <p>実際のWebサイトで<br>使える品質か？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド34: 全体の統合 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4ツールの統合：デザインシステムの完成</h2>
+            <div class="content-block">
+                <h3>各ツールの役割</h3>
+                <ul>
+                    <li><strong>Gemini：</strong>戦略・ルールの策定（なぜそうするのか）</li>
+                    <li><strong>Figma：</strong>コンポーネントの実装（部品の管理）</li>
+                    <li><strong>Canva：</strong>実用性のテスト（マーケティング素材への適用）</li>
+                    <li><strong>Nano banana pro：</strong>ビジュアルトーンの確立（画像素材の生成）</li>
+                </ul>
+                
+                <h3>デザインシステムが完成した状態</h3>
+                <p>以下がすべて揃っている状態を「デザインシステムの完成」と呼びます：</p>
+                <ul>
+                    <li>✓ デザイントークン（色・フォント・スペーシング）</li>
+                    <li>✓ Atoms〜Organismsのコンポーネントライブラリ</li>
+                    <li>✓ 命名規則とバリエーション管理ルール</li>
+                    <li>✓ 運用ガイドライン（追加・変更・削除のプロセス）</li>
+                    <li>✓ ビジュアルトーン（画像素材の方向性）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎉 これで「5ページでも500ページでも崩れない」システムが完成
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド35: 運用フェーズへの移行 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：運用とメンテナンス</h2>
+            <div class="content-block">
+                <h3>デザインシステムは「作って終わり」ではない</h3>
+                <p>継続的に運用・改善していくことで、真価を発揮します。</p>
+                
+                <h3>運用フェーズでやること</h3>
+                <ul>
+                    <li><strong>定期監査（月1回）：</strong>使われていないコンポーネントの削除、重複の統合</li>
+                    <li><strong>バージョン管理：</strong>コンポーネント変更時は必ずバージョン番号を更新</li>
+                    <li><strong>ドキュメント更新：</strong>新コンポーネント追加時は使い方を記載</li>
+                    <li><strong>チーム共有：</strong>週次ミーティングでデザインシステムの変更を報告</li>
+                </ul>
+                
+                <h3>改善のサイクル</h3>
+                <p>実際の使用 → 問題発見 → Geminiで改善案を相談 → Figmaで修正 → 再度テスト</p>
+                
+                <div class="highlight-box">
+                    💡 デザインシステムは「生きたドキュメント」、プロジェクトと共に成長する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド36: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">デザインシステム構築 実践編まとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🤖</div>
+                    <h3>Gemini</h3>
+                    <p>戦略・ルールの策定<br>根拠のある判断</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>Figma</h3>
+                    <p>コンポーネント実装<br>Atoms〜Organisms</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📱</div>
+                    <h3>Canva</h3>
+                    <p>実用性テスト<br>マーケティング素材</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🖼️</div>
+                    <h3>Nano banana pro</h3>
+                    <p>ビジュアルトーン<br>画像素材生成</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "デザインシステムで「命名規則」が重要な理由は？",
+                options: [
+                    "見た目を美しくするため",
+                    "100個のコンポーネントがあっても管理できるようにするため",
+                    "クライアントを満足させるため",
+                    "エンジニアに仕事を押し付けるため"
+                ],
+                correct: 1,
+                explanation: "命名規則は、プロジェクトが大規模になっても「このコンポーネントは何のためのものか」が一目で分かるようにするためです。見た目ベースの命名（BlueButton）ではなく、役割ベース（Button--primary）で命名することで、後から見ても理解できます。"
+            },
+            {
+                question: "Figmaで「Variables」を使う最大のメリットは？",
+                options: [
+                    "作業時間が短縮される",
+                    "色を変更する際、一箇所修正すれば全体に反映される",
+                    "デザインが美しくなる",
+                    "エンジニアとの連携が不要になる"
+                ],
+                correct: 1,
+                explanation: "Variablesは「デザイントークン」の実装です。color-primaryを変更すれば、それを使っているすべてのコンポーネントに自動で反映されます。これにより、ブランドカラー変更などの大規模な修正が一瞬で完了します。"
+            },
+            {
+                question: "Canvaで「Brand Kit」を設定する理由は？",
+                options: [
+                    "Canvaの有料機能を使いたいから",
+                    "デザインシステムの「反復（Repetition）」を実装するため",
+                    "テンプレートを増やすため",
+                    "作業時間を短縮するため"
+                ],
+                correct: 1,
+                explanation: "Brand Kitは「反復（Repetition）」の原則を実装する機能です。色・フォント・ロゴを登録することで、すべての素材で一貫性が保たれます。これにより、誰が作っても「SLOW DRIPらしい」デザインになります。"
+            },
+            {
+                question: "Nano banana proで画像を生成する際、最も重要な指定は？",
+                options: [
+                    "画像サイズ",
+                    "色の数",
+                    "トーン・雰囲気・スタイル",
+                    "生成枚数"
+                ],
+                correct: 2,
+                explanation: "AI画像生成では「トーン・雰囲気・スタイル」を具体的に指定することが最重要です。「カフェの画像」だけでは汎用的な画像しか生まれませんが、「Minimalist, soft natural light, calm atmosphere」と指定することで、ブランドに合った画像が生成されます。"
+            },
+            {
+                question: "デザインシステムの運用で最もよくある失敗は？",
+                options: [
+                    "コンポーネントを作りすぎる",
+                    "作って終わりで、メンテナンスしない",
+                    "ドキュメントが詳しすぎる",
+                    "ツールを使いすぎる"
+                ],
+                correct: 1,
+                explanation: "デザインシステムは「作って終わり」ではありません。定期的な監査、使われていないコンポーネントの削除、新コンポーネント追加時のドキュメント更新など、継続的なメンテナンスが必要です。放置すると、すぐに「使えないシステム」になります。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

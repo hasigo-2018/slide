@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>006 Atomic Designとコンポーネント指向【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>Atomic Designと<br>コンポーネント指向<span>【実践編】</span></h1>
+                <p>AIでボタンバリエーションを一括設計し、Figmaで実装する</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 実践編の目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">実践編で体験すること</h2>
+            <div class="content-block">
+                <h3>理論編の復習</h3>
+                <p>Atomic Designでは、UIを最小単位（Atoms）から組み上げる。<br>
+                <strong>ボタン</strong>はAtomsの代表例であり、すべてのUIの基礎となる。</p>
+                
+                <h3>今日のゴール</h3>
+                <ul>
+                    <li><strong>Gemini</strong>でボタンの全バリエーションを設計</li>
+                    <li><strong>Figma</strong>でコンポーネント化して一括管理</li>
+                    <li>「1箇所修正すれば全部直る」状態を体験する</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 AIに設計を任せ、人間は「判断」に集中する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: 全体フロー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習の全体フロー</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 200">
+                    <!-- Step 1 -->
+                    <g>
+                        <circle cx="100" cy="80" r="45" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2"/>
+                        <text x="100" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">STEP 1</text>
+                        <text x="100" y="95" text-anchor="middle" fill="#00d4ff" font-size="11">Gemini</text>
+                        <text x="100" y="150" text-anchor="middle" fill="#888" font-size="11">バリエーション</text>
+                        <text x="100" y="168" text-anchor="middle" fill="#888" font-size="11">設計</text>
+                    </g>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M155 80 L225 80" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="225,75 240,80 225,85" fill="#00d4ff"/>
+                    
+                    <!-- Step 2 -->
+                    <g>
+                        <circle cx="300" cy="80" r="45" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2"/>
+                        <text x="300" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">STEP 2</text>
+                        <text x="300" y="95" text-anchor="middle" fill="#a855f7" font-size="11">Figma</text>
+                        <text x="300" y="150" text-anchor="middle" fill="#888" font-size="11">ベースボタン</text>
+                        <text x="300" y="168" text-anchor="middle" fill="#888" font-size="11">作成</text>
+                    </g>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M355 80 L425 80" stroke="#a855f7" stroke-width="2"/>
+                    <polygon points="425,75 440,80 425,85" fill="#a855f7"/>
+                    
+                    <!-- Step 3 -->
+                    <g>
+                        <circle cx="500" cy="80" r="45" fill="#6bcb77" opacity="0.2" stroke="#6bcb77" stroke-width="2"/>
+                        <text x="500" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">STEP 3</text>
+                        <text x="500" y="95" text-anchor="middle" fill="#6bcb77" font-size="11">Figma</text>
+                        <text x="500" y="150" text-anchor="middle" fill="#888" font-size="11">バリアント</text>
+                        <text x="500" y="168" text-anchor="middle" fill="#888" font-size="11">展開</text>
+                    </g>
+                    
+                    <!-- 矢印3 -->
+                    <path d="M555 80 L625 80" stroke="#6bcb77" stroke-width="2"/>
+                    <polygon points="625,75 640,80 625,85" fill="#6bcb77"/>
+                    
+                    <!-- Step 4 -->
+                    <g>
+                        <circle cx="700" cy="80" r="45" fill="#ffd93d" opacity="0.2" stroke="#ffd93d" stroke-width="2"/>
+                        <text x="700" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">STEP 4</text>
+                        <text x="700" y="95" text-anchor="middle" fill="#ffd93d" font-size="11">検証</text>
+                        <text x="700" y="150" text-anchor="middle" fill="#888" font-size="11">一括修正</text>
+                        <text x="700" y="168" text-anchor="middle" fill="#888" font-size="11">体験</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション区切り - Gemini -->
+        <div class="slide-container section-title-layout">
+            <h2>Gemini演習</h2>
+            <p>AIでボタンバリエーションを設計する</p>
+        </div>
+
+        <!-- スライド5: Gemini ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Gemini</h2>
+                <p><strong>用途：</strong>デザインの設計案・ルールをAIに考えさせる</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>構造化提案</strong>：バリエーションの種類を網羅的に洗い出す</li>
+                    <li><strong>カラーコード生成</strong>：HEX値を含む具体的な色指定</li>
+                    <li><strong>ルール言語化</strong>：状態変化のロジックを明文化</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 AIに「全パターン出して」と頼むと、人間が見落としがちな状態も網羅できる
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_006_handson_01.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド6: Gemini 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ボタンバリエーション設計</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>Geminiに「プロダクトで必要なボタンの全バリエーション」を設計させる</p>
+                
+                <h3>設計するバリエーション</h3>
+                <ul>
+                    <li><strong>スタイル：</strong>Primary / Secondary / Ghost / Destructive</li>
+                    <li><strong>状態：</strong>Default / Hover / Active / Disabled / Loading</li>
+                    <li><strong>サイズ：</strong>Small / Medium / Large</li>
+                </ul>
+                
+                <h3>アウトプット目標</h3>
+                <p>各バリエーションの<strong>色（HEXコード）</strong>と<strong>変化ルール</strong>を一覧で取得</p>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：10分
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: Gemini 手順1 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1：バリエーション一覧を生成</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        SaaSプロダクトのボタンコンポーネントを設計してください。
+
+        【スタイルバリエーション】
+        - Primary（主要アクション）
+        - Secondary（副次アクション）
+        - Ghost（テキストのみ）
+        - Destructive（削除・警告）
+
+        【状態バリエーション】
+        - Default（通常）
+        - Hover（マウスオーバー）
+        - Active（クリック中）
+        - Disabled（無効）
+        - Loading（読み込み中）
+
+        【サイズバリエーション】
+        - Small（補助的なアクション用）
+        - Medium（標準）
+        - Large（CTA用）
+
+        上記すべての組み合わせについて、以下を表形式で出力してください：
+        1. 背景色（HEXコード）
+        2. 文字色（HEXコード）
+        3. ボーダー（色・太さ）
+        4. 角丸（px）
+        5. パディング（px）
+
+        ブランドカラーは #00d4ff（シアン）をベースにしてください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「ボタンのデザインを考えて」だけでは曖昧すぎる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: Gemini 手順2 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2：状態変化ルールを深掘り</h2>
+            <div class="content-block">
+                <h3>追加で入力するプロンプト</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        先ほどのボタン設計について、状態変化のルールを詳しく教えてください。
+
+        具体的に知りたいこと：
+        1. Hover時の色変化ルール（明度を何%上げる？）
+        2. Active時の色変化ルール（明度を何%下げる？）
+        3. Disabled時の透明度（何%？）
+        4. Loadingアニメーションの推奨仕様
+
+        また、以下の観点でアクセシビリティチェックもお願いします：
+        - 背景色と文字色のコントラスト比（WCAG AA基準を満たすか）
+        - Disabled状態でも内容が読み取れるか
+
+        Figmaで実装しやすいよう、具体的な数値で回答してください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ 「なんとなく暗く」ではなく「明度-10%」のような具体値を引き出す
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: Gemini チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">Gemini演習：完成チェック</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>スタイル4種</h3>
+                    <p>Primary/Secondary<br>Ghost/Destructive</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>状態5種</h3>
+                    <p>Default/Hover/Active<br>Disabled/Loading</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>サイズ3種</h3>
+                    <p>Small/Medium/Large<br>パディング値あり</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>HEXコード</h3>
+                    <p>すべての色が<br>具体的な値で指定</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: セクション区切り - Figma -->
+        <div class="slide-container section-title-layout">
+            <h2>Figma演習</h2>
+            <p>AIの設計をコンポーネント化する</p>
+        </div>
+
+        <!-- スライド11: Figma ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Figma</h2>
+                <p><strong>用途：</strong>UIコンポーネントの作成・管理</p>
+                <p><strong>初回アクセス：</strong>https://www.figma.com/</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>Auto Layout</strong>：パディングを自動調整</li>
+                    <li><strong>Component</strong>：再利用可能な部品化</li>
+                    <li><strong>Variants</strong>：バリエーションを1つに統合</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 無料プランで十分使えます（3プロジェクトまで）
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_006_handson_02.png" alt="Gemini Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+
+        <!-- スライド12: Figma 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ボタンコンポーネント作成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>Geminiで設計したバリエーションを、Figmaのコンポーネント機能で実装する</p>
+                
+                <h3>作成するもの</h3>
+                <ul>
+                    <li><strong>ベースボタン</strong>：Auto Layout適用済み</li>
+                    <li><strong>バリアント</strong>：Style × State × Size の組み合わせ</li>
+                    <li><strong>合計</strong>：4スタイル × 5状態 × 3サイズ = 60パターン</li>
+                </ul>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li>Geminiの出力したHEXコードを使用</li>
+                    <li>角丸・パディングもGeminiの指定値を適用</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：20分
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: Figma 手順1 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 4：ベースボタンを作成</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 長方形ツール（R）でボタンの背景を作成</p>
+                <p><strong>2.</strong> テキストツール（T）で「ボタン」と入力</p>
+                <p><strong>3.</strong> 両方を選択し、右クリック →「Frame selection」</p>
+                <p><strong>4.</strong> 右パネルで「Auto Layout」をONにする（Shift + A）</p>
+                
+                <h3>Auto Layoutの設定</h3>
+                <ul>
+                    <li><strong>Padding：</strong>上下12px、左右24px（Mediumサイズの場合）</li>
+                    <li><strong>角丸：</strong>8px（Geminiの指定値）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：背景とテキストをグループ化してしまう（Auto Layoutが使えない）<br>
+                    ✅ 正解：「Frame selection」でフレーム化する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド14: Figma 手順2 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 4：コンポーネント化</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 作成したボタンフレームを選択</p>
+                <p><strong>2.</strong> 右クリック →「Create component」（Ctrl/Cmd + Alt + K）</p>
+                <p><strong>3.</strong> レイヤー名を「Button」に変更</p>
+                
+                <h3>コンポーネント化の確認</h3>
+                <p>左パネルのレイヤーに<strong>紫の◇マーク</strong>が表示されればOK</p>
+                
+                <h3>理論編との関連</h3>
+                <p>これで「Atom」が1つ完成。<br>
+                この部品をコピーして使えば、すべて同じデザインが保証される。</p>
+                
+                <div class="highlight-box">
+                    💡 コンポーネント = 「マスター部品」。変更は自動で全インスタンスに反映
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: Figma 手順3 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 4：バリアントを追加</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> コンポーネントを選択し、右パネル「Properties」の「＋」をクリック</p>
+                <p><strong>2.</strong>「Variant」を選択</p>
+                <p><strong>3.</strong> プロパティ名を設定：</p>
+                <ul>
+                    <li><strong>Style</strong>：Primary / Secondary / Ghost / Destructive</li>
+                    <li><strong>State</strong>：Default / Hover / Active / Disabled / Loading</li>
+                    <li><strong>Size</strong>：Small / Medium / Large</li>
+                </ul>
+                
+                <h3>バリアント追加の方法</h3>
+                <p>紫の点線枠内で「＋」ボタンをクリック → 新しいバリアントが追加される</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：別々のコンポーネントを60個作る（管理が破綻する）<br>
+                    ✅ 正解：1つのコンポーネントに60バリアントを内包
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: Figma 手順4 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 4：Geminiの値を適用</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 各バリアントを選択</p>
+                <p><strong>2.</strong> 右パネル「Fill」でGeminiのHEXコードを入力</p>
+                <p><strong>3.</strong> テキストの色も同様に変更</p>
+                <p><strong>4.</strong> サイズバリアントはパディング値を変更：</p>
+                <ul>
+                    <li><strong>Small：</strong>上下8px、左右16px</li>
+                    <li><strong>Medium：</strong>上下12px、左右24px</li>
+                    <li><strong>Large：</strong>上下16px、左右32px</li>
+                </ul>
+                
+                <h3>効率化のコツ</h3>
+                <p>まずPrimary × 5状態を完成させ、複製して色だけ変更すると速い</p>
+                
+                <div class="highlight-box">
+                    💡 Loading状態のアイコンは「⟳」や「…」で仮置きしてもOK
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: Figma バリアント完成イメージ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">完成イメージ：バリアントパネル</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 380">
+                    <!-- 紫の点線枠 -->
+                    <rect x="50" y="20" width="700" height="340" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="8,4" rx="12"/>
+                    <text x="400" y="12" text-anchor="middle" fill="#a855f7" font-size="12">Button Component（1つのコンポーネントに全バリアント）</text>
+                    
+                    <!-- Primary行 -->
+                    <text x="70" y="60" fill="#00d4ff" font-size="12" font-weight="bold">Primary</text>
+                    <rect x="150" y="45" width="90" height="32" fill="#00d4ff" rx="6"/>
+                    <text x="195" y="66" text-anchor="middle" fill="white" font-size="11">Default</text>
+                    
+                    <rect x="260" y="45" width="90" height="32" fill="#33ddff" rx="6"/>
+                    <text x="305" y="66" text-anchor="middle" fill="white" font-size="11">Hover</text>
+                    
+                    <rect x="370" y="45" width="90" height="32" fill="#00a8cc" rx="6"/>
+                    <text x="415" y="66" text-anchor="middle" fill="white" font-size="11">Active</text>
+                    
+                    <rect x="480" y="45" width="90" height="32" fill="#00d4ff" opacity="0.4" rx="6"/>
+                    <text x="525" y="66" text-anchor="middle" fill="white" font-size="11">Disabled</text>
+                    
+                    <rect x="590" y="45" width="90" height="32" fill="#00d4ff" rx="6"/>
+                    <text x="635" y="66" text-anchor="middle" fill="white" font-size="11">Loading...</text>
+                    
+                    <!-- Secondary行 -->
+                    <text x="70" y="120" fill="#888" font-size="12" font-weight="bold">Secondary</text>
+                    <rect x="150" y="105" width="90" height="32" fill="none" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="195" y="126" text-anchor="middle" fill="#00d4ff" font-size="11">Default</text>
+                    
+                    <rect x="260" y="105" width="90" height="32" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="305" y="126" text-anchor="middle" fill="#00d4ff" font-size="11">Hover</text>
+                    
+                    <rect x="370" y="105" width="90" height="32" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="415" y="126" text-anchor="middle" fill="#00d4ff" font-size="11">Active</text>
+                    
+                    <rect x="480" y="105" width="90" height="32" fill="none" stroke="#666" stroke-width="2" opacity="0.4" rx="6"/>
+                    <text x="525" y="126" text-anchor="middle" fill="#666" font-size="11">Disabled</text>
+                    
+                    <rect x="590" y="105" width="90" height="32" fill="none" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="635" y="126" text-anchor="middle" fill="#00d4ff" font-size="11">Loading...</text>
+                    
+                    <!-- Ghost行 -->
+                    <text x="70" y="180" fill="#888" font-size="12" font-weight="bold">Ghost</text>
+                    <rect x="150" y="165" width="90" height="32" fill="none" rx="6"/>
+                    <text x="195" y="186" text-anchor="middle" fill="#00d4ff" font-size="11">Default</text>
+                    
+                    <rect x="260" y="165" width="90" height="32" fill="#00d4ff" opacity="0.1" rx="6"/>
+                    <text x="305" y="186" text-anchor="middle" fill="#00d4ff" font-size="11">Hover</text>
+                    
+                    <rect x="370" y="165" width="90" height="32" fill="#00d4ff" opacity="0.15" rx="6"/>
+                    <text x="415" y="186" text-anchor="middle" fill="#00d4ff" font-size="11">Active</text>
+                    
+                    <rect x="480" y="165" width="90" height="32" fill="none" rx="6"/>
+                    <text x="525" y="186" text-anchor="middle" fill="#666" font-size="11">Disabled</text>
+                    
+                    <rect x="590" y="165" width="90" height="32" fill="none" rx="6"/>
+                    <text x="635" y="186" text-anchor="middle" fill="#00d4ff" font-size="11">Loading...</text>
+                    
+                    <!-- Destructive行 -->
+                    <text x="70" y="240" fill="#ff6b6b" font-size="12" font-weight="bold">Destructive</text>
+                    <rect x="150" y="225" width="90" height="32" fill="#ff6b6b" rx="6"/>
+                    <text x="195" y="246" text-anchor="middle" fill="white" font-size="11">Default</text>
+                    
+                    <rect x="260" y="225" width="90" height="32" fill="#ff8585" rx="6"/>
+                    <text x="305" y="246" text-anchor="middle" fill="white" font-size="11">Hover</text>
+                    
+                    <rect x="370" y="225" width="90" height="32" fill="#cc5555" rx="6"/>
+                    <text x="415" y="246" text-anchor="middle" fill="white" font-size="11">Active</text>
+                    
+                    <rect x="480" y="225" width="90" height="32" fill="#ff6b6b" opacity="0.4" rx="6"/>
+                    <text x="525" y="246" text-anchor="middle" fill="white" font-size="11">Disabled</text>
+                    
+                    <rect x="590" y="225" width="90" height="32" fill="#ff6b6b" rx="6"/>
+                    <text x="635" y="246" text-anchor="middle" fill="white" font-size="11">Loading...</text>
+                    
+                    <!-- サイズ表示 -->
+                    <text x="70" y="300" fill="#ffd93d" font-size="12" font-weight="bold">Size展開</text>
+                    <rect x="150" y="285" width="70" height="26" fill="#00d4ff" rx="4"/>
+                    <text x="185" y="303" text-anchor="middle" fill="white" font-size="10">Small</text>
+                    
+                    <rect x="240" y="280" width="100" height="36" fill="#00d4ff" rx="6"/>
+                    <text x="290" y="303" text-anchor="middle" fill="white" font-size="12">Medium</text>
+                    
+                    <rect x="360" y="275" width="130" height="46" fill="#00d4ff" rx="8"/>
+                    <text x="425" y="303" text-anchor="middle" fill="white" font-size="14">Large</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド18: Figma チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">Figma演習：完成チェック</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Auto Layout</h3>
+                    <p>テキストに合わせて<br>幅が自動調整される</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Component化</h3>
+                    <p>紫の◇マークが<br>表示されている</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>Variants設定</h3>
+                    <p>Style/State/Size<br>3つのプロパティ</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>色の適用</h3>
+                    <p>GeminiのHEXコードが<br>正確に反映されている</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: セクション区切り - 検証 -->
+        <div class="slide-container section-title-layout">
+            <h2>検証演習</h2>
+            <p>「1箇所修正で全部直る」を体験する</p>
+        </div>
+
+        <!-- スライド20: 検証 課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">検証課題：一括修正を体験</h2>
+            <div class="content-block">
+                <h3>シナリオ</h3>
+                <p>「ブランドカラーを #00d4ff から #6366f1（紫）に変更したい」</p>
+                
+                <h3>やること</h3>
+                <ul>
+                    <li><strong>Step 1：</strong>ボタンのインスタンスを5個配置</li>
+                    <li><strong>Step 2：</strong>マスターコンポーネントの色を変更</li>
+                    <li><strong>Step 3：</strong>全インスタンスが自動で変わることを確認</li>
+                </ul>
+                
+                <h3>確認ポイント</h3>
+                <p>5個のボタンを<strong>1回の操作</strong>で変更できれば成功！</p>
+                
+                <div class="highlight-box">
+                    🎯 これが理論編で学んだ「一貫性が仕組みで生まれる」の正体
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: 検証 手順 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">検証手順：一括修正の実演</h2>
+            <div class="content-block">
+                <h3>Step 1：インスタンスを配置</h3>
+                <p><strong>1.</strong> 左パネル「Assets」からButtonコンポーネントをドラッグ</p>
+                <p><strong>2.</strong> キャンバス上に5個配置（Alt + ドラッグでコピー）</p>
+                <p><strong>3.</strong> 各インスタンスのバリアントを変更（Primary、Secondary など）</p>
+                
+                <h3>Step 2：マスターを修正</h3>
+                <p><strong>1.</strong> コンポーネント本体（◇マーク）を選択</p>
+                <p><strong>2.</strong> Primary / Default の背景色を #6366f1 に変更</p>
+                <p><strong>3.</strong> 関連する Hover / Active の色も調整</p>
+                
+                <h3>Step 3：結果を確認</h3>
+                <p>配置した5個のインスタンスが<strong>自動で紫に変わる</strong>ことを確認</p>
+                
+                <div class="highlight-box">
+                    💡 これを60ページのサイト全体で行えると想像してください。手動なら数時間、コンポーネントなら数秒。
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: Before/After 比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">一括修正の効果</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ コンポーネント未使用</h3>
+                    <svg class="generated-art" viewBox="0 0 350 220">
+                        <!-- 5個のボタン -->
+                        <rect x="40" y="30" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        <rect x="140" y="30" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        <rect x="240" y="30" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        <rect x="90" y="80" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        <rect x="190" y="80" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        
+                        <!-- 修正矢印 -->
+                        <path d="M80 130 L80 65" stroke="#ff6b6b" stroke-width="2"/>
+                        <path d="M180 130 L180 65" stroke="#ff6b6b" stroke-width="2"/>
+                        <path d="M280 130 L280 65" stroke="#ff6b6b" stroke-width="2"/>
+                        <path d="M130 130 L130 115" stroke="#ff6b6b" stroke-width="2"/>
+                        <path d="M230 130 L230 115" stroke="#ff6b6b" stroke-width="2"/>
+                        
+                        <text x="175" y="155" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="bold">5回の修正が必要</text>
+                        <text x="175" y="180" text-anchor="middle" fill="#888" font-size="11">60ページなら60回...</text>
+                        <text x="175" y="200" text-anchor="middle" fill="#888" font-size="11">漏れ・ミスのリスク大</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ コンポーネント使用</h3>
+                    <svg class="generated-art" viewBox="0 0 350 220">
+                        <!-- マスター -->
+                        <rect x="135" y="20" width="80" height="30" fill="#6366f1" stroke="#ffd93d" stroke-width="3" rx="4"/>
+                        <text x="175" y="40" text-anchor="middle" fill="white" font-size="10">Master</text>
+                        
+                        <!-- 修正矢印（1回） -->
+                        <path d="M230 35 L260 35" stroke="#6bcb77" stroke-width="2"/>
+                        <text x="290" y="40" fill="#6bcb77" font-size="11">1回修正</text>
+                        
+                        <!-- 波及矢印 -->
+                        <path d="M135 55 L60 80" stroke="#6bcb77" stroke-width="2"/>
+                        <path d="M175 55 L175 80" stroke="#6bcb77" stroke-width="2"/>
+                        <path d="M215 55 L290 80" stroke="#6bcb77" stroke-width="2"/>
+                        
+                        <!-- 5個のボタン（自動で変わる） -->
+                        <rect x="40" y="90" width="80" height="30" fill="#6366f1" rx="4"/>
+                        <rect x="140" y="90" width="80" height="30" fill="#6366f1" rx="4"/>
+                        <rect x="240" y="90" width="80" height="30" fill="#6366f1" rx="4"/>
+                        <rect x="90" y="140" width="80" height="30" fill="#6366f1" rx="4"/>
+                        <rect x="190" y="140" width="80" height="30" fill="#6366f1" rx="4"/>
+                        
+                        <text x="175" y="195" text-anchor="middle" fill="#6bcb77" font-size="12" font-weight="bold">全部自動で変わる！</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド23: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">実践編のまとめ</h2>
+            <div class="content-block">
+                <h3>今日体験したこと</h3>
+                <ul>
+                    <li><strong>Gemini</strong>で全バリエーションを網羅的に設計</li>
+                    <li><strong>Figma</strong>でコンポーネント化＆バリアント管理</li>
+                    <li><strong>一括修正</strong>で「仕組みによる一貫性」を実感</li>
+                </ul>
+                
+                <h3>ビジュアルアーキテクトの視点</h3>
+                <ul>
+                    <li><strong>AIには「網羅」を任せる</strong> - 人間が見落としがちなパターンも出る</li>
+                    <li><strong>人間は「判断」に集中</strong> - どれを採用するか、例外を許すか</li>
+                    <li><strong>ツールで「仕組み化」</strong> - 一貫性は努力ではなく構造で担保</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 Atomic Design = 「部品を作る」のではなく「部品で考える」思考法
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ</h2>
+            <div class="content-block">
+                <h3>今日の発展課題</h3>
+                <ul>
+                    <li>入力フィールド（Input）のバリアント設計</li>
+                    <li>カード（Card）コンポーネントの作成</li>
+                    <li>ボタン + 入力フィールドで検索フォーム（Molecule）を作成</li>
+                </ul>
+                
+                <h3>実務での活用</h3>
+                <ul>
+                    <li>プロジェクト開始時にGeminiで全コンポーネントを設計</li>
+                    <li>Figmaでデザインシステムとして整備</li>
+                    <li>チーム全員が同じ部品を使う運用を確立</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    📚 参考：Figma公式の「Variants」チュートリアル<br>
+                    https://help.figma.com/hc/en-us/articles/360056440594
+                </div>
+            </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Geminiにボタンバリエーションを設計させる際、最も効果的なプロンプトは？",
+                options: [
+                    "「いい感じのボタンを作って」",
+                    "「ボタンのデザインを考えて」",
+                    "「スタイル4種×状態5種×サイズ3種をHEXコード付きで表形式で出力して」",
+                    "「青いボタンを作って」"
+                ],
+                correct: 2,
+                explanation: "AIに網羅的な出力を求めるには、具体的な構造（種類・状態・サイズ）と出力形式（HEXコード・表形式）を明示することが重要です。曖昧な指示では汎用的な回答しか得られません。"
+            },
+            {
+                question: "Figmaでボタンをコンポーネント化する最大のメリットは？",
+                options: [
+                    "ファイルサイズが小さくなる",
+                    "見た目がきれいになる",
+                    "マスターを修正すると全インスタンスに自動反映される",
+                    "他の人と共有しやすくなる"
+                ],
+                correct: 2,
+                explanation: "コンポーネント化の最大のメリットは「Single Source of Truth（唯一の信頼できる情報源）」です。マスターを1箇所修正するだけで、使用しているすべての箇所に自動で変更が反映されます。"
+            },
+            {
+                question: "Figmaのバリアント機能で、60パターンのボタンを管理する正しい方法は？",
+                options: [
+                    "60個の別々のコンポーネントを作成する",
+                    "1つのコンポーネントに60のバリアントを内包する",
+                    "60個のフレームをグループ化する",
+                    "60枚の別々のページに分ける"
+                ],
+                correct: 1,
+                explanation: "バリアント機能を使えば、1つのコンポーネントの中にすべてのバリエーションを内包できます。これにより、管理が一元化され、インスタンス配置時にプロパティを切り替えるだけで任意のバリエーションを使用できます。"
+            },
+            {
+                question: "ボタンの「状態バリエーション」に含まれないものは？",
+                options: [
+                    "Hover（マウスオーバー）",
+                    "Disabled（無効）",
+                    "Primary（主要）",
+                    "Loading（読み込み中）"
+                ],
+                correct: 2,
+                explanation: "Primary（主要）は「スタイルバリエーション」です。状態バリエーションは、ユーザーの操作やシステムの状態に応じて変化するもの（Hover、Active、Disabled、Loadingなど）を指します。"
+            },
+            {
+                question: "理論編の「Atoms」と実践編の「ボタンコンポーネント」の関係として正しいのは？",
+                options: [
+                    "ボタンはAtomsより大きいのでMoleculesに該当する",
+                    "ボタンはこれ以上分解できない最小単位なのでAtomsの代表例",
+                    "ボタンはTemplatesに該当する",
+                    "ボタンとAtomsは無関係"
+                ],
+                correct: 1,
+                explanation: "ボタンは、ラベル・背景色・角丸などの要素で構成されますが、UI部品としては「これ以上分解しても意味がない最小単位」です。Atomic Designにおける典型的なAtomsの例であり、これを組み合わせてMolecules（検索フォームなど）を作ります。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講義スライド - [テーマ名]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h2>デザインは<br>設計である</h2>
+                <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); margin-top: 1.5rem;">
+                    Design is Engineering<br>
+                    ビジネスパーソンのための論理的デザイン入門
+                </p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">こんな経験はありませんか？</h2>
+            <div class="content-block">
+                <ul>
+                    <li>プレゼン資料を作っても「見づらい」と言われる</li>
+                    <li>「デザインセンスがない」と諦めている</li>
+                    <li>何となく作っているが、理論的な根拠がない</li>
+                    <li>どこを直せば良くなるのか分からない</li>
+                </ul>
+                <div class="highlight-box">
+                    実は、デザインは「センス」ではなく「ルール」で成り立っています
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container">
+            <h2 class="slide-title">本日のアジェンダ</h2>
+            <div class="three-column">
+                <div>
+                    <h3><i class="fas fa-lightbulb"></i> Part 1</h3>
+                    <p><strong>デザインとは何か</strong></p>
+                    <ul>
+                        <li>デザインの定義</li>
+                        <li>センス vs ロジック</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><i class="fas fa-ruler-combined"></i> Part 2</h3>
+                    <p><strong>4つの基本原則</strong></p>
+                    <ul>
+                        <li>整列・近接</li>
+                        <li>反復・コントラスト</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><i class="fas fa-brain"></i> Part 3</h3>
+                    <p><strong>視覚心理学</strong></p>
+                    <ul>
+                        <li>ゲシュタルト原理</li>
+                        <li>実務への応用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション - Part 1 -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 1</h2>
+            <hr>
+            <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #ccc;">
+                デザインとは何か
+            </p>
+        </div>
+
+        <!-- スライド5: デザインの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Design = 設計</h2>
+            <p>
+                デザインとは「問題を解決するための設計」である<br>
+                見た目を美しくすることではなく、<br>
+                目的を達成するための論理的なプロセス
+            </p>
+        </div>
+
+        <!-- スライド6: センス vs ロジック -->
+        <div class="slide-container">
+            <h2 class="slide-title">センス vs ロジック</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3 style="color: #ff0080;"><i class="fas fa-times-circle"></i> 誤解: センス</h3>
+                    <ul>
+                        <li>生まれ持った才能</li>
+                        <li>感覚的に判断</li>
+                        <li>説明できない</li>
+                        <li>一部の人だけができる</li>
+                    </ul>
+                    <div class="highlight-box" style="border-color: #ff0080; background: rgba(255,0,128,0.1);">
+                        「デザインセンスがない」という思い込み
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #00ff9d;"><i class="fas fa-check-circle"></i> 真実: ロジック</h3>
+                    <ul>
+                        <li>学習可能なスキル</li>
+                        <li>ルールに基づいて判断</li>
+                        <li>理論的に説明できる</li>
+                        <li>誰でも習得できる</li>
+                    </ul>
+                    <div class="highlight-box" style="border-color: #00ff9d; background: rgba(0,255,157,0.1);">
+                        「デザインルールを知る」ことで解決
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: デザインの目的 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">デザインの3つの目的</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>伝える (Communicate):</strong> 情報を正確に、効率的に相手に届ける</li>
+                    <li><strong>誘導する (Guide):</strong> 見る人の視線や行動を意図した方向へ導く</li>
+                    <li><strong>印象づける (Impress):</strong> 信頼性、プロフェッショナル性を示す</li>
+                </ul>
+                <div class="highlight-box">
+                    ビジネスにおけるデザインは「装飾」ではなく「戦略的ツール」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: 視覚的階層 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">視覚的階層 (Visual Hierarchy)</h2>
+                <p>人間の目は、自然と「大きいもの」「明るいもの」「動くもの」を先に見る</p>
+                <ul>
+                    <li><strong>サイズ:</strong> 重要な情報ほど大きく</li>
+                    <li><strong>色:</strong> 強調したい箇所に目立つ色</li>
+                    <li><strong>配置:</strong> 上部・中央は注目されやすい</li>
+                    <li><strong>余白:</strong> 周囲に空間を作ると目立つ</li>
+                </ul>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 500 500" style="width: 90%; height: 90%;">
+                    <!-- 階層の視覚化 -->
+                    <text x="250" y="80" text-anchor="middle" fill="#00d4ff" font-size="48" font-weight="bold">見出し</text>
+                    <text x="250" y="130" text-anchor="middle" fill="#fff" font-size="24">サブ見出し</text>
+                    <text x="250" y="180" text-anchor="middle" fill="#aaa" font-size="16">本文テキスト本文テキスト</text>
+                    <text x="250" y="205" text-anchor="middle" fill="#aaa" font-size="16">本文テキスト本文テキスト</text>
+                    
+                    <!-- 矢印と説明を左側に移動 -->
+                    <g transform="translate(-30, 0)">
+                        <path d="M 400 80 L 430 80" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrow1)"/>
+                        <text x="435" y="85" fill="#00d4ff" font-size="14">最重要</text>
+                        
+                        <path d="M 400 130 L 425 130" stroke="#fff" stroke-width="2" marker-end="url(#arrow2)"/>
+                        <text x="430" y="135" fill="#fff" font-size="12">重要</text>
+                        
+                        <path d="M 400 192 L 420 192" stroke="#aaa" stroke-width="1"/>
+                        <text x="425" y="197" fill="#aaa" font-size="10">通常</text>
+                    </g>
+                    
+                    <defs>
+                        <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#00d4ff"/>
+                        </marker>
+                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#fff"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド9: セクション - Part 2 -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 2</h2>
+            <hr>
+            <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #ccc;">
+                デザインの4つの基本原則
+            </p>
+        </div>
+
+        <!-- スライド10: 4原則の概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4つの基本原則</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>整列 (Alignment):</strong> 要素を意図的に揃える</li>
+                    <li><strong>近接 (Proximity):</strong> 関連する要素を近づける</li>
+                    <li><strong>反復 (Repetition):</strong> 同じパターンを繰り返す</li>
+                    <li><strong>コントラスト (Contrast):</strong> 違いを明確にする</li>
+                </ul>
+                <div class="highlight-box">
+                    この4つを守るだけで、デザイン品質は劇的に向上します
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: 整列 (Alignment) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則1: 整列 (Alignment)</h2>
+                <p><strong>すべての要素を意図的に揃える</strong></p>
+                <ul>
+                    <li>左揃え・中央揃え・右揃えのいずれかに統一</li>
+                    <li>バラバラな配置は「雑」「不安定」に見える</li>
+                    <li>見えない線(グリッド)を意識する</li>
+                </ul>
+                <div class="highlight-box">
+                    実務例: 名刺、プレゼン資料、Webページ
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例 -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: バラバラな配置</text>
+                    <rect x="50" y="100" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <rect x="70" y="140" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <rect x="55" y="180" width="140" height="30" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    
+                    <!-- 良い例 -->
+                    <text x="50" y="280" fill="#00ff9d" font-size="14" font-weight="bold">OK: 左揃えで統一</text>
+                    <rect x="50" y="300" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    <rect x="50" y="340" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    <rect x="50" y="380" width="140" height="30" fill="rgba(0,255,157,0.1)" stroke="#00ff9d" stroke-width="2"/>
+                    
+                    <!-- 揃え線 -->
+                    <line x1="50" y1="290" x2="50" y2="420" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド12: 近接 (Proximity) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則2: 近接 (Proximity)</h2>
+                <p><strong>関連する要素をグループ化する</strong></p>
+                <ul>
+                    <li>関連する情報は近くに配置</li>
+                    <li>異なるグループは離して配置</li>
+                    <li>視覚的なグルーピングで理解を助ける</li>
+                </ul>
+                <div class="highlight-box">
+                    実務例: 箇条書き、フォーム、カード型レイアウト
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例 -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: 等間隔で配置</text>
+                    <circle cx="100" cy="130" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <circle cx="100" cy="190" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    <circle cx="100" cy="250" r="25" fill="rgba(255,255,255,0.1)" stroke="#555" stroke-width="1"/>
+                    
+                    <!-- 良い例 -->
+                    <text x="220" y="80" fill="#00ff9d" font-size="14" font-weight="bold">OK: グループ化</text>
+                    <rect x="240" y="100" width="120" height="80" fill="rgba(0,255,157,0.05)" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <circle cx="270" cy="120" r="15" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="1"/>
+                    <circle cx="270" cy="155" r="15" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="1"/>
+                    <text x="300" y="125" fill="#fff" font-size="10">グループA</text>
+                    <text x="300" y="160" fill="#fff" font-size="10">グループA</text>
+                    
+                    <circle cx="270" cy="220" r="15" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="300" y="225" fill="#fff" font-size="10">グループB</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド13: 反復 (Repetition) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則3: 反復 (Repetition)</h2>
+                <p><strong>同じスタイルを繰り返して統一感を出す</strong></p>
+                <ul>
+                    <li>色・フォント・サイズ・余白を統一</li>
+                    <li>見出しのスタイル、アイコンの使い方を揃える</li>
+                    <li>ブランドアイデンティティの構築にも重要</li>
+                </ul>
+                <div class="highlight-box">
+                    実務例: プレゼン全体のトンマナ、企業のデザインシステム
+                </div>
+                <p style="margin-top: 1.5rem; color: #aaa;">
+                    <strong>効果:</strong> 統一感・プロフェッショナル性・記憶への定着
+                </p>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 悪い例: バラバラなスタイル -->
+                    <text x="50" y="80" fill="#ff0080" font-size="14" font-weight="bold">NG: スタイルがバラバラ</text>
+                    
+                    <circle cx="80" cy="130" r="20" fill="#ff6b6b" opacity="0.3"/>
+                    <text x="110" y="137" fill="#fff" font-size="16">見出し1</text>
+                    
+                    <rect x="60" y="170" width="30" height="30" fill="#4ecdc4" opacity="0.3"/>
+                    <text x="100" y="190" fill="#fff" font-size="20" font-style="italic">見出し2</text>
+                    
+                    <polygon points="70,230 90,220 90,240" fill="#ffe66d" opacity="0.3"/>
+                    <text x="100" y="237" fill="#fff" font-size="14" font-weight="normal">見出し3</text>
+                    
+                    <!-- 良い例: 統一されたスタイル -->
+                    <text x="50" y="310" fill="#00ff9d" font-size="14" font-weight="bold">OK: スタイルを統一</text>
+                    
+                    <circle cx="80" cy="360" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="367" fill="#fff" font-size="18" font-weight="600">見出し1</text>
+                    
+                    <circle cx="80" cy="410" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="417" fill="#fff" font-size="18" font-weight="600">見出し2</text>
+                    
+                    <circle cx="80" cy="460" r="20" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="110" y="467" fill="#fff" font-size="18" font-weight="600">見出し3</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド14: コントラスト (Contrast) -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">原則4: コントラスト (Contrast)</h2>
+                <p><strong>違いを明確にして情報を際立たせる</strong></p>
+                <ul>
+                    <li>サイズ・色・太さで差をつける</li>
+                    <li>「弱いコントラスト」は中途半端で逆効果</li>
+                    <li>思い切って差をつけることが重要</li>
+                </ul>
+                <div class="highlight-box">
+                    実務例: 見出し vs 本文、CTA ボタン、強調表現
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 500">
+                    <!-- 弱いコントラスト -->
+                    <text x="200" y="100" text-anchor="middle" fill="#ff0080" font-size="14" font-weight="bold">NG: 弱いコントラスト</text>
+                    <text x="200" y="150" text-anchor="middle" fill="#888" font-size="28">見出し</text>
+                    <text x="200" y="185" text-anchor="middle" fill="#777" font-size="22">本文テキスト</text>
+                    
+                    <!-- 強いコントラスト -->
+                    <text x="200" y="280" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">OK: 強いコントラスト</text>
+                    <text x="200" y="340" text-anchor="middle" fill="#fff" font-size="42" font-weight="bold">見出し</text>
+                    <text x="200" y="380" text-anchor="middle" fill="#888" font-size="16">本文テキスト</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド15: 4原則のまとめ -->
+        <div class="slide-container">
+            <h2 class="slide-title">4原則の相乗効果</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fas fa-align-left"></i></div>
+                    <h3>整列</h3>
+                    <p>秩序と安定感</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fas fa-object-group"></i></div>
+                    <h3>近接</h3>
+                    <p>理解のしやすさ</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fas fa-redo"></i></div>
+                    <h3>反復</h3>
+                    <p>統一感と記憶</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fas fa-adjust"></i></div>
+                    <h3>コントラスト</h3>
+                    <p>情報の強弱</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド16: セクション - Part 3 -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 3</h2>
+            <hr>
+            <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #ccc;">
+                視覚心理学とゲシュタルト原理
+            </p>
+        </div>
+
+        <!-- スライド17: ゲシュタルト心理学とは -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ゲシュタルト心理学</h2>
+            <div class="content-block">
+                <p><strong>人間の脳は「パターン」を見つけ、「全体」として認識する</strong></p>
+                <ul>
+                    <li>バラバラの要素を自動的にグループ化</li>
+                    <li>欠けている部分を補完して認識</li>
+                    <li>この特性を利用すると、効率的なデザインが可能</li>
+                </ul>
+                <div class="highlight-box">
+                    「部分の総和は全体に等しくない」- ゲシュタルト心理学の基本原理
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: 主要なゲシュタルト原理 -->
+        <div class="slide-container">
+            <h2 class="slide-title">主要なゲシュタルト原理</h2>
+            <div class="three-column">
+                <div>
+                    <h3>類同の法則</h3>
+                    <p>似た要素は同じグループと認識</p>
+                    <svg viewBox="0 0 400 280" style="width: 100%; height: 240px; margin-top: 30px;">
+                        <!-- 1列目: W -->
+                        <text x="57" y="100" fill="#fff" font-size="50" font-weight="bold" font-family="Arial, sans-serif">W</text>
+                        <text x="57" y="158" fill="#fff" font-size="50" font-weight="bold" font-family="Arial, sans-serif">W</text>
+                        <text x="57" y="216" fill="#fff" font-size="50" font-weight="bold" font-family="Arial, sans-serif">W</text>
+                        <rect x="50" y="50" width="60" height="180" fill="none" stroke="#00d4ff" stroke-width="3" rx="8"/>
+                        
+                        <!-- 2列目: 円 -->
+                        <circle cx="160" cy="80" r="20" fill="#fff"/>
+                        <circle cx="160" cy="140" r="20" fill="#fff"/>
+                        <circle cx="160" cy="200" r="20" fill="#fff"/>
+                        <rect x="130" y="50" width="60" height="180" fill="none" stroke="#00d4ff" stroke-width="3" rx="8"/>
+                        
+                        <!-- 3列目: 四角 -->
+                        <rect x="230" y="60" width="40" height="40" fill="#fff"/>
+                        <rect x="230" y="120" width="40" height="40" fill="#fff"/>
+                        <rect x="230" y="180" width="40" height="40" fill="#fff"/>
+                        <rect x="220" y="50" width="60" height="180" fill="none" stroke="#00d4ff" stroke-width="3" rx="8"/>
+                        
+                        <!-- 4列目: 三角 -->
+                        <polygon points="320,100 340,60 360,100" fill="#fff"/>
+                        <polygon points="320,158 340,118 360,158" fill="#fff"/>
+                        <polygon points="320,216 340,176 360,216" fill="#fff"/>
+                        <rect x="310" y="50" width="60" height="180" fill="none" stroke="#00d4ff" stroke-width="3" rx="8"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>閉合の法則</h3>
+                    <p>欠けた部分を補完して認識</p>
+                    <svg viewBox="0 0 400 280" style="width: 100%; height: 240px; margin-top: 30px;">
+                        <!-- 左: 欠けた三角形 -->
+                        <g transform="translate(80, 100)">
+                            <path d="M 0 -40 A 25 25 0 0 1 0 -10" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                            <line x1="0" y1="-10" x2="-30" y2="40" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                            <line x1="30" y1="40" x2="0" y2="-40" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M -30 40 A 25 25 0 0 0 -10 50" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M 10 50 A 25 25 0 0 0 30 40" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- 矢印 -->
+                        <text x="200" y="140" text-anchor="middle" fill="#00d4ff" font-size="40">→</text>
+                        
+                        <!-- 右: 補完された三角形 -->
+                        <polygon points="280,60 250,140 310,140" fill="none" stroke="#00d4ff" stroke-width="5"/>
+                        <polygon points="280,60 250,140 310,140" fill="#00d4ff" opacity="0.2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>共通運命の法則</h3>
+                    <p>同じ動きをするものをグループ化</p>
+                    <svg viewBox="0 0 400 280" style="width: 100%; height: 240px; margin-top: 30px;">
+                        <!-- 左列 -->
+                        <circle cx="100" cy="60" r="14" fill="#666"/>
+                        <circle cx="100" cy="95" r="14" fill="#666"/>
+                        <circle cx="100" cy="130" r="14" fill="#00d4ff"/>
+                        <circle cx="100" cy="165" r="14" fill="#00d4ff"/>
+                        <circle cx="100" cy="200" r="14" fill="#00d4ff"/>
+                        <rect x="80" y="115" width="40" height="100" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,3" rx="5"/>
+                        
+                        <!-- 中央列 -->
+                        <circle cx="200" cy="60" r="14" fill="#666"/>
+                        <circle cx="200" cy="95" r="14" fill="#666"/>
+                        <circle cx="200" cy="130" r="14" fill="#666"/>
+                        <circle cx="200" cy="165" r="14" fill="#666"/>
+                        <circle cx="200" cy="200" r="14" fill="#666"/>
+                        
+                        <!-- 右列 -->
+                        <circle cx="300" cy="60" r="14" fill="#666"/>
+                        <circle cx="300" cy="95" r="14" fill="#666"/>
+                        <circle cx="300" cy="130" r="14" fill="#00d4ff"/>
+                        <circle cx="300" cy="165" r="14" fill="#00d4ff"/>
+                        <circle cx="300" cy="200" r="14" fill="#00d4ff"/>
+                        <rect x="280" y="115" width="40" height="100" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,3" rx="5"/>
+                        
+                        <!-- 矢印 -->
+                        <path d="M 110 150 L 110 185" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrow-down)"/>
+                        <path d="M 310 150 L 310 185" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrow-down)"/>
+                        
+                        <defs>
+                            <marker id="arrow-down" markerWidth="10" markerHeight="10" refX="5" refY="8" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#00d4ff"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: 実務への応用 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ビジネス実務への応用</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>プレゼンテーション:</strong> スライドの統一感、視覚的階層の活用</li>
+                    <li><strong>メール:</strong> 件名・本文・署名の視覚的な分離、重要部分の強調</li>
+                    <li><strong>報告書・提案書:</strong> 見出し階層の明確化、表・グラフの効果的配置</li>
+                    <li><strong>Web・アプリ:</strong> ナビゲーションの整列、CTAボタンのコントラスト</li>
+                </ul>
+                <div class="highlight-box">
+                    すべてに共通: 「相手の理解を助ける」ことが最優先
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド20: Before/After比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">デザイン原則適用の効果</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3 style="color: #ff0080;"><i class="fas fa-times"></i> Before: 原則なし</h3>
+                    <ul>
+                        <li>情報が散らかって見える</li>
+                        <li>どこを見れば良いか分からない</li>
+                        <li>プロフェッショナルに見えない</li>
+                        <li>重要な情報が埋もれる</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #00ff9d;"><i class="fas fa-check"></i> After: 原則適用</h3>
+                    <ul>
+                        <li>情報が整理されて見やすい</li>
+                        <li>視線誘導がスムーズ</li>
+                        <li>信頼性が向上</li>
+                        <li>重要情報が一目で分かる</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: 実践のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">明日から実践できる3ステップ</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>Step 1: チェックリストを作る</strong><br>
+                    整列・近接・反復・コントラストの4項目を確認</li>
+                    <li><strong>Step 2: 既存資料を見直す</strong><br>
+                    過去のプレゼン資料やメールを4原則で改善</li>
+                    <li><strong>Step 3: フィードバックをもらう</strong><br>
+                    同僚に「見やすくなったか」を確認し、改善を続ける</li>
+                </ul>
+                <div class="highlight-box">
+                    完璧を目指すのではなく、少しずつ改善することが重要
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: ハンズオン導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>ハンズオン</h2>
+            <hr>
+            <p style="font-size: clamp(1.2rem, 2vw, 1.5rem); color: #ccc;">
+                実践！デザイン4原則で改善しよう
+            </p>
+        </div>
+
+        <!-- スライド23: ハンズオン概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のハンズオン</h2>
+            <div class="content-block">
+                <p style="font-size: clamp(1.1rem, 1.8vw, 1.4rem); margin-bottom: 2rem;">
+                    <strong>目的:</strong> 学んだ4原則を実際に使って、デザインを改善する
+                </p>
+                <div class="two-column tiled" style="margin-top: 2rem;">
+                    <div>
+                        <h3><i class="fas fa-id-card"></i> 演習1: 名刺デザイン</h3>
+                        <ul>
+                            <li>所要時間: 8分</li>
+                            <li>使う原則: 整列・近接</li>
+                            <li>難易度: ★☆☆</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3><i class="fas fa-image"></i> 演習2: バナー広告</h3>
+                        <ul>
+                            <li>所要時間: 8分</li>
+                            <li>使う原則: コントラスト・階層</li>
+                            <li>難易度: ★★☆</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    使用ツール: Canva（テンプレートを配布します）
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: 演習1 - 名刺デザイン修正 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">演習1: 名刺デザイン修正</h2>
+                <p><strong>タスク:</strong> 整列と近接を使って名刺を見やすく改善</p>
+                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; margin-top: 1rem;">
+                    <h3 style="color: #ff0080; margin-bottom: 1rem;"><i class="fas fa-times-circle"></i> 現在の問題点</h3>
+                    <ul style="font-size: clamp(0.9rem, 1.4vw, 1.1rem);">
+                        <li>情報がバラバラに配置されている</li>
+                        <li>何が重要か分からない</li>
+                        <li>グループ化されていない</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(0,255,157,0.1); padding: 1.5rem; border-radius: 10px; margin-top: 1rem; border: 2px solid #00ff9d;">
+                    <h3 style="color: #00ff9d; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> 修正指示</h3>
+                    <ul style="font-size: clamp(0.9rem, 1.4vw, 1.1rem);">
+                        <li><strong>整列:</strong> すべて左揃えに統一</li>
+                        <li><strong>近接:</strong> 名前+役職、会社名、連絡先でグループ化</li>
+                        <li><strong>コントラスト:</strong> 名前を最大サイズに</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 500 600" style="width: 90%; height: 90%;">
+                    <!-- 名刺の枠 -->
+                    <rect x="50" y="50" width="400" height="240" fill="#fff" stroke="#333" stroke-width="2" rx="10"/>
+                    
+                    <!-- Before（上半分） -->
+                    <text x="250" y="30" text-anchor="middle" fill="#ff0080" font-size="18" font-weight="bold">Before: 問題のある配置</text>
+                    
+                    <!-- バラバラな配置 -->
+                    <text x="70" y="90" fill="#333" font-size="14">田中 太郎</text>
+                    <text x="350" y="110" fill="#333" font-size="11">株式会社デザインラボ</text>
+                    <text x="180" y="150" fill="#333" font-size="10">TEL: 03-1234-5678</text>
+                    <text x="70" y="260" fill="#333" font-size="10">マーケティング部 部長</text>
+                    <text x="200" y="200" fill="#333" font-size="9">tanaka@design-lab.jp</text>
+                    
+                    <!-- 問題点を示す線 -->
+                    <line x1="60" y1="95" x2="140" y2="95" stroke="#ff0080" stroke-width="2" opacity="0.5"/>
+                    <line x1="340" y1="115" x2="440" y2="115" stroke="#ff0080" stroke-width="2" opacity="0.5"/>
+                    <line x1="170" y1="155" x2="300" y2="155" stroke="#ff0080" stroke-width="2" opacity="0.5"/>
+                    
+                    <!-- After（下半分） -->
+                    <text x="250" y="330" text-anchor="middle" fill="#00ff9d" font-size="18" font-weight="bold">After: 改善後の配置</text>
+                    
+                    <rect x="50" y="350" width="400" height="240" fill="#fff" stroke="#00ff9d" stroke-width="3" rx="10"/>
+                    
+                    <!-- 整列された配置 -->
+                    <text x="80" y="400" fill="#333" font-size="24" font-weight="bold">田中 太郎</text>
+                    <text x="80" y="425" fill="#666" font-size="12">マーケティング部 部長</text>
+                    
+                    <text x="80" y="470" fill="#333" font-size="14" font-weight="600">株式会社デザインラボ</text>
+                    
+                    <text x="80" y="520" fill="#666" font-size="11">TEL: 03-1234-5678</text>
+                    <text x="80" y="540" fill="#666" font-size="11">tanaka@design-lab.jp</text>
+                    
+                    <!-- グループを示す枠 -->
+                    <rect x="70" y="380" width="200" height="60" fill="none" stroke="#00d4ff" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <rect x="70" y="455" width="250" height="30" fill="none" stroke="#00d4ff" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <rect x="70" y="505" width="280" height="50" fill="none" stroke="#00d4ff" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    
+                    <!-- 整列線 -->
+                    <line x1="80" y1="380" x2="80" y2="560" stroke="#00ff9d" stroke-width="2" opacity="0.3"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド25: 演習2 - バナー広告修正 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">演習2: バナー広告修正</h2>
+                <p><strong>タスク:</strong> コントラストと視覚的階層でバナーを改善</p>
+                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; margin-top: 1rem;">
+                    <h3 style="color: #ff0080; margin-bottom: 1rem;"><i class="fas fa-times-circle"></i> 現在の問題点</h3>
+                    <ul style="font-size: clamp(0.9rem, 1.4vw, 1.1rem);">
+                        <li>すべてのテキストが同じサイズ</li>
+                        <li>「30%オフ」が目立たない</li>
+                        <li>CTAボタンが埋もれている</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(0,255,157,0.1); padding: 1.5rem; border-radius: 10px; margin-top: 1rem; border: 2px solid #00ff9d;">
+                    <h3 style="color: #00ff9d; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> 修正指示</h3>
+                    <ul style="font-size: clamp(0.9rem, 1.4vw, 1.1rem);">
+                        <li><strong>階層:</strong> 30%オフ→タイトル→詳細の順に大きく</li>
+                        <li><strong>コントラスト:</strong> CTAボタンに目立つ色（赤・オレンジ）</li>
+                        <li><strong>整列:</strong> 中央揃えで統一</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 600 700" style="width: 90%; height: 90%;">
+                    <!-- Before（上半分） -->
+                    <text x="300" y="30" text-anchor="middle" fill="#ff0080" font-size="18" font-weight="bold">Before: 情報が埋もれている</text>
+                    
+                    <rect x="100" y="50" width="400" height="250" fill="#f0f0f0" stroke="#333" stroke-width="2" rx="10"/>
+                    <rect x="120" y="70" width="160" height="160" fill="#ddd" stroke="#999" stroke-width="1"/>
+                    <text x="200" y="150" text-anchor="middle" fill="#999" font-size="14">[商品画像]</text>
+                    
+                    <!-- 同じサイズのテキスト -->
+                    <text x="310" y="100" fill="#333" font-size="16">新製品発売キャンペーン</text>
+                    <text x="310" y="130" fill="#333" font-size="16">今だけ30%オフ</text>
+                    <text x="310" y="160" fill="#666" font-size="16">2025年1月31日まで</text>
+                    <rect x="310" y="180" width="120" height="35" fill="#ccc" stroke="#999" stroke-width="1" rx="5"/>
+                    <text x="370" y="203" text-anchor="middle" fill="#666" font-size="14">今すぐ購入</text>
+                    
+                    <!-- After（下半分） -->
+                    <text x="300" y="350" text-anchor="middle" fill="#00ff9d" font-size="18" font-weight="bold">After: 視覚的階層を適用</text>
+                    
+                    <rect x="100" y="370" width="400" height="250" fill="#f0f0f0" stroke="#00ff9d" stroke-width="3" rx="10"/>
+                    <rect x="120" y="390" width="160" height="160" fill="#ddd" stroke="#999" stroke-width="1"/>
+                    <text x="200" y="470" text-anchor="middle" fill="#999" font-size="14">[商品画像]</text>
+                    
+                    <!-- 階層化されたテキスト -->
+                    <text x="370" y="420" text-anchor="middle" fill="#ff0080" font-size="48" font-weight="bold">30%OFF</text>
+                    <text x="370" y="460" text-anchor="middle" fill="#333" font-size="20" font-weight="600">新製品発売キャンペーン</text>
+                    <text x="370" y="490" text-anchor="middle" fill="#666" font-size="12">2025年1月31日まで</text>
+                    
+                    <!-- 目立つCTAボタン -->
+                    <rect x="310" y="510" width="120" height="40" fill="#ff4400" stroke="none" rx="8"/>
+                    <text x="370" y="537" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">今すぐ購入</text>
+                    
+                    <!-- 視覚的階層を示す矢印 -->
+                    <text x="520" y="420" fill="#00d4ff" font-size="14">← 最大</text>
+                    <text x="520" y="460" fill="#00d4ff" font-size="12">← 大</text>
+                    <text x="520" y="490" fill="#00d4ff" font-size="10">← 小</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド26: ハンズオンまとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ハンズオンの振り返り</h2>
+            <div class="content-block">
+                <div class="tiled-content" style="margin-bottom: 2rem;">
+                    <div class="tile">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>整列・近接</h3>
+                        <p>名刺で実践<br>情報のグループ化</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>視覚的階層</h3>
+                        <p>バナーで実践<br>重要度の表現</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fas fa-palette"></i></div>
+                        <h3>コントラスト</h3>
+                        <p>CTAボタンで実践<br>目立たせる技術</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>重要:</strong> これらの原則は、プレゼン資料、メール、報告書など、あらゆるビジネス文書に応用できます
+                </div>
+                <p style="margin-top: 2rem; font-size: clamp(1rem, 1.6vw, 1.2rem); color: #aaa;">
+                    次のステップ: 明日から自分の資料で実践してみましょう！
+                </p>
+            </div>
+        </div>
+        <!-- スライド27: まとめ -->
+        <div class="slide-container big-concept-layout">
+            <h2>デザインは才能ではなく<br>学べるスキルである</h2>
+            <p>
+                4つの原則を意識するだけで<br>
+                あなたのビジネスコミュニケーションは劇的に改善します
+            </p>
+        </div>
+
+        <!-- スライド28: 最終メッセージ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のポイント</h2>
+            <div class="content-block">
+                <ul>
+                    <li>デザイン = 設計であり、センスではなくロジック</li>
+                    <li>4つの基本原則: 整列・近接・反復・コントラスト</li>
+                    <li>人間の視覚認知を理解し、活用する</li>
+                    <li>ビジネスの全場面で応用可能</li>
+                </ul>
+                <div class="highlight-box">
+                    今日学んだことを、明日の資料作成から実践してください
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- AIが生成するクイズデータをここに貼り付け -->
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

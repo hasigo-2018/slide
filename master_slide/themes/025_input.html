@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>025 論理的説明（エビデンス）の強化【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>論理的説明<br>（エビデンス）の強化<span>【理論編】</span></h1>
+                <p>「なんとなく良い」を「だから良い」に変える技術</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>「なんとなく良い」は<br>なぜ通用しないのか？</h2>
+            <p>説得力のないフィードバックは、デザインの価値を下げる</p>
+        </div>
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本講義で学ぶこと</h2>
+            <div class="content-block">
+                <h3>ゴール</h3>
+                <p>心理学用語とエビデンスを使い、デザインを論理的に説明できるようになる</p>
+            <h3>アジェンダ</h3>
+            <ul>
+                <li><strong>第1章：</strong>なぜ論理的説明が必要か</li>
+                <li><strong>第2章：</strong>心理学用語の体系的整理（基礎→中級→応用）</li>
+                <li><strong>第3章：</strong>エビデンスの3つの提示方法</li>
+                <li><strong>第4章：</strong>場面別の説明フレームワーク</li>
+                <li><strong>第5章：</strong>「なんとなく」を変換する練習</li>
+            </ul>
+        </div>
+        </div>
+        <!-- スライド4: セクション1導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>第1章<br>なぜ論理的説明が必要か</h2>
+            <p>主観と客観の違いを理解する</p>
+        </div>
+        <!-- スライド5: 主観vs客観 -->
+        <div class="slide-container">
+            <h2 class="slide-title">主観的評価 vs 客観的評価</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 主観的評価</h3>
+                    <p style="font-size: clamp(1.5rem, 2vw, 2rem); text-align: center; margin-bottom: 1rem;">「なんとなくいい感じ」<br>「好きじゃない」<br>「もっとポップに」</p>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #ff6b6b;">問題：受け手によって解釈が異なる</p>
+                </div>
+                <div>
+                    <h3>✅ 客観的評価</h3>
+                    <p style="font-size: clamp(1.5rem, 2vw, 2rem); text-align: center; margin-bottom: 1rem;">「認知負荷が高い」<br>「F型パターンに沿っていない」<br>「コントラスト比が不足」</p>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #00d4ff;">利点：共通言語で議論できる</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド6: 説明力の3要素 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">説明力を構成する3要素</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 3つの円 -->
+                    <circle cx="200" cy="150" r="80" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="400" cy="150" r="80" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2"/>
+                    <circle cx="600" cy="150" r="80" fill="#4ecdc4" opacity="0.2" stroke="#4ecdc4" stroke-width="2"/>
+                    
+                    <!-- ラベル -->
+                    <text x="200" y="145" text-anchor="middle" fill="white" font-size="18" font-weight="bold">用語</text>
+                    <text x="200" y="170" text-anchor="middle" fill="#aaa" font-size="14">心理学の言葉</text>
+                    
+                    <text x="400" y="145" text-anchor="middle" fill="white" font-size="18" font-weight="bold">根拠</text>
+                    <text x="400" y="170" text-anchor="middle" fill="#aaa" font-size="14">エビデンス</text>
+                    
+                    <text x="600" y="145" text-anchor="middle" fill="white" font-size="18" font-weight="bold">文脈</text>
+                    <text x="600" y="170" text-anchor="middle" fill="#aaa" font-size="14">場面に応じた伝え方</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M280 150 L320 150" stroke="white" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M480 150 L520 150" stroke="white" stroke-width="2" marker-end="url(#arrow)"/>
+                    
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L9,3 z" fill="white"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p style="text-align: center; margin-top: 1rem;">この3つを組み合わせることで、説得力のある説明が完成する</p>
+            </div>
+        </div>
+        <!-- スライド7: セクション2導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>第2章<br>心理学用語の体系的整理</h2>
+            <p>基礎 → 中級 → 応用の3レベルで習得する</p>
+        </div>
+        <!-- スライド8: 用語マップ全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">デザイン心理学用語マップ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                <!-- レベル1: 基礎 -->
+                <rect x="50" y="30" width="700" height="80" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" rx="8"/>
+                <text x="80" y="55" fill="#00d4ff" font-size="14" font-weight="bold">LEVEL 1：基礎</text>
+                <text x="80" y="80" fill="white" font-size="13">ゲシュタルト原則 ｜ 認知負荷 ｜ 視線誘導（F型・Z型） ｜ 色彩心理</text>
+                
+                <!-- レベル2: 中級 -->
+                <rect x="50" y="130" width="700" height="80" fill="#ff6b6b" opacity="0.15" stroke="#ff6b6b" stroke-width="1" rx="8"/>
+                <text x="80" y="155" fill="#ff6b6b" font-size="14" font-weight="bold">LEVEL 2：中級（行動経済学）</text>
+                <text x="80" y="180" fill="white" font-size="13">プロスペクト理論 ｜ アンカリング効果 ｜ 損失回避 ｜ 選択のパラドックス</text>
+                
+                <!-- レベル3: 応用 -->
+                <rect x="50" y="230" width="700" height="80" fill="#4ecdc4" opacity="0.15" stroke="#4ecdc4" stroke-width="1" rx="8"/>
+                <text x="80" y="255" fill="#4ecdc4" font-size="14" font-weight="bold">LEVEL 3：応用</text>
+                <text x="80" y="280" fill="white" font-size="13">メンタルモデル ｜ アフォーダンス ｜ 認知バイアス ｜ ヒックの法則</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド9: 基礎レベル詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">LEVEL 1：基礎用語の復習</h2>
+            <div class="content-block">
+                <h3>ゲシュタルト原則</h3>
+                <ul>
+                    <li><strong>近接：</strong>近いものは同じグループと認識される</li>
+                    <li><strong>類同：</strong>似た形・色は関連があると認識される</li>
+                    <li><strong>閉合：</strong>不完全な形も脳が補完して認識する</li>
+                    <li><strong>連続：</strong>線や形の流れを追いかける傾向</li>
+                </ul>
+            <h3>認知負荷</h3>
+            <p>情報処理に必要な脳のリソース量。高いと離脱、低いと理解促進。</p>
+            
+            <div class="highlight-box">
+                💡 これらは「なぜ見やすい/見にくいか」を説明する基本ツール
+            </div>
+        </div>
+        </div>
+        <!-- スライド10: 基礎用語の使い方例 -->
+        <div class="slide-container">
+            <h2 class="slide-title">基礎用語の実践的な使い方</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（主観）</h3>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); padding: 1rem; background: rgba(255,107,107,0.1); border-radius: 8px; width: 80%;">「この部分がごちゃごちゃして見える」</p>
+                </div>
+                <div>
+                    <h3>✅ After（客観）</h3>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); padding: 1rem; background: rgba(0,212,255,0.1); border-radius: 8px; width: 80%;">「近接の原則が適用されておらず、関連情報のグループ化ができていないため、認知負荷が高くなっています」</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド11: 中級レベル導入 -->
+        <div class="slide-container big-concept-layout">
+            <h2>LEVEL 2<br>行動経済学の用語</h2>
+            <p>人の「意思決定」を説明するための言葉</p>
+        </div>
+        <!-- スライド12: プロスペクト理論 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プロスペクト理論</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>人は利得より損失を約2倍強く感じる（損失回避性）</p>
+            <h3>デザインへの応用</h3>
+            <ul>
+                <li>「今なら20%OFF」より「今買わないと20%損する」が効く</li>
+                <li>「会員限定」という希少性の演出</li>
+                <li>カウントダウンタイマーによる機会損失の可視化</li>
+            </ul>
+            
+            <h3>説明での使い方</h3>
+            <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px;">「このCTAは損失回避バイアスを活用し、『今だけ』という限定感で行動を促進しています」</p>
+        </div>
+        </div>
+        <!-- スライド13: アンカリング効果 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アンカリング効果</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>最初に提示された数値が基準点（アンカー）となり、判断に影響を与える</p>
+            <h3>デザインへの応用</h3>
+            <ul>
+                <li>価格表示：<span style="text-decoration: line-through;">¥10,000</span> → ¥6,980</li>
+                <li>プラン比較：最も高いプランを最初に見せる</li>
+                <li>「通常価格」と「セール価格」の並置</li>
+            </ul>
+            
+            <h3>説明での使い方</h3>
+            <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px;">「元値を視覚的に強調することで、アンカリング効果により割安感を演出しています」</p>
+        </div>
+        </div>
+        <!-- スライド14: 選択のパラドックス -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">選択のパラドックス</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>選択肢が多すぎると、かえって選べなくなる現象</p>
+            <h3>有名な実験</h3>
+            <p>ジャムの試食実験：24種類より6種類の方が購買率が10倍高かった</p>
+            
+            <h3>デザインへの応用</h3>
+            <ul>
+                <li>料金プランは3つまで</li>
+                <li>ナビゲーションは7項目以内</li>
+                <li>CTAボタンは1画面1つ</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：「選択肢が多い＝ユーザーに優しい」は誤解
+            </div>
+        </div>
+        </div>
+        <!-- スライド15: 応用レベル導入 -->
+        <div class="slide-container big-concept-layout">
+            <h2>LEVEL 3<br>応用用語</h2>
+            <p>ユーザーの「期待」と「行動」を説明する言葉</p>
+        </div>
+        <!-- スライド16: メンタルモデル -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">メンタルモデル</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>ユーザーが「こう動くはず」と期待する心の中のモデル</p>
+            <h3>デザインへの影響</h3>
+            <ul>
+                <li>ロゴをクリック → トップページに戻る</li>
+                <li>右上の×ボタン → 閉じる</li>
+                <li>赤いボタン → 危険/削除</li>
+            </ul>
+            
+            <h3>説明での使い方</h3>
+            <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px;">「このナビゲーション配置は一般的なメンタルモデルに反しているため、ユーザーが迷う可能性があります」</p>
+            
+            <div class="highlight-box">
+                💡 メンタルモデルに沿う＝学習コストゼロ
+            </div>
+        </div>
+        </div>
+        <!-- スライド17: アフォーダンス -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アフォーダンス</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>デザインが「どう使うか」を自然に示す性質</p>
+            <h3>良いアフォーダンスの例</h3>
+            <ul>
+                <li>ボタンの立体感 → 「押せる」と分かる</li>
+                <li>下線付きテキスト → 「クリックできる」と分かる</li>
+                <li>スライダーのつまみ → 「ドラッグできる」と分かる</li>
+            </ul>
+            
+            <h3>説明での使い方</h3>
+            <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px;">「このボタンはフラットすぎてアフォーダンスが弱く、クリッカブルに見えません」</p>
+        </div>
+        </div>
+        <!-- スライド18: ヒックの法則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ヒックの法則</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p>選択肢の数が増えると、意思決定にかかる時間は対数的に増加する</p>
+            <h3>数式</h3>
+            <p style="font-family: monospace; font-size: 1.3rem; text-align: center; padding: 1rem;">RT = a + b × log₂(n + 1)</p>
+            <p style="text-align: center; color: #aaa;">RT＝反応時間、n＝選択肢の数</p>
+            
+            <h3>デザインへの応用</h3>
+            <ul>
+                <li>重要な選択肢を絞り込む</li>
+                <li>段階的な情報開示（プログレッシブ・ディスクロージャー）</li>
+                <li>カテゴリ分けで体感的な選択肢を減らす</li>
+            </ul>
+        </div>
+        </div>
+        <!-- スライド19: セクション3導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>第3章<br>エビデンスの3つの提示方法</h2>
+            <p>根拠の「格」を使い分ける</p>
+        </div>
+        <!-- スライド20: 3つのエビデンスタイプ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">エビデンスの3タイプ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                <!-- タイプ1 -->
+                <rect x="50" y="40" width="220" height="240" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                <text x="160" y="80" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">原則ベース</text>
+                <text x="160" y="120" text-anchor="middle" fill="white" font-size="13">「ゲシュタルトの</text>
+                <text x="160" y="140" text-anchor="middle" fill="white" font-size="13">近接の法則により…」</text>
+                <text x="160" y="180" text-anchor="middle" fill="#888" font-size="12">使用場面：</text>
+                <text x="160" y="200" text-anchor="middle" fill="#aaa" font-size="12">社内レビュー</text>
+                <text x="160" y="220" text-anchor="middle" fill="#aaa" font-size="12">デザイナー同士</text>
+                <text x="160" y="260" text-anchor="middle" fill="#00d4ff" font-size="11">説得力：★★★☆☆</text>
+                
+                <!-- タイプ2 -->
+                <rect x="290" y="40" width="220" height="240" fill="#ff6b6b" opacity="0.1" stroke="#ff6b6b" stroke-width="2" rx="12"/>
+                <text x="400" y="80" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">研究ベース</text>
+                <text x="400" y="120" text-anchor="middle" fill="white" font-size="13">「NNグループの</text>
+                <text x="400" y="140" text-anchor="middle" fill="white" font-size="13">調査によると…」</text>
+                <text x="400" y="180" text-anchor="middle" fill="#888" font-size="12">使用場面：</text>
+                <text x="400" y="200" text-anchor="middle" fill="#aaa" font-size="12">クライアント提案</text>
+                <text x="400" y="220" text-anchor="middle" fill="#aaa" font-size="12">経営層への説明</text>
+                <text x="400" y="260" text-anchor="middle" fill="#ff6b6b" font-size="11">説得力：★★★★☆</text>
+                
+                <!-- タイプ3 -->
+                <rect x="530" y="40" width="220" height="240" fill="#4ecdc4" opacity="0.1" stroke="#4ecdc4" stroke-width="2" rx="12"/>
+                <text x="640" y="80" text-anchor="middle" fill="#4ecdc4" font-size="16" font-weight="bold">データベース</text>
+                <text x="640" y="120" text-anchor="middle" fill="white" font-size="13">「A/Bテストで</text>
+                <text x="640" y="140" text-anchor="middle" fill="white" font-size="13">CVRが23%向上」</text>
+                <text x="640" y="180" text-anchor="middle" fill="#888" font-size="12">使用場面：</text>
+                <text x="640" y="200" text-anchor="middle" fill="#aaa" font-size="12">ROI重視の提案</text>
+                <text x="640" y="220" text-anchor="middle" fill="#aaa" font-size="12">改善効果の証明</text>
+                <text x="640" y="260" text-anchor="middle" fill="#4ecdc4" font-size="11">説得力：★★★★★</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド21: 原則ベースの使い方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">原則ベースのエビデンス</h2>
+            <div class="content-block">
+                <h3>特徴</h3>
+                <p>デザインの基本原則を根拠にする。最も汎用的で、どの場面でも使える。</p>
+            <h3>使えるフレーズ集</h3>
+            <ul>
+                <li>「ゲシュタルトの〇〇の法則に基づくと…」</li>
+                <li>「視線誘導の観点から…」</li>
+                <li>「認知負荷を下げるために…」</li>
+                <li>「コントラストの原則を適用すると…」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 相手がデザインを知らなくても、「原則がある」と示すだけで説得力UP
+            </div>
+        </div>
+        </div>
+        <!-- スライド22: 研究ベースの使い方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">研究ベースのエビデンス</h2>
+            <div class="content-block">
+                <h3>引用しやすい研究・機関</h3>
+                <ul>
+                    <li><strong>Nielsen Norman Group：</strong>UXリサーチの権威</li>
+                    <li><strong>Baymard Institute：</strong>ECサイトのUX研究</li>
+                    <li><strong>Google UX Research：</strong>モバイルUXの知見</li>
+                    <li><strong>MIT Media Lab：</strong>先端インタラクション研究</li>
+                </ul>
+            <h3>使えるフレーズ集</h3>
+            <ul>
+                <li>「NNグループの調査によると、ユーザーの79%が…」</li>
+                <li>「Googleの研究では、読み込み時間が3秒を超えると…」</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ 注意：出典を曖昧にしない。「どこかで読んだ」はNG
+            </div>
+        </div>
+        </div>
+        <!-- スライド23: データベースの使い方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">データベースのエビデンス</h2>
+            <div class="content-block">
+                <h3>特徴</h3>
+                <p>実際の数値を根拠にする。最も説得力が高いが、データが必要。</p>
+            <h3>使える数値の種類</h3>
+            <ul>
+                <li><strong>CVR（コンバージョン率）：</strong>「改善後、CVRが1.2%→1.8%に向上」</li>
+                <li><strong>CTR（クリック率）：</strong>「CTAの色変更でCTRが15%改善」</li>
+                <li><strong>離脱率：</strong>「ファーストビュー改善で直帰率が20%減少」</li>
+                <li><strong>滞在時間：</strong>「平均滞在時間が45秒→1分20秒に」</li>
+            </ul>
+            
+            <h3>データがない場合</h3>
+            <p>「A/Bテストで検証することを提案します」と伝え、仮説として説明する</p>
+        </div>
+        </div>
+        <!-- スライド24: セクション4導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>第4章<br>場面別の説明フレームワーク</h2>
+            <p>誰に、何を、どう伝えるか</p>
+        </div>
+        <!-- スライド25: 3つの場面 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">説明が求められる3つの場面</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 250">
+                    <rect width="800" height="250" fill="#1a1a2e"/>
+                <!-- 場面1 -->
+                <rect x="50" y="50" width="200" height="150" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                <text x="150" y="90" text-anchor="middle" fill="#00d4ff" font-size="40">💼</text>
+                <text x="150" y="130" text-anchor="middle" fill="white" font-size="14" font-weight="bold">クライアント提案</text>
+                <text x="150" y="155" text-anchor="middle" fill="#aaa" font-size="12">ビジネス成果重視</text>
+                <text x="150" y="175" text-anchor="middle" fill="#aaa" font-size="12">専門用語は控えめ</text>
+                
+                <!-- 場面2 -->
+                <rect x="300" y="50" width="200" height="150" fill="#ff6b6b" opacity="0.1" stroke="#ff6b6b" stroke-width="2" rx="12"/>
+                <text x="400" y="90" text-anchor="middle" fill="#ff6b6b" font-size="40">👥</text>
+                <text x="400" y="130" text-anchor="middle" fill="white" font-size="14" font-weight="bold">社内レビュー</text>
+                <text x="400" y="155" text-anchor="middle" fill="#aaa" font-size="12">改善提案と根拠</text>
+                <text x="400" y="175" text-anchor="middle" fill="#aaa" font-size="12">建設的なフィードバック</text>
+                
+                <!-- 場面3 -->
+                <rect x="550" y="50" width="200" height="150" fill="#4ecdc4" opacity="0.1" stroke="#4ecdc4" stroke-width="2" rx="12"/>
+                <text x="650" y="90" text-anchor="middle" fill="#4ecdc4" font-size="40">📁</text>
+                <text x="650" y="130" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ポートフォリオ</text>
+                <text x="650" y="155" text-anchor="middle" fill="#aaa" font-size="12">思考プロセスの可視化</text>
+                <text x="650" y="175" text-anchor="middle" fill="#aaa" font-size="12">専門性のアピール</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド26: クライアント提案のフレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">場面①：クライアント提案</h2>
+            <div class="content-block">
+                <h3>PREPフレームワーク</h3>
+                <ul>
+                    <li><strong>P（Point）：</strong>結論を先に「このデザインで成約率が上がります」</li>
+                    <li><strong>R（Reason）：</strong>理由「損失回避の心理を活用しているため」</li>
+                    <li><strong>E（Example）：</strong>事例「同業他社では23%改善した例があります」</li>
+                    <li><strong>P（Point）：</strong>結論の再確認「だからこのデザインを推奨します」</li>
+                </ul>
+            <div class="highlight-box">
+                💡 クライアントが聞きたいのは「それで売上は上がるの？」
+            </div>
+        </div>
+        </div>
+        <!-- スライド27: 社内レビューのフレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">場面②：社内レビュー</h2>
+            <div class="content-block">
+                <h3>SBI（Situation-Behavior-Impact）フレームワーク</h3>
+                <ul>
+                    <li><strong>S（状況）：</strong>「このフォーム画面ですが…」</li>
+                    <li><strong>B（行動/デザイン）：</strong>「入力項目が15個あります」</li>
+                    <li><strong>I（影響）：</strong>「ヒックの法則により、離脱率が高くなる可能性があります」</li>
+                </ul>
+            <h3>改善提案の追加</h3>
+            <p>「ステップ分割して認知負荷を下げることを提案します」</p>
+            
+            <div class="highlight-box">
+                ⚠️ 「なんか違う」は禁止。必ず「何が」「なぜ」問題かを言語化する
+            </div>
+        </div>
+        </div>
+        <!-- スライド28: ポートフォリオのフレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">場面③：ポートフォリオ解説</h2>
+            <div class="content-block">
+                <h3>STAR-Dフレームワーク</h3>
+                <ul>
+                    <li><strong>S（Situation）：</strong>課題の背景</li>
+                    <li><strong>T（Task）：</strong>自分の役割</li>
+                    <li><strong>A（Action）：</strong>何をしたか（心理学用語で説明）</li>
+                    <li><strong>R（Result）：</strong>成果（数値があれば最強）</li>
+                    <li><strong>D（Design Decision）：</strong>なぜその判断をしたか</li>
+                </ul>
+            <h3>例文</h3>
+            <p style="background: rgba(0,212,255,0.1); padding: 1rem; border-radius: 8px; font-size: clamp(1.25rem, 1.25vw, 1.75rem);">「直帰率が高いLPの改善を担当。F型視線誘導に沿ったレイアウト変更と、損失回避を活用したCTAコピーの変更で、CVRを1.5倍に改善しました」</p>
+        </div>
+        </div>
+        <!-- スライド29: セクション5導入 -->
+        <div class="slide-container section-title-layout">
+            <h2>第5章<br>「なんとなく」変換練習</h2>
+            <p>主観を客観に置き換えるトレーニング</p>
+        </div>
+        <!-- スライド30: 変換テンプレート -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">変換テンプレート</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 200">
+                    <rect width="800" height="200" fill="#1a1a2e"/>
+                <!-- Before -->
+                <rect x="50" y="50" width="250" height="100" fill="#ff6b6b" opacity="0.15" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                <text x="175" y="90" text-anchor="middle" fill="#ff6b6b" font-size="14">主観的な感想</text>
+                <text x="175" y="115" text-anchor="middle" fill="white" font-size="16">「なんとなく〇〇」</text>
+                
+                <!-- 矢印 -->
+                <path d="M320 100 L480 100" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrow2)"/>
+                <text x="400" y="85" text-anchor="middle" fill="#00d4ff" font-size="12">心理学用語で変換</text>
+                
+                <!-- After -->
+                <rect x="500" y="50" width="250" height="100" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                <text x="625" y="90" text-anchor="middle" fill="#00d4ff" font-size="14">客観的な説明</text>
+                <text x="625" y="115" text-anchor="middle" fill="white" font-size="16">「〇〇の原則により△△」</text>
+                
+                <defs>
+                    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#00d4ff"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド31: 変換例一覧 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">変換例：Before → After</h2>
+            <div class="content-block">
+                <h3>よくある「なんとなく」と変換例</h3>
+                <ul>
+                    <li><strong>「見にくい」</strong> → 「認知負荷が高く、情報の優先順位が不明確」</li>
+                    <li><strong>「ごちゃごちゃしてる」</strong> → 「近接の原則が適用されておらず、グループ化ができていない」</li>
+                    <li><strong>「なんか押しにくい」</strong> → 「アフォーダンスが弱く、クリッカブルに見えない」</li>
+                    <li><strong>「迷いそう」</strong> → 「メンタルモデルに反した配置のため、学習コストが高い」</li>
+                    <li><strong>「インパクトがない」</strong> → 「コントラストが不足しており、視覚的階層が曖昧」</li>
+                </ul>
+            </div>
+        </div>
+        <!-- スライド32: 変換練習ワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">セルフワーク：変換練習</h2>
+            <div class="content-block">
+                <h3>以下の主観を客観に変換してみましょう</h3>
+            <p><strong>問1：</strong>「このボタン、なんか目立たない」</p>
+            <p style="color: #666; margin-left: 1rem;">ヒント：コントラスト、色彩心理、アフォーダンス</p>
+            
+            <p><strong>問2：</strong>「選択肢が多すぎて選べない」</p>
+            <p style="color: #666; margin-left: 1rem;">ヒント：選択のパラドックス、ヒックの法則</p>
+            
+            <p><strong>問3：</strong>「なんか安っぽく見える」</p>
+            <p style="color: #666; margin-left: 1rem;">ヒント：反復の原則、視覚的一貫性、タイポグラフィ</p>
+            
+            <div class="highlight-box">
+                💡 正解は1つではない。論理的に説明できればOK
+            </div>
+        </div>
+        </div>
+        <!-- スライド33: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">本講義のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">📚</div>
+                    <h3>用語の体系化</h3>
+                    <p>基礎→中級→応用<br>の3レベルで整理</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📊</div>
+                    <h3>3つのエビデンス</h3>
+                    <p>原則・研究・データ<br>を使い分ける</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>場面別フレームワーク</h3>
+                    <p>PREP/SBI/STAR-D<br>で構造化</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔄</div>
+                    <h3>変換スキル</h3>
+                    <p>主観→客観への<br>置き換え習慣</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド34: 次のステップ -->
+        <div class="slide-container big-concept-layout">
+            <h2>Next Step<br>実践編へ</h2>
+            <p>実際のデザインを見ながら、心理学用語で説明する練習をします</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "「このデザイン、なんかごちゃごちゃしている」を心理学用語で言い換えると？",
+                options: [
+                    "コントラストが強すぎる",
+                    "近接の原則が適用されておらず、認知負荷が高い",
+                    "アフォーダンスが弱い",
+                    "メンタルモデルに反している"
+                ],
+                correct: 1,
+                explanation: "「ごちゃごちゃ」の原因は多くの場合、関連情報がグループ化されていないことです。これは「近接の原則」の未適用による「認知負荷の増加」として説明できます。"
+            },
+            {
+                question: "プロスペクト理論をデザインに応用する際、最も効果的なアプローチは？",
+                options: [
+                    "できるだけ多くの選択肢を提示する",
+                    "利得より損失を強調したコピーを使う",
+                    "すべての要素を同じサイズにする",
+                    "派手な色を避ける"
+                ],
+                correct: 1,
+                explanation: "プロスペクト理論では、人は利得より損失を約2倍強く感じます。「今なら20%OFF」より「今買わないと20%損する」の方が行動を促進します。"
+            },
+            {
+                question: "クライアント提案で最も効果的なエビデンスの提示方法は？",
+                options: [
+                    "心理学用語をできるだけ多く使う",
+                    "自分の主観的な感想を伝える",
+                    "PREPフレームワークで結論→理由→事例→結論の順で伝える",
+                    "専門用語を避けて感覚的に説明する"
+                ],
+                correct: 2,
+                explanation: "クライアントはビジネス成果を重視します。PREPフレームワーク（結論→理由→事例→結論）で構造化し、ビジネスインパクトを中心に説明することが効果的です。"
+            },
+            {
+                question: "「ボタンが押しにくそう」という主観的評価を客観化するために最適な用語は？",
+                options: [
+                    "認知負荷",
+                    "プロスペクト理論",
+                    "アフォーダンス",
+                    "選択のパラドックス"
+                ],
+                correct: 2,
+                explanation: "アフォーダンスは「デザインがどう使うかを自然に示す性質」です。ボタンが押しにくそうに見えるのは、アフォーダンスが弱い（クリッカブルに見えない）状態を指します。"
+            },
+            {
+                question: "ポートフォリオでデザインの意思決定を説明する際、最も重要なのは？",
+                options: [
+                    "使用したツールの紹介",
+                    "かかった時間の報告",
+                    "心理学的根拠に基づく判断理由の説明",
+                    "クライアントの要望の羅列"
+                ],
+                correct: 2,
+                explanation: "ポートフォリオで評価されるのは「なぜその判断をしたか」という思考プロセスです。STAR-Dフレームワークの「D（Design Decision）」で、心理学的根拠に基づく判断理由を明確に説明することが重要です。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

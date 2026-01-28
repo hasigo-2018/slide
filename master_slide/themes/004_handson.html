@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講義スライド - [テーマ名]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ブランド・アイデンティティの<br>システム化<span>【実践編】</span></h1>
+                <p>AIで50パターンのロゴを生成し、ガイドラインを作る</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 本日のゴール -->
+        <div class="slide-container big-concept-layout">
+            <h2>今日のゴール</h2>
+            <p>架空のカフェブランドを題材に<br>「コンセプト → ロゴ生成 → 実用化 → ガイドライン」を一気通貫で体験する</p>
+        </div>
+
+        <!-- スライド3: 演習フロー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習の全体フロー</h2>
+            <div class="content-block">
+                <svg class="generated-art" viewBox="0 0 800 200" style="max-height: 45vh; width: auto;">
+                    <!-- Step 1 -->
+                    <rect x="20" y="60" width="160" height="80" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="100" y="95" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Step 1</text>
+                    <text x="100" y="115" text-anchor="middle" fill="white" font-size="11">Gemini</text>
+                    <text x="100" y="130" text-anchor="middle" fill="#888" font-size="10">コンセプト言語化</text>
+                    
+                    <path d="M 185 100 L 215 100" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowFlow)"/>
+                    
+                    <!-- Step 2 -->
+                    <rect x="220" y="60" width="160" height="80" fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="300" y="95" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">Step 2</text>
+                    <text x="300" y="115" text-anchor="middle" fill="white" font-size="11">Nano banana pro</text>
+                    <text x="300" y="130" text-anchor="middle" fill="#888" font-size="10">ロゴ50案生成</text>
+                    
+                    <path d="M 385 100 L 415 100" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowFlow)"/>
+                    
+                    <!-- Step 3 -->
+                    <rect x="420" y="60" width="160" height="80" fill="rgba(255,199,0,0.2)" stroke="#FFC700" stroke-width="2" rx="8"/>
+                    <text x="500" y="95" text-anchor="middle" fill="#FFC700" font-size="14" font-weight="bold">Step 3</text>
+                    <text x="500" y="115" text-anchor="middle" fill="white" font-size="11">Canva</text>
+                    <text x="500" y="130" text-anchor="middle" fill="#888" font-size="10">実用展開</text>
+                    
+                    <path d="M 585 100 L 615 100" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowFlow)"/>
+                    
+                    <!-- Step 4 -->
+                    <rect x="620" y="60" width="160" height="80" fill="rgba(0,255,157,0.2)" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <text x="700" y="95" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">Step 4</text>
+                    <text x="700" y="115" text-anchor="middle" fill="white" font-size="11">Figma</text>
+                    <text x="700" y="130" text-anchor="middle" fill="#888" font-size="10">ガイドライン作成</text>
+                    
+                    <defs>
+                        <marker id="arrowFlow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <div class="highlight-box">
+                    ⏱️ 全体で約50分｜各ステップ12分目安
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Gemini演習（5枚） ========== -->
+
+        <!-- スライド4: 章区切り - Gemini -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 1<br>Gemini</h2>
+            <p>ブランドコンセプトを言語化する</p>
+        </div>
+
+        <!-- スライド5: Gemini ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Gemini</h2>
+                <p><strong>用途：</strong>ブランドの言語化・コンセプト設計</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>対話型分析：</strong>ターゲット層の深掘り</li>
+                    <li><strong>提案生成：</strong>カラー・フォント方針の導出</li>
+                    <li><strong>言語化支援：</strong>トンマナの明文化</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Googleアカウントがあれば無料で利用可能
+                </div>
+            </div>
+            <div class="image-container">
+               <img src="../assets/images/img_004_handson_01.png" alt="Gemini Screenshot" style="width: 100%; height: auto;">
+            </div>
+        </div>
+
+        <!-- スライド6: Gemini 演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：架空カフェのブランド言語化</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>AIとの対話を通じて、ブランドのMVV・パーソナリティ・トンマナを言語化する</p>
+                
+                <h3>課題内容</h3>
+                <p>架空のカフェブランドを設定し、以下を導き出します：</p>
+                <ul>
+                    <li><strong>ターゲット層：</strong>3つのペルソナ</li>
+                    <li><strong>ブランドカラー：</strong>3色（HEXコード付き）</li>
+                    <li><strong>フォント方針：</strong>方向性と理由</li>
+                    <li><strong>トンマナ：</strong>形容詞3〜5個</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：15分｜プロンプトはコピー可能です
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: Gemini 手順1（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1／2：ターゲット分析プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        あなたはブランド戦略のプロフェッショナルです。
+        以下の条件で架空カフェのターゲット層を分析してください：
+
+        【カフェ情報】
+        - 店名：（自分で決める）
+        - 立地：（都心オフィス街 / 住宅街 / 大学近くなど）
+        - コンセプト：（静かに集中 / 賑やかな交流 / 特別な体験など）
+
+        【出力形式】
+        1. ペルソナA：年齢、職業、来店動機、利用シーン
+        2. ペルソナB：同上
+        3. ペルソナC：同上
+        4. 3者に共通する価値観・ニーズ
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「良いカフェのターゲットを教えて」→ 曖昧すぎて汎用回答になる<br>
+                    ✅ 正解：具体的な条件（立地・コンセプト）を明示する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: Gemini 手順2（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2／2：カラー・フォント・トンマナ導出</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        先ほどのペルソナ分析を踏まえて、以下を提案してください：
+
+        【制約条件】
+        - 避けたい印象：チェーン店感、安っぽさ、堅すぎる
+        - 目指す印象：（自分で1〜2個追加）
+
+        【出力形式】
+        1. ブランドカラー3色
+        - Primary：#○○○○○○（理由）
+        - Secondary：#○○○○○○（理由）
+        - Accent：#○○○○○○（理由）
+
+        2. フォント方針
+        - 見出し：セリフ / サンセリフ / 手書き風（理由）
+        - 本文：同上（理由）
+
+        3. トンマナ（形容詞5つ）
+        - ○○ ↔ △△（対義語で境界を明確化）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：AIの提案をそのまま採用する<br>
+                    ✅ 正解：「理由」を確認し、自分のコンセプトと合致しているか判断する
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Nano banana pro演習（5枚） ========== -->
+
+        <!-- スライド9: 章区切り - Nano banana pro -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 2<br>Nano banana pro</h2>
+            <p>ロゴを50パターン生成する</p>
+        </div>
+
+        <!-- スライド10: Nano banana pro ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Nano banana pro</h2>
+                <p><strong>用途：</strong>AIによる高品質な画像・ロゴ生成</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>画像生成：</strong>プロンプトからロゴ案を生成</li>
+                    <li><strong>バリエーション：</strong>スタイル違いを量産</li>
+                    <li><strong>反復生成：</strong>50案を効率的に作成</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Geminiと同じ画面から利用可能（Imagen 3搭載）
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_004_handson_02.png" alt="Gemini Screenshot" style="width: 100%; height: auto;">
+            </div>
+        </div>
+
+        <!-- スライド11: Nano banana pro 演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ロゴ50パターン生成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>Step 1で言語化したコンセプトを視覚化し、大量のロゴ案から最適解を選ぶ</p>
+                
+                <h3>課題内容</h3>
+                <ul>
+                    <li><strong>生成数：</strong>最低50パターン（10回×5バリエーション）</li>
+                    <li><strong>スタイル軸：</strong>ミニマル / 手書き / 幾何学 / エンブレム / タイポのみ</li>
+                    <li><strong>選定基準：</strong>4つのデザイン原則に合致しているか</li>
+                </ul>
+                
+                <h3>なぜ50パターン？</h3>
+                <p>AIの強みは「大量生成」。人間が1案に悩む時間で50案を比較検討できる</p>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：15分｜生成→選定→理由言語化まで
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: Nano banana pro 手順1（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1／2：効果的なプロンプト作成</h2>
+            <div class="content-block">
+                <h3>Nano banana proに入力するプロンプト例</h3>
+                
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-flux-3">
+        「[店名]」というカフェのミニマルなロゴを作成してください。
+
+        【スタイル】
+        クリーンでモダン、洗練された印象、ベクター風、シンプルな形状、拡大縮小可能
+
+        【カラー】
+        メインカラー：[Step1で決めたPrimary Color]
+
+        【コンセプト】
+        [トンマナの形容詞を2〜3個]
+
+        【含める要素（いずれか）】
+        コーヒーカップのシルエット、コーヒー豆、湯気
+
+        【背景】
+        純白
+
+        【禁止事項】
+        リアルな写真風にしない、グラデーションを使わない、複雑なディテールを入れない、ロゴマーク以外のテキストを入れない
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-flux-3', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「カフェのロゴを作って」→ ランダムな結果になる<br>
+                    ✅ 正解：スタイル・色・要素・禁止事項を明確に指定する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: Nano banana pro 手順2 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2／2：バリエーション展開と選定</h2>
+            <div class="content-block">
+                <h3>5つのスタイル軸で生成</h3>
+                <ul>
+                    <li><strong>ミニマル：</strong>スタイル：ミニマリスト、幾何学的、単線</li>
+                    <li><strong>手書き風：</strong>スタイル：手描き、有機的、筆ストローク</li>
+                    <li><strong>幾何学：</strong>スタイル：幾何学図形、抽象的、モダン</li>
+                    <li><strong>エンブレム：</strong>スタイル：バッジ、紋章、ヴィンテージシール</li>
+                    <li><strong>タイポのみ：</strong>スタイル：タイポグラフィのみ、ワードマーク、カスタムレタリング</li>
+                </ul>
+                
+                <h3>選定基準（4原則チェック）</h3>
+                <ul>
+                    <li><strong>整列：</strong>要素が視覚的に揃っているか</li>
+                    <li><strong>近接：</strong>関連要素がグループ化されているか</li>
+                    <li><strong>反復：</strong>形や線の太さに一貫性があるか</li>
+                    <li><strong>コントラスト：</strong>シンボルと店名に差があるか</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「好き」ではなく「原則に合っている」で選ぶ
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Canva演習（6枚） ========== -->
+
+        <!-- スライド14: 章区切り - Canva -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 3<br>Canva</h2>
+            <p>ロゴを実用展開する</p>
+        </div>
+
+        <!-- スライド15: Canva ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Canva</h2>
+                <p><strong>用途：</strong>ロゴを名刺・SNS・看板などに展開</p>
+                <p><strong>初回アクセス：</strong>https://www.canva.com/</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>ブランドキット：</strong>カラー・フォント登録</li>
+                    <li><strong>テンプレート：</strong>名刺・SNSヘッダー</li>
+                    <li><strong>リサイズ：</strong>複数サイズへの展開</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 無料プランでも十分。ブランドキットは有料だが手動で代用可
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_004_handson_03.png" alt="Gemini Screenshot" style="width: 100%; height: auto;">
+            </div>
+        </div>
+
+        <!-- スライド16: Canva 演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ロゴの実用展開</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>選んだロゴを実際の制作物に適用し、ブランドの一貫性を確認する</p>
+                
+                <h3>制作物</h3>
+                <ul>
+                    <li><strong>名刺：</strong>91mm × 55mm</li>
+                    <li><strong>SNSヘッダー：</strong>1500px × 500px（X/Twitter用）</li>
+                </ul>
+                
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>使用色：</strong>Step 1で決めた3色のみ</li>
+                    <li><strong>フォント：</strong>Step 1で決めた方針に従う</li>
+                    <li><strong>ロゴ配置：</strong>レギュレーションを意識（余白確保）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：15分｜名刺10分 + SNSヘッダー5分
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: Canva 手順1 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1／3：ブランド要素の登録</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 左メニュー「ブランド」→「ブランドキット」を開く</p>
+                <p><strong>2.</strong> カラーパレットに3色を登録（HEXコードをコピペ）</p>
+                <p><strong>3.</strong> ロゴ画像をアップロード</p>
+                <p><strong>4.</strong> フォントを選択・登録（近いものを探す）</p>
+                
+                <h3>デザイン原則との関連</h3>
+                <p>ここで登録した要素を「反復」することで、ブランドの一貫性が生まれます</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：制作物ごとに違う色を使う<br>
+                    ✅ 正解：登録した3色だけを使う（反復の原則）
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: Canva 手順2 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2／3：名刺デザイン</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 「デザインを作成」→「名刺」を選択</p>
+                <p><strong>2.</strong> 白紙からスタート（テンプレート不使用推奨）</p>
+                <p><strong>3.</strong> ロゴを配置 → 周囲に十分な余白を確保</p>
+                <p><strong>4.</strong> テキスト配置：名前 / 役職 / 連絡先をグループ化</p>
+                
+                <h3>4原則の適用ポイント</h3>
+                <ul>
+                    <li><strong>整列：</strong>左揃えまたは中央揃えで統一</li>
+                    <li><strong>近接：</strong>連絡先情報はひとまとめに</li>
+                    <li><strong>コントラスト：</strong>名前を最も大きく</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：情報を画面いっぱいに配置する<br>
+                    ✅ 正解：余白は「高級感」を生む。詰め込みすぎない
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: Canva 手順3 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3／3：SNSヘッダー展開</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 「デザインを作成」→「Xヘッダー」を選択</p>
+                <p><strong>2.</strong> 背景色をSecondary Colorに設定</p>
+                <p><strong>3.</strong> ロゴを中央または左寄せで配置</p>
+                <p><strong>4.</strong> キャッチコピーを追加（任意）</p>
+                
+                <h3>一貫性チェック</h3>
+                <p>名刺とSNSヘッダーを並べて確認：</p>
+                <ul>
+                    <li>同じブランドに見えるか？</li>
+                    <li>色・フォント・ロゴの扱いに統一感があるか？</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 この「統一感」こそがブランドシステムの成果
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Figma演習（5枚） ========== -->
+
+        <!-- スライド20: 章区切り - Figma -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 4<br>Figma</h2>
+            <p>ロゴガイドラインを作成する</p>
+        </div>
+
+        <!-- スライド21: Figma ツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Figma</h2>
+                <p><strong>用途：</strong>ロゴレギュレーション・ガイドライン作成</p>
+                <p><strong>初回アクセス：</strong>https://www.figma.com/</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>フレーム：</strong>ガイドラインページ作成</li>
+                    <li><strong>オートレイアウト：</strong>整列された配置</li>
+                    <li><strong>コンポーネント：</strong>ロゴの使用例管理</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 無料プランで3プロジェクトまで作成可能
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_004_handson_04.png" alt="Gemini Screenshot" style="width: 100%; height: auto;">
+            </div>
+        </div>
+
+        <!-- スライド22: Figma 演習課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：ロゴガイドライン1ページ</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>ロゴの「使い方ルール」を1ページにまとめ、誰でも正しく使えるようにする</p>
+                
+                <h3>ガイドラインに含める要素</h3>
+                <ul>
+                    <li><strong>ロゴ基本形：</strong>フルカラー版を配置</li>
+                    <li><strong>クリアスペース：</strong>ロゴ周囲の余白規定</li>
+                    <li><strong>最小使用サイズ：</strong>視認性を保つ最小値</li>
+                    <li><strong>カラーバリエーション：</strong>フルカラー / 白 / 黒</li>
+                    <li><strong>禁止事項：</strong>やってはいけない使い方4つ</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⏱️ 制作時間：15分｜フレームサイズ 1920×1080px
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド23: 完成イメージ提示【新規A】 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">完成イメージ：これを目指して作ります</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 500" style="max-height: 52vh; width: auto; background: #1a1a1a; border-radius: 8px;">
+                    <!-- ページ全体の枠 -->
+                    <rect x="20" y="20" width="760" height="460" fill="#0d0d0d" stroke="#333" stroke-width="1" rx="4"/>
+                    
+                    <!-- タイトル -->
+                    <text x="400" y="55" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">LOGO GUIDELINES</text>
+                    <text x="400" y="75" text-anchor="middle" fill="#666" font-size="10">[カフェ名] Brand Identity</text>
+                    
+                    <!-- セクション1: ロゴ基本形 -->
+                    <rect x="40" y="95" width="230" height="150" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="155" y="115" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">1. ロゴ基本形</text>
+                    <rect x="80" y="130" width="150" height="80" fill="#252525" rx="4"/>
+                    <circle cx="130" cy="170" r="25" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="180" y="175" fill="#888" font-size="12">CAFE</text>
+                    <text x="155" y="225" text-anchor="middle" fill="#666" font-size="8">フルカラー版（Primary）</text>
+                    
+                    <!-- セクション2: クリアスペース -->
+                    <rect x="285" y="95" width="230" height="150" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="400" y="115" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">2. クリアスペース</text>
+                    <rect x="330" y="135" width="140" height="80" fill="none" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,2"/>
+                    <rect x="355" y="155" width="90" height="40" fill="#252525" rx="2"/>
+                    <circle cx="380" cy="175" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="405" y="178" fill="#888" font-size="8">CAFE</text>
+                    <text x="400" y="230" text-anchor="middle" fill="#666" font-size="8">ロゴ高さの1/4を余白として確保</text>
+                    
+                    <!-- セクション3: 最小サイズ -->
+                    <rect x="530" y="95" width="230" height="150" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="645" y="115" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">3. 最小使用サイズ</text>
+                    <rect x="580" y="140" width="50" height="30" fill="#252525" rx="2"/>
+                    <circle cx="595" cy="155" r="8" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="612" y="158" fill="#888" font-size="6">CAFE</text>
+                    <text x="650" y="155" fill="#666" font-size="8">← 24px以上</text>
+                    <rect x="580" y="185" width="25" height="15" fill="#252525" rx="1"/>
+                    <line x1="560" y1="192" x2="620" y2="192" stroke="#ff6b6b" stroke-width="1"/>
+                    <text x="650" y="195" fill="#ff6b6b" font-size="8">← これ以下はNG</text>
+                    
+                    <!-- セクション4: カラーバリエーション -->
+                    <rect x="40" y="260" width="350" height="100" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="215" y="280" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">4. カラーバリエーション</text>
+                    
+                    <rect x="60" y="295" width="80" height="50" fill="#252525" rx="2"/>
+                    <circle cx="85" cy="320" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="108" y="323" fill="#888" font-size="7">CAFE</text>
+                    <text x="100" y="355" text-anchor="middle" fill="#666" font-size="7">フルカラー</text>
+                    
+                    <rect x="165" y="295" width="80" height="50" fill="#ffffff" rx="2"/>
+                    <circle cx="190" cy="320" r="12" fill="none" stroke="#333" stroke-width="1.5"/>
+                    <text x="213" y="323" fill="#333" font-size="7">CAFE</text>
+                    <text x="205" y="355" text-anchor="middle" fill="#666" font-size="7">白背景用</text>
+                    
+                    <rect x="270" y="295" width="90" height="50" fill="#0d0d0d" rx="2"/>
+                    <circle cx="295" cy="320" r="12" fill="none" stroke="#fff" stroke-width="1.5"/>
+                    <text x="318" y="323" fill="#fff" font-size="7">CAFE</text>
+                    <text x="315" y="355" text-anchor="middle" fill="#666" font-size="7">黒背景用</text>
+                    
+                    <!-- セクション5: 禁止事項 -->
+                    <rect x="410" y="260" width="350" height="100" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="585" y="280" text-anchor="middle" fill="#ff6b6b" font-size="10" font-weight="bold">5. 禁止事項</text>
+                    
+                    <rect x="430" y="295" width="70" height="50" fill="#252525" rx="2"/>
+                    <circle cx="455" cy="315" r="10" fill="none" stroke="#00d4ff" stroke-width="1" transform="rotate(15, 455, 315)"/>
+                    <text x="475" y="318" fill="#888" font-size="6" transform="rotate(15, 475, 318)">CAFE</text>
+                    <text x="465" y="355" text-anchor="middle" fill="#ff6b6b" font-size="7">❌ 傾ける</text>
+                    
+                    <rect x="520" y="295" width="70" height="50" fill="#252525" rx="2"/>
+                    <circle cx="545" cy="315" r="10" fill="none" stroke="#ff00ff" stroke-width="1"/>
+                    <text x="565" y="318" fill="#00ff00" font-size="6">CAFE</text>
+                    <text x="555" y="355" text-anchor="middle" fill="#ff6b6b" font-size="7">❌ 色変更</text>
+                    
+                    <rect x="610" y="295" width="70" height="50" fill="#252525" rx="2"/>
+                    <circle cx="625" cy="315" r="10" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="660" y="318" fill="#888" font-size="6">CAFE</text>
+                    <text x="645" y="355" text-anchor="middle" fill="#ff6b6b" font-size="7">❌ 分離</text>
+                    
+                    <rect x="700" y="295" width="40" height="50" fill="#252525" rx="2"/>
+                    <circle cx="720" cy="310" r="6" fill="none" stroke="#00d4ff" stroke-width="0.5"/>
+                    <text x="720" y="330" text-anchor="middle" fill="#888" font-size="4">CAFE</text>
+                    <text x="720" y="355" text-anchor="middle" fill="#ff6b6b" font-size="7">❌ 縮小</text>
+                    
+                    <!-- フッター -->
+                    <text x="400" y="470" text-anchor="middle" fill="#444" font-size="8">© 2024 [カフェ名] All Rights Reserved.</text>
+                </svg>
+                
+                <div class="highlight-box">
+                    💡 この5セクション構成を、次のスライドからステップ・バイ・ステップで作成します
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: 作成パーツ① ロゴ基本形 & クリアスペース【新規B-1】 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">作成パーツ①：ロゴ基本形 & クリアスペース</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280" style="max-height: 42vh; width: auto;">
+                    <!-- ロゴ基本形セクション -->
+                    <rect x="20" y="20" width="360" height="240" fill="rgba(0,212,255,0.05)" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="200" y="50" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">① ロゴ基本形</text>
+                    
+                    <!-- ロゴ配置エリア -->
+                    <rect x="80" y="70" width="220" height="100" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="145" cy="120" r="30" fill="none" stroke="#00d4ff" stroke-width="3"/>
+                    <text x="210" y="128" fill="white" font-size="18" font-weight="bold">CAFE</text>
+                    
+                    <!-- 説明 -->
+                    <text x="200" y="195" text-anchor="middle" fill="#888" font-size="11">ロゴのフルカラー版を配置</text>
+                    <text x="200" y="215" text-anchor="middle" fill="#888" font-size="11">シンボル + ロゴタイプの基本構成</text>
+                    <text x="200" y="245" text-anchor="middle" fill="#666" font-size="10">※ AIで生成したロゴをここに配置</text>
+                    
+                    <!-- クリアスペースセクション -->
+                    <rect x="420" y="20" width="360" height="240" fill="rgba(255,107,107,0.05)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="600" y="50" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">② クリアスペース</text>
+                    
+                    <!-- クリアスペース図解 -->
+                    <rect x="480" y="70" width="240" height="120" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="6,3"/>
+                    <rect x="520" y="95" width="160" height="70" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="565" cy="130" r="20" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="610" y="135" fill="white" font-size="12" font-weight="bold">CAFE</text>
+                    
+                    <!-- 余白の矢印と注釈 -->
+                    <line x1="480" y1="130" x2="515" y2="130" stroke="#ff6b6b" stroke-width="1"/>
+                    <text x="455" y="130" fill="#ff6b6b" font-size="9">余白X</text>
+                    
+                    <line x1="600" y1="70" x2="600" y2="90" stroke="#ff6b6b" stroke-width="1"/>
+                    <text x="600" y="62" text-anchor="middle" fill="#ff6b6b" font-size="9">余白X</text>
+                    
+                    <!-- 説明 -->
+                    <text x="600" y="210" text-anchor="middle" fill="#888" font-size="11">ロゴ周囲に確保する余白を定義</text>
+                    <text x="600" y="230" text-anchor="middle" fill="#888" font-size="11">X = ロゴ高さの 1/4 を推奨</text>
+                    <text x="600" y="250" text-anchor="middle" fill="#666" font-size="10">※ 点線の矩形で余白範囲を図示</text>
+                </svg>
+                
+                <div class="highlight-box">
+                    💡 Figmaで矩形ツールを使い、点線（Stroke: Dashed）でクリアスペースを表現
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド25: 作成パーツ② 最小サイズ & カラーバリエーション【新規B-2】 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">作成パーツ②：最小サイズ & カラーバリエーション</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280" style="max-height: 42vh; width: auto;">
+                    <!-- 最小サイズセクション -->
+                    <rect x="20" y="20" width="360" height="240" fill="rgba(255,199,0,0.05)" stroke="#FFC700" stroke-width="2" rx="8"/>
+                    <text x="200" y="50" text-anchor="middle" fill="#FFC700" font-size="14" font-weight="bold">③ 最小使用サイズ</text>
+                    
+                    <!-- サイズ比較 -->
+                    <rect x="60" y="70" width="120" height="70" fill="#1a1a1a" stroke="#00ff9d" stroke-width="2" rx="4"/>
+                    <circle cx="95" cy="105" r="18" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="130" y="110" fill="white" font-size="12" font-weight="bold">CAFE</text>
+                    <text x="120" y="155" text-anchor="middle" fill="#00ff9d" font-size="10">✓ 24px以上</text>
+                    
+                    <rect x="220" y="90" width="60" height="35" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="2" rx="2"/>
+                    <circle cx="237" cy="107" r="8" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="258" y="110" fill="white" font-size="6">CAFE</text>
+                    <text x="250" y="155" text-anchor="middle" fill="#ff6b6b" font-size="10">✗ 小さすぎ</text>
+                    
+                    <!-- 説明 -->
+                    <text x="200" y="185" text-anchor="middle" fill="#888" font-size="11">視認性を保てる最小サイズを明記</text>
+                    <text x="200" y="205" text-anchor="middle" fill="#888" font-size="11">印刷：幅24mm以上 / Web：幅80px以上</text>
+                    <text x="200" y="235" text-anchor="middle" fill="#666" font-size="10">※ 実際のロゴを縮小して比較図を作成</text>
+                    
+                    <!-- カラーバリエーションセクション -->
+                    <rect x="420" y="20" width="360" height="240" fill="rgba(0,255,157,0.05)" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <text x="600" y="50" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">④ カラーバリエーション</text>
+                    
+                    <!-- 3色展開 -->
+                    <rect x="440" y="70" width="100" height="70" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="470" cy="105" r="15" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="500" y="108" fill="white" font-size="10">CAFE</text>
+                    <text x="490" y="155" text-anchor="middle" fill="#888" font-size="9">フルカラー</text>
+                    
+                    <rect x="555" y="70" width="100" height="70" fill="#ffffff" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="585" cy="105" r="15" fill="none" stroke="#333" stroke-width="2"/>
+                    <text x="615" y="108" fill="#333" font-size="10">CAFE</text>
+                    <text x="605" y="155" text-anchor="middle" fill="#888" font-size="9">モノクロ（黒）</text>
+                    
+                    <rect x="670" y="70" width="100" height="70" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="700" cy="105" r="15" fill="none" stroke="#fff" stroke-width="2"/>
+                    <text x="730" y="108" fill="#fff" font-size="10">CAFE</text>
+                    <text x="720" y="155" text-anchor="middle" fill="#888" font-size="9">モノクロ（白）</text>
+                    
+                    <!-- 説明 -->
+                    <text x="600" y="185" text-anchor="middle" fill="#888" font-size="11">使用可能な色パターンを定義</text>
+                    <text x="600" y="205" text-anchor="middle" fill="#888" font-size="11">背景色に応じた使い分けルールを明記</text>
+                    <text x="600" y="235" text-anchor="middle" fill="#666" font-size="10">※ 各パターンのロゴを横並びで配置</text>
+                </svg>
+                
+                <div class="highlight-box">
+                    💡 Figmaでロゴを複製し、色を変更して3パターンを作成
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド26: 作成パーツ③ 禁止事項【新規B-3】 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">作成パーツ③：禁止事項（これが最重要）</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280" style="max-height: 42vh; width: auto;">
+                    <!-- 禁止事項セクション -->
+                    <rect x="50" y="20" width="700" height="240" fill="rgba(255,107,107,0.05)" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="400" y="50" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">⑤ 禁止事項 - やってはいけない使い方</text>
+                    
+                    <!-- 禁止例1: 傾ける -->
+                    <rect x="80" y="70" width="140" height="90" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <g transform="rotate(20, 150, 110)">
+                        <circle cx="125" cy="110" r="18" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                        <text x="160" y="115" fill="white" font-size="12">CAFE</text>
+                    </g>
+                    <circle cx="200" cy="70" r="15" fill="#ff6b6b"/>
+                    <text x="200" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">✕</text>
+                    <text x="150" y="180" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold">傾けて使用</text>
+                    <text x="150" y="200" text-anchor="middle" fill="#888" font-size="9">角度をつけない</text>
+                    
+                    <!-- 禁止例2: 色を変える -->
+                    <rect x="250" y="70" width="140" height="90" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="295" cy="110" r="18" fill="none" stroke="#ff00ff" stroke-width="2"/>
+                    <text x="330" y="115" fill="#00ff00" font-size="12">CAFE</text>
+                    <circle cx="370" cy="70" r="15" fill="#ff6b6b"/>
+                    <text x="370" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">✕</text>
+                    <text x="320" y="180" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold">色を変更</text>
+                    <text x="320" y="200" text-anchor="middle" fill="#888" font-size="9">指定色以外は禁止</text>
+                    
+                    <!-- 禁止例3: 分離する -->
+                    <rect x="420" y="70" width="140" height="90" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <circle cx="450" cy="100" r="18" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="510" y="130" fill="white" font-size="12">CAFE</text>
+                    <circle cx="540" cy="70" r="15" fill="#ff6b6b"/>
+                    <text x="540" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">✕</text>
+                    <text x="490" y="180" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold">要素を分離</text>
+                    <text x="490" y="200" text-anchor="middle" fill="#888" font-size="9">シンボルと文字は一体</text>
+                    
+                    <!-- 禁止例4: 縦横比変更 -->
+                    <rect x="590" y="70" width="140" height="90" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+                    <ellipse cx="635" cy="110" rx="25" ry="15" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="680" y="115" fill="white" font-size="10">CAFE</text>
+                    <circle cx="710" cy="70" r="15" fill="#ff6b6b"/>
+                    <text x="710" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">✕</text>
+                    <text x="660" y="180" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="bold">縦横比を変更</text>
+                    <text x="660" y="200" text-anchor="middle" fill="#888" font-size="9">引き伸ばし禁止</text>
+                    
+                    <!-- 補足 -->
+                    <text x="400" y="240" text-anchor="middle" fill="#888" font-size="11">❌マークと共に「なぜダメなのか」を簡潔に記載する</text>
+                </svg>
+                
+                <div class="highlight-box">
+                    ⚠️ 禁止事項は「やってはいけないこと」を視覚的に示すことで、誤用を効果的に防ぎます
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== まとめ（2枚） ========== -->
+
+        <!-- スライド27: チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">完成チェック：今日の成果物</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <h3>📝 コンセプト</h3>
+                    <p>MVV・ターゲット・<br>トンマナが言語化されている</p>
+                </div>
+                <div class="tile">
+                    <h3>🎨 ロゴ</h3>
+                    <p>50案から4原則で<br>選定した最終案がある</p>
+                </div>
+                <div class="tile">
+                    <h3>📇 実用展開</h3>
+                    <p>名刺・SNSヘッダーに<br>一貫性がある</p>
+                </div>
+                <div class="tile">
+                    <h3>📋 ガイドライン</h3>
+                    <p>クリアスペース・禁止事項が<br>明文化されている</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド28: 次のステップ -->
+        <div class="slide-container big-concept-layout">
+            <h2>システムは「作って終わり」<br>ではない</h2>
+            <p>今日作ったガイドラインを「使い続ける」ことで<br>ブランドの一貫性が保たれます。定期的な見直しと更新を忘れずに。</p>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Geminiでターゲット分析を行う際、最も効果的なプロンプトは？",
+                options: [
+                    "「カフェのターゲット層を教えて」",
+                    "「20代女性向けのカフェを作りたい」",
+                    "「都心オフィス街、静かに集中できるコンセプトで、ペルソナを3つ提案して」",
+                    "「流行りのカフェのターゲットは？」"
+                ],
+                correct: 2,
+                explanation: "具体的な条件（立地・コンセプト）と出力形式（ペルソナ3つ）を明示することで、AIは的確な提案ができます。曖昧な質問では汎用的な回答しか得られません。"
+            },
+            {
+                question: "Nano banana proで50パターンのロゴを生成する主な理由は？",
+                options: [
+                    "AIの性能をテストするため",
+                    "大量生成→比較検討で最適解を見つけやすいため",
+                    "クライアントに選択肢を見せるため",
+                    "1つだけでは著作権が心配だから"
+                ],
+                correct: 1,
+                explanation: "AIの強みは「大量生成」です。人間が1案に悩む時間で50案を比較検討でき、デザイン原則に合致した最適解を効率的に見つけられます。"
+            },
+            {
+                question: "Canvaで名刺とSNSヘッダーを作成する際、最も重要な確認ポイントは？",
+                options: [
+                    "どちらもテンプレートを使っているか",
+                    "両方に同じ写真を使っているか",
+                    "色・フォント・ロゴの扱いに統一感があるか",
+                    "文字数が同じになっているか"
+                ],
+                correct: 2,
+                explanation: "ブランドシステムの成果は「統一感」です。異なる制作物でも、登録した3色とフォント、ロゴの扱い方を一貫させることで、同じブランドとして認識されます。"
+            },
+            {
+                question: "Figmaでロゴガイドラインを作成する際、禁止事項を明示する理由は？",
+                options: [
+                    "ページを埋めるため",
+                    "デザイナーの権限を示すため",
+                    "やってはいけないことを明示する方が誤用を防げるため",
+                    "法的な保護のため"
+                ],
+                correct: 2,
+                explanation: "「やっていいこと」だけでは解釈の幅が広がり、意図しない使い方をされる可能性があります。「やってはいけないこと」を具体例と共に明示することで、誤用を効果的に防げます。"
+            },
+            {
+                question: "今日の演習全体を通じて、ブランドシステムを「作って終わり」にしないために最も重要なことは？",
+                options: [
+                    "できるだけ多くのツールを使い続ける",
+                    "毎月新しいロゴを作成する",
+                    "ガイドラインを使い続け、定期的に見直し更新する",
+                    "SNSで頻繁に投稿する"
+                ],
+                correct: 2,
+                explanation: "ブランドシステムは作成がゴールではなく、「使い続けること」で一貫性が保たれます。また、事業の変化に合わせて定期的に見直し・更新することで、ブランドは進化し続けます。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>024 AIによるABテストシミュレーション【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>AIによる<br>ABテストシミュレーション<span>【実践編】</span></h1>
+                <p>ABテストフレームワークを習得し、勝敗予測を実践する</p>
+            </div>
+        </div>
+        <!-- スライド2: 本日のゴール -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のゴール</h2>
+            <div class="content-block">
+                <h3>習得すること</h3>
+                <p><strong>「ABテストフレームワーク」を使いこなせるようになる</strong></p>
+                <ul>
+                    <li>心理トリガーを使った2案の設計ができる</li>
+                    <li>AIに評価を依頼し、結果を解釈できる</li>
+                    <li>根拠に基づいた採用判断ができる</li>
+                </ul>
+            <h3>持ち帰る成果物</h3>
+            <ul>
+                <li><strong>① フレームワークの実践経験</strong>（3フェーズで反復練習）</li>
+                <li><strong>② フレームワークテンプレート</strong>（実務で再利用可能）</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 今日学ぶ型をマスターすれば、トリガーを変えるだけで応用できます
+            </div>
+        </div>
+        </div>
+        <!-- スライド3: ABテストフレームワーク全体像（修正版） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ABテストフレームワークとは</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 420">
+                    <!-- タイトル -->
+                    <text x="400" y="30" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">ABテストフレームワーク：7つのステップ</text>
+                    <!-- Step 1 -->
+                    <rect x="50" y="60" width="200" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="150" y="90" text-anchor="middle" fill="white" font-size="12">① 対象物の選定</text>
+                    
+                    <!-- 矢印 1→2 -->
+                    <path d="M250 85 L295 85" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <polygon points="295,80 305,85 295,90" fill="#00d4ff"/>
+                    
+                    <!-- Step 2 -->
+                    <rect x="300" y="60" width="200" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="400" y="90" text-anchor="middle" fill="white" font-size="12">② ターゲット定義</text>
+                    
+                    <!-- 矢印 2→3 -->
+                    <path d="M500 85 L545 85" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <polygon points="545,80 555,85 545,90" fill="#00d4ff"/>
+                    
+                    <!-- Step 3 -->
+                    <rect x="550" y="60" width="200" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="650" y="90" text-anchor="middle" fill="white" font-size="12">③ 心理トリガー選択</text>
+                    
+                    <!-- 矢印 3→4（折れ線） -->
+                    <path d="M650 110 L650 145 L275 145 L275 170" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <polygon points="270,170 275,180 280,170" fill="#00d4ff"/>
+                    
+                    <!-- Step 4 -->
+                    <rect x="125" y="180" width="300" height="50" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="6"/>
+                    <text x="275" y="210" text-anchor="middle" fill="white" font-size="12">④ 2案作成（変数は1つ）</text>
+                    
+                    <!-- 矢印 4→5 -->
+                    <path d="M425 205 L470 205" stroke="#a855f7" stroke-width="2" fill="none"/>
+                    <polygon points="470,200 480,205 470,210" fill="#a855f7"/>
+                    
+                    <!-- Step 5 -->
+                    <rect x="475" y="180" width="275" height="50" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="6"/>
+                    <text x="612" y="210" text-anchor="middle" fill="white" font-size="12">⑤ AI評価（定性＋定量）</text>
+                    
+                    <!-- 矢印 5→6（折れ線） -->
+                    <path d="M612 230 L612 265 L275 265 L275 290" stroke="#a855f7" stroke-width="2" fill="none"/>
+                    <polygon points="270,290 275,300 280,290" fill="#a855f7"/>
+                    
+                    <!-- Step 6 -->
+                    <rect x="125" y="300" width="300" height="50" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="6"/>
+                    <text x="275" y="330" text-anchor="middle" fill="white" font-size="12">⑥ 判断基準で評価</text>
+                    
+                    <!-- 矢印 6→7 -->
+                    <path d="M425 325 L470 325" stroke="#10b981" stroke-width="2" fill="none"/>
+                    <polygon points="470,320 480,325 470,330" fill="#10b981"/>
+                    
+                    <!-- Step 7 -->
+                    <rect x="475" y="300" width="275" height="50" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="6"/>
+                    <text x="612" y="330" text-anchor="middle" fill="white" font-size="12">⑦ 最終判断＋アクション</text>
+                    
+                    <!-- 判断基準の補足 -->
+                    <rect x="100" y="380" width="600" height="35" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                    <text x="400" y="403" text-anchor="middle" fill="#f59e0b" font-size="11">⑥ 判断基準：10%以上 → 優位案で進行 ｜ 5-10% → 要検討 ｜ 5%未満 → 実ABテストへ</text>
+                </svg>
+            </div>
+        </div>
+        <!-- スライド4: 本日の実践構成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日の実践：3フェーズ構成</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 固定トリガー -->
+                    <rect x="200" y="20" width="400" height="40" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="2" rx="6"/>
+                    <text x="400" y="45" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">固定トリガー：損失回避 vs 社会的証明</text>
+                <!-- フェーズ1 -->
+                <rect x="50" y="100" width="200" height="100" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                <text x="150" y="130" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">フェーズ 1</text>
+                <text x="150" y="155" text-anchor="middle" fill="white" font-size="13">CTAボタン</text>
+                <text x="150" y="180" text-anchor="middle" fill="#888" font-size="11">シンプルな題材で</text>
+                <text x="150" y="195" text-anchor="middle" fill="#888" font-size="11">型を理解する</text>
+                
+                <!-- フェーズ2 -->
+                <rect x="300" y="100" width="200" height="100" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="8"/>
+                <text x="400" y="130" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">フェーズ 2</text>
+                <text x="400" y="155" text-anchor="middle" fill="white" font-size="13">バナー広告</text>
+                <text x="400" y="180" text-anchor="middle" fill="#888" font-size="11">複数要素を含む</text>
+                <text x="400" y="195" text-anchor="middle" fill="#888" font-size="11">題材で応用する</text>
+                
+                <!-- フェーズ3 -->
+                <rect x="550" y="100" width="200" height="100" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="8"/>
+                <text x="650" y="130" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold">フェーズ 3</text>
+                <text x="650" y="155" text-anchor="middle" fill="white" font-size="13">LPヒーロー</text>
+                <text x="650" y="180" text-anchor="middle" fill="#888" font-size="11">最も複雑な題材で</text>
+                <text x="650" y="195" text-anchor="middle" fill="#888" font-size="11">実践力を確認する</text>
+                
+                <!-- 矢印 -->
+                <path d="M250 150 L295 150" stroke="white" stroke-width="2" fill="none"/>
+                <polygon points="295,145 305,150 295,155" fill="white"/>
+                <path d="M500 150 L545 150" stroke="white" stroke-width="2" fill="none"/>
+                <polygon points="545,145 555,150 545,155" fill="white"/>
+                
+                <!-- 応用への矢印 -->
+                <path d="M400 220 L400 260" stroke="white" stroke-width="2" fill="none"/>
+                <polygon points="395,260 400,270 405,260" fill="white"/>
+                
+                <!-- 応用 -->
+                <rect x="200" y="275" width="400" height="35" fill="#333" stroke="#555" stroke-width="1" rx="6"/>
+                <text x="400" y="298" text-anchor="middle" fill="white" font-size="11">応用：トリガーを「希少性vs権威性」等に変えて再実践</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド5: セクション - フェーズ1 -->
+        <div class="slide-container section-title-layout">
+            <h2>フェーズ 1</h2>
+            <p>CTAボタンで型を理解する</p>
+        </div>
+        <!-- スライド6: フェーズ1 課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ1：課題設定</h2>
+            <div class="content-block">
+                <h3>フレームワーク ①〜③ を埋める</h3>
+            <p><strong>① 対象物：</strong>CTAボタン（ボタン上のテキスト）</p>
+            
+            <p><strong>② ターゲット：</strong></p>
+            <ul>
+                <li>30代会社員、副業に興味がある</li>
+                <li>時間がなく、簡単に始められるものを探している</li>
+                <li>失敗したくない、確実な方法を知りたい</li>
+            </ul>
+            
+            <p><strong>③ 心理トリガー：</strong>損失回避 vs 社会的証明</p>
+            
+            <div class="highlight-box">
+                ⏱️ このフェーズの所要時間：10分
+            </div>
+        </div>
+        </div>
+        <!-- スライド7: フェーズ1 2案作成 -->
+        <div class="slide-container">
+            <h2 class="slide-title">フェーズ1：2案を作成する（④）</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>A案：損失回避</h3>
+                    <div style="background: #1a1a2e; padding: 1.5rem; border-radius: 8px; border: 2px solid #ff6b6b; text-align: center;">
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin: 0;">今すぐ始めないと損する</p>
+                    </div>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #888; margin-top: 1rem;">
+                        <strong>使用トリガー：</strong>損失回避<br>
+                        <strong>狙い：</strong>「始めないことのリスク」を意識させる
+                    </p>
+                </div>
+                <div>
+                    <h3>B案：社会的証明</h3>
+                    <div style="background: #1a1a2e; padding: 1.5rem; border-radius: 8px; border: 2px solid #10b981; text-align: center;">
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin: 0;">5,000人が始めている</p>
+                    </div>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: #888; margin-top: 1rem;">
+                        <strong>使用トリガー：</strong>社会的証明<br>
+                        <strong>狙い：</strong>「多くの人が選んでいる」安心感を与える
+                    </p>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                ✅ 確認：文字数・構成が揃っているか？（変数は心理トリガーのみ）
+            </div>
+        </div>
+        <!-- スライド8: フェーズ1 AI評価 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ1：Geminiで評価する（⑤）</h2>
+            <div class="content-block">
+                <h3>定性評価プロンプト</h3>
+            <div class="prompt-box">
+                <div class="prompt-content" id="prompt-phase1">
+        あなたはマーケティング心理学の専門家です。
+        以下の2つのCTAボタンを比較評価してください。
+        【ターゲット】
+        30代会社員、副業に興味がある。時間がなく簡単に始められるものを探している。失敗したくない。
+        【A案】今すぐ始めないと損する
+        【B案】5,000人が始めている
+        以下の観点で評価してください：
+
+        各案の心理トリガーと作用メカニズム
+        ターゲットへの適合度（響きやすさ）
+        潜在的リスク（反発を招く可能性）
+        予測クリック率（A案 ○%、B案 ○%）
+        総合判定：どちらが優位か
+        </div>
+        <button class="copy-btn" onclick="copyPrompt('prompt-phase1', event)">
+        <i class="fas fa-copy"></i> コピー
+        </button>
+        </div>
+        <div class="highlight-box">
+            💡 Geminiアクセス：https://gemini.google.com/app<br>
+            📸 結果が出たらスクリーンショットを保存
+        </div>
+        </div>
+
+
+        </div>
+        <!-- スライド9: フェーズ1 判断 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ1：結果を判断する（⑥⑦）</h2>
+            <div class="content-block">
+                <h3>⑥ 判断基準に照らし合わせる</h3>
+                <ul>
+                    <li><strong>10%以上の差</strong> → 優位案で進行</li>
+                    <li><strong>5-10%の差</strong> → 定性評価のリスクも考慮して判断</li>
+                    <li><strong>5%未満の差</strong> → 実ABテストで検証、または第3案を検討</li>
+                </ul>
+            <h3>⑦ 最終判断を記録</h3>
+            <ul>
+                <li>採用案：A案 or B案</li>
+                <li>判断理由：定性・定量の根拠を簡潔に</li>
+                <li>次のアクション：実装 or 実ABテスト or 再検討</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ✅ フェーズ1完了！この流れがフレームワークの基本形です
+            </div>
+        </div>
+        </div>
+        <!-- スライド10: セクション - フェーズ2 -->
+        <div class="slide-container section-title-layout">
+            <h2>フェーズ 2</h2>
+            <p>バナー広告で応用する</p>
+        </div>
+        <!-- スライド11: フェーズ2 課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ2：課題設定</h2>
+            <div class="content-block">
+                <h3>フレームワーク ①〜③</h3>
+            <p><strong>① 対象物：</strong>バナー広告（キャッチコピー＋サブコピー）</p>
+            
+            <p><strong>② ターゲット：</strong>（フェーズ1と同じ）</p>
+            <ul>
+                <li>30代会社員、副業に興味がある</li>
+                <li>時間がなく、簡単に始められるものを探している</li>
+                <li>失敗したくない、確実な方法を知りたい</li>
+            </ul>
+            
+            <p><strong>③ 心理トリガー：</strong>損失回避 vs 社会的証明（同じ）</p>
+            
+            <div class="highlight-box">
+                💡 トリガーとターゲットは固定。対象物の複雑さだけが変わります<br>
+                ⏱️ このフェーズの所要時間：10分
+            </div>
+        </div>
+        </div>
+        <!-- スライド12: フェーズ2 2案作成 -->
+        <div class="slide-container">
+            <h2 class="slide-title">フェーズ2：2案を作成する（④）</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>A案：損失回避</h3>
+                    <div style="background: #1a1a2e; padding: 1.5rem; border-radius: 8px; border: 2px solid #ff6b6b; width: 70%; text-align: center;">
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #ff6b6b; margin-bottom: 0.5rem;">⚠️ 知らないと損する事実</p>
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin-bottom: 0.5rem;">副業を始めないと<br>年間36万円の機会損失</p>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #aaa;">今すぐ無料で診断する →</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>B案：社会的証明</h3>
+                    <div style="background: #1a1a2e; padding: 1.5rem; border-radius: 8px; border: 2px solid #10b981; width: 70%; text-align: center;">
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #10b981; margin-bottom: 0.5rem;">✓ 受講者満足度 94%</p>
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin-bottom: 0.5rem;">5,000人が副業で<br>月3万円を達成</p>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #aaa;">あなたも無料で診断する →</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                ✅ 確認：キャッチ・サブ・CTAの3要素が揃っているか？
+            </div>
+        </div>
+        <!-- スライド13: フェーズ2 AI評価 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ2：Geminiで評価する（⑤）</h2>
+            <div class="content-block">
+                <h3>定性＋定量評価プロンプト</h3>
+            <div class="prompt-box">
+                <div class="prompt-content" id="prompt-phase2">
+        あなたはマーケティング心理学の専門家です。
+        以下の2つのバナー広告を比較評価してください。
+        【ターゲット】
+        30代会社員、副業に興味がある。時間がなく簡単に始められるものを探している。失敗したくない。
+        【A案】
+        キャッチ：知らないと損する事実
+        メイン：副業を始めないと年間36万円の機会損失
+        CTA：今すぐ無料で診断する
+        【B案】
+        キャッチ：受講者満足度 94%
+        メイン：5,000人が副業で月3万円を達成
+        CTA：あなたも無料で診断する
+        以下の観点で評価してください：
+
+        各案の心理トリガーと作用メカニズム
+        ターゲットへの適合度
+        潜在的リスク
+        予測クリック率（A案 ○%、B案 ○%）
+        総合判定：どちらが優位か
+        </div>
+        <button class="copy-btn" onclick="copyPrompt('prompt-phase2', event)">
+        <i class="fas fa-copy"></i> コピー
+        </button>
+        </div>
+        <div class="highlight-box">
+            📸 結果をスクリーンショットで保存 → 判断基準（⑥⑦）で評価
+        </div>
+        </div>
+
+
+        </div>
+        <!-- スライド14: セクション - フェーズ3 -->
+        <div class="slide-container section-title-layout">
+            <h2>フェーズ 3</h2>
+            <p>LPヒーローで実践力を確認する</p>
+        </div>
+        <!-- スライド15: フェーズ3 課題 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ3：課題設定</h2>
+            <div class="content-block">
+                <h3>フレームワーク ①〜③</h3>
+            <p><strong>① 対象物：</strong>LPヒーローセクション（メインコピー＋サブコピー＋CTA）</p>
+            
+            <p><strong>② ターゲット：</strong>（フェーズ1-2と同じ）</p>
+            <ul>
+                <li>30代会社員、副業に興味がある</li>
+                <li>時間がなく、簡単に始められるものを探している</li>
+                <li>失敗したくない、確実な方法を知りたい</li>
+            </ul>
+            
+            <p><strong>③ 心理トリガー：</strong>損失回避 vs 社会的証明（同じ）</p>
+            
+            <div class="highlight-box">
+                🎯 最終フェーズ：これまでの学びを統合して実践<br>
+                ⏱️ このフェーズの所要時間：15分
+            </div>
+        </div>
+        </div>
+        <!-- スライド16: フェーズ3 2案作成 -->
+        <div class="slide-container">
+            <h2 class="slide-title">フェーズ3：2案を作成する（④）</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>A案：損失回避</h3>
+                    <div style="background: #1a1a2e; padding: 1.2rem; border-radius: 8px; border: 2px solid #ff6b6b; width: 70%; text-align: center;">
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #ff6b6b; margin-bottom: 0.3rem;">⚠️ このページを閉じる前に</p>
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin-bottom: 0.3rem;">何も行動しなければ<br>5年後も同じ給料です</p>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #aaa; margin-bottom: 0.8rem;">毎月3万円の副収入があれば、年間36万円。<br>5年で180万円の差が生まれます。</p>
+                        <div style="background: #ff6b6b; padding: 0.5rem; border-radius: 4px; text-align: center;">
+                            <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: white; margin: 0;">無料で副業診断を受ける</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3>B案：社会的証明</h3>
+                    <div style="background: #1a1a2e; padding: 1.2rem; border-radius: 8px; border: 2px solid #10b981; width: 70%; text-align: center;">
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #10b981; margin-bottom: 0.3rem;">✓ 受講者5,000人突破</p>
+                        <p style="font-size: clamp(1.5rem, 2vw, 2rem); color: white; font-weight: bold; margin-bottom: 0.3rem;">78%が3ヶ月以内に<br>副収入を獲得</p>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); color: #aaa; margin-bottom: 0.8rem;">忙しい会社員でも、1日30分から始められる。<br>あなたも副収入の第一歩を踏み出しませんか？</p>
+                        <div style="background: #10b981; padding: 0.5rem; border-radius: 4px; text-align: center;">
+                            <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); color: white; margin: 0;">無料で副業診断を受ける</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- スライド17: フェーズ3 AI評価 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ3：Geminiで評価する（⑤）</h2>
+            <div class="content-block">
+                <h3>定性＋定量評価プロンプト</h3>
+            <div class="prompt-box">
+                <div class="prompt-content" id="prompt-phase3">
+        あなたはマーケティング心理学の専門家です。
+        以下の2つのLPヒーローセクションを比較評価してください。
+        【ターゲット】
+        30代会社員、副業に興味がある。時間がなく簡単に始められるものを探している。失敗したくない。
+        【A案】
+        ヘッダー：このページを閉じる前に
+        メイン：何も行動しなければ5年後も同じ給料です
+        サブ：毎月3万円の副収入があれば、年間36万円。5年で180万円の差が生まれます。
+        CTA：無料で副業診断を受ける
+        【B案】
+        ヘッダー：受講者5,000人突破
+        メイン：78%が3ヶ月以内に副収入を獲得
+        サブ：忙しい会社員でも、1日30分から始められる。あなたも副収入の第一歩を踏み出しませんか？
+        CTA：無料で副業診断を受ける
+        以下の観点で評価してください：
+
+        各案の心理トリガーと作用メカニズム
+        ターゲットへの適合度
+        潜在的リスク
+        予測クリック率（A案 ○%、B案 ○%）
+        総合判定：どちらが優位か、その理由
+        </div>
+        <button class="copy-btn" onclick="copyPrompt('prompt-phase3', event)">
+        <i class="fas fa-copy"></i> コピー
+        </button>
+        </div>
+        </div>
+
+
+        </div>
+        <!-- スライド18: 3フェーズ振り返り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">3フェーズの振り返り</h2>
+            <div class="content-block">
+                <h3>同じフレームワークを3回繰り返した結果</h3>
+                <ul>
+                    <li><strong>フェーズ1（CTA）</strong>：シンプルな題材で型を理解</li>
+                    <li><strong>フェーズ2（バナー）</strong>：複数要素での応用を体験</li>
+                    <li><strong>フェーズ3（LPヒーロー）</strong>：最も複雑な題材で実践力を確認</li>
+                </ul>
+            <h3>気づいたことを言語化してください</h3>
+            <ul>
+                <li>3つのフェーズで、AIの評価傾向に共通点はあったか？</li>
+                <li>対象物が複雑になると、評価の観点はどう変わったか？</li>
+                <li>損失回避と社会的証明、どちらがターゲットに響きやすそうか？</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 この「振り返り」が、フレームワークを自分のものにする鍵です
+            </div>
+        </div>
+        </div>
+        <!-- スライド19: セクション - フレームワークまとめ -->
+        <div class="slide-container section-title-layout">
+            <h2>フレームワーク</h2>
+            <p>ABテストフレームワーク 完全版</p>
+        </div>
+        <!-- スライド20: フレームワーク全体図 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ABテストフレームワーク：全体像</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 500" style="max-height: 170%;">
+                    <!-- タイトル -->
+                    <rect x="200" y="10" width="400" height="35" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="400" y="33" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ABテストフレームワーク</text>
+                <!-- STEP 1-3: 設計フェーズ -->
+                <text x="50" y="75" fill="#888" font-size="11">設計フェーズ</text>
+                <rect x="50" y="85" width="220" height="55" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                <text x="160" y="105" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="bold">① 対象物の選定</text>
+                <text x="160" y="125" text-anchor="middle" fill="#aaa" font-size="10">CTA / バナー / LP など</text>
+                
+                <rect x="290" y="85" width="220" height="55" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                <text x="400" y="105" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="bold">② ターゲット定義</text>
+                <text x="400" y="125" text-anchor="middle" fill="#aaa" font-size="10">ペルソナ・課題・心理状態</text>
+                
+                <rect x="530" y="85" width="220" height="55" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                <text x="640" y="105" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="bold">③ トリガー選択</text>
+                <text x="640" y="125" text-anchor="middle" fill="#aaa" font-size="10">比較する2つの心理トリガー</text>
+                
+                <!-- STEP 4: 作成フェーズ -->
+                <text x="50" y="170" fill="#888" font-size="11">作成フェーズ</text>
+                <rect x="50" y="180" width="700" height="55" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="1" rx="6"/>
+                <text x="400" y="200" text-anchor="middle" fill="#a855f7" font-size="11" font-weight="bold">④ 2案作成（変数は1つだけ）</text>
+                <text x="400" y="220" text-anchor="middle" fill="#aaa" font-size="10">文字数・構成・トーンを揃え、心理トリガーの種類だけを変える</text>
+                
+                <!-- STEP 5: 評価フェーズ -->
+                <text x="50" y="265" fill="#888" font-size="11">評価フェーズ</text>
+                <rect x="50" y="275" width="340" height="55" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="1" rx="6"/>
+                <text x="220" y="295" text-anchor="middle" fill="#10b981" font-size="11" font-weight="bold">⑤-a 定性評価</text>
+                <text x="220" y="315" text-anchor="middle" fill="#aaa" font-size="10">心理メカニズム・適合度・リスク</text>
+                
+                <rect x="410" y="275" width="340" height="55" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="1" rx="6"/>
+                <text x="580" y="295" text-anchor="middle" fill="#10b981" font-size="11" font-weight="bold">⑤-b 定量予測</text>
+                <text x="580" y="315" text-anchor="middle" fill="#aaa" font-size="10">予測CTR・コンバージョン影響度</text>
+                
+                <!-- STEP 6-7: 判断フェーズ -->
+                <text x="50" y="360" fill="#888" font-size="11">判断フェーズ</text>
+                <rect x="50" y="370" width="340" height="70" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1" rx="6"/>
+                <text x="220" y="390" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">⑥ 判断基準</text>
+                <text x="220" y="410" text-anchor="middle" fill="#aaa" font-size="9">10%以上 → 優位案で進行</text>
+                <text x="220" y="425" text-anchor="middle" fill="#aaa" font-size="9">5-10% → 要検討 ｜ 5%未満 → 実ABテスト</text>
+                
+                <rect x="410" y="370" width="340" height="70" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1" rx="6"/>
+                <text x="580" y="390" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">⑦ 最終判断＋アクション</text>
+                <text x="580" y="410" text-anchor="middle" fill="#aaa" font-size="9">採用案の決定</text>
+                <text x="580" y="425" text-anchor="middle" fill="#aaa" font-size="9">判断理由の記録・次のアクション</text>
+                
+                <!-- 応用 -->
+                <rect x="200" y="460" width="400" height="30" fill="#333" stroke="#555" stroke-width="1" rx="6"/>
+                <text x="400" y="480" text-anchor="middle" fill="white" font-size="10">応用：トリガーを変えて再実践 → パターンを蓄積</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド21: フレームワークテンプレート -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">配布：フレームワークテンプレート</h2>
+            <div class="content-block">
+                <h3>実務で使えるテンプレート</h3>
+            <div class="prompt-box">
+                <div class="prompt-content" id="prompt-framework">
+        【ABテストフレームワーク テンプレート】
+        ■ ① 対象物：[CTA / バナー / LP / メール件名 など]
+        ■ ② ターゲット：
+
+        属性：[年齢・職業・状況]
+        課題：[抱えている問題]
+        心理状態：[今どう感じているか]
+        ■ ③ 比較トリガー：[トリガーA] vs [トリガーB]
+
+        ■ ④ A案コピー：
+        [ここにA案を記入]
+        ■ ④ B案コピー：
+        [ここにB案を記入]
+        ■ ⑤ AI評価結果：
+
+        定性評価：[メカニズム・適合度・リスク]
+        定量予測：A案 ○% / B案 ○%
+
+        ■ ⑥ 判断基準との照合：
+        [ ] 10%以上の差 → 優位案で進行
+        [ ] 5-10%の差 → 要検討
+        [ ] 5%未満 → 実ABテストへ
+        ■ ⑦ 最終判断：
+
+        採用案：[A案 / B案]
+        判断理由：[根拠を記載]
+        次のアクション：[実装 / 実ABテスト / 再検討]
+        </div>
+        <button class="copy-btn" onclick="copyPrompt('prompt-framework', event)">
+        <i class="fas fa-copy"></i> コピー
+        </button>
+        </div>
+        <div class="highlight-box">
+            📥 このテンプレートをコピーして、実務で繰り返し使ってください
+        </div>
+        </div>
+
+
+        </div>
+        <!-- スライド22: 完了チェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">演習完了チェックリスト</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>フェーズ1</h3>
+                    <p>CTAボタンで型を理解できた</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>フェーズ2</h3>
+                    <p>バナー広告で応用できた</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>フェーズ3</h3>
+                    <p>LPヒーローで実践力を確認できた</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>テンプレート</h3>
+                    <p>フレームワークを保存した</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド23: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のまとめ</h2>
+            <div class="content-block">
+                <h3>習得したこと</h3>
+                <ul>
+                    <li><strong>ABテストフレームワーク（7ステップ）</strong>を3フェーズで反復練習</li>
+                    <li><strong>「変数は1つだけ」</strong>のルールで2案を設計する方法</li>
+                    <li><strong>AIの定性＋定量評価</strong>を引き出すプロンプト設計</li>
+                    <li><strong>判断基準に基づく意思決定</strong>の実践</li>
+                </ul>
+                <h3>次に活かすために</h3>
+                <ul>
+                    <li><strong>トリガーを変えて再実践</strong>：希少性vs権威性、アンカリングvsフレーミング</li>
+                    <li><strong>実データと照合</strong>：AI予測と実ABテスト結果を比較し、精度を検証</li>
+                    <li><strong>パターンを蓄積</strong>：自社ターゲットに効くトリガーを特定</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 フレームワークをマスターすれば、トリガーを変えるだけで無限に応用できます
+                </div>
+            </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "ABテストフレームワークの「④ 2案作成」で最も重要なルールは？",
+                options: [
+                    "A案とB案で全く異なるデザインにする",
+                    "心理トリガー以外の要素（文字数・構成・トーン）を揃える",
+                    "A案は長く、B案は短くする",
+                    "できるだけ多くのトリガーを組み合わせる"
+                ],
+                correct: 1,
+                explanation: "「変数は1つだけ」が鉄則です。文字数・構成・トーンを揃え、心理トリガーの種類だけを変えることで、何が効いたかを特定できます。"
+            },
+            {
+                question: "フレームワークの「⑥ 判断基準」で、AIの予測差が5%未満だった場合の対応は？",
+                options: [
+                    "予測値が高い方を無条件で採用する",
+                    "両案とも不採用にする",
+                    "実データでのABテストを実施、または第3案を検討する",
+                    "AIに再度予測させて差が出るまで繰り返す"
+                ],
+                correct: 2,
+                explanation: "5%未満の僅差では、AI予測だけで優劣を判断しきれません。実際のユーザーデータでABテストを行うか、両案の良い部分を組み合わせた第3案を検討します。"
+            },
+            {
+                question: "本日の実践で「同じトリガー（損失回避vs社会的証明）」を3フェーズで繰り返した理由は？",
+                options: [
+                    "他のトリガーは効果がないから",
+                    "フレームワーク（型）を体に染み込ませ、応用時はトリガーを変えるだけで済むようにするため",
+                    "CTAとバナーとLPで効果が同じだから",
+                    "時間がなかったから"
+                ],
+                correct: 1,
+                explanation: "1つのパターンを完全に習得すれば、応用は「トリガー部分だけ差し替える」で対応できます。型を体に染み込ませることが、実践力向上の近道です。"
+            },
+            {
+                question: "Geminiへの評価依頼プロンプトに必ず含めるべき情報は？",
+                options: [
+                    "コピー文だけで十分",
+                    "ターゲット情報、A案・B案のコピー、評価観点",
+                    "競合他社の広告コピー",
+                    "自社の売上データ"
+                ],
+                correct: 1,
+                explanation: "AIに適切な評価をさせるには、ターゲット情報を具体的に与え、評価観点を明示することが重要です。曖昧な質問では曖昧な回答しか得られません。"
+            },
+            {
+                question: "このフレームワークを実務で応用する際、次に試すべきことは？",
+                options: [
+                    "同じトリガーで同じ対象物を繰り返す",
+                    "フレームワークを使わずに直感で判断する",
+                    "トリガーを変えて再実践し、自社ターゲットに効くパターンを蓄積する",
+                    "AIの予測を無視して好みで決める"
+                ],
+                correct: 2,
+                explanation: "フレームワークをマスターしたら、トリガーを「希少性vs権威性」「アンカリングvsフレーミング」などに変えて再実践。自社ターゲットに効くパターンを蓄積することで、精度が向上します。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

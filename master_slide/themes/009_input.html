@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009 現実を拡張する写真加工（Canva × AI）【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>現実を拡張する写真加工<span>Canva × AI</span><span>【理論編】</span></h1>
+                <p>生成塗りつぶしで「足りない」を「ちょうどいい」に変える</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ「良い写真」なのに<br>使えないのか？</h2>
+            <p>構図・比率・不要物が、デザインの足を引っ張る</p>
+        </div>
+
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>3つの柱</h3>
+                <p><strong>1. AI画像加工の基礎理論</strong><br>
+                生成塗りつぶしはどう「現実を拡張」するのか？その仕組みと限界</p>
+                
+                <p><strong>2. 判断基準：いつ・何を・どこまで加工するか</strong><br>
+                背景拡張と不要物削除、それぞれの意思決定フレームワーク</p>
+                
+                <p><strong>3. 実務への応用</strong><br>
+                サービスLP用ビジュアル素材としての活用パターン</p>
+                
+                <div class="highlight-box">
+                    🎯 Visual Architectの視点：「加工できる」ではなく「加工すべきか判断できる」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>第1章<br>AI画像加工の基礎理論</h2>
+            <p>生成塗りつぶしの仕組みと、従来の加工との違い</p>
+        </div>
+
+        <!-- スライド5: 従来の画像加工 vs AI画像加工 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">従来の加工 vs AI加工</h2>
+            <div class="content-block">
+                <h3>従来の画像加工（Photoshop等）</h3>
+                <ul>
+                    <li><strong>コピースタンプ</strong>：既存ピクセルを複製して貼り付け</li>
+                    <li><strong>パッチツール</strong>：周囲のテクスチャを引き伸ばし</li>
+                    <li><strong>トリミング</strong>：不要部分を切り取る（情報は減る）</li>
+                </ul>
+                
+                <h3>AI画像加工（生成塗りつぶし）</h3>
+                <ul>
+                    <li><strong>文脈理解</strong>：画像全体の「意味」を解析</li>
+                    <li><strong>生成</strong>：存在しなかった領域を「創造」</li>
+                    <li><strong>自然な融合</strong>：既存部分との境界を自動調整</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 AI加工は「編集」ではなく「生成」。存在しない情報を作り出せる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: 生成塗りつぶしの仕組み -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">生成塗りつぶしの仕組み</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 350">
+                    <!-- 背景 -->
+                    <!-- <rect width="800" height="350" fill="#0a0a0a"/> -->
+                    
+                    <!-- Step 1: 元画像 -->
+                    <rect x="50" y="80" width="150" height="100" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <rect x="70" y="100" width="50" height="60" fill="#00d4ff" opacity="0.3"/>
+                    <text x="125" y="210" text-anchor="middle" fill="#888" font-size="12">元画像</text>
+                    <text x="125" y="230" text-anchor="middle" fill="#00d4ff" font-size="11">既存ピクセル</text>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M220 130 L280 130" stroke="#00d4ff" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                    <text x="250" y="115" text-anchor="middle" fill="#888" font-size="11">解析</text>
+                    
+                    <!-- Step 2: 文脈理解 -->
+                    <rect x="300" y="80" width="150" height="100" fill="#1a1a2e" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <text x="375" y="120" text-anchor="middle" fill="#00ff9d" font-size="13">空・建物・人物</text>
+                    <text x="375" y="145" text-anchor="middle" fill="#00ff9d" font-size="13">照明・遠近感</text>
+                    <text x="375" y="210" text-anchor="middle" fill="#888" font-size="12">文脈理解</text>
+                    <text x="375" y="230" text-anchor="middle" fill="#00ff9d" font-size="11">意味の抽出</text>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M470 130 L530 130" stroke="#00ff9d" stroke-width="2" fill="none" marker-end="url(#arrowhead2)"/>
+                    <text x="500" y="115" text-anchor="middle" fill="#888" font-size="11">生成</text>
+                    
+                    <!-- Step 3: 拡張後 -->
+                    <rect x="550" y="80" width="200" height="100" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <rect x="570" y="100" width="50" height="60" fill="#00d4ff" opacity="0.3"/>
+                    <rect x="620" y="100" width="110" height="60" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,2"/>
+                    <text x="650" y="210" text-anchor="middle" fill="#888" font-size="12">拡張後</text>
+                    <text x="650" y="230" text-anchor="middle" fill="#ff6b6b" font-size="11">生成された領域</text>
+                    
+                    <!-- 凡例 -->
+                    <rect x="50" y="280" width="20" height="20" fill="#00d4ff" opacity="0.3"/>
+                    <text x="80" y="295" fill="#888" font-size="12">既存ピクセル</text>
+                    <rect x="200" y="280" width="20" height="20" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,2"/>
+                    <text x="230" y="295" fill="#888" font-size="12">AI生成領域</text>
+                    
+                    <!-- 矢印マーカー定義 -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                        </marker>
+                        <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00ff9d"/>
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <p style="margin-top: 1.5rem; text-align: center;">AIは「周囲から推測」ではなく「意味を理解して創造」する</p>
+            </div>
+        </div>
+
+        <!-- スライド7: Nano Banana Pro との使い分け -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AI画像ツールの使い分け</h2>
+            <div class="content-block">
+                <h3>Nano Banana Pro（完全生成）</h3>
+                <ul>
+                    <li>ゼロから画像を生成</li>
+                    <li>プロンプトで詳細制御</li>
+                    <li>人物・キャラクターの一貫性確保に工夫が必要</li>
+                </ul>
+                
+                <h3>Canva 生成塗りつぶし（部分生成）</h3>
+                <ul>
+                    <li>既存写真の一部を拡張・修正</li>
+                    <li>元画像の文脈を保持</li>
+                    <li>実写素材との融合が自然</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：すべてをNano Banana Proで生成しようとする<br>
+                    ✅ 判断基準：「素材がある」→ Canva、「素材がない」→ Nano Banana Pro
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: 生成塗りつぶしの限界 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">生成塗りつぶしの限界</h2>
+            <div class="content-block">
+                <h3>得意なこと</h3>
+                <ul>
+                    <li>自然な背景（空、壁、床、植物）の拡張</li>
+                    <li>規則的なパターン（タイル、レンガ）の延長</li>
+                    <li>小さな不要物の自然な削除</li>
+                </ul>
+                
+                <h3>苦手なこと</h3>
+                <ul>
+                    <li>人物の顔・手の生成（不自然になりやすい）</li>
+                    <li>文字・ロゴの生成（読めない文字が出現）</li>
+                    <li>複雑な構造物の拡張（建物の窓が歪むなど）</li>
+                    <li>元画像にない要素の追加（プロンプト指定しても不安定）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 限界を知ることが、正しい判断の第一歩
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>第2章<br>判断基準</h2>
+            <p>いつ・何を・どこまで加工するか</p>
+        </div>
+
+        <!-- スライド10: 背景拡張の判断フレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">背景拡張の判断フレームワーク</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- 背景 -->
+                    <!-- <rect width="800" height="400" fill="#0a0a0a"/> -->
+                    
+                    <!-- 判断フロー -->
+                    <!-- Start -->
+                    <rect x="300" y="20" width="200" height="50" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="50" text-anchor="middle" fill="#00d4ff" font-size="14">写真素材がある</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M400 70 L400 100" stroke="#888" stroke-width="2"/>
+                    
+                    <!-- 判断1 -->
+                    <polygon points="400,100 480,140 400,180 320,140" fill="#1a1a2e" stroke="#00ff9d" stroke-width="2"/>
+                    <text x="400" y="145" text-anchor="middle" fill="#00ff9d" font-size="12">比率は合っているか？</text>
+                    
+                    <!-- Yes -->
+                    <path d="M480 140 L560 140" stroke="#00ff9d" stroke-width="2"/>
+                    <text x="520" y="130" fill="#00ff9d" font-size="11">Yes</text>
+                    <rect x="560" y="115" width="180" height="50" fill="#1a1a2e" stroke="#888" stroke-width="1" rx="8"/>
+                    <text x="650" y="145" text-anchor="middle" fill="#888" font-size="12">加工不要</text>
+                    
+                    <!-- No -->
+                    <path d="M400 180 L400 210" stroke="#ff6b6b" stroke-width="2"/>
+                    <text x="415" y="200" fill="#ff6b6b" font-size="11">No</text>
+                    
+                    <!-- 判断2 -->
+                    <polygon points="400,210 500,260 400,310 300,260" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="400" y="255" text-anchor="middle" fill="#00d4ff" font-size="11">拡張する方向は</text>
+                    <text x="400" y="270" text-anchor="middle" fill="#00d4ff" font-size="11">単純な背景か？</text>
+                    
+                    <!-- Yes -->
+                    <path d="M500 260 L580 260" stroke="#00ff9d" stroke-width="2"/>
+                    <text x="540" y="250" fill="#00ff9d" font-size="11">Yes</text>
+                    <rect x="580" y="235" width="180" height="50" fill="#00ff9d" opacity="0.2" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <text x="670" y="265" text-anchor="middle" fill="#00ff9d" font-size="12">生成塗りつぶしで拡張</text>
+                    
+                    <!-- No -->
+                    <path d="M300 260 L220 260" stroke="#ff6b6b" stroke-width="2"/>
+                    <text x="260" y="250" fill="#ff6b6b" font-size="11">No</text>
+                    <rect x="40" y="235" width="180" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="130" y="258" text-anchor="middle" fill="#ff6b6b" font-size="11">別素材を探すor</text>
+                    <text x="130" y="275" text-anchor="middle" fill="#ff6b6b" font-size="11">Nano Banana Proで生成</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド11: 拡張すべき方向の見極め -->
+        <div class="slide-container">
+            <h2 class="slide-title">拡張すべき方向の見極め</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>✅ 拡張しやすい方向</h3>
+                    <svg class="generated-art" viewBox="0 0 350 175">
+                        <!-- <rect width="350" height="200" fill="#0a0a0a"/> -->
+                        <!-- 元画像 -->
+                        <rect x="100" y="50" width="150" height="100" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"/>
+                        <!-- 拡張方向（左右） -->
+                        <rect x="30" y="50" width="70" height="100" fill="#00ff9d" opacity="0.2" stroke="#00ff9d" stroke-width="1" stroke-dasharray="4,2"/>
+                        <rect x="250" y="50" width="70" height="100" fill="#00ff9d" opacity="0.2" stroke="#00ff9d" stroke-width="1" stroke-dasharray="4,2"/>
+                        <text x="65" y="105" text-anchor="middle" fill="#00ff9d" font-size="11">空・壁</text>
+                        <text x="285" y="105" text-anchor="middle" fill="#00ff9d" font-size="11">空・壁</text>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #888;">単純な背景を左右に拡張</p>
+                </div>
+                <div>
+                    <h3>❌ 拡張が難しい方向</h3>
+                    <svg class="generated-art" viewBox="0 0 350 175">
+                        <!-- <rect width="350" height="200" fill="#0a0a0a"/> -->
+                        <!-- 元画像 -->
+                        <rect x="100" y="45" width="150" height="80" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"></rect>
+                        <!-- 人物シルエット -->
+                        <ellipse cx="175" cy="65" rx="20" ry="15" fill="#00d4ff" opacity="0.4"></ellipse>
+                        <rect x="160" y="75" width="30" height="40" fill="#00d4ff" opacity="0.4"></rect>
+                        <!-- 拡張方向（下） -->
+                        <rect x="100" y="125" width="150" height="30" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,2"></rect>
+                        <text x="175" y="145" text-anchor="middle" fill="#ff6b6b" font-size="11">人物の下半身？</text>
+                    </svg>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #888;">人物・複雑な構造の拡張は困難</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: 不要物削除の判断フレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">不要物削除の判断フレームワーク</h2>
+            <div class="content-block">
+                <h3>削除すべきもの（優先度高）</h3>
+                <ul>
+                    <li><strong>注意を奪う要素</strong>：通行人、車、看板（視線が分散する）</li>
+                    <li><strong>ブランドイメージに合わない要素</strong>：ゴミ箱、電線、汚れ</li>
+                    <li><strong>法的リスクのある要素</strong>：他社ロゴ、顔が識別できる第三者</li>
+                </ul>
+                
+                <h3>削除を慎重に判断すべきもの</h3>
+                <ul>
+                    <li><strong>文脈を伝える要素</strong>：周囲の人々（賑わい感）、小物（雰囲気）</li>
+                    <li><strong>サイズの大きい要素</strong>：削除後の補完が不自然になりやすい</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 判断基準：「この要素は、伝えたいメッセージを強化するか、弱めるか？」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: CRO理論との接続 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CRO理論との接続：視線誘導と不要物</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 背景 -->
+                    <!-- <rect width="800" height="300" fill="#0a0a0a"/> -->
+                    
+                    <!-- Before -->
+                    <text x="200" y="30" text-anchor="middle" fill="#ff6b6b" font-size="14">Before：視線が分散</text>
+                    <rect x="50" y="50" width="300" height="200" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <!-- 主要素 -->
+                    <rect x="150" y="100" width="100" height="80" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="4"/>
+                    <text x="200" y="145" text-anchor="middle" fill="#00d4ff" font-size="12">商品</text>
+                    <!-- 不要物 -->
+                    <circle cx="90" cy="90" r="20" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="1"/>
+                    <text x="90" y="95" text-anchor="middle" fill="#ff6b6b" font-size="10">人</text>
+                    <rect x="280" y="150" width="50" height="30" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="1"/>
+                    <text x="305" y="170" text-anchor="middle" fill="#ff6b6b" font-size="10">看板</text>
+                    <!-- 視線 -->
+                    <path d="M80 180 Q120 120 150 140" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+                    <path d="M250 180 Q280 150 280 165" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+                    
+                    <!-- After -->
+                    <text x="600" y="30" text-anchor="middle" fill="#00ff9d" font-size="14">After：視線が集中</text>
+                    <rect x="450" y="50" width="300" height="200" fill="#1a1a2e" stroke="#00ff9d" stroke-width="2" rx="8"/>
+                    <!-- 主要素 -->
+                    <rect x="550" y="100" width="100" height="80" fill="#00d4ff" opacity="0.5" stroke="#00d4ff" stroke-width="3" rx="4"/>
+                    <text x="600" y="145" text-anchor="middle" fill="#00d4ff" font-size="14">商品</text>
+                    <!-- 視線 -->
+                    <path d="M480 200 Q530 150 550 140" stroke="#00ff9d" stroke-width="2" fill="none"/>
+                    <path d="M720 200 Q670 150 650 140" stroke="#00ff9d" stroke-width="2" fill="none"/>
+                    <polygon points="545,140 555,135 555,145" fill="#00ff9d"/>
+                    <polygon points="655,140 645,135 645,145" fill="#00ff9d"/>
+                </svg>
+                <p style="margin-top: 1rem; text-align: center;">不要物削除は「見た目」ではなく「視線誘導」の問題</p>
+            </div>
+        </div>
+
+        <!-- スライド14: どこまで加工するか -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「どこまで加工するか」の判断基準</h2>
+            <div class="content-block">
+                <h3>加工のレベル</h3>
+                
+                <p><strong>Level 1：最小限の調整</strong></p>
+                <ul>
+                    <li>比率調整のための背景拡張（5〜10%程度）</li>
+                    <li>小さな不要物の削除（画面の5%未満）</li>
+                </ul>
+                
+                <p><strong>Level 2：中程度の加工</strong></p>
+                <ul>
+                    <li>大幅な背景拡張（50%以上）</li>
+                    <li>目立つ不要物の削除</li>
+                    <li>複数箇所の修正</li>
+                </ul>
+                
+                <p><strong>Level 3：大規模な変更</strong></p>
+                <ul>
+                    <li>背景全体の差し替え</li>
+                    <li>主要要素の追加・削除</li>
+                    <li>→ この場合は Nano Banana Pro での生成を検討</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ Level 2以上は「本当にこの素材を使うべきか？」を再検討
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>第3章<br>実務への応用</h2>
+            <p>サービスLP用ビジュアル素材としての活用</p>
+        </div>
+
+        <!-- スライド16: LPにおけるビジュアルの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">LPにおけるビジュアルの役割</h2>
+            <div class="content-block">
+                <h3>ファーストビュー（ヒーロー画像）</h3>
+                <ul>
+                    <li><strong>目的</strong>：3秒で「何のサービスか」を伝える</li>
+                    <li><strong>よくある問題</strong>：写真素材が正方形、LPは16:9が必要</li>
+                    <li><strong>解決策</strong>：背景拡張で比率を調整</li>
+                </ul>
+                
+                <h3>機能紹介セクション</h3>
+                <ul>
+                    <li><strong>目的</strong>：具体的なメリットを視覚化</li>
+                    <li><strong>よくある問題</strong>：背景に余計な情報が写り込んでいる</li>
+                    <li><strong>解決策</strong>：不要物削除でメッセージを明確化</li>
+                </ul>
+                
+                <h3>信頼構築セクション</h3>
+                <ul>
+                    <li><strong>目的</strong>：実績・人物で安心感を与える</li>
+                    <li><strong>よくある問題</strong>：オフィス写真に他社ロゴが写っている</li>
+                    <li><strong>解決策</strong>：法的リスク要素の削除</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド17: ヒーロー画像の比率問題 -->
+        <div class="slide-container">
+            <h2 class="slide-title">実例：ヒーロー画像の比率問題</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before：素材そのまま</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect width="350" height="250" fill="#0a0a0a"/> -->
+                        <!-- 正方形の写真 -->
+                        <rect x="75" y="25" width="200" height="200" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="4"/>
+                        <text x="175" y="130" text-anchor="middle" fill="#888" font-size="14">1:1</text>
+                        <text x="175" y="150" text-anchor="middle" fill="#888" font-size="12">（素材の比率）</text>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #ff6b6b;">LPのヘッダーに収まらない</p>
+                </div>
+                <div>
+                    <h3>✅ After：背景拡張で16:9に</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <!-- <rect width="350" height="250" fill="#0a0a0a"/> -->
+                        <!-- 16:9の画像 -->
+                        <rect x="25" y="40.5" width="300" height="169" fill="#1a1a2e" stroke="#00ff9d" stroke-width="2" rx="4"/>
+                        <!-- 元の部分 -->
+                        <rect x="100" y="40.5" width="150" height="169" fill="#00d4ff" opacity="0.1"/>
+                        <!-- 拡張部分 -->
+                        <rect x="25" y="40.5" width="75" height="169" fill="#00ff9d" opacity="0.1"/>
+                        <rect x="250" y="40.5" width="75" height="169" fill="#00ff9d" opacity="0.1"/>
+                        <text x="175" y="129.5" text-anchor="middle" fill="#888" font-size="14">16:9</text>
+                    </svg>
+                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #00ff9d;">ファーストビューにフィット</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: 不要物削除のユースケース -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">不要物削除の典型的ユースケース</h2>
+            <div class="content-block">
+                <h3>1. 人物写真のクリーンアップ</h3>
+                <p>背景の通行人、反射に写り込んだカメラマン、影響を与えない小物を削除</p>
+                
+                <h3>2. オフィス・施設写真の調整</h3>
+                <p>他社ロゴ、個人情報が見える書類、ゴミ箱、乱雑なデスク周りを削除</p>
+                
+                <h3>3. 商品写真の最適化</h3>
+                <p>背景の余計な小物、反射や映り込み、傷や汚れを削除</p>
+                
+                <h3>4. イベント・セミナー写真</h3>
+                <p>空席、退出中の人、プロジェクターのケーブル類を削除</p>
+                
+                <div class="highlight-box">
+                    💡 共通点：「視線を主役に集中させる」ための削除
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: プロンプトの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">生成塗りつぶしにおけるプロンプトの役割</h2>
+            <div class="content-block">
+                <h3>プロンプトなし（自動生成）</h3>
+                <ul>
+                    <li>周囲の文脈から自動判断</li>
+                    <li>単純な背景拡張には十分</li>
+                    <li>予測可能な結果</li>
+                </ul>
+                
+                <h3>プロンプトあり（指示付き生成）</h3>
+                <ul>
+                    <li>「木を追加」「人を消す」など具体的な指示</li>
+                    <li>元画像にない要素を追加可能</li>
+                    <li>結果が不安定になりやすい</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 Visual Architectの判断：<br>
+                    「プロンプトなしで済むか？」が最初の判断ポイント<br>
+                    複雑な指示が必要な場合は Nano Banana Pro を検討
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド20: ブランド一貫性の観点 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブランド一貫性の観点</h2>
+            <div class="content-block">
+                <h3>加工後も守るべきブランド要素</h3>
+                <ul>
+                    <li><strong>色調</strong>：拡張部分がブランドカラーと調和するか</li>
+                    <li><strong>雰囲気</strong>：高級感 or カジュアル、明るい or 落ち着いた</li>
+                    <li><strong>トーン</strong>：暖色系 or 寒色系、彩度の高さ</li>
+                </ul>
+                
+                <h3>加工が一貫性を損なうケース</h3>
+                <ul>
+                    <li>拡張した空の色が、元の写真と微妙に違う</li>
+                    <li>削除後の補完部分がのっぺりして見える</li>
+                    <li>異なる写真を加工した結果、トーンがバラバラ</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 複数画像を加工する場合は、全体の統一感を必ずチェック
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: 加工の倫理的考慮 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">加工の倫理的考慮</h2>
+            <div class="content-block">
+                <h3>許容される加工</h3>
+                <ul>
+                    <li>背景の拡張・整理（本質を変えない）</li>
+                    <li>プライバシー保護のための人物削除</li>
+                    <li>技術的な制約の解消（比率調整など）</li>
+                </ul>
+                
+                <h3>慎重に判断すべき加工</h3>
+                <ul>
+                    <li>人物の外見を変更する加工（美化、若返りなど）</li>
+                    <li>実在しない状況を作り出す加工</li>
+                    <li>競合他社の要素を意図的に削除・追加</li>
+                </ul>
+                
+                <h3>避けるべき加工</h3>
+                <ul>
+                    <li>事実と異なる印象を与える加工</li>
+                    <li>法的に問題のある加工（著作権侵害など）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 判断基準：「この加工は、誰かを欺く意図があるか？」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>まとめ</h2>
+            <p>理論編の重要ポイント</p>
+        </div>
+
+        <!-- スライド23: まとめタイル -->
+        <div class="slide-container">
+            <h2 class="slide-title">生成塗りつぶしの判断基準</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">🔍</div>
+                    <h3>文脈理解</h3>
+                    <p>AIは「意味」を理解して<br>存在しない領域を創造する</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📐</div>
+                    <h3>拡張の判断</h3>
+                    <p>単純な背景 → OK<br>複雑な構造 → 別手段を検討</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>削除の判断</h3>
+                    <p>視線を主役に集中させる<br>ための削除か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚖️</div>
+                    <h3>ツール選択</h3>
+                    <p>素材あり → Canva<br>素材なし → Nano Banana Pro</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：実践編へ</h2>
+            <div class="content-block">
+                <h3>実践編で学ぶこと</h3>
+                <ul>
+                    <li><strong>Canvaの生成塗りつぶし機能</strong>の具体的な操作方法</li>
+                    <li><strong>背景拡張</strong>：比率調整のハンズオン演習</li>
+                    <li><strong>不要物削除</strong>：通行人・看板の削除演習</li>
+                    <li><strong>実務課題</strong>：LP用ヒーロー画像の最適化</li>
+                </ul>
+                
+                <h3>理論編で得た判断基準を、実践で検証する</h3>
+                <p>操作方法を覚えるだけでなく、「なぜこの加工をするのか」を常に意識してください。</p>
+                
+                <div class="highlight-box">
+                    🎯 Visual Architectの視点を忘れずに：<br>
+                    「加工できるか」ではなく「加工すべきか」を判断する
+                </div>
+            </div>
+        </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <script>
+        const questions = [
+            {
+                question: "Canvaの生成塗りつぶしと、Nano Banana Proの使い分けとして正しいのは？",
+                options: [
+                    "どちらも同じなので、使い慣れた方を使う",
+                    "素材がある場合はCanva、ゼロから作る場合はNano Banana Pro",
+                    "高品質な画像が必要ならNano Banana Pro、それ以外はCanva",
+                    "人物画像はCanva、風景画像はNano Banana Pro"
+                ],
+                correct: 1,
+                explanation: "生成塗りつぶしは「既存素材の部分修正」、Nano Banana Proは「ゼロからの完全生成」が得意です。素材があるかないかが判断基準になります。"
+            },
+            {
+                question: "背景拡張が困難なケースとして最も適切なのは？",
+                options: [
+                    "空の背景を左右に拡張する",
+                    "白い壁を上下に拡張する",
+                    "人物の下半身を生成して追加する",
+                    "床のタイルパターンを延長する"
+                ],
+                correct: 2,
+                explanation: "生成塗りつぶしは、人物の体の一部など複雑な構造の生成が苦手です。単純な背景（空、壁、規則的なパターン）の拡張は得意ですが、人物の生成は不自然になりやすいです。"
+            },
+            {
+                question: "LP用の写真から通行人を削除する判断基準として、最も適切なのは？",
+                options: [
+                    "人が多いほど賑わい感が出るので、削除しない方がよい",
+                    "視線が商品・サービスに集中するなら削除する価値がある",
+                    "通行人は必ず全員削除すべき",
+                    "法的リスクがある場合のみ削除する"
+                ],
+                correct: 1,
+                explanation: "不要物削除の判断基準は「視線誘導」です。通行人が視線を分散させるなら削除、賑わい感として効果的なら残すという判断が必要です。CRO理論と接続した考え方です。"
+            },
+            {
+                question: "生成塗りつぶしでプロンプト（指示）を使うべきケースは？",
+                options: [
+                    "すべての加工でプロンプトを詳細に指定すべき",
+                    "プロンプトは使わず、常に自動生成に任せるべき",
+                    "元画像にない要素を追加したい場合（ただし結果は不安定）",
+                    "削除する対象を特定するために必ず使う"
+                ],
+                correct: 2,
+                explanation: "単純な背景拡張はプロンプトなしで十分です。プロンプトは元画像にない要素を追加したい場合に使いますが、結果が不安定になりやすいため、複雑な指示が必要な場合はNano Banana Proを検討すべきです。"
+            },
+            {
+                question: "写真加工の倫理的観点から、避けるべき加工は？",
+                options: [
+                    "比率調整のための背景拡張",
+                    "プライバシー保護のための通行人の削除",
+                    "実在しない受賞歴のトロフィーを追加する",
+                    "電線やゴミ箱などの不要物の削除"
+                ],
+                correct: 2,
+                explanation: "事実と異なる印象を与える加工（存在しない受賞歴の追加など）は、誰かを欺く意図があるため避けるべきです。背景拡張や不要物削除は、本質を変えない範囲で許容されます。"
+            }
+        ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

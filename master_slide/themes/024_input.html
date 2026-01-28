@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>024 AIによるABテストシミュレーション【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>AIによる<br>ABテストシミュレーション<span>【理論編】</span></h1>
+                <p>心理トリガーの効果を予測し、データに基づく意思決定を行う</p>
+            </div>
+        </div>
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>「どちらが効くか」を<br>リリース前に知りたくないですか？</h2>
+            <p>従来のABテストは「出してから検証」だった</p>
+        </div>
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本講義で学ぶこと</h2>
+            <div class="content-block">
+                <h3>アジェンダ</h3>
+                <ul>
+                    <li><strong>1. 心理トリガーとは何か</strong>：人の行動を促す6つの原則</li>
+                    <li><strong>2. なぜ事前シミュレーションが必要か</strong>：従来ABテストの限界</li>
+                    <li><strong>3. 心理トリガー比較の設計方法</strong>：何を・どう比較するか</li>
+                    <li><strong>4. AIによる評価の仕組み</strong>：定性評価と定量予測</li>
+                    <li><strong>5. 予測結果の読み解き方</strong>：数値の解釈と意思決定</li>
+                </ul>
+            </div>
+        </div>
+        <!-- スライド4: セクション1 心理トリガー基礎 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 1</h2>
+            <p>心理トリガーとは何か</p>
+        </div>
+        <!-- スライド5: 心理トリガーの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>心理トリガー =<br>人の意思決定を動かす「引き金」</h2>
+            <p>論理ではなく、感情と直感に働きかける</p>
+        </div>
+        <!-- スライド6: 6つの心理トリガー概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">チャルディーニの「影響力の武器」</h2>
+            <div class="content-block">
+                <h3>人を動かす6つの原則</h3>
+                <p>心理学者ロバート・チャルディーニが体系化した、説得と影響力の基本原則です。マーケティング、セールス、UXデザインで広く活用されています。</p>
+            <ul>
+                <li><strong>返報性</strong>：もらったら返したくなる</li>
+                <li><strong>一貫性</strong>：言ったことを守りたくなる</li>
+                <li><strong>社会的証明</strong>：みんながやっていると安心する</li>
+                <li><strong>好意</strong>：好きな人の言うことを聞きたくなる</li>
+                <li><strong>権威</strong>：専門家の意見を信じたくなる</li>
+                <li><strong>希少性</strong>：手に入らないものほど欲しくなる</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 これらは「人を操作する」技術ではなく、人間の自然な心理傾向の理解です
+            </div>
+        </div>
+        </div>
+        <!-- スライド7: 主要トリガー詳細 Part1 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ABテストで頻出するトリガー①</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <!-- 損失回避 -->
+                    <rect x="30" y="30" width="360" height="130" fill="#ff6b6b" opacity="0.15" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="210" y="60" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">損失回避（Loss Aversion）</text>
+                    <text x="210" y="90" text-anchor="middle" fill="white" font-size="13">「得る喜び」より「失う痛み」の方が2倍強い</text>
+                    <line x1="60" y1="110" x2="360" y2="110" stroke="#444" stroke-width="1"/>
+                    <text x="210" y="135" text-anchor="middle" fill="#aaa" font-size="12">使用例：「今日限り」「この機会を逃すと」</text>
+                    <text x="210" y="152" text-anchor="middle" fill="#aaa" font-size="12">「年間12万円の損失を防げます」</text>
+                <!-- 社会的証明 -->
+                <rect x="410" y="30" width="360" height="130" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2" rx="8"/>
+                <text x="590" y="60" text-anchor="middle" fill="#10b981" font-size="16" font-weight="bold">社会的証明（Social Proof）</text>
+                <text x="590" y="90" text-anchor="middle" fill="white" font-size="13">他者の行動が自分の判断基準になる</text>
+                <line x1="440" y1="110" x2="740" y2="110" stroke="#444" stroke-width="1"/>
+                <text x="590" y="135" text-anchor="middle" fill="#aaa" font-size="12">使用例：「10,000人が選んだ」「★4.8評価」</text>
+                <text x="590" y="152" text-anchor="middle" fill="#aaa" font-size="12">「〇〇業界No.1」</text>
+                
+                <!-- 希少性 -->
+                <rect x="30" y="190" width="360" height="130" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="2" rx="8"/>
+                <text x="210" y="220" text-anchor="middle" fill="#f59e0b" font-size="16" font-weight="bold">希少性（Scarcity）</text>
+                <text x="210" y="250" text-anchor="middle" fill="white" font-size="13">手に入りにくいものほど価値を感じる</text>
+                <line x1="60" y1="270" x2="360" y2="270" stroke="#444" stroke-width="1"/>
+                <text x="210" y="295" text-anchor="middle" fill="#aaa" font-size="12">使用例：「残り3席」「限定100名」</text>
+                <text x="210" y="312" text-anchor="middle" fill="#aaa" font-size="12">「本日23:59まで」</text>
+                
+                <!-- 権威性 -->
+                <rect x="410" y="190" width="360" height="130" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="2" rx="8"/>
+                <text x="590" y="220" text-anchor="middle" fill="#a855f7" font-size="16" font-weight="bold">権威性（Authority）</text>
+                <text x="590" y="250" text-anchor="middle" fill="white" font-size="13">専門家や実績のある人の意見を信じる</text>
+                <line x1="440" y1="270" x2="740" y2="270" stroke="#444" stroke-width="1"/>
+                <text x="590" y="295" text-anchor="middle" fill="#aaa" font-size="12">使用例：「医師推奨」「東大教授監修」</text>
+                <text x="590" y="312" text-anchor="middle" fill="#aaa" font-size="12">「Forbes掲載」</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド8: 主要トリガー詳細 Part2 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ABテストで頻出するトリガー②</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <!-- アンカリング -->
+                    <rect x="30" y="30" width="360" height="130" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="210" y="60" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">アンカリング（Anchoring）</text>
+                    <text x="210" y="90" text-anchor="middle" fill="white" font-size="13">最初に見た数字が判断基準になる</text>
+                    <line x1="60" y1="110" x2="360" y2="110" stroke="#444" stroke-width="1"/>
+                    <text x="210" y="135" text-anchor="middle" fill="#aaa" font-size="12">使用例：「通常¥10,000 → 今だけ¥5,000」</text>
+                    <text x="210" y="152" text-anchor="middle" fill="#aaa" font-size="12">「他社比較で30%OFF」</text>
+                <!-- フレーミング -->
+                <rect x="410" y="30" width="360" height="130" fill="#ec4899" opacity="0.15" stroke="#ec4899" stroke-width="2" rx="8"/>
+                <text x="590" y="60" text-anchor="middle" fill="#ec4899" font-size="16" font-weight="bold">フレーミング（Framing）</text>
+                <text x="590" y="90" text-anchor="middle" fill="white" font-size="13">同じ事実でも表現方法で印象が変わる</text>
+                <line x1="440" y1="110" x2="740" y2="110" stroke="#444" stroke-width="1"/>
+                <text x="590" y="135" text-anchor="middle" fill="#aaa" font-size="12">使用例：「成功率90%」vs「失敗率10%」</text>
+                <text x="590" y="152" text-anchor="middle" fill="#aaa" font-size="12">「1日たった166円」vs「月額5,000円」</text>
+                
+                <!-- 返報性 -->
+                <rect x="30" y="190" width="360" height="130" fill="#14b8a6" opacity="0.15" stroke="#14b8a6" stroke-width="2" rx="8"/>
+                <text x="210" y="220" text-anchor="middle" fill="#14b8a6" font-size="16" font-weight="bold">返報性（Reciprocity）</text>
+                <text x="210" y="250" text-anchor="middle" fill="white" font-size="13">もらったら何かを返したくなる</text>
+                <line x1="60" y1="270" x2="360" y2="270" stroke="#444" stroke-width="1"/>
+                <text x="210" y="295" text-anchor="middle" fill="#aaa" font-size="12">使用例：「無料ebook プレゼント」</text>
+                <text x="210" y="312" text-anchor="middle" fill="#aaa" font-size="12">「まずは無料で試す」</text>
+                
+                <!-- 一貫性 -->
+                <rect x="410" y="190" width="360" height="130" fill="#6366f1" opacity="0.15" stroke="#6366f1" stroke-width="2" rx="8"/>
+                <text x="590" y="220" text-anchor="middle" fill="#6366f1" font-size="16" font-weight="bold">一貫性（Commitment）</text>
+                <text x="590" y="250" text-anchor="middle" fill="white" font-size="13">一度始めたことは続けたくなる</text>
+                <line x1="440" y1="270" x2="740" y2="270" stroke="#444" stroke-width="1"/>
+                <text x="590" y="295" text-anchor="middle" fill="#aaa" font-size="12">使用例：「前回の続きから」「ステップ2/3」</text>
+                <text x="590" y="312" text-anchor="middle" fill="#aaa" font-size="12">「あと少しで完了」</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド9: トリガーの選び方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">どのトリガーを使うべきか？</h2>
+            <div class="content-block">
+                <h3>ターゲットの心理状態で選ぶ</h3>
+                <ul>
+                    <li><strong>迷っている人</strong> → 社会的証明、権威性（安心させる）</li>
+                    <li><strong>興味はあるが後回しにする人</strong> → 損失回避、希少性（今動かせる）</li>
+                    <li><strong>価格で躊躇している人</strong> → アンカリング、フレーミング（価値認識を変える）</li>
+                    <li><strong>初めての訪問者</strong> → 返報性（まず価値を与える）</li>
+                </ul>
+            <div class="highlight-box">
+                ⚠️ よくある間違い：「全部入れれば効果が高い」<br>
+                → トリガーの乱用は信頼を損なう。1〜2個に絞って使う
+            </div>
+        </div>
+        </div>
+        <!-- スライド10: セクション2 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 2</h2>
+            <p>なぜ事前シミュレーションが必要か</p>
+        </div>
+        <!-- スライド11: 従来ABテストの限界 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">従来のABテストの問題点</h2>
+            <div class="content-block">
+                <h3>「出してから検証」のコスト</h3>
+                <ul>
+                    <li><strong>時間コスト</strong>：統計的有意差を得るまで数週間〜数ヶ月</li>
+                    <li><strong>機会損失</strong>：劣位案に流れたトラフィックは取り戻せない</li>
+                    <li><strong>リソース負担</strong>：2案を同時に実装・運用する工数</li>
+                </ul>
+            <h3>特に問題となるケース</h3>
+            <ul>
+                <li>トラフィックが少ないサイト（有意差が出るまで時間がかかる）</li>
+                <li>一度きりのキャンペーン（テスト期間を設けられない）</li>
+                <li>高単価商材（少数の離脱が大きな損失に直結）</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 事前に「勝ち筋」を予測できれば、これらのコストを大幅に削減できる
+            </div>
+        </div>
+        </div>
+        <!-- スライド12: AIシミュレーションの価値 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AIシミュレーションが解決すること</h2>
+            <div class="content-block svg-centered">
+                <h3>従来 vs AI活用のワークフロー比較</h3>
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 従来フロー -->
+                    <text x="200" y="30" text-anchor="middle" fill="#888" font-size="14">従来のABテスト</text>
+                    <rect x="50" y="50" width="100" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="6"/>
+                    <text x="100" y="80" text-anchor="middle" fill="white" font-size="12">A案作成</text>
+                    <rect x="170" y="50" width="100" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="6"/>
+                    <text x="220" y="80" text-anchor="middle" fill="white" font-size="12">B案作成</text>
+                    <rect x="290" y="50" width="100" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="6"/>
+                    <text x="340" y="80" text-anchor="middle" fill="white" font-size="12">同時公開</text>
+                    <rect x="410" y="50" width="100" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="6"/>
+                    <text x="460" y="75" text-anchor="middle" fill="white" font-size="11">数週間</text>
+                    <text x="460" y="90" text-anchor="middle" fill="white" font-size="11">データ収集</text>
+                    <rect x="530" y="50" width="100" height="50" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="6"/>
+                    <text x="580" y="80" text-anchor="middle" fill="white" font-size="12">結果判定</text>
+                    <!-- 矢印 -->
+                    <path d="M150 75 L165 75" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    <path d="M270 75 L285 75" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    <path d="M390 75 L405 75" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                    <path d="M510 75 L525 75" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                <!-- AIフロー -->
+                <text x="200" y="170" text-anchor="middle" fill="#888" font-size="14">AI事前シミュレーション</text>
+                <rect x="50" y="190" width="100" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                <text x="100" y="220" text-anchor="middle" fill="white" font-size="12">A案作成</text>
+                <rect x="170" y="190" width="100" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                <text x="220" y="220" text-anchor="middle" fill="white" font-size="12">B案作成</text>
+                <rect x="290" y="190" width="120" height="50" fill="#a855f7" opacity="0.3" stroke="#a855f7" stroke-width="2" rx="6"/>
+                <text x="350" y="212" text-anchor="middle" fill="white" font-size="11">AI評価</text>
+                <text x="350" y="228" text-anchor="middle" fill="white" font-size="11">（数分）</text>
+                <rect x="430" y="190" width="100" height="50" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                <text x="480" y="220" text-anchor="middle" fill="white" font-size="12">優位案で公開</text>
+                <rect x="550" y="190" width="100" height="50" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="6"/>
+                <text x="600" y="215" text-anchor="middle" fill="white" font-size="11">実データで</text>
+                <text x="600" y="230" text-anchor="middle" fill="white" font-size="11">検証・改善</text>
+                <!-- 矢印 -->
+                <path d="M150 215 L165 215" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                <path d="M270 215 L285 215" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                <path d="M410 215 L425 215" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                <path d="M530 215 L545 215" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                
+                <!-- 比較ラベル -->
+                <text x="700" y="80" text-anchor="middle" fill="#ff6b6b" font-size="12">数週間〜</text>
+                <text x="700" y="220" text-anchor="middle" fill="#00d4ff" font-size="12">数分〜</text>
+            </svg>
+            
+            <div class="highlight-box">
+                ⚠️ AIシミュレーションは従来テストの「代替」ではなく「事前フィルター」として活用
+            </div>
+        </div>
+        </div>
+        <!-- スライド13: セクション3 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 3</h2>
+            <p>心理トリガー比較の設計方法</p>
+        </div>
+        <!-- スライド14: 比較設計の原則 -->
+        <div class="slide-container big-concept-layout">
+            <h2>「変数は1つだけ」が鉄則</h2>
+            <p>心理トリガー以外の要素を揃えなければ、何が効いたか分からない</p>
+        </div>
+        <!-- スライド15: 比較設計の詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">有効な比較設計のルール</h2>
+            <div class="content-block">
+                <h3>揃えるべき要素（コントロール変数）</h3>
+                <ul>
+                    <li><strong>レイアウト・配置</strong>：同じ位置、同じサイズ</li>
+                    <li><strong>デザイン要素</strong>：色、フォント、画像スタイル</li>
+                    <li><strong>情報量</strong>：文字数、項目数を近づける</li>
+                    <li><strong>ターゲット設定</strong>：同一ペルソナを想定</li>
+                </ul>
+            <h3>変えるべき要素（独立変数）</h3>
+            <ul>
+                <li><strong>心理トリガーの種類のみ</strong>：損失回避 vs 社会的証明 など</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：A案とB案でデザインも文言もすべて変えてしまう<br>
+                → 結果が出ても「何が効いたか」が特定できない
+            </div>
+        </div>
+        </div>
+        <!-- スライド16: 心理トリガーの組み合わせ例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">代表的な比較パターン</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 400">
+                    <!-- パターン1 -->
+                    <rect x="50" y="40" width="320" height="80" fill="#ff6b6b" opacity="0.15" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                    <text x="210" y="70" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold">損失回避 vs 社会的証明</text>
+                    <text x="210" y="95" text-anchor="middle" fill="white" font-size="12">「今日限り」vs「10,000人が選んだ」</text>
+                    <text x="210" y="115" text-anchor="middle" fill="#888" font-size="11">→ 緊急性 vs 安心感の比較</text>
+                <!-- パターン2 -->
+                <rect x="430" y="40" width="320" height="80" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                <text x="590" y="70" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">希少性 vs 権威性</text>
+                <text x="590" y="95" text-anchor="middle" fill="white" font-size="12">「残り3席」vs「専門家推奨」</text>
+                <text x="590" y="115" text-anchor="middle" fill="#888" font-size="11">→ FOMO vs 信頼の比較</text>
+                
+                <!-- パターン3 -->
+                <rect x="50" y="160" width="320" height="80" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="2" rx="8"/>
+                <text x="210" y="190" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">返報性 vs 一貫性</text>
+                <text x="210" y="215" text-anchor="middle" fill="white" font-size="12">「無料プレゼント」vs「前回の続き」</text>
+                <text x="210" y="235" text-anchor="middle" fill="#888" font-size="11">→ お返し心理 vs コミットメントの比較</text>
+                
+                <!-- パターン4 -->
+                <rect x="430" y="160" width="320" height="80" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2" rx="8"/>
+                <text x="590" y="190" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold">アンカリング vs フレーミング</text>
+                <text x="590" y="215" text-anchor="middle" fill="white" font-size="12">「通常¥10,000→¥5,000」vs「1日たった¥166」</text>
+                <text x="590" y="235" text-anchor="middle" fill="#888" font-size="11">→ 比較基準 vs 表現方法の比較</text>
+                
+                <!-- 選び方の指針 -->
+                <rect x="150" y="290" width="500" height="70" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                <text x="400" y="315" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">選び方の指針</text>
+                <text x="400" y="340" text-anchor="middle" fill="white" font-size="12">ターゲットの「現在の心理状態」と「求める行動変化」から逆算する</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド17: 適用対象別の考え方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">適用対象別：効きやすいトリガー</h2>
+            <div class="content-block">
+                <h3>対象物ごとの傾向（一般論）</h3>
+                <ul>
+                    <li><strong>LPヒーローセクション</strong>：損失回避・社会的証明が効きやすい（第一印象で離脱を防ぐ）</li>
+                    <li><strong>CTAボタン</strong>：希少性・緊急性が効きやすい（行動の最終トリガー）</li>
+                    <li><strong>バナー広告</strong>：好奇心・意外性が効きやすい（スクロール中の注意を引く）</li>
+                    <li><strong>メール件名</strong>：パーソナライズ・返報性が効きやすい（開封率重視）</li>
+                </ul>
+            <div class="highlight-box">
+                💡 これはあくまで傾向。ターゲットと文脈によって最適解は変わる<br>
+                → だからこそAIシミュレーションで「この組み合わせ」を検証する価値がある
+            </div>
+        </div>
+        </div>
+        <!-- スライド18: セクション4 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 4</h2>
+            <p>AIによる評価の仕組み</p>
+        </div>
+        <!-- スライド19: 2つの評価軸 -->
+        <div class="slide-container big-concept-layout">
+            <h2>定性評価 × 定量予測</h2>
+            <p>「なぜ効くか」と「どれくらい効くか」の両方を引き出す</p>
+        </div>
+        <!-- スライド20: 定性評価の仕組み -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">定性評価：心理学的観点からの分析</h2>
+            <div class="content-block">
+                <h3>AIに引き出す情報</h3>
+                <ul>
+                    <li><strong>心理トリガーの作用メカニズム</strong>：なぜその表現が行動を促すか</li>
+                    <li><strong>ターゲット適合度</strong>：設定したペルソナに響くか</li>
+                    <li><strong>潜在的リスク</strong>：反発を招く可能性、信頼を損なう要素</li>
+                    <li><strong>改善提案</strong>：より効果を高める修正案</li>
+                </ul>
+            <h3>プロンプト設計のポイント</h3>
+            <ul>
+                <li>ターゲット情報を具体的に与える（年齢、課題、購買段階）</li>
+                <li>評価観点を明示する（「以下の3点で評価してください」）</li>
+                <li>比較形式を指定する（「A案とB案を同じ基準で」）</li>
+            </ul>
+            
+            <div class="highlight-box">
+                ⚠️ よくある間違い：「どっちがいいですか？」だけで聞く<br>
+                → 評価基準が曖昧だと、AIの回答も曖昧になる
+            </div>
+        </div>
+        </div>
+        <!-- スライド21: 定量予測の仕組み -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">定量予測：反応率の数値シミュレーション</h2>
+            <div class="content-block">
+                <h3>AIに引き出す情報</h3>
+                <ul>
+                    <li><strong>予測クリック率（CTR）</strong>：想定される反応率の範囲</li>
+                    <li><strong>コンバージョン影響度</strong>：購買・申込への寄与度</li>
+                    <li><strong>信頼区間</strong>：予測のばらつき（「60-70%の確率で」など）</li>
+                </ul>
+            <h3>重要な前提</h3>
+            <ul>
+                <li><strong>AIの予測は「参考値」</strong>：実データに基づく検証ではない</li>
+                <li><strong>相対比較に価値がある</strong>：絶対値より「A案 vs B案」の差に注目</li>
+                <li><strong>条件を揃える</strong>：同一ターゲット、同一文脈で比較</li>
+            </ul>
+            
+            <div class="highlight-box">
+                💡 「AIが70%と言ったから70%」ではない。<br>
+                「AIがAを70%、Bを50%と予測した → Aの方が有望」という使い方
+            </div>
+        </div>
+        </div>
+        <!-- スライド22: 評価フローの全体像 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AI評価の実行フロー</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 380">
+                    <!-- Step 1 -->
+                    <rect x="50" y="30" width="200" height="70" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="150" y="55" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">STEP 1: 入力準備</text>
+                    <text x="150" y="75" text-anchor="middle" fill="white" font-size="11">A案・B案のコピー/画像</text>
+                    <text x="150" y="90" text-anchor="middle" fill="white" font-size="11">ターゲット情報</text>
+                <!-- Step 2 -->
+                <rect x="300" y="30" width="200" height="70" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="8"/>
+                <text x="400" y="55" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">STEP 2: 定性評価</text>
+                <text x="400" y="75" text-anchor="middle" fill="white" font-size="11">心理メカニズム分析</text>
+                <text x="400" y="90" text-anchor="middle" fill="white" font-size="11">リスク・改善点の抽出</text>
+                
+                <!-- Step 3 -->
+                <rect x="550" y="30" width="200" height="70" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="8"/>
+                <text x="650" y="55" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">STEP 3: 定量予測</text>
+                <text x="650" y="75" text-anchor="middle" fill="white" font-size="11">反応率の数値予測</text>
+                <text x="650" y="90" text-anchor="middle" fill="white" font-size="11">A案 vs B案の比較</text>
+                
+                <!-- 矢印 -->
+                <path d="M250 65 L295 65" stroke="white" stroke-width="2" fill="none"/>
+                <path d="M500 65 L545 65" stroke="white" stroke-width="2" fill="none"/>
+                
+                <!-- Step 4 -->
+                <rect x="200" y="150" width="400" height="70" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="2" rx="8"/>
+                <text x="400" y="175" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">STEP 4: 総合判定</text>
+                <text x="400" y="195" text-anchor="middle" fill="white" font-size="11">定性 + 定量を統合し、優位案を決定</text>
+                <text x="400" y="210" text-anchor="middle" fill="white" font-size="11">「なぜその判断か」の根拠を記録</text>
+                
+                <!-- 下矢印 -->
+                <path d="M400 100 L400 145" stroke="white" stroke-width="2" fill="none"/>
+                
+                <!-- 分岐 -->
+                <path d="M400 220 L400 260" stroke="white" stroke-width="2" fill="none"/>
+                <path d="M400 260 L250 260 L250 290" stroke="white" stroke-width="2" fill="none"/>
+                <path d="M400 260 L550 260 L550 290" stroke="white" stroke-width="2" fill="none"/>
+                
+                <!-- 結果分岐 -->
+                <rect x="150" y="290" width="200" height="60" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" rx="8"/>
+                <text x="250" y="315" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">明確な優位案あり</text>
+                <text x="250" y="335" text-anchor="middle" fill="white" font-size="11">→ 優位案で本番実装</text>
+                
+                <rect x="450" y="290" width="200" height="60" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="8"/>
+                <text x="550" y="315" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="bold">差が僅少・判断困難</text>
+                <text x="550" y="335" text-anchor="middle" fill="white" font-size="11">→ 実際のABテストで検証</text>
+            </svg>
+        </div>
+        </div>
+        <!-- スライド23: セクション5 -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 5</h2>
+            <p>予測結果の読み解き方</p>
+        </div>
+        <!-- スライド24: 結果解釈のフレームワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AI予測結果の解釈ガイド</h2>
+            <div class="content-block">
+                <h3>判断の3パターン</h3>
+                <ul>
+                    <li><strong>パターン1：明確な差（10%以上）</strong><br>
+                    → 定性評価も一致していれば、優位案で進行</li>
+                    <li><strong>パターン2：中程度の差（5-10%）</strong><br>
+                    → 定性評価の根拠を重視し、リスク要因も検討</li>
+                    <li><strong>パターン3：僅差（5%未満）</strong><br>
+                    → 実データでのABテストを推奨、または第3案を検討</li>
+                </ul>
+            <h3>注意すべき落とし穴</h3>
+            <ul>
+                <li><strong>数値だけで判断しない</strong>：「なぜその差が出るか」の理由を確認</li>
+                <li><strong>ターゲットのズレを疑う</strong>：AIに与えたペルソナ情報が現実と乖離していないか</li>
+                <li><strong>過信しない</strong>：AIの予測は仮説。最終判断は人間が行う</li>
+            </ul>
+        </div>
+        </div>
+        <!-- スライド25: 判断事例 -->
+        <div class="slide-container">
+            <h2 class="slide-title">判断事例：LP ヒーローセクション</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>A案：損失回避</h3>
+                    <p style="font-size: 1rem; color: #aaa; margin-bottom: 1rem;">「この機会を逃すと、年間12万円の損失に」</p>
+                    <svg class="generated-art" viewBox="0 0 350 180">
+                        <rect x="10" y="10" width="330" height="160" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="8"/>
+                        <rect x="30" y="30" width="290" height="40" fill="#ff6b6b" opacity="0.2" rx="4"/>
+                        <text x="175" y="55" text-anchor="middle" fill="#ff6b6b" font-size="12">⚠️ この機会を逃すと...</text>
+                        <text x="175" y="100" text-anchor="middle" fill="white" font-size="16" font-weight="bold">年間12万円の損失に</text>
+                        <rect x="100" y="130" width="150" height="30" fill="#ff6b6b" rx="4"/>
+                        <text x="175" y="150" text-anchor="middle" fill="white" font-size="12">今すぐ確認する</text>
+                    </svg>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;"><strong>AI予測CTR：4.2%</strong></p>
+                    <p style="font-size: 0.85rem; color: #aaa;">定性評価：緊急性は高いが、不安を煽りすぎるリスク</p>
+                </div>
+                <div>
+                    <h3>B案：社会的証明</h3>
+                    <p style="font-size: 1rem; color: #aaa; margin-bottom: 1rem;">「すでに10,000人が年間12万円を節約」</p>
+                    <svg class="generated-art" viewBox="0 0 350 180">
+                        <rect x="10" y="10" width="330" height="160" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="8"/>
+                        <rect x="30" y="30" width="290" height="40" fill="#10b981" opacity="0.2" rx="4"/>
+                        <text x="175" y="55" text-anchor="middle" fill="#10b981" font-size="12">✓ 10,000人が実践中</text>
+                        <text x="175" y="100" text-anchor="middle" fill="white" font-size="16" font-weight="bold">年間12万円を節約</text>
+                        <rect x="100" y="130" width="150" height="30" fill="#10b981" rx="4"/>
+                        <text x="175" y="150" text-anchor="middle" fill="white" font-size="12">私も始める</text>
+                    </svg>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;"><strong>AI予測CTR：5.1%</strong></p>
+                    <p style="font-size: 0.85rem; color: #aaa;">定性評価：安心感と信頼性が高く、長期的な関係構築向き</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド26: まとめ -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">本講義のまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🧠</div>
+                    <h3>心理トリガー</h3>
+                    <p>人の意思決定を動かす<br>6つの原則を理解</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>事前シミュレーション</h3>
+                    <p>「出してから検証」の<br>コストを削減</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚖️</div>
+                    <h3>変数は1つだけ</h3>
+                    <p>心理トリガー以外の<br>要素を揃える</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔍</div>
+                    <h3>定性 × 定量</h3>
+                    <p>「なぜ」と「どれくらい」<br>の両方を評価</p>
+                </div>
+            </div>
+        </div>
+        <!-- スライド27: 実践編への橋渡し -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：実践編</h2>
+            <div class="content-block">
+                <h3>実践編で行うこと</h3>
+                <ul>
+                    <li><strong>Geminiを使った実際の評価演習</strong>：2案を入力し、定性・定量評価を引き出す</li>
+                    <li><strong>プロンプト設計の実践</strong>：効果的な質問の仕方を体得</li>
+                    <li><strong>判断レポートの作成</strong>：評価結果を意思決定に繋げる</li>
+                </ul>
+            <h3>準備しておくもの</h3>
+            <ul>
+                <li>比較したい2案のコピー（LPヒーロー、CTA、バナーなど）</li>
+                <li>ターゲットのペルソナ情報</li>
+                <li>Geminiへのアクセス（https://gemini.google.com/app）</li>
+            </ul>
+
+            <div class="highlight-box">
+                💡 理論編で学んだ「変数は1つだけ」「定性×定量」を実際に体験します
+            </div>
+        </div>
+    </div>
+
+        <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+
+    <script>
+        const questions = [
+            {
+                question: "「損失回避」の心理トリガーはどのような特性を利用していますか？",
+                options: [
+                    "人は新しいものに惹かれる",
+                    "人は「得る喜び」より「失う痛み」を強く感じる",
+                    "人は専門家の意見を信じる",
+                    "人は多数派に従いたくなる"
+                ],
+                correct: 1,
+                explanation: "損失回避は、人間が「得る喜び」より「失う痛み」を約2倍強く感じるという心理特性を利用します。「今日限り」「この機会を逃すと」といった表現がその例です。"
+            },
+            {
+                question: "AIによるABテストシミュレーションの主な価値は何ですか？",
+                options: [
+                    "従来のABテストを完全に置き換える",
+                    "リリース前に勝ち筋を予測し、検証コストを削減する",
+                    "100%正確な予測を得られる",
+                    "デザイナーの仕事を自動化する"
+                ],
+                correct: 1,
+                explanation: "AIシミュレーションは従来ABテストの「代替」ではなく「事前フィルター」です。リリース前に有望な案を予測することで、時間・機会損失・リソースのコストを削減できます。"
+            },
+            {
+                question: "A案とB案を比較する際、最も重要な設計ルールは？",
+                options: [
+                    "できるだけ多くの要素を変えて差をつける",
+                    "心理トリガー以外の要素を揃え、変数を1つにする",
+                    "A案は派手に、B案は地味にする",
+                    "両案で異なるターゲットを設定する"
+                ],
+                correct: 1,
+                explanation: "変数を1つに絞ることで「何が効いたか」を特定できます。レイアウト、デザイン、情報量を揃え、心理トリガーの種類だけを変えることが有効な比較の鉄則です。"
+            },
+            {
+                question: "AIによる評価で引き出すべき2つの軸は？",
+                options: [
+                    "速度と精度",
+                    "定性評価（なぜ効くか）と定量予測（どれくらい効くか）",
+                    "コストと納期",
+                    "デザインとコピー"
+                ],
+                correct: 1,
+                explanation: "定性評価は心理メカニズムやリスクを分析し、定量予測は反応率を数値でシミュレーションします。両方を組み合わせることで、根拠ある意思決定が可能になります。"
+            },
+            {
+                question: "AI予測でA案とB案の差が5%未満だった場合、最適な判断は？",
+                options: [
+                    "予測値が高い方を無条件で採用する",
+                    "両案とも不採用にする",
+                    "実データでのABテストを実施、または第3案を検討する",
+                    "AIに再度予測させて差が出るまで繰り返す"
+                ],
+                correct: 2,
+                explanation: "僅差の場合、AI予測だけでは優劣を判断しきれません。実際のユーザーデータでABテストを行うか、両案の良い部分を組み合わせた第3案を検討することが推奨されます。"
+            }
+        ];
+    </script>
+
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>
