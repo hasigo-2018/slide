@@ -12,7 +12,469 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>インタラクティブ・<br>プロトタイピング<span>【実践編】</span></h1>
+                <p>Figmaで「動くデモ」を作り、操作フローの欠陥を発見する</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 本日のゴール -->
+        <div class="slide-container big-concept-layout">
+            <h2>今日のゴール</h2>
+            <p>SLOW DRIPカフェの注文アプリを<br>スマホで実際に操作できる状態にする</p>
+        </div>
+
+        <!-- スライド3: 演習概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習の流れ</h2>
+            <div class="content-block">
+                <h3>4つのステップ</h3>
+                <ul>
+                    <li><strong>Step 1</strong>：ワイヤーフレーム作成（3画面）</li>
+                    <li><strong>Step 2</strong>：画面遷移のリンク設定</li>
+                    <li><strong>Step 3</strong>：スマートアニメイトで動きを追加</li>
+                    <li><strong>Step 4</strong>：実機検証とセルフレビュー</li>
+                </ul>
+                
+                <h3>制作物</h3>
+                <p>「SLOW DRIP カフェ」モバイル注文アプリのMid-Fiプロトタイプ</p>
+                
+                <div class="highlight-box">
+                    ⏱️ 目安時間：全体で40〜50分
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 1</h2>
+            <p>ワイヤーフレーム作成（3画面）</p>
+        </div>
+
+        <!-- スライド5: 作成する画面の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">作成する3つの画面</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <rect x="0" y="0" width="800" height="300" fill="#1a1a2e"/>
+                    
+                    <!-- 画面1: メニュー一覧 -->
+                    <g>
+                        <rect x="80" y="40" width="160" height="220" fill="#252540" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                        <rect x="95" y="55" width="80" height="12" fill="#444"/>
+                        <rect x="95" y="80" width="130" height="50" fill="#333" rx="4"/>
+                        <rect x="95" y="140" width="130" height="50" fill="#333" rx="4"/>
+                        <rect x="95" y="200" width="130" height="50" fill="#333" rx="4"/>
+                        <text x="160" y="275" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">①メニュー一覧</text>
+                    </g>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M250 150 L300 150" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="300,145 315,150 300,155" fill="#00d4ff"/>
+                    <text x="275" y="140" text-anchor="middle" fill="#888" font-size="10">タップ</text>
+                    
+                    <!-- 画面2: 商品詳細 -->
+                    <g>
+                        <rect x="330" y="40" width="160" height="220" fill="#252540" stroke="#a855f7" stroke-width="2" rx="12"/>
+                        <rect x="345" y="55" width="40" height="12" fill="#444"/>
+                        <rect x="345" y="80" width="130" height="80" fill="#333" rx="4"/>
+                        <rect x="345" y="170" width="80" height="10" fill="#444"/>
+                        <rect x="345" y="190" width="130" height="8" fill="#333"/>
+                        <rect x="345" y="220" width="130" height="30" fill="#a855f7" rx="4"/>
+                        <text x="410" y="240" text-anchor="middle" fill="white" font-size="10">カートに追加</text>
+                        <text x="410" y="275" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">②商品詳細</text>
+                    </g>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M500 150 L550 150" stroke="#a855f7" stroke-width="2"/>
+                    <polygon points="550,145 565,150 550,155" fill="#a855f7"/>
+                    <text x="525" y="140" text-anchor="middle" fill="#888" font-size="10">タップ</text>
+                    
+                    <!-- 画面3: カート確認 -->
+                    <g>
+                        <rect x="580" y="40" width="160" height="220" fill="#252540" stroke="#10b981" stroke-width="2" rx="12"/>
+                        <rect x="595" y="55" width="60" height="12" fill="#444"/>
+                        <rect x="595" y="80" width="130" height="40" fill="#333" rx="4"/>
+                        <rect x="595" y="130" width="130" height="40" fill="#333" rx="4"/>
+                        <rect x="595" y="185" width="80" height="10" fill="#444"/>
+                        <rect x="595" y="220" width="130" height="30" fill="#10b981" rx="4"/>
+                        <text x="660" y="240" text-anchor="middle" fill="white" font-size="10">注文確定</text>
+                        <text x="660" y="275" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">③カート確認</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド6: 手順1-1 フレーム作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1-1：フレームを作成する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 左上のフレームツール（F）をクリック</p>
+                <p><strong>2.</strong> 右パネルから「Phone」→「iPhone 14 Pro」を選択</p>
+                <p><strong>3.</strong> 同じフレームを3つ複製（Ctrl/Cmd + D を2回）</p>
+                <p><strong>4.</strong> 各フレームの名前を変更：</p>
+                <ul>
+                    <li>「01_メニュー一覧」</li>
+                    <li>「02_商品詳細」</li>
+                    <li>「03_カート確認」</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：フレーム名を変更しない<br>
+                    ✅ 名前をつけておくと、プロトタイプのリンク設定時に迷わない
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: 手順1-2 コンポーネント配置 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1-2：基本コンポーネントを配置</h2>
+            <div class="content-block">
+                <h3>各画面に配置する要素</h3>
+                
+                <h3>①メニュー一覧</h3>
+                <ul>
+                    <li>ヘッダー：店名「SLOW DRIP」</li>
+                    <li>メニューカード ×3（矩形ツールで作成）</li>
+                </ul>
+                
+                <h3>②商品詳細</h3>
+                <ul>
+                    <li>戻るボタン（←）</li>
+                    <li>商品画像エリア（プレースホルダー）</li>
+                    <li>商品名・価格テキスト</li>
+                    <li>「カートに追加」ボタン</li>
+                </ul>
+                
+                <h3>③カート確認</h3>
+                <ul>
+                    <li>戻るボタン（←）</li>
+                    <li>カート内商品リスト</li>
+                    <li>合計金額</li>
+                    <li>「注文確定」ボタン</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 完璧を目指さない。「タップできる領域」が分かればOK
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 2</h2>
+            <p>画面遷移のリンク設定</p>
+        </div>
+
+        <!-- スライド9: 手順2-1 プロトタイプモード -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2-1：プロトタイプモードに切り替え</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 右パネル上部の「Prototype」タブをクリック</p>
+                <p><strong>2.</strong> 画面が青い枠線で表示されることを確認</p>
+                
+                <h3>プロトタイプモードでできること</h3>
+                <ul>
+                    <li>オブジェクト間のリンク設定</li>
+                    <li>遷移アニメーションの指定</li>
+                    <li>インタラクショントリガーの設定</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 Designモードとの切り替えは頻繁に行う。ショートカット不要、タブクリックでOK
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: 手順2-2 リンク設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2-2：画面遷移リンクを設定</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 「01_メニュー一覧」の最初のメニューカードを選択</p>
+                <p><strong>2.</strong> 青い丸（接続ポイント）をドラッグして「02_商品詳細」に接続</p>
+                <p><strong>3.</strong> 同様に以下を設定：</p>
+                <ul>
+                    <li>「カートに追加」ボタン → 「03_カート確認」</li>
+                    <li>「02_商品詳細」の戻るボタン → 「01_メニュー一覧」</li>
+                    <li>「03_カート確認」の戻るボタン → 「02_商品詳細」</li>
+                </ul>
+                
+                <h3>右パネルの設定</h3>
+                <p>Interaction：On tap → Navigate to → [遷移先フレーム]</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：グループ全体ではなく、個別オブジェクトを選択してしまう<br>
+                    ✅ タップ領域として機能させたい範囲をグループ化してからリンク設定
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: 手順2-3 プレビュー確認 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2-3：プレビューで動作確認</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 右上の「▶」（プレビュー）ボタンをクリック</p>
+                <p><strong>2.</strong> 新しいウィンドウでプロトタイプが起動</p>
+                <p><strong>3.</strong> 以下のフローを確認：</p>
+                <ul>
+                    <li>メニューカードをクリック → 商品詳細へ遷移するか</li>
+                    <li>「カートに追加」をクリック → カート確認へ遷移するか</li>
+                    <li>戻るボタン → 前の画面に戻れるか</li>
+                </ul>
+                
+                <h3>確認のポイント</h3>
+                <p>この時点では「画面が切り替わる」だけでOK。アニメーションは次のステップで追加します。</p>
+                
+                <div class="highlight-box">
+                    💡 ショートカット：Ctrl/Cmd + Alt + Enter でプレビュー起動
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 3</h2>
+            <p>スマートアニメイトで動きを追加</p>
+        </div>
+
+        <!-- スライド13: 手順3-1 アニメーション設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3-1：遷移アニメーションを設定</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 設定済みのリンク（青い矢印）をクリック</p>
+                <p><strong>2.</strong> 右パネルの「Animation」セクションを確認</p>
+                <p><strong>3.</strong> 以下を設定：</p>
+                <ul>
+                    <li><strong>Animation</strong>：Smart animate</li>
+                    <li><strong>Easing</strong>：Ease out</li>
+                    <li><strong>Duration</strong>：300ms</li>
+                </ul>
+                
+                <h3>アニメーションの種類</h3>
+                <ul>
+                    <li><strong>Instant</strong>：瞬時に切り替え（デフォルト）</li>
+                    <li><strong>Dissolve</strong>：フェードで切り替え</li>
+                    <li><strong>Smart animate</strong>：同名レイヤーが滑らかに変化</li>
+                    <li><strong>Move in/out</strong>：スライドイン・アウト</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 迷ったら「Smart animate + Ease out + 300ms」が汎用的
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド14: 手順3-2 戻る遷移の設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3-2：戻る遷移のアニメーション</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 「戻る」ボタンのリンクを選択</p>
+                <p><strong>2.</strong> Animationを「Move out」に設定</p>
+                <p><strong>3.</strong> 方向を「←」（左方向）に設定</p>
+                
+                <h3>進む・戻るの使い分け</h3>
+                <ul>
+                    <li><strong>進む遷移</strong>：Smart animate または Move in（右から左へ）</li>
+                    <li><strong>戻る遷移</strong>：Move out（左へスライドアウト）</li>
+                </ul>
+                
+                <h3>なぜ使い分けるか</h3>
+                <p>ユーザーは「右から来たものは左に戻る」と無意識に期待します。この期待に沿った動きにすることで、直感的な操作感が生まれます。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：すべて同じアニメーションにしてしまう<br>
+                    ✅ 「進む」と「戻る」で方向を変えると自然な操作感になる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド15: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Step 4</h2>
+            <p>実機検証とセルフレビュー</p>
+        </div>
+
+        <!-- スライド16: 手順4-1 共有リンク発行 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4-1：共有リンクを発行する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 右上の「Share」ボタンをクリック</p>
+                <p><strong>2.</strong> 「Copy link」をクリック</p>
+                <p><strong>3.</strong> スマートフォンでリンクを開く（自分にメール/メッセージで送信）</p>
+                
+                <h3>Figma Mirrorアプリを使う場合</h3>
+                <p><strong>1.</strong> App StoreまたはGoogle Playから「Figma Mirror」をインストール</p>
+                <p><strong>2.</strong> 同じアカウントでログイン</p>
+                <p><strong>3.</strong> PC側でフレームを選択すると自動で同期</p>
+                
+                <div class="highlight-box">
+                    💡 実機で見ると「ボタンが小さい」「文字が読みにくい」など、PCでは気づかない問題が見つかる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド17: 手順4-2 セルフレビュー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4-2：セルフレビューの実施</h2>
+            <div class="content-block">
+                <h3>レビューの進め方</h3>
+                <p><strong>1.</strong> スマートフォンを片手で持つ</p>
+                <p><strong>2.</strong> 以下のシナリオを実際に操作する：</p>
+                
+                <h3>テストシナリオ</h3>
+                <p>「カフェラテを1杯注文して、注文確定まで進む」</p>
+                <ul>
+                    <li>メニュー一覧から商品を選ぶ</li>
+                    <li>商品詳細を確認してカートに追加する</li>
+                    <li>カート内容を確認して注文を確定する</li>
+                </ul>
+                
+                <h3>操作しながらチェックすること</h3>
+                <ul>
+                    <li>タップしたい場所にボタンがあるか</li>
+                    <li>次に何をすればいいか迷わないか</li>
+                    <li>戻りたいときにすぐ戻れるか</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 「自分が作った」バイアスを外すため、初見のつもりで操作する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: 欠陥発見チェックリスト -->
+        <div class="slide-container">
+            <h2 class="slide-title">操作フロー欠陥チェックリスト</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">👆</div>
+                    <h3>タップ領域</h3>
+                    <p>ボタンは指で<br>押しやすいサイズか？<br><span style="font-size: 0.8em; color: #888;">最低44×44px</span></p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔙</div>
+                    <h3>戻る導線</h3>
+                    <p>どの画面からも<br>前の画面に<br>戻れるか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📍</div>
+                    <h3>現在地</h3>
+                    <p>ユーザーは今<br>どこにいるか<br>分かるか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">➡️</div>
+                    <h3>次のアクション</h3>
+                    <p>次に何をすべきか<br>明確に<br>示されているか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: よくある欠陥と修正方法 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">よくある欠陥と修正方法</h2>
+            <div class="content-block">
+                <h3>❌ 欠陥1：タップしても反応しない</h3>
+                <p><strong>原因</strong>：リンクが設定されていない、または別のオブジェクトに隠れている</p>
+                <p><strong>修正</strong>：Prototypeモードでリンクを再確認、レイヤー順序を確認</p>
+                
+                <h3>❌ 欠陥2：戻れない画面がある</h3>
+                <p><strong>原因</strong>：戻るボタンのリンク設定漏れ</p>
+                <p><strong>修正</strong>：全画面の「戻る」導線を再チェック</p>
+                
+                <h3>❌ 欠陥3：アニメーションがぎこちない</h3>
+                <p><strong>原因</strong>：Durationが長すぎる、またはEasingが不適切</p>
+                <p><strong>修正</strong>：200〜400msに調整、Ease outを試す</p>
+                
+                <div class="highlight-box">
+                    💡 欠陥を見つけたら「なぜユーザーが迷うか」を言語化する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド20: 完成チェック -->
+        <div class="slide-container">
+            <h2 class="slide-title">完成チェック：4つの原則で確認</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>整列</h3>
+                    <p>ボタンや<br>テキストが<br>揃っているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>近接</h3>
+                    <p>関連する情報が<br>グループ化<br>されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>反復</h3>
+                    <p>ボタンの形や色に<br>一貫性が<br>あるか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>コントラスト</h3>
+                    <p>主要ボタンが<br>際立って<br>いるか？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">本日のまとめ</h2>
+            <div class="content-block">
+                <h3>習得したスキル</h3>
+                <ul>
+                    <li>Figmaでモバイル用フレームを作成する</li>
+                    <li>Prototypeモードで画面遷移を設定する</li>
+                    <li>Smart animateで自然な動きを追加する</li>
+                    <li>実機で検証し、操作フローの欠陥を発見する</li>
+                </ul>
+                
+                <h3>理論編との接続</h3>
+                <ul>
+                    <li>今回作成したのは「Mid-Fiプロトタイプ」</li>
+                    <li>構造（Lo-Fi）は確定している前提で、体験を検証した</li>
+                    <li>クライアントに見せる際は共有リンクを発行する</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 プロトタイプは「伝達ツール」。<br>作って終わりではなく、見せて・試して・改善する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド22: 次のステップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ</h2>
+            <div class="content-block">
+                <h3>このプロトタイプを発展させるには</h3>
+                <ul>
+                    <li><strong>Hi-Fi化</strong>：実際の画像・ブランドカラーを適用</li>
+                    <li><strong>状態追加</strong>：ローディング、エラー、空状態を追加</li>
+                    <li><strong>マイクロインタラクション</strong>：ボタンのホバー、フィードバック追加</li>
+                </ul>
+                
+                <h3>クライアントに見せる前に</h3>
+                <ul>
+                    <li>共有リンクの権限設定を確認（「Anyone with the link」など）</li>
+                    <li>開始画面が正しく設定されているか確認</li>
+                    <li>操作説明なしで使えるか、第三者にテストしてもらう</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    💡 「動くデモ」があれば、言葉での説明は最小限で済む
+                </div>
+            </div>
+        </div>
 
         <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -24,7 +486,63 @@
     <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+            {
+                question: "Figmaでプロトタイプのリンクを設定するには、まず何をしますか？",
+                options: [
+                    "右パネルの「Design」タブをクリック",
+                    "右パネルの「Prototype」タブをクリック",
+                    "左パネルの「Assets」をクリック",
+                    "上部メニューの「File」をクリック"
+                ],
+                correct: 1,
+                explanation: "プロトタイプのリンク設定は「Prototype」タブで行います。Designタブはオブジェクトの見た目を編集するモードです。"
+            },
+            {
+                question: "「戻る」遷移のアニメーションとして最も適切なのは？",
+                options: [
+                    "Smart animate（同じ方向）",
+                    "Dissolve（フェード）",
+                    "Move out（左方向へスライド）",
+                    "Instant（瞬時切り替え）"
+                ],
+                correct: 2,
+                explanation: "ユーザーは「右から来たものは左に戻る」と期待します。Move outで左へスライドさせることで、直感的な「戻る」体験を作れます。"
+            },
+            {
+                question: "実機検証で「タップしても反応しない」場合、最初に確認すべきことは？",
+                options: [
+                    "スマートフォンを再起動する",
+                    "Figmaアプリを再インストールする",
+                    "Prototypeモードでリンクが設定されているか確認する",
+                    "アニメーションの速度を変更する"
+                ],
+                correct: 2,
+                explanation: "タップしても反応しない場合、まずリンクが正しく設定されているかを確認します。別のオブジェクトに隠れている可能性もあるため、レイヤー順序も確認しましょう。"
+            },
+            {
+                question: "モバイルアプリのボタンサイズとして推奨される最小サイズは？",
+                options: [
+                    "24×24px",
+                    "32×32px",
+                    "44×44px",
+                    "64×64px"
+                ],
+                correct: 2,
+                explanation: "Appleのヒューマンインターフェースガイドラインでは、タップターゲットの最小サイズとして44×44ptを推奨しています。これより小さいと押し間違いが起きやすくなります。"
+            },
+            {
+                question: "プロトタイプをクライアントに共有する前に確認すべきことは？",
+                options: [
+                    "すべてのアニメーションを削除する",
+                    "開始画面が正しく設定されているか確認する",
+                    "フレームをすべてロックする",
+                    "コメント機能を無効にする"
+                ],
+                correct: 1,
+                explanation: "クライアントがリンクを開いたとき、最初に表示される画面（開始画面）が正しく設定されているか確認することが重要です。意図しない画面から始まると混乱の原因になります。"
+            }
+        ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

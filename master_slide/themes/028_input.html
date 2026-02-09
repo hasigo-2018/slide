@@ -12,7 +12,696 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>インタラクティブ・<br>プロトタイピング<span>【理論編】</span></h1>
+                <p>動くデモで「伝わらない」を解消する</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>「完成イメージ、伝わってますか？」</h2>
+            <p>言葉と静止画だけでは、認識のズレは埋まらない</p>
+        </div>
+
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>アジェンダ</h3>
+                <ul>
+                    <li><strong>Part 1</strong>：なぜプロトタイプが必要か（3つの伝達効果）</li>
+                    <li><strong>Part 2</strong>：Lo-Fi / Mid-Fi / Hi-Fi の段階別アプローチ</li>
+                    <li><strong>Part 3</strong>：各段階の使い分けと判断基準</li>
+                    <li><strong>Part 4</strong>：実践編への準備（Figmaハンズオン）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 ゴール：プロトタイプの「段階」を理解し、状況に応じて使い分けられる判断力を身につける
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 1</h2>
+            <p>なぜプロトタイプが必要か</p>
+        </div>
+
+        <!-- スライド5: 伝達の壁 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">静的資料の限界</h2>
+            <div class="content-block">
+                <h3>クライアントとの認識ギャップが生まれる構造</h3>
+                <p>デザイナーの頭の中には「動き」がある。しかしクライアントが見ているのは「静止画」だけ。</p>
+                
+                <h3>よくある失敗パターン</h3>
+                <ul>
+                    <li>「ここをクリックすると画面が切り替わります」→ <strong>どう切り替わる？</strong></li>
+                    <li>「スムーズにアニメーションします」→ <strong>どのくらいスムーズ？</strong></li>
+                    <li>「直感的に操作できます」→ <strong>本当に？</strong></li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 言葉は曖昧。人によって解釈が異なる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: 3つの伝達効果 概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プロトタイプがもたらす3つの効果</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <!-- 背景 -->
+                    <rect x="0" y="0" width="800" height="280" fill="#1a1a2e"/>
+                    
+                    <!-- 効果1: 認知負荷の軽減 -->
+                    <rect x="40" y="60" width="220" height="160" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2" rx="12"/>
+                    <text x="150" y="100" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">認知負荷の軽減</text>
+                    <text x="150" y="130" text-anchor="middle" fill="white" font-size="13">「見ればわかる」状態を</text>
+                    <text x="150" y="150" text-anchor="middle" fill="white" font-size="13">作り出す</text>
+                    <text x="150" y="190" text-anchor="middle" fill="#888" font-size="12">理解速度 3〜5倍</text>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M270 140 L290 140" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <polygon points="290,135 300,140 290,145" fill="#00d4ff"/>
+                    
+                    <!-- 効果2: 意思決定の加速 -->
+                    <rect x="310" y="60" width="220" height="160" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="2" rx="12"/>
+                    <text x="420" y="100" text-anchor="middle" fill="#a855f7" font-size="16" font-weight="bold">意思決定の加速</text>
+                    <text x="420" y="130" text-anchor="middle" fill="white" font-size="13">承認プロセスを</text>
+                    <text x="420" y="150" text-anchor="middle" fill="white" font-size="13">短縮する</text>
+                    <text x="420" y="190" text-anchor="middle" fill="#888" font-size="12">承認期間 40%削減</text>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M540 140 L560 140" stroke="#a855f7" stroke-width="2" fill="none"/>
+                    <polygon points="560,135 570,140 560,145" fill="#a855f7"/>
+                    
+                    <!-- 効果3: 認識ギャップの解消 -->
+                    <rect x="580" y="60" width="180" height="160" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2" rx="12"/>
+                    <text x="670" y="100" text-anchor="middle" fill="#10b981" font-size="16" font-weight="bold">認識ギャップの解消</text>
+                    <text x="670" y="130" text-anchor="middle" fill="white" font-size="13">「思ってたのと違う」</text>
+                    <text x="670" y="150" text-anchor="middle" fill="white" font-size="13">を事前に防ぐ</text>
+                    <text x="670" y="190" text-anchor="middle" fill="#888" font-size="12">手戻り 60%削減</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド7: 効果1 認知負荷の軽減 -->
+        <div class="slide-container big-concept-layout">
+            <h2>認知負荷の軽減<br><span style="font-size: 0.5em; color: #00d4ff;">Cognitive Load Reduction</span></h2>
+            <p>「説明を聞く」から「体験する」へ</p>
+        </div>
+
+        <!-- スライド8: 認知負荷の詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ「動くデモ」は理解が速いのか</h2>
+            <div class="content-block">
+                <h3>認知科学の観点から</h3>
+                <p>人間の脳は「動き」を処理する専用領域を持っています。静止画から動きを想像するには、追加の認知リソースが必要です。</p>
+                
+                <h3>静的資料 vs 動的デモ</h3>
+                <ul>
+                    <li><strong>静的資料</strong>：読む → 解釈する → 想像する → 理解する（4ステップ）</li>
+                    <li><strong>動的デモ</strong>：見る → 理解する（2ステップ）</li>
+                </ul>
+                
+                <h3>実務での効果</h3>
+                <p>ミーティングでの説明時間が半減し、「質問」の質が変わります。「これどういう意味？」から「この動きをもう少し速くできる？」へ。</p>
+                
+                <div class="highlight-box">
+                    💡 プロトタイプは「説明コスト」を削減する投資
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: 効果2 意思決定の加速 -->
+        <div class="slide-container big-concept-layout">
+            <h2>意思決定の加速<br><span style="font-size: 0.5em; color: #a855f7;">Decision Acceleration</span></h2>
+            <p>「検討します」を「これでいきましょう」に変える</p>
+        </div>
+
+        <!-- スライド10: 意思決定の詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">承認プロセスが遅れる本当の理由</h2>
+            <div class="content-block">
+                <h3>クライアントの心理</h3>
+                <p>承認が遅れるのは「忙しいから」ではなく、<strong>「判断材料が不足しているから」</strong>です。</p>
+                
+                <h3>不安の構造</h3>
+                <ul>
+                    <li>「本当にこれで大丈夫だろうか」</li>
+                    <li>「上司に説明できるだろうか」</li>
+                    <li>「ユーザーは使いこなせるだろうか」</li>
+                </ul>
+                
+                <h3>プロトタイプが解決すること</h3>
+                <p>動くデモは「自分で試せる」安心感を与えます。さらに、クライアントが上司に見せる際の「説明ツール」にもなります。</p>
+                
+                <div class="highlight-box">
+                    💡 プロトタイプは「クライアントの武器」になる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド11: 効果3 認識ギャップの解消 -->
+        <div class="slide-container big-concept-layout">
+            <h2>認識ギャップの解消<br><span style="font-size: 0.5em; color: #10b981;">Alignment Through Experience</span></h2>
+            <p>「言葉の限界」を超える</p>
+        </div>
+
+        <!-- スライド12: 認識ギャップの詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「完成イメージの共有」はなぜ難しいのか</h2>
+            <div class="content-block">
+                <h3>言葉の曖昧さ</h3>
+                <p>同じ言葉でも、人によってイメージが異なります。</p>
+                
+                <h3>具体例：「シンプルなデザイン」</h3>
+                <ul>
+                    <li>デザイナー：余白を活かしたミニマルなレイアウト</li>
+                    <li>クライアントA：情報量が少ない＝わかりやすい</li>
+                    <li>クライアントB：装飾がない＝安っぽい？</li>
+                </ul>
+                
+                <h3>プロトタイプの役割</h3>
+                <p>「シンプル」を<strong>見せる</strong>ことで、言葉の解釈の違いを事前に発見できます。開発後の「思ってたのと違う」を防ぐ唯一の方法です。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ 手戻りコストは開発フェーズが進むほど指数関数的に増加する
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: 手戻りコストの図解 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フェーズ別：修正コストの増加曲線</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 背景 -->
+                    <rect x="0" y="0" width="800" height="320" fill="#1a1a2e"/>
+                    
+                    <!-- グリッド線 -->
+                    <line x1="100" y1="260" x2="700" y2="260" stroke="#333" stroke-width="1"/>
+                    <line x1="100" y1="60" x2="100" y2="260" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Y軸ラベル -->
+                    <text x="50" y="165" text-anchor="middle" fill="#888" font-size="12" transform="rotate(-90, 50, 165)">修正コスト</text>
+                    
+                    <!-- X軸ラベル -->
+                    <text x="400" y="295" text-anchor="middle" fill="#888" font-size="12">プロジェクトフェーズ</text>
+                    
+                    <!-- フェーズラベル -->
+                    <text x="180" y="280" text-anchor="middle" fill="white" font-size="11">企画</text>
+                    <text x="300" y="280" text-anchor="middle" fill="white" font-size="11">設計</text>
+                    <text x="420" y="280" text-anchor="middle" fill="white" font-size="11">開発</text>
+                    <text x="540" y="280" text-anchor="middle" fill="white" font-size="11">テスト</text>
+                    <text x="660" y="280" text-anchor="middle" fill="white" font-size="11">リリース後</text>
+                    
+                    <!-- コスト曲線 -->
+                    <path d="M140 250 Q220 245, 260 230 Q340 200, 380 150 Q460 80, 500 60 Q580 50, 660 45" 
+                        stroke="#ef4444" stroke-width="3" fill="none"/>
+                    
+                    <!-- ポイント -->
+                    <circle cx="180" cy="245" r="6" fill="#10b981"/>
+                    <circle cx="300" cy="220" r="6" fill="#00d4ff"/>
+                    <circle cx="420" cy="130" r="6" fill="#f59e0b"/>
+                    <circle cx="540" cy="55" r="6" fill="#ef4444"/>
+                    <circle cx="660" cy="45" r="6" fill="#ef4444"/>
+                    
+                    <!-- コスト表示 -->
+                    <text x="180" y="230" text-anchor="middle" fill="#10b981" font-size="11">×1</text>
+                    <text x="300" y="205" text-anchor="middle" fill="#00d4ff" font-size="11">×5</text>
+                    <text x="420" y="115" text-anchor="middle" fill="#f59e0b" font-size="11">×10</text>
+                    <text x="540" y="40" text-anchor="middle" fill="#ef4444" font-size="11">×50</text>
+                    <text x="660" y="30" text-anchor="middle" fill="#ef4444" font-size="11">×100</text>
+                    
+                    <!-- プロトタイプ介入ポイント -->
+                    <rect x="240" y="200" width="120" height="50" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="1" rx="4" stroke-dasharray="4"/>
+                    <text x="300" y="225" text-anchor="middle" fill="#10b981" font-size="10">プロトタイプで</text>
+                    <text x="300" y="240" text-anchor="middle" fill="#10b981" font-size="10">ここで発見</text>
+                </svg>
+                <p style="text-align: center; color: #888; margin-top: 1rem;">プロトタイプは「設計フェーズ」で問題を発見するためのツール</p>
+            </div>
+        </div>
+
+        <!-- スライド14: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 2</h2>
+            <p>Lo-Fi / Mid-Fi / Hi-Fi の段階別アプローチ</p>
+        </div>
+
+        <!-- スライド15: 3段階の概要 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プロトタイプの3つの段階</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 250">
+                    <!-- 背景 -->
+                    <rect x="0" y="0" width="800" height="250" fill="#1a1a2e"/>
+                    
+                    <!-- Lo-Fi -->
+                    <rect x="60" y="50" width="200" height="150" fill="none" stroke="#888" stroke-width="2" rx="8"/>
+                    <text x="160" y="90" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Lo-Fi</text>
+                    <text x="160" y="115" text-anchor="middle" fill="#00d4ff" font-size="12">低忠実度</text>
+                    <line x1="80" y1="135" x2="240" y2="135" stroke="#444" stroke-width="1"/>
+                    <text x="160" y="160" text-anchor="middle" fill="#888" font-size="11">ワイヤーフレーム</text>
+                    <text x="160" y="178" text-anchor="middle" fill="#888" font-size="11">手書きスケッチ</text>
+                    
+                    <!-- 矢印1 -->
+                    <path d="M270 125 L300 125" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="300,120 315,125 300,130" fill="#00d4ff"/>
+                    
+                    <!-- Mid-Fi -->
+                    <rect x="320" y="50" width="200" height="150" fill="none" stroke="#a855f7" stroke-width="2" rx="8"/>
+                    <text x="420" y="90" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Mid-Fi</text>
+                    <text x="420" y="115" text-anchor="middle" fill="#a855f7" font-size="12">中忠実度</text>
+                    <line x1="340" y1="135" x2="500" y2="135" stroke="#444" stroke-width="1"/>
+                    <text x="420" y="160" text-anchor="middle" fill="#888" font-size="11">基本的なインタラクション</text>
+                    <text x="420" y="178" text-anchor="middle" fill="#888" font-size="11">画面遷移・簡易アニメーション</text>
+                    
+                    <!-- 矢印2 -->
+                    <path d="M530 125 L560 125" stroke="#a855f7" stroke-width="2"/>
+                    <polygon points="560,120 575,125 560,130" fill="#a855f7"/>
+                    
+                    <!-- Hi-Fi -->
+                    <rect x="580" y="50" width="160" height="150" fill="none" stroke="#10b981" stroke-width="2" rx="8"/>
+                    <text x="660" y="90" text-anchor="middle" fill="white" font-size="18" font-weight="bold">Hi-Fi</text>
+                    <text x="660" y="115" text-anchor="middle" fill="#10b981" font-size="12">高忠実度</text>
+                    <line x1="600" y1="135" x2="720" y2="135" stroke="#444" stroke-width="1"/>
+                    <text x="660" y="160" text-anchor="middle" fill="#888" font-size="11">実際のデザイン</text>
+                    <text x="660" y="178" text-anchor="middle" fill="#888" font-size="11">リッチなアニメーション</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- スライド16: Lo-Fi 定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Lo-Fi プロトタイプ<br><span style="font-size: 0.5em; color: #888;">Low Fidelity</span></h2>
+            <p>「構造」と「流れ」を検証する</p>
+        </div>
+
+        <!-- スライド17: Lo-Fi 詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Lo-Fiプロトタイプの特徴と目的</h2>
+            <div class="content-block">
+                <h3>何を検証するか</h3>
+                <ul>
+                    <li>情報の優先順位は正しいか</li>
+                    <li>ユーザーの動線に無理はないか</li>
+                    <li>必要な画面は揃っているか</li>
+                </ul>
+                
+                <h3>特徴</h3>
+                <ul>
+                    <li><strong>制作時間</strong>：数時間〜1日</li>
+                    <li><strong>ビジュアル</strong>：グレースケール、プレースホルダー</li>
+                    <li><strong>インタラクション</strong>：クリックで画面遷移するだけ</li>
+                </ul>
+                
+                <h3>いつ使うか</h3>
+                <p>プロジェクト初期、アイデアの方向性を確認したいとき。「これで進めていいですか？」の確認に最適。</p>
+                
+                <div class="highlight-box">
+                    💡 Lo-Fiは「捨てる前提」で作る。完璧を目指さない
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド18: Lo-Fi Before/After -->
+        <div class="slide-container">
+            <h2 class="slide-title">Lo-Fi：静的 vs インタラクティブ</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 静的ワイヤーフレーム</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/>
+                        <!-- 画面1 -->
+                        <rect x="20" y="20" width="140" height="90" fill="none" stroke="#555" stroke-width="1" rx="4"/>
+                        <rect x="30" y="30" width="60" height="8" fill="#555"/>
+                        <rect x="30" y="45" width="120" height="6" fill="#444"/>
+                        <rect x="30" y="55" width="100" height="6" fill="#444"/>
+                        <rect x="30" y="80" width="50" height="20" fill="#555" rx="2"/>
+                        <text x="90" y="130" text-anchor="middle" fill="#666" font-size="10">画面A</text>
+                        
+                        <!-- 画面2 -->
+                        <rect x="180" y="20" width="140" height="90" fill="none" stroke="#555" stroke-width="1" rx="4"/>
+                        <rect x="190" y="30" width="60" height="8" fill="#555"/>
+                        <rect x="190" y="45" width="120" height="6" fill="#444"/>
+                        <rect x="190" y="55" width="80" height="6" fill="#444"/>
+                        <rect x="190" y="80" width="50" height="20" fill="#555" rx="2"/>
+                        <text x="250" y="130" text-anchor="middle" fill="#666" font-size="10">画面B</text>
+                        
+                        <!-- 矢印（手書き風） -->
+                        <path d="M95 95 Q120 120, 180 60" stroke="#666" stroke-width="1" fill="none" stroke-dasharray="4"/>
+                        <text x="140" y="100" fill="#666" font-size="9">遷移？</text>
+                        
+                        <text x="175" y="200" text-anchor="middle" fill="#ef4444" font-size="11">「どうやって遷移する？」</text>
+                        <text x="175" y="220" text-anchor="middle" fill="#ef4444" font-size="11">想像するしかない</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ クリッカブル Lo-Fi</h3>
+                    <svg class="generated-art" viewBox="0 0 350 250">
+                        <rect x="0" y="0" width="350" height="250" fill="#1a1a2e"/>
+                        <!-- 画面（アクティブ） -->
+                        <rect x="100" y="20" width="150" height="100" fill="none" stroke="#00d4ff" stroke-width="2" rx="4"/>
+                        <rect x="115" y="35" width="70" height="10" fill="#555"/>
+                        <rect x="115" y="52" width="120" height="6" fill="#444"/>
+                        <rect x="115" y="64" width="100" height="6" fill="#444"/>
+                        
+                        <!-- ボタン（ホットスポット表示） -->
+                        <rect x="115" y="85" width="60" height="25" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="4"/>
+                        <text x="145" y="102" text-anchor="middle" fill="#00d4ff" font-size="10">タップ</text>
+                        
+                        <!-- カーソル -->
+                        <path d="M155 100 L155 115 L162 108 L170 115 L172 112 L165 105 L175 105 Z" fill="white"/>
+                        
+                        <!-- 遷移先プレビュー -->
+                        <rect x="220" y="140" width="100" height="70" fill="none" stroke="#00d4ff" stroke-width="1" rx="4" opacity="0.5"/>
+                        <text x="270" y="180" text-anchor="middle" fill="#00d4ff" font-size="9">次の画面</text>
+                        
+                        <!-- 矢印 -->
+                        <path d="M175 110 Q200 130, 220 150" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                        <polygon points="218,145 225,155 215,152" fill="#00d4ff"/>
+                        
+                        <text x="175" y="230" text-anchor="middle" fill="#10b981" font-size="11">実際にクリックして体験できる</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド19: Mid-Fi 定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Mid-Fi プロトタイプ<br><span style="font-size: 0.5em; color: #a855f7;">Medium Fidelity</span></h2>
+            <p>「体験」を検証する</p>
+        </div>
+
+        <!-- スライド20: Mid-Fi 詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Mid-Fiプロトタイプの特徴と目的</h2>
+            <div class="content-block">
+                <h3>何を検証するか</h3>
+                <ul>
+                    <li>操作感は自然か</li>
+                    <li>アニメーションの速度は適切か</li>
+                    <li>ユーザーは迷わず操作できるか</li>
+                </ul>
+                
+                <h3>特徴</h3>
+                <ul>
+                    <li><strong>制作時間</strong>：1日〜数日</li>
+                    <li><strong>ビジュアル</strong>：ブランドカラー適用、アイコン配置</li>
+                    <li><strong>インタラクション</strong>：基本的なアニメーション、状態変化</li>
+                </ul>
+                
+                <h3>いつ使うか</h3>
+                <p>方向性が固まった後、詳細設計に入る前。「この操作感でいきましょう」の合意形成に最適。</p>
+                
+                <div class="highlight-box">
+                    💡 Mid-Fiは「ユーザーテストができる最低限」のレベル
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド21: Mid-Fi インタラクション例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Mid-Fiで追加するインタラクション例</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <rect x="0" y="0" width="800" height="280" fill="#1a1a2e"/>
+                    
+                    <!-- ホバー状態 -->
+                    <g>
+                        <text x="130" y="30" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">ホバー状態</text>
+                        <rect x="50" y="50" width="160" height="80" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                        <rect x="70" y="65" width="80" height="10" fill="#666"/>
+                        <rect x="70" y="82" width="120" height="6" fill="#555"/>
+                        <rect x="70" y="95" width="100" height="6" fill="#555"/>
+                        
+                        <!-- 矢印 -->
+                        <path d="M130 140 L130 160" stroke="#a855f7" stroke-width="2"/>
+                        <polygon points="125,160 130,170 135,160" fill="#a855f7"/>
+                        
+                        <rect x="50" y="180" width="160" height="80" fill="#a855f7" opacity="0.2" stroke="#a855f7" stroke-width="2" rx="8"/>
+                        <rect x="70" y="195" width="80" height="10" fill="#a855f7"/>
+                        <rect x="70" y="212" width="120" height="6" fill="#888"/>
+                        <rect x="70" y="225" width="100" height="6" fill="#888"/>
+                    </g>
+                    
+                    <!-- ローディング -->
+                    <g>
+                        <text x="400" y="30" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">ローディング</text>
+                        <rect x="320" y="50" width="160" height="80" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                        <rect x="365" y="75" width="70" height="30" fill="#a855f7" rx="4"/>
+                        <text x="400" y="95" text-anchor="middle" fill="white" font-size="11">送信</text>
+                        
+                        <!-- 矢印 -->
+                        <path d="M400 140 L400 160" stroke="#a855f7" stroke-width="2"/>
+                        <polygon points="395,160 400,170 405,160" fill="#a855f7"/>
+                        
+                        <rect x="320" y="180" width="160" height="80" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                        <!-- スピナー -->
+                        <circle cx="400" cy="220" r="15" fill="none" stroke="#666" stroke-width="3"/>
+                        <path d="M400 205 A15 15 0 0 1 415 220" fill="none" stroke="#a855f7" stroke-width="3"/>
+                    </g>
+                    
+                    <!-- スライドイン -->
+                    <g>
+                        <text x="670" y="30" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">スライドイン</text>
+                        <rect x="590" y="50" width="160" height="80" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                        <rect x="720" y="65" width="20" height="50" fill="#555" rx="2"/>
+                        
+                        <!-- 矢印 -->
+                        <path d="M670 140 L670 160" stroke="#a855f7" stroke-width="2"/>
+                        <polygon points="665,160 670,170 675,160" fill="#a855f7"/>
+                        
+                        <rect x="590" y="180" width="160" height="80" fill="#333" stroke="#555" stroke-width="1" rx="8"/>
+                        <!-- パネル -->
+                        <rect x="650" y="185" width="95" height="70" fill="#a855f7" opacity="0.3" stroke="#a855f7" stroke-width="1" rx="4"/>
+                        <rect x="660" y="200" width="60" height="6" fill="#888"/>
+                        <rect x="660" y="215" width="75" height="6" fill="#666"/>
+                        <rect x="660" y="230" width="50" height="6" fill="#666"/>
+                        
+                        <!-- 矢印表示 -->
+                        <path d="M640 220 L655 220" stroke="#a855f7" stroke-width="2"/>
+                        <polygon points="652,215 662,220 652,225" fill="#a855f7"/>
+                    </g>
+                </svg>
+                <p style="text-align: center; color: #888; margin-top: 0.5rem;">これらの「動き」があることで、操作の結果が予測できる</p>
+            </div>
+        </div>
+
+        <!-- スライド22: Hi-Fi 定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>Hi-Fi プロトタイプ<br><span style="font-size: 0.5em; color: #10b981;">High Fidelity</span></h2>
+            <p>「完成形」を体験させる</p>
+        </div>
+
+        <!-- スライド23: Hi-Fi 詳細 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Hi-Fiプロトタイプの特徴と目的</h2>
+            <div class="content-block">
+                <h3>何を検証するか</h3>
+                <ul>
+                    <li>最終的なビジュアルの品質</li>
+                    <li>ブランドとの整合性</li>
+                    <li>細部のユーザビリティ</li>
+                </ul>
+                
+                <h3>特徴</h3>
+                <ul>
+                    <li><strong>制作時間</strong>：数日〜1週間以上</li>
+                    <li><strong>ビジュアル</strong>：実際の画像・コンテンツ、最終デザイン</li>
+                    <li><strong>インタラクション</strong>：マイクロインタラクション、実データ連携</li>
+                </ul>
+                
+                <h3>いつ使うか</h3>
+                <p>最終承認前、または投資家・経営層へのプレゼン時。「これが完成版です」の説得力が必要なとき。</p>
+                
+                <div class="highlight-box">
+                    ⚠️ Hi-Fiは工数がかかる。必要なときだけ作る判断が重要
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド24: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 3</h2>
+            <p>各段階の使い分けと判断基準</p>
+        </div>
+
+        <!-- スライド25: 判断マトリクス -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">どの段階を選ぶべきか？判断マトリクス</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <rect x="0" y="0" width="800" height="320" fill="#1a1a2e"/>
+                    
+                    <!-- ヘッダー行 -->
+                    <rect x="50" y="30" width="140" height="40" fill="#333"/>
+                    <text x="120" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">状況</text>
+                    
+                    <rect x="200" y="30" width="180" height="40" fill="#00d4ff" opacity="0.2"/>
+                    <text x="290" y="55" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">Lo-Fi</text>
+                    
+                    <rect x="390" y="30" width="180" height="40" fill="#a855f7" opacity="0.2"/>
+                    <text x="480" y="55" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="bold">Mid-Fi</text>
+                    
+                    <rect x="580" y="30" width="170" height="40" fill="#10b981" opacity="0.2"/>
+                    <text x="665" y="55" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">Hi-Fi</text>
+                    
+                    <!-- 行1: プロジェクト初期 -->
+                    <rect x="50" y="80" width="140" height="50" fill="#252540"/>
+                    <text x="120" y="110" text-anchor="middle" fill="white" font-size="11">プロジェクト初期</text>
+                    <rect x="200" y="80" width="180" height="50" fill="#00d4ff" opacity="0.1"/>
+                    <text x="290" y="110" text-anchor="middle" fill="#00d4ff" font-size="18">◎</text>
+                    <rect x="390" y="80" width="180" height="50" fill="transparent"/>
+                    <text x="480" y="110" text-anchor="middle" fill="#666" font-size="18">△</text>
+                    <rect x="580" y="80" width="170" height="50" fill="transparent"/>
+                    <text x="665" y="110" text-anchor="middle" fill="#666" font-size="18">×</text>
+                    
+                    <!-- 行2: 方向性確定後 -->
+                    <rect x="50" y="140" width="140" height="50" fill="#252540"/>
+                    <text x="120" y="170" text-anchor="middle" fill="white" font-size="11">方向性確定後</text>
+                    <rect x="200" y="140" width="180" height="50" fill="transparent"/>
+                    <text x="290" y="170" text-anchor="middle" fill="#666" font-size="18">△</text>
+                    <rect x="390" y="140" width="180" height="50" fill="#a855f7" opacity="0.1"/>
+                    <text x="480" y="170" text-anchor="middle" fill="#a855f7" font-size="18">◎</text>
+                    <rect x="580" y="140" width="170" height="50" fill="transparent"/>
+                    <text x="665" y="170" text-anchor="middle" fill="#666" font-size="18">○</text>
+                    
+                    <!-- 行3: 最終承認 -->
+                    <rect x="50" y="200" width="140" height="50" fill="#252540"/>
+                    <text x="120" y="230" text-anchor="middle" fill="white" font-size="11">最終承認・投資家向け</text>
+                    <rect x="200" y="200" width="180" height="50" fill="transparent"/>
+                    <text x="290" y="230" text-anchor="middle" fill="#666" font-size="18">×</text>
+                    <rect x="390" y="200" width="180" height="50" fill="transparent"/>
+                    <text x="480" y="230" text-anchor="middle" fill="#666" font-size="18">△</text>
+                    <rect x="580" y="200" width="170" height="50" fill="#10b981" opacity="0.1"/>
+                    <text x="665" y="230" text-anchor="middle" fill="#10b981" font-size="18">◎</text>
+                    
+                    <!-- 行4: ユーザーテスト -->
+                    <rect x="50" y="260" width="140" height="50" fill="#252540"/>
+                    <text x="120" y="290" text-anchor="middle" fill="white" font-size="11">ユーザーテスト</text>
+                    <rect x="200" y="260" width="180" height="50" fill="transparent"/>
+                    <text x="290" y="290" text-anchor="middle" fill="#666" font-size="18">○</text>
+                    <rect x="390" y="260" width="180" height="50" fill="#a855f7" opacity="0.1"/>
+                    <text x="480" y="290" text-anchor="middle" fill="#a855f7" font-size="18">◎</text>
+                    <rect x="580" y="260" width="170" height="50" fill="transparent"/>
+                    <text x="665" y="290" text-anchor="middle" fill="#666" font-size="18">○</text>
+                </svg>
+                <p style="text-align: center; color: #888; margin-top: 0.5rem;">◎ 最適 / ○ 可 / △ 非推奨 / × 不適切</p>
+            </div>
+        </div>
+
+        <!-- スライド26: よくある間違い -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">よくある間違い：段階の選択ミス</h2>
+            <div class="content-block">
+                <h3>❌ 失敗パターン1：最初からHi-Fiを作る</h3>
+                <p>完璧なデザインを作ったのに「方向性が違う」と言われ、すべてやり直し。</p>
+                <p><strong>→ 解決策：</strong>Lo-Fiで「構造」の合意を先に取る</p>
+                
+                <h3>❌ 失敗パターン2：いつまでもLo-Fiで進める</h3>
+                <p>「だいたいこんな感じ」で進め続けた結果、開発段階で認識のズレが発覚。</p>
+                <p><strong>→ 解決策：</strong>合意が取れたらMid-Fiに昇格させる</p>
+                
+                <h3>❌ 失敗パターン3：段階を飛ばす</h3>
+                <p>Lo-FiからいきなりHi-Fiへ。中間の「体験検証」がないため、操作感の問題が残る。</p>
+                <p><strong>→ 解決策：</strong>Mid-Fiでインタラクションを検証してから仕上げる</p>
+                
+                <div class="highlight-box">
+                    💡 段階を「省略」するのではなく「状況に応じて軽重をつける」
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド27: 段階間の移行タイミング -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">段階を上げるタイミング</h2>
+            <div class="content-block">
+                <h3>Lo-Fi → Mid-Fi に移行する条件</h3>
+                <ul>
+                    <li>画面構成と情報設計が承認された</li>
+                    <li>主要なユーザーフローが確定した</li>
+                    <li>大きな方向転換のリスクが低くなった</li>
+                </ul>
+                
+                <h3>Mid-Fi → Hi-Fi に移行する条件</h3>
+                <ul>
+                    <li>インタラクションパターンが承認された</li>
+                    <li>ユーザーテストで重大な問題が見つからなかった</li>
+                    <li>最終的なビジュアルデザインが必要な場面が来た</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ 「時間がないから」は移行の理由にならない。承認なき昇格は手戻りの元
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド28: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Part 4</h2>
+            <p>まとめと実践編への準備</p>
+        </div>
+
+        <!-- スライド29: まとめタイル -->
+        <div class="slide-container">
+            <h2 class="slide-title">本日のまとめ</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">🧠</div>
+                    <h3>認知負荷の軽減</h3>
+                    <p>「見ればわかる」で<br>説明コストを削減</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚡</div>
+                    <h3>意思決定の加速</h3>
+                    <p>判断材料を与えて<br>承認を早める</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>認識ギャップの解消</h3>
+                    <p>「思ってたのと違う」を<br>事前に防ぐ</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📊</div>
+                    <h3>段階的アプローチ</h3>
+                    <p>Lo-Fi → Mid-Fi → Hi-Fi<br>状況に応じて選択</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド30: 実践編への橋渡し -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：実践編で学ぶこと</h2>
+            <div class="content-block">
+                <h3>Figmaハンズオン演習</h3>
+                <p>Lo-Fi → Mid-Fiプロトタイプを実際に作成します。「SLOW DRIP カフェ」のモバイル注文アプリを題材に、動くデモを完成させます。</p>
+                
+                <h3>演習内容</h3>
+                <ul>
+                    <li><strong>手順1</strong>：ワイヤーフレーム間のリンク設定（基本遷移）</li>
+                    <li><strong>手順2</strong>：スマートアニメイト機能でMid-Fi化（動きの追加）</li>
+                    <li><strong>手順3</strong>：プレビューモードでクライアント視点確認</li>
+                </ul>
+                
+                <h3>到達目標</h3>
+                <ul>
+                    <li>Figmaで基本的なプロトタイプを作成できる</li>
+                    <li>画面遷移とアニメーションを設定できる</li>
+                    <li>クライアントに「動くデモ」を見せられる状態になる</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    🎯 理論を理解した上で、Figmaで手を動かして体得する
+                </div>
+            </div>
+        </div>
 
         <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -24,7 +713,63 @@
     <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+            {
+                question: "プロトタイプが「認知負荷を軽減する」とはどういう意味ですか？",
+                options: [
+                    "デザイナーの作業量が減る",
+                    "クライアントが想像する必要がなくなり、理解が速くなる",
+                    "開発者のコーディングが簡単になる",
+                    "ミーティングの回数が減る"
+                ],
+                correct: 1,
+                explanation: "静的資料では「読む→解釈→想像→理解」の4ステップが必要ですが、動くプロトタイプなら「見る→理解」の2ステップで済みます。想像する認知コストが省けるため、理解が速くなります。"
+            },
+            {
+                question: "Lo-Fiプロトタイプの主な目的は何ですか？",
+                options: [
+                    "最終的なビジュアルを確認する",
+                    "構造と情報の流れを検証する",
+                    "マイクロインタラクションをテストする",
+                    "投資家にプレゼンする"
+                ],
+                correct: 1,
+                explanation: "Lo-Fiプロトタイプは「捨てる前提」で作るもので、情報の優先順位やユーザーの動線など「構造」の検証に使います。ビジュアルの完成度は求めません。"
+            },
+            {
+                question: "Mid-Fiプロトタイプに追加すべき要素はどれですか？",
+                options: [
+                    "最終的な写真素材",
+                    "基本的なアニメーションと状態変化",
+                    "実際のユーザーデータ",
+                    "多言語対応"
+                ],
+                correct: 1,
+                explanation: "Mid-Fiでは「体験」を検証します。ホバー状態、ローディング、スライドインなどの基本的なインタラクションを追加し、操作感が自然かどうかを確認します。"
+            },
+            {
+                question: "修正コストが「設計フェーズ」で発見した場合と「リリース後」で発見した場合、どのくらい差がありますか？",
+                options: [
+                    "約2倍",
+                    "約5倍",
+                    "約20倍",
+                    "約100倍"
+                ],
+                correct: 2,
+                explanation: "設計フェーズでの修正コストを1とすると、開発フェーズで約10倍、リリース後では約100倍になると言われています。プロトタイプで早期発見することの価値は非常に大きいです。"
+            },
+            {
+                question: "プロジェクト初期に「いきなりHi-Fiプロトタイプを作る」ことの問題点は？",
+                options: [
+                    "制作時間がかかりすぎる",
+                    "方向性が違った場合、すべてやり直しになる",
+                    "クライアントが理解できない",
+                    "開発者が混乱する"
+                ],
+                correct: 1,
+                explanation: "Hi-Fiは工数がかかるため、方向性の合意がないまま作ると、根本的な変更が必要になった際に大きな手戻りが発生します。まずLo-Fiで構造の合意を取ることが重要です。"
+            }
+        ];
     </script>
     
     <script src="../assets/slide-template.js"></script>
