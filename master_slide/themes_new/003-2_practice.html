@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>視線誘導と認知負荷【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>視線誘導と認知負荷<span>【実践編】</span></h1>
+                <p>自分の「目の動き」を自覚し、デザインを診断する</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 今日の実践目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の実践目標</h2>
+            <div class="content-block">
+                <h3>ゴール</h3>
+                <p>実在するWebサイトを<strong>「視線の動き」と「認知負荷」の2軸</strong>で診断し、改善案を自分の言葉で書けるようになる。</p>
+        
+                <h3>理論編からの接続</h3>
+                <ul>
+                    <li><strong>視線誘導：</strong>F字型・Z字型パターンで「目がどう動くか」を学んだ</li>
+                    <li><strong>認知負荷：</strong>脳の処理上限（7±2）と外在的負荷の概念を学んだ</li>
+                    <li><strong>今日やること：</strong>その知識を使って、実在サイトを「診断」する</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 001は「良いデザインを分析」、002は「悪いデザインを診断」。<br>003は<strong>「自分がユーザーとしてどう見ているか」を自覚する</strong>演習です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: 演習素材の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習素材：自分がよく使うWebサイト</h2>
+            <div class="content-block">
+                <h3>素材を選ぶ</h3>
+                <p>今回は<strong>あなた自身が日常的に使っているWebサイト</strong>を1つ選んでください。</p>
+        
+                <h3>選ぶサイトの例</h3>
+                <ul>
+                    <li><strong>ECサイト：</strong>Amazon、楽天市場、ZOZOTOWN など</li>
+                    <li><strong>ニュースサイト：</strong>Yahoo!ニュース、日経電子版 など</li>
+                    <li><strong>企業HP：</strong>自分が転職活動で見ている会社のサイト など</li>
+                    <li><strong>サービスサイト：</strong>食べログ、ホットペッパー、メルカリ など</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 なぜ「身近なサイト」を使うのか？<br>
+                    毎日見ているはずなのに、視線の動きを意識したことはないはず。<br>
+                    <strong>「理論は自分の日常に直結している」</strong>と実感するための選択です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 演習課題の提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題</h2>
+            <div class="content-block">
+                <h3>課題①：視線の動きを図示する</h3>
+                <p>選んだサイトのトップページを見て、<strong>自分の視線がどう動いたか</strong>を矢印で図示してください。</p>
+                <ul>
+                    <li>紙にスクリーンショットを印刷して手書きでもOK</li>
+                    <li>Figmaでスクリーンショットの上に矢印を描いてもOK</li>
+                </ul>
+        
+                <h3>課題②：認知負荷の診断</h3>
+                <p>認知負荷が高いと感じた箇所を<strong>3つ</strong>挙げ、それぞれについて以下を1文で書いてください。</p>
+                <ul>
+                    <li>「なぜ認知負荷が高いか」（原因）</li>
+                    <li>「どう改善するか」（提案）</li>
+                </ul>
+        
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>対象：</strong>トップページ（ファーストビュー中心）</li>
+                    <li><strong>制作時間：</strong>20分</li>
+                    <li><strong>使用ツール：</strong>紙 or Figma（図示用）＋ Gemini（分析比較用）</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⏱️ タイマーをセットしてスタート！ まずは手順1から順番に進めましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 手順1：自分の視線を観察する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 4：自分の視線を観察する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 選んだサイトを開き、一度ページ全体を「意識的にゆっくり」見てください。</p>
+                <p><strong>2.</strong> 以下の3つを記録します：</p>
+                <ul>
+                    <li>🔴 <strong>最初に目が行った場所</strong>（＝そのサイトの視覚的優先順位が見える）</li>
+                    <li>🟡 <strong>次に見た場所</strong>（＝視線の流れの方向が見える）</li>
+                    <li>🔵 <strong>最後に見た場所</strong>（＝離脱ポイントまたはCTAの位置）</li>
+                </ul>
+                <p><strong>3.</strong> 視線の流れを矢印で描き、F字型・Z字型・それとも別のパターンか判断します。</p>
+        
+                <h3>理論編との関連</h3>
+                <p>テキスト主体のサイトならF字型、ビジュアル主体ならZ字型になるはず。予想と違ったら、なぜ違うのかを考えてみましょう。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：サイトを「読もう」としてしまうこと。<br>
+                    ✅ 正解：「目がどこに引っ張られるか」を観察する。内容は読まなくてOK。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 手順2：認知負荷の診断 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 4：認知負荷の診断</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> サイトを見て<strong>「どこで"うっ"と感じたか」</strong>を探してください。</p>
+                <p><strong>2.</strong> 以下の4つの観点でチェックします：</p>
+                <ul>
+                    <li>情報が多すぎないか？</li>
+                    <li>選択肢が多すぎないか？（ナビ項目、ボタンの数）</li>
+                    <li>文字が小さすぎ／詰まりすぎていないか？</li>
+                    <li>余白がなさすぎないか？</li>
+                </ul>
+                <p><strong>3.</strong> 問題を感じた箇所を3つ挙げ、原因と改善案を1文ずつ書きます。</p>
+        
+                <h3>自分で書いた後、Geminiに分析させて比較しましょう</h3>
+                <p>サイトのスクリーンショットを撮り、以下のプロンプトとともにGeminiに送信してください：</p>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        このWebサイトのスクリーンショットを認知負荷の観点で分析してください。
+        
+        以下の4つの観点で問題点を指摘し、それぞれ改善案を提示してください：
+        1. 情報量（1画面に詰め込みすぎていないか）
+        2. 選択肢の数（ナビゲーション、ボタン、リンクの数）
+        3. 余白の使い方（要素間の余白は十分か）
+        4. 視覚的階層（見出し・本文・補足の区別は明確か）
+        
+        それぞれの問題点について、認知負荷の3種類（内在的負荷・外在的負荷・学習関連負荷）のどれに該当するかも教えてください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：最初からGeminiに頼ってしまうこと。<br>
+                    ✅ 正解：<strong>まず自分の言葉で書いてから</strong>AIと比較する。この順番が重要です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 手順3：自分の言葉で改善案を書く -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 4：自分の言葉で改善案を書く</h2>
+            <div class="content-block">
+                <h3>001・002と同じパターンです</h3>
+                <p>Geminiの分析結果を見る<strong>前に</strong>、自分で改善案を書いてください。</p>
+        
+                <h3>書く内容（3箇所分）</h3>
+                <p>問題箇所ごとに以下のフォーマットで記述します：</p>
+                <ul>
+                    <li><strong>箇所：</strong>「〇〇の部分」（具体的にどこか）</li>
+                    <li><strong>問題：</strong>「〜が〜なので認知負荷が高い」（なぜ高いか）</li>
+                    <li><strong>改善案：</strong>「〜を〜に変更する」（どう直すか）</li>
+                </ul>
+        
+                <h3>記述例</h3>
+                <p><strong>箇所：</strong>ヘッダーのナビゲーション<br>
+                <strong>問題：</strong>メニュー項目が12個あり、マジカルナンバー（7±2）を超えているので認知負荷が高い<br>
+                <strong>改善案：</strong>主要カテゴリ5つに絞り、残りはドロップダウンメニューに格納する</p>
+        
+                <div class="highlight-box">
+                    💡 「認知負荷が高い」だけでは不十分。<strong>なぜ高いか（原因）</strong>と<strong>どう下げるか（対策）</strong>をセットで書くのがプロの言語化です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 手順4：Geminiの分析と比較する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 4：Geminiの分析と比較する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 手順2で送信したGeminiの分析結果を確認します。</p>
+                <p><strong>2.</strong> 自分の診断とAIの診断を突き合わせて、以下をチェック：</p>
+                <ul>
+                    <li>自分が見つけた問題点で、AIも指摘しているものはどれか？</li>
+                    <li>AIが見つけたが自分は気づかなかった問題点はあるか？</li>
+                    <li>自分は見つけたがAIは指摘しなかった問題点はあるか？</li>
+                </ul>
+                <p><strong>3.</strong> 差分があった箇所について「なぜ見落としたか」「なぜAIは見落としたか」を考えます。</p>
+        
+                <h3>比較から学ぶこと</h3>
+                <p>AIは「一般論としての問題」を指摘するのが得意。人間は「このサイトの文脈を踏まえた判断」が得意。どちらか一方ではなく、<strong>補完関係</strong>として活用するのがVisual Architectの仕事です。</p>
+        
+                <div class="highlight-box">
+                    💡 AIが指摘しなかった問題を自分が見つけられたら、それは「人間の判断力」が発揮された証拠です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 発表・共有 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">発表・共有</h2>
+            <div class="content-block">
+                <h3>発表の流れ（2〜3名）</h3>
+                <ul>
+                    <li><strong>30秒：</strong>「どのサイトを選んだか」と「なぜ選んだか」</li>
+                    <li><strong>1分：</strong>視線の動き（F字型 or Z字型 or その他）と認知負荷の問題箇所</li>
+                    <li><strong>30秒：</strong>自分の診断とGeminiの診断で最も違いがあったポイント</li>
+                </ul>
+        
+                <h3>聞く側のチェックポイント</h3>
+                <ul>
+                    <li>同じサイトでも、自分とは違う視線の動き方をしていないか？</li>
+                    <li>自分が「問題ない」と思った箇所を、他の人は「問題あり」と判断していないか？</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 重要な発見：<strong>同じサイトでも人によって視線の動き方が違う</strong>。<br>
+                    だからこそ、F字型・Z字型という「多くの人に共通するパターン」を基準にすることが重要なのです。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: まとめ -->
+        <div class="slide-container big-concept-layout">
+            <h2>デザインを見る"目"が変わった。<br>もう"なんとなく見やすい"<br>とは言わなくなる</h2>
+            <p>視線の動きと認知負荷——理論で裏付けられた「診断の言葉」を手に入れた</p>
+        </div>
+        
+        <!-- スライド11: Block 1の中間振り返り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Block 1 中間振り返り：3つの武器</h2>
+            <div class="content-block">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">🎯</div>
+                        <h3>001</h3>
+                        <p>デザインは「設計」である<br>Art ≠ Design</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>002</h3>
+                        <p>4つのデザイン原則<br>整列・近接・反復・コントラスト</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">👁</div>
+                        <h3>003</h3>
+                        <p>視線誘導と認知負荷<br>知覚のメカニズム</p>
+                    </div>
+                </div>
+        
+                <h3 style="margin-top: 2rem;">ここまでの到達点</h3>
+                <p>「なんとなく」ではなく、<strong>原則とメカニズムに基づいて</strong>デザインを評価・診断できるようになりました。</p>
+        
+                <h3>次回予告：004 色彩と文字</h3>
+                <p>001〜003は「目」と「脳」の話でした。次回はいよいよ<strong>「心」</strong>の話——色が感情に与える影響と、フォントが持つ性格を学びます。</p>
+        
+                <div class="highlight-box">
+                    📝 まずはクイズで今回の理解度をチェックしましょう（キーボードの「Q」を押す）
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: クイズへの誘導（既存流用） -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "自分の視線の動きを観察する際、最初に記録すべきことは何ですか？",
+            options: [
+                "サイトの配色パターン",
+                "最初に目が行った場所",
+                "ナビゲーションの項目数",
+                "ページの読み込み速度"
+            ],
+            correct: 1,
+            explanation: "最初に目が行った場所を記録することで、そのサイトの「視覚的優先順位」が見えてきます。デザインが意図した通りに目を誘導できているかの判断基準になります。"
+        },
+        {
+            question: "ECサイトで「情報が多すぎる」と感じた場合、認知負荷のどの種類が問題ですか？",
+            options: [
+                "内在的負荷（情報そのものの複雑さ）",
+                "外在的負荷（デザインの見せ方による無駄な負荷）",
+                "学習関連負荷（理解に必要な負荷）",
+                "感情的負荷（ストレスによる負荷）"
+            ],
+            correct: 1,
+            explanation: "「情報が多すぎる」と感じるのは、デザインの見せ方（外在的負荷）の問題です。情報量自体は同じでも、優先順位をつけて整理すれば認知負荷は大幅に下がります。理論編のスライド14・15で見た「詰め込みLP」と「整理したLP」の違いがまさにこれです。"
+        },
+        {
+            question: "ニュースサイトのトップページで視線がF字型に動いた場合、そのサイトは何を重視していると判断できますか？",
+            options: [
+                "ブランドイメージの訴求",
+                "商品の販売促進",
+                "テキスト情報の読みやすさ",
+                "動画コンテンツの視聴"
+            ],
+            correct: 2,
+            explanation: "F字型パターンはテキスト主体のページで発生します。ニュースサイトでF字型に視線が動くのは、テキスト情報を効率的に読ませるレイアウト設計がされている証拠です。"
+        },
+        {
+            question: "Geminiに認知負荷の分析を依頼する際、プロンプトに含めるべき具体的な観点として最も適切な組み合わせはどれですか？",
+            options: [
+                "色彩理論、タイポグラフィ、アニメーション、レスポンシブ対応",
+                "情報量、選択肢の数、余白の使い方、視覚的階層",
+                "SEO対策、ページ速度、アクセシビリティ、セキュリティ",
+                "ブランディング、コピーライティング、写真撮影、イラスト制作"
+            ],
+            correct: 1,
+            explanation: "認知負荷の分析では「情報量」「選択肢の数」「余白の使い方」「視覚的階層」の4つが重要な観点です。これらはすべて外在的負荷に関わる要素で、デザインの改善で直接コントロールできます。"
+        },
+        {
+            question: "【統合問題】「視線の動き」と「認知負荷」の両方を同時に改善する設計手法として、最も効果的なのはどれですか？",
+            options: [
+                "ページ全体にアニメーションを追加して注意を引く",
+                "すべての情報を均等なサイズで配置して公平にする",
+                "情報の優先順位をつけ、重要な情報を視線の自然な流れの上に配置する",
+                "テキストをすべて画像に置き換えて文字量を減らす"
+            ],
+            correct: 2,
+            explanation: "情報に優先順位をつけることで認知負荷を下げ、その重要な情報を視線の自然な流れ（F字型・Z字型）の上に配置することで視線誘導も同時に実現できます。理論編で学んだ「見せる順番を設計する」がここに集約されています。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

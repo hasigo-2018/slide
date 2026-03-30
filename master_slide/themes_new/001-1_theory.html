@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デザインは「設計」である【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>デザインは「設計」である<span>【理論編】</span></h1>
+                <p>センスではなく、論理で学ぶデザインの基礎</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: コースの全体地図 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">コースの全体地図：半年間のロードマップ</h2>
+            <div class="content-block svg-centered">
+                <p>このコースは8つのブロックで構成されています。一本道のストーリーで、迷わず進めます。</p>
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <!-- ストーリーライン矢印 -->
+                    <defs>
+                        <marker id="arrow-road" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                            <polygon points="0 0, 8 4, 0 8" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- Block 1 - ハイライト（今日はここ） -->
+                    <rect x="10" y="40" width="85" height="100" rx="8" fill="#00d4ff" opacity="0.25" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="52" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="#00d4ff">Block 1</text>
+                    <text x="52" y="86" text-anchor="middle" font-size="10" fill="white">デザイン</text>
+                    <text x="52" y="100" text-anchor="middle" font-size="10" fill="white">基礎理論</text>
+                    <text x="52" y="128" text-anchor="middle" font-size="9" fill="#00d4ff">今ここ</text>
+        
+                    <!-- 矢印1 -->
+                    <line x1="100" y1="90" x2="112" y2="90" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 2 -->
+                    <rect x="118" y="40" width="85" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="160" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 2</text>
+                    <text x="160" y="86" text-anchor="middle" font-size="10" fill="#aaa">WEB制作の</text>
+                    <text x="160" y="100" text-anchor="middle" font-size="10" fill="#aaa">上流設計</text>
+        
+                    <!-- 矢印2 -->
+                    <line x1="208" y1="90" x2="220" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 3 -->
+                    <rect x="226" y="40" width="85" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="268" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 3</text>
+                    <text x="268" y="86" text-anchor="middle" font-size="10" fill="#aaa">Figmaと</text>
+                    <text x="268" y="100" text-anchor="middle" font-size="10" fill="#aaa">構造設計</text>
+        
+                    <!-- 矢印3 -->
+                    <line x1="316" y1="90" x2="328" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 4 -->
+                    <rect x="334" y="40" width="85" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="376" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 4</text>
+                    <text x="376" y="86" text-anchor="middle" font-size="10" fill="#aaa">AI活用</text>
+                    <text x="376" y="100" text-anchor="middle" font-size="10" fill="#aaa">基礎</text>
+        
+                    <!-- 矢印4 -->
+                    <line x1="424" y1="90" x2="436" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 5 -->
+                    <rect x="442" y="40" width="85" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="484" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 5</text>
+                    <text x="484" y="86" text-anchor="middle" font-size="10" fill="#aaa">LP/HP</text>
+                    <text x="484" y="100" text-anchor="middle" font-size="10" fill="#aaa">制作実践</text>
+        
+                    <!-- 矢印5 -->
+                    <line x1="532" y1="90" x2="544" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 6 -->
+                    <rect x="550" y="40" width="85" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="592" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 6</text>
+                    <text x="592" y="86" text-anchor="middle" font-size="10" fill="#aaa">QAと</text>
+                    <text x="592" y="100" text-anchor="middle" font-size="10" fill="#aaa">ディレクション</text>
+        
+                    <!-- 矢印6 -->
+                    <line x1="640" y1="90" x2="652" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 7 -->
+                    <rect x="658" y="40" width="60" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="688" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 7</text>
+                    <text x="688" y="86" text-anchor="middle" font-size="10" fill="#aaa">チーム</text>
+                    <text x="688" y="100" text-anchor="middle" font-size="10" fill="#aaa">連携</text>
+        
+                    <!-- 矢印7 -->
+                    <line x1="723" y1="90" x2="735" y2="90" stroke="#444" stroke-width="2" marker-end="url(#arrow-road)"/>
+        
+                    <!-- Block 8 -->
+                    <rect x="741" y="40" width="55" height="100" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="768" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Block 8</text>
+                    <text x="768" y="86" text-anchor="middle" font-size="10" fill="#aaa">ポート</text>
+                    <text x="768" y="100" text-anchor="middle" font-size="10" fill="#aaa">フォリオ</text>
+        
+                    <!-- ストーリーライン -->
+                    <text x="52" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="#00d4ff">考える</text>
+                    <text x="160" y="185" text-anchor="middle" font-size="12" fill="#aaa">→</text>
+                    <text x="214" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">道具を持つ</text>
+                    <text x="310" y="185" text-anchor="middle" font-size="12" fill="#aaa">→</text>
+                    <text x="376" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">作る</text>
+                    <text x="430" y="185" text-anchor="middle" font-size="12" fill="#aaa">→</text>
+                    <text x="484" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">裁く</text>
+                    <text x="538" y="185" text-anchor="middle" font-size="12" fill="#aaa">→</text>
+                    <text x="592" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">渡す</text>
+                    <text x="645" y="185" text-anchor="middle" font-size="12" fill="#aaa">→</text>
+                    <text x="728" y="185" text-anchor="middle" font-size="12" font-weight="bold" fill="white">売る</text>
+        
+                    <!-- 期間表示 -->
+                    <line x1="10" y1="220" x2="400" y2="220" stroke="#00d4ff" stroke-width="2" opacity="0.5"/>
+                    <line x1="400" y1="220" x2="796" y2="220" stroke="#ff0080" stroke-width="2" opacity="0.5"/>
+                    <text x="200" y="245" text-anchor="middle" font-size="11" fill="#00d4ff">前半3ヶ月：インプット（学習）</text>
+                    <text x="600" y="245" text-anchor="middle" font-size="11" fill="#ff0080">後半3ヶ月：アウトプット（実践）</text>
+        
+                    <!-- 補足 -->
+                    <rect x="180" y="270" width="440" height="50" rx="8" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="400" y="295" text-anchor="middle" font-size="13" fill="white">今日のテーマ：「デザインは設計である」</text>
+                    <text x="400" y="312" text-anchor="middle" font-size="11" fill="#aaa">すべての学びの出発点 ── なぜデザインを学ぶのか？</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド3: ビジュアルアーキテクトとは何か -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">あなたがなるのは「ビジュアルアーキテクト」</h2>
+            <div class="content-block">
+                <p>このコースのゴールは「デザイナー」ではありません。<br>
+                <strong>考えて、判断して、方向を決められる人</strong>──それが「ビジュアルアーキテクト」です。</p>
+        
+                <div class="two-column tiled">
+                    <div>
+                        <h3>従来の「デザイナー」</h3>
+                        <ul>
+                            <li>自分の手で作ることが仕事</li>
+                            <li>ツール操作のスキルが中心</li>
+                            <li>「作れる＝価値」だった時代</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>ビジュアルアーキテクト</h3>
+                        <ul>
+                            <li>設計・判断・指示が仕事</li>
+                            <li>論理的思考と言語化力が中心</li>
+                            <li>AIが作り、人間が裁く時代</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="highlight-box">
+                    💡 AI時代に最も価値があるのは「作る力」ではなく「判断する力」。<br>
+                    なぜそのデザインが正しいのか──理由を語れる人が求められています。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 既存流用 - 「デザインセンスがない」は本当か？ -->
+        <div class="slide-container big-concept-layout">
+            <h2>「デザインセンスがない」<br>は、本当か？</h2>
+            <p>デザインは感覚ではなく、学べる論理体系です</p>
+        </div>
+        
+        <!-- スライド5: 既存流用 - Art vs Design -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Art（芸術）とDesign（設計）の違い</h2>
+            <div class="content-block">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3>Art（芸術）</h3>
+                        <ul>
+                            <li>自己表現が目的</li>
+                            <li>感情や思想を伝える</li>
+                            <li>解釈は鑑賞者に委ねる</li>
+                            <li>唯一無二の作品</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Design（設計）</h3>
+                        <ul>
+                            <li>課題解決が目的</li>
+                            <li>情報を明確に伝える</li>
+                            <li>意図通りに理解させる</li>
+                            <li>再現可能な法則</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    💡 デザインは「センス」ではなく「論理」で構築できる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 既存流用 - デザインの本質 -->
+        <div class="slide-container big-concept-layout">
+            <h2>デザインの本質</h2>
+            <p>情報を整理し、相手に正しく伝えること</p>
+        </div>
+        
+        <!-- スライド7: 新規・核 - 2つのLPのFV比較 -->
+        <div class="slide-container">
+            <h2 class="slide-title">【実例】同じ会社、同じサービス。なぜ結果が違うのか？</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem;">キャリアリンクファクトリー ── 2つのランディングページを比較してみましょう。</p>
+            <div class="two-column tiled">
+                <div>
+                    <h3>1回目のLP（solutions）</h3>
+                    <div class="image-container">
+                        <img src="../assets/images/clf-lp-solutions-fv.png" alt="キャリアリンクファクトリー LP 1回目 FV" width="100%" height="100%">
+                    </div>
+                    <p style="font-size: 1rem; margin-top: 1rem; text-align: center;">https://www.careerlinkfactory.co.jp/lp/solutions/</p>
+                </div>
+                <div>
+                    <h3>2回目のLP（international）</h3>
+                    <div class="image-container">
+                        <img src="../assets/images/clf-lp-international-fv.png" alt="キャリアリンクファクトリー LP 2回目 FV" width="100%" height="100%">
+                    </div>
+                    <p style="font-size: 1rem; margin-top: 1rem; text-align: center;">https://www.careerlinkfactory.co.jp/lp/international/</p>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                🤔 どちらが問い合わせが多いと思いますか？──その理由も考えてみてください。
+            </div>
+        </div>
+        
+        <!-- スライド8: 新規・核 - 答え：「設計」が違った -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">答え：「設計」が違った</h2>
+            <div class="content-block">
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    2回目のLPが継続的に問い合わせを獲得しています。<br>
+                    しかし、その理由は<strong>「見た目が良くなったから」ではありません。</strong>
+                </p>
+        
+                <div class="two-column tiled">
+                    <div>
+                        <h3>❌ よくある誤解</h3>
+                        <ul>
+                            <li>写真がキレイになったから</li>
+                            <li>色使いがおしゃれだから</li>
+                            <li>レイアウトが洗練されたから</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>✅ 本当の理由</h3>
+                        <ul>
+                            <li><strong>誰に</strong>伝えるかを変えた</li>
+                            <li><strong>何を</strong>伝えるかを変えた</li>
+                            <li><strong>どの順番で</strong>伝えるかを変えた</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="highlight-box">
+                    💡 変わったのは「デザイン表現」ではなく「設計」。<br>
+                    これが「デザイン＝設計」の意味です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 新規・核 - 1回目の設計を解剖する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">1回目の設計を解剖する</h2>
+            <div class="content-block svg-centered">
+                <h3>solutions ── 「何でもできます」の落とし穴</h3>
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 広いターゲット -->
+                    <rect x="80" y="30" width="640" height="60" rx="8" fill="rgba(255,0,128,0.15)" stroke="#ff0080" stroke-width="1.5"/>
+                    <text x="400" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#ff0080">ターゲット：製造業の企業 全般</text>
+                    <text x="400" y="75" text-anchor="middle" font-size="12" fill="#aaa">→ 広すぎて「自分のことだ」と思えない</text>
+        
+                    <!-- メッセージ -->
+                    <rect x="120" y="110" width="560" height="55" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444" stroke-width="1"/>
+                    <text x="400" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="white">メッセージ：「解決力100%」</text>
+                    <text x="400" y="153" text-anchor="middle" font-size="12" fill="#aaa">→ 抽象的で、何がどう解決されるか不明</text>
+        
+                    <!-- 構造 -->
+                    <rect x="155" y="185" width="150" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="230" y="210" text-anchor="middle" font-size="12" fill="#aaa">サービス一覧</text>
+        
+                    <rect x="325" y="185" width="150" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="400" y="210" text-anchor="middle" font-size="12" fill="#aaa">会社概要</text>
+        
+                    <rect x="495" y="185" width="150" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="570" y="210" text-anchor="middle" font-size="12" fill="#aaa">問い合わせ</text>
+        
+                    <text x="400" y="255" text-anchor="middle" font-size="13" fill="#ff0080">→ 情報の羅列。読み手の課題に寄り添う導線がない</text>
+        
+                    <!-- 結論 -->
+                    <rect x="200" y="270" width="400" height="40" rx="6" fill="rgba(255,0,128,0.1)"/>
+                    <text x="400" y="294" text-anchor="middle" font-size="12" font-weight="bold" fill="#ff0080">結果：誰にも刺さらなかった</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド10: 新規・核 - 2回目の設計を解剖する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">2回目の設計を解剖する</h2>
+            <div class="content-block svg-centered">
+                <h3>international ── 「あなたのための」設計</h3>
+                <svg class="generated-art" viewBox="0 0 800 380">
+                    <!-- ターゲット -->
+                    <rect x="200" y="10" width="400" height="45" rx="8" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="400" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#00d4ff">ターゲット：若手人材不足の人事担当者</text>
+                    <text x="400" y="47" text-anchor="middle" font-size="11" fill="#aaa">→ 「自分のことだ」と感じる</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="400" y1="58" x2="400" y2="78" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="394,78 406,78 400,86" fill="#00d4ff"/>
+        
+                    <!-- 分岐 -->
+                    <rect x="200" y="90" width="190" height="40" rx="8" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="295" y="115" text-anchor="middle" font-size="12" fill="white">夜勤OK！</text>
+        
+                    <rect x="410" y="90" width="190" height="40" rx="8" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="505" y="115" text-anchor="middle" font-size="12" fill="white">日勤OK！</text>
+        
+                    <text x="400" y="152" text-anchor="middle" font-size="11" fill="#aaa">→ 読者の状況に合わせて分岐。「自分に合う方」を選べる</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="400" y1="162" x2="400" y2="178" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="394,178 406,178 400,186" fill="#00d4ff"/>
+        
+                    <!-- 成功事例 -->
+                    <rect x="200" y="190" width="400" height="35" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="400" y="213" text-anchor="middle" font-size="12" fill="white">📊 成功事例（Before/After）で信頼を構築</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="400" y1="228" x2="400" y2="244" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="394,244 406,244 400,252" fill="#00d4ff"/>
+        
+                    <!-- フォローアップ -->
+                    <rect x="200" y="255" width="400" height="35" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="400" y="278" text-anchor="middle" font-size="12" fill="white">🤝 フォローアップ体制の明示で不安を払拭</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="400" y1="293" x2="400" y2="309" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="394,309 406,309 400,317" fill="#00d4ff"/>
+        
+                    <!-- コンプライアンス -->
+                    <rect x="200" y="320" width="400" height="35" rx="8" fill="rgba(255,255,255,0.05)" stroke="#444"/>
+                    <text x="400" y="343" text-anchor="middle" font-size="12" fill="white">✅ コンプライアンス対応で安心感を提供 → CTA</text>
+        
+                    <!-- 結論 -->
+                    <text x="400" y="375" text-anchor="middle" font-size="13" font-weight="bold" fill="#00d4ff">結果：この「導線設計」こそが「デザイン＝設計」の正体</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド11: 新規 - 「設計」とは何を決めることか -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「設計」とは何を決めることか</h2>
+            <div class="content-block">
+                <p style="margin-bottom: 1.5rem;">2つのLP事例から見えてきた、デザインの「設計」を構成する3つの要素：</p>
+        
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">🎯</div>
+                        <h3>①誰に言うか</h3>
+                        <p>ターゲットの明確化。<br>「製造業全般」ではなく<br>「若手人材不足の人事担当者」</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">💬</div>
+                        <h3>②何を言うか</h3>
+                        <p>訴求軸の決定。<br>「解決力100%」ではなく<br>「夜勤OK留学生 / 日勤OKインターン」</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔀</div>
+                        <h3>③どの順番で言うか</h3>
+                        <p>情報設計。<br>分岐→事例→安心→CTAの<br>「納得の導線」を設計する</p>
+                    </div>
+                </div>
+        
+                <div class="highlight-box">
+                    💡 気づきましたか？── ここまで「色」「フォント」「レイアウト」の話は一切出ていません。<br>
+                    デザインの本質は「見た目」の前にある「設計」なのです。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: 新規 - 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回予告：デザインの「見た目」の設計</h2>
+            <div class="content-block">
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    今日学んだこと：<strong>「何を・誰に・どの順番で伝えるか」</strong>の設計。<br>
+                    次回からは、それを画面上でどう表現するかの<strong>「見た目の設計ルール」</strong>を学びます。
+                </p>
+        
+                <h3>次回のテーマ：4つのデザイン原則</h3>
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>整列</h3>
+                        <p style="font-size: 1rem;">Alignment</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔗</div>
+                        <h3>近接</h3>
+                        <p style="font-size: 1rem;">Proximity</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔄</div>
+                        <h3>反復</h3>
+                        <p style="font-size: 1rem;">Repetition</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⚡</div>
+                        <h3>コントラスト</h3>
+                        <p style="font-size: 1rem;">Contrast</p>
+                    </div>
+                </div>
+        
+                <div class="highlight-box">
+                    📝 まずはクイズで今日の理解度をチェックしましょう（キーボードの「Q」を押す）
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: 既存流用 - クイズへの誘導 -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "「Art（芸術）」と「Design（設計）」の最も大きな違いは何ですか？",
+            options: [
+                "使用するツールの違い",
+                "目的の違い（自己表現 vs 課題解決）",
+                "制作にかかる時間の違い",
+                "必要な才能の種類の違い"
+            ],
+            correct: 1,
+            explanation: "Artの目的は自己表現であり、Designの目的は課題解決です。デザインは感覚やセンスではなく「相手の課題を解決するために情報を設計すること」であり、論理的に学ぶことができます。"
+        },
+        {
+            question: "キャリアリンクファクトリーの2回目のLPが結果を出した最大の理由は？",
+            options: [
+                "写真やイラストのクオリティが上がったから",
+                "流行のデザインテイストを取り入れたから",
+                "ターゲットと訴求軸を絞った設計に変更したから",
+                "ページの読み込み速度を改善したから"
+            ],
+            correct: 2,
+            explanation: "2回目のLPが成果を出した理由は、見た目の変更ではなく「誰に・何を伝えるか」の設計を変えたからです。ターゲットを「若手人材不足の人事担当者」に絞り、訴求軸を明確にしたことで、読み手に「自分のことだ」と感じてもらえる設計になりました。"
+        },
+        {
+            question: "LP設計における「訴求軸」とは何を指しますか？",
+            options: [
+                "ページのデザインテーマカラー",
+                "使用するフォントの種類",
+                "「誰に・何を伝えるか」の方針",
+                "ページの全体的なレイアウト構成"
+            ],
+            correct: 2,
+            explanation: "訴求軸とは「誰に・何を伝えるか」の方針のことです。1回目のLPでは「製造業全般に"何でもできます"」という広い訴求でしたが、2回目では「若手人材不足の人事担当者に、具体的な外国人人材プラン」という絞った訴求に変えたことで成果が出ました。"
+        },
+        {
+            question: "2回目のLPで読者の不安を払拭するために使われた手法は？",
+            options: [
+                "大幅な値引きキャンペーンの提示",
+                "成功事例のBefore/After、フォローアップ体制の明示、コンプライアンスの提示",
+                "有名企業のロゴを並べてブランド力を見せる",
+                "問い合わせフォームの項目を減らして手軽さを演出"
+            ],
+            correct: 1,
+            explanation: "2回目のLPでは「成功事例（Before/After）→ フォローアップ体制の明示 → コンプライアンス対応」という導線で、段階的に読者の不安を解消していきました。これが「情報設計」──どの順番で伝えるかの設計です。"
+        },
+        {
+            question: "「デザインは設計である」という考え方において、最初に決めるべきことは？",
+            options: [
+                "使用するカラーパレットとフォント",
+                "ページのレイアウトとグリッド",
+                "誰に・何を・どの順番で伝えるか",
+                "参考にする競合サイトのデザイン"
+            ],
+            correct: 2,
+            explanation: "デザインの設計で最初に決めるべきは「誰に言うか（ターゲット）」「何を言うか（訴求軸）」「どの順番で言うか（情報設計）」の3つです。色やフォントなどの「見た目」は、この設計が固まった後に決めるものです。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+Purpose & context
+AKI is developing a comprehensive design education curriculum called the "Visual Architect" program — a structured training system targeting non-designers (business professionals and students lacking design confidence) who need to evaluate, judge, and direct design work rather than execute it hands-on. The core philosophy is that AI handles creation while humans focus on evaluation, decision-making, and direction.
+The curriculum is extensive and multi-session, progressing from foundational design principles through advanced AI-powered workflows. Recurring fictional brands used as consistent case studies across modules include SLOW DRIP (specialty café), CodeCamp Pro (programming school), TalkFlow (language learning), TaskFlow Pro (SaaS project management), and GreenStep (eco-friendly subscription service).
+The standard tool ecosystem across modules: Gemini (strategy, analysis, copy generation, AI review), Canva (visual design, production), Figma (wireframing, component systems, prototyping), Nano Banana Pro (AI image generation), with Figma Make for AI-assisted wireframe generation.
+
+Current state
+The most recent active work involves a three-module series on "Automated Documentation via AI Plugins" structured as paired theory/practice units:
+
+Theory ① + Practice ①: Developer-facing UI spec documents (Figma + Gemini; handoff destination is GitHub Issues)
+Theory ② + Practice ②: Team-facing design system documentation (Gemini for doc generation)
+Theory ③ + Practice ③: Client-facing explanatory materials (Gemini + Canva)
+
+All three modules use an e-commerce "Add to Cart" button as a through-line example. Theory ①, Practice ①, and Theory ② were completed in the most recent session. Dev Mode was explicitly excluded due to cost constraints. Tool assignments are finalized.
+
+On the horizon
+
+Completion of Practice ② and Theory ③ + Practice ③ for the automated documentation series
+Ongoing curriculum expansion across the Visual Architect program's remaining sessions
+
+
+Key learnings & principles
+
+"Visual Architect" framing is critical: Content must consistently position learners as evaluators and directors, not creators. Any reference to "designers" doing hands-on work is a misalignment that AKI will flag and correct.
+AI handles creation; humans handle judgment: This division of labor is the philosophical backbone of the entire curriculum.
+Consistent case studies aid learning continuity: Reusing the same fictional brands across modules reduces cognitive load and reinforces concepts.
+Practical exercises should chain outputs: Each exercise's output becomes the next exercise's input, creating cohesive strategic development.
+Beginner scaffolding matters: Free-choice exercises overwhelm beginners; phased or framework-based structures work better (learned from A/B testing module).
+Tool accuracy is non-negotiable: AKI corrects unofficial feature names and will provide official documentation to ensure accuracy (demonstrated with Figma AI features).
+"Garbage In, Garbage Out" principle is explicitly taught in documentation modules — file organization before AI generation is foundational.
+
+
+Approach & patterns
+
+Standard module structure: Each topic gets paired theory + practice components delivered as HTML slide presentations
+Theory slide count: Typically 20–35 slides; practice typically 18–30 slides
+Confirmation-first workflow: AKI approves structure/scope before full generation, then accepts recommended approaches when well-reasoned — working style is efficient and confirmatory
+Iterative refinement: SVG diagrams and visual layouts frequently need adjustment; AKI provides precise technical feedback on layout issues (centering, overlapping elements, arrow directions, cut-off elements)
+Interactive elements are standard: Copy-to-clipboard prompt buttons, step-by-step checklists, and quiz questions are expected in every module
+Japanese-language prompts: Prompts for AI tools (especially Nano Banana Pro) are converted to Japanese for learner accessibility
+Mid-session pivots are handled cleanly: AKI makes scope adjustments (e.g., removing a tool, swapping a platform) and expects clean adaptation without friction
+Pedagogical philosophy: Teaching judgment and decision-making over tool operation; directors should identify problems and guide solutions rather than provide answers directly
+
+
+Tools & resources
+ToolPrimary Role in CurriculumGeminiStrategy, copy generation, AI review, persona/competitive analysis, acting as virtual client/directorCanvaVisual design production, bulk creation via Bulk Create + CSVFigmaWireframing, component systems, prototyping, UI spec generationFigma MakeAI-assisted wireframe/prototype generationNano Banana ProAI image generation (Japanese prompts; ultra-detailed prompting for reproducibility)GitHub IssuesHandoff document destination for developer-facing specsGemini GemsCustom AI assistants (e.g., brand-specific review assistant)

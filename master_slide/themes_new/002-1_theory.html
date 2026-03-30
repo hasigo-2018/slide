@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レイアウトの原則【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>レイアウトの原則<span>【理論編】</span></h1>
+                <p>整列・近接・反復・コントラスト ── デザインを支える4つの武器</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 新規 - 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ素人のデザインは<br>「なんとなくダサい」のか？</h2>
+            <p>答え：4つのルールを知らないから</p>
+        </div>
+        
+        <!-- スライド3: 既存流用 - 4つの原則 概要タイル（旧001スライド5） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶ4つの武器</h2>
+            <div class="content-block">
+                <p style="margin-bottom: 2rem;">優れたデザインは、この4つの原則の組み合わせで成り立っています</p>
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>整列</h3>
+                        <p style="font-size: 1rem;">Alignment</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔗</div>
+                        <h3>近接</h3>
+                        <p style="font-size: 1rem;">Proximity</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔄</div>
+                        <h3>反復</h3>
+                        <p style="font-size: 1rem;">Repetition</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⚡</div>
+                        <h3>コントラスト</h3>
+                        <p style="font-size: 1rem;">Contrast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- 整列セクション -->
+        <!-- ============================================ -->
+        
+        <!-- スライド4: 既存流用 - 整列の定義（旧001スライド6） -->
+        <div class="slide-container big-concept-layout">
+            <h2>整列<br>Alignment</h2>
+            <p>すべての要素を意図的に配置し、視覚的な秩序を作る</p>
+        </div>
+        
+        <!-- スライド5: 既存流用 - 整列の詳細解説（旧001スライド7） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">整列の効果</h2>
+            <div class="content-block">
+                <h3>なぜ必要か</h3>
+                <p>人間の脳は、整列された要素を「関連性がある」と認識します。逆に、バラバラに配置された要素は混乱を招き、情報の処理に余計な負荷がかかります。</p>
+                
+                <h3>どう使うか</h3>
+                <ul>
+                    <li>手順1：画面上に見えない基準線（グリッド）を想定する</li>
+                    <li>手順2：すべての要素の端を、その基準線に揃える</li>
+                    <li>手順3：左揃え・中央揃え・右揃えを混在させない</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「なんとなく中央」「だいたい揃っている」では不十分。1pxレベルで揃える意識が重要。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 既存流用 - 整列 Before/After（旧001スライド8） -->
+        <div class="slide-container">
+            <h2 class="slide-title">整列：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（整列なし）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <text x="85" y="40" font-size="24" font-weight="bold" fill="#333">Company Logo</text>
+                        <text x="50" y="90" font-size="16" fill="#666">新製品のご案内</text>
+                        <rect x="70" y="110" width="250" height="80" fill="#f0f0f0" stroke="#ccc"/>
+                        <text x="90" y="145" font-size="14" fill="#333">製品説明テキスト</text>
+                        <rect x="100" y="210" width="80" height="30" fill="#00d4ff" rx="4"/>
+                        <text x="120" y="230" font-size="12" fill="#fff">詳細を見る</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">問題点：要素の開始位置がバラバラで、視線が定まらない</p>
+                </div>
+                <div>
+                    <h3>✅ After（整列適用）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <line x1="50" y1="0" x2="50" y2="300" stroke="#00d4ff" stroke-width="1" opacity="0.3" stroke-dasharray="4"/>
+                        <text x="50" y="40" font-size="24" font-weight="bold" fill="#333">Company Logo</text>
+                        <text x="50" y="90" font-size="16" fill="#666">新製品のご案内</text>
+                        <rect x="50" y="110" width="300" height="80" fill="#f0f0f0" stroke="#ccc"/>
+                        <text x="70" y="145" font-size="14" fill="#333">製品説明テキスト</text>
+                        <rect x="50" y="210" width="100" height="30" fill="#00d4ff" rx="4"/>
+                        <text x="75" y="230" font-size="12" fill="#fff">詳細を見る</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">改善点：左端を基準線（x=50）に統一し、視覚的な秩序が生まれた</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- 近接セクション -->
+        <!-- ============================================ -->
+        
+        <!-- スライド7: 既存流用 - 近接の定義（旧001スライド9） -->
+        <div class="slide-container big-concept-layout">
+            <h2>近接<br>Proximity</h2>
+            <p>関連する要素をグループ化し、関係性を視覚的に示す</p>
+        </div>
+        
+        <!-- スライド8: 改修 - 近接の詳細解説（ゲシュタルト用語削除版） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">近接の効果</h2>
+            <div class="content-block">
+                <h3>なぜ必要か</h3>
+                <p>人間の脳には、<strong>近くにあるものを「仲間」と自動的に認識する</strong>仕組みが備わっています。これは意識的な判断ではなく、脳が無意識に行うグループ化です。</p>
+                <p style="margin-top: 0.5rem;">この脳の仕組みを活用し、適切な余白で情報をグループ化することで、ユーザーの認知負荷を大幅に削減できます。</p>
+
+                <h3>どう使うか</h3>
+                <ul>
+                    <li>手順1：情報の関連性を分析する（見出しと本文、商品名と価格など）</li>
+                    <li>手順2：関連する要素同士の距離を近づける（例：5〜10px）</li>
+                    <li>手順3：異なるグループ間の距離を大きく開ける（例：30〜50px）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：すべての要素を均等に配置してしまい、グループが認識できない。余白に強弱をつけることが重要。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 既存流用 - 近接 Before/After（旧001スライド11） -->
+        <div class="slide-container">
+            <h2 class="slide-title">近接：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（近接なし）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <text x="50" y="40" font-size="18" font-weight="bold" fill="#333">商品A</text>
+                        <text x="50" y="70" font-size="14" fill="#666">¥1,000</text>
+                        <text x="50" y="100" font-size="14" fill="#666">在庫：10個</text>
+                        <text x="50" y="130" font-size="18" font-weight="bold" fill="#333">商品B</text>
+                        <text x="50" y="160" font-size="14" fill="#666">¥2,000</text>
+                        <text x="50" y="190" font-size="14" fill="#666">在庫：5個</text>
+                        <text x="50" y="220" font-size="18" font-weight="bold" fill="#333">商品C</text>
+                        <text x="50" y="250" font-size="14" fill="#666">¥1,500</text>
+                        <text x="50" y="280" font-size="14" fill="#666">在庫：20個</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">問題点：均等な余白で、どこまでが1つの商品情報か判別しにくい</p>
+                </div>
+                <div>
+                    <h3>✅ After（近接適用）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <rect x="40" y="20" width="320" height="65" fill="#f8f8f8" rx="8"/>
+                        <text x="50" y="45" font-size="18" font-weight="bold" fill="#333">商品A</text>
+                        <text x="50" y="65" font-size="14" fill="#666">¥1,000</text>
+                        <text x="50" y="80" font-size="14" fill="#666">在庫：10個</text>
+                        <rect x="40" y="105" width="320" height="65" fill="#f8f8f8" rx="8"/>
+                        <text x="50" y="130" font-size="18" font-weight="bold" fill="#333">商品B</text>
+                        <text x="50" y="150" font-size="14" fill="#666">¥2,000</text>
+                        <text x="50" y="165" font-size="14" fill="#666">在庫：5個</text>
+                        <rect x="40" y="190" width="320" height="65" fill="#f8f8f8" rx="8"/>
+                        <text x="50" y="215" font-size="18" font-weight="bold" fill="#333">商品C</text>
+                        <text x="50" y="235" font-size="14" fill="#666">¥1,500</text>
+                        <text x="50" y="250" font-size="14" fill="#666">在庫：20個</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">改善点：関連情報を近づけ、背景色でグループを明確化</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- 反復セクション -->
+        <!-- ============================================ -->
+        
+        <!-- スライド10: 既存流用 - 反復の定義（旧001スライド12） -->
+        <div class="slide-container big-concept-layout">
+            <h2>反復<br>Repetition</h2>
+            <p>デザイン要素を繰り返し、統一感とブランド性を生む</p>
+        </div>
+        
+        <!-- スライド11: 改修 - 反復の詳細解説（ゲシュタルト用語削除版） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">反復の効果</h2>
+            <div class="content-block">
+                <h3>なぜ必要か</h3>
+                <p>人間の脳は、<strong>見た目が似ているものを「同じ種類の情報だ」と自動的に判断</strong>します。だからこそ色・フォント・形状を繰り返すと、ユーザーは瞬時に「これは前と同じ種類だ」とわかり、操作方法を1回学習するだけで全ページに適用できます。</p>
+                <p style="margin-top: 0.5rem;">繰り返されるパターンは、脳が「これは意図的なデザインだ」と認識し、信頼感とプロフェッショナルさを生み出します。</p>
+
+                <h3>どう使うか</h3>
+                <ul>
+                    <li>手順1：ブランドカラー、フォント、ボタン形状など基本要素を定義する</li>
+                    <li>手順2：それらを全ページ・全セクションで一貫して使用する</li>
+                    <li>手順3：例外を作る場合は、明確な理由を持つ（例：CTAボタンのみ目立たせる）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：ページごとに異なるフォントや色を使ってしまい、バラバラな印象を与える。一貫性がプロの証。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: 新規 - 反復の実例：ボタンの色がバラバラだとどうなるか -->
+        <div class="slide-container">
+            <h2 class="slide-title">実例：CTAボタンの色がバラバラだとどうなるか</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（反復なし）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 320">
+                        <rect x="0" y="0" width="400" height="320" fill="#ffffff"/>
+                        <!-- トップページ -->
+                        <rect x="30" y="15" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="40" font-size="12" fill="#999">トップページ</text>
+                        <text x="50" y="60" font-size="14" fill="#333">お問い合わせはこちら</text>
+                        <rect x="50" y="68" width="120" height="20" fill="#3b82f6" rx="4"/>
+                        <text x="80" y="82" font-size="11" fill="#fff">お問い合わせ</text>
+                        <!-- サービスページ -->
+                        <rect x="30" y="110" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="135" font-size="12" fill="#999">サービスページ</text>
+                        <text x="50" y="155" font-size="14" fill="#333">詳しくはこちら</text>
+                        <rect x="50" y="163" width="120" height="20" fill="#22c55e" rx="4"/>
+                        <text x="75" y="177" font-size="11" fill="#fff">詳細を見る</text>
+                        <!-- 料金ページ -->
+                        <rect x="30" y="205" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="230" font-size="12" fill="#999">料金ページ</text>
+                        <text x="50" y="250" font-size="14" fill="#333">今すぐ申し込む</text>
+                        <rect x="50" y="258" width="120" height="20" fill="#f97316" rx="4"/>
+                        <text x="72" y="272" font-size="11" fill="#fff">申し込み</text>
+                        <!-- 因果関係 -->
+                        <text x="200" y="310" text-anchor="middle" font-size="12" font-weight="bold" fill="#ff0080">色バラバラ → 毎回学習し直し → 認知負荷↑ → 離脱</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">問題点：ページごとにボタンの色・文言が違い、ユーザーが毎回「これが押すボタンだ」と学習し直す必要がある</p>
+                </div>
+                <div>
+                    <h3>✅ After（反復適用）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 320">
+                        <rect x="0" y="0" width="400" height="320" fill="#ffffff"/>
+                        <!-- トップページ -->
+                        <rect x="30" y="15" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="40" font-size="12" fill="#999">トップページ</text>
+                        <text x="50" y="60" font-size="14" fill="#333">お問い合わせはこちら</text>
+                        <rect x="50" y="68" width="120" height="20" fill="#00d4ff" rx="4"/>
+                        <text x="72" y="82" font-size="11" fill="#fff">お問い合わせ</text>
+                        <!-- サービスページ -->
+                        <rect x="30" y="110" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="135" font-size="12" fill="#999">サービスページ</text>
+                        <text x="50" y="155" font-size="14" fill="#333">お問い合わせはこちら</text>
+                        <rect x="50" y="163" width="120" height="20" fill="#00d4ff" rx="4"/>
+                        <text x="72" y="177" font-size="11" fill="#fff">お問い合わせ</text>
+                        <!-- 料金ページ -->
+                        <rect x="30" y="205" width="340" height="80" fill="#f8f8f8" rx="6" stroke="#ddd"/>
+                        <text x="50" y="230" font-size="12" fill="#999">料金ページ</text>
+                        <text x="50" y="250" font-size="14" fill="#333">お問い合わせはこちら</text>
+                        <rect x="50" y="258" width="120" height="20" fill="#00d4ff" rx="4"/>
+                        <text x="72" y="272" font-size="11" fill="#fff">お問い合わせ</text>
+                        <!-- 因果関係 -->
+                        <text x="200" y="310" text-anchor="middle" font-size="12" font-weight="bold" fill="#00d4ff">同じ色＋同じ形 → 1回の学習で全ページ対応 → 迷わない</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">改善点：全ページ同じ色・同じ形状・同じ文言。ユーザーは1回学習するだけで全ページで迷わない</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: 既存流用 - 反復 Before/After（旧001スライド14） -->
+        <div class="slide-container">
+            <h2 class="slide-title">反復：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（反復なし）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <rect x="125" y="30" width="150" height="60" fill="#ff6b6b" rx="8"/>
+                        <text x="200" y="65" text-anchor="middle" font-size="14" fill="#fff">セクション1</text>
+                        <circle cx="200" cy="140" r="40" fill="#4ecdc4"/>
+                        <text x="200" y="145" text-anchor="middle" font-size="14" fill="#fff">セクション2</text>
+                        <rect x="125" y="200" width="150" height="50" fill="#95e1d3" rx="0"/>
+                        <text x="200" y="230" text-anchor="middle" font-size="14" fill="#333">セクション3</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">問題点：形状・色・サイズがバラバラで統一感がない</p>
+                </div>
+                <div>
+                    <h3>✅ After（反復適用）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <rect x="125" y="40" width="150" height="60" fill="#00d4ff" rx="8"/>
+                        <text x="200" y="75" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">セクション1</text>
+                        <rect x="125" y="120" width="150" height="60" fill="#00d4ff" rx="8"/>
+                        <text x="200" y="155" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">セクション2</text>
+                        <rect x="125" y="200" width="150" height="60" fill="#00d4ff" rx="8"/>
+                        <text x="200" y="235" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">セクション3</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">改善点：同じ形状・色・サイズを反復し、一貫性が生まれた</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- コントラストセクション -->
+        <!-- ============================================ -->
+        
+        <!-- スライド14: 既存流用 - コントラストの定義（旧001スライド15） -->
+        <div class="slide-container big-concept-layout">
+            <h2>コントラスト<br>Contrast</h2>
+            <p>重要な要素を際立たせ、情報の優先順位を明確にする</p>
+        </div>
+        
+        <!-- スライド15: 既存流用 - コントラストの詳細解説（旧001スライド16） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">コントラストの効果</h2>
+            <div class="content-block">
+                <h3>なぜ必要か</h3>
+                <p>すべてが同じ強さで表示されると、何も目立ちません。コントラストは視線を誘導し、「どこを見るべきか」を瞬時に伝えます。これにより、ユーザーの意思決定を助けます。</p>
+                
+                <h3>どう使うか</h3>
+                <ul>
+                    <li>手順1：情報に優先順位をつける（見出し > 本文 > 補足情報）</li>
+                    <li>手順2：サイズ、色、太さ、余白で明確な差をつける</li>
+                    <li>手順3：中途半端な差は避ける（例：18pxと20pxでは差がわからない）</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「少し大きく」「ちょっと太く」では不十分。コントラストは大胆につける（最低でも1.5倍以上の差）。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド16: 既存流用 - コントラスト Before/After（旧001スライド17） -->
+        <div class="slide-container">
+            <h2 class="slide-title">コントラスト：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（コントラストなし）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <text x="50" y="60" font-size="16" fill="#666">新製品発売</text>
+                        <text x="50" y="100" font-size="16" fill="#666">最新のテクノロジーを搭載した</text>
+                        <text x="50" y="130" font-size="16" fill="#666">革新的な製品が登場</text>
+                        <rect x="50" y="160" width="100" height="35" fill="#999" rx="4"/>
+                        <text x="100" y="183" text-anchor="middle" font-size="14" fill="#fff">今すぐ購入</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">問題点：すべてが同じサイズ・色で、何が重要か分からない</p>
+                </div>
+                <div>
+                    <h3>✅ After（コントラスト適用）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                        <text x="50" y="70" font-size="32" font-weight="bold" fill="#000">新製品発売</text>
+                        <text x="50" y="110" font-size="16" fill="#666">最新のテクノロジーを搭載した</text>
+                        <text x="50" y="135" font-size="16" fill="#666">革新的な製品が登場</text>
+                        <rect x="50" y="170" width="140" height="50" fill="#00d4ff" rx="8"/>
+                        <text x="120" y="200" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">今すぐ購入</text>
+                    </svg>
+                    <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); margin-top: 1rem;">改善点：見出しを大きく、CTAボタンを目立たせ、視線誘導が明確に</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- 統合セクション -->
+        <!-- ============================================ -->
+        
+        <!-- スライド17: 新規 - 脳の補完力（ゲシュタルト用語削除版） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">脳の補完力：描かなくても伝わる</h2>
+            <div class="content-block">
+                <h3>不完全な図形でも、脳が勝手に補う</h3>
+                <p>人間の脳には、<strong>欠けた部分を自動的に補って、完全な形として認識する</strong>性質があります。この性質は<strong>ロゴデザインやアイコン設計</strong>で広く活用されています。</p>
+                <p style="margin-top: 0.5rem;">これが意味すること──<strong>余白や省略は「手抜き」ではなく「武器」</strong>。あえて描かないことで、見る人の脳に想像させ、印象に残るデザインが生まれます。</p>
+
+                <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid #333; border-radius: 12px; padding: clamp(1.5rem, 3vh, 2rem); display: flex; flex-direction: column; align-items: center; max-width: 640px;">
+                        <h3 style="text-align: center; margin-bottom: 1rem;">脳が形を補完する例</h3>
+                        <svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.51 97.27" style="height: 240px; margin: 16px;">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #00d4ff;
+                                }
+                                </style>
+                            </defs>
+                            <g id="_レイヤー_1-2" data-name="レイヤー 1">
+                                <g>
+                                <polygon class="cls-1" points="60.28 31.77 60.86 32.77 84.34 32.77 72.6 53.1 73.18 54.11 86.07 31.77 60.28 31.77"/>
+                                <polygon class="cls-1" points="35.65 32.77 36.23 31.77 10.44 31.77 23.33 54.1 23.91 53.1 12.17 32.77 35.65 32.77"/>
+                                <polygon class="cls-1" points="48.26 95.27 36.52 74.94 35.36 74.94 48.26 97.27 61.15 74.94 60 74.94 48.26 95.27"/>
+                                <path class="cls-1" d="M42.45,20.99l5.81-10.06,5.81,10.06c3.29-1.98,5.5-5.57,5.5-9.69,0-6.24-5.06-11.31-11.31-11.31s-11.31,5.06-11.31,11.31c0,4.12,2.21,7.71,5.5,9.69Z"/>
+                                <path class="cls-1" d="M85.21,63.63c-2.06,0-3.99.56-5.65,1.52l5.65,9.78h-11.31c0,6.24,5.06,11.31,11.31,11.31s11.31-5.06,11.31-11.31-5.06-11.31-11.31-11.31Z"/>
+                                <path class="cls-1" d="M16.96,65.15c-1.66-.96-3.59-1.52-5.65-1.52-6.24,0-11.31,5.06-11.31,11.31s5.06,11.31,11.31,11.31,11.31-5.06,11.31-11.31h-11.31l5.65-9.78Z"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); text-align: center; margin-top: 1rem;">線が途切れていても、三角形が「見える」</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    💡 「近いものは仲間」「似たものは同類」「欠けていても脳が補う」──これら人間の脳の性質が、4原則を「なぜそうすべきか」の根拠として支えています。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド18: 新規 - 4原則の相互作用（CLF LPとの接続） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4原則の相互作用：実例で見る</h2>
+            <div class="content-block">
+                <p style="margin-bottom: 1.5rem;">001で分析したキャリアリンクファクトリー2回目LP（international）。<br>「設計」の上に、今日学んだ4原則がどう使われているか見てみましょう。</p>
+        
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>整列</h3>
+                        <p style="font-size: 1rem;">FV・セクション見出し・本文が<br>すべて同じ基準線で揃っている</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔗</div>
+                        <h3>近接</h3>
+                        <p style="font-size: 1rem;">「課題→解決策→事例」が<br>近接でグループ化されている</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔄</div>
+                        <h3>反復</h3>
+                        <p style="font-size: 1rem;">CTAボタン・見出しスタイルが<br>全セクションで統一されている</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⚡</div>
+                        <h3>コントラスト</h3>
+                        <p style="font-size: 1rem;">CTA・数字・見出しが<br>大胆なサイズ差で際立っている</p>
+                    </div>
+                </div>
+        
+                <div class="highlight-box">
+                    💡 001で学んだ「誰に・何を・どの順番で」の<strong>設計</strong>と、今日の<strong>見た目のルール</strong>は別物ではありません。<br>設計が骨格、4原則がその骨格を見える形にする筋肉です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド19: 既存流用 - まとめ 4原則の復習タイル（旧001スライド21） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">4つの原則：まとめ</h2>
+            <div class="content-block">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>整列</h3>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); padding: 0 1rem;">
+                            要素を基準線に揃え、視覚的な秩序を作る
+                        </p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🔗</div>
+                        <h3>近接</h3>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); padding: 0 1rem;">
+                            関連する要素をグループ化し、情報の関係性を明確にする
+                        </p>
+                    </div>
+                </div>
+                <div class="tiled-content" style="margin-top: 1.5rem;">
+                    <div class="tile">
+                        <div class="icon">🔄</div>
+                        <h3>反復</h3>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); padding: 0 1rem;">
+                            デザイン要素を繰り返し、一貫性とブランド性を生む
+                        </p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⚡</div>
+                        <h3>コントラスト</h3>
+                        <p style="font-size: clamp(1rem, 1.041666vw, 1.5rem); padding: 0 1rem;">
+                            重要な要素を際立たせ、情報の優先順位を伝える
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド20: 既存流用 - 合言葉（旧001スライド22） -->
+        <div class="slide-container big-concept-layout">
+            <h2>整えて、近づけて、<br>繰り返し、差をつける</h2>
+            <p style="margin-top: 2rem; font-size: 1.3rem;">この4つを意識するだけで、デザインは劇的に改善します</p>
+        </div>
+        
+        <!-- スライド21: 新規 - 003への橋渡し -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：視線誘導と認知負荷</h2>
+            <div class="content-block">
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    今日学んだこと：<strong>「画面上の要素をどう配置するか」のルール</strong>──4原則とゲシュタルト心理学。
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    次回は、もう一段上のレイヤーに進みます。
+                </p>
+        
+                <h3>003で学ぶこと</h3>
+                <ul>
+                    <li><strong>視線誘導：</strong>ユーザーの目がどう動くか（F字型・Z字型パターン）</li>
+                    <li><strong>認知負荷：</strong>人間の脳が処理できる情報量の限界と、それを減らす方法</li>
+                </ul>
+        
+                <p style="margin-top: 1.5rem;">001＝設計（誰に・何を・どの順番で）<br>
+                002＝配置のルール（4原則）<br>
+                <strong>003＝ユーザーの目と脳の仕組み</strong></p>
+        
+                <div class="highlight-box">
+                    📝 まずはクイズで今日の理解度をチェックしましょう（キーボードの「Q」を押す）
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド22: 既存流用 - クイズへの誘導 -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "整列（Alignment）の主な目的は何ですか？",
+            options: [
+                "見た目を美しくする",
+                "視覚的な秩序と関連性を作る",
+                "空白スペースを埋める",
+                "色を統一する"
+            ],
+            correct: 1,
+            explanation: "整列の目的は、要素間に視覚的な秩序を生み出し、情報の関連性を明確にすることです。単なる装飾ではなく、情報を整理するための論理的な手法です。見えない基準線に要素を揃えることで、ユーザーの視線が安定します。"
+        },
+        {
+            question: "近接の原則とゲシュタルトの「近接の法則」の共通点は何ですか？",
+            options: [
+                "色の統一感を生むこと",
+                "近くにある要素を仲間として認識する脳の仕組みを活用していること",
+                "要素を大きく表示すること",
+                "余白をすべてなくすこと"
+            ],
+            correct: 1,
+            explanation: "近接の原則もゲシュタルトの近接の法則も、「近くにあるものは仲間」と脳が自動的に認識する仕組みを活用しています。関連する要素同士を近づけ（5〜10px）、異なるグループ間の距離を大きく（30〜50px）取ることで、情報の関係性が直感的に伝わります。"
+        },
+        {
+            question: "あるWebサイトで、トップページのCTAボタンは青、サービスページは緑、料金ページはオレンジです。どの原則が崩れていますか？",
+            options: [
+                "整列",
+                "近接",
+                "反復",
+                "コントラスト"
+            ],
+            correct: 2,
+            explanation: "反復の原則が崩れています。CTAボタンの色・形状を全ページで統一することで、ユーザーは「この色のボタンを押せばいい」と1回学習するだけで済みます。ページごとに色が違うと、毎回学習し直しが必要になり、認知負荷が上がります。"
+        },
+        {
+            question: "コントラストを効果的に作るための最低基準は？",
+            options: [
+                "色を少し変えるだけで十分",
+                "サイズ・色・太さに最低1.5倍以上の差をつける",
+                "すべてを大きく目立たせる",
+                "背景色を黒にする"
+            ],
+            correct: 1,
+            explanation: "コントラストは大胆につけることが重要です。例えば18pxと20pxでは差がわかりませんが、18pxと32pxなら明確な差が生まれます。サイズ、色、フォントの太さなど、最低でも1.5倍以上の差をつけることで、情報の優先順位が視覚的に伝わります。"
+        },
+        {
+            question: "4つの原則を組み合わせる必要がある理由は？",
+            options: [
+                "整列だけ守ればプロのデザインになる",
+                "各原則は相互に関連しており、1つだけでは不十分",
+                "クライアントに説明しやすいから",
+                "4つ全部覚えるのがデザイン資格の条件だから"
+            ],
+            correct: 1,
+            explanation: "4つの原則はすべて相互に関連しています。整列で秩序を作り、近接で情報をグループ化し、反復で一貫性を持たせ、コントラストで重要情報を際立たせる──この4つが揃って初めて、ユーザーが「考えずに理解できる」デザインが完成します。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

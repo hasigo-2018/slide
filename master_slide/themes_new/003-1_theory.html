@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>視線誘導と認知負荷【理論編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>視線誘導と認知負荷<span>【理論編】</span></h1>
+                <p>ユーザーの「目のクセ」と「脳の限界」を味方につける</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container big-concept-layout">
+            <h2>なぜ"見たはず"なのに<br>"覚えていない"のか？</h2>
+            <p>人間の目には動き方のクセがある。<br>そのクセを知れば、情報を「見せたい順番」で届けられる</p>
+        </div>
+        
+        <!-- スライド3: 前回の復習と今回の位置づけ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">前回の復習と今回の位置づけ</h2>
+            <div class="content-block">
+                <h3>002で学んだこと：配置の原則</h3>
+                <p>整列・近接・反復・コントラスト——「要素をどう配置するか」のルールを学びました。</p>
+        
+                <h3>003で学ぶこと：知覚の原則</h3>
+                <p>今回は「ユーザーの目がどう動くか」と「脳がどこまで処理できるか」を学びます。</p>
+                <ul>
+                    <li><strong>視線誘導：</strong>ユーザーの目を意図した順番で動かす技術</li>
+                    <li><strong>認知負荷：</strong>脳の処理能力の限界を理解し、負荷を設計する技術</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 002が「配置の原則」なら、003は「知覚の原則」。4原則の"使い方の土台"になる回です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 視線誘導セクション ===== -->
+        
+        <!-- スライド4: 視線誘導とは何か -->
+        <div class="slide-container big-concept-layout">
+            <h2>視線誘導とは</h2>
+            <p>ユーザーの目を、設計者の意図した順番で動かすこと</p>
+        </div>
+        
+        <!-- スライド5: F字型パターン -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">F字型パターン</h2>
+            <div class="content-block">
+                <h3>どこで発生するか</h3>
+                <p>テキスト主体のWebページ——ブログ記事、ニュースサイト、検索結果ページなど、<strong>文字を「読む」ことが目的</strong>のページで発生します。</p>
+        
+                <h3>視線の流れ</h3>
+                <ul>
+                    <li><strong>①</strong> 左上から水平方向に読み始める（Fの横棒1本目）</li>
+                    <li><strong>②</strong> 少し下がって、再び水平に読む（Fの横棒2本目）</li>
+                    <li><strong>③</strong> 左端を垂直に流し読みする（Fの縦棒）</li>
+                </ul>
+        
+                <h3>なぜFになるのか（認知科学的理由）</h3>
+                <p>人間は「最小限の労力で最大限の情報」を得ようとします。まず全体を把握しようと横に目を動かし、興味がなければすぐに下へスキップ。結果、左上に情報が集中するF字型の読み方になります。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ つまり、ページの右下にある情報はほとんど読まれない。重要な情報は必ず左上〜上部に配置すること。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: F字型の実例：Amazon -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">F字型の実例：Amazonの商品一覧</h2>
+            <div class="content-block svg-centered">
+                <p>あなたが毎日見ているAmazonの検索結果。実はF字型で目が動いています。</p>
+                <svg class="generated-art" viewBox="0 0 800 420">
+                    <defs>
+                        <marker id="arrow-f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                            <polygon points="0 0, 8 4, 0 8" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+                    <!-- ページ背景 -->
+                    <rect x="50" y="20" width="700" height="380" fill="#ffffff" stroke="#ddd" stroke-width="2" rx="8"/>
+        
+                    <!-- 商品1行目 -->
+                    <rect x="80" y="40" width="90" height="90" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="125" y="90" text-anchor="middle" fill="#999" font-size="12">商品画像</text>
+                    <text x="190" y="65" fill="#333" font-size="16" font-weight="bold">Bluetooth ワイヤレスイヤホン</text>
+                    <text x="190" y="90" fill="#666" font-size="13">ノイズキャンセリング対応・防水IPX5</text>
+                    <text x="190" y="115" fill="#e47911" font-size="18" font-weight="bold">¥4,980</text>
+        
+                    <!-- 商品2行目 -->
+                    <rect x="80" y="155" width="90" height="90" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="125" y="205" text-anchor="middle" fill="#999" font-size="12">商品画像</text>
+                    <text x="190" y="180" fill="#333" font-size="16" font-weight="bold">ポータブル充電器 20000mAh</text>
+                    <text x="190" y="205" fill="#666" font-size="13">USB-C対応・急速充電・軽量コンパクト</text>
+                    <text x="190" y="230" fill="#e47911" font-size="18" font-weight="bold">¥2,780</text>
+        
+                    <!-- 商品3行目 -->
+                    <rect x="80" y="270" width="90" height="90" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="125" y="320" text-anchor="middle" fill="#999" font-size="12">商品画像</text>
+                    <text x="190" y="295" fill="#333" font-size="16" font-weight="bold">デスクライト LED 調光式</text>
+                    <text x="190" y="320" fill="#666" font-size="13">目に優しい自然光・USB給電</text>
+                    <text x="190" y="345" fill="#e47911" font-size="18" font-weight="bold">¥3,480</text>
+        
+                    <!-- F字型の視線フロー -->
+                    <circle cx="85" cy="55" r="12" fill="#ff0080" opacity="0.9"/>
+                    <text x="85" y="59" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">START</text>
+                    <!-- 横棒1 -->
+                    <line x1="100" y1="55" x2="520" y2="55" stroke="#00d4ff" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-f)"/>
+                    <!-- 下へ -->
+                    <line x1="85" y1="70" x2="85" y2="170" stroke="#00d4ff" stroke-width="3" stroke-dasharray="8,4"/>
+                    <!-- 横棒2 -->
+                    <line x1="100" y1="170" x2="420" y2="170" stroke="#00d4ff" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-f)"/>
+                    <!-- 下へ -->
+                    <line x1="85" y1="185" x2="85" y2="290" stroke="#00d4ff" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-f)"/>
+        
+                    <!-- ラベル -->
+                    <rect x="560" y="40" width="170" height="80" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                    <text x="645" y="65" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">F字型パターン</text>
+                    <text x="645" y="85" text-anchor="middle" fill="#00d4ff" font-size="11">商品名→価格→次の商品</text>
+                    <text x="645" y="105" text-anchor="middle" fill="#00d4ff" font-size="11">左端を縦にスキャン</text>
+                </svg>
+                <p style="font-size: 1rem; margin-top: 1rem; text-align: center;">商品名（左上）→ 価格（右）→ 次の商品へ（下）→ また商品名（左）。あなたも無意識にF字型で目を動かしている</p>
+            </div>
+        </div>
+        
+        <!-- スライド7: Z字型パターン -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Z字型パターン</h2>
+            <div class="content-block">
+                <h3>どこで発生するか</h3>
+                <p>ビジュアル主体のページ——LP（ランディングページ）、バナー広告、ポスターなど、<strong>一瞬で判断する</strong>ことが目的のページで発生します。</p>
+        
+                <h3>視線の流れ</h3>
+                <ul>
+                    <li><strong>①</strong> 左上からスタート（ロゴやブランド名）</li>
+                    <li><strong>②</strong> 右上へ移動（キャッチコピーやナビゲーション）</li>
+                    <li><strong>③</strong> 斜めに左下へ移動（メインビジュアル）</li>
+                    <li><strong>④</strong> 右下へ到達（CTAボタン＝行動を促す要素）</li>
+                </ul>
+        
+                <h3>なぜZになるのか</h3>
+                <p>人間は横書き文化圏では左上→右の順に視線を動かす習慣があります。ビジュアル中心のページでは「読む」より「見る」ため、最短ルートで全体を把握しようとし、Z字型に目が動きます。</p>
+        
+                <div class="highlight-box">
+                    💡 Z字型の最終地点＝右下。ここにCTA（お問い合わせボタンなど）を置くのは偶然ではなく、視線の終着点に「行動」を配置する戦略です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: Z字型の実例：キャリアリンクファクトリーLP -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Z字型の実例：キャリアリンクファクトリーLP</h2>
+            <div class="content-block svg-centered">
+                <p>001で見たキャリアリンクファクトリー2回目LPのファーストビュー。Z字型導線が設計されています。</p>
+                <svg class="generated-art" viewBox="0 0 800 440">
+                    <defs>
+                        <marker id="arrow-z" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                            <polygon points="0 0, 8 4, 0 8" fill="#ff0080"/>
+                        </marker>
+                    </defs>
+                    <!-- LP FV背景 -->
+                    <rect x="50" y="20" width="700" height="380" fill="#1a1a2e" stroke="#333" stroke-width="2" rx="8"/>
+        
+                    <!-- 左上：ロゴ -->
+                    <rect x="70" y="40" width="150" height="35" fill="rgba(255,255,255,0.1)" rx="4"/>
+                    <text x="145" y="63" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">CAREER LINK</text>
+                    <text x="80" y="95" fill="#00d4ff" font-size="10">① 左上：ロゴ</text>
+        
+                    <!-- 右上：キャッチコピー -->
+                    <rect x="400" y="40" width="320" height="80" fill="rgba(0,212,255,0.05)" rx="4"/>
+                    <text x="560" y="70" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="bold">外国人材の採用を</text>
+                    <text x="560" y="95" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="bold">ワンストップで支援</text>
+                    <text x="410" y="135" fill="#00d4ff" font-size="10">② 右上：キャッチコピー</text>
+        
+                    <!-- 左下：メインビジュアル -->
+                    <rect x="70" y="170" width="300" height="180" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" rx="6"/>
+                    <text x="220" y="265" text-anchor="middle" fill="#888" font-size="14">メインビジュアル</text>
+                    <text x="220" y="285" text-anchor="middle" fill="#888" font-size="12">（人物写真エリア）</text>
+                    <text x="80" y="370" fill="#00d4ff" font-size="10">③ 左下：ビジュアル</text>
+        
+                    <!-- 右下：CTAボタン -->
+                    <rect x="450" y="300" width="250" height="60" fill="#ff0080" rx="8"/>
+                    <text x="575" y="337" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">お問い合わせはこちら</text>
+                    <text x="460" y="380" fill="#00d4ff" font-size="10">④ 右下：CTA（視線の終着点）</text>
+        
+                    <!-- Z字型の視線フロー -->
+                    <circle cx="145" cy="57" r="10" fill="#ff0080" opacity="0.8"/>
+                    <!-- ①→② 横 -->
+                    <line x1="225" y1="57" x2="395" y2="72" stroke="#ff0080" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-z)"/>
+                    <!-- ②→③ 斜め -->
+                    <line x1="500" y1="125" x2="250" y2="200" stroke="#ff0080" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-z)"/>
+                    <!-- ③→④ 横 -->
+                    <line x1="375" y1="310" x2="445" y2="325" stroke="#ff0080" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrow-z)"/>
+                </svg>
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    🎯 CTAが右下にあるのは偶然ではない。視線の終着点に「行動を促す要素」を置いているから。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: F字型とZ字型の使い分け -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">F字型とZ字型の使い分け</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- F字型 -->
+                    <rect x="30" y="30" width="340" height="240" fill="rgba(0,212,255,0.05)" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                    <text x="200" y="65" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">F字型</text>
+                    <text x="200" y="100" text-anchor="middle" fill="white" font-size="14">テキスト主体のページ</text>
+                    <line x1="80" y1="120" x2="320" y2="120" stroke="#444" stroke-width="1"/>
+                    <text x="200" y="150" text-anchor="middle" fill="#aaa" font-size="13">ブログ・ニュース・検索結果</text>
+                    <text x="200" y="175" text-anchor="middle" fill="#aaa" font-size="13">EC商品一覧・FAQ</text>
+                    <text x="200" y="210" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">ユーザーの目的＝読む</text>
+                    <text x="200" y="245" text-anchor="middle" fill="#888" font-size="12">重要情報は左上・ページ上部に</text>
+        
+                    <!-- 矢印 -->
+                    <text x="400" y="155" text-anchor="middle" fill="#ff0080" font-size="28">⇄</text>
+        
+                    <!-- Z字型 -->
+                    <rect x="430" y="30" width="340" height="240" fill="rgba(255,0,128,0.05)" stroke="#ff0080" stroke-width="2" rx="10"/>
+                    <text x="600" y="65" text-anchor="middle" fill="#ff0080" font-size="20" font-weight="bold">Z字型</text>
+                    <text x="600" y="100" text-anchor="middle" fill="white" font-size="14">ビジュアル主体のページ</text>
+                    <line x1="480" y1="120" x2="720" y2="120" stroke="#444" stroke-width="1"/>
+                    <text x="600" y="150" text-anchor="middle" fill="#aaa" font-size="13">LP・バナー・広告・ポスター</text>
+                    <text x="600" y="175" text-anchor="middle" fill="#aaa" font-size="13">ファーストビュー・ヒーローセクション</text>
+                    <text x="600" y="210" text-anchor="middle" fill="#ff0080" font-size="15" font-weight="bold">ユーザーの目的＝一瞬で判断</text>
+                    <text x="600" y="245" text-anchor="middle" fill="#888" font-size="12">CTAは右下（視線の終着点）に</text>
+                </svg>
+        
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    🎯 判断基準は「ユーザーがそのページで何をするか」。情報を読む＝F、一瞬で判断する＝Z。<br>LP制作では主にZ字型が武器になります。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: 視線誘導のテクニック（4原則との接続） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">視線誘導のテクニック（4原則との接続）</h2>
+            <div class="content-block">
+                <h3>F/Z法則だけでは足りない</h3>
+                <p>F字型・Z字型は「大きな目の流れ」を示すもの。実際のページ内で視線を細かく誘導するには、002で学んだ4つのデザイン原則が不可欠です。</p>
+        
+                <h3>4原則が視線誘導を補強する仕組み</h3>
+                <ul>
+                    <li><strong>コントラスト →</strong> 目を引く。サイズ・色・太さの差が「ここを見ろ」と指示する</li>
+                    <li><strong>整列 →</strong> 視線の流れを作る。揃った要素に沿って目がスムーズに動く</li>
+                    <li><strong>近接 →</strong> 情報のまとまりを認識させる。グループ化で「ここまでが1セット」と伝える</li>
+                    <li><strong>反復 →</strong> パターンで予測させる。繰り返しにより「次も同じ構造だな」と脳が省エネできる</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 視線誘導＝「大きな流れ」（F/Z）＋「細かい制御」（4原則）。この2層構造がプロの設計です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 認知負荷セクション ===== -->
+        
+        <!-- スライド11: 認知負荷とは何か -->
+        <div class="slide-container big-concept-layout">
+            <h2>認知負荷</h2>
+            <p>脳が情報を処理するために必要なエネルギー。<br>これが上限を超えると、人は考えるのをやめて離脱する</p>
+        </div>
+        
+        <!-- スライド12: 認知負荷の詳細解説（改修：旧スライド20ベース） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">認知負荷を理解する</h2>
+            <div class="content-block">
+                <h3>認知負荷とは？</h3>
+                <p>人間の脳が情報を処理するために必要な労力のこと。認知負荷が高いと、ユーザーは疲れて離脱します。</p>
+        
+                <h3>マジカルナンバー：7±2</h3>
+                <p>心理学者ジョージ・ミラーの研究で、<strong>人間が同時に処理できる情報の「チャンク（かたまり）」は7±2個</strong>（つまり5〜9個）であることがわかっています。</p>
+        
+                <h3>Webデザインへの応用</h3>
+                <p>ナビゲーションの項目が10個あるサイト vs 5個のサイト——どちらが使いやすいですか？</p>
+                <ul>
+                    <li><strong>10項目：</strong>マジカルナンバーを超えており、選ぶだけで脳が疲れる</li>
+                    <li><strong>5項目：</strong>範囲内なので、直感的に選択できる</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 目標：ユーザーが「考えずに理解できる」デザインを作ること。選択肢の数、情報量、視覚的な複雑さ——すべてに上限がある。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: 認知負荷の3段階 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">認知負荷の3つの種類</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 3つの箱 -->
+                    <!-- 内在的負荷 -->
+                    <rect x="20" y="30" width="240" height="260" fill="rgba(255,255,255,0.05)" stroke="#888" stroke-width="2" rx="10"/>
+                    <text x="140" y="65" text-anchor="middle" fill="#888" font-size="16" font-weight="bold">① 内在的負荷</text>
+                    <text x="140" y="95" text-anchor="middle" fill="#aaa" font-size="13">情報そのものの複雑さ</text>
+                    <line x1="50" y1="110" x2="230" y2="110" stroke="#444" stroke-width="1"/>
+                    <text x="140" y="140" text-anchor="middle" fill="#aaa" font-size="12">「確定申告の手順」は</text>
+                    <text x="140" y="160" text-anchor="middle" fill="#aaa" font-size="12">「今日の天気」より</text>
+                    <text x="140" y="180" text-anchor="middle" fill="#aaa" font-size="12">そもそも複雑</text>
+                    <rect x="50" y="210" width="180" height="40" fill="rgba(136,136,136,0.1)" rx="6"/>
+                    <text x="140" y="235" text-anchor="middle" fill="#888" font-size="12">コントロール不可</text>
+        
+                    <!-- 外在的負荷 -->
+                    <rect x="280" y="30" width="240" height="260" fill="rgba(255,0,128,0.08)" stroke="#ff0080" stroke-width="2" rx="10"/>
+                    <text x="400" y="65" text-anchor="middle" fill="#ff0080" font-size="16" font-weight="bold">② 外在的負荷</text>
+                    <text x="400" y="95" text-anchor="middle" fill="#ff8080" font-size="13">デザインの悪さによる無駄</text>
+                    <line x1="310" y1="110" x2="490" y2="110" stroke="#ff0080" stroke-width="1" opacity="0.5"/>
+                    <text x="400" y="140" text-anchor="middle" fill="#aaa" font-size="12">ボタンが見つからない</text>
+                    <text x="400" y="160" text-anchor="middle" fill="#aaa" font-size="12">文字が小さすぎる</text>
+                    <text x="400" y="180" text-anchor="middle" fill="#aaa" font-size="12">情報が整理されていない</text>
+                    <rect x="310" y="210" width="180" height="40" fill="rgba(255,0,128,0.15)" rx="6"/>
+                    <text x="400" y="235" text-anchor="middle" fill="#ff0080" font-size="12" font-weight="bold">ここだけコントロール可能</text>
+        
+                    <!-- 学習関連負荷 -->
+                    <rect x="540" y="30" width="240" height="260" fill="rgba(255,255,255,0.05)" stroke="#888" stroke-width="2" rx="10"/>
+                    <text x="660" y="65" text-anchor="middle" fill="#888" font-size="16" font-weight="bold">③ 学習関連負荷</text>
+                    <text x="660" y="95" text-anchor="middle" fill="#aaa" font-size="13">理解に必要な負荷</text>
+                    <line x1="570" y1="110" x2="750" y2="110" stroke="#444" stroke-width="1"/>
+                    <text x="660" y="140" text-anchor="middle" fill="#aaa" font-size="12">新しい概念を学ぶ時の</text>
+                    <text x="660" y="160" text-anchor="middle" fill="#aaa" font-size="12">「頭を使う感覚」は</text>
+                    <text x="660" y="180" text-anchor="middle" fill="#aaa" font-size="12">むしろ必要な負荷</text>
+                    <rect x="570" y="210" width="180" height="40" fill="rgba(136,136,136,0.1)" rx="6"/>
+                    <text x="660" y="235" text-anchor="middle" fill="#888" font-size="12">減らしすぎると学びが薄れる</text>
+                </svg>
+        
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    🎯 デザイナー／ビジュアルアーキテクトがコントロールできるのは <strong>②外在的負荷だけ</strong>。「デザインの見せ方」で無駄な負荷をゼロに近づけるのが仕事です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド14: 悪い例：情報過多のLP -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">❌ 悪い例：情報過多のLP</h2>
+            <div class="content-block svg-centered">
+                <p>架空のLP「詰め込みすぎファーストビュー」。よくある失敗パターンです。</p>
+                <svg class="generated-art" viewBox="0 0 800 450">
+                    <!-- LP背景 -->
+                    <rect x="50" y="10" width="700" height="420" fill="#ffffff" stroke="#ddd" stroke-width="2" rx="8"/>
+        
+                    <!-- バッジ3つ -->
+                    <rect x="70" y="25" width="80" height="25" fill="#ff4444" rx="12"/>
+                    <text x="110" y="42" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">実績No.1</text>
+                    <rect x="160" y="25" width="80" height="25" fill="#ff8800" rx="12"/>
+                    <text x="200" y="42" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">満足度98%</text>
+                    <rect x="250" y="25" width="80" height="25" fill="#4CAF50" rx="12"/>
+                    <text x="290" y="42" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">導入500社</text>
+        
+                    <!-- 電話番号 -->
+                    <text x="620" y="42" fill="#333" font-size="12" font-weight="bold">☎ 0120-XXX-XXX</text>
+        
+                    <!-- キャッチコピー3行 -->
+                    <text x="80" y="85" fill="#333" font-size="20" font-weight="bold">業界最安値で最高品質の</text>
+                    <text x="80" y="115" fill="#333" font-size="20" font-weight="bold">ソリューションを提供する</text>
+                    <text x="80" y="145" fill="#333" font-size="20" font-weight="bold">唯一無二のサービスです</text>
+        
+                    <!-- サブコピー2行 -->
+                    <text x="80" y="175" fill="#666" font-size="12">10年以上の実績を持つ専門チームが、あなたの課題を解決します。</text>
+                    <text x="80" y="195" fill="#666" font-size="12">まずはお気軽にご相談ください。初回無料コンサルティング実施中。</text>
+        
+                    <!-- ボタン2つ -->
+                    <rect x="80" y="215" width="180" height="45" fill="#ff0080" rx="6"/>
+                    <text x="170" y="243" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">無料で相談する</text>
+                    <rect x="280" y="215" width="180" height="45" fill="#00d4ff" rx="6"/>
+                    <text x="370" y="243" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">資料をダウンロード</text>
+        
+                    <!-- 写真4枚（プレースホルダ） -->
+                    <rect x="80" y="280" width="145" height="100" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="152" y="335" text-anchor="middle" fill="#999" font-size="10">写真1</text>
+                    <rect x="235" y="280" width="145" height="100" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="307" y="335" text-anchor="middle" fill="#999" font-size="10">写真2</text>
+                    <rect x="390" y="280" width="145" height="100" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="462" y="335" text-anchor="middle" fill="#999" font-size="10">写真3</text>
+                    <rect x="545" y="280" width="145" height="100" fill="#f0f0f0" stroke="#ccc" rx="4"/>
+                    <text x="617" y="335" text-anchor="middle" fill="#999" font-size="10">写真4</text>
+        
+                    <!-- 問題を示す赤枠 -->
+                    <rect x="45" y="5" width="710" height="430" fill="none" stroke="#ff4444" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+                </svg>
+        
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    ⚠️ キャッチコピー3行＋サブコピー2行＋ボタン2つ＋電話番号＋写真4枚＋バッジ3つ。<br><strong>全部が主張しているから、何も伝わらない。</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド15: 良い例：同じ情報を整理したLP -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">✅ 良い例：同じ情報を整理したLP</h2>
+            <div class="content-block svg-centered">
+                <p>スライド14と<strong>まったく同じ情報量</strong>。違うのは「見せる順番」だけです。</p>
+                <svg class="generated-art" viewBox="0 0 800 450">
+                    <!-- LP背景 -->
+                    <rect x="50" y="10" width="700" height="420" fill="#ffffff" stroke="#ddd" stroke-width="2" rx="8"/>
+        
+                    <!-- ロゴ（左上） -->
+                    <text x="80" y="50" fill="#333" font-size="14" font-weight="bold">ServiceName</text>
+        
+                    <!-- キャッチコピー1行（大きく中央） -->
+                    <text x="400" y="130" text-anchor="middle" fill="#1a1a2e" font-size="28" font-weight="bold">業界最安値で、最高品質を。</text>
+        
+                    <!-- サブコピー1行 -->
+                    <text x="400" y="170" text-anchor="middle" fill="#666" font-size="14">10年以上の実績を持つ専門チームが、あなたの課題を解決します。</text>
+        
+                    <!-- メインビジュアル1枚 -->
+                    <rect x="150" y="200" width="500" height="120" fill="#f0f0f0" stroke="#ccc" rx="8"/>
+                    <text x="400" y="265" text-anchor="middle" fill="#999" font-size="14">メインビジュアル（1枚に厳選）</text>
+        
+                    <!-- CTAボタン1つ -->
+                    <rect x="275" y="345" width="250" height="55" fill="#ff0080" rx="8"/>
+                    <text x="400" y="379" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">無料で相談する</text>
+        
+                    <!-- 下スクロールの示唆 -->
+                    <text x="400" y="418" text-anchor="middle" fill="#aaa" font-size="12">▼ バッジ・実績・写真・資料DLは下スクロールで</text>
+        
+                    <!-- 良い例の緑枠 -->
+                    <rect x="45" y="5" width="710" height="430" fill="none" stroke="#4CAF50" stroke-width="3" rx="10"/>
+                </svg>
+        
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    💡 情報を減らしたのではなく、<strong>見せる順番を設計した</strong>。<br>キャッチ1行＋ビジュアル1枚＋CTA1つに絞り、残りは下スクロールに配置。1画面1メッセージの原則。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド16: 認知負荷を下げる5つの手法 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">認知負荷を下げる5つの手法</h2>
+            <div class="content-block">
+                <h3>① 余白を恐れない</h3>
+                <p>空白は「何もない」のではなく「情報を整理するための道具」。詰め込みたい衝動を抑え、余白で呼吸させる。</p>
+        
+                <h3>② 情報に優先順位をつける</h3>
+                <p>すべてが重要＝何も重要ではない。「これだけは伝えたい」を1つに絞り、残りは優先度で並べる。</p>
+        
+                <h3>③ 1画面1メッセージ</h3>
+                <p>スクロールせずに見える範囲（ビューポート）に入れるメッセージは1つだけ。複数のメッセージは縦に分ける。</p>
+        
+                <h3>④ 視覚的階層を作る</h3>
+                <p>見出し → 本文 → 補足の3段階を、サイズ・色・太さで明確に区別する。002のコントラスト原則そのもの。</p>
+        
+                <h3>⑤ 選択肢を減らす（ヒックの法則）</h3>
+                <p>選択肢が増えるほど、意思決定にかかる時間は対数的に増加する。ボタンは1つ、ナビは5〜7項目以内。</p>
+        
+                <div class="highlight-box">
+                    💡 すべてに共通するのは「ユーザーに考えさせない」こと。Steve Krugの名著タイトル "Don't Make Me Think" がそのまま原則です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== 統合セクション ===== -->
+        
+        <!-- スライド17: 視線誘導×認知負荷×4原則の統合 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">001〜003の統合：Block 1の全体像</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- 3層構造 -->
+                    <!-- レイヤー1: 001 -->
+                    <rect x="50" y="20" width="700" height="80" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                    <text x="100" y="55" fill="#00d4ff" font-size="14" font-weight="bold">001</text>
+                    <text x="160" y="55" fill="white" font-size="16" font-weight="bold">デザインは「設計」である</text>
+                    <text x="160" y="80" fill="#aaa" font-size="13">Art ≠ Design。デザインは論理で学べる。4原則の概要。</text>
+        
+                    <!-- 矢印 -->
+                    <text x="400" y="120" text-anchor="middle" fill="#00d4ff" font-size="20">▼</text>
+        
+                    <!-- レイヤー2: 002 -->
+                    <rect x="50" y="130" width="700" height="80" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                    <text x="100" y="165" fill="#00d4ff" font-size="14" font-weight="bold">002</text>
+                    <text x="160" y="165" fill="white" font-size="16" font-weight="bold">4つのデザイン原則</text>
+                    <text x="160" y="190" fill="#aaa" font-size="13">整列・近接・反復・コントラスト。「要素をどう配置するか」のルール。</text>
+        
+                    <!-- 矢印 -->
+                    <text x="400" y="230" text-anchor="middle" fill="#ff0080" font-size="20">▼</text>
+        
+                    <!-- レイヤー3: 003（現在地） -->
+                    <rect x="50" y="240" width="700" height="80" fill="rgba(255,0,128,0.12)" stroke="#ff0080" stroke-width="2" rx="10"/>
+                    <text x="100" y="275" fill="#ff0080" font-size="14" font-weight="bold">003</text>
+                    <text x="160" y="275" fill="white" font-size="16" font-weight="bold">視線誘導と認知負荷 ← 今ここ</text>
+                    <text x="160" y="300" fill="#aaa" font-size="13">「目の動き」と「脳の限界」。4原則を使いこなすための知覚メカニズム。</text>
+                </svg>
+        
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    💡 <strong>設計（001）→ 配置のルール（002）→ 知覚のメカニズム（003）</strong><br>
+                    この三層構造が、Block 1で身につける「デザインの基礎理論」の全体像です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド18: まとめ -->
+        <div class="slide-container big-concept-layout">
+            <h2>ユーザーの目は自由に動かない。<br>脳の処理能力には上限がある。</h2>
+            <p>この2つの事実を味方につけるのが、デザイン設計の本質だ</p>
+        </div>
+        
+        <!-- スライド19: 次のステップ：004への橋渡し -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のステップ：004 色彩と文字</h2>
+            <div class="content-block">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">ここまでは<strong>「目」と「脳」</strong>の話でした。</p>
+        
+                <h3>次回は「心」の話</h3>
+                <p>色が感情に与える影響と、フォントが持つ性格を学びます。</p>
+                <ul>
+                    <li><strong>色彩心理：</strong>なぜ赤は「緊急」で、青は「信頼」なのか？</li>
+                    <li><strong>フォントの性格：</strong>ゴシック体と明朝体で、なぜ印象がまったく変わるのか？</li>
+                    <li><strong>感情のハック：</strong>色と文字の組み合わせで、ユーザーの心を設計する方法</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    📝 まずはクイズで今回の理解度をチェックしましょう（キーボードの「Q」を押す）
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド20: クイズへの誘導（既存流用） -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "テキスト主体のWebページ（ブログ、ニュースサイトなど）で、ユーザーの視線が描くパターンはどれですか？",
+            options: [
+                "Z字型（左上→右上→左下→右下）",
+                "F字型（左上→右→下→左の繰り返し）",
+                "O字型（中央から外側へ円を描く）",
+                "N字型（左上→左下→右上→右下）"
+            ],
+            correct: 1,
+            explanation: "テキスト主体のページではF字型パターンが発生します。人間は「最小限の労力で最大限の情報を得る」ため、左上から水平に読み始め、興味がなければ下へスキップし、左端を流し読みします。"
+        },
+        {
+            question: "LPのファーストビューでCTAボタンを右下に配置する理由は何ですか？",
+            options: [
+                "右利きの人が多いので、クリックしやすいから",
+                "デザインの左右バランスを取るため",
+                "Z字型の視線の終着点に行動を促す要素を置くため",
+                "スクロールしたときに最後に見える位置だから"
+            ],
+            correct: 2,
+            explanation: "LPのようなビジュアル主体のページではZ字型パターン（左上→右上→左下→右下）で視線が動きます。CTAを右下に置くのは、視線の終着点に「行動を促す要素」を配置する戦略です。"
+        },
+        {
+            question: "ナビゲーションの項目が10個あるサイトが使いにくい理由を、認知負荷の観点で最も適切に説明しているのはどれですか？",
+            options: [
+                "画面上のスペースが足りなくなるから",
+                "マジカルナンバー（7±2）を超えており、脳の処理上限を超えるから",
+                "SEO的に不利になるから",
+                "モバイルでハンバーガーメニューに入りきらないから"
+            ],
+            correct: 1,
+            explanation: "人間が同時に処理できる情報のチャンクは7±2個です。10項目のナビゲーションはこの上限を超えており、ユーザーは選ぶだけで認知負荷がかかり、結果として「考えるのが面倒」と感じて離脱します。"
+        },
+        {
+            question: "認知負荷の3種類（内在的負荷・外在的負荷・学習関連負荷）のうち、デザイナーがコントロールできるのはどれですか？",
+            options: [
+                "内在的負荷（情報そのものの複雑さ）",
+                "外在的負荷（デザインの見せ方による負荷）",
+                "学習関連負荷（理解に必要な負荷）",
+                "3つすべてをコントロールできる"
+            ],
+            correct: 1,
+            explanation: "デザイナー／ビジュアルアーキテクトがコントロールできるのは②外在的負荷だけです。情報そのものの複雑さ（内在的負荷）は変えられず、学びに必要な負荷（学習関連負荷）は減らすべきではありません。デザインの見せ方を改善して無駄な負荷をゼロに近づけるのが仕事です。"
+        },
+        {
+            question: "【統合問題】視線誘導と認知負荷の両方を同時に改善するために、最も効果的な方法はどれですか？",
+            options: [
+                "ページにできるだけ多くの装飾を加えて目を引く",
+                "すべての情報を1ページにまとめて、スクロールをなくす",
+                "情報に優先順位をつけ、1画面1メッセージを徹底すること",
+                "F字型とZ字型を同じページ内で併用する"
+            ],
+            correct: 2,
+            explanation: "情報に優先順位をつけることで「視線を意図した順番で誘導」でき、1画面1メッセージにすることで「認知負荷を上限以下に抑える」ことができます。この2つを同時に実現するのが「見せる順番を設計する」ということです。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

@@ -16,679 +16,795 @@
         <div class="slide-container full-bg-image active">
             <div class="content-overlay">
                 <h1>モバイルファースト戦略と<br>レスポンシブデザイン<span>【理論編】</span></h1>
-                <p>なぜ「小さい画面から」考えるのか</p>
+                <p>なぜ「小さな画面」から設計すべきなのか？</p>
             </div>
         </div>
-
+        
         <!-- スライド2: 問題提起 -->
         <div class="slide-container big-concept-layout">
-            <h2>あなたのサイト、<br>「縮小版」になっていませんか？</h2>
-            <p>PC版を縮小してもモバイル最適化にはならない</p>
+            <h2>PC画面で完璧に作ったデザイン、<br>スマホで見たら崩壊していた</h2>
+            <p>この失敗の原因は「センス」ではなく「設計の順番」にあります</p>
         </div>
-
+        
         <!-- スライド3: アジェンダ -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">本日のアジェンダ</h2>
+            <h2 class="slide-title">今日学ぶこと</h2>
             <div class="content-block">
-                <h3>5つの学習テーマ</h3>
+                <h3>6つのセクション</h3>
                 <ul>
-                    <li><strong>モバイルファーストの本質</strong>：なぜ小さい画面から設計するのか</li>
-                    <li><strong>サムゾーンの科学</strong>：親指の可動域とUI配置の関係</li>
-                    <li><strong>情報の優先順位</strong>：モバイルとPCで何が変わるか</li>
-                    <li><strong>レイアウトと導線</strong>：画面サイズによる設計の違い</li>
-                    <li><strong>レスポンシブの設計思想</strong>：「適応」ではなく「再設計」</li>
+                    <li><strong>① モバイルファーストの思想</strong> — なぜスマホから設計するのか</li>
+                    <li><strong>② サムゾーンと人間工学</strong> — 指が届く範囲の科学</li>
+                    <li><strong>③ 情報の優先順位設計</strong> — PC vs スマホで何が変わるか</li>
+                    <li><strong>④ レスポンシブの技術的仕組み</strong> — ブレイクポイントとグリッド</li>
+                    <li><strong>⑤ アトミックデザインとの接続</strong> — コンポーネントが形を変える</li>
+                    <li><strong>⑥ 実務での判断基準</strong> — 何を残し、何を削るか</li>
                 </ul>
                 <div class="highlight-box">
-                    🎯 ゴール：画面サイズに応じた設計判断ができるようになる
+                    💡 すべてのセクションで「SLOW DRIP」（スペシャルティコーヒー専門カフェ）の公式Webサイトをケーススタディとして使用します
                 </div>
             </div>
         </div>
-
+        
+        <!-- ========== セクション1: モバイルファーストの思想 ========== -->
+        
         <!-- スライド4: セクション区切り -->
         <div class="slide-container section-title-layout">
-            <h2>Section 1</h2>
-            <p>モバイルファーストの本質</p>
+            <h2>Section 1<br>モバイルファーストの思想</h2>
+            <p>「小さい画面から始める」は制約ではなく、戦略である</p>
         </div>
-
-        <!-- スライド5: 数字で見る現実 -->
+        
+        <!-- スライド5: モバイルファーストの定義 -->
         <div class="slide-container big-concept-layout">
-            <h2>世界のWebトラフィック<br><span style="font-size: 3rem; color: #00d4ff;">60%以上</span>がモバイル</h2>
-            <p>2024年時点、日本でも50%を超える</p>
+            <h2>Mobile First<br>= 最も制約の厳しい画面から設計する</h2>
+            <p>Luke Wroblewski（2011）が提唱した設計アプローチ。<br>小さな画面で「本当に必要な情報」を見極めてから、大きな画面に拡張する</p>
         </div>
-
-        <!-- スライド6: モバイルファーストとは -->
+        
+        <!-- スライド6: なぜモバイルからか -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">モバイルファーストとは何か</h2>
+            <h2 class="slide-title">なぜモバイルから設計すべきなのか</h2>
             <div class="content-block">
-                <h3>定義</h3>
-                <p>デザインプロセスにおいて、<strong>最も制約の多いモバイル画面から設計を始め</strong>、そこから大きな画面に拡張していくアプローチ。</p>
-                
-                <h3>なぜ「制約」から始めるのか</h3>
+                <h3>3つの理論的根拠</h3>
                 <ul>
-                    <li><strong>本質の抽出</strong>：限られたスペースで「本当に必要な情報」を見極める</li>
-                    <li><strong>優先順位の明確化</strong>：すべてを載せられないからこそ、重要度が可視化される</li>
-                    <li><strong>拡張は容易</strong>：小→大は足し算、大→小は引き算（削るのは難しい）</li>
+                    <li><strong>利用実態：</strong>世界のWebトラフィックの約60%はモバイルデバイスから。カフェを探すユーザーの大半は外出先でスマホからアクセスする</li>
+                    <li><strong>認知的制約：</strong>小さい画面 = 注意が限定される → 情報の優先順位を「強制的に」決めざるを得ない。これが設計品質を引き上げる</li>
+                    <li><strong>拡張の容易さ：</strong>小→大は「余白に情報を追加」するだけ。大→小は「何を削るか」の苦しい判断が必要になる</li>
                 </ul>
-                
                 <div class="highlight-box">
-                    💡 制約はクリエイティビティの源泉である
+                    ⚠️ よくある間違い：「モバイルファースト＝スマホ版だけ作ればいい」ではない。<br>すべての画面サイズを想定したうえで、設計の出発点をモバイルにする戦略です
                 </div>
             </div>
         </div>
-
-        <!-- スライド7: PC→モバイル vs モバイル→PC -->
+        
+        <!-- スライド7: PC→モバイル vs モバイル→PC 比較図解 -->
         <div class="slide-container">
-            <h2 class="slide-title">設計アプローチの比較</h2>
+            <h2 class="slide-title">2つのアプローチ：設計順序の違い</h2>
             <div class="two-column tiled">
                 <div>
                     <h3>❌ デスクトップファースト</h3>
-                    <svg class="generated-art" viewBox="0 0 350 250">
-                        <!-- PC画面 -->
-                        <rect x="50" y="20" width="250" height="150" fill="none" stroke="#ff6b6b" stroke-width="2" rx="4"/>
-                        <rect x="60" y="30" width="80" height="20" fill="#ff6b6b" opacity="0.3"/>
-                        <rect x="60" y="60" width="230" height="40" fill="#ff6b6b" opacity="0.2"/>
-                        <rect x="60" y="110" width="100" height="50" fill="#ff6b6b" opacity="0.2"/>
-                        <rect x="170" y="110" width="120" height="50" fill="#ff6b6b" opacity="0.2"/>
-                        
-                        <!-- 矢印 -->
-                        <path d="M175 180 L175 210" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowRed)"/>
-                        <defs>
-                            <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <path d="M0,0 L0,6 L9,3 z" fill="#ff6b6b"/>
-                            </marker>
-                        </defs>
-                        
-                        <!-- モバイル（崩れた状態） -->
-                        <rect x="140" y="215" width="70" height="30" fill="none" stroke="#ff6b6b" stroke-width="1" rx="2"/>
-                        <text x="175" y="235" text-anchor="middle" fill="#ff6b6b" font-size="8">ギュウギュウ...</text>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="50" y="20" width="300" height="60" fill="#ff4d6a" opacity="0.2" stroke="#ff4d6a" stroke-width="2" rx="6"/>
+                        <text x="200" y="55" text-anchor="middle" fill="#ff4d6a" font-size="16" font-weight="bold">PC版：情報を全部載せる</text>
+                        <text x="200" y="105" text-anchor="middle" fill="#888" font-size="24">↓ 削る作業（苦痛）</text>
+                        <rect x="100" y="125" width="200" height="50" fill="#ff4d6a" opacity="0.15" stroke="#ff4d6a" stroke-width="1.5" rx="6"/>
+                        <text x="200" y="155" text-anchor="middle" fill="#ff4d6a" font-size="13">タブレット：何を消す…？</text>
+                        <text x="200" y="200" text-anchor="middle" fill="#888" font-size="24">↓ さらに削る（崩壊）</text>
+                        <rect x="140" y="220" width="120" height="55" fill="#ff4d6a" opacity="0.3" stroke="#ff4d6a" stroke-width="2" rx="6"/>
+                        <text x="200" y="245" text-anchor="middle" fill="#ff4d6a" font-size="11">スマホ：</text>
+                        <text x="200" y="263" text-anchor="middle" fill="#ff4d6a" font-size="11">ぐちゃぐちゃ…</text>
                     </svg>
-                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #ff6b6b;">情報過多で「縮小版」になりがち</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">問題点：後から削ると判断が曖昧になり、中途半端なスマホ版になる</p>
                 </div>
                 <div>
                     <h3>✅ モバイルファースト</h3>
-                    <svg class="generated-art" viewBox="0 0 350 250">
-                        <!-- モバイル画面 -->
-                        <rect x="140" y="20" width="70" height="120" fill="none" stroke="#00d4ff" stroke-width="2" rx="8"/>
-                        <rect x="150" y="35" width="50" height="15" fill="#00d4ff" opacity="0.3"/>
-                        <rect x="150" y="55" width="50" height="30" fill="#00d4ff" opacity="0.2"/>
-                        <rect x="150" y="90" width="50" height="20" fill="#00d4ff" opacity="0.4"/>
-                        <circle cx="175" cy="130" r="5" fill="#00d4ff" opacity="0.3"/>
-                        
-                        <!-- 矢印 -->
-                        <path d="M175 150 L175 180" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowBlue)"/>
-                        <defs>
-                            <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                                <path d="M0,0 L0,6 L9,3 z" fill="#00d4ff"/>
-                            </marker>
-                        </defs>
-                        
-                        <!-- PC（拡張された状態） -->
-                        <rect x="75" y="185" width="200" height="55" fill="none" stroke="#00d4ff" stroke-width="1" rx="4"/>
-                        <text x="175" y="217" text-anchor="middle" fill="#00d4ff" font-size="10">余白を活かして拡張</text>
+                    <svg class="generated-art" viewBox="0 0 400 300">
+                        <rect x="140" y="20" width="120" height="55" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                        <text x="200" y="45" text-anchor="middle" fill="#00d4ff" font-size="11">スマホ：核心だけ</text>
+                        <text x="200" y="63" text-anchor="middle" fill="#00d4ff" font-size="11">に絞り込む</text>
+                        <text x="200" y="105" text-anchor="middle" fill="#888" font-size="24">↓ 追加（自然）</text>
+                        <rect x="100" y="125" width="200" height="50" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1.5" rx="6"/>
+                        <text x="200" y="155" text-anchor="middle" fill="#00d4ff" font-size="13">タブレット：補足情報を追加</text>
+                        <text x="200" y="200" text-anchor="middle" fill="#888" font-size="24">↓ さらに追加（拡張）</text>
+                        <rect x="50" y="220" width="300" height="60" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                        <text x="200" y="255" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">PC版：余裕をもって全情報表示</text>
                     </svg>
-                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem; color: #00d4ff;">本質を保ったまま「拡張」できる</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">利点：核心から始めるため、すべての画面で情報優先度が一貫する</p>
                 </div>
             </div>
         </div>
-
-        <!-- スライド8: ビジネス上の理由 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">モバイルファーストのビジネス的根拠</h2>
-            <div class="content-block">
-                <h3>ユーザー行動の変化</h3>
-                <ul>
-                    <li><strong>初回接触</strong>：SNS広告→モバイルで最初にサイトを見る</li>
-                    <li><strong>検索行動</strong>：Googleはモバイル版を優先的にインデックス（モバイルファーストインデックス）</li>
-                    <li><strong>購買決定</strong>：モバイルで調査→PCで購入の流れも、モバイル体験が悪ければ離脱</li>
-                </ul>
-                
-                <h3>コンバージョンへの影響</h3>
-                <p>モバイルでの読み込み時間が<strong>1秒遅れるごとにCVRが7%低下</strong>（Google調査）。モバイル体験の質がビジネス成果に直結する。</p>
-                
-                <div class="highlight-box">
-                    ⚠️ よくある間違い：「うちのユーザーはPC中心だから」→ 新規獲得チャネルを見落としている
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド9: セクション区切り -->
+        
+        <!-- ========== セクション2: サムゾーンと人間工学 ========== -->
+        
+        <!-- スライド8: セクション区切り -->
         <div class="slide-container section-title-layout">
-            <h2>Section 2</h2>
-            <p>サムゾーンの科学</p>
+            <h2>Section 2<br>サムゾーンと人間工学</h2>
+            <p>ユーザーの「親指」がUIの正解を教えてくれる</p>
         </div>
-
-        <!-- スライド10: サムゾーンとは -->
-        <div class="slide-container big-concept-layout">
-            <h2>Thumb Zone<br><span style="font-size: 1.5rem;">親指の可動域</span></h2>
-            <p>片手操作時に親指が自然に届く範囲</p>
-        </div>
-
-        <!-- スライド11: サムゾーンの図解 -->
+        
+        <!-- スライド9: スマホの持ち方3パターン -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">サムゾーンのマッピング</h2>
+            <h2 class="slide-title">スマートフォンの持ち方：3つのパターン</h2>
             <div class="content-block svg-centered">
-                <svg class="generated-art" viewBox="0 0 800 450">
-                    <!-- 右手持ちのスマートフォン -->
-                    <text x="200" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">右手持ち（約70%）</text>
-                    
-                    <!-- スマホ本体 -->
-                    <rect x="100" y="50" width="200" height="380" fill="#1a1a2e" stroke="#333" stroke-width="3" rx="25"/>
-                    <rect x="115" y="80" width="170" height="320" fill="#2d2d44" rx="5"/>
-                    
-                    <!-- サムゾーン：Easy（緑） -->
-                    <ellipse cx="230" cy="320" rx="70" ry="80" fill="#00ff88" opacity="0.3"/>
-                    
-                    <!-- サムゾーン：OK（黄） -->
-                    <ellipse cx="200" cy="220" rx="80" ry="100" fill="#ffcc00" opacity="0.2"/>
-                    
-                    <!-- サムゾーン：Hard（赤） -->
-                    <rect x="115" y="80" width="170" height="80" fill="#ff6b6b" opacity="0.2" rx="5"/>
-                    
-                    <!-- 親指の起点 -->
-                    <circle cx="280" cy="400" r="25" fill="#666" opacity="0.5"/>
-                    <text x="280" y="405" text-anchor="middle" fill="white" font-size="10">親指</text>
-                    
-                    <!-- 左手持ちのスマートフォン -->
-                    <text x="600" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">左手持ち（約30%）</text>
-                    
-                    <!-- スマホ本体 -->
-                    <rect x="500" y="50" width="200" height="380" fill="#1a1a2e" stroke="#333" stroke-width="3" rx="25"/>
-                    <rect x="515" y="80" width="170" height="320" fill="#2d2d44" rx="5"/>
-                    
-                    <!-- サムゾーン：Easy（緑） -->
-                    <ellipse cx="570" cy="320" rx="70" ry="80" fill="#00ff88" opacity="0.3"/>
-                    
-                    <!-- サムゾーン：OK（黄） -->
-                    <ellipse cx="600" cy="220" rx="80" ry="100" fill="#ffcc00" opacity="0.2"/>
-                    
-                    <!-- サムゾーン：Hard（赤） -->
-                    <rect x="515" y="80" width="170" height="80" fill="#ff6b6b" opacity="0.2" rx="5"/>
-                    
-                    <!-- 親指の起点 -->
-                    <circle cx="520" cy="400" r="25" fill="#666" opacity="0.5"/>
-                    <text x="520" y="405" text-anchor="middle" fill="white" font-size="10">親指</text>
-                    
-                    <!-- 凡例 -->
-                    <rect x="320" y="150" width="20" height="20" fill="#00ff88" opacity="0.5" rx="3"/>
-                    <text x="350" y="165" fill="white" font-size="14">Easy：自然に届く</text>
-                    
-                    <rect x="320" y="180" width="20" height="20" fill="#ffcc00" opacity="0.5" rx="3"/>
-                    <text x="350" y="195" fill="white" font-size="14">OK：少し伸ばせば届く</text>
-                    
-                    <rect x="320" y="210" width="20" height="20" fill="#ff6b6b" opacity="0.5" rx="3"/>
-                    <text x="350" y="225" fill="white" font-size="14">Hard：届きにくい</text>
+                <svg class="generated-art" viewBox="0 0 900 320">
+                    <rect x="20" y="10" width="260" height="300" fill="transparent" stroke="#00d4ff" stroke-width="1.5" rx="12" stroke-dasharray="6,3"/>
+                    <text x="150" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">① 片手持ち</text>
+                    <rect x="85" y="60" width="130" height="220" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="16"/>
+                    <rect x="95" y="75" width="110" height="185" fill="#0d1117" stroke="#333" stroke-width="1" rx="4"/>
+                    <ellipse cx="150" cy="210" rx="50" ry="55" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="150" y="215" text-anchor="middle" fill="#00d4ff" font-size="11">親指の範囲</text>
+                    <text x="150" y="290" text-anchor="middle" fill="#aaa" font-size="12">約49%のユーザー</text>
+        
+                    <rect x="320" y="10" width="260" height="300" fill="transparent" stroke="#ffd700" stroke-width="1.5" rx="12" stroke-dasharray="6,3"/>
+                    <text x="450" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">② 両手持ち・片手操作</text>
+                    <rect x="385" y="60" width="130" height="220" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="16"/>
+                    <rect x="395" y="75" width="110" height="185" fill="#0d1117" stroke="#333" stroke-width="1" rx="4"/>
+                    <ellipse cx="450" cy="190" rx="55" ry="70" fill="#ffd700" opacity="0.15" stroke="#ffd700" stroke-width="1.5"/>
+                    <text x="450" y="195" text-anchor="middle" fill="#ffd700" font-size="11">やや広い範囲</text>
+                    <text x="450" y="290" text-anchor="middle" fill="#aaa" font-size="12">約36%のユーザー</text>
+        
+                    <rect x="620" y="10" width="260" height="300" fill="transparent" stroke="#00ff88" stroke-width="1.5" rx="12" stroke-dasharray="6,3"/>
+                    <text x="750" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">③ 両手操作</text>
+                    <rect x="685" y="60" width="130" height="220" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="16"/>
+                    <rect x="695" y="75" width="110" height="185" fill="#0d1117" stroke="#333" stroke-width="1" rx="4"/>
+                    <ellipse cx="750" cy="170" rx="55" ry="85" fill="#00ff88" opacity="0.15" stroke="#00ff88" stroke-width="1.5"/>
+                    <text x="750" y="175" text-anchor="middle" fill="#00ff88" font-size="11">ほぼ全域</text>
+                    <text x="750" y="290" text-anchor="middle" fill="#aaa" font-size="12">約15%のユーザー</text>
+                </svg>
+                <p style="text-align: center; margin-top: 0.5rem; color: #aaa;">出典: Steven Hoober "How Do Users Really Hold Mobile Devices?" の研究に基づく</p>
+            </div>
+        </div>
+        
+        <!-- スライド10: サムゾーンマップ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">サムゾーン：親指が届く範囲のマップ</h2>
+            <div class="content-block svg-centered">
+                <h3>画面上の「安全地帯」「ストレッチ地帯」「危険地帯」</h3>
+                <svg class="generated-art" viewBox="0 0 800 420">
+                    <rect x="280" y="10" width="240" height="400" fill="#0d1117" stroke="#555" stroke-width="3" rx="28"/>
+                    <rect x="295" y="45" width="210" height="340" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="6"/>
+        
+                    <rect x="295" y="45" width="210" height="100" fill="#ff4d6a" opacity="0.25" rx="6 6 0 0"/>
+                    <text x="400" y="85" text-anchor="middle" fill="#ff4d6a" font-size="14" font-weight="bold">🔴 Hard to Reach</text>
+                    <text x="400" y="105" text-anchor="middle" fill="#ff9999" font-size="11">指が届きにくい</text>
+        
+                    <rect x="295" y="145" width="210" height="110" fill="#ffd700" opacity="0.2"/>
+                    <text x="400" y="195" text-anchor="middle" fill="#ffd700" font-size="14" font-weight="bold">🟡 Stretch Zone</text>
+                    <text x="400" y="215" text-anchor="middle" fill="#ffee88" font-size="11">届くが少し無理がある</text>
+        
+                    <rect x="295" y="255" width="210" height="130" fill="#00ff88" opacity="0.2" rx="0 0 6 6"/>
+                    <text x="400" y="310" text-anchor="middle" fill="#00ff88" font-size="14" font-weight="bold">🟢 Easy Zone</text>
+                    <text x="400" y="330" text-anchor="middle" fill="#88ffbb" font-size="11">自然に指が届く</text>
+        
+                    <text x="570" y="80" fill="#ff4d6a" font-size="13">← ハンバーガーメニュー</text>
+                    <text x="570" y="100" fill="#ff4d6a" font-size="13">  （左上）は実は遠い！</text>
+                    <text x="570" y="200" fill="#ffd700" font-size="13">← 検索バーなど</text>
+                    <text x="570" y="220" fill="#ffd700" font-size="13">  中間的なアクション</text>
+                    <text x="570" y="310" fill="#00ff88" font-size="13">← メインナビゲーション</text>
+                    <text x="570" y="330" fill="#00ff88" font-size="13">  最重要アクションはここ</text>
+        
+                    <text x="260" y="85" text-anchor="end" fill="#aaa" font-size="12">閲覧のみ</text>
+                    <text x="260" y="100" text-anchor="end" fill="#aaa" font-size="12">or 低頻度操作</text>
+                    <text x="260" y="200" text-anchor="end" fill="#aaa" font-size="12">補助的な</text>
+                    <text x="260" y="215" text-anchor="end" fill="#aaa" font-size="12">操作を配置</text>
+                    <text x="260" y="310" text-anchor="end" fill="#aaa" font-size="12">最頻出の</text>
+                    <text x="260" y="325" text-anchor="end" fill="#aaa" font-size="12">操作を配置</text>
                 </svg>
             </div>
         </div>
-
-        <!-- スライド12: 端末サイズによる違い -->
+        
+        <!-- スライド11: SLOW DRIPでの適用例 -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">端末サイズによるサムゾーンの変化</h2>
+            <h2 class="slide-title">ケーススタディ：SLOW DRIP公式サイトのモバイル設計</h2>
+            <div class="content-block">
+                <h3>サムゾーンに基づくUI配置の判断</h3>
+                <p>SLOW DRIP（スペシャルティコーヒー専門カフェ）の公式サイトをモバイル設計する場合、各操作をどのゾーンに配置すべきか：</p>
+                <ul>
+                    <li><strong>🟢 Easy Zone（下部）に配置：</strong>「席を予約する」「電話をかける」「地図を開く」— 来店直結の最重要アクション</li>
+                    <li><strong>🟡 Stretch Zone（中部）に配置：</strong>「メニューを見る」「今週のおすすめ豆」「ギャラリー」— 興味を深める閲覧系コンテンツ</li>
+                    <li><strong>🔴 Hard Zone（上部）に配置：</strong>「ブランドストーリー」「採用情報」「プライバシーポリシー」— 低頻度の情報</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：PC版の「上部メニューバー」をそのままスマホに持ってくる。<br>
+                    PC版で左上にある「ご予約はこちら」は、スマホでは画面下部の固定ボタン（スティッキーCTA）に変えるべき
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: サムゾーンの落とし穴 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">サムゾーンの注意点</h2>
+            <div class="content-block">
+                <h3>「届くから安全」ではない</h3>
+                <p>サムゾーンは「物理的に指が届くか」だけでなく、誤タップの可能性も考慮する必要があります。</p>
+        
+                <h3>設計で守るべき3つのルール</h3>
+                <ul>
+                    <li><strong>タップターゲット最小サイズ：</strong>44×44px（Apple HIG） / 48×48px（Material Design）— これより小さいボタンは誤タップの原因になる。※公式定義ではpt/dp単位だが、Figmaでは1pt=1pxとして設計する</li>
+                    <li><strong>要素間の距離：</strong>タップ可能な要素同士は最低8px以上離す。「予約確定」と「キャンセル」が隣り合っていると悲惨な結果に</li>
+                    <li><strong>破壊的アクションの隔離：</strong>「予約キャンセル」「アカウント削除」などの取り消し不能な操作は、高頻度操作から物理的に離す</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 判断基準：「もしユーザーがコーヒーを片手に、もう片方の手でスマホを操作していたら？」を想像して設計する
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========== セクション3: 情報の優先順位設計 ========== -->
+        
+        <!-- スライド13: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 3<br>情報の優先順位設計</h2>
+            <p>同じ情報でも、画面サイズで「見せ方」は変わる</p>
+        </div>
+        
+        <!-- スライド14: PC vs モバイルの情報階層 -->
+        <div class="slide-container">
+            <h2 class="slide-title">PC vs モバイル：情報の見せ方が根本的に違う</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>🖥️ PC版の特徴</h3>
+                    <svg class="generated-art" viewBox="0 0 400 280">
+                        <rect x="20" y="10" width="360" height="250" fill="#0d1117" stroke="#555" stroke-width="2" rx="8"/>
+                        <rect x="30" y="25" width="340" height="90" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="200" y="55" text-anchor="middle" fill="#888" font-size="11">ヒーロー画像 + キャッチコピー</text>
+                        <text x="200" y="75" text-anchor="middle" fill="#00d4ff" font-size="10">「一杯の、特別な時間を」</text>
+                        <rect x="150" y="88" width="100" height="20" fill="#00d4ff" opacity="0.3" rx="4"/>
+                        <text x="200" y="102" text-anchor="middle" fill="#00d4ff" font-size="9">予約する</text>
+                        <rect x="30" y="125" width="108" height="70" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="84" y="155" text-anchor="middle" fill="#888" font-size="9">メニュー</text>
+                        <text x="84" y="170" text-anchor="middle" fill="#666" font-size="8">写真グリッド</text>
+                        <rect x="146" y="125" width="108" height="70" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="200" y="155" text-anchor="middle" fill="#888" font-size="9">店舗情報</text>
+                        <text x="200" y="170" text-anchor="middle" fill="#666" font-size="8">地図+営業時間</text>
+                        <rect x="262" y="125" width="108" height="70" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="316" y="155" text-anchor="middle" fill="#888" font-size="9">ストーリー</text>
+                        <text x="316" y="170" text-anchor="middle" fill="#666" font-size="8">ブランド紹介</text>
+                        <rect x="30" y="205" width="340" height="40" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="4"/>
+                        <text x="200" y="230" text-anchor="middle" fill="#555" font-size="8">SNS | 採用情報 | プライバシーポリシー | お問い合わせ</text>
+                    </svg>
+                    <p style="font-size: 1rem; margin-top: 1rem;">特徴：一覧性が高く、同時に多くの情報を比較できる</p>
+                </div>
+                <div>
+                    <h3>📱 モバイル版の特徴</h3>
+                    <svg class="generated-art" viewBox="0 0 400 280">
+                        <rect x="130" y="5" width="150" height="270" fill="#0d1117" stroke="#555" stroke-width="2" rx="20"/>
+                        <rect x="140" y="30" width="130" height="220" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                        <rect x="145" y="35" width="120" height="22" fill="#0d1117" rx="3"/>
+                        <text x="160" y="50" fill="#888" font-size="10">☰</text>
+                        <text x="205" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">SLOW DRIP</text>
+                        <rect x="148" y="62" width="114" height="45" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="4"/>
+                        <text x="205" y="82" text-anchor="middle" fill="#888" font-size="8">ヒーロー画像</text>
+                        <text x="205" y="100" text-anchor="middle" fill="#00d4ff" font-size="7">一杯の、特別な時間を</text>
+                        <rect x="148" y="115" width="114" height="30" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="4"/>
+                        <text x="205" y="134" text-anchor="middle" fill="#00d4ff" font-size="9">📍 店舗情報・地図</text>
+                        <rect x="148" y="150" width="114" height="30" fill="#0d1117" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="205" y="169" text-anchor="middle" fill="#888" font-size="9">☕ 今週のおすすめ</text>
+                        <rect x="148" y="185" width="114" height="30" fill="#0d1117" stroke="#333" stroke-width="1" rx="4"/>
+                        <text x="205" y="204" text-anchor="middle" fill="#888" font-size="9">📋 メニューを見る</text>
+                        <rect x="140" y="222" width="130" height="28" fill="#00d4ff" opacity="0.9" rx="4"/>
+                        <text x="205" y="240" text-anchor="middle" fill="white" font-size="10" font-weight="bold">席を予約する</text>
+                    </svg>
+                    <p style="font-size: 1rem; margin-top: 1rem;">特徴：1カラムで優先度順に並べ、予約CTAを常時固定表示</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド15: プログレッシブ・ディスクロージャー -->
+        <div class="slide-container big-concept-layout">
+            <h2>Progressive Disclosure<br>段階的な情報開示</h2>
+            <p>必要な情報を、必要なタイミングで、必要な分だけ見せる。<br>モバイルUIの最重要原則のひとつ</p>
+        </div>
+        
+        <!-- スライド16: プログレッシブ・ディスクロージャーの仕組み -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">段階的開示のメカニズム</h2>
+            <div class="content-block svg-centered">
+                <h3>SLOW DRIP メニューページでの適用例</h3>
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <rect x="30" y="30" width="200" height="240" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2" rx="10"/>
+                    <text x="130" y="25" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">Level 1：常に表示</text>
+                    <text x="130" y="65" text-anchor="middle" fill="white" font-size="13">ドリンク名</text>
+                    <text x="130" y="95" text-anchor="middle" fill="white" font-size="13">写真（サムネイル）</text>
+                    <text x="130" y="125" text-anchor="middle" fill="white" font-size="13">価格</text>
+                    <text x="130" y="155" text-anchor="middle" fill="white" font-size="13">カテゴリ（HOT/ICE）</text>
+                    <text x="130" y="200" text-anchor="middle" fill="#00d4ff" font-size="11">→ スクロールしながら</text>
+                    <text x="130" y="220" text-anchor="middle" fill="#00d4ff" font-size="11">「何があるか」を把握</text>
+        
+                    <text x="265" y="150" fill="#666" font-size="28">→</text>
+                    <text x="265" y="175" fill="#666" font-size="10">タップで展開</text>
+        
+                    <rect x="300" y="30" width="200" height="240" fill="#ffd700" opacity="0.1" stroke="#ffd700" stroke-width="2" rx="10"/>
+                    <text x="400" y="25" text-anchor="middle" fill="#ffd700" font-size="14" font-weight="bold">Level 2：タップで表示</text>
+                    <text x="400" y="65" text-anchor="middle" fill="white" font-size="13">豆の産地・品種</text>
+                    <text x="400" y="95" text-anchor="middle" fill="white" font-size="13">フレーバーノート</text>
+                    <text x="400" y="125" text-anchor="middle" fill="white" font-size="13">おすすめの飲み方</text>
+                    <text x="400" y="155" text-anchor="middle" fill="white" font-size="13">アレルギー情報</text>
+                    <text x="400" y="200" text-anchor="middle" fill="#ffd700" font-size="11">→ 「もっと知りたい」</text>
+                    <text x="400" y="220" text-anchor="middle" fill="#ffd700" font-size="11">時だけ展開する</text>
+        
+                    <text x="535" y="150" fill="#666" font-size="28">→</text>
+                    <text x="535" y="175" fill="#666" font-size="10">別画面へ</text>
+        
+                    <rect x="570" y="30" width="200" height="240" fill="#ff4d6a" opacity="0.1" stroke="#ff4d6a" stroke-width="2" rx="10"/>
+                    <text x="670" y="25" text-anchor="middle" fill="#ff4d6a" font-size="14" font-weight="bold">Level 3：別画面で表示</text>
+                    <text x="670" y="65" text-anchor="middle" fill="white" font-size="13">バリスタの紹介</text>
+                    <text x="670" y="95" text-anchor="middle" fill="white" font-size="13">農園のストーリー</text>
+                    <text x="670" y="125" text-anchor="middle" fill="white" font-size="13">焙煎プロセスの詳細</text>
+                    <text x="670" y="155" text-anchor="middle" fill="white" font-size="13">栄養成分表示</text>
+                    <text x="670" y="200" text-anchor="middle" fill="#ff4d6a" font-size="11">→ ブランドの深い</text>
+                    <text x="670" y="220" text-anchor="middle" fill="#ff4d6a" font-size="11">体験を求める層向け</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド17: SLOW DRIPトップページ Before/After -->
+        <div class="slide-container">
+            <h2 class="slide-title">SLOW DRIP トップページ：Before vs After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（PC版をそのまま縮小）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 350">
+                        <rect x="110" y="5" width="180" height="340" fill="#0d1117" stroke="#ff4d6a" stroke-width="2" rx="22"/>
+                        <rect x="122" y="30" width="156" height="290" fill="#1a1a2e" rx="4"/>
+                        <text x="200" y="48" text-anchor="middle" fill="#888" font-size="6">HOME | MENU | ABOUT | STORY | RESERVE | SHOP | ACCESS | CONTACT</text>
+                        <rect x="128" y="55" width="144" height="85" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="2"/>
+                        <text x="200" y="90" text-anchor="middle" fill="#444" font-size="8">巨大なヒーロー画像</text>
+                        <text x="200" y="103" text-anchor="middle" fill="#444" font-size="7">（画面の半分を占有）</text>
+                        <rect x="128" y="148" width="45" height="55" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="2"/>
+                        <text x="150" y="172" text-anchor="middle" fill="#333" font-size="5">メニュー</text>
+                        <rect x="177" y="148" width="45" height="55" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="2"/>
+                        <text x="199" y="172" text-anchor="middle" fill="#333" font-size="5">店舗</text>
+                        <rect x="226" y="148" width="45" height="55" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="2"/>
+                        <text x="248" y="172" text-anchor="middle" fill="#333" font-size="5">ストーリー</text>
+                        <rect x="128" y="210" width="144" height="50" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="2"/>
+                        <text x="200" y="230" text-anchor="middle" fill="#333" font-size="5">営業時間: 8:00-20:00 | 定休日: 水曜</text>
+                        <text x="200" y="240" text-anchor="middle" fill="#333" font-size="5">〒150-0001 東京都渋谷区...</text>
+                        <text x="200" y="280" text-anchor="middle" fill="#ff4d6a" font-size="11">ナビが多すぎて</text>
+                        <text x="200" y="296" text-anchor="middle" fill="#ff4d6a" font-size="11">押せない！読めない！</text>
+                    </svg>
+                    <p style="font-size: 1rem; margin-top: 1rem;">問題点：PC版の情報量をそのまま縮小→ナビは押せず、文字は読めない</p>
+                </div>
+                <div>
+                    <h3>✅ After（モバイルファーストで再設計）</h3>
+                    <svg class="generated-art" viewBox="0 0 400 350">
+                        <rect x="110" y="5" width="180" height="340" fill="#0d1117" stroke="#00ff88" stroke-width="2" rx="22"/>
+                        <rect x="122" y="30" width="156" height="290" fill="#1a1a2e" rx="4"/>
+                        <rect x="128" y="35" width="144" height="26" fill="#0d1117" rx="3"/>
+                        <text x="148" y="52" fill="#888" font-size="11">☰</text>
+                        <text x="200" y="52" text-anchor="middle" fill="white" font-size="10" font-weight="bold">SLOW DRIP</text>
+                        <rect x="128" y="66" width="144" height="55" fill="#0d1117" stroke="#333" stroke-width="0.5" rx="4"/>
+                        <text x="200" y="88" text-anchor="middle" fill="#aaa" font-size="9">☕ 一杯の、特別な時間を</text>
+                        <text x="200" y="105" text-anchor="middle" fill="#666" font-size="7">本日のおすすめ：エチオピア イルガチェフェ</text>
+                        <rect x="128" y="128" width="144" height="42" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                        <text x="145" y="146" fill="white" font-size="9" font-weight="bold">📍 渋谷店</text>
+                        <text x="145" y="160" fill="#888" font-size="8">営業中 · 8:00-20:00 · 徒歩3分</text>
+                        <rect x="128" y="177" width="144" height="35" fill="#0d1117" stroke="#333" stroke-width="1" rx="6"/>
+                        <text x="145" y="198" fill="white" font-size="9">☕ メニューを見る →</text>
+                        <rect x="128" y="219" width="144" height="35" fill="#0d1117" stroke="#333" stroke-width="1" rx="6"/>
+                        <text x="145" y="240" fill="white" font-size="9">📷 ギャラリー →</text>
+                        <rect x="122" y="270" width="156" height="35" fill="#00d4ff" opacity="0.9" rx="6"/>
+                        <text x="170" y="291" text-anchor="middle" fill="white" font-size="10" font-weight="bold">📞 電話</text>
+                        <line x1="200" y1="275" x2="200" y2="300" stroke="white" stroke-width="0.5" opacity="0.4"/>
+                        <text x="240" y="291" text-anchor="middle" fill="white" font-size="10" font-weight="bold">📅 予約</text>
+                    </svg>
+                    <p style="font-size: 1rem; margin-top: 1rem;">改善点：1カラム、カード型、固定CTA（電話+予約）を画面下部に</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========== セクション4: レスポンシブの技術的仕組み ========== -->
+        
+        <!-- スライド18: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 4<br>レスポンシブの技術的仕組み</h2>
+            <p>「形が変わる」を支えるテクノロジーの基礎</p>
+        </div>
+        
+        <!-- スライド19: ブレイクポイントとは -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブレイクポイント：レイアウトが切り替わる境界線</h2>
+            <div class="content-block">
+                <h3>ブレイクポイントとは？</h3>
+                <p>画面の横幅が特定のピクセル数を超えた（または下回った）とき、レイアウトが自動的に切り替わるポイントのことです。</p>
+        
+                <h3>主要なブレイクポイント（業界標準）</h3>
+                <ul>
+                    <li><strong>〜599px：</strong>スマートフォン（縦向き）— 1カラムレイアウト</li>
+                    <li><strong>600〜1023px：</strong>タブレット / スマホ横向き — 2カラムまで可</li>
+                    <li><strong>1024〜1439px：</strong>ノートPC / 小型デスクトップ — サイドバー＋メイン</li>
+                    <li><strong>1440px〜：</strong>大型デスクトップ — マルチカラム、余白を活用</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 ポイント：ブレイクポイントは「デバイスの種類」ではなく「コンテンツが読みやすく表示できる幅」で決める。<br>
+                    「iPadで」ではなく「600pxを超えたらメニュー写真を2列にしても見やすい」が正しい判断基準
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド20: フルイドグリッドとフレキシブルイメージ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">フルイドグリッドとフレキシブルイメージ</h2>
+            <div class="content-block svg-centered">
+                <h3>固定値（px）ではなく、相対値（%）でレイアウトを組む</h3>
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <text x="200" y="25" text-anchor="middle" fill="#ff4d6a" font-size="15" font-weight="bold">❌ 固定レイアウト（px指定）</text>
+                    <rect x="20" y="40" width="360" height="220" fill="transparent" stroke="#ff4d6a" stroke-width="2" rx="8" stroke-dasharray="6,3"/>
+                    <rect x="40" y="60" width="200" height="60" fill="#ff4d6a" opacity="0.2" stroke="#ff4d6a" stroke-width="1" rx="4"/>
+                    <text x="140" y="95" text-anchor="middle" fill="#ff4d6a" font-size="12">width: 960px</text>
+                    <rect x="40" y="140" width="200" height="40" fill="#ff4d6a" opacity="0.15" stroke="#ff4d6a" stroke-width="1" rx="4"/>
+                    <rect x="250" y="140" width="120" height="40" fill="#ff4d6a" opacity="0.1" stroke="#ff4d6a" stroke-width="1" rx="4" stroke-dasharray="4,2"/>
+                    <text x="310" y="165" text-anchor="middle" fill="#ff4d6a" font-size="10">はみ出す！</text>
+                    <text x="200" y="215" text-anchor="middle" fill="#ff9999" font-size="11">画面が小さいと</text>
+                    <text x="200" y="235" text-anchor="middle" fill="#ff9999" font-size="11">コンテンツがはみ出す or 横スクロール</text>
+        
+                    <text x="600" y="25" text-anchor="middle" fill="#00ff88" font-size="15" font-weight="bold">✅ フルイドレイアウト（%指定）</text>
+                    <rect x="420" y="40" width="360" height="220" fill="transparent" stroke="#00ff88" stroke-width="2" rx="8" stroke-dasharray="6,3"/>
+                    <rect x="440" y="55" width="320" height="35" fill="#00ff88" opacity="0.15" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="600" y="78" text-anchor="middle" fill="#00ff88" font-size="11">width: 100% — 大画面</text>
+                    <rect x="470" y="100" width="260" height="35" fill="#00ff88" opacity="0.15" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="600" y="123" text-anchor="middle" fill="#00ff88" font-size="11">width: 100% — 中画面</text>
+                    <rect x="520" y="145" width="160" height="35" fill="#00ff88" opacity="0.15" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="600" y="168" text-anchor="middle" fill="#00ff88" font-size="11">width: 100% — 小画面</text>
+                    <text x="600" y="210" text-anchor="middle" fill="#88ffbb" font-size="11">どの画面幅でも</text>
+                    <text x="600" y="230" text-anchor="middle" fill="#88ffbb" font-size="11">コンテンツが画面内に収まる</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド21: メディアクエリの概念 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">メディアクエリ：画面幅に応じた条件分岐</h2>
+            <div class="content-block">
+                <h3>仕組みの概念（コードを書く必要はありません）</h3>
+                <p>メディアクエリは「もし画面幅が○○pxより広ければ、このレイアウトに切り替える」という条件分岐です。Visual Architectとして理解すべきは、技術者への指示の出し方です。</p>
+        
+                <h3>指示の出し方（例：SLOW DRIPのメニューページ）</h3>
+                <ul>
+                    <li><strong>スマホ（〜599px）：</strong>「メニュー写真は1列で縦に並べてください。価格は写真の下に表示」</li>
+                    <li><strong>タブレット（600〜1023px）：</strong>「メニュー写真を2列のグリッドにして、カテゴリごとにタブ切替で」</li>
+                    <li><strong>PC（1024px〜）：</strong>「左にカテゴリ一覧のサイドバー、右にメニュー写真3列グリッドで表示してください」</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「スマホ用」「PC用」と別々のデザインを作ってしまう。<br>
+                    正しくは、同じコンテンツが画面幅に応じて「再配置」されるよう設計する。これが「レスポンシブ」の本質です
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド22: 主要ブレイクポイント一覧 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ブレイクポイント早見表：SLOW DRIPの場合</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <line x1="50" y1="280" x2="750" y2="280" stroke="#555" stroke-width="2"/>
+                    <text x="400" y="320" text-anchor="middle" fill="#888" font-size="13">画面幅（px）</text>
+        
+                    <rect x="60" y="60" width="165" height="210" fill="#00d4ff" opacity="0.08" rx="6"/>
+                    <line x1="225" y1="50" x2="225" y2="280" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="142" y="90" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">📱 スマホ</text>
+                    <text x="142" y="115" text-anchor="middle" fill="#00d4ff" font-size="11">〜599px</text>
+                    <text x="142" y="145" text-anchor="middle" fill="white" font-size="11">1カラム</text>
+                    <text x="142" y="165" text-anchor="middle" fill="white" font-size="11">固定CTA（電話+予約）</text>
+                    <text x="142" y="185" text-anchor="middle" fill="white" font-size="11">ハンバーガーメニュー</text>
+                    <text x="142" y="205" text-anchor="middle" fill="white" font-size="11">メニュー写真1列</text>
+                    <text x="225" y="300" text-anchor="middle" fill="#00d4ff" font-size="10">600px</text>
+        
+                    <rect x="235" y="60" width="190" height="210" fill="#ffd700" opacity="0.08" rx="6"/>
+                    <line x1="425" y1="50" x2="425" y2="280" stroke="#ffd700" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="330" y="90" text-anchor="middle" fill="#ffd700" font-size="14" font-weight="bold">📱 タブレット</text>
+                    <text x="330" y="115" text-anchor="middle" fill="#ffd700" font-size="11">600〜1023px</text>
+                    <text x="330" y="145" text-anchor="middle" fill="white" font-size="11">2カラム</text>
+                    <text x="330" y="165" text-anchor="middle" fill="white" font-size="11">メニュー写真2列</text>
+                    <text x="330" y="185" text-anchor="middle" fill="white" font-size="11">地図+店舗情報横並び</text>
+                    <text x="330" y="205" text-anchor="middle" fill="white" font-size="11">CTA上部に移動</text>
+                    <text x="425" y="300" text-anchor="middle" fill="#ffd700" font-size="10">1024px</text>
+        
+                    <rect x="435" y="60" width="150" height="210" fill="#ff8c00" opacity="0.08" rx="6"/>
+                    <line x1="585" y1="50" x2="585" y2="280" stroke="#ff8c00" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="510" y="90" text-anchor="middle" fill="#ff8c00" font-size="14" font-weight="bold">💻 ノートPC</text>
+                    <text x="510" y="115" text-anchor="middle" fill="#ff8c00" font-size="11">1024〜1439px</text>
+                    <text x="510" y="145" text-anchor="middle" fill="white" font-size="11">ナビバー常時表示</text>
+                    <text x="510" y="165" text-anchor="middle" fill="white" font-size="11">メニュー3列グリッド</text>
+                    <text x="510" y="185" text-anchor="middle" fill="white" font-size="11">ホバーで詳細表示</text>
+                    <text x="510" y="205" text-anchor="middle" fill="white" font-size="11">予約フォーム埋込</text>
+                    <text x="585" y="300" text-anchor="middle" fill="#ff8c00" font-size="10">1440px</text>
+        
+                    <rect x="595" y="60" width="145" height="210" fill="#00ff88" opacity="0.08" rx="6"/>
+                    <text x="668" y="90" text-anchor="middle" fill="#00ff88" font-size="14" font-weight="bold">🖥️ デスクトップ</text>
+                    <text x="668" y="115" text-anchor="middle" fill="#00ff88" font-size="11">1440px〜</text>
+                    <text x="668" y="145" text-anchor="middle" fill="white" font-size="11">フル幅ヒーロー</text>
+                    <text x="668" y="165" text-anchor="middle" fill="white" font-size="11">メニュー4列+サイドバー</text>
+                    <text x="668" y="185" text-anchor="middle" fill="white" font-size="11">ストーリーセクション</text>
+                    <text x="668" y="205" text-anchor="middle" fill="white" font-size="11">Instagram埋込</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- ========== セクション5: アトミックデザインとの接続 ========== -->
+        
+        <!-- スライド23: セクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Section 5<br>アトミックデザインとの接続</h2>
+            <p>コンポーネントが「画面に応じて姿を変える」仕組み</p>
+        </div>
+        
+        <!-- スライド24: コンポーネントの再配置 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">同じコンポーネント、異なるレイアウト</h2>
+            <div class="content-block">
+                <h3>アトミックデザインの復習：コンポーネントの階層</h3>
+                <p>以前学んだアトミックデザインでは、UIを Atoms → Molecules → Organisms → Templates → Pages の階層で設計しました。<br>レスポンシブデザインの核心は、<strong>同じ Molecule / Organism が画面サイズに応じて「配置」を変える</strong>ことです。</p>
+        
+                <h3>SLOW DRIPの「メニューカード」で考える</h3>
+                <ul>
+                    <li><strong>Atoms：</strong>ドリンク写真、ドリンク名テキスト、価格テキスト、HOT/ICEバッジ、産地ラベル</li>
+                    <li><strong>Molecule（メニューカード）：</strong>上記Atomsの組み合わせ → これ自体は画面サイズで「中身」は変わらない</li>
+                    <li><strong>変わるのは配置：</strong>スマホでは縦1列、タブレットでは2列グリッド、PCでは3列+カテゴリサイドバー</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 コンポーネントの「中身」を変えるのではなく、「並べ方」を変える。<br>
+                    これがレスポンシブ × アトミックデザインの設計思想です
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド25: 同じMoleculeがデバイスで変化する例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">メニューカード Molecule の再配置</h2>
             <div class="content-block svg-centered">
                 <svg class="generated-art" viewBox="0 0 800 350">
-                    <!-- 小型端末 -->
-                    <text x="130" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">小型（~5.5"）</text>
-                    <rect x="70" y="50" width="120" height="220" fill="#1a1a2e" stroke="#333" stroke-width="2" rx="15"/>
-                    <rect x="80" y="70" width="100" height="180" fill="#2d2d44" rx="3"/>
-                    <ellipse cx="150" cy="200" rx="45" ry="55" fill="#00ff88" opacity="0.4"/>
-                    <text x="130" y="290" text-anchor="middle" fill="#00ff88" font-size="12">片手操作しやすい</text>
-                    
-                    <!-- 中型端末 -->
-                    <text x="350" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">中型（5.5"~6.5"）</text>
-                    <rect x="280" y="50" width="140" height="250" fill="#1a1a2e" stroke="#333" stroke-width="2" rx="18"/>
-                    <rect x="292" y="72" width="116" height="206" fill="#2d2d44" rx="3"/>
-                    <ellipse cx="370" cy="220" rx="50" ry="60" fill="#00ff88" opacity="0.3"/>
-                    <ellipse cx="350" cy="160" rx="55" ry="70" fill="#ffcc00" opacity="0.2"/>
-                    <text x="350" y="320" text-anchor="middle" fill="#ffcc00" font-size="12">上部に届きにくい</text>
-                    
-                    <!-- 大型端末 -->
-                    <text x="580" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">大型（6.5"+）</text>
-                    <rect x="500" y="50" width="160" height="280" fill="#1a1a2e" stroke="#333" stroke-width="2" rx="20"/>
-                    <rect x="514" y="75" width="132" height="230" fill="#2d2d44" rx="3"/>
-                    <ellipse cx="600" cy="250" rx="55" ry="60" fill="#00ff88" opacity="0.25"/>
-                    <ellipse cx="580" cy="180" rx="60" ry="80" fill="#ffcc00" opacity="0.2"/>
-                    <rect x="514" y="75" width="132" height="60" fill="#ff6b6b" opacity="0.2" rx="3"/>
-                    <text x="580" y="345" text-anchor="middle" fill="#ff6b6b" font-size="12">両手操作が前提</text>
+                    <text x="130" y="25" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">📱 スマホ（1列）</text>
+                    <rect x="60" y="40" width="140" height="280" fill="transparent" stroke="#00d4ff" stroke-width="1.5" rx="12" stroke-dasharray="4,2"/>
+                    <rect x="75" y="55" width="110" height="55" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                    <text x="130" y="75" text-anchor="middle" fill="white" font-size="9">エチオピア イルガチェフェ</text>
+                    <text x="130" y="92" text-anchor="middle" fill="#888" font-size="8">HOT · ¥650 · 浅煎り</text>
+                    <rect x="75" y="120" width="110" height="55" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                    <text x="130" y="140" text-anchor="middle" fill="white" font-size="9">コロンビア スプレモ</text>
+                    <text x="130" y="157" text-anchor="middle" fill="#888" font-size="8">HOT/ICE · ¥600 · 中煎り</text>
+                    <rect x="75" y="185" width="110" height="55" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                    <text x="130" y="205" text-anchor="middle" fill="white" font-size="9">SLOW DRIPブレンド</text>
+                    <text x="130" y="222" text-anchor="middle" fill="#888" font-size="8">HOT/ICE · ¥550 · 中深煎り</text>
+                    <rect x="75" y="250" width="110" height="55" fill="#0d1117" stroke="#00d4ff" stroke-width="1" rx="6"/>
+                    <text x="130" y="270" text-anchor="middle" fill="white" font-size="9">季節のラテ</text>
+                    <text x="130" y="287" text-anchor="middle" fill="#888" font-size="8">HOT · ¥700 · 期間限定</text>
+        
+                    <text x="240" y="180" fill="#666" font-size="22">→</text>
+        
+                    <text x="390" y="25" text-anchor="middle" fill="#ffd700" font-size="14" font-weight="bold">📱 タブレット（2列）</text>
+                    <rect x="280" y="40" width="220" height="200" fill="transparent" stroke="#ffd700" stroke-width="1.5" rx="12" stroke-dasharray="4,2"/>
+                    <rect x="290" y="55" width="95" height="55" fill="#0d1117" stroke="#ffd700" stroke-width="1" rx="6"/>
+                    <text x="337" y="75" text-anchor="middle" fill="white" font-size="8">イルガチェフェ</text>
+                    <text x="337" y="93" text-anchor="middle" fill="#888" font-size="7">¥650 · 浅煎り</text>
+                    <rect x="395" y="55" width="95" height="55" fill="#0d1117" stroke="#ffd700" stroke-width="1" rx="6"/>
+                    <text x="442" y="75" text-anchor="middle" fill="white" font-size="8">スプレモ</text>
+                    <text x="442" y="93" text-anchor="middle" fill="#888" font-size="7">¥600 · 中煎り</text>
+                    <rect x="290" y="120" width="95" height="55" fill="#0d1117" stroke="#ffd700" stroke-width="1" rx="6"/>
+                    <text x="337" y="140" text-anchor="middle" fill="white" font-size="8">SD ブレンド</text>
+                    <text x="337" y="158" text-anchor="middle" fill="#888" font-size="7">¥550 · 中深煎り</text>
+                    <rect x="395" y="120" width="95" height="55" fill="#0d1117" stroke="#ffd700" stroke-width="1" rx="6"/>
+                    <text x="442" y="140" text-anchor="middle" fill="white" font-size="8">季節のラテ</text>
+                    <text x="442" y="158" text-anchor="middle" fill="#888" font-size="7">¥700 · 期間限定</text>
+                    <text x="390" y="210" text-anchor="middle" fill="#ffd700" font-size="10">同じカードが2列に並ぶ</text>
+        
+                    <text x="530" y="180" fill="#666" font-size="22">→</text>
+        
+                    <text x="660" y="25" text-anchor="middle" fill="#00ff88" font-size="14" font-weight="bold">🖥️ PC（3列+サイドバー）</text>
+                    <rect x="550" y="40" width="230" height="200" fill="transparent" stroke="#00ff88" stroke-width="1.5" rx="12" stroke-dasharray="4,2"/>
+                    <rect x="556" y="50" width="50" height="180" fill="#1a1a2e" stroke="#333" stroke-width="1" rx="4"/>
+                    <text x="581" y="72" text-anchor="middle" fill="#00ff88" font-size="7">ドリップ</text>
+                    <text x="581" y="92" text-anchor="middle" fill="#555" font-size="7">ラテ</text>
+                    <text x="581" y="112" text-anchor="middle" fill="#555" font-size="7">エスプレッソ</text>
+                    <text x="581" y="132" text-anchor="middle" fill="#555" font-size="7">フード</text>
+                    <rect x="612" y="55" width="52" height="45" fill="#0d1117" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="638" y="75" text-anchor="middle" fill="white" font-size="6">イルガチェフェ</text>
+                    <text x="638" y="90" text-anchor="middle" fill="#888" font-size="6">¥650</text>
+                    <rect x="669" y="55" width="52" height="45" fill="#0d1117" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="695" y="75" text-anchor="middle" fill="white" font-size="6">スプレモ</text>
+                    <text x="695" y="90" text-anchor="middle" fill="#888" font-size="6">¥600</text>
+                    <rect x="726" y="55" width="52" height="45" fill="#0d1117" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="752" y="75" text-anchor="middle" fill="white" font-size="6">ブレンド</text>
+                    <text x="752" y="90" text-anchor="middle" fill="#888" font-size="6">¥550</text>
+                    <rect x="612" y="108" width="52" height="45" fill="#0d1117" stroke="#00ff88" stroke-width="1" rx="4"/>
+                    <text x="638" y="128" text-anchor="middle" fill="white" font-size="6">季節のラテ</text>
+                    <text x="638" y="143" text-anchor="middle" fill="#888" font-size="6">¥700</text>
+                    <text x="680" y="200" text-anchor="middle" fill="#00ff88" font-size="10">サイドバー+3列グリッド</text>
+        
+                    <text x="400" y="330" text-anchor="middle" fill="white" font-size="13" font-weight="bold">カードの「中身」は同一。「配置」だけが変わる</text>
                 </svg>
-                <p style="text-align: center; margin-top: 1rem; color: #888;">端末が大きくなるほど、画面上部の「届きにくいゾーン」が拡大する</p>
             </div>
         </div>
-
-        <!-- スライド13: UI配置パターン -->
+        
+        <!-- スライド26: レスポンシブ対応コンポーネントの設計原則 -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">サムゾーンを活かしたUI配置</h2>
+            <h2 class="slide-title">レスポンシブ対応コンポーネントの3つの原則</h2>
             <div class="content-block">
-                <h3>配置の優先順位</h3>
+                <h3>アトミックデザインをレスポンシブに活かす</h3>
                 <ul>
-                    <li><strong>Easy Zone（下部）</strong>：メインCTA、ナビゲーション、頻繁に使う操作</li>
-                    <li><strong>OK Zone（中央）</strong>：コンテンツエリア、スクロールで閲覧するもの</li>
-                    <li><strong>Hard Zone（上部）</strong>：ステータス表示、戻るボタン、検索（使用頻度低め）</li>
+                    <li><strong>原則1：固定幅を使わない</strong> — メニューカードの幅は親コンテナの相対値（%やfr）で指定。「カード幅300px」ではなく「カードは親の33%」と設計する</li>
+                    <li><strong>原則2：内容の省略ルールを定義する</strong> — 同じメニューカードでも、スマホでは産地情報を非表示にし、タップで展開する等の「表示レベル」をあらかじめ決めておく</li>
+                    <li><strong>原則3：タッチとマウスの両対応</strong> — スマホでは44×44pxのタップ領域を確保し、PCではホバーでフレーバーノートを表示。同じコンポーネントが両方に対応できるよう設計する</li>
                 </ul>
-                
-                <h3>成功事例：ボトムナビゲーション</h3>
-                <p>Instagram、Twitter、LINEなどが採用。主要なナビゲーションを画面下部に配置し、親指だけで主要機能にアクセス可能にしている。</p>
-                
                 <div class="highlight-box">
-                    ⚠️ よくある間違い：PC版のヘッダーナビをそのままモバイルに持ち込む→ハンバーガーメニューが左上で押しにくい
+                    💡 Visual Architectの視点：開発者に「このメニューカードはスマホで何を省略するか」を明確に伝えられることが重要。<br>
+                    判断するのはあなた、実装するのはエンジニア。この分担がアトミックデザイン × レスポンシブの実務です
                 </div>
             </div>
         </div>
-
-        <!-- スライド14: Before/After -->
-        <div class="slide-container">
-            <h2 class="slide-title">サムゾーン配置：Before vs After</h2>
-            <div class="two-column tiled">
-                <div>
-                    <h3>❌ Before（サムゾーン未考慮）</h3>
-                    <svg class="generated-art" viewBox="0 0 350 350">
-                        <!-- スマホ本体 -->
-                        <rect x="100" y="30" width="150" height="280" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="20"/>
-                        <rect x="112" y="55" width="126" height="230" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- ヘッダー（上部） -->
-                        <rect x="112" y="55" width="126" height="35" fill="#ff6b6b" opacity="0.3"/>
-                        <rect x="120" y="65" width="20" height="15" fill="#ff6b6b" opacity="0.5" rx="2"/>
-                        <text x="140" y="75" fill="white" font-size="8">≡</text>
-                        <text x="175" y="77" text-anchor="middle" fill="white" font-size="10">Logo</text>
-                        <circle cx="220" cy="72" r="8" fill="#ff6b6b" opacity="0.5"/>
-                        
-                        <!-- メインCTA（上部） -->
-                        <rect x="130" y="100" width="90" height="25" fill="#ff6b6b" opacity="0.6" rx="12"/>
-                        <text x="175" y="117" text-anchor="middle" fill="white" font-size="10">購入する</text>
-                        
-                        <!-- コンテンツ -->
-                        <rect x="120" y="140" width="110" height="60" fill="#444" opacity="0.3" rx="3"/>
-                        <rect x="120" y="210" width="110" height="60" fill="#444" opacity="0.3" rx="3"/>
-                        
-                        <!-- 親指と届かない範囲 -->
-                        <path d="M260 320 Q220 280 180 120" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
-                        <text x="265" y="325" fill="#ff6b6b" font-size="10">届かない！</text>
-                    </svg>
-                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem;">問題点：CTAが上部で押しにくい</p>
-                </div>
-                <div>
-                    <h3>✅ After（サムゾーン最適化）</h3>
-                    <svg class="generated-art" viewBox="0 0 350 350">
-                        <!-- スマホ本体 -->
-                        <rect x="100" y="30" width="150" height="280" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="20"/>
-                        <rect x="112" y="55" width="126" height="230" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- 軽量ヘッダー（上部） -->
-                        <rect x="112" y="55" width="126" height="30" fill="#333" opacity="0.5"/>
-                        <text x="175" y="74" text-anchor="middle" fill="white" font-size="10">Logo</text>
-                        
-                        <!-- コンテンツ -->
-                        <rect x="120" y="95" width="110" height="70" fill="#444" opacity="0.3" rx="3"/>
-                        <rect x="120" y="175" width="110" height="50" fill="#444" opacity="0.3" rx="3"/>
-                        
-                        <!-- ボトムCTA（下部） -->
-                        <rect x="112" y="240" width="126" height="45" fill="#1a1a2e"/>
-                        <rect x="125" y="250" width="100" height="30" fill="#00d4ff" opacity="0.8" rx="15"/>
-                        <text x="175" y="270" text-anchor="middle" fill="white" font-size="11" font-weight="bold">購入する</text>
-                        
-                        <!-- 親指と届く範囲 -->
-                        <ellipse cx="175" cy="255" rx="50" ry="35" fill="#00ff88" opacity="0.2"/>
-                        <path d="M260 320 Q230 290 205 270" stroke="#00ff88" stroke-width="2" fill="none"/>
-                        <text x="265" y="325" fill="#00ff88" font-size="10">楽に届く！</text>
-                    </svg>
-                    <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); margin-top: 0.5rem;">改善点：CTAを下部に配置</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド15: セクション区切り -->
+        
+        <!-- ========== セクション6: 実務での判断基準 ========== -->
+        
+        <!-- スライド27: セクション区切り -->
         <div class="slide-container section-title-layout">
-            <h2>Section 3</h2>
-            <p>情報の優先順位：モバイル vs PC</p>
+            <h2>Section 6<br>実務での判断基準</h2>
+            <p>モバイルUIの定番パターンと「何を削るか」の考え方</p>
         </div>
-
-        <!-- スライド16: 情報の取捨選択 -->
+        
+        <!-- スライド28: モバイル専用UIパターン -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">モバイルでの情報設計</h2>
-            <div class="content-block">
-                <h3>「すべてを見せる」は不可能</h3>
-                <p>モバイル画面はPC画面の<strong>約1/4〜1/5のスペース</strong>しかない。同じ情報量を詰め込めば、読みにくく使いにくいUIになる。</p>
-                
-                <h3>プログレッシブ・ディスクロージャー</h3>
-                <p>情報を段階的に開示する設計手法。最初に「最重要情報」だけを見せ、詳細は必要に応じて展開する。</p>
-                <ul>
-                    <li><strong>第1階層</strong>：ユーザーが最も求めている情報（タイトル、価格、CTAなど）</li>
-                    <li><strong>第2階層</strong>：タップで展開される詳細情報</li>
-                    <li><strong>第3階層</strong>：別ページへのリンク、フルスペック</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 「削る」のではなく「段階化」する発想が重要
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド17: 優先順位の可視化 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">優先順位マトリクス</h2>
+            <h2 class="slide-title">モバイルUIの定番パターン</h2>
             <div class="content-block svg-centered">
-                <svg class="generated-art" viewBox="0 0 800 400">
-                    <!-- 軸 -->
-                    <line x1="100" y1="350" x2="700" y2="350" stroke="#666" stroke-width="2"/>
-                    <line x1="100" y1="350" x2="100" y2="50" stroke="#666" stroke-width="2"/>
-                    
-                    <!-- 軸ラベル -->
-                    <text x="400" y="390" text-anchor="middle" fill="white" font-size="14">ユーザーの利用頻度</text>
-                    <text x="50" y="200" text-anchor="middle" fill="white" font-size="14" transform="rotate(-90, 50, 200)">ビジネス重要度</text>
-                    <text x="100" y="370" fill="#888" font-size="12">低</text>
-                    <text x="700" y="370" fill="#888" font-size="12">高</text>
-                    <text x="80" y="350" fill="#888" font-size="12">低</text>
-                    <text x="80" y="60" fill="#888" font-size="12">高</text>
-                    
-                    <!-- 象限 -->
-                    <!-- 右上：モバイル必須 -->
-                    <rect x="400" y="50" width="300" height="150" fill="#00ff88" opacity="0.15"/>
-                    <text x="550" y="130" text-anchor="middle" fill="#00ff88" font-size="16" font-weight="bold">モバイル必須</text>
-                    <text x="550" y="155" text-anchor="middle" fill="#00ff88" font-size="12">CTA、価格、主要機能</text>
-                    
-                    <!-- 左上：PC優先 -->
-                    <rect x="100" y="50" width="300" height="150" fill="#ffcc00" opacity="0.15"/>
-                    <text x="250" y="130" text-anchor="middle" fill="#ffcc00" font-size="16" font-weight="bold">PC優先</text>
-                    <text x="250" y="155" text-anchor="middle" fill="#ffcc00" font-size="12">詳細スペック、比較表</text>
-                    
-                    <!-- 右下：展開で対応 -->
-                    <rect x="400" y="200" width="300" height="150" fill="#00d4ff" opacity="0.15"/>
-                    <text x="550" y="280" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">展開で対応</text>
-                    <text x="550" y="305" text-anchor="middle" fill="#00d4ff" font-size="12">FAQ、レビュー詳細</text>
-                    
-                    <!-- 左下：削減候補 -->
-                    <rect x="100" y="200" width="300" height="150" fill="#ff6b6b" opacity="0.15"/>
-                    <text x="250" y="280" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">削減候補</text>
-                    <text x="250" y="305" text-anchor="middle" fill="#ff6b6b" font-size="12">装飾的要素、冗長な説明</text>
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <rect x="20" y="10" width="175" height="280" fill="transparent" stroke="#00d4ff" stroke-width="1.5" rx="10"/>
+                    <text x="107" y="40" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">ハンバーガーメニュー</text>
+                    <rect x="45" y="60" width="120" height="160" fill="#0d1117" stroke="#444" stroke-width="1" rx="12"/>
+                    <text x="65" y="82" fill="white" font-size="14">☰</text>
+                    <text x="107" y="82" text-anchor="middle" fill="white" font-size="11">SLOW DRIP</text>
+                    <rect x="50" y="93" width="50" height="50" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <rect x="108" y="93" width="50" height="50" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <rect x="50" y="150" width="50" height="50" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <rect x="108" y="150" width="50" height="50" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <text x="107" y="240" text-anchor="middle" fill="#aaa" font-size="10">ナビを隠して</text>
+                    <text x="107" y="255" text-anchor="middle" fill="#aaa" font-size="10">画面を最大活用</text>
+        
+                    <rect x="215" y="10" width="175" height="280" fill="transparent" stroke="#ffd700" stroke-width="1.5" rx="10"/>
+                    <text x="302" y="40" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold">スティッキーCTA</text>
+                    <rect x="240" y="60" width="120" height="160" fill="#0d1117" stroke="#444" stroke-width="1" rx="12"/>
+                    <rect x="245" y="68" width="110" height="120" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <rect x="245" y="192" width="110" height="22" fill="#00d4ff" opacity="0.8" rx="4"/>
+                    <text x="300" y="207" text-anchor="middle" fill="white" font-size="9" font-weight="bold">📅 席を予約する</text>
+                    <text x="302" y="240" text-anchor="middle" fill="#aaa" font-size="10">最重要CTAを</text>
+                    <text x="302" y="255" text-anchor="middle" fill="#aaa" font-size="10">常に画面下部に固定</text>
+        
+                    <rect x="410" y="10" width="175" height="280" fill="transparent" stroke="#00ff88" stroke-width="1.5" rx="10"/>
+                    <text x="497" y="40" text-anchor="middle" fill="#00ff88" font-size="13" font-weight="bold">タップ to コール</text>
+                    <rect x="435" y="60" width="120" height="160" fill="#0d1117" stroke="#444" stroke-width="1" rx="12"/>
+                    <rect x="440" y="68" width="110" height="105" fill="#1a1a2e" stroke="#333" stroke-width="0.5" rx="3"/>
+                    <rect x="455" y="180" width="85" height="28" fill="#00ff88" opacity="0.2" stroke="#00ff88" stroke-width="1" rx="14"/>
+                    <text x="497" y="198" text-anchor="middle" fill="#00ff88" font-size="10">📞 電話する</text>
+                    <text x="497" y="240" text-anchor="middle" fill="#aaa" font-size="10">モバイル専用機能</text>
+                    <text x="497" y="255" text-anchor="middle" fill="#aaa" font-size="10">タップで即発信</text>
+        
+                    <rect x="605" y="10" width="175" height="280" fill="transparent" stroke="#ff8c00" stroke-width="1.5" rx="10"/>
+                    <text x="692" y="40" text-anchor="middle" fill="#ff8c00" font-size="13" font-weight="bold">スワイプギャラリー</text>
+                    <rect x="630" y="60" width="120" height="160" fill="#0d1117" stroke="#444" stroke-width="1" rx="12"/>
+                    <rect x="635" y="75" width="110" height="110" fill="#1a1a2e" stroke="#ff8c00" stroke-width="1" rx="4"/>
+                    <text x="690" y="125" text-anchor="middle" fill="#ff8c00" font-size="10">← スワイプ →</text>
+                    <text x="690" y="145" text-anchor="middle" fill="#888" font-size="8">☕ メニュー写真</text>
+                    <circle cx="675" cy="195" r="4" fill="#ff8c00" opacity="0.8"/>
+                    <circle cx="690" cy="195" r="4" fill="#555"/>
+                    <circle cx="705" cy="195" r="4" fill="#555"/>
+                    <text x="692" y="240" text-anchor="middle" fill="#aaa" font-size="10">横スクロールで</text>
+                    <text x="692" y="255" text-anchor="middle" fill="#aaa" font-size="10">写真を楽しく閲覧</text>
                 </svg>
             </div>
         </div>
-
-        <!-- スライド18: 具体例 -->
-        <div class="slide-container">
-            <h2 class="slide-title">ECサイト商品ページ：PC vs モバイル</h2>
-            <div class="two-column tiled">
-                <div>
-                    <h3>💻 PC版（情報リッチ）</h3>
-                    <svg class="generated-art" viewBox="0 0 350 280">
-                        <rect x="20" y="20" width="310" height="240" fill="#2d2d44" stroke="#666" stroke-width="1" rx="4"/>
-                        
-                        <!-- 左：商品画像 -->
-                        <rect x="30" y="35" width="140" height="140" fill="#444" rx="3"/>
-                        <text x="100" y="110" text-anchor="middle" fill="#888" font-size="12">商品画像</text>
-                        
-                        <!-- サムネイル -->
-                        <rect x="30" y="180" width="40" height="40" fill="#444" rx="2"/>
-                        <rect x="75" y="180" width="40" height="40" fill="#444" rx="2"/>
-                        <rect x="120" y="180" width="40" height="40" fill="#444" rx="2"/>
-                        
-                        <!-- 右：情報 -->
-                        <rect x="180" y="35" width="140" height="15" fill="#666" rx="2"/>
-                        <rect x="180" y="55" width="80" height="20" fill="#00d4ff" opacity="0.5" rx="2"/>
-                        <rect x="180" y="85" width="140" height="8" fill="#555" rx="1"/>
-                        <rect x="180" y="98" width="120" height="8" fill="#555" rx="1"/>
-                        <rect x="180" y="111" width="130" height="8" fill="#555" rx="1"/>
-                        
-                        <!-- スペック表 -->
-                        <rect x="180" y="130" width="140" height="60" fill="#333" rx="2"/>
-                        <text x="250" y="165" text-anchor="middle" fill="#888" font-size="10">詳細スペック表</text>
-                        
-                        <!-- CTA -->
-                        <rect x="180" y="200" width="140" height="30" fill="#00d4ff" rx="4"/>
-                        <text x="250" y="220" text-anchor="middle" fill="white" font-size="12">カートに入れる</text>
-                    </svg>
-                </div>
-                <div>
-                    <h3>📱 モバイル版（情報階層化）</h3>
-                    <svg class="generated-art" viewBox="0 0 350 280">
-                        <rect x="115" y="10" width="120" height="260" fill="#1a1a2e" stroke="#666" stroke-width="2" rx="15"/>
-                        <rect x="125" y="30" width="100" height="220" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- 画像（スワイプ） -->
-                        <rect x="130" y="35" width="90" height="70" fill="#444" rx="2"/>
-                        <circle cx="175" cy="110" r="3" fill="#00d4ff"/>
-                        <circle cx="165" cy="110" r="2" fill="#666"/>
-                        <circle cx="185" cy="110" r="2" fill="#666"/>
-                        
-                        <!-- 必須情報のみ -->
-                        <rect x="130" y="120" width="70" height="10" fill="#666" rx="1"/>
-                        <rect x="130" y="135" width="50" height="15" fill="#00d4ff" opacity="0.5" rx="2"/>
-                        <text x="155" y="147" fill="white" font-size="10">¥9,800</text>
-                        
-                        <!-- 折りたたみセクション -->
-                        <rect x="130" y="160" width="90" height="20" fill="#333" rx="2"/>
-                        <text x="175" y="174" text-anchor="middle" fill="#888" font-size="8">詳細を見る ▼</text>
-                        
-                        <!-- 固定CTA -->
-                        <rect x="125" y="210" width="100" height="35" fill="#1a1a2e"/>
-                        <rect x="135" y="218" width="80" height="25" fill="#00d4ff" rx="12"/>
-                        <text x="175" y="235" text-anchor="middle" fill="white" font-size="10">購入</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド19: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Section 4</h2>
-            <p>レイアウトと導線の違い</p>
-        </div>
-
-        <!-- スライド20: ナビゲーション設計 -->
+        
+        <!-- スライド29: 「何を削るか」の判断フレームワーク -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">ナビゲーション設計の違い</h2>
+            <h2 class="slide-title">「何を削るか」の判断フレームワーク</h2>
             <div class="content-block">
-                <h3>PC：水平ナビゲーション</h3>
+                <h3>モバイル化の3段階フィルター</h3>
+                <p>PC版のすべてのコンテンツをモバイルに載せる必要はありません。以下の3段階で判断します：</p>
                 <ul>
-                    <li>画面上部に全メニューを水平に配置</li>
-                    <li>マウスホバーでサブメニュー展開</li>
-                    <li>一覧性が高く、全体構造を把握しやすい</li>
+                    <li><strong>Step 1 — 頻度で分類：</strong>「来店のたびに見る」「たまに見る」「1回だけ見る」に分類。「ブランドストーリー」「採用情報」はモバイルでは深い階層に隠す or フッターリンクに</li>
+                    <li><strong>Step 2 — 文脈で分類：</strong>「外出先で使うか？」が判断基準。店舗までの地図・営業時間・電話番号は最優先。詳細なコーヒー豆の解説やバリスタ紹介はPCでゆっくり閲覧する情報</li>
+                    <li><strong>Step 3 — 代替手段の検討：</strong>PC版の写真グリッド → モバイルではスワイプギャラリーに変換。PC版の予約フォーム → モバイルでは電話ボタン+簡易予約フォームで対応</li>
                 </ul>
-                
-                <h3>モバイル：ボトムナビ or ハンバーガー</h3>
-                <ul>
-                    <li><strong>ボトムナビ</strong>：主要4-5機能を下部に常時表示（サムゾーン最適）</li>
-                    <li><strong>ハンバーガー</strong>：全メニューを折りたたみ、必要時に展開</li>
-                    <li>「最重要」と「それ以外」を明確に分離</li>
-                </ul>
-                
                 <div class="highlight-box">
-                    ⚠️ よくある間違い：ハンバーガーに「すべて」を詰め込む→発見されない機能が増える
+                    ⚠️ 重要：「削る」＝「なくす」ではない。<br>
+                    「今この画面で見える必要があるか？」を問い、不要なものは別画面・別操作に移動する。<br>
+                    これは先ほど学んだ「プログレッシブ・ディスクロージャー」の実践そのものです
                 </div>
             </div>
         </div>
-
-        <!-- スライド21: CTA配置の違い -->
-        <div class="slide-container">
-            <h2 class="slide-title">CTA配置戦略：PC vs モバイル</h2>
-            <div class="two-column tiled">
-                <div>
-                    <h3>💻 PC版</h3>
-                    <svg class="generated-art" viewBox="0 0 350 220">
-                        <rect x="30" y="20" width="290" height="180" fill="#2d2d44" stroke="#666" stroke-width="1" rx="4"/>
-                        
-                        <!-- ヒーローセクション -->
-                        <rect x="40" y="30" width="180" height="100" fill="#444" rx="3"/>
-                        <text x="130" y="85" text-anchor="middle" fill="#888" font-size="12">ヒーロー画像</text>
-                        
-                        <!-- サイドCTA -->
-                        <rect x="230" y="30" width="80" height="100" fill="#333" rx="3"/>
-                        <rect x="240" y="50" width="60" height="15" fill="#00d4ff" rx="3"/>
-                        <rect x="240" y="75" width="60" height="25" fill="#00d4ff" opacity="0.8" rx="4"/>
-                        <text x="270" y="92" text-anchor="middle" fill="white" font-size="10">申込</text>
-                        
-                        <!-- 説明 -->
-                        <text x="175" y="160" text-anchor="middle" fill="#888" font-size="11">CTAはコンテンツ横に配置</text>
-                        <text x="175" y="180" text-anchor="middle" fill="#888" font-size="11">（視線の流れの中に自然に存在）</text>
-                    </svg>
-                </div>
-                <div>
-                    <h3>📱 モバイル版</h3>
-                    <svg class="generated-art" viewBox="0 0 350 220">
-                        <rect x="115" y="10" width="120" height="200" fill="#1a1a2e" stroke="#666" stroke-width="2" rx="15"/>
-                        <rect x="125" y="28" width="100" height="165" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- コンテンツ -->
-                        <rect x="130" y="33" width="90" height="50" fill="#444" rx="2"/>
-                        <rect x="130" y="88" width="90" height="40" fill="#333" rx="2"/>
-                        
-                        <!-- 固定CTA -->
-                        <rect x="125" y="155" width="100" height="38" fill="rgba(26,26,46,0.95)"/>
-                        <rect x="135" y="162" width="80" height="26" fill="#00d4ff" rx="13"/>
-                        <text x="175" y="180" text-anchor="middle" fill="white" font-size="11">申込</text>
-                        
-                        <!-- 固定表示の説明 -->
-                        <line x1="240" y1="175" x2="280" y2="175" stroke="#00d4ff" stroke-width="1"/>
-                        <text x="290" y="170" fill="#00d4ff" font-size="10">常に</text>
-                        <text x="290" y="182" fill="#00d4ff" font-size="10">表示</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド22: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Section 5</h2>
-            <p>レスポンシブの設計思想</p>
-        </div>
-
-        <!-- スライド23: 「適応」ではなく「再設計」 -->
-        <div class="slide-container big-concept-layout">
-            <h2>レスポンシブとは<br>「縮小」ではなく「再設計」</h2>
-            <p>同じコンテンツを、各デバイスに最適化された形で提供する</p>
-        </div>
-
-        <!-- スライド24: ブレイクポイントの考え方 -->
+        
+        <!-- スライド30: SLOW DRIP 総合ケーススタディ -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">ブレイクポイントの設計思想</h2>
-            <div class="content-block">
-                <h3>ブレイクポイントとは</h3>
-                <p>画面幅に応じてレイアウトが切り替わる境界点。単なるピクセル値ではなく、<strong>「コンテンツが破綻するポイント」</strong>で設定する。</p>
-                
-                <h3>代表的なブレイクポイント</h3>
-                <ul>
-                    <li><strong>~480px</strong>：スマートフォン縦向き</li>
-                    <li><strong>481px~768px</strong>：スマートフォン横向き/小型タブレット</li>
-                    <li><strong>769px~1024px</strong>：タブレット/小型ノートPC</li>
-                    <li><strong>1025px~</strong>：デスクトップ</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 数値を暗記するより「このレイアウトが崩れる幅はどこか」を考える
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド25: レイアウトパターン -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">レスポンシブのレイアウトパターン</h2>
+            <h2 class="slide-title">総合ケーススタディ：SLOW DRIP公式サイトのページ別モバイル戦略</h2>
             <div class="content-block svg-centered">
                 <svg class="generated-art" viewBox="0 0 800 320">
-                    <!-- パターン1: スタック -->
-                    <text x="130" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">スタック（積み重ね）</text>
-                    <rect x="30" y="50" width="200" height="60" fill="#2d2d44" stroke="#666" stroke-width="1" rx="3"/>
-                    <rect x="40" y="60" width="80" height="40" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="130" y="60" width="90" height="40" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    
-                    <path d="M130 120 L130 140" stroke="#666" stroke-width="1" marker-end="url(#arrowGray)"/>
-                    
-                    <rect x="70" y="150" width="120" height="100" fill="#1a1a2e" stroke="#666" stroke-width="1" rx="10"/>
-                    <rect x="80" y="165" width="100" height="30" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="80" y="200" width="100" height="30" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <text x="130" y="270" text-anchor="middle" fill="#888" font-size="11">横並び→縦積み</text>
-                    
-                    <!-- パターン2: 表示/非表示 -->
-                    <text x="410" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">表示/非表示</text>
-                    <rect x="310" y="50" width="200" height="60" fill="#2d2d44" stroke="#666" stroke-width="1" rx="3"/>
-                    <rect x="320" y="60" width="60" height="40" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="390" y="60" width="60" height="40" fill="#ffcc00" opacity="0.3" rx="2"/>
-                    <rect x="440" y="60" width="60" height="40" fill="#ff6b6b" opacity="0.3" rx="2"/>
-                    
-                    <path d="M410 120 L410 140" stroke="#666" stroke-width="1"/>
-                    
-                    <rect x="350" y="150" width="120" height="100" fill="#1a1a2e" stroke="#666" stroke-width="1" rx="10"/>
-                    <rect x="360" y="165" width="100" height="25" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="360" y="195" width="100" height="25" fill="#ffcc00" opacity="0.3" rx="2"/>
-                    <line x1="380" y1="225" x2="440" y2="225" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,3"/>
-                    <text x="410" y="270" text-anchor="middle" fill="#888" font-size="11">優先度低は非表示</text>
-                    
-                    <!-- パターン3: 簡略化 -->
-                    <text x="670" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">簡略化</text>
-                    <rect x="570" y="50" width="200" height="60" fill="#2d2d44" stroke="#666" stroke-width="1" rx="3"/>
-                    <rect x="580" y="60" width="180" height="40" fill="none" stroke="#00d4ff" stroke-width="1" rx="2"/>
-                    <text x="670" y="85" text-anchor="middle" fill="#00d4ff" font-size="10">詳細テーブル</text>
-                    
-                    <path d="M670 120 L670 140" stroke="#666" stroke-width="1"/>
-                    
-                    <rect x="610" y="150" width="120" height="100" fill="#1a1a2e" stroke="#666" stroke-width="1" rx="10"/>
-                    <rect x="620" y="170" width="100" height="18" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="620" y="193" width="100" height="18" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="620" y="216" width="100" height="18" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <text x="670" y="270" text-anchor="middle" fill="#888" font-size="11">テーブル→リスト</text>
-                    
-                    <defs>
-                        <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                            <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
-                        </marker>
-                    </defs>
+                    <rect x="20" y="10" width="240" height="140" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5" rx="8"/>
+                    <text x="140" y="35" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">トップページ</text>
+                    <text x="140" y="58" text-anchor="middle" fill="white" font-size="11">PC: ヒーロー + 3カラム紹介</text>
+                    <line x1="60" y1="70" x2="220" y2="70" stroke="#333" stroke-width="1"/>
+                    <text x="140" y="90" text-anchor="middle" fill="#00d4ff" font-size="11">📱 モバイル:</text>
+                    <text x="140" y="108" text-anchor="middle" fill="#aaa" font-size="10">コンパクトヒーロー</text>
+                    <text x="140" y="123" text-anchor="middle" fill="#aaa" font-size="10">+ 店舗情報カード優先</text>
+                    <text x="140" y="138" text-anchor="middle" fill="#aaa" font-size="10">固定CTA（電話+予約）</text>
+        
+                    <rect x="280" y="10" width="240" height="140" fill="#ffd700" opacity="0.08" stroke="#ffd700" stroke-width="1.5" rx="8"/>
+                    <text x="400" y="35" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold">メニューページ</text>
+                    <text x="400" y="58" text-anchor="middle" fill="white" font-size="11">PC: 写真グリッド + サイドバー</text>
+                    <line x1="320" y1="70" x2="480" y2="70" stroke="#333" stroke-width="1"/>
+                    <text x="400" y="90" text-anchor="middle" fill="#ffd700" font-size="11">📱 モバイル:</text>
+                    <text x="400" y="108" text-anchor="middle" fill="#aaa" font-size="10">カテゴリタブ切替</text>
+                    <text x="400" y="123" text-anchor="middle" fill="#aaa" font-size="10">1列カード（写真+名前+価格）</text>
+                    <text x="400" y="138" text-anchor="middle" fill="#aaa" font-size="10">産地詳細はタップ展開</text>
+        
+                    <rect x="540" y="10" width="240" height="140" fill="#00ff88" opacity="0.08" stroke="#00ff88" stroke-width="1.5" rx="8"/>
+                    <text x="660" y="35" text-anchor="middle" fill="#00ff88" font-size="13" font-weight="bold">店舗情報・予約</text>
+                    <text x="660" y="58" text-anchor="middle" fill="white" font-size="11">PC: 地図 + フォーム + 写真</text>
+                    <line x1="580" y1="70" x2="740" y2="70" stroke="#333" stroke-width="1"/>
+                    <text x="660" y="90" text-anchor="middle" fill="#00ff88" font-size="11">📱 モバイル:</text>
+                    <text x="660" y="108" text-anchor="middle" fill="#aaa" font-size="10">地図アプリ連携ボタン</text>
+                    <text x="660" y="123" text-anchor="middle" fill="#aaa" font-size="10">タップ to コール</text>
+                    <text x="660" y="138" text-anchor="middle" fill="#aaa" font-size="10">簡易予約（日時+人数のみ）</text>
+        
+                    <rect x="20" y="170" width="760" height="130" fill="#1a1a2e" stroke="#555" stroke-width="1" rx="8"/>
+                    <text x="400" y="198" text-anchor="middle" fill="white" font-size="14" font-weight="bold">モバイル設計の判断マトリクス</text>
+                    <text x="100" y="225" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">そのまま表示</text>
+                    <text x="100" y="245" text-anchor="middle" fill="#aaa" font-size="10">高頻度 × 簡易操作</text>
+                    <text x="100" y="260" text-anchor="middle" fill="#aaa" font-size="10">例: 営業時間、地図</text>
+                    <text x="300" y="225" text-anchor="middle" fill="#ffd700" font-size="12" font-weight="bold">形を変えて表示</text>
+                    <text x="300" y="245" text-anchor="middle" fill="#aaa" font-size="10">高頻度 × 複雑な情報</text>
+                    <text x="300" y="260" text-anchor="middle" fill="#aaa" font-size="10">例: メニュー→スワイプ</text>
+                    <text x="500" y="225" text-anchor="middle" fill="#ff8c00" font-size="12" font-weight="bold">深い階層に移動</text>
+                    <text x="500" y="245" text-anchor="middle" fill="#aaa" font-size="10">低頻度 × 必要な情報</text>
+                    <text x="500" y="260" text-anchor="middle" fill="#aaa" font-size="10">例: ストーリー、採用</text>
+                    <text x="700" y="225" text-anchor="middle" fill="#ff4d6a" font-size="12" font-weight="bold">PCのみに限定</text>
+                    <text x="700" y="245" text-anchor="middle" fill="#aaa" font-size="10">低頻度 × 複雑操作</text>
+                    <text x="700" y="260" text-anchor="middle" fill="#aaa" font-size="10">例: 法人予約、大量注文</text>
                 </svg>
             </div>
         </div>
-
-        <!-- スライド26: まとめセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>Summary</h2>
-            <p>重要ポイントの復習</p>
-        </div>
-
-        <!-- スライド27: まとめタイル -->
-        <div class="slide-container">
-            <h2 class="slide-title">モバイルファースト設計の5原則</h2>
-            <div class="tiled-content">
-                <div class="tile-grid">
-                    <div class="tile">
-                        <div class="icon">📱</div>
-                        <h3>制約から始める</h3>
-                        <p>小さい画面で<br>本質を抽出</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">👍</div>
-                        <h3>サムゾーン</h3>
-                        <p>親指が届く位置に<br>重要UIを配置</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">📊</div>
-                        <h3>情報の階層化</h3>
-                        <p>削るのではなく<br>段階的に開示</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">🔄</div>
-                        <h3>再設計の発想</h3>
-                        <p>縮小ではなく<br>各デバイスに最適化</p>
-                    </div>
+        
+        <!-- ========== まとめ ========== -->
+        
+        <!-- スライド31: まとめタイル -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">モバイルファースト戦略とレスポンシブデザインのまとめ</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">📱</div>
+                    <h3>モバイルファースト</h3>
+                    <p>小さい画面から設計し、<br>大きい画面に拡張する。<br>削るより追加が簡単</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">👍</div>
+                    <h3>サムゾーン</h3>
+                    <p>重要な操作は<br>画面下部（Easy Zone）に。<br>破壊的操作は隔離</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📊</div>
+                    <h3>段階的開示</h3>
+                    <p>必要な情報を<br>必要なタイミングで。<br>一度に全部見せない</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔧</div>
+                    <h3>レスポンシブ</h3>
+                    <p>ブレイクポイントで<br>レイアウトを切り替え。<br>コンポーネントは共通</p>
                 </div>
             </div>
         </div>
-
-        <!-- スライド28: 実践編への橋渡し -->
+        
+        <!-- スライド32: チェックリスト -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">次のステップ：実践編</h2>
+            <h2 class="slide-title">モバイル設計チェックリスト</h2>
             <div class="content-block">
-                <h3>実践編で学ぶこと</h3>
+                <h3>設計レビュー時に確認すべき5項目</h3>
                 <ul>
-                    <li><strong>Figmaでワイヤーフレーム作成</strong>：モバイル→PC両方のレイアウト設計</li>
-                    <li><strong>Canvaでモバイル最適化デザイン</strong>：SNS投稿やバナーの制作</li>
-                    <li><strong>サムゾーンを意識したUI配置</strong>：ボトムナビ、固定CTAの実装</li>
-                    <li><strong>情報の優先順位付け演習</strong>：何を見せ、何を隠すか</li>
+                    <li><strong>✅ 主要アクションはサムゾーン（画面下部）にあるか？</strong> — 「予約する」「電話する」「地図を開く」が親指で押せる位置にあるか</li>
+                    <li><strong>✅ タップターゲットは44×44px以上か？</strong> — 小さすぎるボタンやリンクがないか</li>
+                    <li><strong>✅ 情報の優先度は明確か？</strong> — Level 1（常時表示）/ Level 2（タップ展開）/ Level 3（別画面）の分類ができているか</li>
+                    <li><strong>✅ ブレイクポイントでの挙動が定義されているか？</strong> — スマホ/タブレット/PCでそれぞれどう表示されるか仕様が明確か</li>
+                    <li><strong>✅ コンポーネントの再利用を考えているか？</strong> — 同じMoleculeが各画面サイズで使い回せる設計になっているか</li>
                 </ul>
-                
-                <h3>持ち帰りのポイント</h3>
-                <p>理論を理解した上で、<strong>実際に手を動かすことで「判断力」が身につく</strong>。次の実践編でモバイルファースト思考を体得しましょう。</p>
-                
-                <div class="highlight-box">
-                    🎯 実践編の目標：自分でモバイル/PC両対応のワイヤーフレームを設計できるようになる
-                </div>
             </div>
+        </div>
+        
+        <!-- スライド33: 実践編への橋渡し -->
+        <div class="slide-container big-concept-layout">
+            <h2>理論を学んだら、次は実践。</h2>
+            <p>実践編では、Figmaを使ってSLOW DRIPのモバイル版サイトを実際に設計し、<br>Geminiを使ってレスポンシブ仕様書を自動生成します。<br><br>「なぜそうすべきか」を理解した今、<br>次は「どう作るか」を体験しましょう。</p>
         </div>
 
         <!-- クイズセクション -->
@@ -703,59 +819,59 @@
     <script>
         const questions = [
             {
-                question: "モバイルファーストのアプローチで「制約から始める」理由として最も適切なのは？",
+                question: "モバイルファーストの設計で「小さい画面から始める」最大の理由は？",
                 options: [
-                    "開発コストを削減するため",
-                    "本質的に必要な情報と優先順位が明確になるため",
-                    "モバイルユーザーの方がお金を使うため",
-                    "PC版を作る必要がなくなるため"
+                    "スマホユーザーが多いから",
+                    "制約が情報の優先順位を強制し、設計品質が上がるから",
+                    "スマホ版のほうが開発コストが安いから",
+                    "PCユーザーは減っているから"
                 ],
                 correct: 1,
-                explanation: "限られたスペースで設計を始めることで、「本当に必要な情報は何か」「何が最も重要か」が強制的に可視化されます。これがモバイルファーストの本質的なメリットです。"
+                explanation: "モバイルファーストの本質は「制約による設計品質の向上」です。小さい画面では本当に必要な情報だけを残す判断が強制されるため、すべての画面サイズで情報の優先度が一貫します。利用者数の多さは副次的な理由です。"
             },
             {
-                question: "サムゾーン（Thumb Zone）で「Easy Zone」に配置すべき要素は？",
+                question: "サムゾーンの「Easy Zone（安全地帯）」はスマートフォン画面のどの位置か？",
                 options: [
-                    "ステータスバーとロゴ",
-                    "メインCTAとナビゲーション",
-                    "フッターリンクとコピーライト",
-                    "検索バーと設定ボタン"
-                ],
-                correct: 1,
-                explanation: "Easy Zone（画面下部）は親指が自然に届く範囲です。ここには頻繁にタップするメインCTAやナビゲーションを配置し、ユーザーの操作負担を軽減します。"
-            },
-            {
-                question: "モバイルで情報量を減らす際の正しいアプローチは？",
-                options: [
-                    "重要度の低い情報をすべて削除する",
-                    "文字サイズを小さくして詰め込む",
-                    "プログレッシブ・ディスクロージャーで段階的に開示する",
-                    "PCと同じ情報をスクロールで見せる"
+                    "画面の上部",
+                    "画面の中央",
+                    "画面の下部",
+                    "画面の左端"
                 ],
                 correct: 2,
-                explanation: "情報を「削る」のではなく「段階化」することで、最初に見せる情報を絞りつつ、詳細は必要に応じて展開できます。これがプログレッシブ・ディスクロージャーの考え方です。"
+                explanation: "片手持ちの場合、親指が最も自然に届くのは画面下部です。約49%のユーザーが片手で操作するため、最も頻繁に使うアクション（予約、電話、地図など）は画面下部に配置すべきです。"
             },
             {
-                question: "ブレイクポイントを設定する際の正しい考え方は？",
+                question: "プログレッシブ・ディスクロージャー（段階的開示）の原則として正しいのは？",
                 options: [
-                    "デバイスの画面サイズ一覧に基づいて決める",
-                    "業界標準の数値をそのまま使う",
-                    "コンテンツが破綻するポイントで設定する",
-                    "なるべく多くのブレイクポイントを設定する"
-                ],
-                correct: 2,
-                explanation: "ブレイクポイントは特定のデバイスサイズではなく、「このレイアウトが崩れる幅はどこか」を基準に設定します。コンテンツファーストの考え方が重要です。"
-            },
-            {
-                question: "モバイルファースト設計を実践する際、最も重要な統合的スキルは？",
-                options: [
-                    "最新のモバイルデバイスのスペックを把握すること",
-                    "サムゾーン、情報優先順位、レスポンシブパターンを組み合わせた設計判断",
-                    "すべてのブレイクポイントで完璧なデザインを作ること",
-                    "PCとモバイルで全く異なるデザインを作ること"
+                    "すべての情報を一度に表示して、ユーザーに選ばせる",
+                    "必要な情報を、必要なタイミングで、必要な分だけ見せる",
+                    "重要な情報を隠して、探させることでエンゲージメントを高める",
+                    "情報量を最小限にして、できるだけシンプルにする"
                 ],
                 correct: 1,
-                explanation: "モバイルファースト設計は単一の技術ではなく、サムゾーンの理解、情報の優先順位付け、レスポンシブパターンの選択を統合的に活用する判断力が求められます。これらを組み合わせて、各画面サイズに最適なUXを設計します。"
+                explanation: "段階的開示は「情報を削除する」のではなく「表示のタイミングを設計する」ことです。SLOW DRIPのメニューなら、Level 1で写真・名前・価格を表示し、Level 2でタップ展開して産地情報を、Level 3で別画面にバリスタ紹介を配置する階層構造です。"
+            },
+            {
+                question: "レスポンシブデザインにおけるブレイクポイントの正しい判断基準は？",
+                options: [
+                    "iPadの画面幅に合わせて設定する",
+                    "最新のスマートフォンの画面サイズに合わせる",
+                    "コンテンツが読みやすく表示できる幅で判断する",
+                    "競合サービスと同じ値に設定する"
+                ],
+                correct: 2,
+                explanation: "ブレイクポイントは特定のデバイスではなく、コンテンツが読みやすく表示できる幅で決めます。「600pxを超えたらメニュー写真を2列にしても見やすい」というコンテンツ基準が正しい判断方法です。デバイスは常に変化しますが、読みやすさの原則は変わりません。"
+            },
+            {
+                question: "SLOW DRIPのPC版メニューページ（写真グリッド+カテゴリサイドバー）をモバイル対応する場合、最も適切な判断は？",
+                options: [
+                    "PC版のグリッドをそのまま縮小して表示する",
+                    "カテゴリをタブ切替にし、メニューカードを1列に変え、産地詳細はタップ展開にする",
+                    "モバイルではメニューページを完全に削除する",
+                    "横スクロールでPC版と同じグリッドを表示する"
+                ],
+                correct: 1,
+                explanation: "これは「形を変えて表示」と「段階的開示」の組み合わせです。サイドバーのカテゴリはタブ切替に変換し、グリッドは1列カードに、詳細情報はタップ展開にすることで、同じ情報をモバイルに適した形に「翻訳」します。これがモバイルファースト×レスポンシブ×アトミックデザインの統合的な思考です。"
             }
         ];
     </script>

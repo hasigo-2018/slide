@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>色彩心理学とタイポグラフィ<span>【実践編】</span></h1>
+                <p>AIに根拠ある提案を引き出し、自分の言葉で評価する</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 今日のゴール -->
+        <div class="slide-container big-concept-layout">
+            <h2>今日のゴール</h2>
+            <p>AIにペルソナ分析させ、配色とフォントの<br>「根拠ある提案」を引き出し、<br>その妥当性を<strong>自分の言葉で評価する</strong></p>
+        </div>
+        
+        <!-- スライド3: セクション区切り - Gemini演習 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習 1</h2>
+            <p>Gemini × 架空カフェのブランディング</p>
+        </div>
+        
+        <!-- スライド4: ツール紹介：Gemini -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Gemini</h2>
+                <p><strong>用途：</strong>戦略立案・コピー生成・ペルソナ分析・AIレビュー</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app にアクセス</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>ペルソナ分析：</strong>カフェの条件からターゲット像を言語化</li>
+                    <li><strong>配色提案：</strong>ペルソナの心理に基づいたHEXコード付き提案</li>
+                    <li><strong>フォント提案：</strong>ブランドイメージに合うフォント方向性を導出</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Googleアカウントがあればすぐに使えます
+                </div>
+            </div>
+            <div class="image-container">
+                <svg class="generated-art" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#1a1a2e" rx="12"/>
+                    <rect x="20" y="20" width="360" height="50" fill="#0f3460" rx="8"/>
+                    <text x="200" y="52" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold">Gemini</text>
+                    <rect x="20" y="90" width="360" height="180" fill="#16213e" rx="8"/>
+                    <rect x="40" y="110" width="200" height="14" fill="#00d4ff" opacity="0.3" rx="4"/>
+                    <rect x="40" y="134" width="280" height="10" fill="white" opacity="0.15" rx="4"/>
+                    <rect x="40" y="154" width="240" height="10" fill="white" opacity="0.15" rx="4"/>
+                    <rect x="40" y="174" width="260" height="10" fill="white" opacity="0.15" rx="4"/>
+                    <rect x="40" y="200" width="320" height="40" fill="#00d4ff" opacity="0.1" rx="6" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="200" y="225" text-anchor="middle" fill="#00d4ff" font-size="13">プロンプトを入力...</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド5: 演習課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：架空カフェのブランディング</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>AIを使って、ターゲット像→配色→フォントを「根拠のある流れ」で決定する</p>
+        
+                <h3>課題内容</h3>
+                <p>あなたが開くカフェを自由に設定し、Geminiとのやり取りでブランドの方向性を決定します</p>
+        
+                <h3>設定する項目</h3>
+                <ul>
+                    <li><strong>店名：</strong>自由（例：「OAKS COFFEE」「茶屋 しずく」など）</li>
+                    <li><strong>立地：</strong>自由（例：都心オフィス街、住宅街、観光地など）</li>
+                    <li><strong>コンセプト：</strong>自由（例：静かな読書空間、にぎやかなコワーキングなど）</li>
+                    <li><strong>制作時間：</strong>15分</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⏱️ タイマーをセットして、まず自分のカフェを決めてからスタート！
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 手順1 ペルソナ分析プロンプト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 2：ペルソナ分析プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        以下のカフェのターゲットペルソナを3パターン提案してください。
+        
+        【カフェ情報】
+        ・店名：[あなたの店名]
+        ・立地：[立地]
+        ・コンセプト：[コンセプト]
+        ・価格帯：[例：ランチ1,200円〜]
+        
+        各ペルソナには以下を含めてください：
+        ・年齢・職業・ライフスタイル
+        ・このカフェを選ぶ理由
+        ・デザインに求める印象（安心感、洗練、活気 など）
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「カフェのターゲットを教えて」だけでは抽象的な回答になる<br>
+                    ✅ 正解：立地・コンセプト・価格帯など具体的な条件を必ず渡す
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 手順2 配色・フォント提案プロンプト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 2：配色・フォント提案プロンプト</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-2">
+        先ほど提案されたペルソナの中から「[選んだペルソナ名]」をターゲットに、
+        以下を提案してください。
+        
+        【配色】
+        ・メインカラー（HEXコード付き）
+        ・サブカラー（HEXコード付き）
+        ・アクセントカラー（HEXコード付き）
+        ・それぞれの色を選んだ心理的根拠
+        
+        【フォント】
+        ・見出し用フォントの方向性（例：セリフ体 / サンセリフ体）
+        ・本文用フォントの方向性
+        ・この組み合わせを選んだ根拠
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「おしゃれな配色にして」という主観的な依頼<br>
+                    ✅ 正解：ペルソナを明示し「なぜその色か」の根拠を必ず求める
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: Gemini演習チェック -->
+        <div class="slide-container">
+            <h2 class="slide-title">Gemini演習チェック</h2>
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>ペルソナ</h3>
+                    <p>3パターンの<br>ペルソナが出たか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>配色</h3>
+                    <p>HEXコード付きで<br>3色提案されたか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>フォント</h3>
+                    <p>見出し・本文の<br>方向性が出たか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">✓</div>
+                    <h3>根拠</h3>
+                    <p>各提案に<br>理由がついているか？</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: セクション区切り - 言語化演習 -->
+        <div class="slide-container section-title-layout">
+            <h2>演習 2</h2>
+            <p>根拠の言語化 ─ 自分の言葉で評価する</p>
+        </div>
+        
+        <!-- スライド10: 演習課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：3問に自分の言葉で答える</h2>
+            <div class="content-block">
+                <p>Geminiから出た配色3色とフォント提案をもとに、以下の3問に答えてください。<br>
+                <strong>まずGeminiの説明を見ずに、自分の言葉で書くこと</strong></p>
+        
+                <h3>問①</h3>
+                <p>メインカラーが、選んだペルソナに有効な理由を<strong>1文</strong>で書いてください</p>
+        
+                <h3>問②</h3>
+                <p>選ばれたフォント分類（セリフ/サンセリフなど）が、そのカフェのコンセプトに合う理由を<strong>1文</strong>で書いてください</p>
+        
+                <h3>問③</h3>
+                <p>もしメインカラーとフォントを<strong>逆の印象のもの</strong>に変えたら、ターゲットはどう感じるか<strong>1文</strong>で書いてください</p>
+        
+                <div class="highlight-box">
+                    ⏱️ 制作時間：10分。書き終わったらGeminiの説明と比較する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: 手順 Geminiの提案を「疑う」 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順：Geminiの提案を「疑う」</h2>
+            <div class="content-block">
+                <h3>Step 1：まず自分で書く</h3>
+                <p>Geminiの説明文を<strong>閉じた状態で</strong>、3問の答えを自分の言葉で書く</p>
+        
+                <h3>Step 2：Geminiの説明と比較する</h3>
+                <p>Geminiの「なぜその色か」「なぜそのフォントか」の説明を読み、自分の答えと見比べる</p>
+        
+                <h3>Step 3：ズレを確認する</h3>
+                <p>一致した部分・違った部分を把握する</p>
+        
+                <div class="highlight-box">
+                    💡 大事なのはここ：<br>
+                    「AIの説明と自分の説明が違っていてもいい。<br>
+                    大事なのは、<strong>根拠を持って選んでいるか</strong>どうかだ」
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: 発表・共有 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">発表・共有</h2>
+            <div class="content-block">
+                <h3>2〜3名に発表してみましょう</h3>
+                <ul>
+                    <li>自分のカフェのコンセプト・ペルソナ・選んだ配色を紹介</li>
+                    <li>「なぜその色・フォントか」を<strong>自分の言葉で</strong>説明する</li>
+                    <li>聞く側は「その根拠は納得できるか」を評価する</li>
+                </ul>
+        
+                <h3>気づきのポイント</h3>
+                <p>同じ「都心オフィス街の静かなカフェ」でも、ペルソナの解釈が違えば<strong>色もフォントも変わる</strong></p>
+        
+                <div class="highlight-box">
+                    🎯 「正解は1つではない。<br>
+                    しかし、<strong>根拠のない選択はNG</strong>」
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ</h2>
+            <div class="content-block">
+                <h3>今日学んだこと</h3>
+                <ul>
+                    <li>AIは「根拠のある提案」を引き出すための<strong>壁打ち相手</strong>として機能する</li>
+                    <li>良い提案を引き出すには、ペルソナ・立地・コンセプトなど<strong>具体的な条件</strong>が不可欠</li>
+                    <li>AIの説明を鵜呑みにせず、<strong>自分の言葉で評価・検証する</strong>力がアーキテクトの武器になる</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🏛️ 色とフォントは「好み」で選ぶものではない。<br>
+                    ターゲットの心理に基づいて<strong>「設計」</strong>するもの。<br>
+                    そしてその設計意図を言葉で説明できることが、<br>
+                    <strong>アーキテクトの条件だ</strong>
+                </div>
+        
+                <h3>次のステップ</h3>
+                <p>Block 5以降では、今日の「根拠を言葉にする力」をベースに、実在クライアントへの提案・ディレクションに挑戦します</p>
+            </div>
+        </div>
+        
+        <!-- スライド14: クイズへの誘導 -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック</h2>
+            <p>5問のクイズで今日の学びを確認しよう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "Geminiにペルソナ分析を依頼する際、最も効果的なプロンプトの特徴は？",
+            options: [
+                "「おしゃれなカフェのターゲットを教えて」と短く依頼する",
+                "立地・コンセプト・価格帯など具体的な条件を与えて依頼する",
+                "ペルソナのイメージ画像を添付して依頼する",
+                "「プロのマーケターとして分析して」とロールプレイを指定する"
+            ],
+            correct: 1,
+            explanation: "AIへの依頼は「具体的な条件」が命です。立地・コンセプト・価格帯などの情報を渡すことで、抽象的ではなくそのカフェ固有のターゲット像が返ってきます。情報が曖昧なほど、回答も曖昧になります（Garbage In, Garbage Out）。"
+        },
+        {
+            question: "Geminiから配色提案を受けた後、最も重要な確認事項は？",
+            options: [
+                "提案された色が自分の好みに合っているか",
+                "HEXコードが正確に記載されているか",
+                "なぜその色がターゲットに有効なのか、理由が説明されているか",
+                "3色の組み合わせがトレンドに合っているか"
+            ],
+            correct: 2,
+            explanation: "配色の「見た目」より「根拠」が重要です。ターゲットの心理にどう作用するかの説明がない提案は、単なる好みの押し付けと同じ。アーキテクトはAIの提案を「なぜ？」で評価する目を持つことが必須です。"
+        },
+        {
+            question: "3色の配色を適用する際の適切な比率は？",
+            options: [
+                "メイン33%、サブ33%、アクセント34%（均等配分）",
+                "メイン70%、サブ25%、アクセント5%",
+                "メイン50%、サブ30%、アクセント20%",
+                "その都度デザインに合わせて自由に決める"
+            ],
+            correct: 1,
+            explanation: "配色の黄金比率は「70：25：5」です。メインカラーで全体の印象を決め、サブカラーで補完し、アクセントカラーで視線を誘導します。均等配分すると視覚的にうるさくなり、重要箇所が埋もれてしまいます。"
+        },
+        {
+            question: "名刺デザインでフォントを使う際、最も適切な組み合わせは？",
+            options: [
+                "インパクトを出すために3種類以上の異なるフォントを使う",
+                "統一感のために全体を1種類のフォントで統一する",
+                "見出し用と本文用の2種類、ウェイト違いで変化をつける",
+                "読みやすさ最優先でゴシック体のみを使う"
+            ],
+            correct: 2,
+            explanation: "フォントは「2種類・ウェイト違い」が基本原則です。1種類だと単調になり、3種類以上は混乱を招きます。見出し用（インパクト系）と本文用（可読性重視）を使い分け、ウェイト（太さ）の差でヒエラルキーをつくるのがプロの作法です。"
+        },
+        {
+            question: "「もしメインカラーを逆の印象に変えたら？」という問いの目的は？",
+            options: [
+                "バリエーションを増やして選択肢を広げるため",
+                "現在の選択が正しい理由を反転思考で検証し、根拠を強化するため",
+                "ターゲット以外の層にもアプローチできるかを確認するため",
+                "AIの提案が間違っていた場合の代替案を準備するため"
+            ],
+            correct: 1,
+            explanation: "「逆の色にしたらどうなるか」を考えることで、現在の選択の根拠が明確になります。例えば「信頼感のためにネイビーを選んだ」なら、「派手なオレンジにしたら不安感が生まれる」と言えるはず。この反転思考は、Block 6の公開添削で他者のデザインを評価する際にも使う重要なスキルです。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

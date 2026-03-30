@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デザインは「設計」である【実践編】</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>デザインは「設計」である<span>【実践編】</span></h1>
+                <p>実在するLPを「設計の視点」で分析する</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 改修 - 今日の実践目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の実践目標</h2>
+            <div class="content-block">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">実在するLPを「設計の視点」で分析し、なぜ結果が出る／出ないのかを<strong>自分の言葉で言語化する</strong>。</p>
+                
+                <h3>演習内容</h3>
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon">🔍</div>
+                        <h3>分析対象</h3>
+                        <p style="font-size: 1rem;">キャリアリンクファクトリー<br>LP 2本</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🤖</div>
+                        <h3>使用ツール</h3>
+                        <p style="font-size: 1rem;">Gemini<br>（画像分析・構造分析）</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✍️</div>
+                        <h3>成果物</h3>
+                        <p style="font-size: 1rem;">「なぜ優れているか」を<br>100文字で言語化</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    💡 「なんとなく良い」を「なぜ良いか」に変換する力を身につけます
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: 改修 - 分析対象の説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">分析対象：キャリアリンクファクトリー LP 2本</h2>
+            <div class="content-block">
+                <p style="margin-bottom: 1.5rem;">理論編で学んだ2つのLPを、今度は<strong>自分の目で</strong>分析します。<br>各自ブラウザで両方のページを開いてください。</p>
+        
+                <h3>1回目のLP（solutions）</h3>
+                <p style="margin-bottom: 0.5rem; color: #00d4ff;">https://www.careerlinkfactory.co.jp/lp/solutions/</p>
+                <p style="margin-bottom: 1.5rem;">製造業全般に向けた「何でもできます」型のLP</p>
+        
+                <h3>2回目のLP（international）</h3>
+                <p style="margin-bottom: 0.5rem; color: #00d4ff;">https://www.careerlinkfactory.co.jp/lp/international/</p>
+                <p style="margin-bottom: 1.5rem;">若手人材不足の人事担当者に絞った「あなたのための」LP</p>
+        
+                <div class="highlight-box">
+                    📌 両方のページをブラウザの別タブで開き、並べて見られる状態にしてください
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 改修 - 演習課題の提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：LP設計の違いを発見する</h2>
+            <div class="content-block">
+                <h3>課題</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">2つのLPを比較し、<strong>「設計」の違いを3つ以上</strong>発見してください。</p>
+        
+                <h3>分析の4つの観点</h3>
+                <ul>
+                    <li><strong>① ターゲットは誰か：</strong>このLPは誰に向けて書かれているか？</li>
+                    <li><strong>② 訴求軸は何か：</strong>「読み手に何を伝えようとしているか？</li>
+                    <li><strong>③ 情報の順番はどうなっているか：</strong>どんな順序で説得しているか？</li>
+                    <li><strong>④ CTAはどこにあるか：</strong>問い合わせや申し込みへの導線はどこに？</li>
+                </ul>
+        
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>制作時間：</strong>25分</li>
+                    <li><strong>成果物：</strong>発見した設計の違いをメモ + 100文字の言語化</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⏱️ タイマーをセットして開始！
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 新規 - 手順1：LPを開いて観察する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 4：LPを開いて観察する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 2つのLPをブラウザで開き、まず上から下までスクロールして<strong>全体を俯瞰</strong>する</p>
+                <p><strong>2.</strong> 以下の2つをメモに書き留める：</p>
+                <ul>
+                    <li>「最初に目に入ったもの」は何か？（FV＝ファーストビューの印象）</li>
+                    <li>「読み終わった後に残った印象」は何か？（全体のメッセージ）</li>
+                </ul>
+                <p><strong>3.</strong> 2つのLP両方について、同じことを繰り返す</p>
+        
+                <h3>この手順の意図</h3>
+                <p>いきなり細部を見るのではなく、<strong>まず「受け手」として体験する</strong>ことが大切です。<br>分析は後からいくらでもできますが、第一印象は一度きりです。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：いきなり細部を分析しようとして全体像を見失う<br>
+                    ✅ 正解：最初はユーザーの気持ちで「感じる」。分析は次のステップ
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 改修 - 手順2：Geminiで構造を分析する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 4：Geminiで構造を分析する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Gemini（https://gemini.google.com/app）を開く</p>
+                <p><strong>2.</strong> 各LPの全体スクリーンショットを撮影し、画像としてアップロード</p>
+                <p><strong>3.</strong> 以下のプロンプトを送信</p>
+        
+                <h3>Geminiに入力するプロンプト</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        添付した2つのLP画像を比較し、以下の観点で分析してください：
+        
+        1. ターゲットの違い：それぞれ誰に向けて作られているか
+        2. 訴求軸の違い：何を一番伝えようとしているか
+        3. 情報構成の違い：セクションの順番と、その意図の違い
+        4. CTAの設計：問い合わせへの導線がどう異なるか
+        
+        各項目について、具体的にどの部分がどう違うか説明してください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box">
+                    ⚠️ スクリーンショットは「ページ全体」を撮ると分析の精度が上がります。<br>
+                    Chrome拡張の「GoFullPage」などを活用しましょう
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 新規・重要 - 手順3：自分の言葉で100文字にまとめる -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 4：自分の言葉で100文字にまとめる</h2>
+            <div class="content-block">
+                <h3>ここが最重要ステップです</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    <strong>Geminiの分析結果をまだ見ないでください。</strong><br>
+                    まず自分の目と頭だけで、以下の問いに答えます。
+                </p>
+        
+                <h3>問い</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 1rem; padding: 1rem; border-left: 3px solid #00d4ff;">
+                    「2回目のLP（international）が1回目より優れている理由」を<br>
+                    <strong>100文字以内</strong>で書いてください。
+                </p>
+        
+                <h3>書き方のヒント</h3>
+                <ul>
+                    <li>「〜だから優れている」の形でまとめる</li>
+                    <li>理論編で学んだ3つの設計要素（誰に・何を・どの順番で）を思い出す</li>
+                    <li>「見た目」の話ではなく「設計」の話を書く</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 この「100文字で書く」訓練は、Block 5で必須となる「100文字エビデンス」の第一歩です。<br>
+                    今のうちから「限られた文字数で核心を突く」練習を始めましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 新規 - 手順4：Geminiの分析と自分の言葉を比較する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 4：Geminiの分析と比較する</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 手順2で送ったGeminiの分析結果を確認する</p>
+                <p><strong>2.</strong> 自分が書いた100文字と並べて、以下を確認：</p>
+                <ul>
+                    <li><strong>一致した点：</strong>自分で気づけた設計の違いは何か？</li>
+                    <li><strong>見落とした点：</strong>Geminiが指摘していて、自分が書けなかったことは？</li>
+                    <li><strong>自分だけの気づき：</strong>Geminiが言及していないが、自分は気づいたことは？</li>
+                </ul>
+        
+                <h3>この手順で学ぶこと</h3>
+                <p>AIは強力な分析ツールですが、あなたの「第一印象」や「直感」はAIにはないものです。<br>
+                <strong>AIは補助。最終判断は自分。</strong>この関係を体感してください。</p>
+        
+                <div class="highlight-box">
+                    💡 見落としがあって当然です。大切なのは「自分で書いてから比較する」順番を守ること。<br>
+                    最初からAIに頼ると、自分の観察力が育ちません。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 新規 - 発表・共有 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">発表・共有</h2>
+            <div class="content-block">
+                <h3>発表のルール</h3>
+                <p style="margin-bottom: 1.5rem;">2〜3名に自分の100文字を発表してもらいます。</p>
+        
+                <h3>発表のポイント</h3>
+                <ul>
+                    <li><strong>自分の100文字を読み上げる</strong>（そのまま、修正しない）</li>
+                    <li><strong>Geminiとの比較で気づいたこと</strong>を1つ共有</li>
+                    <li><strong>一番の発見</strong>を一言で伝える</li>
+                </ul>
+        
+                <h3>聞く側のポイント</h3>
+                <p>他の人の100文字を聞いて、「自分にはなかった視点」をメモしましょう。<br>
+                同じLPを見ても、着目点は人によって異なります。</p>
+        
+                <div class="highlight-box">
+                    💡 「同じものを見ても、人によって着目点が違う」── これもデザインの奥深さです。<br>
+                    だからこそ、複数の視点で「設計」をチェックすることに価値があります。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: 改修 - この演習から学べること -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">この演習から学べること</h2>
+            <div class="content-block">
+                <h3>「なんとなく良い」を「なぜ良いか」に変換する力</h3>
+                <p>今日の演習は、その第一歩です。この力は才能ではなく、<strong>「100文字で書く」訓練を毎回繰り返す</strong>ことで確実に鍛えられます。</p>
+        
+                <h3>今日 身につけたプロセス</h3>
+                <ul>
+                    <li><strong>① 観察する：</strong>まず自分の目で全体を見る</li>
+                    <li><strong>② 言語化する：</strong>自分の言葉で100文字に凝縮する</li>
+                    <li><strong>③ AIと比較する：</strong>見落としを確認し、視野を広げる</li>
+                    <li><strong>④ 共有する：</strong>他者の視点から新たな気づきを得る</li>
+                </ul>
+        
+                <h3>次のステップ</h3>
+                <ul>
+                    <li>他の業界のLPも同じ方法で分析してみる</li>
+                    <li>「悪いLP」を見つけて、何が足りないか診断する（→ 002の伏線）</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    📝 クイズで理解度をチェックしましょう（キーボードの「Q」を押す）
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: 改修 - まとめ -->
+        <div class="slide-container big-concept-layout">
+            <h2>優れたデザインは、<br>言語化できる</h2>
+            <p style="margin-top: 2rem; font-size: 1.3rem;">「なぜ良いか」を説明できれば、自分でも再現できる</p>
+        </div>
+        
+        <!-- スライド12: 既存流用 - クイズへの誘導 -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
+    
+    <!-- クイズデータ -->
+    <script>
+    const questions = [
+        {
+            question: "LPを分析する際、最初に確認すべき「設計」の要素は？",
+            options: [
+                "使用されているフォントや配色",
+                "ターゲット（誰に向けたLPか）",
+                "ページの読み込み速度",
+                "写真のクオリティ"
+            ],
+            correct: 1,
+            explanation: "LPの設計を分析する際、最初に確認すべきは「誰に向けて作られているか（ターゲット）」です。ターゲットが明確でなければ、訴求軸も情報設計もすべてぼやけてしまいます。理論編で学んだ設計の3要素の第一歩です。"
+        },
+        {
+            question: "キャリアリンクファクトリーの2つのLPで最も大きく変わった設計要素は？",
+            options: [
+                "写真やイラストのビジュアル表現",
+                "ページ全体のカラーパレット",
+                "ターゲットの絞り込みと訴求軸の変更",
+                "フォントサイズとレイアウトの調整"
+            ],
+            correct: 2,
+            explanation: "1回目は「製造業全般に何でもできます」という広い設計でしたが、2回目は「若手人材不足の人事担当者」にターゲットを絞り、訴求軸を「夜勤OK留学生 / 日勤OKインターン」に変更しました。見た目ではなく設計の変更が結果を変えたのです。"
+        },
+        {
+            question: "Geminiの分析結果をどう扱うべきですか？",
+            options: [
+                "自分の分析より正確なので、そのまま採用する",
+                "参考程度に見て、基本的には無視する",
+                "自分で観察・言語化した上で、AIの分析と比較して見落としを確認する",
+                "Geminiの文章をコピーして成果物にする"
+            ],
+            correct: 2,
+            explanation: "正しいプロセスは「まず自分の目で観察し、自分の言葉で書く → その後AIの分析と比較する」です。AIは強力な補助ツールですが、最初からAIに頼ると自分の観察力・言語化力が育ちません。最終判断は常に自分で行います。"
+        },
+        {
+            question: "「100文字で書く」訓練の目的は？",
+            options: [
+                "文字数制限のあるSNS投稿の練習",
+                "タイピング速度を上げるため",
+                "「なんとなく」を排除し、限られた文字数で設計意図の核心を言語化する力を鍛える",
+                "クライアントへの報告書を短くするため"
+            ],
+            correct: 2,
+            explanation: "100文字という制限があることで、「なんとなく良い」という曖昧な感覚を排除し、設計の核心を見抜いて言語化する力が鍛えられます。この訓練はBlock 5で必須となる「100文字エビデンス」への伏線でもあります。"
+        },
+        {
+            question: "2つのLPを比較して「設計の違い」を発見するために、最低限チェックすべき観点は？",
+            options: [
+                "配色・フォント・余白・アニメーション",
+                "ターゲット・訴求軸・情報の順番・CTAの配置",
+                "ファイルサイズ・読み込み速度・SEO対策・レスポンシブ対応",
+                "使用ツール・制作期間・制作費用・運用体制"
+            ],
+            correct: 1,
+            explanation: "LP設計の比較で最低限チェックすべきは「①ターゲットは誰か ②訴求軸は何か ③情報の順番はどうなっているか ④CTAはどこにあるか」の4つです。これらはすべて「見た目」ではなく「設計」の要素であり、理論編で学んだ設計の3要素に直結しています。"
+        }
+    ];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

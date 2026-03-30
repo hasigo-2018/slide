@@ -15,571 +15,501 @@
         <!-- スライド1: タイトル -->
         <div class="slide-container full-bg-image active">
             <div class="content-overlay">
-                <h1>PC→モバイル<br>AI自動変換ワークショップ<span>【実践編】</span></h1>
-                <p>理論を武器に、AIの出力を評価・調整する</p>
+                <h1>モバイルファースト戦略と<br>レスポンシブデザイン<span>【実践編】</span></h1>
+                <p>SLOW DRIPのモバイル版サイトを設計し、レスポンシブ仕様書を自動生成する</p>
             </div>
         </div>
-
-        <!-- スライド2: 演習概要 -->
+        
+        <!-- スライド2: 今日のゴール -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">本日の演習フロー</h2>
+            <h2 class="slide-title">今日のゴール：2つの成果物を作る</h2>
             <div class="content-block">
-                <h3>4ステップで完成</h3>
-                <ul>
-                    <li><strong>Step 1：</strong>架空のPC版LPを確認し、情報要素を把握</li>
-                    <li><strong>Step 2：</strong>Geminiで変換戦略を立案（優先順位・配置案）</li>
-                    <li><strong>Step 3：</strong>Figma Makeでモバイル版ワイヤーフレームを生成</li>
-                    <li><strong>Step 4：</strong>理論編チェックリストで評価→手動調整</li>
-                </ul>
-                
-                <h3>使用ツール</h3>
-                <p><strong>Gemini</strong>（戦略立案）→ <strong>Figma Make</strong>（レイアウト生成）</p>
-                
+                <h3>成果物①：Figma — モバイル版ワイヤーフレーム</h3>
+                <p>SLOW DRIP公式サイトの「トップページ」と「メニューページ」をモバイルファーストで設計。サムゾーン・段階的開示・アトミックデザインの理論を実際の画面設計に落とし込みます。</p>
+        
+                <h3>成果物②：Gemini — レスポンシブ仕様書</h3>
+                <p>Figmaで作ったワイヤーフレームをもとに、ブレイクポイント別の表示仕様書をAIで自動生成。開発者への指示書として使える仕様書を完成させます。</p>
+        
                 <div class="highlight-box">
-                    🎯 ゴール：AIの出力を「鵜呑みにせず評価・改善できる」Visual Architectになる
+                    💡 理論編の「なぜそうすべきか」を、実践で「どう作るか」に変換する演習です
                 </div>
             </div>
         </div>
-
-        <!-- スライド3: セクション区切り -->
+        
+        <!-- ========== Figma演習（8枚） ========== -->
+        
+        <!-- スライド3: Figmaセクション区切り -->
         <div class="slide-container section-title-layout">
-            <h2>Step 1</h2>
-            <p>架空PC版LPの確認</p>
+            <h2>Exercise 1<br>Figma — モバイル版ワイヤーフレーム</h2>
+            <p>SLOW DRIPのトップページとメニューページをモバイルファーストで設計</p>
         </div>
-
-        <!-- スライド4: 架空LP紹介 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習素材：オンライン英会話LP（PC版）</h2>
-            <div class="content-block svg-centered">
-                <h3>架空サービス「TalkFlow」のランディングページ</h3>
-                <svg class="generated-art" viewBox="0 0 800 500">
-                    <!-- PC画面フレーム -->
-                    <rect x="50" y="20" width="700" height="460" fill="#1a1a2e" stroke="#444" stroke-width="2" rx="8"/>
-                    
-                    <!-- ヘッダー -->
-                    <rect x="60" y="35" width="680" height="50" fill="#2d2d44"/>
-                    <text x="90" y="68" fill="#00d4ff" font-size="18" font-weight="bold">TalkFlow</text>
-                    <rect x="300" y="50" width="60" height="20" fill="none" stroke="#666" stroke-width="1" rx="2"/>
-                    <text x="330" y="64" text-anchor="middle" fill="#888" font-size="10">料金</text>
-                    <rect x="370" y="50" width="60" height="20" fill="none" stroke="#666" stroke-width="1" rx="2"/>
-                    <text x="400" y="64" text-anchor="middle" fill="#888" font-size="10">講師</text>
-                    <rect x="440" y="50" width="60" height="20" fill="none" stroke="#666" stroke-width="1" rx="2"/>
-                    <text x="470" y="64" text-anchor="middle" fill="#888" font-size="10">体験談</text>
-                    <rect x="510" y="50" width="60" height="20" fill="none" stroke="#666" stroke-width="1" rx="2"/>
-                    <text x="540" y="64" text-anchor="middle" fill="#888" font-size="10">FAQ</text>
-                    <rect x="620" y="45" width="100" height="30" fill="#00d4ff" rx="15"/>
-                    <text x="670" y="65" text-anchor="middle" fill="white" font-size="12">無料体験</text>
-                    
-                    <!-- ヒーローセクション -->
-                    <rect x="60" y="95" width="680" height="180" fill="#333"/>
-                    <rect x="80" y="115" width="300" height="30" fill="#666" rx="3"/>
-                    <text x="230" y="137" text-anchor="middle" fill="white" font-size="14">1日15分で英語が話せる</text>
-                    <rect x="80" y="155" width="250" height="15" fill="#555" rx="2"/>
-                    <rect x="80" y="175" width="280" height="15" fill="#555" rx="2"/>
-                    <rect x="80" y="210" width="140" height="45" fill="#00d4ff" rx="22"/>
-                    <text x="150" y="238" text-anchor="middle" fill="white" font-size="14">無料で始める</text>
-                    
-                    <!-- 右側画像エリア -->
-                    <rect x="420" y="110" width="300" height="150" fill="#444" rx="4"/>
-                    <text x="570" y="190" text-anchor="middle" fill="#666" font-size="12">講師イメージ画像</text>
-                    
-                    <!-- 特徴3カラム -->
-                    <rect x="60" y="285" width="680" height="100" fill="#2d2d44"/>
-                    <rect x="80" y="300" width="200" height="70" fill="#333" rx="4"/>
-                    <text x="180" y="340" text-anchor="middle" fill="#888" font-size="11">特徴1：マンツーマン</text>
-                    <rect x="300" y="300" width="200" height="70" fill="#333" rx="4"/>
-                    <text x="400" y="340" text-anchor="middle" fill="#888" font-size="11">特徴2：24時間対応</text>
-                    <rect x="520" y="300" width="200" height="70" fill="#333" rx="4"/>
-                    <text x="620" y="340" text-anchor="middle" fill="#888" font-size="11">特徴3：月額4,980円</text>
-                    
-                    <!-- 料金表セクション -->
-                    <rect x="60" y="395" width="680" height="75" fill="#1a1a2e"/>
-                    <text x="400" y="420" text-anchor="middle" fill="white" font-size="14">料金プラン比較表</text>
-                    <rect x="100" y="430" width="150" height="30" fill="#333" rx="2"/>
-                    <rect x="260" y="430" width="150" height="30" fill="#333" rx="2"/>
-                    <rect x="420" y="430" width="150" height="30" fill="#00d4ff" opacity="0.3" rx="2"/>
-                    <rect x="580" y="430" width="130" height="30" fill="#333" rx="2"/>
-                </svg>
-            </div>
-        </div>
-
-        <!-- スライド5: 情報要素の確認 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">PC版の情報要素を整理</h2>
-            <div class="content-block">
-                <h3>このLPに含まれる要素</h3>
+        
+        <!-- スライド4: Figmaツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Figma</h2>
+                <p><strong>用途：</strong>UIデザイン・ワイヤーフレーム・プロトタイプ制作のための業界標準ツール</p>
+                <p><strong>初回アクセス：</strong>https://www.figma.com にアクセスし、無料アカウントを作成</p>
+                <p><strong>今日使う機能：</strong></p>
                 <ul>
-                    <li><strong>ヘッダー：</strong>ロゴ、ナビ（料金/講師/体験談/FAQ）、CTAボタン</li>
-                    <li><strong>ヒーロー：</strong>キャッチコピー、説明文、メインCTA、講師画像</li>
-                    <li><strong>特徴セクション：</strong>3カラムで特徴を並列表示</li>
-                    <li><strong>料金表：</strong>4プランの比較表</li>
+                    <li><strong>Frame（フレーム）：</strong>画面サイズを指定してデザイン領域を作成</li>
+                    <li><strong>Rectangle / Text：</strong>ボックスとテキストでUI要素を配置</li>
+                    <li><strong>Auto Layout：</strong>要素を自動整列させるレイアウト機能</li>
+                    <li><strong>Component：</strong>再利用可能な部品（アトミックデザインの実装）</li>
                 </ul>
-                
-                <h3>モバイル変換時の課題</h3>
-                <ul>
-                    <li>水平ナビゲーション（5項目）をどう処理するか？</li>
-                    <li>3カラムレイアウトは縦積みにする？</li>
-                    <li>料金比較表はテーブルのまま？リスト化？</li>
-                    <li>CTAボタンの位置はどこが最適か？</li>
-                </ul>
-                
                 <div class="highlight-box">
-                    💡 これらの判断を「理論」に基づいて行うのがVisual Architectの役割
+                    💡 無料プランで十分使えます。ファイルは3つまで作成可能
                 </div>
             </div>
-        </div>
-
-        <!-- スライド6: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Step 2</h2>
-            <p>Geminiで変換戦略を立案</p>
-        </div>
-
-        <!-- スライド7: Gemini紹介 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">ツール紹介：Gemini</h2>
-            <div class="content-block">
-                <h3>用途</h3>
-                <p>PC版デザインの情報を整理し、モバイル変換の<strong>戦略・優先順位・配置案</strong>をAIに立案させる</p>
-                
-                <h3>初回アクセス</h3>
-                <p><strong>https://gemini.google.com/app</strong> にアクセス（Googleアカウントでログイン）</p>
-                
-                <h3>今日使う機能</h3>
-                <ul>
-                    <li><strong>テキスト対話</strong>：PC版の情報を伝えて変換戦略を相談</li>
-                    <li><strong>構造化出力</strong>：優先順位リストや配置案を整理させる</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 Geminiの役割は「変換戦略の壁打ち相手」。最終判断はあなたが行う
-                </div>
+            <div class="image-container">
+                <img src="../assets/images/img_008_handson_01.png" alt="Figma Interface Screenshot" width="100%" height="100%">
             </div>
         </div>
-
-        <!-- スライド8: Gemini演習課題 -->
+        
+        <!-- スライド5: 演習課題提示 -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習課題：変換戦略の立案</h2>
+            <h2 class="slide-title">演習課題：SLOW DRIPモバイル版サイト（2ページ）</h2>
             <div class="content-block">
                 <h3>目標</h3>
-                <p>PC版LPの情報をGeminiに伝え、モバイル変換の<strong>優先順位と配置戦略</strong>を出力させる</p>
-                
+                <p>理論編で学んだ「サムゾーン」「段階的開示」「アトミックデザイン」を適用したモバイル版ワイヤーフレームを作成する</p>
+        
+                <h3>制作物</h3>
+                <ul>
+                    <li><strong>ページ1：</strong>トップページ（ヒーロー → 店舗情報 → おすすめ → メニューリンク → 固定CTA）</li>
+                    <li><strong>ページ2：</strong>メニューページ（カテゴリタブ → メニューカード一覧 → 固定CTA）</li>
+                </ul>
+        
                 <h3>制約条件</h3>
                 <ul>
-                    <li><strong>入力情報：</strong>PC版LPの構成要素（前スライド参照）</li>
-                    <li><strong>出力形式：</strong>優先順位リスト + 配置案</li>
-                    <li><strong>考慮すべき理論：</strong>サムゾーン、情報階層化、ナビ変換</li>
-                    <li><strong>制作時間：</strong>10分</li>
+                    <li><strong>フレームサイズ：</strong>390×844px（iPhone 14 相当）</li>
+                    <li><strong>適用する理論：</strong>サムゾーン / 段階的開示 / アトミックデザイン（コンポーネント化）</li>
+                    <li><strong>制作時間：</strong>30分（トップ15分 + メニュー15分）</li>
+                    <li><strong>色は使わない：</strong>グレースケールのワイヤーフレーム（構造設計に集中）</li>
                 </ul>
-                
+        
                 <div class="highlight-box">
-                    ⏱️ タイマーをセットしてスタート！
+                    ⏱️ タイマーをセットしてスタート！まずはトップページから
                 </div>
             </div>
         </div>
-
-        <!-- スライド9: Gemini手順1（コピーボタン付き） -->
+        
+        <!-- スライド6: 手順1 — フレーム作成+サムゾーンガイド -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">手順 1 / 2：情報整理プロンプト</h2>
+            <h2 class="slide-title">手順 1 / 5：フレーム作成とサムゾーンガイドの配置</h2>
             <div class="content-block">
-                <h3>Geminiに入力するプロンプト</h3>
-                
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 左上の「#」アイコン（Frame Tool）をクリック、またはキーボード「F」を押す</p>
+                <p><strong>2.</strong> 右パネルの「Phone」セクションから「iPhone 14 Pro」（390×844）を選択</p>
+                <p><strong>3.</strong> フレーム内にRectangleで水平ガイドラインを3本引く：</p>
+                <ul>
+                    <li><strong>赤（上部 0〜200px）：</strong>Hard Zone — ヘッダー・ロゴ・ハンバーガーメニュー</li>
+                    <li><strong>黄（中部 200〜550px）：</strong>Stretch Zone — コンテンツエリア</li>
+                    <li><strong>緑（下部 550〜844px）：</strong>Easy Zone — 固定CTA・ナビゲーション</li>
+                </ul>
+        
+                <h3>理論との関連</h3>
+                <p>理論編で学んだ「サムゾーン」を設計ガイドとして可視化しています。このガイドに沿って要素を配置することで、片手操作に最適化されたUIになります。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：ガイドなしでいきなり要素を配置し始める。<br>
+                    ✅ 正解：まず「ゾーン」を可視化してから設計を始めると、配置の判断基準が明確になる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 手順2 — トップページ上部の設計 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 5：トップページ — ヘッダーとヒーロー領域</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Hard Zone（上部）にヘッダーバーを配置（高さ56px、幅390px）</p>
+                <ul>
+                    <li>左端：ハンバーガーアイコン（☰）用の24×24pxボックス</li>
+                    <li>中央：「SLOW DRIP」テキスト（ロゴ代替）</li>
+                </ul>
+                <p><strong>2.</strong> ヘッダー直下にヒーロー領域を配置（高さ180px）</p>
+                <ul>
+                    <li>グレーの矩形で画像プレースホルダーを配置</li>
+                    <li>「一杯の、特別な時間を」のキャッチコピーテキスト</li>
+                </ul>
+                <p><strong>3.</strong> ヒーロー直下に「店舗情報カード」を配置（高さ72px）</p>
+                <ul>
+                    <li>📍 アイコン + 「渋谷店 · 営業中 · 8:00-20:00」テキスト</li>
+                </ul>
+        
+                <h3>理論との関連</h3>
+                <p>理論編の「情報の優先順位設計」に基づき、来店直結の情報（店舗・営業時間）をヒーロー直下に配置しています。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：ヒーロー画像を大きくしすぎて、店舗情報がファーストビューに入らない。<br>
+                    ✅ 正解：モバイルではヒーロー画像は控えめに。営業時間・場所がスクロールなしで見えることを優先
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 手順3 — メニューページのカード型UI -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 5：メニューページ — カテゴリタブとメニューカード</h2>
+            <div class="content-block">
+                <h3>操作手順（2つ目のフレームを作成）</h3>
+                <p><strong>1.</strong> 新しいiPhone 14 Proフレームを作成し、ヘッダーを複製（Ctrl/Cmd+D）</p>
+                <p><strong>2.</strong> ヘッダー直下にカテゴリタブバーを配置（高さ44px）</p>
+                <ul>
+                    <li>「ドリップ | ラテ | エスプレッソ | フード」の4タブ</li>
+                    <li>選択中のタブは下線で強調（コントラストの原則）</li>
+                </ul>
+                <p><strong>3.</strong> タブ下にメニューカード（Molecule）を縦に並べる（各カード高さ88px）</p>
+                <ul>
+                    <li>左側：正方形の画像プレースホルダー（64×64px）</li>
+                    <li>右側：ドリンク名 + 価格 + HOT/ICEバッジ</li>
+                    <li>カード間の余白は12px（近接の原則：同じカテゴリ内は近づける）</li>
+                </ul>
+        
+                <h3>理論との関連</h3>
+                <p>「段階的開示」のLevel 1 — 一覧では名前・写真・価格のみ。産地やフレーバーノートはタップ後に表示する設計です。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：メニューカードに産地・焙煎度・説明文をすべて表示してしまう。<br>
+                    ✅ 正解：一覧では「選ぶために必要な最低限の情報」のみ。詳細はタップ後の展開で
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 手順4 — 固定CTAとボトムナビ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 5：両ページ共通 — 固定CTAの配置</h2>
+            <div class="content-block">
+                <h3>操作手順（トップページ・メニューページ両方に適用）</h3>
+                <p><strong>1.</strong> Easy Zone（下部）に固定CTAバーを配置（高さ64px、幅390px）</p>
+                <ul>
+                    <li>左半分：「📞 電話」ボタン（幅50%）</li>
+                    <li>右半分：「📅 予約」ボタン（幅50%）</li>
+                    <li>ボタンの高さ：44px以上（タップターゲット最小サイズ確保）</li>
+                </ul>
+                <p><strong>2.</strong> 固定CTAバーは「Fix position when scrolling」をONに設定</p>
+                <ul>
+                    <li>右パネル「Design」タブ →「Constraints」セクション →「Fix position when scrolling」にチェック</li>
+                </ul>
+                <p><strong>3.</strong> コンテンツ最下部がCTAバーに隠れないよう、下部にパディング（64px以上）を追加</p>
+        
+                <h3>理論との関連</h3>
+                <p>サムゾーンの「Easy Zone」に最重要アクション（電話・予約）を固定配置。ユーザーがどの画面位置にいても、片手で来店アクションを起こせます。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：CTAバーの下にコンテンツが隠れてしまう。<br>
+                    ✅ 正解：固定要素の高さ分のパディングを忘れずに。実機では見えない部分が発生します
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: 手順5 — コンポーネント化 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 5 / 5：コンポーネント化（アトミックデザインの実装）</h2>
+            <div class="content-block">
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> メニューカード1つを選択 → 右クリック →「Create Component」（Ctrl/Cmd+Alt+K）</p>
+                <ul>
+                    <li>カード名を「Menu Card / Default」に変更（左パネルのレイヤー名をダブルクリック）</li>
+                </ul>
+                <p><strong>2.</strong> 作成したComponentを複製して、他のメニュー項目に使い回す</p>
+                <ul>
+                    <li>Componentのコピーは「Instance（インスタンス）」になる</li>
+                    <li>テキスト内容（ドリンク名・価格）だけ個別に変更可能</li>
+                </ul>
+                <p><strong>3.</strong> 同様に以下もComponent化する：</p>
+                <ul>
+                    <li>ヘッダーバー → 「Header / Mobile」</li>
+                    <li>固定CTAバー → 「CTA Bar / Mobile」</li>
+                    <li>店舗情報カード → 「Store Info Card」</li>
+                </ul>
+        
+                <h3>理論との関連</h3>
+                <p>アトミックデザインの「Molecule」をFigmaの「Component」として実装。レスポンシブ対応時に「同じコンポーネントの配置を変える」という考え方が、ここで具体的な操作に繋がります。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：すべてを個別の要素として作り、修正時に1つずつ直す羽目になる。<br>
+                    ✅ 正解：繰り返す要素は必ずComponent化。「一箇所直せば全部直る」状態を作る
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: Figmaチェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">Figma完成チェック：理論編の原則で確認</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">👍</div>
+                    <h3>サムゾーン</h3>
+                    <p>固定CTAは<br>Easy Zone（下部）に<br>配置されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📊</div>
+                    <h3>段階的開示</h3>
+                    <p>メニュー一覧は<br>Level 1の情報のみか？<br>詳細は展開先に</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🧩</div>
+                    <h3>コンポーネント化</h3>
+                    <p>メニューカード・ヘッダー<br>CTAバーが<br>Componentになっているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📏</div>
+                    <h3>タップターゲット</h3>
+                    <p>ボタンは<br>44×44px以上か？<br>要素間8px以上あるか？</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========== Gemini演習（5枚） ========== -->
+        
+        <!-- スライド12: Geminiセクション区切り -->
+        <div class="slide-container section-title-layout">
+            <h2>Exercise 2<br>Gemini — レスポンシブ仕様書の自動生成</h2>
+            <p>Figmaで作ったワイヤーフレームから、開発者向けの仕様書をAIで作成</p>
+        </div>
+        
+        <!-- スライド13: Geminiツール紹介 -->
+        <div class="slide-container bleed-image-layout">
+            <div class="content-container">
+                <h2 class="slide-title">ツール紹介：Gemini</h2>
+                <p><strong>用途：</strong>Google製の大規模言語モデル。テキスト生成・分析・文書作成に活用</p>
+                <p><strong>初回アクセス：</strong>https://gemini.google.com/app にアクセス（Googleアカウントでログイン）</p>
+                <p><strong>今日使う機能：</strong></p>
+                <ul>
+                    <li><strong>テキスト生成：</strong>ワイヤーフレームの構造を説明し、仕様書を生成</li>
+                    <li><strong>表形式出力：</strong>ブレイクポイント別の仕様をテーブルで整理</li>
+                    <li><strong>反復プロンプト：</strong>生成結果を修正・精緻化する対話型改善</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 Geminiの無料プランで十分対応可能です
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/images/img_008_handson_02.png" alt="Figma Interface Screenshot" width="100%" height="100%">
+            </div>
+        </div>
+        
+        <!-- スライド14: Gemini課題提示 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習課題：レスポンシブ仕様書の自動生成</h2>
+            <div class="content-block">
+                <h3>目標</h3>
+                <p>Figmaで作成したSLOW DRIPモバイル版ワイヤーフレームをもとに、開発者が実装できるレスポンシブ仕様書をGeminiで生成する</p>
+        
+                <h3>課題内容</h3>
+                <p>2つのプロンプトを順番に実行し、仕様書を完成させます：</p>
+                <ul>
+                    <li><strong>プロンプト1：</strong>Figmaワイヤーフレームの構造をGeminiに伝え、モバイル版の仕様を確認・整理</li>
+                    <li><strong>プロンプト2：</strong>ブレイクポイント別（スマホ→タブレット→PC）の表示変更仕様を生成</li>
+                </ul>
+        
+                <h3>制約条件</h3>
+                <ul>
+                    <li><strong>入力情報：</strong>Figmaで作ったワイヤーフレームの構造（テキストで説明）</li>
+                    <li><strong>出力形式：</strong>ブレイクポイント別の表形式仕様書</li>
+                    <li><strong>制作時間：</strong>15分</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⏱️ Figmaのワイヤーフレームを見ながら作業しましょう
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド15: Gemini手順1 — ワイヤーフレーム説明プロンプト（コピーボタン付き） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 2：ワイヤーフレーム構造の伝達</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト（日本語）</h3>
+        
                 <div class="prompt-box">
                     <div class="prompt-content" id="prompt-gemini-1">
-        以下のPC版ランディングページをモバイル版に変換する戦略を立ててください。
-
-        【PC版の構成要素】
-        - ヘッダー：ロゴ、ナビ（料金/講師/体験談/FAQ）、CTAボタン「無料体験」
-        - ヒーローセクション：キャッチコピー、説明文、CTA「無料で始める」、講師画像
-        - 特徴セクション：3カラムで並列表示（マンツーマン/24時間/月額4,980円）
-        - 料金表：4プランの比較テーブル
-
-        【モバイル変換で考慮すべき点】
-        1. サムゾーン（親指の届く範囲）を意識したCTA配置
-        2. 情報の優先順位（何を最初に見せ、何を折りたたむか）
-        3. ナビゲーションの変換方法
-        4. 3カラム→縦積みの順序
-
-        上記を踏まえて、以下を出力してください：
-        1. モバイル版での情報優先順位（高/中/低）
-        2. 各要素の推奨配置位置
-        3. 削除または折りたたみ推奨の要素
+        あなたはUIデザインの専門家です。以下のモバイル版Webサイトのワイヤーフレーム構造をもとに、レスポンシブ仕様書を作成してください。
+        
+        【サイト情報】
+        - サイト名：SLOW DRIP（スペシャルティコーヒー専門カフェ）
+        - 対象ページ：トップページ、メニューページ
+        - モバイルフレームサイズ：390×844px
+        
+        【トップページの構造（上から順に）】
+        1. ヘッダーバー（56px）：左にハンバーガーメニュー、中央にロゴ「SLOW DRIP」
+        2. ヒーロー領域（180px）：背景画像 + キャッチコピー「一杯の、特別な時間を」
+        3. 店舗情報カード（72px）：📍アイコン + 店名 + 営業状態 + 営業時間
+        4. おすすめセクション：今週のおすすめ豆カード
+        5. メニューリンクカード：「メニューを見る →」
+        6. 固定CTAバー（64px）：「📞 電話」+「📅 予約」（画面下部に常時固定）
+        
+        【メニューページの構造（上から順に）】
+        1. ヘッダーバー（トップページと共通Component）
+        2. カテゴリタブバー（44px）：ドリップ | ラテ | エスプレッソ | フード
+        3. メニューカード一覧（各88px）：左に写真(64×64)、右にドリンク名+価格+HOT/ICEバッジ
+        4. 固定CTAバー（トップページと共通Component）
+        
+        まず、この構造に不備や改善点がないか確認してください。
                     </div>
                     <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
                         <i class="fas fa-copy"></i> コピー
                     </button>
                 </div>
-                
+        
                 <div class="highlight-box">
-                    ⚠️ よくある間違い：「モバイル版を作って」だけでは具体的な戦略が出ない<br>
-                    ✅ 正解：PC版の構成要素と考慮点を明示して、判断材料を与える
+                    ⚠️ ポイント：Figmaで作った実際の構造をそのまま伝える。「かっこいいサイトを作って」のような曖昧な指示はNG
                 </div>
             </div>
         </div>
-
-        <!-- スライド10: Gemini手順2（コピーボタン付き） -->
+        
+        <!-- スライド16: Gemini手順2 — ブレイクポイント別仕様生成（コピーボタン付き） -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">手順 2 / 2：配置詳細プロンプト</h2>
+            <h2 class="slide-title">手順 2 / 2：ブレイクポイント別仕様の生成</h2>
             <div class="content-block">
-                <h3>Geminiの回答を受けて深掘りするプロンプト</h3>
-                
+                <h3>Geminiに入力するプロンプト（日本語）— 手順1の回答後に続けて入力</h3>
+        
                 <div class="prompt-box">
                     <div class="prompt-content" id="prompt-gemini-2">
-        ありがとうございます。さらに詳細を教えてください。
-
-        【追加の質問】
-        1. CTAボタン「無料で始める」は固定フッターにすべきか、コンテンツ内に配置すべきか？理由も含めて教えてください。
-
-        2. ヘッダーナビの4項目（料金/講師/体験談/FAQ）は以下のどれが最適ですか？
-        - ハンバーガーメニューに全て格納
-        - ボトムナビに主要2項目を表示
-        - 両方を組み合わせる
-
-        3. 料金比較表（4プラン）のモバイル表示方法として、以下のどれを推奨しますか？
-        - 横スクロール可能なテーブル
-        - カード形式で縦積み
-        - アコーディオンで1プランずつ展開
-
-        それぞれの理由をサムゾーンと情報階層化の観点から説明してください。
+        ありがとうございます。では、このモバイル版の構造をベースに、以下の4つのブレイクポイントでレスポンシブ仕様書を作成してください。
+        
+        【ブレイクポイント】
+        1. スマホ（〜599px）：現在のモバイル版がベース
+        2. タブレット（600〜1023px）
+        3. ノートPC（1024〜1439px）
+        4. デスクトップ（1440px〜）
+        
+        【仕様書のフォーマット】
+        以下の項目ごとに、各ブレイクポイントでの表示仕様を表形式で出力してください：
+        
+        | UI要素 | スマホ(〜599px) | タブレット(600〜1023px) | ノートPC(1024〜1439px) | デスクトップ(1440px〜) |
+        |--------|----------------|----------------------|---------------------|---------------------|
+        
+        対象UI要素：
+        - ヘッダーナビゲーション
+        - ヒーロー領域
+        - 店舗情報カード
+        - メニューカードのレイアウト（カラム数）
+        - カテゴリの表示方法
+        - CTAボタンの配置
+        - メニューカード内の表示情報（Level 1 / 2 / 3の段階的開示）
+        
+        各セルには「何が表示されるか」「レイアウトの変更点」を具体的に記述してください。
                     </div>
                     <button class="copy-btn" onclick="copyPrompt('prompt-gemini-2', event)">
                         <i class="fas fa-copy"></i> コピー
                     </button>
                 </div>
-                
+        
                 <div class="highlight-box">
-                    ⚠️ よくある間違い：AIの最初の回答をそのまま採用する<br>
-                    ✅ 正解：「なぜそうなのか」を深掘りして理論的根拠を確認する
+                    ⚠️ ポイント：出力フォーマット（表形式）を明示するのがコツ。フォーマット指定がないと、長い文章で返ってきてしまう<br>
+                    💡 生成結果に不満があれば「タブレット版のメニューカードをもう少し具体的に」と追加指示で精緻化できます
                 </div>
             </div>
         </div>
-
-        <!-- スライド11: Gemini出力の評価 -->
+        
+        <!-- スライド17: Geminiチェックリスト -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">Gemini完成チェック：仕様書の品質</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">📋</div>
+                    <h3>網羅性</h3>
+                    <p>全UI要素の<br>4ブレイクポイント分が<br>記述されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎯</div>
+                    <h3>具体性</h3>
+                    <p>「レイアウト変更」ではなく<br>「2列グリッドに変更」等<br>具体的な記述か？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔗</div>
+                    <h3>理論整合性</h3>
+                    <p>段階的開示の<br>Level分けが<br>反映されているか？</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🤝</div>
+                    <h3>伝達性</h3>
+                    <p>開発者がこの仕様書だけで<br>実装を始められるか？<br>曖昧な表現はないか？</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========== まとめ（3枚） ========== -->
+        
+        <!-- スライド18: 振り返りタイル -->
+        <div class="slide-container tiled-content">
+            <h2 class="slide-title">実践編まとめ：今日作った2つの成果物</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>Figma</h3>
+                    <p>モバイル版<br>ワイヤーフレーム<br>（トップ+メニュー）</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📝</div>
+                    <h3>Gemini</h3>
+                    <p>ブレイクポイント別<br>レスポンシブ<br>仕様書</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🧩</div>
+                    <h3>Component化</h3>
+                    <p>メニューカード等を<br>再利用可能な<br>部品として作成</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">📐</div>
+                    <h3>理論の実装</h3>
+                    <p>サムゾーン・段階的開示<br>アトミックデザインを<br>実際のUIに適用</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド19: 理論×実践の接続 -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">Gemini出力の評価ポイント</h2>
-            <div class="content-block">
-                <h3>AIの回答をチェックする観点</h3>
-                <ul>
-                    <li><strong>サムゾーン考慮</strong>：CTAを下部に配置する提案があるか？</li>
-                    <li><strong>情報階層化</strong>：「削除」ではなく「段階的開示」を提案しているか？</li>
-                    <li><strong>ナビ変換</strong>：ボトムナビとハンバーガーの使い分けを理解しているか？</li>
-                    <li><strong>理由の妥当性</strong>：提案の根拠が論理的か？</li>
-                </ul>
-                
-                <h3>修正が必要なパターン</h3>
-                <ul>
-                    <li>❌「すべてハンバーガーに格納」→ 重要機能が埋もれる</li>
-                    <li>❌「料金表は削除」→ コンバージョンに必須の情報</li>
-                    <li>❌「CTAは上部に固定」→ サムゾーン未考慮</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 AIは「参考意見」。理論に基づいて最終判断するのはあなた
-                </div>
+            <h2 class="slide-title">理論と実践はこう繋がった</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- 理論 -->
+                    <rect x="30" y="30" width="220" height="240" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5" rx="10"/>
+                    <text x="140" y="25" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">📖 理論編で学んだこと</text>
+                    <text x="140" y="70" text-anchor="middle" fill="white" font-size="12">サムゾーン</text>
+                    <text x="140" y="95" text-anchor="middle" fill="#888" font-size="10">→ 親指が届く範囲の科学</text>
+                    <text x="140" y="130" text-anchor="middle" fill="white" font-size="12">段階的開示</text>
+                    <text x="140" y="155" text-anchor="middle" fill="#888" font-size="10">→ 情報表示のタイミング設計</text>
+                    <text x="140" y="190" text-anchor="middle" fill="white" font-size="12">ブレイクポイント</text>
+                    <text x="140" y="215" text-anchor="middle" fill="#888" font-size="10">→ レイアウト切替の境界線</text>
+                    <text x="140" y="250" text-anchor="middle" fill="white" font-size="12">アトミックデザイン</text>
+        
+                    <!-- 矢印 -->
+                    <text x="290" y="120" fill="#ffd700" font-size="30">→</text>
+                    <text x="290" y="200" fill="#ffd700" font-size="30">→</text>
+        
+                    <!-- 実践 -->
+                    <rect x="340" y="30" width="220" height="240" fill="#00ff88" opacity="0.08" stroke="#00ff88" stroke-width="1.5" rx="10"/>
+                    <text x="450" y="25" text-anchor="middle" fill="#00ff88" font-size="15" font-weight="bold">🛠 実践編でやったこと</text>
+                    <text x="450" y="70" text-anchor="middle" fill="white" font-size="12">ゾーンガイドを引いて</text>
+                    <text x="450" y="95" text-anchor="middle" fill="#888" font-size="10">→ 固定CTAを下部に配置</text>
+                    <text x="450" y="130" text-anchor="middle" fill="white" font-size="12">メニュー一覧をLevel 1に</text>
+                    <text x="450" y="155" text-anchor="middle" fill="#888" font-size="10">→ 産地詳細はタップ展開</text>
+                    <text x="450" y="190" text-anchor="middle" fill="white" font-size="12">Geminiで仕様書を生成</text>
+                    <text x="450" y="215" text-anchor="middle" fill="#888" font-size="10">→ 4段階の表示変更を定義</text>
+                    <text x="450" y="250" text-anchor="middle" fill="white" font-size="12">Component化で部品管理</text>
+        
+                    <!-- 成果物 -->
+                    <text x="600" y="120" fill="#ffd700" font-size="30">→</text>
+                    <text x="600" y="200" fill="#ffd700" font-size="30">→</text>
+        
+                    <rect x="650" y="30" width="130" height="240" fill="#ffd700" opacity="0.08" stroke="#ffd700" stroke-width="1.5" rx="10"/>
+                    <text x="715" y="25" text-anchor="middle" fill="#ffd700" font-size="15" font-weight="bold">📦 成果物</text>
+                    <text x="715" y="90" text-anchor="middle" fill="white" font-size="12">モバイル版</text>
+                    <text x="715" y="110" text-anchor="middle" fill="white" font-size="12">ワイヤーフレーム</text>
+                    <text x="715" y="135" text-anchor="middle" fill="#888" font-size="10">（Figma）</text>
+                    <text x="715" y="190" text-anchor="middle" fill="white" font-size="12">レスポンシブ</text>
+                    <text x="715" y="210" text-anchor="middle" fill="white" font-size="12">仕様書</text>
+                    <text x="715" y="235" text-anchor="middle" fill="#888" font-size="10">（Gemini生成）</text>
+                </svg>
             </div>
         </div>
-
-        <!-- スライド12: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Step 3</h2>
-            <p>Figma Makeでワイヤーフレーム生成</p>
-        </div>
-
-        <!-- スライド13: Figma紹介 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">ツール紹介：Figma Make</h2>
-            <div class="content-block">
-                <h3>用途</h3>
-                <p>テキストプロンプトからUIデザイン・ワイヤーフレームを<strong>AI自動生成</strong></p>
-                
-                <h3>初回アクセス</h3>
-                <p><strong>https://www.figma.com</strong> にアクセス → 新規ファイル作成 → 「Make」機能を使用</p>
-                
-                <h3>今日使う機能</h3>
-                <ul>
-                    <li><strong>Make（AI生成）</strong>：プロンプトからワイヤーフレームを自動生成</li>
-                    <li><strong>フレーム</strong>：モバイルサイズ（390×844px / iPhone 14）</li>
-                    <li><strong>手動調整</strong>：AI生成後の微調整</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 Figma Makeは「たたき台」を高速生成するツール。完成形ではない
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド14: Figma演習課題 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習課題：モバイル版ワイヤーフレーム生成</h2>
-            <div class="content-block">
-                <h3>目標</h3>
-                <p>Geminiで立案した戦略をFigma Makeに入力し、モバイル版ワイヤーフレームを生成する</p>
-                
-                <h3>制約条件</h3>
-                <ul>
-                    <li><strong>フレームサイズ：</strong>390×844px（iPhone 14）</li>
-                    <li><strong>必須要素：</strong>ヘッダー、ヒーロー、特徴、CTA</li>
-                    <li><strong>適用する理論：</strong>サムゾーン配置、情報階層化、ナビ変換</li>
-                    <li><strong>制作時間：</strong>15分（生成5分 + 評価・調整10分）</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    ⏱️ タイマーをセットしてスタート！
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド15: Figma手順1 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">手順 1 / 3：フレーム作成とMake起動</h2>
-            <div class="content-block">
-                <h3>操作手順</h3>
-                <p><strong>1.</strong> Figmaで新規ファイルを作成</p>
-                <p><strong>2.</strong> フレームツール（F）→ Phone → iPhone 14（390×844）を選択</p>
-                <p><strong>3.</strong> フレーム内をクリックして「Make」パネルを開く（または右クリック → Make）</p>
-                
-                <h3>Makeプロンプトの基本構造</h3>
-                <p>「何を」「どのように」「どんなスタイルで」の3要素を含める</p>
-                
-                <div class="highlight-box">
-                    ⚠️ よくある間違い：フレームサイズを設定せずにMakeを使う<br>
-                    ✅ 正解：先にモバイルサイズのフレームを作成してからMakeを実行
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド16: Figma手順2（プロンプト例） -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">手順 2 / 3：Makeプロンプト入力</h2>
-            <div class="content-block">
-                <h3>Figma Makeに入力するプロンプト例</h3>
-                
-                <div class="prompt-box">
-                    <div class="prompt-content" id="prompt-figma-3">
-        Mobile landing page wireframe for online English lesson service "TalkFlow"
-
-        Structure from top to bottom:
-        1. Header: Logo left, hamburger menu icon right
-        2. Hero section: Headline "1日15分で英語が話せる", subtext, hero image
-        3. Features: 3 cards stacked vertically (icons + text)
-        4. Sticky bottom CTA bar: "無料で始める" button, always visible
-
-        Style: Clean wireframe, grayscale, minimal
-                    </div>
-                    <button class="copy-btn" onclick="copyPrompt('prompt-figma-3', event)">
-                        <i class="fas fa-copy"></i> コピー
-                    </button>
-                </div>
-                
-                <h3>理論との関連</h3>
-                <p>「Sticky bottom CTA bar」= サムゾーン配置の実践。下部固定でいつでも親指が届く</p>
-                
-                <div class="highlight-box">
-                    ⚠️ よくある間違い：日本語のみでプロンプトを書く<br>
-                    ✅ 正解：Figma Makeは英語プロンプトの精度が高い
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド17: Figma手順3 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">手順 3 / 3：生成結果の確認</h2>
-            <div class="content-block">
-                <h3>操作手順</h3>
-                <p><strong>1.</strong> 「Generate」をクリックして生成を実行</p>
-                <p><strong>2.</strong> 複数の候補が表示される場合は、最も理論に沿ったものを選択</p>
-                <p><strong>3.</strong> 「Insert」で選択したデザインをフレームに挿入</p>
-                
-                <h3>生成結果でチェックすべき点</h3>
-                <ul>
-                    <li>CTAボタンは下部に配置されているか？（サムゾーン）</li>
-                    <li>情報の順序は優先度順になっているか？（情報階層化）</li>
-                    <li>ナビはハンバーガーアイコンに変換されているか？（ナビ変換）</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    ⚠️ よくある間違い：生成結果をそのまま採用する<br>
-                    ✅ 正解：理論に基づいてチェックし、次のステップで調整する
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド18: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Step 4</h2>
-            <p>理論チェック＆手動調整</p>
-        </div>
-
-        <!-- スライド19: チェックリスト -->
-        <div class="slide-container">
-            <h2 class="slide-title">モバイルファースト チェックリスト</h2>
-            <div class="tiled-content">
-                <div class="tile-grid">
-                    <div class="tile">
-                        <div class="icon">👍</div>
-                        <h3>サムゾーン</h3>
-                        <p>CTAは下部に<br>配置されているか？</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">📊</div>
-                        <h3>情報階層化</h3>
-                        <p>重要情報が先、<br>詳細は展開式か？</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">🍔</div>
-                        <h3>ナビ変換</h3>
-                        <p>ハンバーガー or<br>ボトムナビを使用？</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">📱</div>
-                        <h3>縦積み</h3>
-                        <p>横並びが<br>縦に再配置されたか？</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド20: 調整ポイント解説 -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">よくある調整ポイント</h2>
-            <div class="content-block">
-                <h3>AI生成でよく起きる問題と対処法</h3>
-                <ul>
-                    <li><strong>CTAが上部に配置される</strong><br>
-                    → 下部固定バーを手動で追加し、Auto Layoutで「Bottom」に固定</li>
-                    <li><strong>ナビがそのまま水平表示</strong><br>
-                    → ハンバーガーアイコン（三本線）に置き換え、メニューは非表示に</li>
-                    <li><strong>特徴セクションが小さすぎる</strong><br>
-                    → 各カードの高さを揃え、タップしやすいサイズ（44px以上）に調整</li>
-                    <li><strong>料金表がそのまま</strong><br>
-                    → カード形式に変換するか、「詳細を見る」で折りたたみ</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    💡 AIは「たたき台」を作るのが得意。微調整は人間の役割
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド21: Before/After比較 -->
-        <div class="slide-container">
-            <h2 class="slide-title">調整例：CTA配置のBefore/After</h2>
-            <div class="two-column tiled">
-                <div>
-                    <h3>❌ AI生成そのまま</h3>
-                    <svg class="generated-art" viewBox="0 0 350 500">
-                        <!-- スマホ本体 -->
-                        <rect x="90" y="20" width="170" height="360" fill="#1a1a2e" stroke="#ff6b6b" stroke-width="2" rx="20"/>
-                        <rect x="102" y="45" width="146" height="310" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- ヘッダー -->
-                        <rect x="102" y="45" width="146" height="35" fill="#333"/>
-                        <text x="125" y="68" fill="#00d4ff" font-size="10">TalkFlow</text>
-                        <rect x="220" y="55" width="20" height="15" fill="#666" rx="2"/>
-                        
-                        <!-- CTA（上部に配置 = 問題） -->
-                        <rect x="115" y="90" width="120" height="30" fill="#ff6b6b" opacity="0.7" rx="15"/>
-                        <text x="175" y="110" text-anchor="middle" fill="white" font-size="10">無料で始める</text>
-                        
-                        <!-- コンテンツ -->
-                        <rect x="110" y="130" width="130" height="60" fill="#444" opacity="0.4" rx="3"/>
-                        <rect x="110" y="200" width="130" height="45" fill="#444" opacity="0.3" rx="3"/>
-                        <rect x="110" y="255" width="130" height="45" fill="#444" opacity="0.3" rx="3"/>
-                        <rect x="110" y="310" width="130" height="35" fill="#444" opacity="0.3" rx="3"/>
-                        
-                        <!-- 問題点の指摘 -->
-                        <text x="175" y="410" text-anchor="middle" fill="#ff6b6b" font-size="12">CTAが上部で押しにくい</text>
-                    </svg>
-                </div>
-                <div>
-                    <h3>✅ 理論に基づき調整</h3>
-                    <svg class="generated-art" viewBox="0 0 350 500">
-                        <!-- スマホ本体 -->
-                        <rect x="90" y="20" width="170" height="360" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2" rx="20"/>
-                        <rect x="102" y="45" width="146" height="310" fill="#2d2d44" rx="3"/>
-                        
-                        <!-- ヘッダー -->
-                        <rect x="102" y="45" width="146" height="35" fill="#333"/>
-                        <text x="125" y="68" fill="#00d4ff" font-size="10">TalkFlow</text>
-                        <rect x="220" y="55" width="20" height="15" fill="#666" rx="2"/>
-                        
-                        <!-- コンテンツ -->
-                        <rect x="110" y="90" width="130" height="70" fill="#444" opacity="0.4" rx="3"/>
-                        <rect x="110" y="170" width="130" height="45" fill="#444" opacity="0.3" rx="3"/>
-                        <rect x="110" y="225" width="130" height="45" fill="#444" opacity="0.3" rx="3"/>
-                        
-                        <!-- サムゾーン表示 -->
-                        <ellipse cx="175" cy="320" rx="55" ry="35" fill="#00ff88" opacity="0.2"/>
-                        
-                        <!-- CTA（下部固定 = 最適） -->
-                        <rect x="102" y="300" width="146" height="55" fill="rgba(26,26,46,0.95)"/>
-                        <rect x="115" y="310" width="120" height="35" fill="#00d4ff" rx="17"/>
-                        <text x="175" y="333" text-anchor="middle" fill="white" font-size="11" font-weight="bold">無料で始める</text>
-                        
-                        <!-- 改善点の指摘 -->
-                        <text x="175" y="410" text-anchor="middle" fill="#00ff88" font-size="12">下部固定で親指が届く</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド22: セクション区切り -->
-        <div class="slide-container section-title-layout">
-            <h2>Summary</h2>
-            <p>まとめと次のステップ</p>
-        </div>
-
-        <!-- スライド23: 実践の振り返り -->
-        <div class="slide-container">
-            <h2 class="slide-title">本日の学び</h2>
-            <div class="tiled-content">
-                <div class="tile-grid">
-                    <div class="tile">
-                        <div class="icon">🤖</div>
-                        <h3>AIは壁打ち相手</h3>
-                        <p>Geminiで戦略立案<br>判断は人間が行う</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">⚡</div>
-                        <h3>高速プロトタイプ</h3>
-                        <p>Figma Makeで<br>たたき台を即生成</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">📐</div>
-                        <h3>理論で評価</h3>
-                        <p>サムゾーン・階層化で<br>AIの出力をチェック</p>
-                    </div>
-                    <div class="tile">
-                        <div class="icon">✏️</div>
-                        <h3>手動で仕上げ</h3>
-                        <p>理論に基づき<br>微調整して完成</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- スライド24: 次のステップ -->
-        <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">次のステップ</h2>
-            <div class="content-block">
-                <h3>今日の成果物を活用する</h3>
-                <ul>
-                    <li><strong>Geminiの戦略メモ</strong>：今後の変換作業のテンプレートとして保存</li>
-                    <li><strong>Figmaワイヤーフレーム</strong>：高精度モックアップの土台として活用</li>
-                    <li><strong>チェックリスト</strong>：すべてのモバイルデザインで使用</li>
-                </ul>
-                
-                <h3>さらに学ぶべきこと</h3>
-                <ul>
-                    <li><strong>Figma Auto Layout</strong>：レスポンシブ対応の自動化</li>
-                    <li><strong>プロトタイピング</strong>：実機でのサムゾーン検証</li>
-                    <li><strong>ClarityUX</strong>：ヒートマップでCTA配置の効果検証</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    🎯 Visual Architectは「AIを使いこなす」のではなく「AIの出力を評価・改善する」スキル
-                </div>
-            </div>
+        
+        <!-- スライド20: 次のステップ -->
+        <div class="slide-container big-concept-layout">
+            <h2>Visual Architectとしての次のステップ</h2>
+            <p>今日の成果物（ワイヤーフレーム + 仕様書）は、<br>開発者に渡せる「設計指示書」の第一歩です。<br><br>あなたの役割は「なぜこの配置なのか」を<br>理論的に説明できること。<br><br>デザインの判断に自信を持って、<br>チームをリードしていきましょう。</p>
         </div>
 
         <!-- クイズセクション -->
@@ -592,63 +522,6 @@
     <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        const questions = [
-            {
-                question: "PC版LPをモバイル変換する際、GeminiへのプロンプトでNGなのは？",
-                options: [
-                    "PC版の構成要素を箇条書きで伝える",
-                    "「いい感じにモバイル版を作って」とだけ伝える",
-                    "サムゾーンや情報階層化を考慮するよう指示する",
-                    "具体的な出力形式（優先順位リスト等）を指定する"
-                ],
-                correct: 1,
-                explanation: "「いい感じに」という曖昧な指示では、AIは汎用的な回答しか出せません。PC版の構成要素、考慮すべき理論、出力形式を明示することで、具体的な戦略を引き出せます。"
-            },
-            {
-                question: "Figma Makeで生成したワイヤーフレームのCTAが上部に配置されていました。どう対処すべき？",
-                options: [
-                    "AIが決めたことなのでそのまま採用する",
-                    "理論（サムゾーン）に基づき、下部固定バーに手動で移動する",
-                    "CTAを削除してシンプルにする",
-                    "上部と下部の両方にCTAを配置する"
-                ],
-                correct: 1,
-                explanation: "サムゾーンの理論に基づき、主要CTAは親指が届きやすい下部に配置すべきです。AIの出力は「たたき台」であり、理論に基づいて人間が調整するのがVisual Architectの役割です。"
-            },
-            {
-                question: "PC版の水平ナビゲーション（5項目）をモバイルに変換する際、最適な方法は？",
-                options: [
-                    "文字サイズを小さくしてそのまま水平表示",
-                    "すべてをハンバーガーメニューに格納",
-                    "重要な項目をボトムナビに、残りをハンバーガーに分ける",
-                    "ナビゲーションは不要なので削除"
-                ],
-                correct: 2,
-                explanation: "理論編で学んだ通り、すべてをハンバーガーに格納すると重要な機能が埋もれます。主要な項目はサムゾーン内のボトムナビに配置し、残りをハンバーガーに分けることで、アクセシビリティと整理を両立できます。"
-            },
-            {
-                question: "PC版の料金比較表（4プラン横並び）のモバイル最適化として、情報階層化の観点から最も適切なのは？",
-                options: [
-                    "横スクロールできるテーブルのまま表示",
-                    "表を削除して「詳しくはお問い合わせ」に変更",
-                    "カード形式で縦積み、または「詳細を見る」で段階的に表示",
-                    "4プランをすべて縦に並べて全情報を表示"
-                ],
-                correct: 2,
-                explanation: "プログレッシブ・ディスクロージャー（段階的開示）の考え方に基づき、最初は要約を見せ、詳細は必要に応じて展開するのが最適です。横スクロールは使いにくく、全削除は重要情報の喪失になります。"
-            },
-            {
-                question: "AI（Gemini + Figma Make）を使ったモバイル変換ワークフローで、人間が担う最も重要な役割は？",
-                options: [
-                    "AIが出力したデザインを忠実に再現すること",
-                    "AIを使わず、すべて手作業で行うこと",
-                    "AIの出力を理論に基づいて評価し、必要に応じて調整すること",
-                    "できるだけ多くのAIツールを使いこなすこと"
-                ],
-                correct: 2,
-                explanation: "Visual Architectの役割は、AIを「使いこなす」のではなく、AIの出力を「評価・改善する」ことです。サムゾーン、情報階層化などの理論を武器に、AIの提案を批判的に検討し、最適なデザインに仕上げるのが人間の価値です。"
-            }
-        ];
     </script>
     
     <script src="../assets/slide-template.js"></script>
