@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+
 /* ========================================
-    Lecture Slides Template - CSS (修正版)
+    Lecture Slides Template - CSS
+    基準解像度: 1920x1080px（transform: scaleで拡縮）
 ======================================== */
 
 /* --- CORE RESET --- */
@@ -26,48 +29,28 @@ body {
 /* --- PRESENTATION CONTAINER --- */
 #presentation-wrapper {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    max-height: 100%;
-    aspect-ratio: 16 / 9;
-}
-
-/* Responsive: 16:9アスペクト比維持 */
-@media (min-aspect-ratio: 16/9) {
-    #presentation-wrapper {
-        height: 100vh;
-        width: calc(100vh * 16 / 9);
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    #presentation-wrapper {
-        width: 100vw;
-        height: calc(100vw * 9 / 16);
-    }
+    width: 1920px;
+    height: 1080px;
+    transform-origin: center center;
+    flex-shrink: 0;
 }
 
 /* --- SLIDE CONTAINER BASE --- */
 .slide-container {
     align-items: center;
     background-color: #121212;
-    border-radius: 0;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     display: none;
     flex-direction: column;
-    font-family: 'Inter', 'Noto Sans JP', sans-serif;
     height: 100%;
-    justify-content: center;
     overflow: hidden;
-    padding: clamp(4rem, 8vh, 8rem) clamp(4rem, 5vw, 8rem);
+    padding: 86px 96px;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     color: #fff;
     z-index: 0;
-    /* 修正: 非アクティブスライドを完全に隠す */
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -75,11 +58,11 @@ body {
 
 .slide-container.active {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     z-index: 10;
-    /* 修正: アクティブスライドを表示 */
     visibility: visible;
     opacity: 1;
+    overflow-y: scroll;
     pointer-events: auto;
     animation: fadeIn 0.5s ease;
 }
@@ -115,7 +98,7 @@ body {
     left: -10%;
     width: 35%;
     height: 35%;
-    background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%); 
+    background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, rgba(0,0,0,0) 70%);
     z-index: 0;
 } */
 
@@ -128,68 +111,66 @@ body {
 h1, h2, h3, h4 {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
     margin: 0;
-    line-height: 1.2;
-    letter-spacing: .02em;
+    line-height: 1.28;
     -webkit-font-feature-settings: 'palt';
-    -moz-font-feature-settings: 'palt';
-    -ms-font-feature-settings: 'palt';
     font-feature-settings: 'palt';
 }
+h1 {letter-spacing: .024em;}
+h2, h3, h4 {letter-spacing: .064em;}
+.big-concept-layout h2 {letter-spacing: .028em;}
 
 .slide-container h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 800;
-    background: linear-gradient(90deg, #fff, #ccc);
-    -webkit-background-clip: text;
-    /* -webkit-text-fill-color: transparent; */
-    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 32px;
 }
+
 .slide-container h1 span,
 .slide-container h2 span {
     display: block;
-    font-size: clamp(3rem, 3.2vw, 4.5rem);
-    margin-top: clamp(0.5rem, 1vh, 1rem);
+    font-size: 61px;
+    margin-top: 16px;
 }
 
 .slide-container .slide-title {
-    font-size: clamp(3rem, 2.916666vw, 4rem);
+    font-size: 56px;
     font-weight: 600;
-    color: #fff;
     width: 100%;
     text-align: left;
     border-left: 6px solid #00d4ff;
-    padding-left: clamp(1rem, 2vw, 1.5rem);
-    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+    padding-left: 24px;
+    margin-bottom: 48px;
 }
 
 .slide-container h3 {
-    font-size: clamp(2rem, 2.0833333vw, 3rem);
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
     color: #00d4ff;
-    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+    margin-bottom: 32px;
 }
 
 .slide-container p + h3,
 .slide-container ul + h3,
 .slide-container div + h3 {
-    margin-top: clamp(1.5rem, 3vh, 2rem);
+    margin-top: 40px;
 }
+
 .slide-container h4 {
-    font-size: clamp(2rem, 2.0833333vw, 3rem);
-    font-weight: 700;
-    margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 16px;
 }
 
 .slide-container p, .slide-container li {
-    font-size: clamp(1.2rem, 1.666666vw, 2.4rem);
-    line-height: 1.8;
+    font-size: 32px;
+    line-height: 1.76;
+    letter-spacing: .032em;
     color: #e0e0e0;
-    font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+    margin-bottom: 12px;
 }
 
 ul {
-    padding-left: clamp(1.5rem, 3vw, 2rem);
+    padding-left: 32px;
 }
 
 /* --- LAYOUT: FULL BACKGROUND IMAGE (TITLE) --- */
@@ -198,13 +179,12 @@ ul {
     background: radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%),
                 linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
 }
 
 .full-bg-image .content-overlay {
     background: rgba(0, 0, 0, 0.4);
-    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 5vw, 4rem);
+    padding: 65px 64px;
     border-radius: 20px;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -215,53 +195,55 @@ ul {
 
 .full-bg-image h1,
 .full-bg-image h2 {
-    font-size: clamp(6rem, 5.833333vw, 8rem);
-    color: #fff;
-    font-weight: 800;
+    font-size: 112px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    margin-bottom: 48px;
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
 /* --- LAYOUT: SECTION TITLE --- */
 .section-title-layout {
+    justify-content: center !important;
     text-align: center;
-    /* border: 2px solid #333; */
-    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3rem);
+    padding: 65px 48px;
     border-radius: 20px;
-    /* 修正: 背景を不透明に */
     background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
-    /* width: 80%; */
 }
 
 .section-title-layout h2 {
-    font-size: clamp(5rem, 5vw, 7rem);
-    color: #fff;
-    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+    font-size: 96px;
+    margin-bottom: 32px;
 }
 
 .section-title-layout hr {
-    width: clamp(80px, 10vw, 100px);
+    width: 100px;
     height: 4px;
     background: linear-gradient(90deg, #00d4ff, #ff0080);
     border: none;
-    margin: 0 auto clamp(1.5rem, 3vh, 2rem) auto;
+    margin: 0 auto 32px auto;
 }
 
 /* --- LAYOUT: TWO COLUMN --- */
 .two-column.tiled {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: 24px;
     width: 100%;
-    max-height: -webkit-fill-available;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-top: 32px;
+}
+
+h2 + .two-column.tiled {
+    height: stretch;
 }
 
 .two-column.tiled > div {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid #333;
     border-radius: 12px;
-    padding: clamp(1.5rem, 3vh, 2.5rem);
+    padding: 32px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -272,7 +254,7 @@ ul {
 .three-column {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: clamp(1rem, 2.5vw, 2rem);
+    gap: 32px;
     width: 100%;
     height: 75%;
 }
@@ -281,14 +263,14 @@ ul {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid #333;
     border-radius: 12px;
-    padding: clamp(1rem, 2.5vh, 2rem);
+    padding: 27px;
     display: flex;
     flex-direction: column;
 }
 
 /* --- LAYOUT: BLEED IMAGE --- */
 .slide-container.bleed-image-layout .content-container {
-    padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 4vw, 3.5rem);
+    padding: 65px 56px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -309,52 +291,48 @@ ul {
 
 /* --- LAYOUT: TILED CONTENT --- */
 .tiled-content {
-    /* 修正: 縦方向の配置を追加 */
     display: flex;
-    /* flex-direction: column; */
-    /* align-items: flex-start; */
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: 16px;
     width: 100%;
-    /* height: 100%; */
 }
 
-/* 修正: タイルグリッド用の新しいクラス */
+/* タイルグリッド */
 .tile-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: 32px;
     width: 100%;
-    margin-top: clamp(1.5rem, 3vh, 2rem);
+    margin-top: 0;
 }
 
 .tile {
     background: #1e1e1e;
     border-radius: 12px;
-    padding: clamp(1.5rem, 3vh, 2rem);
+    padding: 32px;
     text-align: center;
     border: 1px solid #333;
     width: 100%;
 }
 
 .tile h3 {
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: 32px;
     color: #00d4ff;
-    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    margin-bottom: 22px;
 }
 
 .tile p {
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-size: 21px;
     line-height: 1.6;
 }
 
 .tile .icon {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+    font-size: 48px;
+    margin-bottom: 22px;
     display: inline-block;
-    width: clamp(60px, 8vw, 80px);
-    height: clamp(60px, 8vw, 80px);
-    line-height: clamp(60px, 8vw, 80px);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
     border-radius: 50%;
     background: rgba(255,255,255,0.05);
     color: #00d4ff;
@@ -364,14 +342,14 @@ ul {
 .standard-content-layout {
     align-items: flex-start;
     justify-content: flex-start;
-    /* padding-top: clamp(3rem, 2.916666vw, 4rem); */
 }
 
 .standard-content-layout .content-block {
     background: rgba(255,255,255,0.03);
     border-radius: 15px;
-    padding: clamp(1.5rem, 3vh, 2.5rem);
+    padding: 40px 48px 48px;
     width: 100%;
+    height: stretch;
     overflow-y: auto;
     border: 1px solid #333;
 }
@@ -394,20 +372,22 @@ ul {
 
 /* --- LAYOUT: BIG CONCEPT --- */
 .big-concept-layout {
+    justify-content: center !important;
     text-align: center;
 }
 
 .big-concept-layout h2 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1.1;
+    font-size: 88px;
+    line-height: 1.28;
     background: linear-gradient(45deg, #00d4ff, #00ff9d);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: clamp(1.5rem, 3vh, 2rem);
+    margin-bottom: 32px;
 }
 
 .big-concept-layout p {
-    font-size: clamp(1.2rem, 2vw, 1.75rem);
+    font-size: 32px;
     max-width: 80%;
     margin: 0 auto;
     color: #fff;
@@ -417,9 +397,9 @@ ul {
 .highlight-box {
     background: rgba(0, 212, 255, 0.1);
     border-left: 4px solid #00d4ff;
-    padding: clamp(1rem, 2vh, 1.5rem);
-    margin-top: clamp(1rem, 2vh, 1.5rem);
-    font-size: clamp(1.25rem, 1.25vw, 1.75rem);
+    padding: 22px;
+    margin-top: 32px;
+    font-size: 24px;
     color: #fff;
     width: 100%;
 }
@@ -431,30 +411,21 @@ svg.generated-art {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
 }
 
-.footer-copyright {
-    position: absolute;
-    bottom: clamp(0.8rem, 2vh, 1.5rem);
-    left: clamp(0.8rem, 2vw, 1.5rem);
-    font-size: clamp(0.5rem, 0.8vw, 0.65rem);
-    color: rgba(255, 255, 255, 0.5);
-    z-index: 100;
-}
-
 .control-hint {
     position: fixed;
-    bottom: clamp(1rem, 2vh, 1.5rem);
-    right: clamp(5rem, 5.208333vw, 7.5rem);
+    bottom: 22px;
+    right: 100px;
     color: #444;
-    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    font-size: 12px;
     pointer-events: none;
     z-index: 9999;
 }
 
 .slide-number {
-    position: absolute;
-    bottom: clamp(0.8rem, 2vh, 1.5rem);
-    right: clamp(0.8rem, 2vw, 1.5rem);
-    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    position: fixed;
+    bottom: 22px;
+    right: 24px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.4);
     z-index: 100;
 }
@@ -469,36 +440,36 @@ svg.generated-art {
     background: rgba(255,255,255,0.05);
     border: 1px solid #333;
     border-radius: 8px;
-    padding: clamp(1rem, 2vh, 1.5rem);
-    margin: clamp(1rem, 2vh, 1.5rem) 0;
+    padding: 22px;
+    margin: 22px 0;
 }
 
 .prompt-content {
     font-family: 'Courier New', monospace;
-    font-size: clamp(1rem, 1.25vw, 2rem);
+    font-size: 24px;
     line-height: 1.6;
     color: #e0e0e0;
     white-space: pre-wrap;
     word-wrap: break-word;
-    padding-right: clamp(5rem, 10vw, 8rem);
+    padding-right: 128px;
 }
 
 .copy-btn {
     position: absolute;
-    top: clamp(0.5rem, 1vh, 0.8rem);
-    right: clamp(0.5rem, 1vw, 0.8rem);
-    padding: clamp(0.4rem, 0.8vh, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem);
+    top: 11px;
+    right: 13px;
+    padding: 9px 19px;
     background: linear-gradient(135deg, #00d4ff, #00ff9d);
     border: none;
     border-radius: 6px;
     color: #000;
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     z-index: 10;
 }
 
@@ -516,5 +487,24 @@ svg.generated-art {
 }
 
 .copy-btn i {
-    font-size: clamp(0.8rem, 1.3vw, 1rem);
+    font-size: 16px;
+}
+
+/* ================================================
+   テキストサイズ・ユーティリティクラス（追加分）
+   ※ slide-template.css の末尾に追記してください
+================================================ */
+
+/* 小さめの本文（32pxと21pxの中間） */
+.text-sub {
+    font-size: 26px;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* 補足・注釈テキスト（最小サイズ = 21px） */
+.text-note {
+    font-size: 21px;
+    line-height: 1.6;
+    color: #999;
 }

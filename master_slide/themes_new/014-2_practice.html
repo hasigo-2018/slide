@@ -3,16 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>プロトタイピングと動的デモ【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>プロトタイピングと動的デモ<span>【実践編】</span></h1>
+                <p>SŌILのWFを"触れるデモ"にする</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 演習①-準備：下層ダミーフレーム作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習①-準備：下層ページのダミーフレーム作成</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="margin-bottom: 1.2rem;">
+                    📐 プロトタイプで遷移させるには、<strong>遷移先のフレームが存在している必要がある</strong>。まず最小限のダミーページを5枚用意する
+                </div>
+                <div class="two-column tiled">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">作成するダミーフレーム（5枚）</h3>
+                        <ul>
+                            <li><strong>About</strong>（1440px幅）</li>
+                            <li><strong>Products</strong>（1440px幅）</li>
+                            <li><strong>Story</strong>（1440px幅）</li>
+                            <li><strong>Contact</strong>（1440px幅）</li>
+                            <li><strong>Shop_External</strong>「外部サイトへ遷移します」のダミー1枚</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">各ダミーに必要な3要素</h3>
+                        <ul>
+                            <li><strong>①</strong> <code>Organism/Header</code> のインスタンスを配置<br><span style="font-size: 0.85rem; color: #aaa;">012のコンポーネントを再利用 → ヘッダー修正が全ページに自動反映</span></li>
+                            <li><strong>②</strong> ページタイトル（テキストのみでOK）</li>
+                            <li><strong>③</strong> 「TOPに戻る」テキストリンクを配置</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #aaa; margin-top: 0.8rem;">中身の作り込みは不要。遷移先として「存在すること」が目的</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: 演習②-Step1：ナビ遷移設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習②-Step 1：ヘッダーナビの画面遷移を設定する</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="margin-bottom: 1.2rem;">
+                    🔧 Figmaの <strong>Prototypeタブ</strong> に切り替え → ヘッダーナビの各項目からドラッグして接続
+                </div>
+                <ul style="margin-bottom: 1.2rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>接続する項目：</strong> About / Products / Story / Contact / Shop（5本）</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>トリガー：</strong> On Click</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>アクション：</strong> Navigate to → 対応するダミーフレーム</li>
+                    <li><strong>トランジション：</strong> Dissolve / 300ms</li>
+                </ul>
+                <div class="two-column tiled">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.6rem;">接続の設定手順</h3>
+                        <ol style="font-size: 0.9rem; line-height: 1.8;">
+                            <li>ナビ項目テキストを選択</li>
+                            <li>青い丸（ハンドル）が右端に出現</li>
+                            <li>ドラッグして遷移先フレームにドロップ</li>
+                            <li>右パネルでアクション・トランジションを確認</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.6rem;">ポイント</h3>
+                        <ul style="font-size: 0.9rem;">
+                            <li>コンポーネントインスタンス内の要素に接続する場合は、インスタンスをダブルクリックして内部要素を選択</li>
+                            <li>接続線は青い矢印で表示される</li>
+                            <li>5本すべて設定できたか確認してから次へ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: 演習②-Step2：戻り導線設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習②-Step 2：各ページからTOPへの戻り導線を設定する</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="margin-bottom: 1.2rem;">
+                    🔄 プロトタイプで<strong>行き止まりを作らない</strong>ために、すべてのダミーページからTOPに戻れる導線を設定する
+                </div>
+                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">About / Products / Story / Contact</h3>
+                        <ul style="font-size: 0.9rem;">
+                            <li>各ダミーフレームの<strong>ヘッダーロゴ</strong><br>→ On Click → Navigate to → TOPフレーム<br><span style="color: #aaa; font-size: 0.85rem;">Dissolve / 300ms</span></li>
+                            <li>「TOPに戻る」テキストリンク<br>→ 同じ設定でOK</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">Shop_External（外部遷移ダミー）</h3>
+                        <ul style="font-size: 0.9rem;">
+                            <li>「戻る」ボタン<br>→ On Click → <strong>Back</strong><br><span style="color: #aaa; font-size: 0.85rem;">アクションは Back を選択。前の画面に戻る</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    ✅ <strong>往復確認：</strong> TOP → About → TOP → Products → TOP の順にクリックして、すべて戻れることを確認してから次の演習へ
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド5: 演習③：セクション内導線リンク設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習③：TOPページ内のセクション導線を設定する</h2>
+            <div class="content-block">
+                <ul style="margin-bottom: 1.2rem; line-height: 2.0;">
+                    <li><strong>Section_02_About</strong>「もっと見る」→ Navigate to → About</li>
+                    <li><strong>Section_03_Products</strong>「すべて見る」→ Navigate to → Products</li>
+                    <li><strong>Section_04_Story</strong>「ストーリーを読む」→ Navigate to → Story</li>
+                    <li><strong>Section_05_Instagram</strong>「フォロー」→ Navigate to → Shop_External</li>
+                    <li><strong>Section_06_CTA</strong>「オンラインショップへ」→ Navigate to → Shop_External</li>
+                    <li><strong>Footer ナビ</strong> → 各項目をヘッダーナビと同じ遷移先に設定</li>
+                </ul>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    <strong>アクションの使い分け整理</strong><br>
+                    同じページ内のセクション移動 → <strong>Scroll to</strong>（今回のTOPページ内スクロール）<br>
+                    別ページへの遷移 → <strong>Navigate to</strong><br>
+                    外部サイトへの遷移（WF段階）→ ダミーフレームへ <strong>Navigate to</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: 演習④-Step1：ドロワーメニュー作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習④-Step 1：ドロワーメニューのフレームを作成する</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="margin-bottom: 1.2rem;">
+                    💡 013で保留していた「ハンバーガーメニュー展開」を、ここで <strong>Open Overlay</strong> として完成させる
+                </div>
+                <div class="two-column tiled">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">フレームのスペック</h3>
+                        <ul style="font-size: 0.9rem; line-height: 1.9;">
+                            <li>フレーム名：<strong>Drawer_Menu</strong></li>
+                            <li>幅：<strong>300px</strong> ／ 高さ：<strong>812px</strong></li>
+                            <li>背景：濃いダーク系（TOP背景と統一）</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">内部レイアウト</h3>
+                        <ul style="font-size: 0.9rem; line-height: 1.9;">
+                            <li>Auto Layout：Vertical / Gap 16px / Padding 24px</li>
+                            <li>上部に「<strong>✕</strong>」閉じるボタンを配置</li>
+                            <li>ナビ項目を縦積み（About / Products / Story / Contact / Shop）</li>
+                            <li>各ナビ項目に Navigate to → 対応ダミーフレームを設定</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.2rem; border-color: #aaa;">
+                    📝 <strong>補足：</strong> 今回はPC版のWF上での練習。SP版ハンバーガーでもまったく同じ手法（Open Overlay）を使うため、Block 5で即応用できる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: 演習④-Step2：Overlay接続設定 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習④-Step 2：Overlayの接続を設定してドロワーを動かす</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">ハンバーガーアイコンの設定</h3>
+                        <ul style="font-size: 0.9rem; line-height: 1.9;">
+                            <li>接続元：ヘッダーの<strong>ハンバーガーアイコン</strong></li>
+                            <li>トリガー：<strong>On Click</strong></li>
+                            <li>アクション：<strong>Open Overlay</strong></li>
+                            <li>遷移先：<strong>Drawer_Menu</strong> フレーム</li>
+                            <li>位置：<strong>Top Right</strong></li>
+                            <li>アニメーション：<strong>Move in from Right / 300ms</strong></li>
+                            <li>背景クリックで閉じる：<strong>ON</strong></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">「✕」ボタンの設定</h3>
+                        <ul style="font-size: 0.9rem; line-height: 1.9;">
+                            <li>接続元：Drawer_Menu内の<strong>✕ ボタン</strong></li>
+                            <li>トリガー：<strong>On Click</strong></li>
+                            <li>アクション：<strong>Back</strong></li>
+                        </ul>
+                        <div style="background: rgba(0,212,255,0.08); border-radius: 6px; padding: 0.8rem; margin-top: 1rem;">
+                            <p style="font-size: 0.88rem; margin: 0; color: #aaa;">Back を使うことで「Overlayを閉じて元の画面に戻る」動作が再現される</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    ▶ <strong>プレビューで動作確認：</strong> ハンバーガーをクリック → 右からドロワーがスライドイン → ナビ項目でページ遷移 → ✕ or 背景クリックで閉じる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド8: プレビュー確認＋セルフチェック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プレビュー確認＋セルフチェック</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">プレビューの起動方法</h3>
+                        <ol style="font-size: 0.9rem; line-height: 1.9;">
+                            <li>右上の <strong>▶（Present）</strong> ボタンをクリック</li>
+                            <li>Flow の開始地点 ＝ <strong>TOPページ</strong></li>
+                            <li>ブラウザが開き、操作可能な状態になる</li>
+                            <li>Share → <strong>Copy link</strong> でプレビューURLを取得</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.8rem;">セルフチェックリスト</h3>
+                        <ul style="font-size: 0.9rem; line-height: 1.9; list-style: none; padding: 0;">
+                            <li>☐ ナビ遷移が全ページ（5接続）正しく動くか</li>
+                            <li>☐ 各ページからTOPに戻れるか</li>
+                            <li>☐ 各セクションのリンクが正しい遷移先か</li>
+                            <li>☐ Overlayの開閉が自然に動くか</li>
+                            <li>☐ トランジションがすべて統一されているか</li>
+                            <li>☐ 行き止まりのページが存在しないか</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    🔗 取得したプレビューURLをコピーして、ブラウザで操作確認。Figmaアカウントがなくても閲覧・操作できる
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: まとめ＋次テーマ予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：3つのアクションで「触れるデモ」が完成した</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.4rem;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">今回使った3アクション</h3>
+                        <ul>
+                            <li><strong>Navigate to</strong><br><span style="font-size: 0.88rem; color: #aaa;">ページ間遷移。ナビ・CTA・セクション導線</span></li>
+                            <li><strong>Open Overlay</strong><br><span style="font-size: 0.88rem; color: #aaa;">ドロワーメニュー。画面の上に重ねて表示</span></li>
+                            <li><strong>Back</strong><br><span style="font-size: 0.88rem; color: #aaa;">Overlay閉じる＆外部ページから戻る</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">達成したこと</h3>
+                        <ul>
+                            <li>コードなしで「触れるデモ」を作成</li>
+                            <li>013の保留事項（ドロワー）を回収・完成</li>
+                            <li>012コンポーネントをダミーページで再利用</li>
+                            <li>プレビューURLでクライアントへ共有可能</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    🎯 <strong>次のテーマ（015）：Figma AI機能の活用</strong><br>
+                    ここまで手動で行ってきたWF設計・コンポーネント作成・プロトタイプ設定をAIで効率化する最新手法を学ぶ。<strong>Block 3 最終テーマ</strong>
+                </div>
+            </div>
+        </div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +270,65 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "下層ページのダミーフレームに012のヘッダーコンポーネント（インスタンス）を再利用するメリットとして最も適切なのはどれですか？",
+        choices: [
+            "ファイルサイズが小さくなるから",
+            "ヘッダーを1か所修正するだけで、TOP＋全ダミーページに自動反映されるから",
+            "プロトタイプの接続が自動で設定されるから",
+            "Auto Layoutが使えるようになるから"
+        ],
+        answer: 1,
+        explanation: "コンポーネントの最大のメリットは「1箇所の修正が全インスタンスに反映される」点です。ヘッダーのデザインを変更した際に、TOPページも全ダミーページも自動で更新されます。これがBlock 2（コンポーネント化）を学んだ実務的な理由のひとつです。"
+    },
+    {
+        question: "TOPページの Section_02_About「もっと見る」ボタンと、ヘッダーナビの「About」リンクに設定するアクションの違いとして正しいのはどれですか？",
+        choices: [
+            "「もっと見る」はScroll to、「About」ナビはNavigate toで別のアクションにする",
+            "違いはない。どちらもNavigate to → Aboutダミーフレームに設定する",
+            "「もっと見る」はOpen Overlay、「About」ナビはNavigate toにする",
+            "「もっと見る」はBack、「About」ナビはNavigate toにする"
+        ],
+        answer: 1,
+        explanation: "どちらも「Aboutページへ遷移する」という目的は同じです。アクションはどちらもNavigate to → Aboutダミーフレームを設定します。同じ遷移先に複数の入口（ナビ・セクションCTA）があることがWFの設計意図であり、プロトタイプでそれを体験として再現します。"
+    },
+    {
+        question: "ドロワーメニューをNavigate toではなくOpen Overlayで実装する理由として正しいのはどれですか？",
+        choices: [
+            "Navigate toよりOpen Overlayの方がアニメーションが速いから",
+            "Open Overlayは現在の画面の上に重ねて表示できるため、背景クリックや✕で閉じて元の画面に戻る動作が再現できるから",
+            "Navigate toはページ間遷移にしか使えないから",
+            "Open OverlayはFigmaの最新機能でNavigate toより優れているから"
+        ],
+        answer: 1,
+        explanation: "Navigate toは「完全に別のページへ遷移する」アクションです。ドロワーメニューは現在のページの上に重なって表示され、閉じると元の画面に戻るUIです。Navigate toで実装すると「閉じて元に戻る」動作が再現できません。Open Overlayを使うことで、重ねて表示→背景クリックや✕で閉じる、という正しい動作が実現できます。"
+    },
+    {
+        question: "プロトタイプのプレビューURLを取得してクライアントに共有する目的として最も適切なのはどれですか？",
+        choices: [
+            "クライアントがFigmaのデータを直接編集できるようにするため",
+            "クライアントがFigmaアカウントなしでブラウザから「触れるデモ」を操作できるようにするため",
+            "プロトタイプをPDFに書き出すため",
+            "デザインの著作権を保護するため"
+        ],
+        answer: 1,
+        explanation: "プレビューURLはFigmaアカウントがなくてもブラウザ上でプロトタイプを操作できる共有リンクです。クライアントはFigmaを持っていない場合が多いため、URLを送るだけで「触れるデモ」を体験してもらえることが大きな利点です。"
+    },
+    {
+        question: "すべてのトランジションをDissolve 300ms / Move in 300msに統一した理由として最も適切なのはどれですか？",
+        choices: [
+            "Dissolve と Move in しかFigmaで選べないから",
+            "300msが最も速いトランジション設定だから",
+            "トランジションがバラバラだとプロトタイプ全体の品質がばらつくため、まず型を統一して安定した体験を提供するから",
+            "クライアントからの指定があったから"
+        ],
+        answer: 2,
+        explanation: "WF段階のプロトタイプは「遷移フローと設計意図を伝えること」が目的です。トランジションの種類や速度がスライドごとに異なると、体験のムラが生じてしまいます。まず型（Dissolve 300ms / Move in 300ms）を統一することで、プロトタイプとしての品質を安定させます。UI詳細設計フェーズで各画面の特性に応じた調整を行います。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

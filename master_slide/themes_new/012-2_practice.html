@@ -4,15 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>Atomic Designと<br>コンポーネント設計<span>【実践編】</span></h1>
+                <p>SŌILのWFを"部品"に分解して再構築する</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 演習①：部品の洗い出し -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習①：部品の洗い出し ― Geminiで5層分類</h2>
+            <div class="content-block">
+                <h3>目的</h3>
+                <p>011で作ったSŌILのTOPページWFに含まれる要素を、Atomic Designの5層に分類します。まずGeminiに叩き台を出してもらい、それを人間がレビューする流れです。</p>
+        
+                <h3>Geminiに入力するプロンプト</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-012-1">
+        以下はオーガニックスキンケアブランド「SŌIL」のTOPページワイヤーフレームの構成要素です。これらをAtomic Designの5層（Atoms / Molecules / Organisms / Templates / Pages）に分類してください。
+        
+        【構成要素】
+        - Header：ロゴ、ナビゲーション（5項目）、CTAボタン「オンラインショップへ」
+        - Section_01_MV：メインビジュアル画像枠、キャッチコピー、サブコピー、CTAボタン
+        - Section_02_About：セクション見出し、ブランド説明テキスト、画像枠
+        - Section_03_Products：セクション見出し、商品カード×3（各カード＝画像枠＋商品名＋価格＋「詳しく見る」リンク）
+        - Section_04_Story：セクション見出し、ストーリーテキスト、画像枠
+        - Section_05_Instagram：セクション見出し、正方形画像枠×6（3×2グリッド）、フォローリンク
+        - Section_06_CTA：見出し、CTAボタン
+        - Footer：ロゴ、ナビゲーションリンク、SNSアイコン×3、コピーライト
+        
+        各要素がどの層に該当するか、理由とともに一覧表で出力してください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-012-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box">
+                    💡 ポイント：Geminiの出力はあくまで「叩き台」。次のスライドで人間が判断を加えます。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: AI出力のレビューと選定 -->
+        <div class="slide-container">
+            <h2 class="slide-title">AI出力のレビューと選定</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>Gemini出力例（分類結果）</h3>
+                    <p><strong>Atoms：</strong></p>
+                    <ul>
+                        <li>CTAボタン</li>
+                        <li>ナビ項目（テキストリンク）</li>
+                        <li>セクション見出し</li>
+                        <li>ロゴ</li>
+                        <li>SNSアイコン</li>
+                        <li>テキストブロック</li>
+                        <li>画像枠</li>
+                    </ul>
+                    <p><strong>Molecules：</strong></p>
+                    <ul>
+                        <li>商品カード（画像＋名前＋価格＋リンク）</li>
+                        <li>Instagramグリッドセル</li>
+                    </ul>
+                    <p><strong>Organisms：</strong></p>
+                    <ul>
+                        <li>Header / Footer / 各Section全体</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>人間が加える判断</h3>
+                    <p>AIは「全部」を分類してくれますが、<strong>全部をコンポーネント化する必要はありません。</strong></p>
+        
+                    <p><strong>判断基準：「2回以上使うか？」</strong></p>
+                    <ul>
+                        <li>✅ CTAボタン → MV、CTA、ヘッダーに<strong>3回以上</strong></li>
+                        <li>✅ 商品カード → Section_03に<strong>×3枚</strong></li>
+                        <li>✅ セクション見出し → <strong>各セクションに1つ</strong></li>
+                        <li>✅ ヘッダー / フッター → <strong>全ページ共通</strong></li>
+                        <li>⬜ ブランド説明テキスト → 1箇所のみ → <strong>後回し</strong></li>
+                    </ul>
+        
+                    <div class="highlight-box">
+                        🏗️ アーキテクトの視点：「使い回し頻度」で優先順位を決めるのがプロの判断。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 演習②-準備：Componentsページ作成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習②-準備：Componentsページ作成</h2>
+            <div class="content-block">
+                <h3>なぜ別ページを作るのか</h3>
+                <p>メインコンポーネントの管理場所を<strong>1箇所にまとめる</strong>ことで、チームの誰もが「部品はここを見ればわかる」状態を作ります。実務では定番の運用手法です。</p>
+        
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> 011のSŌIL WFファイルを開く</p>
+                <p><strong>2.</strong> ページパネル（左上）で「＋」をクリック → 新規ページ追加</p>
+                <p><strong>3.</strong> ページ名を <code>Components</code> に変更</p>
+                <p><strong>4.</strong> WFページはそのまま残す（完成後にインスタンスへ差し替え）</p>
+        
+                <h3>ページ構成のイメージ</h3>
+                <p>ファイル内に2ページ：</p>
+                <ul>
+                    <li><strong>Page 1「TOP WF」</strong>：011で作ったワイヤーフレーム（作業用）</li>
+                    <li><strong>Page 2「Components」</strong>：メインコンポーネントの置き場所（今回新規追加）</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：WFページ上で直接コンポーネント化してしまうと、メインとインスタンスが混在して管理しにくくなります。必ず<strong>Componentsページ</strong>にメインを集めましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 演習②-Atomsを作る -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習②：Atomsを作る ― ボタン＋バリアント</h2>
+            <div class="content-block">
+                <h3>CTAボタンのコンポーネント化</h3>
+                <p><strong>1.</strong> Componentsページに移動</p>
+                <p><strong>2.</strong> グレー矩形（W: 200, H: 48, 角丸: 24）を作成し、中央にテキスト「購入する」を配置</p>
+                <p><strong>3.</strong> 矩形＋テキストを選択 → <strong>Auto Layout</strong> で組む（padding: 上下12 左右32）</p>
+                <p><strong>4.</strong> 選択した状態で <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> → コンポーネント作成</p>
+                <p><strong>5.</strong> 名前を <code>Button/Primary</code> に変更</p>
+        
+                <h3>バリアントの追加（Secondary）</h3>
+                <p><strong>6.</strong> 右パネルの「+」（Add variant）をクリック</p>
+                <p><strong>7.</strong> 新しいバリアントの塗りを「なし」、枠線を追加（1px、グレー）</p>
+                <p><strong>8.</strong> プロパティ名を <code>Type</code>、値を <code>Primary</code> / <code>Secondary</code> に設定</p>
+        
+                <h3>その他のAtomsも同様にコンポーネント化</h3>
+                <ul>
+                    <li><code>Heading/Section</code> ― セクション見出し（バリアント不要）</li>
+                    <li><code>Link/Text</code> ― テキストリンク（バリアント不要）</li>
+                    <li><code>Icon/SNS</code> ― SNSアイコン枠（バリアント不要）</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：Auto Layoutを組む前にコンポーネント化してしまうと、後からAuto Layoutを追加した際にインスタンスとの整合性が崩れることがあります。<strong>Auto Layout → コンポーネント化</strong>の順序を守りましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 演習③-Moleculesを作る①：商品カード -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習③-A：Moleculesを作る ― 商品カード</h2>
+            <div class="content-block">
+                <h3>商品カードの構築手順</h3>
+                <p><strong>1.</strong> Componentsページで、以下の要素を縦に並べる：</p>
+                <ul>
+                    <li>画像枠（矩形 W: 280, H: 200、グレー塗り）</li>
+                    <li>商品名テキスト（例：「フェイスオイル」）</li>
+                    <li>価格テキスト（例：「¥3,800」）</li>
+                    <li><code>Button/Secondary</code> のインスタンスを配置（アセットパネルからドラッグ）</li>
+                </ul>
+                <p><strong>2.</strong> 4つの要素を選択 → <strong>Auto Layout</strong>（縦方向、gap: 12）</p>
+                <p><strong>3.</strong> <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> → 名前を <code>Card/Product</code> に変更</p>
+        
+                <h3>WFのカードをインスタンスに差し替え</h3>
+                <p><strong>4.</strong> WFページに移動 → Section_03_Productsの商品カード3枚を削除</p>
+                <p><strong>5.</strong> アセットパネルから <code>Card/Product</code> を3つ配置</p>
+                <p><strong>6.</strong> 各インスタンスで<strong>テキストを上書き</strong>：</p>
+                <ul>
+                    <li>カード1：フェイスオイル / ¥3,800</li>
+                    <li>カード2：クレンジングバーム / ¥2,900</li>
+                    <li>カード3：ハンドクリーム / ¥1,600</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 構造（レイアウト・間隔・ボタン位置）はメインと同期したまま、テキストと画像だけが異なる。これが<strong>インスタンスの上書き</strong>の力です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 演習③-Moleculesを作る②：Instagramグリッド -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習③-B：Moleculesを作る ― Instagramグリッド</h2>
+            <div class="content-block">
+                <h3>同じ原理を違う文脈で使う</h3>
+                <p>商品カードと同じ「コンポーネント化 → インスタンス配置」の流れを、まったく違うUIパーツで体験します。</p>
+        
+                <h3>操作手順</h3>
+                <p><strong>1.</strong> Componentsページに正方形のグレーボックス（W: 160, H: 160）を作成</p>
+                <p><strong>2.</strong> <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> → 名前を <code>Card/Instagram</code> に変更</p>
+                <p><strong>3.</strong> WFページの Section_05_Instagram に移動</p>
+                <p><strong>4.</strong> <code>Card/Instagram</code> のインスタンスを<strong>6つ</strong>配置</p>
+                <p><strong>5.</strong> 6つのインスタンスを選択 → Auto Layout → <strong>Wrap</strong>を有効化（3列×2行のグリッド）</p>
+        
+                <h3>ここで気づいてほしいこと</h3>
+                <p>「商品カード」も「Instagram投稿枠」も、やっていることは同じ：</p>
+                <ul>
+                    <li>1つのメインコンポーネントを作る</li>
+                    <li>必要な数だけインスタンスを配置する</li>
+                    <li>個別の違いは上書きで対応する</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🏗️ コンポーネント設計は「パターン認識」。形が違っても、同じ仕組みが使い回せることに気づけるかどうかが重要です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 演習④-Organismsを作る①：ヘッダー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習④-A：Organismsを作る ― ヘッダー</h2>
+            <div class="content-block">
+                <h3>ヘッダー全体のコンポーネント化</h3>
+                <p><strong>1.</strong> WFページで <code>Header</code> フレーム全体を選択</p>
+                <p><strong>2.</strong> コピーして Componentsページに貼り付け</p>
+                <p><strong>3.</strong> <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> → 名前を <code>Organism/Header</code> に変更</p>
+                <p><strong>4.</strong> WFページに戻り、元のHeaderを削除 → アセットパネルから <code>Organism/Header</code> のインスタンスを配置</p>
+        
+                <h3>確認ポイント</h3>
+                <p>ヘッダー内のCTAボタンが <code>Button/Primary</code> の<strong>インスタンス</strong>であることを確認してください。Organismsの中にAtomsのインスタンスが含まれている ＝ Atomic Designの入れ子構造です。</p>
+        
+                <h3>5ページ共通化のメリット</h3>
+                <p>SŌILサイトが5ページ構成だとすると、ヘッダーの修正が<strong>メイン1回で5ページ分</strong>反映されます。ナビの項目追加、CTAボタンの色変更、ロゴの差し替え——すべてComponentsページだけで完結します。</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：WFページの要素をコンポーネント化した後、Componentsページに移動せずそのまま作業を続けてしまう。メインは必ずComponentsページに移動させましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 演習④-Organismsを作る②：商品一覧セクション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">演習④-B：Organismsを作る ― 商品一覧セクション</h2>
+            <div class="content-block">
+                <h3>Section_03_Products全体のコンポーネント化</h3>
+                <p><strong>1.</strong> WFページで <code>Section_03_Products</code> フレーム全体を選択</p>
+                <p><strong>2.</strong> コピーして Componentsページに貼り付け</p>
+                <p><strong>3.</strong> <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> → 名前を <code>Organism/ProductList</code> に変更</p>
+                <p><strong>4.</strong> WFページの元のセクションをインスタンスに差し替え</p>
+        
+                <h3>入れ子構造を目で確認する</h3>
+                <p>レイヤーパネルで <code>Organism/ProductList</code> を展開してみてください：</p>
+                <ul>
+                    <li><strong>Organism</strong>：ProductList（セクション全体）</li>
+                    <li>　├ <strong>Atom</strong>：Heading/Section（見出し）</li>
+                    <li>　├ <strong>Molecule</strong>：Card/Product（商品カード×3）</li>
+                    <li>　│　└ <strong>Atom</strong>：Button/Secondary（ボタン）</li>
+                </ul>
+                <p>Atoms → Molecules → Organisms が実際に<strong>入れ子で積み上がっている</strong>のが見えます。これが理論編で学んだ「小さい部品から大きい構造へ」の実体です。</p>
+        
+                <div class="highlight-box">
+                    🏗️ この瞬間が最重要：理論編の図解が、自分のFigmaファイルの中で「実物」として存在していることを確認してください。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: セルフチェック＋まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">セルフチェック＋まとめ</h2>
+            <div class="content-block">
+                <h3>完成チェックリスト</h3>
+                <ul>
+                    <li>☐ 命名規則が <code>カテゴリ/種類</code> で統一されているか</li>
+                    <li>☐ メインコンポーネントが<strong>Componentsページ</strong>に集約されているか</li>
+                    <li>☐ WFページの要素がインスタンスに差し替えられているか</li>
+                    <li>☐ バリアント（Button/Primary ↔ Secondary）が正しく切り替わるか</li>
+                    <li>☐ メインを修正 → 全インスタンスに反映されるか</li>
+                </ul>
+        
+                <h3>動作確認テスト</h3>
+                <p>ComponentsページのButton/Primaryの高さを<strong>48 → 56に変更</strong>してみてください。WFページのすべてのボタンインスタンスが自動で高さ56に更新されるはずです。確認できたら<strong>48に戻して</strong>ください。</p>
+        
+                <h3>今回の成果</h3>
+                <p>011で手作業で並べたWFの要素を、Atomic Designの層に沿って<strong>再構築</strong>しました。同じ見た目のWFでも、裏側の構造がまったく違います。</p>
+        
+                <h3>次テーマ：013 レスポンシブ設計の基礎</h3>
+                <p>今回作成したコンポーネントを、<strong>PC表示だけでなくスマートフォン表示</strong>にも対応させます。同じ部品で異なる画面サイズに対応する考え方を学びます。</p>
+            </div>
+        </div>
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +291,66 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "コンポーネント化する対象を選ぶ際の最も重要な判断基準はどれですか？",
+            options: [
+                "デザインが複雑かどうか",
+                "2回以上使うかどうか",
+                "ファイルサイズが大きいかどうか",
+                "クライアントが指定したかどうか"
+            ],
+            correct: 1,
+            explanation: "コンポーネント化の最優先基準は「使い回し頻度」です。2回以上登場する要素を優先的にコンポーネント化することで、修正コストの削減と一貫性の維持が実現します。すべてをコンポーネント化する必要はなく、1箇所しか使わない要素は後回しで構いません。"
+        },
+        {
+            question: "商品カードのインスタンスで商品名と価格だけを変えたい場合、どうすればよいですか？",
+            options: [
+                "メインコンポーネントを3つ複製して、それぞれのテキストを変える",
+                "インスタンスをDetach（切り離し）してからテキストを編集する",
+                "インスタンスの上書き機能でテキストを個別に変更する",
+                "バリアントとして3種類の商品カードを登録する"
+            ],
+            correct: 2,
+            explanation: "インスタンスの上書き（Override）機能を使えば、メインコンポーネントの構造（レイアウト・間隔・ボタン位置）は維持したまま、テキストや画像だけを個別に変更できます。Detachするとメインとの同期が切れてしまうため、コンポーネント化のメリットが失われます。"
+        },
+        {
+            question: "ヘッダーをOrganismとしてコンポーネント化する最大のメリットはどれですか？",
+            options: [
+                "ヘッダーのデザインが自動的に美しくなる",
+                "ヘッダーのファイルサイズが小さくなる",
+                "5ページ分のヘッダーをメイン1つの修正で全ページに反映できる",
+                "ヘッダーにアニメーションを付けやすくなる"
+            ],
+            correct: 2,
+            explanation: "Organismとしてコンポーネント化すると、メインコンポーネントを1つ修正するだけで、全ページのインスタンスに自動反映されます。ナビ項目の追加やCTAボタンの色変更も、Componentsページだけで完結します。これがコンポーネント設計の最大のメリットです。"
+        },
+        {
+            question: "メインコンポーネントをComponentsページに分けて管理する理由として最も適切なものはどれですか？",
+            options: [
+                "Figmaの処理速度が速くなるため",
+                "WFページにメインコンポーネントを置くとエラーが出るため",
+                "メインコンポーネントの管理場所を1箇所にまとめ、アセット管理を整理するため",
+                "Componentsページに置かないとバリアントが使えないため"
+            ],
+            correct: 2,
+            explanation: "メインコンポーネントの管理場所を1箇所に集約することで、チームの誰もが「部品はここを見ればわかる」状態になります。WFページにメインが混在すると、どれがメインでどれがインスタンスか判別しにくくなり、管理が煩雑になります。"
+        },
+        {
+            question: "Organism（商品一覧セクション）の中にMolecule（商品カード）やAtom（ボタン）が含まれている構造を何と呼びますか？",
+            options: [
+                "フラット構造",
+                "入れ子構造（ネスト）",
+                "並列構造（パラレル）",
+                "継承構造（インヘリタンス）"
+            ],
+            correct: 1,
+            explanation: "Atomic Designの核心は「小さい部品を組み合わせて大きい構造を積み上げる」入れ子構造（ネスト）です。Organism/ProductListの中にCard/Productがあり、さらにその中にButton/Secondaryがある。レイヤーパネルでこの階層を確認できたことが、今回の演習の最も重要な学びです。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

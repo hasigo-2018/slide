@@ -4,27 +4,344 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ブランド・アイデンティティと<br>トンマナの言語化<span>【実践編】</span></h1>
+                <p>Block 2 最終演習——上流設計の集大成</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 今日の実践目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の実践目標</h2>
+            <div class="content-block">
+                <h3>007〜009の全成果物を使い、簡易スタイルガイドを完成させる</h3>
+                <p>Block 2を通じて作ってきたドキュメントを、今日すべて使います。</p>
+                <h3 style="margin-top: 1.5rem;">手元に用意するもの</h3>
+                <ul>
+                    <li><strong>要件定義書（007）</strong>：クライアントの好み・NG・要件</li>
+                    <li><strong>ペルソナシート＋JTBD（008）</strong>：ターゲットの特徴・動機</li>
+                    <li><strong>サイトマップ＋導線図（009）</strong>：ページ構造・情報密度の方針</li>
+                </ul>
+                <div class="highlight-box">
+                    🎯 この演習が完了すると、Block 2の上流設計6点セットが完成します
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: 手順1 Geminiでカラー＋フォント -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 6：Geminiでカラー＋フォントを提案させる</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-010-1">
+        以下の情報をもとに、整骨院サイトのカラーパレットとフォントを提案してください。
+        
+        【ペルソナ】
+        （008で作成したペルソナシートの内容を貼り付ける）
+        
+        【JTBD（主な動機）】
+        （008で作成したJTBDの内容を貼り付ける）
+        
+        【クライアントの好み・NG】
+        （007の要件定義書から「好み・NG」の部分を貼り付ける）
+        
+        【提案してほしい内容】
+        ①カラーパレット：メイン・サブ・アクセントの3色をHEXコード付きで
+        ②フォントの方向性：見出し用・本文用のフォントカテゴリと理由
+        ③選定理由：ペルソナの特徴やJTBDとどう紐づいているかを説明
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-010-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    💡 ペルソナ・JTBD・好み/NGを貼り付けてから送信。情報が多いほど精度が上がります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 手順2 Geminiで写真＋言葉遣い -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 6：Geminiで写真＋言葉遣いを提案させる</h2>
+            <div class="content-block">
+                <h3>続けて別のプロンプトで送信する</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-010-2">
+        先ほどのペルソナ・JTBDをもとに、以下の2点を提案してください。
+        
+        【写真・画像のトーン】
+        ・OK条件を3項目（使うべき写真の特徴）
+        ・NG条件を3項目（避けるべき写真の特徴）
+        ・明るさ・彩度・被写体の雰囲気についても言及
+        
+        【サイト全体の言葉遣いルール】
+        ・敬語の度合い（丁寧体/カジュアル/どの程度か）
+        ・専門用語の扱い方
+        ・CTAボタンの推奨フレーズを2〜3例
+        
+        ※ペルソナが安心感・信頼感を持てるトーンで提案してください
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-010-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    ⚠️ カラー＋フォントと写真＋言葉遣いを分けて送ることで、各回答の精度が上がります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 手順3 AI出力を精査する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 6：AI出力を精査する</h2>
+            <div class="content-block">
+                <h3>Geminiの提案をそのまま使わない——4つの確認軸</h3>
+                <ul>
+                    <li>
+                        <strong>① カラー</strong>：003の色彩心理学と矛盾していないか？<br>
+                        <span style="opacity:0.7; font-size:0.9em;">例）「信頼感を出したい」のに彩度の高い赤系が提案されていたら要再検討</span>
+                    </li>
+                    <li>
+                        <strong>② フォント</strong>：ペルソナの年齢層・デバイスで読みやすいか？<br>
+                        <span style="opacity:0.7; font-size:0.9em;">例）40代メインのサイトで本文フォントが細すぎないか</span>
+                    </li>
+                    <li>
+                        <strong>③ 写真トーン</strong>：007の好み・NGと整合しているか？<br>
+                        <span style="opacity:0.7; font-size:0.9em;">例）「清潔感重視」のはずなのに雑然とした写真をOKにしていないか</span>
+                    </li>
+                    <li>
+                        <strong>④ 言葉遣い</strong>：ペルソナの情報収集習慣に合っているか？<br>
+                        <span style="opacity:0.7; font-size:0.9em;">例）スマホで検索するペルソナに長文・硬い文体は合わない</span>
+                    </li>
+                </ul>
+                <div class="highlight-box">
+                    💡 AIの提案は「たたき台」。最終判断はアーキテクトが行う
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 手順4 余白ルールを自分で決める -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 6：余白ルールを自分で決める</h2>
+            <div class="content-block">
+                <h3>ここはAIに頼らず、自分で判断する</h3>
+                <p>余白は009で決めたサイト構造・情報密度の方針と直結しています。AIに任せると、設計の文脈を無視した提案が返ってきます。</p>
+                <h3 style="margin-top: 1.5rem;">判断の手順</h3>
+                <ul>
+                    <li><strong>Step 1：</strong>009のサイトマップを見る。LP型か複数ページ型か？</li>
+                    <li><strong>Step 2：</strong>ペルソナのJTBDを確認。「じっくり選びたい」か「すぐ解決したい」か？</li>
+                    <li><strong>Step 3：</strong>1〜2文で方針を言語化する</li>
+                </ul>
+                <div class="highlight-box">
+                    ✍️ 記入例：「LP型のため1セクションずつゆったり読ませる構成。セクション間の余白は広め（80px以上）に設定し、信頼感と落ち着きを演出する」
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem; border-left-color: #e74c3c;">
+                    ⚠️ よくある間違い：余白を「好み」で決める。必ずペルソナとサイト構造から逆算すること
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 手順5 Figmaでスタイルガイドを作る -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 5 / 6：Figmaで簡易スタイルガイドを作る</h2>
+            <div class="content-block">
+                <h3>1フレームにまとめる構成</h3>
+                <ul>
+                    <li><strong>上段：</strong>カラーパレット（3色のカラーチップ＋HEXコード）</li>
+                    <li><strong>中段左：</strong>フォント見本（見出し・本文・強調のサンプルテキスト）</li>
+                    <li><strong>中段右：</strong>写真のOK/NG基準（テキストで箇条書き）</li>
+                    <li><strong>下段：</strong>言葉遣いルール＋余白の方針（1〜2文）</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">Figmaでの作業手順</h3>
+                <ul>
+                    <li><strong>1.</strong> 新規フレームを作成（A4横：1122×793px 推奨）</li>
+                    <li><strong>2.</strong> 上段にカラーチップを並べ、HEXコードをテキストで追記</li>
+                    <li><strong>3.</strong> 中段にフォント見本・写真基準を左右に配置</li>
+                    <li><strong>4.</strong> 下段に言葉遣いと余白の方針をテキストで記入</li>
+                </ul>
+                <div class="highlight-box">
+                    ⏱️ 目安時間：15〜20分。完成度より「判断基準が伝わるか」を優先
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 手順6 6点セットを並べて確認 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 6 / 6：6点セットを並べて確認する</h2>
+            <div class="content-block">
+                <h3>Block 2の全成果物が揃っているか確認する</h3>
+                <div class="tiled-content" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div class="tile">
+                        <div class="icon">①</div>
+                        <h3>要件定義書</h3>
+                        <p>007で作成。クライアントの要件・好み・NGをまとめたもの</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">②</div>
+                        <h3>ペルソナシート＋JTBD</h3>
+                        <p>008で作成。ターゲットの特徴と動機を言語化したもの</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">③</div>
+                        <h3>ジャーニーマップ</h3>
+                        <p>008で作成。ユーザーの行動・感情の流れを可視化したもの</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">④</div>
+                        <h3>サイトマップ</h3>
+                        <p>009で作成。ページ構成と階層を整理したもの</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⑤</div>
+                        <h3>導線図</h3>
+                        <p>009で作成。ユーザーの動線とCTAの配置を設計したもの</p>
+                    </div>
+                    <div class="tile" style="border-color: #2ecc71;">
+                        <div class="icon" style="color: #2ecc71;">⑥</div>
+                        <h3 style="color: #2ecc71;">スタイルガイド</h3>
+                        <p>010で作成（今日）。カラー・フォント・写真・言葉遣いのルール</p>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    ✅ この6点が揃って、はじめてデザイナー・エンジニアに発注できる状態になります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: グループ共有・フィードバック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">グループ共有：同じ要件でも答えは違う</h2>
+            <div class="content-block">
+                <h3>スタイルガイドを互いに見せ合う</h3>
+                <p>同じ整骨院・同じペルソナ・同じJTBDを使っていても、カラーや言葉遣いの選択は人によって異なります。</p>
+                <h3 style="margin-top: 1.5rem;">フィードバックの観点</h3>
+                <ul>
+                    <li>カラーの選定理由が、ペルソナ・JTBDと紐づいて説明されているか？</li>
+                    <li>言葉遣いのトーンが、ペルソナの情報収集習慣と合っているか？</li>
+                    <li>写真のOK/NGが、007の好み・NGと矛盾していないか？</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 「なんとなく」ではなく「なぜその判断をしたか」を説明できることが重要。<br>
+                    だからこそ、言語化してルールにまとめることに意味があります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: Block 2完了宣言 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Block 2 完了——上流設計のフルセットが揃いました</h2>
+            <div class="content-block">
+                <h3>007〜010で完成した6点セットは、制作の「羅針盤」になります</h3>
+                <ul>
+                    <li>デザイナーへの発注時に「なんか違う」の修正ループが起きない</li>
+                    <li>自分でも「なぜこのデザインか」を説明できる</li>
+                    <li>修正が発生しても、判断基準があるため迷わず対応できる</li>
+                </ul>
+                <div class="highlight-box">
+                    🎉 整骨院案件はここで完結。Block 3以降では別案件でビジュアル制作に進みます
+                </div>
+                <h3 style="margin-top: 1.5rem;">次のBlock 3では</h3>
+                <p>Figmaを使って、今日完成したスタイルガイドを実際のビジュアルに変換していきます。上流設計があるから、制作で迷わない——それを体験してもらいます。</p>
+            </div>
+        </div>
+        
+        <!-- スライド11: 振り返りワーク -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">振り返りワーク：自分の弱点を自覚する</h2>
+            <div class="content-block">
+                <h3>1人1つ、声に出して共有してください</h3>
+                <div class="highlight-box" style="font-size: 1.1rem; text-align: center; padding: 1.5rem;">
+                    「007〜010を通して、<br>一番難しかったのはどこですか？」
+                </div>
+                <h3 style="margin-top: 1.5rem;">よく挙がる回答例</h3>
+                <ul>
+                    <li>「ペルソナが具体的にイメージできなかった（008）」</li>
+                    <li>「サイトマップの粒度感がわからなかった（009）」</li>
+                    <li>「トンマナの言語化で感覚的になってしまった（010）」</li>
+                    <li>「AIの出力をどこまで信頼すればいいかわからなかった」</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    💡 弱点を自覚することが、Block 3以降の学習を加速させます。<br>
+                    「難しかった」は成長のサインです
+                </div>
+            </div>
+        </div>
 
-         <!-- クイズセクション -->
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "カラーパレットを「青にしよう」と決める前に、必ず確認すべきことはどれか？",
+            options: [
+                "競合サイトで最も使われている色かどうか",
+                "ペルソナ・JTBDから逆算して、その色がターゲットに適切な印象を与えるかどうか",
+                "クライアントが個人的に好きな色かどうか",
+                "トレンドカラーと一致しているかどうか"
+            ],
+            correct: 1,
+            explanation: "カラーは「好み」や「なんとなく」ではなく、ペルソナ・JTBDから逆算します。「安心して任せたい」ならネイビー・グリーン系、「活気・賑わい感」ならオレンジ・赤系など、003の色彩心理学をもとに「なぜその色か」を説明できる状態で選びます。"
+        },
+        {
+            question: "余白ルールをAIに任せず自分で決めるべき理由として、最も適切なものはどれか？",
+            options: [
+                "AIは余白を計算できないから",
+                "余白は009のサイト構造・情報密度の方針と直結しており、設計の文脈を踏まえた判断が必要だから",
+                "余白はデザイナーが決めることなので、指示しなくてよいから",
+                "AIの提案は常に間違っているから"
+            ],
+            correct: 1,
+            explanation: "余白の広さはLP型か複数ページ型か（009のサイトマップ）と、ペルソナのJTBD（「じっくり選びたい」か「すぐ解決したい」か）に直結します。AIはこの設計文脈を把握していないため、自分で判断することがアーキテクトの役割です。"
+        },
+        {
+            question: "Geminiが整骨院サイトに「明朝体」のフォントを提案してきた。どう判断するか？",
+            options: [
+                "AIの提案なので、そのまま採用する",
+                "明朝体はNG。常にゴシック体を選ぶべきだから却下する",
+                "ペルソナの年齢層・デバイス環境で読みやすいか、007の好み・NGと矛盾しないかを確認してから判断する",
+                "競合サイトが使っているフォントに合わせて判断する"
+            ],
+            correct: 2,
+            explanation: "フォント選定はペルソナの属性（年齢・主なデバイス）と007のヒアリング内容で判断します。明朝体が「格式・信頼感」を演出するケースもあれば、スマホメインのユーザーには読みにくいケースもあります。AIの提案はあくまでたたき台として精査します。"
+        },
+        {
+            question: "簡易スタイルガイドに含めるべき最低限の要素はどれか？",
+            options: [
+                "ロゴデータ・アイコン素材・イラスト素材・背景画像",
+                "カラーパレット（HEXコード付き）・フォント見本・写真のOK/NG基準・言葉遣いルール",
+                "ページごとのレイアウト案・ワイヤーフレーム・プロトタイプ",
+                "競合サイトのスクリーンショット・参考デザインのURL集"
+            ],
+            correct: 1,
+            explanation: "簡易スタイルガイドの最低限の要素は「①カラーパレット（HEXコード付き）②フォント見本 ③写真のOK/NG基準 ④言葉遣いルール」の4点です。余白方針も加えると完成度が上がります。ワイヤーフレームやプロトタイプはBlock 3以降で扱います。"
+        },
+        {
+            question: "Block 2の上流設計6点セットが完成したことで、Block 3以降の制作はどう変わるか？",
+            options: [
+                "設計書があるのでデザイナーに丸投げでき、アーキテクトは関与しなくてよくなる",
+                "設計の判断基準が明確になるため、「なんとなく」の迷いがなくなり、制作スピードと品質が上がる",
+                "完成した書類をそのまま納品物として提出できる",
+                "AIが自動的にビジュアルを生成してくれるので、制作工数がゼロになる"
+            ],
+            correct: 1,
+            explanation: "6点セットは「なぜこのデザインか」を説明するための判断基準です。これがあることで、デザイナーへの指示が明確になり、修正の「好み議論」が起きにくくなります。アーキテクトはBlock 3以降も判断・確認・フィードバックの役割を担い続けます。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

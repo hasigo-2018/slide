@@ -3,28 +3,574 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>ペルソナ設計とユーザージャーニー【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ペルソナ設計と<br>ユーザージャーニー<span>【理論編】</span></h1>
+                <p>"30代女性"では、1ピクセルも決まらない</p>
+            </div>
+        </div>
+ 
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「ターゲット：30代女性」では、何も決まらない</h2>
+            <div class="content-block">
+                <h3>007で埋めた要件定義書を思い出してください</h3>
+                <p>「ターゲット：30代女性」と書いた。でも、この一行だけでは、サイトの判断基準にはなりません。</p>
+                <h3>同じ「30代女性」でも、求めるものは真逆</h3>
+                <ul>
+                    <li><strong>時短重視のワーママ：</strong>子どもの保育園お迎え前にスマホで素早く情報を確認したい。読み込みの遅さは致命的。</li>
+                    <li><strong>こだわり派の独身キャリア：</strong>通勤中にブランドストーリーをじっくり読みたい。世界観のあるビジュアルを求める。</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ 同じ属性でも、生活・価値観・状況が違えばサイトに求めるものは全く違う。<br>属性情報だけでは、デザインも文言も構成も決められない。
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>アジェンダ</h3>
+                <ul>
+                    <li><strong>① ペルソナの基本</strong><br>ターゲットとの違い、書くべき項目、良い例と悪い例</li>
+                    <li><strong>② JTBDで「なぜ来たか」を補強する</strong><br>ペルソナの限界を埋めるフレームワーク</li>
+                    <li><strong>③ ユーザージャーニーで体験の流れを描く</strong><br>5ステップで認知からCVまでを設計する</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 ペルソナ × JTBD × ジャーニーの3点セットで、サイト設計の「根拠」を作る
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド4: ペルソナの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>ペルソナとは<br>「実在しそうな1人」として<br>ターゲットを描いたもの</h2>
+            <p>チーム全員が「この人ならどう思う？」で議論できる、判断の共通基準になる人物像</p>
+        </div>
+ 
+        <!-- スライド5: ターゲットとペルソナの違い -->
+        <div class="slide-container">
+            <h2 class="slide-title">ターゲット vs ペルソナ</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ ターゲット（範囲）</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">属性の集合。判断基準にはならない。</p>
+                    <ul>
+                        <li>30代</li>
+                        <li>女性</li>
+                        <li>都内在住</li>
+                        <li>会社員</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ⚠️ 「この人ならどう思う?」と聞けない。<br>範囲が広すぎて議論にならない。
+                    </div>
+                </div>
+                <div>
+                    <h3>✅ ペルソナ(1人)</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">具体的な人物像。判断基準になる。</p>
+                    <ul>
+                        <li>田中理恵、32歳</li>
+                        <li>IT企業の営業職</li>
+                        <li>通勤45分(電車)</li>
+                        <li>情報収集はスマホ中心</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ✅ 「田中さんならこのボタン押す?」<br>チーム全員が同じ基準で議論できる。
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド6: WEB制作用ペルソナの項目 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">WEB制作用ペルソナの8項目</h2>
+            <div class="content-block">
+                <h3>最低限、この8項目を埋める</h3>
+                <ul>
+                    <li><strong>① 名前・年齢：</strong>呼びやすい名前をつける(例:田中理恵、32歳)</li>
+                    <li><strong>② 職業：</strong>業種・職種・役職まで具体的に</li>
+                    <li><strong>③ 生活スタイル:</strong>1日の流れ、休日の過ごし方</li>
+                    <li><strong>④ 課題・悩み:</strong>今、何に困っているか</li>
+                    <li><strong>⑤ サイトに来る動機:</strong>何を求めて来訪するか</li>
+                    <li><strong>⑥ デバイス環境:</strong>スマホ中心/PC中心、通信環境</li>
+                    <li><strong>⑦ 情報収集の習慣:</strong>SNS、検索、口コミ、どれを信頼するか</li>
+                    <li><strong>⑧ 意思決定の傾向:</strong>即決派/比較検討派、価格重視/品質重視</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 この8項目が埋まれば、デザイン・文言・構成の判断基準になる
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド7: 良いペルソナ vs 悪いペルソナ -->
+        <div class="slide-container">
+            <h2 class="slide-title">良いペルソナ vs 悪いペルソナ</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 悪いペルソナ</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">項目を埋めただけ</p>
+                    <ul>
+                        <li>名前:田中理恵</li>
+                        <li>年齢:32歳</li>
+                        <li>職業:会社員</li>
+                        <li>趣味:カフェ巡り</li>
+                        <li>悩み:仕事が忙しい</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ⚠️ 情報はあるが、この人が何に動かされるかが見えない。<br>判断基準にならない。
+                    </div>
+                </div>
+                <div>
+                    <h3>✅ 良いペルソナ</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">行動の理由と感情が見えるストーリーがある</p>
+                    <p>田中理恵(32)は、IT企業営業職。朝7時起床、保育園送りの後、電車でニュース・SNSをチェック。<br>「忙しい中でも、納得して選びたい」が口癖。<br>情報過多に疲れており、「この1本で決まる」と思える根拠を求めている。価格より品質、ただし比較は必ずする。</p>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ✅ 行動の「なぜ」が見えるから、サイトの判断ができる。
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド8: ペルソナの限界 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">でも、ペルソナだけでは足りない</h2>
+            <div class="content-block">
+                <h3>ペルソナが抱える構造的な限界</h3>
+                <p>ペルソナは「誰か(WHO)」を描く優れた道具です。しかし、同じ人でも<strong>状況が変われば求めるものが変わります</strong>。</p>
+                <h3>例:同じ「田中理恵」でも</h3>
+                <ul>
+                    <li><strong>平日の朝(通勤中):</strong>「5秒で必要な情報だけ知りたい」→速度・要点重視</li>
+                    <li><strong>休日の午後(カフェ):</strong>「じっくり比較検討したい」→情報量・詳細重視</li>
+                    <li><strong>会社のPCで調査中:</strong>「上司への提案資料に使いたい」→信頼性・根拠重視</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ 静的な人物像だけでは「なぜ、今、このサイトに来たか」が見えない。<br>→ これを補強するフレームワークがJTBDです。
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド9: JTBDとは -->
+        <div class="slide-container big-concept-layout">
+            <h2>ユーザーはサイトを<br>「雇う」</h2>
+            <p>何かを解決したいから来る。注目すべきは「誰か」ではなく<br>「何を片づけたいか(Job To Be Done)」</p>
+        </div>
+ 
+        <!-- スライド10: ミルクシェイクの例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">古典的な例:ミルクシェイクの話</h2>
+            <div class="content-block">
+                <h3>あるファストフード店の調査結果</h3>
+                <p>ミルクシェイクを買う客の属性(年齢・性別・所得)を分析しても、売上は伸びなかった。しかし<strong>「いつ・なぜ買うか」で見ると、ジョブが全く違う</strong>ことが分かった。</p>
+                <ul>
+                    <li><strong>朝の通勤客:</strong>ジョブ=「暇つぶし+小腹満たし」(片手で飲めて、長持ちするものが欲しい)</li>
+                    <li><strong>夕方の子連れ父親:</strong>ジョブ=「良い父親に見られたい」(子どもに何か買ってあげた実感が欲しい)</li>
+                </ul>
+                <h3>WEB制作に置き換えると</h3>
+                <ul>
+                    <li><strong>整骨院サイトに来る人A:</strong>「急性腰痛で今すぐ近くの院を探したい」(速度・営業時間・距離)</li>
+                    <li><strong>整骨院サイトに来る人B:</strong>「引越し先で長く通える院を選びたい」(実績・口コミ・雰囲気)</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 同じサイトでも、ジョブが違えば、見せるべき情報の優先順位が全く変わる
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド11: ペルソナ × JTBD = 統合型 (SVG図解) -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ペルソナ × JTBD = 統合型</h2>
+            <div class="content-block svg-centered">
+                <h3>WHO × WHY で、サイト設計の根拠が完成する</h3>
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <rect width="800" height="340" fill="transparent"/>
+ 
+                    <!-- 左:ペルソナ(WHO) -->
+                    <circle cx="200" cy="170" r="110" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="200" y="100" text-anchor="middle" fill="#00d4ff" font-size="14" font-family="sans-serif" font-weight="bold">ペルソナ (WHO)</text>
+                    <text x="200" y="125" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">誰か</text>
+                    <text x="200" y="160" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">田中理恵、32歳</text>
+                    <text x="200" y="180" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">IT企業営業職</text>
+                    <text x="200" y="200" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">スマホ中心</text>
+                    <text x="200" y="225" text-anchor="middle" fill="#888" font-size="11" font-family="sans-serif">属性・生活・価値観</text>
+ 
+                    <!-- 右:JTBD(WHY) -->
+                    <circle cx="600" cy="170" r="110" fill="#00ff88" fill-opacity="0.15" stroke="#00ff88" stroke-width="2"/>
+                    <text x="600" y="100" text-anchor="middle" fill="#00ff88" font-size="14" font-family="sans-serif" font-weight="bold">JTBD (WHY)</text>
+                    <text x="600" y="125" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">なぜ来たか</text>
+                    <text x="600" y="160" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">通勤中に、</text>
+                    <text x="600" y="180" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">5秒で要点を</text>
+                    <text x="600" y="200" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">知りたい</text>
+                    <text x="600" y="225" text-anchor="middle" fill="#888" font-size="11" font-family="sans-serif">状況・目的・望む結果</text>
+ 
+                    <!-- 中央:重なり -->
+                    <ellipse cx="400" cy="170" rx="90" ry="60" fill="#ffd93d" fill-opacity="0.2" stroke="#ffd93d" stroke-width="2"/>
+                    <text x="400" y="150" text-anchor="middle" fill="#ffd93d" font-size="13" font-family="sans-serif" font-weight="bold">統合型</text>
+                    <text x="400" y="172" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">この人が、この状況で、</text>
+                    <text x="400" y="190" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">何を解決したいか</text>
+ 
+                    <!-- 下部:結論 -->
+                    <text x="400" y="310" text-anchor="middle" fill="#00d4ff" font-size="14" font-family="sans-serif" font-weight="bold">WHO × WHY = サイト設計の判断根拠</text>
+                </svg>
+                <div class="highlight-box">
+                    ✅ ペルソナ単体でもJTBD単体でも不十分。両方を統合することで「この人が、この状況で、何を解決したいか」が明確になる。
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド12: JTBDの書き方テンプレート -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">JTBDの書き方テンプレート</h2>
+            <div class="content-block">
+                <h3>基本構文</h3>
+                <p style="font-size: 1.1rem; padding: 1rem; background: rgba(0,212,255,0.1); border-left: 3px solid #00d4ff; border-radius: 4px;">
+                「<strong>〔状況〕</strong>のとき、<strong>〔ジョブ〕</strong>したい。<br>そうすれば<strong>〔望む結果〕</strong>になるから」
+                </p>
+                <h3>WEB制作の文脈での3例</h3>
+                <ul>
+                    <li><strong>採用サイト:</strong>「転職を本格検討中のとき、会社の空気感を知りたい。そうすれば面接前に安心できるから」</li>
+                    <li><strong>ECサイト:</strong>「子どもの誕生日プレゼント選びのとき、年齢別のおすすめを見たい。そうすれば失敗せずに選べるから」</li>
+                    <li><strong>BtoBサービスサイト:</strong>「上司に導入提案するとき、導入事例と費用対効果を見たい。そうすれば稟議が通りやすいから」</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 この3要素を埋めれば、サイトに載せるべき情報の優先順位が自動的に決まる
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド13: 統合ペルソナシートのフォーマット -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">統合ペルソナシート:記入例</h2>
+            <div class="content-block">
+                <h3>ペルソナ情報</h3>
+                <ul style="font-size: 0.95rem;">
+                    <li><strong>名前・年齢:</strong>田中理恵、32歳</li>
+                    <li><strong>職業:</strong>IT企業 法人営業(中堅)</li>
+                    <li><strong>生活スタイル:</strong>共働き・保育園児1人。朝7時起床、通勤電車45分</li>
+                    <li><strong>デバイス環境:</strong>スマホ90%、PC10%(会社のみ)</li>
+                    <li><strong>情報収集:</strong>検索→公式サイト→レビュー比較。SNSは参考程度</li>
+                </ul>
+                <h3>ジョブ(状況 × 目的 × 望む結果)</h3>
+                <div style="padding: 1rem; background: rgba(0,255,136,0.1); border-left: 3px solid #00ff88; border-radius: 4px; font-size: 0.95rem;">
+                    <p><strong>状況:</strong>保育園の帰り道、スマホを片手に信号待ちのとき</p>
+                    <p><strong>ジョブ:</strong>5秒以内に「この商品で失敗しないか」を判断したい</p>
+                    <p><strong>望む結果:</strong>迷いなく買い物を終えて、夕食準備に取りかかれる</p>
+                </div>
+                <div class="highlight-box">
+                    📋 実践編で、あなた自身がこのシートをGeminiと対話しながら完成させます
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド14: ユーザージャーニーとは -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ユーザージャーニーとは</h2>
+            <div class="content-block">
+                <h3>定義</h3>
+                <p><strong>ペルソナが「ジョブを解決するまでの体験の流れ」</strong>を時系列で描いたもの。認知から行動までの各段階で、ユーザーが何を考え、何を感じ、どこで接触するかを整理します。</p>
+                <h3>なぜJTBDが必要か</h3>
+                <p>JTBDがない状態でジャーニーを描くと、「なんとなく興味を持って、なんとなく検討して…」という曖昧な流れになります。JTBDがあれば、<strong>ジャーニーの起点(なぜ認知したか)が明確になり</strong>、各段階で何を見せるべきかが決まります。</p>
+                <h3>ジャーニーで見えるもの</h3>
+                <ul>
+                    <li>ユーザーがどのタッチポイントで離脱しやすいか</li>
+                    <li>各段階で不安・疑問が発生するポイント</li>
+                    <li>サイトのどのページで、何を訴求すべきか</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 ジャーニー = サイト全体の「設計図の下敷き」になる
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド15: 5ステップの簡易ジャーニー (SVG図解) -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">5ステップの簡易ジャーニー</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 900 360">
+                    <rect width="900" height="360" fill="transparent"/>
+ 
+                    <!-- 横軸ヘッダー(5ステップ) -->
+                    <rect x="140" y="20" width="140" height="45" rx="6" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="210" y="48" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif" font-weight="bold">① 認知</text>
+ 
+                    <rect x="290" y="20" width="140" height="45" rx="6" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="360" y="48" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif" font-weight="bold">② 興味</text>
+ 
+                    <rect x="440" y="20" width="140" height="45" rx="6" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="510" y="48" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif" font-weight="bold">③ 比較検討</text>
+ 
+                    <rect x="590" y="20" width="140" height="45" rx="6" fill="#0a2a4a" stroke="#00ff88" stroke-width="2"/>
+                    <text x="660" y="48" text-anchor="middle" fill="#00ff88" font-size="13" font-family="sans-serif" font-weight="bold">④ 行動(CV)</text>
+ 
+                    <rect x="740" y="20" width="140" height="45" rx="6" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="810" y="48" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif" font-weight="bold">⑤ リピート/共有</text>
+ 
+                    <!-- 縦軸ラベル(4行) -->
+                    <rect x="15" y="80" width="115" height="55" rx="4" fill="#0a1a2a" stroke="#333" stroke-width="1"/>
+                    <text x="72" y="113" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif" font-weight="bold">行動</text>
+ 
+                    <rect x="15" y="140" width="115" height="55" rx="4" fill="#0a1a2a" stroke="#333" stroke-width="1"/>
+                    <text x="72" y="173" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif" font-weight="bold">思考</text>
+ 
+                    <rect x="15" y="200" width="115" height="55" rx="4" fill="#0a1a2a" stroke="#333" stroke-width="1"/>
+                    <text x="72" y="233" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif" font-weight="bold">感情</text>
+ 
+                    <rect x="15" y="260" width="115" height="55" rx="4" fill="#0a1a2a" stroke="#333" stroke-width="1"/>
+                    <text x="72" y="285" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif" font-weight="bold">タッチ</text>
+                    <text x="72" y="303" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif" font-weight="bold">ポイント</text>
+ 
+                    <!-- マトリクスのセル (5×4=20) -->
+                    <!-- 行:行動 -->
+                    <rect x="140" y="80" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="210" y="105" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">SNS/検索で</text>
+                    <text x="210" y="120" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">偶然目にする</text>
+ 
+                    <rect x="290" y="80" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="360" y="105" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">サイト訪問</text>
+                    <text x="360" y="120" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">トップ閲覧</text>
+ 
+                    <rect x="440" y="80" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="510" y="105" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">他社と比較</text>
+                    <text x="510" y="120" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">口コミ確認</text>
+ 
+                    <rect x="590" y="80" width="140" height="55" fill="#0a2a4a" stroke="#00ff88" stroke-width="1.5"/>
+                    <text x="660" y="105" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">問合せ/購入</text>
+                    <text x="660" y="120" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">申込完了</text>
+ 
+                    <rect x="740" y="80" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="810" y="105" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">SNS投稿</text>
+                    <text x="810" y="120" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">再訪問</text>
+ 
+                    <!-- 行:思考 -->
+                    <rect x="140" y="140" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="210" y="165" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「これ何だろう」</text>
+                    <text x="210" y="180" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「自分に関係?」</text>
+ 
+                    <rect x="290" y="140" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="360" y="165" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「どんな会社?」</text>
+                    <text x="360" y="180" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「信頼できる?」</text>
+ 
+                    <rect x="440" y="140" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="510" y="165" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「他より良い?」</text>
+                    <text x="510" y="180" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「損しない?」</text>
+ 
+                    <rect x="590" y="140" width="140" height="55" fill="#0a2a4a" stroke="#00ff88" stroke-width="1.5"/>
+                    <text x="660" y="165" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「決めた、やろう」</text>
+                    <text x="660" y="180" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「手続き簡単?」</text>
+ 
+                    <rect x="740" y="140" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="810" y="165" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">「良かった、</text>
+                    <text x="810" y="180" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">誰かに勧めたい」</text>
+ 
+                    <!-- 行:感情 -->
+                    <rect x="140" y="200" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="210" y="225" text-anchor="middle" fill="#ffd93d" font-size="11" font-family="sans-serif">😐 中立</text>
+                    <text x="210" y="243" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">好奇心</text>
+ 
+                    <rect x="290" y="200" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="360" y="225" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="sans-serif">🙂 興味</text>
+                    <text x="360" y="243" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">期待感</text>
+ 
+                    <rect x="440" y="200" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="510" y="225" text-anchor="middle" fill="#ff6b6b" font-size="11" font-family="sans-serif">😟 不安</text>
+                    <text x="510" y="243" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">迷い・疑念</text>
+ 
+                    <rect x="590" y="200" width="140" height="55" fill="#0a2a4a" stroke="#00ff88" stroke-width="1.5"/>
+                    <text x="660" y="225" text-anchor="middle" fill="#00ff88" font-size="11" font-family="sans-serif">😊 決意</text>
+                    <text x="660" y="243" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">安心感</text>
+ 
+                    <rect x="740" y="200" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="810" y="225" text-anchor="middle" fill="#00ff88" font-size="11" font-family="sans-serif">😄 満足</text>
+                    <text x="810" y="243" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">愛着・推奨</text>
+ 
+                    <!-- 行:タッチポイント -->
+                    <rect x="140" y="260" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="210" y="285" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">広告/SNS</text>
+                    <text x="210" y="300" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">検索結果</text>
+ 
+                    <rect x="290" y="260" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="360" y="285" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">トップページ</text>
+                    <text x="360" y="300" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">サービス紹介</text>
+ 
+                    <rect x="440" y="260" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="510" y="285" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">事例/料金</text>
+                    <text x="510" y="300" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">比較ページ</text>
+ 
+                    <rect x="590" y="260" width="140" height="55" fill="#0a2a4a" stroke="#00ff88" stroke-width="1.5"/>
+                    <text x="660" y="285" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">フォーム</text>
+                    <text x="660" y="300" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">決済ページ</text>
+ 
+                    <rect x="740" y="260" width="140" height="55" fill="#0f1e2e" stroke="#2a3a4a" stroke-width="1"/>
+                    <text x="810" y="285" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">メール/SNS</text>
+                    <text x="810" y="300" text-anchor="middle" fill="white" font-size="10" font-family="sans-serif">マイページ</text>
+ 
+                    <!-- 注記 -->
+                    <text x="450" y="345" text-anchor="middle" fill="#00ff88" font-size="12" font-family="sans-serif">比較検討段階の「不安」をどう解消するかが、CV率を左右する</text>
+                </svg>
+            </div>
+        </div>
+ 
+        <!-- スライド16: ジャーニーからサイトに必要なページが見える -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ジャーニーは、サイトの「設計図」になる</h2>
+            <div class="content-block">
+                <h3>各ステップとサイトのページの対応</h3>
+                <ul>
+                    <li><strong>① 認知 → </strong>広告LP / SNS投稿 / SEO記事<br>(「これは何?」に1秒で答える)</li>
+                    <li><strong>② 興味 → </strong>トップページ / サービス概要ページ<br>(「どんな会社か・何を提供しているか」を伝える)</li>
+                    <li><strong>③ 比較検討 → </strong>事例・実績ページ / 料金ページ / FAQ<br>(「不安」を解消する材料を揃える)</li>
+                    <li><strong>④ 行動(CV) → </strong>問合せフォーム / 購入ページ<br>(摩擦を減らして、迷いなく行動できる設計にする)</li>
+                    <li><strong>⑤ リピート/共有 → </strong>マイページ / メルマガ / SNS連携<br>(満足を次の顧客につなげる)</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 ジャーニーの5ステップ = サイトに必要なページの骨格。<br>→ 次回009で、これをサイトマップと導線に変換します。
+                </div>
+            </div>
+        </div>
 
-         <!-- クイズセクション -->
+        <!-- スライド17: まとめ (SVG図解) -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ:ペルソナ × JTBD × ジャーニーの3点セット</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <rect width="800" height="340" fill="transparent"/>
+
+                    <!-- 3つの独立した円 -->
+                    <circle cx="160" cy="90" r="75" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="400" cy="90" r="75" fill="#00ff88" fill-opacity="0.15" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="640" cy="90" r="75" fill="#ffd93d" fill-opacity="0.15" stroke="#ffd93d" stroke-width="2"/>
+
+                    <!-- 円1:ペルソナ -->
+                    <text x="160" y="75" text-anchor="middle" fill="#00d4ff" font-size="15" font-family="sans-serif" font-weight="bold">ペルソナ</text>
+                    <text x="160" y="95" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif">(誰)</text>
+                    <text x="160" y="118" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">属性・生活</text>
+                    <text x="160" y="134" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">価値観</text>
+
+                    <!-- 円2:JTBD -->
+                    <text x="400" y="75" text-anchor="middle" fill="#00ff88" font-size="15" font-family="sans-serif" font-weight="bold">JTBD</text>
+                    <text x="400" y="95" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif">(なぜ)</text>
+                    <text x="400" y="118" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">状況・目的</text>
+                    <text x="400" y="134" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">望む結果</text>
+
+                    <!-- 円3:ジャーニー -->
+                    <text x="640" y="75" text-anchor="middle" fill="#ffd93d" font-size="15" font-family="sans-serif" font-weight="bold">ジャーニー</text>
+                    <text x="640" y="95" text-anchor="middle" fill="#aaa" font-size="12" font-family="sans-serif">(どう動く)</text>
+                    <text x="640" y="118" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">認知→CV→</text>
+                    <text x="640" y="134" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif">リピート</text>
+
+                    <!-- 3本の矢印(各円から結論ボックスへ) -->
+                    <line x1="160" y1="170" x2="330" y2="230" stroke="#00d4ff" stroke-width="2.5" stroke-opacity="0.7"/>
+                    <polygon points="325,222 336,232 322,232" fill="#00d4ff"/>
+
+                    <line x1="400" y1="170" x2="400" y2="228" stroke="#00ff88" stroke-width="2.5" stroke-opacity="0.7"/>
+                    <polygon points="394,222 400,234 406,222" fill="#00ff88"/>
+
+                    <line x1="640" y1="170" x2="470" y2="230" stroke="#ffd93d" stroke-width="2.5" stroke-opacity="0.7"/>
+                    <polygon points="478,232 464,232 475,222" fill="#ffd93d"/>
+
+                    <!-- 結論ボックス -->
+                    <rect x="200" y="240" width="400" height="75" rx="10" fill="#0a2a4a" stroke="#00d4ff" stroke-width="2.5"/>
+                    <text x="400" y="270" text-anchor="middle" fill="#00d4ff" font-size="18" font-family="sans-serif" font-weight="bold">根拠あるサイト設計</text>
+                    <text x="400" y="297" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif">判断が「感覚」から「根拠」に変わる</text>
+                </svg>
+                <div class="highlight-box">
+                    ✅ ペルソナ(誰) × JTBD(なぜ) × ジャーニー(どう動く) = サイト設計の意思決定基盤
+                </div>
+            </div>
+        </div>
+ 
+        <!-- スライド18: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回:009「サイトマップと導線設計」</h2>
+            <div class="content-block">
+                <h3>3点セットをサイトの構造に変換する</h3>
+                <p>008で作った「ペルソナ × JTBD × ジャーニー」の3点セットは、まだ設計図の下敷きです。次回は、これを<strong>具体的なサイトマップと導線</strong>に変換していきます。</p>
+                <h3>次回のポイント</h3>
+                <ul>
+                    <li>ジャーニーの5ステップから、必要なページを洗い出す</li>
+                    <li>ユーザーが迷わず目的地にたどり着く導線の作り方</li>
+                    <li>サイトマップのレベル分け(第1階層〜第3階層)</li>
+                </ul>
+                <div class="highlight-box">
+                    📌 実践編で作った統合ペルソナシートを手元に置いておくと、次回の演習がスムーズに進みます
+                </div>
+            </div>
+        </div>
+ 
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "ペルソナとターゲットの最大の違いは何ですか?",
+            options: [
+                "ペルソナは英語で、ターゲットは日本語という言語の違い",
+                "ターゲットは属性の範囲、ペルソナは具体的な1人の人物像",
+                "ターゲットは大人数で、ペルソナは少人数",
+                "ターゲットは新規顧客、ペルソナは既存顧客"
+            ],
+            correct: 1,
+            explanation: "ターゲットは「30代・女性・都内」のように属性の範囲を示すもので、範囲が広すぎて判断基準にはなりません。ペルソナは「田中理恵、32歳、IT企業営業職…」のように具体的な1人の人物像として描くことで、チーム全員が「この人ならどう思う?」という共通基準で議論できるようになります。"
+        },
+        {
+            question: "JTBD(Jobs To Be Done)の考え方を正しく説明しているのはどれですか?",
+            options: [
+                "ユーザーの職業(Job)から行動を予測する考え方",
+                "ユーザーは課題を解決するためにサイトを『雇う』。属性より『何を片づけたいか』が重要",
+                "ユーザーのスキル(Job能力)に合わせてサイトを作る考え方",
+                "ユーザーが就職活動中に見るサイトを設計する考え方"
+            ],
+            correct: 1,
+            explanation: "JTBDは、ユーザーが『何かを片づけたいから』サイトを『雇う』という考え方です。ユーザーの属性(年齢・性別など)ではなく『何を解決したいか』に注目することで、同じ人でも状況によって求めるものが違うという事実を設計に取り込めます。"
+        },
+        {
+            question: "同じペルソナでもJTBDが異なる例として、最も適切なものはどれですか?",
+            options: [
+                "同じ田中理恵さんでも、朝は女性で夜は男性になる",
+                "同じ人が『急性腰痛で今すぐ整骨院を探す』場合と『引越し先で長く通える院を探す』場合ではジョブが違う",
+                "同じ人でも、別のペルソナとしてカウントする必要がある",
+                "同じ人なら、どんな状況でも同じサイトが正解になる"
+            ],
+            correct: 1,
+            explanation: "同じ人物(ペルソナ)でも、状況が変わればジョブは全く異なります。『今すぐ痛みを止めたい』ときは営業時間・距離・速度が重要ですが、『長く通う院を選びたい』ときは実績・口コミ・雰囲気が重要になります。この視点があるから、サイトで優先すべき情報が決められます。"
+        },
+        {
+            question: "ユーザージャーニーの5ステップを順番に並べたものとして正しいのはどれですか?",
+            options: [
+                "認知 → 購入 → 興味 → 比較 → 共有",
+                "興味 → 認知 → 比較検討 → 行動 → リピート",
+                "認知 → 興味 → 比較検討 → 行動(CV) → リピート/共有",
+                "比較 → 認知 → 興味 → 行動 → リピート"
+            ],
+            correct: 2,
+            explanation: "ユーザージャーニーは『認知 → 興味 → 比較検討 → 行動(CV) → リピート/共有』の5ステップが基本です。この順番でユーザーの体験を描くことで、各段階で何を見せるべきかが明確になり、サイトに必要なページの骨格が見えてきます。"
+        },
+        {
+            question: "ペルソナ・JTBD・ジャーニーの3点セットが揃うと、サイト設計はどう変わりますか?",
+            options: [
+                "制作スピードが3倍速くなる",
+                "AIがすべて自動で設計してくれるようになる",
+                "サイト設計の判断が『感覚』ではなく『根拠』に基づくようになる",
+                "クライアントとの打ち合わせが不要になる"
+            ],
+            correct: 2,
+            explanation: "3点セットが揃うと、『なぜこの配色なのか』『なぜこのボタン位置なのか』といった設計判断のすべてに明確な根拠が持てます。『田中さんは通勤中スマホで見るから、ボタンは親指が届く位置に』のように、感覚ではなく論理で説明できる設計になります。これがアーキテクトの仕事です。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

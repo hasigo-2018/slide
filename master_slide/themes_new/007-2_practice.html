@@ -3,28 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>ヒアリングと要件定義の技術【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
-
-         <!-- クイズセクション -->
+        <!-- スライド1: セクションタイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ヒアリングと<br>要件定義の技術<span>【実践編】</span></h1>
+                <p>ヒアリングシートを作り、実際に聞いてみよう — 知識を「体験」に変える</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 今日の実践目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の実践目標</h2>
+            <div class="content-block">
+                <h3>架空案件</h3>
+                <div class="highlight-box">
+                    🏥 「地域密着型の整骨院が、開業5年目でWEBサイトをリニューアルしたい」
+                </div>
+                <h3>今日やること</h3>
+                <ul>
+                    <li><strong>① ヒアリングシートの作成（個人ワーク）</strong><br>Geminiで質問リストを生成し、自分で精査。Figmaでシートをレイアウト</li>
+                    <li><strong>② ロールプレイ（ペアワーク）</strong><br>クライアント役とアーキテクト役に分かれ、実際に「聞く」体験をする</li>
+                    <li><strong>③ 要件定義書への変換</strong><br>ヒアリング結果をGeminiで構造化し、アーキテクトとして精査・編集する</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 理論編で学んだ「なぜ？を3回掘る」「あいまい→具体変換」を実際に体験する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: 手順1 Geminiで質問リストを生成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 4：Geminiで質問リストを生成する</h2>
+            <div class="content-block">
+                <h3>以下のプロンプトをそのままGeminiに入力してください</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-007p-1">
+        整骨院のWEBサイトリニューアル案件のヒアリングで聞くべき質問を、以下の5カテゴリに分類して各3〜5問ずつ提案してください。
+        
+        【案件概要】
+        地域密着型の整骨院。開業5年目。WEBサイトのリニューアルを検討中。
+        
+        【5カテゴリ】
+        ①目的（なぜリニューアルするのか）
+        ②ターゲット（どんな患者に来てほしいか）
+        ③競合（近隣の整骨院・クリニックとの差別化）
+        ④予算・納期
+        ⑤好み・NG（デザインの方向性）
+        
+        各カテゴリの質問は、クライアントの本音を引き出せるオープンクエスチョン形式にしてください。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-007p-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <p style="color: #aaa; font-size: 0.9rem; margin-top: 1rem;">→ Geminiの出力をそのまま使わず、次のスライドで精査します</p>
+            </div>
+        </div>
+        
+        <!-- スライド4: 手順2 AI出力を精査する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 4：AI出力を自分で精査する</h2>
+            <div class="content-block">
+                <h3>以下の3点を必ずチェックする</h3>
+                <ul>
+                    <li>
+                        <strong>① 業種特有の質問が抜けていないか</strong><br>
+                        整骨院ならではの確認事項：予約システムの有無／施術メニューの見せ方／保険診療・自費診療の割合／口コミ・Googleマップとの連携希望 など
+                    </li>
+                    <li>
+                        <strong>② 質問の順番は自然か</strong><br>
+                        いきなり「予算はいくらですか？」から始めると警戒される。「目的→ターゲット→競合→予算→好み」の順が基本
+                    </li>
+                    <li>
+                        <strong>③ YES/NO質問になっていないか</strong><br>
+                        「予約システムは必要ですか？」→ ❌<br>
+                        「今の予約受付はどのようにされていますか？」→ ✅
+                    </li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ AIは汎用的な質問を生成する。業種・規模・地域性を踏まえた「精査」がアーキテクトの仕事
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 手順3 Figmaでヒアリングシートをレイアウト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 4：Figmaでヒアリングシートを作る</h2>
+            <div class="content-block">
+                <h3>作成のポイント</h3>
+                <ul>
+                    <li><strong>5カテゴリを見出しにする</strong><br>①目的 ②ターゲット ③競合 ④予算・納期 ⑤好み・NG を大見出しとして配置</li>
+                    <li><strong>各質問の下に「回答メモ欄」を設ける</strong><br>ヒアリング中にメモできる余白を十分に確保する</li>
+                    <li><strong>「要確認」フラグを付けられるようにする</strong><br>その場で確認できなかった項目を後からフォローできるように</li>
+                </ul>
+                <h3>体裁の基準</h3>
+                <p>「クライアントに見せても恥ずかしくない」仕上がりにする。雑なメモ書きではなく、プロとして整った書類として提出することを意識する。</p>
+                <div class="highlight-box">
+                    ⏱️ 制作時間の目安：15分。完璧を目指さず、まず全カテゴリを埋めることを優先
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: ロールプレイのルール説明 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ロールプレイのルール</h2>
+            <div class="content-block">
+                <h3>進め方</h3>
+                <ul>
+                    <li><strong>2人1組</strong>でペアを組む</li>
+                    <li><strong>クライアント役</strong>：整骨院の院長として回答する。「曖昧カード」の内容をもとに、わざと曖昧な回答をする</li>
+                    <li><strong>アーキテクト役</strong>：作成したヒアリングシートに沿って質問し、「なぜ？」を掘り下げる</li>
+                </ul>
+                <h3>タイムライン</h3>
+                <ul>
+                    <li>第1ラウンド：アーキテクト役でヒアリング実施（10分）</li>
+                    <li>役割交代：クライアント役とアーキテクト役を入れ替え（10分）</li>
+                    <li>振り返り：各自ヒアリング結果をメモに整理（5分）</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 うまく聞けなかった質問も記録しておく。「なぜ聞けなかったか」が重要な学びになる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 曖昧カードの内容例 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">曖昧カードの内容例（クライアント役用）</h2>
+            <div class="content-block">
+                <h3>クライアント役はこの言葉を使って回答する</h3>
+                <ul>
+                    <li>「いい感じにしてほしいんですよね」</li>
+                    <li>「デザインはお任せします」</li>
+                    <li>「なんかこう…今っぽい感じ？」</li>
+                    <li>「競合は特に意識してないです」</li>
+                    <li>「予算はまあ、相場くらいで」</li>
+                    <li>「患者さんに伝わればいいかな」</li>
+                </ul>
+                <div class="highlight-box">
+                    🎯 アーキテクト役のゴール：これらの曖昧な回答を、<strong>具体的な要件</strong>に落とし込むまで掘り下げること<br><br>
+                    ※ 曖昧カードは講師が印刷配布。クライアント役は必ずカードの言葉を使う。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: ロールプレイ実施 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ロールプレイ実施</h2>
+            <div class="content-block">
+                <h3>進行タイムライン</h3>
+                <ul>
+                    <li><strong>① ヒアリング実施（10分）</strong><br>アーキテクト役がヒアリングシートに沿って質問。クライアント役は曖昧カードをもとに回答。回答はその場でメモする</li>
+                    <li><strong>② 役割交代して再度実施（10分）</strong><br>役割を入れ替えて同じ案件を再度ヒアリング。聞き方の違いに注目する</li>
+                    <li><strong>③ ヒアリング結果の整理（5分）</strong><br>各自、ヒアリングで得た情報を5カテゴリに整理してメモにまとめる</li>
+                </ul>
+                <div class="highlight-box">
+                    📝 「聞けたこと」だけでなく「聞けなかったこと・まだ曖昧なこと」も必ずメモしておく
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 手順4 要件定義に変換する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 4：ヒアリング結果を要件定義書に変換する</h2>
+            <div class="content-block">
+                <h3>ヒアリングメモをGeminiに貼り付けて変換する</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-007p-2">
+        以下のヒアリングメモを、WEB制作の要件定義書フォーマットに整理してください。
+        情報が不足している項目は「要確認」と明記してください。
+        
+        【ヒアリングメモ】
+        （ここにロールプレイで得たメモを貼り付ける）
+        
+        【整理してほしい項目】
+        - サイトの目的・KPI
+        - ターゲット像（具体的な患者像）
+        - 必要ページ（施術メニュー・アクセス・予約 など）
+        - デザイン方向性（色・フォント・雰囲気）
+        - 機能要件（予約システム・Googleマップ連携 など）
+        - 参考サイト・NGデザイン
+        - 予算・納期
+        - 要確認事項リスト
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-007p-2', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    ⚠️ AIの出力をそのまま提出しない。自分で修正・補足・削除を加えてから完成とする
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: 発表・フィードバック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">発表・フィードバック</h2>
+            <div class="content-block">
+                <h3>各ペアの要件定義書を全員で確認する</h3>
+                <ul>
+                    <li><strong>確認ポイント①：情報の抜けはないか</strong><br>理論編で学んだ8項目（目的・KPI・ターゲット・ページ構成・機能・参考・NG・予算納期）が揃っているか</li>
+                    <li><strong>確認ポイント②：曖昧なまま残っている項目はないか</strong><br>「いい感じ」「相場くらい」などの曖昧な言葉が残っていれば、そこはまだ要件化できていない</li>
+                    <li><strong>確認ポイント③：整骨院特有の情報が含まれているか</strong><br>予約システム・施術メニューの構成・保険対応の有無など、業種特有の要件が落とし込まれているか</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 「聞けなかった情報」が明確になることも大きな収穫。次回のヒアリングで意識すること。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：008「ペルソナ設計とユーザージャーニー」</h2>
+            <div class="content-block">
+                <h3>今日の要件定義書が、次回のインプットになる</h3>
+                <p>ヒアリングで集めた「ターゲット情報」はまだ断片的なデータ。次回はそれを、具体的な1人の人物像（ペルソナ）に落とし込む。</p>
+                <h3>今日作ったものを保存しておく</h3>
+                <ul>
+                    <li>Figmaのヒアリングシート（そのまま保存）</li>
+                    <li>Geminiで生成・自分で精査した要件定義書（コピーまたはドキュメント保存）</li>
+                </ul>
+                <div class="highlight-box">
+                    📌 次回の演習で、今日の要件定義書を直接使います。<br>特に「ターゲット像」の部分を丁寧に書いておくと次回がスムーズです。
+                </div>
+            </div>
+        </div>
+        
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+    {
+        question: "ヒアリングシートを作る際、Geminiの出力をそのまま使っても良いですか？",
+        options: [
+            "AIが生成したので精度は高く、そのまま使って問題ない",
+            "業種特有の質問の漏れ・質問順序・YES/NO質問の有無を自分で精査してから使う",
+            "Geminiの出力は参考程度で、全て自分で書き直す方が良い",
+            "クライアントに見せなければそのまま使って良い"
+        ],
+        correct: 1,
+        explanation: "Geminiは汎用的な質問を生成しますが、業種特有の確認事項（整骨院なら予約システム・施術メニューの見せ方など）が抜けることがあります。また質問順序や、YES/NO質問になっていないかも自分でチェックが必要です。AIの出力は「叩き台」として活用するのがアーキテクトのスタンスです。"
+    },
+    {
+        question: "クライアントが「デザインはお任せします」と言った場合、アーキテクトとして正しい対応はどれですか？",
+        options: [
+            "「了解です」と答えて自分の判断でデザインを進める",
+            "「お任せ＝何でも良い」と解釈し、作りやすいデザインにする",
+            "「なぜ？」を掘り下げ、好み・NG・参考サイトなど具体的な情報を引き出す",
+            "「お任せ」の場合は要件定義書に『デザイン：自由』と記載する"
+        ],
+        correct: 2,
+        explanation: "「お任せします」は情報がゼロの状態です。クライアント自身がまだ言語化できていないだけで、必ず何らかのイメージや避けたいものがあります。「どんなサイトが好きですか？」「絶対に避けたい色や雰囲気はありますか？」のようなオープンクエスチョンで具体的な情報を引き出すのがアーキテクトの仕事です。"
+    },
+    {
+        question: "ロールプレイで最も重要な気づきはどれですか？",
+        options: [
+            "ヒアリングシートの質問数が多いほど良い情報が得られる",
+            "同じ質問でも聞き方によって得られる情報の質が大きく変わる",
+            "クライアント役の方がアーキテクト役より難しい",
+            "10分以内にすべての質問を終わらせることが重要"
+        ],
+        correct: 1,
+        explanation: "「予算はありますか？」と「予算の上限として想定されている金額はありますか？」では、同じことを聞いていても得られる情報の深さが違います。ロールプレイの目的は、質問の「内容」だけでなく「聞き方・掘り下げ方」によって情報の質がどれだけ変わるかを体感することです。"
+    },
+    {
+        question: "要件定義書に必ず含めるべき最低限の項目はどれですか？",
+        options: [
+            "サイトのタイトル・ページ数・完成イメージ画像",
+            "担当者名・連絡先・ミーティング日程",
+            "サイト目的・ターゲット像・必要ページ・参考サイト・NG事項",
+            "競合サイトのURL・市場規模・業界動向"
+        ],
+        correct: 2,
+        explanation: "要件定義書の最低限の項目は、制作の全工程で判断の根拠になるものです。「サイト目的」がなければ何を作るかわからず、「ターゲット像」がなければ誰に向けて作るかわからず、「参考サイト・NG事項」がなければデザインの方向性が決まりません。この5項目が揃えば、最低限の制作は進められます。"
+    },
+    {
+        question: "今回作った要件定義書は、次回（008）の授業で何に使われますか？",
+        options: [
+            "コーディングの仕様書として使う",
+            "Figmaでのワイヤーフレーム制作のガイドにする",
+            "ペルソナ設計のインプット（ターゲット情報を具体的な人物像に落とし込む）",
+            "競合分析レポートの素材にする"
+        ],
+        correct: 2,
+        explanation: "008「ペルソナ設計とユーザージャーニー」では、今回のヒアリングで集めた「ターゲット情報」を、具体的な1人の人物像（ペルソナ）に落とし込みます。要件定義書の「ターゲット像」の項目が次回演習の直接のインプットになるため、今日の段階でできる限り詳しく書いておくことが重要です。"
+    }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

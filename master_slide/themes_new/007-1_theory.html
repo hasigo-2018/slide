@@ -3,28 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>ヒアリングと要件定義の技術【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ヒアリングと<br>要件定義の技術<span>【理論編】</span></h1>
+                <p>"かっこよく"では、何も作れない</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「かっこよくしてください」は、失敗の始まり</h2>
+            <div class="content-block">
+                <h3>よくあるすれ違いの例</h3>
+                <ul>
+                    <li><strong>クライアント：</strong>「かっこいいサイトにしてほしい」<br>→ デザイナーはモノトーンでクールなデザインを制作<br>→ クライアント：「なんかポップじゃないですね…もっと明るく」</li>
+                    <li><strong>クライアント：</strong>「シンプルにお願いします」<br>→ 情報を削ぎ落としたシンプルなデザインを提出<br>→ クライアント：「情報が少なすぎて物足りないです」</li>
+                    <li><strong>クライアント：</strong>「高級感を出してほしい」<br>→ ダーク配色・ゴールドのデザインを制作<br>→ クライアント：「うちはファミリー向けなので親しみやすさも必要で…」</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ 「かっこいい」の定義は人によって全く違う。<br>言葉をそのまま受け取ると、修正が無限に続く。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>アジェンダ</h3>
+                <ul>
+                    <li><strong>① ヒアリングの基本</strong><br>何を・どう聞くか。聞くべき5カテゴリと質問技術</li>
+                    <li><strong>② 曖昧な要望 → 具体的要件への変換技術</strong><br>「あいまい→具体」変換表と要件定義書の作り方</li>
+                    <li><strong>③ アーキテクトとしてのヒアリング視点</strong><br>デザイナーとの違い。ビジネスゴールから逆算する思考法</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 前回（006）で学んだ全体工程マップの「最初のステップ」を深掘りします
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: ヒアリングの目的 -->
+        <div class="slide-container big-concept-layout">
+            <h2>ヒアリングの目的は<br>クライアントの「頭の中」を<br>言語化すること</h2>
+            <p>クライアント自身も、自分が何を求めているか言語化できていないことがほとんど。<br>それを引き出すのがアーキテクトの仕事。</p>
+        </div>
+        
+        <!-- スライド5: 聞くべき5カテゴリ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">聞くべき5カテゴリ</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>① 目的</strong>：「このサイトで何を達成したいですか？」「サイトがない今、何が困っていますか？」</li>
+                    <li><strong>② ターゲット</strong>：「主なお客様はどんな方ですか？」「BtoB・BtoCどちらですか？」</li>
+                    <li><strong>③ 競合</strong>：「意識している競合他社はありますか？」「参考にしたいサイトはありますか？」</li>
+                    <li><strong>④ 予算・納期</strong>：「予算の上限はありますか？」「公開必須の日程はありますか？」</li>
+                    <li><strong>⑤ 好み・NG</strong>：「絶対に避けたいデザインはありますか？」「好きなサイトのイメージカラーはありますか？」</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 この5カテゴリが揃えば、要件定義書の骨格が完成する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: なぜ？を3回掘るテクニック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「なぜ？」を3回掘るテクニック</h2>
+            <div class="content-block svg-centered">
+                <h3>表層の要望から本質的なニーズへ</h3>
+                <svg class="generated-art" viewBox="0 0 800 280">
+                    <rect width="800" height="280" fill="transparent"/>
+                    <rect x="20" y="110" width="160" height="60" rx="8" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="100" y="135" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">クライアントの言葉</text>
+                    <text x="100" y="155" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif" font-weight="bold">「かっこよくして」</text>
+                    <line x1="180" y1="140" x2="210" y2="140" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="210,134 222,140 210,146" fill="#00d4ff"/>
+                    <text x="201" y="130" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="sans-serif">なぜ？</text>
+                    <rect x="222" y="110" width="160" height="60" rx="8" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="302" y="135" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">1回掘る</text>
+                    <text x="302" y="155" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif" font-weight="bold">「信頼感がほしい」</text>
+                    <line x1="382" y1="140" x2="412" y2="140" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="412,134 424,140 412,146" fill="#00d4ff"/>
+                    <text x="403" y="130" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="sans-serif">なぜ？</text>
+                    <rect x="424" y="100" width="160" height="80" rx="8" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="504" y="122" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">2回掘る</text>
+                    <text x="504" y="143" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">「BtoB取引先に</text>
+                    <text x="504" y="162" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">見せるから」</text>
+                    <line x1="584" y1="140" x2="614" y2="140" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="614,134 626,140 614,146" fill="#00d4ff"/>
+                    <text x="605" y="130" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="sans-serif">なぜ？</text>
+                    <rect x="626" y="90" width="154" height="100" rx="8" fill="#0a2a4a" stroke="#00ff88" stroke-width="2"/>
+                    <text x="703" y="113" text-anchor="middle" fill="#00ff88" font-size="11" font-family="sans-serif">本質（3回掘る）</text>
+                    <text x="703" y="133" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">「新規取引の</text>
+                    <text x="703" y="152" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">決裁者が見るから</text>
+                    <text x="703" y="171" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">信頼性が必要」</text>
+                    <text x="400" y="240" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">「なぜ？」を繰り返すことで、表層の要望から本質的なニーズへたどり着く</text>
+                </svg>
+                <div class="highlight-box">
+                    ✅ 本質がわかれば、「紺・グレー基調・明朝体・大企業感のある写真」という具体的な要件が導ける
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 良い質問 vs 悪い質問 -->
+        <div class="slide-container">
+            <h2 class="slide-title">良い質問 vs 悪い質問</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>✅ オープンクエスチョン</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">相手の言葉を引き出す</p>
+                    <ul>
+                        <li>「このサイトで、どんな成果を期待していますか？」</li>
+                        <li>「理想のお客様はどんな方ですか？」</li>
+                        <li>「好きなサイトと嫌いなサイト、それぞれ教えてください」</li>
+                        <li>「今のサイトで一番困っていることは何ですか？」</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        💡 「何を・どんな・なぜ」で始まる質問が基本
+                    </div>
+                </div>
+                <div>
+                    <h3>❌ 誘導・YES/NO質問</h3>
+                    <p style="color: #aaa; margin-bottom: 1rem;">本音が出ない</p>
+                    <ul>
+                        <li>「シンプルなデザインがいいですよね？」（誘導）</li>
+                        <li>「青系の色でよいですか？」（YES/NO）</li>
+                        <li>「モダンな感じにしますか？」（曖昧な誘導）</li>
+                        <li>「この方向性でよいですか？」（早期確認）</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ⚠️ クライアントは「はい」と答えがちで本音が出ない
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: ヒアリング→要件定義の変換プロセス -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ヒアリング → 要件定義の変換プロセス</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 240">
+                    <rect width="800" height="240" fill="transparent"/>
+                    <rect x="20" y="70" width="150" height="100" rx="10" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="95" y="100" text-anchor="middle" fill="#00d4ff" font-size="28" font-family="sans-serif">📝</text>
+                    <text x="95" y="128" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">ヒアリング</text>
+                    <text x="95" y="148" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">メモ・録音</text>
+                    <line x1="170" y1="120" x2="200" y2="120" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="200,114 212,120 200,126" fill="#00d4ff"/>
+                    <rect x="212" y="70" width="150" height="100" rx="10" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="287" y="100" text-anchor="middle" fill="#00d4ff" font-size="28" font-family="sans-serif">🗂️</text>
+                    <text x="287" y="128" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">整理・分類</text>
+                    <text x="287" y="148" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">5カテゴリで整理</text>
+                    <line x1="362" y1="120" x2="392" y2="120" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="392,114 404,120 392,126" fill="#00d4ff"/>
+                    <rect x="404" y="70" width="150" height="100" rx="10" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="479" y="100" text-anchor="middle" fill="#00d4ff" font-size="28" font-family="sans-serif">⚖️</text>
+                    <text x="479" y="128" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">優先順位付け</text>
+                    <text x="479" y="148" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">Must / Want / Nice</text>
+                    <line x1="554" y1="120" x2="584" y2="120" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="584,114 596,120 584,126" fill="#00d4ff"/>
+                    <rect x="596" y="60" width="180" height="120" rx="10" fill="#0a2a4a" stroke="#00ff88" stroke-width="2"/>
+                    <text x="686" y="95" text-anchor="middle" fill="#00ff88" font-size="28" font-family="sans-serif">📄</text>
+                    <text x="686" y="125" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="sans-serif">要件定義書</text>
+                    <text x="686" y="148" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">全員の認識を揃える</text>
+                    <text x="686" y="166" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">共有ドキュメント</text>
+                    <text x="400" y="210" text-anchor="middle" fill="#888" font-size="12" font-family="sans-serif">ヒアリング情報をそのまま渡さず、必ず「整理→優先順位付け」のプロセスを経ること</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド9: 要件定義書に含めるべき項目 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">要件定義書に含めるべき項目</h2>
+            <div class="content-block">
+                <ul>
+                    <li><strong>サイトの目的：</strong>何のためにサイトを作るのか（問い合わせ獲得・採用・認知拡大 など）</li>
+                    <li><strong>KPI：</strong>成功の定義。「月間問い合わせ10件」「直帰率60%以下」など数値で</li>
+                    <li><strong>ターゲット像：</strong>年齢・職業・悩み・行動パターン（できれば1人の具体的な人物像まで）</li>
+                    <li><strong>必要ページ：</strong>トップ・サービス・会社概要・お問い合わせ など構成ページ</li>
+                    <li><strong>機能要件：</strong>お問い合わせフォーム・予約システム・会員機能 など</li>
+                    <li><strong>参考サイト（好き・嫌い）：</strong>「このサイトの雰囲気が好き」「これは嫌い」両方必須</li>
+                    <li><strong>NG事項：</strong>絶対に避けること。色・表現・写真の方向性など</li>
+                    <li><strong>予算・納期：</strong>上限金額と公開必須日</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 この8項目が揃えば、制作の全工程で迷わない。抜けがあると後で手戻りが発生する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: あいまい→具体 変換表 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">「あいまい → 具体」変換表</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 366">
+                    <rect width="800" height="340" fill="transparent"/>
+                    <rect x="20" y="10" width="240" height="36" rx="4" fill="#1a3a5c" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="140" y="33" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold" font-family="sans-serif">クライアントの言葉</text>
+                    <rect x="280" y="10" width="500" height="36" rx="4" fill="#1a3a5c" stroke="#00ff88" stroke-width="1"/>
+                    <text x="530" y="33" text-anchor="middle" fill="#00ff88" font-size="14" font-weight="bold" font-family="sans-serif">具体的な要件への変換</text>
+                    <rect x="20" y="56" width="240" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="140" y="84" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「シンプルに」</text>
+                    <rect x="280" y="56" width="500" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="530" y="84" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">余白多め・テキスト量を削る・色数3色以内</text>
+                    <rect x="20" y="108" width="240" height="44" rx="4" fill="#111e2e"/>
+                    <text x="140" y="136" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「高級感を出して」</text>
+                    <rect x="280" y="108" width="500" height="44" rx="4" fill="#111e2e"/>
+                    <text x="530" y="136" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">ダーク配色・セリフ体・余白大きめ・写真は人物より物</text>
+                    <rect x="20" y="160" width="240" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="140" y="188" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「親しみやすく」</text>
+                    <rect x="280" y="160" width="500" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="530" y="188" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">丸ゴシック・暖色系（オレンジ・黄）・笑顔の人物写真</text>
+                    <rect x="20" y="212" width="240" height="44" rx="4" fill="#111e2e"/>
+                    <text x="140" y="240" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「信頼感がほしい」</text>
+                    <rect x="280" y="212" width="500" height="44" rx="4" fill="#111e2e"/>
+                    <text x="530" y="240" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">紺・グレー基調・明朝体 or ゴシック・整ったグリッド</text>
+                    <rect x="20" y="264" width="240" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="140" y="292" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「モダンに」</text>
+                    <rect x="280" y="264" width="500" height="44" rx="4" fill="#0d1f35"/>
+                    <text x="530" y="292" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">サンセリフ体・非対称レイアウト・黒白グレー＋アクセント1色</text>
+                    <rect x="20" y="316" width="240" height="44" rx="4" fill="#111e2e"/>
+                    <text x="140" y="342" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif">「にぎやかに」</text>
+                    <rect x="280" y="316" width="500" height="44" rx="4" fill="#111e2e"/>
+                    <text x="530" y="342" text-anchor="middle" fill="#ccc" font-size="13" font-family="sans-serif">色数多め・イラスト活用・文字サイズの変化大・動きあり</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド11: 要件定義書のBefore/After -->
+        <div class="slide-container">
+            <h2 class="slide-title">要件定義書のBefore / After</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ Before（悪い例）</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 1rem;">制作の現場で使えない曖昧な記述</p>
+                    <ul>
+                        <li>サイトの方向性：<strong>おしゃれで信頼感のあるサイト</strong></li>
+                        <li>デザインイメージ：<strong>高級感がありつつも親しみやすい感じ</strong></li>
+                        <li>色：<strong>いい感じの色で</strong></li>
+                        <li>参考サイト：<strong>特になし</strong></li>
+                        <li>NG：<strong>なんか安っぽいのはNG</strong></li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top:1rem;">
+                        ⚠️ 「高級感」と「親しみやすい」は方向性が矛盾している。<br>この情報では制作できない。
+                    </div>
+                </div>
+                <div>
+                    <h3>✅ After（良い例）</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 1rem;">制作の全工程で迷わない具体的な記述</p>
+                    <ul>
+                        <li>目的：<strong>BtoB新規取引先への信頼構築・問い合わせ月10件獲得</strong></li>
+                        <li>ターゲット：<strong>製造業の購買担当者（40代男性）</strong></li>
+                        <li>色：<strong>紺＃1a3a6c・グレー＃f5f5f5・アクセント金＃c8a951</strong></li>
+                        <li>参考（好き）：<strong>SmartHR・Sansan（洗練された企業サイト）</strong></li>
+                        <li>NG：<strong>ポップ・丸ゴシック・イラスト・明るいオレンジ系</strong></li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top:1rem;">
+                        ✅ 具体的な数値・条件・参考サイトが明記されているため、<br>制作者が迷わず進められる。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: AIで要件定義を補助する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AIで要件定義を補助する</h2>
+            <div class="content-block">
+                <h3>Geminiに曖昧な要望を構造化させるプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-007-1">
+        以下のクライアントからの要望を、WEB制作の要件定義書形式に整理してください。
+        不明な点は「要確認」として明示し、具体化が必要な箇所には「→ 確認すべき質問」を添えてください。
+        
+        【クライアントの要望】
+        「会社のホームページをリニューアルしたい。今のサイトは古くてダサいので、おしゃれで信頼感のあるデザインにしてほしい。予算はそんなにないけど、早めに作ってほしい。」
+        
+        【整理してほしい項目】
+        - サイトの目的・KPI
+        - ターゲット像
+        - デザイン方向性（具体的な色・フォントの方向性）
+        - 必要ページ
+        - 予算・納期の目安
+        - 要確認事項リスト
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-007-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.2rem;">
+                    ⚠️ AIの出力は「叩き台」。クライアントの業種・文化・予算感はAIには判断できない。<br>
+                    最終的な要件定義は、必ずアーキテクト自身が精査・編集する。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: デザイナー vs アーキテクトのヒアリング -->
+        <div class="slide-container">
+            <h2 class="slide-title">デザイナー vs アーキテクトのヒアリング</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>🎨 デザイナーの質問</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 1rem;">見た目・好みを中心に聞く</p>
+                    <ul>
+                        <li>「好きな色はありますか？」</li>
+                        <li>「フォントはどんな雰囲気がよいですか？」</li>
+                        <li>「写真を使いますか？イラストですか？」</li>
+                        <li>「参考にしたいデザインはありますか？」</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        視覚表現の方向性を決める質問。<br>ビジネスゴールには直接触れない。
+                    </div>
+                </div>
+                <div>
+                    <h3>🏗️ アーキテクトの質問</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 1rem;">ビジネスゴールから逆算して聞く</p>
+                    <ul>
+                        <li>「このサイトで、3ヶ月後に何が変わっていれば成功ですか？」</li>
+                        <li>「今サイトに来た人の何割が問い合わせしていますか？」</li>
+                        <li>「競合と比べて、御社の一番の強みは何ですか？」</li>
+                        <li>「決裁者は誰で、何を見てOKを出しますか？」</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        ゴールから逆算し、デザインの「なぜ」を決める質問。<br>見た目の前にビジネスを理解する。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド14: 006工程マップでの位置確認 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">006の工程マップで今いる場所を確認</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 200">
+                    <rect width="800" height="200" fill="transparent"/>
+                    <rect x="10" y="60" width="130" height="80" rx="8" fill="#0a2a4a" stroke="#00ff88" stroke-width="2.5"/>
+                    <text x="75" y="92" text-anchor="middle" fill="#00ff88" font-size="11" font-weight="bold" font-family="sans-serif">✅ 今ここ</text>
+                    <text x="75" y="112" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">ヒアリング</text>
+                    <text x="75" y="130" text-anchor="middle" fill="#aaa" font-size="11" font-family="sans-serif">要件定義</text>
 
-         <!-- クイズセクション -->
+                    <polygon points="143,93 143,107 153,100" fill="#00ff88"/>
+
+                    <rect x="155" y="70" width="110" height="60" rx="8" fill="#1a2a3a" stroke="#333" stroke-width="1"/>
+                    <text x="210" y="97" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">企画・設計</text>
+                    <text x="210" y="117" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">IA・ワイヤー</text>
+
+                    <polygon points="268,93 268,107 278,100" fill="#333"/>
+
+                    <rect x="280" y="70" width="110" height="60" rx="8" fill="#1a2a3a" stroke="#333" stroke-width="1"/>
+                    <text x="335" y="97" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">デザイン</text>
+                    <text x="335" y="117" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">UI制作</text>
+
+                    <polygon points="393,93 393,107 403,100" fill="#333"/>
+
+                    <rect x="405" y="70" width="110" height="60" rx="8" fill="#1a2a3a" stroke="#333" stroke-width="1"/>
+                    <text x="460" y="97" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">コーディング</text>
+                    <text x="460" y="117" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">実装</text>
+
+                    <polygon points="518,93 518,107 528,100" fill="#333"/>
+
+                    <rect x="530" y="70" width="110" height="60" rx="8" fill="#1a2a3a" stroke="#333" stroke-width="1"/>
+                    <text x="585" y="97" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">テスト・修正</text>
+                    <text x="585" y="117" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">QA</text>
+
+                    <polygon points="643,93 643,107 653,100" fill="#333"/>
+
+                    <rect x="655" y="70" width="130" height="60" rx="8" fill="#1a2a3a" stroke="#333" stroke-width="1"/>
+                    <text x="720" y="97" text-anchor="middle" fill="#888" font-size="13" font-family="sans-serif">公開・運用</text>
+                    <text x="720" y="117" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">改善</text>
+                    <text x="400" y="175" text-anchor="middle" fill="#00ff88" font-size="13" font-family="sans-serif">ここの質が後工程すべてに影響する。手戻りを防ぐ最重要工程。</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド15: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：ヒアリングと要件定義の技術</h2>
+            <div class="content-block">
+                <h3>今日の4つのポイント</h3>
+                <ul>
+                    <li><strong>① ヒアリング＝相手の頭の中を言語化する作業</strong><br>クライアント自身が言語化できていないことを引き出すのがアーキテクトの役割</li>
+                    <li><strong>② 「なぜ？」を3回掘って本質に到達する</strong><br>「かっこよく」という表層の言葉の奥に、本当のビジネスゴールがある</li>
+                    <li><strong>③ 曖昧な言葉を具体的な要件に変換する</strong><br>「シンプルに＝余白多め・色数3色以内」のように数値・条件で落とし込む</li>
+                    <li><strong>④ 要件定義書で全員の認識を揃える</strong><br>8項目を文書化することで、制作中の「言った言わない」を防ぐ</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 ヒアリングの質が、サイト全体の質を決める。最初の1時間に全力を注ぐ。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド16: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：008「ペルソナ設計とユーザージャーニー」</h2>
+            <div class="content-block">
+                <h3>今日の要件定義を「人物像」に変換する</h3>
+                <p>ヒアリングで集めた「ターゲット情報」は、まだ断片的なデータに過ぎない。次回はそれを具体的な1人の人物像（ペルソナ）に仕上げ、その人が取る行動の流れ（ユーザージャーニー）を設計する方法を学ぶ。</p>
+                <h3>次回のポイント</h3>
+                <ul>
+                    <li>ペルソナとは何か？なぜ「1人に絞る」のか</li>
+                    <li>GeminiでのAI活用ペルソナ生成と、アーキテクトによる精査</li>
+                    <li>ユーザージャーニーマップの読み方・作り方</li>
+                </ul>
+                <div class="highlight-box">
+                    📌 今日の要件定義書を手元に置いておくと、次回の演習がスムーズに進みます
+                </div>
+            </div>
+        </div>
+        
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "ヒアリングで最初に聞くべき5カテゴリのうち、最も重要なものはどれですか？",
+            options: [
+                "好み・NG（絶対に避けたいデザイン）",
+                "目的（なぜサイトを作るのか）",
+                "競合（意識している競合他社）",
+                "予算・納期（上限金額と公開日）"
+            ],
+            correct: 1,
+            explanation: "「目的」が最重要です。なぜサイトを作るのかが明確でないと、その後の全ての判断（デザイン・機能・構成）の根拠がなくなります。目的から逆算してすべての要件を決めるのがアーキテクトの思考法です。"
+        },
+        {
+            question: "クライアントが「シンプルにしてほしい」と言った場合、アーキテクトとして正しい対応はどれですか？",
+            options: [
+                "すぐに余白多めのシンプルなデザインを作り始める",
+                "「シンプル＝余白多め・色数3色以内」と解釈してそのまま進める",
+                "「なぜ？」を掘り下げて本質的な要望を引き出し、具体的な要件に変換する",
+                "「シンプルですね、了解です」と答えて次の質問に進む"
+            ],
+            correct: 2,
+            explanation: "「シンプル」は曖昧な言葉です。人によって「情報量が少ない」「モノトーン」「余白が多い」など全く異なる意味を持ちます。「なぜシンプルにしたいのですか？」と掘り下げ、本質的なニーズを引き出してから具体的な要件に変換する必要があります。"
+        },
+        {
+            question: "要件定義書に「おしゃれで信頼感のあるサイト」と書くことの問題点はどれですか？",
+            options: [
+                "文字数が少なすぎる",
+                "「おしゃれ」と「信頼感」は一般的に方向性が一致しているので問題ない",
+                "英語で書くべきなので日本語がNG",
+                "具体的な色・フォント・参考サイト・NG事項まで落とし込まれておらず、制作者が判断できない"
+            ],
+            correct: 3,
+            explanation: "「おしゃれ」「信頼感」は人によって全く異なるイメージを持つ曖昧な表現です。要件定義書には、色コード・フォントの方向性・参考サイトURL・絶対NGの要素などを具体的に記載する必要があります。曖昧なままでは制作者が独自判断で進めることになり、認識のズレが生まれます。"
+        },
+        {
+            question: "GeminiでクライアントのヒアリングメモをAIに整理させた後、アーキテクトがやるべきことは何ですか？",
+            options: [
+                "AIの出力をそのままクライアントに送る",
+                "AI出力を鵜呑みにせず、自分の判断で精査・編集してから使う",
+                "AIが整理したので要件定義は完成とみなしてよい",
+                "AIの出力より自分でゼロから書き直す方が良い"
+            ],
+            correct: 1,
+            explanation: "AIは情報を「構造化する」ことは得意ですが、クライアントの業種・文化・予算感・業界の慣習などはAIには判断できません。AI出力はあくまで「叩き台」です。最終的な要件定義は、アーキテクト自身がビジネス理解をもとに精査・編集する必要があります。"
+        },
+        {
+            question: "ヒアリングで「YES/NO質問」を避けるべき最も重要な理由はどれですか？",
+            options: [
+                "質問の回答が短くなるので記録しにくいから",
+                "クライアントが混乱するから",
+                "クライアントが「はい」と答えがちになり、本音や潜在的なニーズを引き出せなくなるから",
+                "会話のテンポが悪くなるから"
+            ],
+            correct: 2,
+            explanation: "「この色でいいですか？」のようなYES/NO質問は、クライアントが無意識に「はい」と答えてしまいやすい問いかけです。本当は違うイメージを持っていても、相手に引きずられてしまいます。「どんな色がイメージに合いますか？」のようなオープンクエスチョンで、相手の言葉を引き出すことが大切です。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

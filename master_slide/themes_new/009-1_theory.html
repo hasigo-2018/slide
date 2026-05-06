@@ -3,28 +3,667 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>サイトマップと導線設計【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
-
-         <!-- クイズセクション -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>サイトマップと導線設計<span>【理論編】</span></h1>
+                <p>ページを並べただけでは、サイトにならない</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ページ一覧は「素材リスト」に過ぎない</h2>
+            <div class="content-block">
+                <p>008では「必要なページ」が見えてきました。ペルソナがいて、ジャーニーがあり、どんな情報を届けるべきかもわかった。</p>
+                <p style="margin-top: 1.5rem;">でも、ここで止まると<strong>ページの羅列</strong>になってしまいます。</p>
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    📋 必要なページ：トップ、サービス紹介、料金、よくある質問、お問い合わせ…<br><br>
+                    ❓ これだけでは答えられない問いがあります：<br>
+                    「ユーザーはどのページからどこへ移動するのか？」<br>
+                    「どこでCVを促すのか？」<br>
+                    「どこで離脱するのか？」
+                </div>
+                <p style="margin-top: 1.5rem;">ページ同士の<strong>関係性・回遊・CVポイントの設計</strong>が、サイト制作の本質です。</p>
+            </div>
+        </div>
+        
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>① サイトマップの基本</h3>
+                <p>サイト全体の「地図」をどう描くか。ページ構造の考え方を習得する。</p>
+        
+                <h3>② LP型と複数ページ型の違い</h3>
+                <p>どちらの型を選ぶべきか。判断基準を明確にする。</p>
+        
+                <h3>③ CTAまでの導線ロジック</h3>
+                <p>ユーザーを意図した順番で誘導し、CVに繋げる設計の考え方を学ぶ。</p>
+        
+                <div class="highlight-box">
+                    🎯 このセクションを終えると：<br>
+                    クライアントから「サイト作って」と言われたとき、<br>
+                    「どんな構造にするか」を論理的に提案できるようになります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: サイトマップとは -->
+        <div class="slide-container big-concept-layout">
+            <h2>サイトマップとは<br><span style="font-size: 0.6em; opacity: 0.8;">Site Map</span></h2>
+            <p>サイト全体のページ構造を俯瞰する「地図」<br>008の必要ページをどう配置するかの設計図</p>
+        </div>
+        
+        <!-- スライド5: ツリー型構造の基本 SVG -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ツリー型構造と3クリックルール</h2>
+            <div class="content-block svg-centered">
+                <p style="margin-bottom: 1rem;">どんなサイトもトップを起点に階層が広がる。ユーザーは<strong>3クリック以内</strong>に目的の情報へたどり着けるべき。</p>
+                <svg class="generated-art" viewBox="0 0 800 320">
+                    <!-- トップページ -->
+                    <rect x="320" y="20" width="160" height="50" fill="#00d4ff" opacity="0.25" stroke="#00d4ff" stroke-width="2" rx="8"/>
+                    <text x="400" y="50" text-anchor="middle" fill="white" font-size="16" font-weight="bold">トップページ</text>
+                    <text x="400" y="65" text-anchor="middle" fill="#00d4ff" font-size="11">1クリック目</text>
+        
+                    <!-- 縦線 トップ→カテゴリ -->
+                    <line x1="400" y1="70" x2="400" y2="100" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+                    <!-- 横線 -->
+                    <line x1="120" y1="100" x2="680" y2="100" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+        
+                    <!-- カテゴリ1 サービス -->
+                    <line x1="120" y1="100" x2="120" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+                    <rect x="40" y="120" width="160" height="50" fill="#7b61ff" opacity="0.25" stroke="#7b61ff" stroke-width="2" rx="8"/>
+                    <text x="120" y="148" text-anchor="middle" fill="white" font-size="14">サービス紹介</text>
+                    <text x="120" y="163" text-anchor="middle" fill="#7b61ff" font-size="11">2クリック目</text>
+        
+                    <!-- カテゴリ2 料金 -->
+                    <line x1="280" y1="100" x2="280" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+                    <rect x="200" y="120" width="160" height="50" fill="#7b61ff" opacity="0.25" stroke="#7b61ff" stroke-width="2" rx="8"/>
+                    <text x="280" y="148" text-anchor="middle" fill="white" font-size="14">料金・プラン</text>
+                    <text x="280" y="163" text-anchor="middle" fill="#7b61ff" font-size="11">2クリック目</text>
+        
+                    <!-- カテゴリ3 実績 -->
+                    <line x1="520" y1="100" x2="520" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+                    <rect x="440" y="120" width="160" height="50" fill="#7b61ff" opacity="0.25" stroke="#7b61ff" stroke-width="2" rx="8"/>
+                    <text x="520" y="148" text-anchor="middle" fill="white" font-size="14">実績・事例</text>
+                    <text x="520" y="163" text-anchor="middle" fill="#7b61ff" font-size="11">2クリック目</text>
+        
+                    <!-- カテゴリ4 お問合せ -->
+                    <line x1="680" y1="100" x2="680" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+                    <rect x="600" y="120" width="160" height="50" fill="#7b61ff" opacity="0.25" stroke="#7b61ff" stroke-width="2" rx="8"/>
+                    <text x="680" y="148" text-anchor="middle" fill="white" font-size="14">お問い合わせ</text>
+                    <text x="680" y="163" text-anchor="middle" fill="#7b61ff" font-size="11">2クリック目</text>
+        
+                    <!-- 詳細ページ（サービス配下）-->
+                    <line x1="80" y1="170" x2="80" y2="200" stroke="#7b61ff" stroke-width="1.5" opacity="0.4"/>
+                    <rect x="20" y="200" width="120" height="44" fill="#ff6b9d" opacity="0.2" stroke="#ff6b9d" stroke-width="1.5" rx="6"/>
+                    <text x="80" y="223" text-anchor="middle" fill="white" font-size="12">Aプランの詳細</text>
+                    <text x="80" y="238" text-anchor="middle" fill="#ff6b9d" font-size="10">3クリック目</text>
+        
+                    <line x1="160" y1="170" x2="160" y2="200" stroke="#7b61ff" stroke-width="1.5" opacity="0.4"/>
+                    <rect x="100" y="200" width="120" height="44" fill="#ff6b9d" opacity="0.2" stroke="#ff6b9d" stroke-width="1.5" rx="6"/>
+                    <text x="160" y="223" text-anchor="middle" fill="white" font-size="12">Bプランの詳細</text>
+                    <text x="160" y="238" text-anchor="middle" fill="#ff6b9d" font-size="10">3クリック目</text>
+        
+                    <!-- 3クリックルール注釈 -->
+                    <rect x="250" y="270" width="300" height="40" fill="none" stroke="#00d4ff" stroke-width="1" rx="6" stroke-dasharray="4,3"/>
+                    <text x="400" y="286" text-anchor="middle" fill="#00d4ff" font-size="13">⚠️ 3クリックルール</text>
+                    <text x="400" y="303" text-anchor="middle" fill="white" font-size="12">目的のページまで最大3回のクリックで到達できること</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド6: LP型 vs 複数ページ型 -->
+        <div class="slide-container">
+            <h2 class="slide-title">LP型 vs 複数ページ型：構造の違い</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>📄 LP型（ランディングページ）</h3>
+                    <p><strong>構造：</strong>1ページ完結、縦スクロール</p>
+                    <p style="margin-top: 0.8rem;"><strong>身近な例：</strong></p>
+                    <ul>
+                        <li>健康食品・化粧品の商品販売ページ</li>
+                        <li>オンライン講座の申し込みページ</li>
+                        <li>期間限定キャンペーン告知</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        共通点：<br>「1つの商品を1つのアクションに導く」
+                    </div>
+                </div>
+                <div>
+                    <h3>🗂️ 複数ページ型</h3>
+                    <p><strong>構造：</strong>ナビゲーションで回遊</p>
+                    <p style="margin-top: 0.8rem;"><strong>身近な例：</strong></p>
+                    <ul>
+                        <li>企業のコーポレートサイト</li>
+                        <li>クリニック・飲食店のHP</li>
+                        <li>ECサイト・ポータルサイト</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 1rem;">
+                        共通点：<br>「複数の情報を整理して伝える」
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 具体例で見るLP vs 複数ページ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">具体例：同じ業種でも型が変わる</h2>
+            <div class="content-block">
+                <h3>例① 「新発売の美容液を売りたい」→ LP型</h3>
+                <p>商品は1つ、CVは「購入」のみ。迷わせずに1つのゴールへ誘導する。</p>
+        
+                <h3>例② 「整骨院のHPを作りたい」→ 複数ページ型</h3>
+                <p>施術メニュー・料金・アクセス・スタッフ紹介など情報が多岐にわたる。ナビゲーションで整理する必要がある。</p>
+        
+                <h3>例③ 「整骨院が期間限定キャンペーンを告知」→ LP型</h3>
+                <p>同じ整骨院でも<strong>目的が「キャンペーン申し込み1択」</strong>に絞られるためLP型が適切。</p>
+        
+                <div class="highlight-box">
+                    💡 ポイント：業種で判断するのではなく、<strong>「目的とCVの数」</strong>で判断する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 判断基準まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">LP型 vs 複数ページ型：判断基準</h2>
+            <div class="content-block">
+                <h3>① 売るもの・伝えるものの数</h3>
+                <p>1つ → LP型　／　複数 → 複数ページ型</p>
+        
+                <h3>② CVの種類</h3>
+                <p>1択（購入・申し込みなど）→ LP型　／　複数のCV → 複数ページ型</p>
+        
+                <h3>③ 情報量</h3>
+                <p>1ページに収まる → LP型　／　収まらない → 複数ページ型</p>
+        
+                <h3>④ 更新頻度</h3>
+                <p>低い → LP型　／　高い（ブログ・商品追加など）→ 複数ページ型＋CMS</p>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「小さい会社だからLP型でいい」<br>
+                    ✅ 正しい視点：規模ではなく「何を・誰に・どう届けるか」で決める
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: グローバルナビとフッターの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">グローバルナビとフッターの役割</h2>
+            <div class="content-block">
+                <h3>グローバルナビゲーション＝案内板</h3>
+                <p>サイト内のどのページにいても、全体の主要ページへアクセスできる常設メニュー。「今どこにいるか」をユーザーに伝える役割も担う。</p>
+                <ul>
+                    <li>項目は<strong>5〜7つ以内</strong>が原則（認知負荷）</li>
+                    <li>最も重要なCVページを右端か強調色で配置</li>
+                    <li>現在地のハイライト（アクティブ状態）は必須</li>
+                </ul>
+        
+                <h3>フッター＝総合案内所</h3>
+                <p>スクロール最下部に位置し、ナビに入りきらなかった補足情報を網羅的に並べる。「最後まで読んだユーザー」向けの最終CVボタンも定番。</p>
+                <ul>
+                    <li>プライバシーポリシー・会社概要など法的リンク</li>
+                    <li>サイトマップリンク（SEO効果もある）</li>
+                    <li>CTAボタンを再配置して離脱を防ぐ</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- スライド10: 導線とは -->
+        <div class="slide-container big-concept-layout">
+            <h2>導線とは<br><span style="font-size: 0.6em; opacity: 0.8;">User Flow</span></h2>
+            <p>ユーザーを「設計者の意図した順番」で<br>誘導する仕組み</p>
+        </div>
+        
+        <!-- スライド11: CTAまでの導線ロジック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">CTAまでの導線ロジック</h2>
+            <div class="content-block">
+                <h3>基本思想：すべてのページがCVに向かう</h3>
+                <p>どのページもゴール（CV）へ誘導する機能を持つべきです。「このページを見た人は次にどこへ行くか？」を全ページで考えることが導線設計の本質。</p>
+        
+                <h3>導線を機能させる3つの要素</h3>
+                <ul>
+                    <li><strong>CTA（Call To Action）:</strong> ユーザーに次の行動を促すボタン・リンク</li>
+                    <li><strong>内部リンク:</strong> 関連ページへの自然な誘導（「詳しくはこちら」）</li>
+                    <li><strong>視線誘導:</strong> 001で学んだFパターン・Zパターンでの配置設計</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「お問い合わせページにだけCTAを置く」<br>
+                    ✅ 正しい設計：すべてのページに「次の行動」を設ける
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド12: LP型の導線パターン SVG -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">LP型の導線パターン</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300">
+                    <!-- セクションボックス -->
+                    <!-- FV -->
+                    <rect x="20" y="30" width="110" height="50" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="2" rx="6"/>
+                    <text x="75" y="60" text-anchor="middle" fill="white" font-size="13" font-weight="bold">FV</text>
+                    <text x="75" y="75" text-anchor="middle" fill="#00d4ff" font-size="10">ファーストビュー</text>
+        
+                    <line x1="130" y1="55" x2="155" y2="55" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow)"/>
+        
+                    <!-- 課題提起 -->
+                    <rect x="155" y="30" width="110" height="50" fill="#7b61ff" opacity="0.3" stroke="#7b61ff" stroke-width="2" rx="6"/>
+                    <text x="210" y="57" text-anchor="middle" fill="white" font-size="12">課題提起</text>
+                    <text x="210" y="72" text-anchor="middle" fill="#7b61ff" font-size="10">悩みの共感</text>
+        
+                    <line x1="265" y1="55" x2="290" y2="55" stroke="#7b61ff" stroke-width="2" marker-end="url(#arrow2)"/>
+        
+                    <!-- 解決策 -->
+                    <rect x="290" y="30" width="110" height="50" fill="#7b61ff" opacity="0.3" stroke="#7b61ff" stroke-width="2" rx="6"/>
+                    <text x="345" y="57" text-anchor="middle" fill="white" font-size="12">解決策提示</text>
+                    <text x="345" y="72" text-anchor="middle" fill="#7b61ff" font-size="10">商品・サービス</text>
+        
+                    <line x1="400" y1="55" x2="425" y2="55" stroke="#7b61ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        
+                    <!-- 根拠 -->
+                    <rect x="425" y="30" width="110" height="50" fill="#7b61ff" opacity="0.3" stroke="#7b61ff" stroke-width="2" rx="6"/>
+                    <text x="480" y="57" text-anchor="middle" fill="white" font-size="12">根拠・実績</text>
+                    <text x="480" y="72" text-anchor="middle" fill="#7b61ff" font-size="10">信頼性担保</text>
+        
+                    <line x1="535" y1="55" x2="560" y2="55" stroke="#7b61ff" stroke-width="2" marker-end="url(#arrow4)"/>
+        
+                    <!-- 安心 -->
+                    <rect x="560" y="30" width="110" height="50" fill="#7b61ff" opacity="0.3" stroke="#7b61ff" stroke-width="2" rx="6"/>
+                    <text x="615" y="57" text-anchor="middle" fill="white" font-size="12">安心材料</text>
+                    <text x="615" y="72" text-anchor="middle" fill="#7b61ff" font-size="10">FAQ・保証</text>
+        
+                    <line x1="670" y1="55" x2="695" y2="55" stroke="#ff6b9d" stroke-width="2" marker-end="url(#arrowCTA)"/>
+        
+                    <!-- CTA -->
+                    <rect x="695" y="20" width="90" height="70" fill="#ff6b9d" opacity="0.4" stroke="#ff6b9d" stroke-width="2.5" rx="6"/>
+                    <text x="740" y="52" text-anchor="middle" fill="white" font-size="13" font-weight="bold">CTA</text>
+                    <text x="740" y="68" text-anchor="middle" fill="white" font-size="10">申し込み</text>
+                    <text x="740" y="82" text-anchor="middle" fill="white" font-size="10">購入</text>
+        
+                    <!-- 中間CTAの説明 -->
+                    <rect x="155" y="120" width="540" height="50" fill="#ff6b9d" opacity="0.1" stroke="#ff6b9d" stroke-width="1.5" rx="6" stroke-dasharray="5,3"/>
+                    <text x="425" y="142" text-anchor="middle" fill="white" font-size="13" font-weight="bold">中間CTAゾーン</text>
+                    <text x="425" y="160" text-anchor="middle" fill="#ff6b9d" font-size="12">解決策〜安心材料のセクション終わりごとに「お問い合わせはこちら」ボタンを配置</text>
+        
+                    <!-- 下向き矢印 -->
+                    <line x1="210" y1="80" x2="210" y2="120" stroke="#ff6b9d" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+                    <line x1="345" y1="80" x2="345" y2="120" stroke="#ff6b9d" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+                    <line x1="480" y1="80" x2="480" y2="120" stroke="#ff6b9d" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+                    <line x1="615" y1="80" x2="615" y2="120" stroke="#ff6b9d" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+        
+                    <!-- ポイント -->
+                    <text x="400" y="210" text-anchor="middle" fill="white" font-size="13">縦スクロールで「共感 → 信頼 → 決断」の感情ジャーニーを設計する</text>
+                    <text x="400" y="235" text-anchor="middle" fill="#00d4ff" font-size="12">中間CTAを複数置くことで「読んだタイミング」でいつでも申し込める状態にする</text>
+        
+                    <!-- 矢印マーカー定義 -->
+                    <defs>
+                        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                        </marker>
+                        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#7b61ff"/>
+                        </marker>
+                        <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#7b61ff"/>
+                        </marker>
+                        <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#7b61ff"/>
+                        </marker>
+                        <marker id="arrowCTA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#ff6b9d"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド13: 複数ページ型の導線パターン -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">複数ページ型の導線パターン</h2>
+            <div class="content-block">
+                <h3>トップページはハブ（玄関）</h3>
+                <p>すべての流入を受け止め、適切な下層ページへ振り分ける。ユーザーの属性・目的別に出口を設計する。</p>
+        
+                <h3>各ページに必ずCTAを配置</h3>
+                <p>「この情報を読んだ人が次に取るべき行動」をページごとに設定する。サービス紹介ページなら「料金ページへ」「お問い合わせへ」の2択。</p>
+        
+                <h3>回遊を促す3つの仕組み</h3>
+                <ul>
+                    <li><strong>パンくずリスト：</strong>「今どこにいるか」を明示し、上位ページへ戻れる</li>
+                    <li><strong>関連ページ誘導：</strong>「この記事を見た人はこちらも」的な横断リンク</li>
+                    <li><strong>内部リンク：</strong>本文中に自然な流れで深層ページへ誘導</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「詳細ページに来たらそのまま離脱させる」<br>
+                    ✅ 正しい設計：詳細ページにも「次の一手」を必ず用意する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド14: 離脱ポイントを予測する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">離脱ポイントを予測する（001との接続）</h2>
+            <div class="content-block">
+                <h3>ジャーニーの「感情が下がるステップ」＝離脱リスク</h3>
+                <p>008で作ったジャーニーマップを思い出してください。「不安になる」「面倒に感じる」「信頼できるか迷う」タイミングは離脱が起きやすい。</p>
+        
+                <h3>離脱リスクの高い場面と対処法</h3>
+                <ul>
+                    <li><strong>「料金を見て躊躇する」→</strong> 料金ページにFAQ・プランの比較表を添付</li>
+                    <li><strong>「本当に効果があるか不安」→</strong> 実績・口コミ・ビフォーアフターを直前に配置</li>
+                    <li><strong>「問い合わせが面倒そう」→</strong> フォームを短くし「3分で完了」と明記</li>
+                    <li><strong>「怪しいかもしれない」→</strong> 運営会社情報・メディア掲載歴を信頼シグナルとして配置</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 001で学んだ認知心理学のポイント：<br>
+                    人は「損失回避バイアス」があるため、不安を取り除く情報は<br>
+                    CVボタンの直前に置くと効果が高い
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド15: ジャーニーマップとサイトマップの対応図 SVG（格上げ） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ジャーニーマップ × サイトマップ対応図</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 340">
+                    <!-- 上段：ジャーニーステップ -->
+                    <text x="400" y="22" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">【008 ユーザージャーニー】</text>
+        
+                    <!-- ステップ1 認知 -->
+                    <rect x="20" y="35" width="130" height="48" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5" rx="6"/>
+                    <text x="85" y="57" text-anchor="middle" fill="white" font-size="13" font-weight="bold">認知</text>
+                    <text x="85" y="74" text-anchor="middle" fill="#00d4ff" font-size="11">検索・SNS発見</text>
+        
+                    <!-- ステップ2 興味 -->
+                    <rect x="165" y="35" width="130" height="48" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5" rx="6"/>
+                    <text x="230" y="57" text-anchor="middle" fill="white" font-size="13" font-weight="bold">興味・関心</text>
+                    <text x="230" y="74" text-anchor="middle" fill="#00d4ff" font-size="11">何ができるか確認</text>
+        
+                    <!-- ステップ3 比較 -->
+                    <rect x="310" y="35" width="130" height="48" fill="#7b61ff" opacity="0.2" stroke="#7b61ff" stroke-width="1.5" rx="6"/>
+                    <text x="375" y="57" text-anchor="middle" fill="white" font-size="13" font-weight="bold">比較・検討</text>
+                    <text x="375" y="74" text-anchor="middle" fill="#7b61ff" font-size="11">他社と見比べる</text>
+        
+                    <!-- ステップ4 不安 -->
+                    <rect x="455" y="35" width="130" height="48" fill="#ff6b9d" opacity="0.2" stroke="#ff6b9d" stroke-width="1.5" rx="6"/>
+                    <text x="520" y="57" text-anchor="middle" fill="white" font-size="13" font-weight="bold">不安・躊躇</text>
+                    <text x="520" y="74" text-anchor="middle" fill="#ff6b9d" font-size="11">料金・品質が心配</text>
+        
+                    <!-- ステップ5 決断 -->
+                    <rect x="600" y="35" width="180" height="48" fill="#ff6b9d" opacity="0.3" stroke="#ff6b9d" stroke-width="2" rx="6"/>
+                    <text x="690" y="57" text-anchor="middle" fill="white" font-size="13" font-weight="bold">決断・CV</text>
+                    <text x="690" y="74" text-anchor="middle" fill="#ff6b9d" font-size="11">申し込み・購入</text>
+        
+                    <!-- ジャーニー→サイト 接続矢印 -->
+                    <line x1="85" y1="83" x2="85" y2="145" stroke="#00d4ff" stroke-width="1.5" opacity="0.7" stroke-dasharray="4,3"/>
+                    <line x1="230" y1="83" x2="230" y2="145" stroke="#00d4ff" stroke-width="1.5" opacity="0.7" stroke-dasharray="4,3"/>
+                    <line x1="375" y1="83" x2="375" y2="145" stroke="#7b61ff" stroke-width="1.5" opacity="0.7" stroke-dasharray="4,3"/>
+                    <line x1="520" y1="83" x2="520" y2="145" stroke="#ff6b9d" stroke-width="1.5" opacity="0.7" stroke-dasharray="4,3"/>
+                    <line x1="690" y1="83" x2="690" y2="145" stroke="#ff6b9d" stroke-width="1.5" opacity="0.7" stroke-dasharray="4,3"/>
+        
+                    <!-- 中段ラベル -->
+                    <text x="400" y="135" text-anchor="middle" fill="white" font-size="11" opacity="0.6">↓ 対応するページ・コンテンツ</text>
+        
+                    <!-- 下段：サイトページ -->
+                    <text x="400" y="162" text-anchor="middle" fill="#7b61ff" font-size="13" font-weight="bold">【009 サイトマップ上のページ】</text>
+        
+                    <!-- 対応ページ1 -->
+                    <rect x="20" y="172" width="130" height="60" fill="#1a1a3e" stroke="#00d4ff" stroke-width="1.5" rx="6"/>
+                    <text x="85" y="197" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">トップページ</text>
+                    <text x="85" y="213" text-anchor="middle" fill="white" font-size="10">FV・キャッチコピー</text>
+                    <text x="85" y="227" text-anchor="middle" fill="white" font-size="10">SEO・広告流入受け口</text>
+        
+                    <!-- 対応ページ2 -->
+                    <rect x="165" y="172" width="130" height="60" fill="#1a1a3e" stroke="#00d4ff" stroke-width="1.5" rx="6"/>
+                    <text x="230" y="197" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">サービス紹介</text>
+                    <text x="230" y="213" text-anchor="middle" fill="white" font-size="10">機能・特徴の説明</text>
+                    <text x="230" y="227" text-anchor="middle" fill="white" font-size="10">ベネフィット訴求</text>
+        
+                    <!-- 対応ページ3 -->
+                    <rect x="310" y="172" width="130" height="60" fill="#1a1a3e" stroke="#7b61ff" stroke-width="1.5" rx="6"/>
+                    <text x="375" y="197" text-anchor="middle" fill="#7b61ff" font-size="12" font-weight="bold">実績・事例</text>
+                    <text x="375" y="213" text-anchor="middle" fill="white" font-size="10">導入事例・口コミ</text>
+                    <text x="375" y="227" text-anchor="middle" fill="white" font-size="10">競合との差別化</text>
+        
+                    <!-- 対応ページ4 -->
+                    <rect x="455" y="172" width="130" height="60" fill="#1a1a3e" stroke="#ff6b9d" stroke-width="1.5" rx="6"/>
+                    <text x="520" y="197" text-anchor="middle" fill="#ff6b9d" font-size="12" font-weight="bold">料金・FAQ</text>
+                    <text x="520" y="213" text-anchor="middle" fill="white" font-size="10">不安を解消する</text>
+                    <text x="520" y="227" text-anchor="middle" fill="white" font-size="10">保証・返金情報</text>
+        
+                    <!-- 対応ページ5 -->
+                    <rect x="600" y="172" width="180" height="60" fill="#2a1a2e" stroke="#ff6b9d" stroke-width="2.5" rx="6"/>
+                    <text x="690" y="197" text-anchor="middle" fill="#ff6b9d" font-size="12" font-weight="bold">お問い合わせ</text>
+                    <text x="690" y="213" text-anchor="middle" fill="white" font-size="10">短いフォーム</text>
+                    <text x="690" y="227" text-anchor="middle" fill="white" font-size="10">CTA・申し込みボタン</text>
+        
+                    <!-- 下部コメント -->
+                    <rect x="80" y="252" width="640" height="36" fill="none" stroke="#00d4ff" stroke-width="1" rx="6" stroke-dasharray="4,3" opacity="0.5"/>
+                    <text x="400" y="268" text-anchor="middle" fill="#00d4ff" font-size="12">008のジャーニーマップの各ステップが、009のサイトマップ上のどのページに対応するかを設計する</text>
+                    <text x="400" y="283" text-anchor="middle" fill="white" font-size="11" opacity="0.8">これがIA（情報設計）の核心：「感情の動き」を「ページの配置」に変換する作業</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド16: アーキテクトの主戦場 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アーキテクトの主戦場</h2>
+            <div class="content-block">
+                <h3>「どこに何をなぜ置くか」を決めるのがアーキテクト</h3>
+                <p>制作者はデザインツールを動かします。でも、その前段で「ここにCTAを置くべき理由」「このページが必要な理由」「このナビ構成にする根拠」を言語化できる人がアーキテクトです。</p>
+        
+                <h3>アーキテクトが担う3つの判断</h3>
+                <ul>
+                    <li><strong>構造の判断：</strong>LP型か複数ページ型か。何ページ必要か。</li>
+                    <li><strong>配置の判断：</strong>CTAはどこに置くか。何を上位階層にするか。</li>
+                    <li><strong>根拠の言語化：</strong>なぜその配置なのかをクライアントに説明できる。</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 AIはページを生成できる。でも「なぜそこにあるべきか」の判断はできない。<br>
+                    その判断力こそが、Visual Architectの価値
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド17: 006の工程マップ再確認 SVG -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">006の工程マップ：今どこにいるか</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 260">
+                    <!-- 工程6ステップ -->
+                    <!-- Step1 要件定義 -->
+                    <rect x="10" y="70" width="110" height="70" fill="#333" stroke="#555" stroke-width="1.5" rx="6"/>
+                    <text x="65" y="100" text-anchor="middle" fill="#aaa" font-size="11">Step 1</text>
+                    <text x="65" y="116" text-anchor="middle" fill="#aaa" font-size="13" font-weight="bold">要件定義</text>
+                    <text x="65" y="130" text-anchor="middle" fill="#aaa" font-size="10">007で実施</text>
+        
+                    <line x1="120" y1="105" x2="140" y2="105" stroke="#555" stroke-width="2"/>
+                    <polygon points="138,101 146,105 138,109" fill="#555"/>
+        
+                    <!-- Step2 IA（強調）-->
+                    <rect x="140" y="50" width="130" height="110" fill="#1a1a3e" stroke="#00d4ff" stroke-width="2.5" rx="8"/>
+                    <text x="205" y="80" text-anchor="middle" fill="#00d4ff" font-size="11">Step 2</text>
+                    <text x="205" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">情報設計（IA）</text>
+                    <text x="205" y="116" text-anchor="middle" fill="#00d4ff" font-size="11">サイトマップ</text>
+                    <text x="205" y="132" text-anchor="middle" fill="#00d4ff" font-size="11">導線設計</text>
+                    <text x="205" y="150" text-anchor="middle" fill="white" font-size="10">← 今ここ（009）</text>
+        
+                    <line x1="270" y1="105" x2="290" y2="105" stroke="#00d4ff" stroke-width="2"/>
+                    <polygon points="288,101 296,105 288,109" fill="#00d4ff"/>
+        
+                    <!-- Step3 UIルール -->
+                    <rect x="295" y="70" width="110" height="70" fill="#333" stroke="#555" stroke-width="1.5" rx="6"/>
+                    <text x="350" y="100" text-anchor="middle" fill="#aaa" font-size="11">Step 3</text>
+                    <text x="350" y="116" text-anchor="middle" fill="#aaa" font-size="13" font-weight="bold">UIルール定義</text>
+                    <text x="350" y="130" text-anchor="middle" fill="#aaa" font-size="10">010で実施</text>
+        
+                    <line x1="405" y1="105" x2="425" y2="105" stroke="#555" stroke-width="2"/>
+                    <polygon points="423,101 431,105 423,109" fill="#555"/>
+        
+                    <!-- Step4 ワイヤーフレーム -->
+                    <rect x="430" y="70" width="110" height="70" fill="#333" stroke="#555" stroke-width="1.5" rx="6"/>
+                    <text x="485" y="100" text-anchor="middle" fill="#aaa" font-size="11">Step 4</text>
+                    <text x="485" y="116" text-anchor="middle" fill="#aaa" font-size="13" font-weight="bold">ワイヤーフレーム</text>
+                    <text x="485" y="130" text-anchor="middle" fill="#aaa" font-size="10">Block 3</text>
+        
+                    <line x1="540" y1="105" x2="560" y2="105" stroke="#555" stroke-width="2"/>
+                    <polygon points="558,101 566,105 558,109" fill="#555"/>
+        
+                    <!-- Step5 ビジュアル -->
+                    <rect x="565" y="70" width="110" height="70" fill="#333" stroke="#555" stroke-width="1.5" rx="6"/>
+                    <text x="620" y="100" text-anchor="middle" fill="#aaa" font-size="11">Step 5</text>
+                    <text x="620" y="116" text-anchor="middle" fill="#aaa" font-size="13" font-weight="bold">ビジュアル設計</text>
+                    <text x="620" y="130" text-anchor="middle" fill="#aaa" font-size="10">Block 4〜5</text>
+        
+                    <line x1="675" y1="105" x2="695" y2="105" stroke="#555" stroke-width="2"/>
+                    <polygon points="693,101 701,105 693,109" fill="#555"/>
+        
+                    <!-- Step6 QA・納品 -->
+                    <rect x="700" y="70" width="90" height="70" fill="#333" stroke="#555" stroke-width="1.5" rx="6"/>
+                    <text x="745" y="100" text-anchor="middle" fill="#aaa" font-size="11">Step 6</text>
+                    <text x="745" y="116" text-anchor="middle" fill="#aaa" font-size="13" font-weight="bold">QA・納品</text>
+                    <text x="745" y="130" text-anchor="middle" fill="#aaa" font-size="10">Block 6</text>
+        
+                    <!-- Block 2ブラケット -->
+                    <line x1="10" y1="200" x2="420" y2="200" stroke="#7b61ff" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="10" y1="195" x2="10" y2="205" stroke="#7b61ff" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="420" y1="195" x2="420" y2="205" stroke="#7b61ff" stroke-width="1.5" opacity="0.7"/>
+                    <text x="215" y="222" text-anchor="middle" fill="#7b61ff" font-size="13" font-weight="bold">Block 2：WEB制作の上流設計（007〜010）</text>
+        
+                    <!-- 007〜009ブラケット -->
+                    <line x1="10" y1="240" x2="275" y2="240" stroke="#00d4ff" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="10" y1="235" x2="10" y2="245" stroke="#00d4ff" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="275" y1="235" x2="275" y2="245" stroke="#00d4ff" stroke-width="1.5" opacity="0.7"/>
+                    <text x="142" y="258" text-anchor="middle" fill="#00d4ff" font-size="11">007〜009がIAの実態</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド18: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：情報設計（IA）の全体像</h2>
+            <div class="content-block">
+                <h3>サイトマップ（構造）＋ 導線（流れ）＝ IA（情報設計）</h3>
+                <p>この2つが揃って初めて、ページがサイトとして機能します。</p>
+        
+                <h3>今日のキーポイント</h3>
+                <ul>
+                    <li><strong>サイトマップ：</strong>ページを「地図」として俯瞰し、3クリックルールで階層を設計する</li>
+                    <li><strong>LP型 vs 複数ページ型：</strong>業種ではなく「CVの数・情報量・目的」で判断する</li>
+                    <li><strong>導線設計：</strong>全ページで「次の行動」を設計し、ジャーニーの感情に合わせて配置する</li>
+                    <li><strong>離脱対策：</strong>008のジャーニーマップの感情低下ポイントに安心材料を置く</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 アーキテクトの価値：「どこに何をなぜ置くか」を言語化し、クライアントに説明できること
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド19: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回予告：010 UIルールとデザインシステム</h2>
+            <div class="content-block">
+                <h3>Block 2 最終回</h3>
+                <p>007で要件を定義し、008でユーザーを理解し、009でページ構造と導線を設計しました。</p>
+                <p style="margin-top: 1rem;">次の010では「<strong>どう見せるか</strong>」のルールを定義します。色・フォント・余白・コンポーネントのルール化（デザインシステム）がテーマです。</p>
+        
+                <h3>010で学ぶこと</h3>
+                <ul>
+                    <li>カラーパレットと余白のルール化</li>
+                    <li>タイポグラフィスケールの設計</li>
+                    <li>コンポーネント思考の基礎</li>
+                    <li>デザインシステムとブランドガイドラインの関係</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🔜 010を終えるとBlock 2が完成。「考える力」の上流設計フェーズが完成します
+                </div>
+            </div>
+        </div>
+        
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "LP型と複数ページ型を選ぶ最も重要な判断基準はどれですか？",
+            options: [
+                "クライアントの会社規模と予算",
+                "売るもの・伝えるものの数と、CVの種類",
+                "デザイナーの得意な制作スタイル",
+                "サイトの公開予定日までの期間"
+            ],
+            correct: 1,
+            explanation: "型の選択は会社規模や予算ではなく「何を・誰に・どのCVで届けるか」で決まります。売るものが1つでCVが1択ならLP型、複数の情報を整理して伝える必要があるなら複数ページ型が適切です。"
+        },
+        {
+            question: "整骨院のサイトがLP型になるのはどんなケースですか？",
+            options: [
+                "初めてホームページを作るとき",
+                "スタッフが少ない小規模な整骨院のとき",
+                "期間限定キャンペーンの申し込みを告知するとき",
+                "施術メニューが複数あるとき"
+            ],
+            correct: 2,
+            explanation: "業種ではなく「目的とCVの数」で判断します。整骨院のコーポレートサイトは複数ページ型ですが、期間限定キャンペーンの申し込みという「1つの目的・1択のCV」に絞られる場合はLP型が適切です。"
+        },
+        {
+            question: "導線設計において、すべてのページについて設計者が常に考えるべきことはどれですか？",
+            options: [
+                "このページのデザインは美しいか",
+                "このページの文字数は適切か",
+                "このページを見た人は次にどこへ行くか",
+                "このページはSEO対策ができているか"
+            ],
+            correct: 2,
+            explanation: "導線設計の基本思想は「すべてのページがCVに向かう」こと。どのページでも「次の行動」を設計することで、ユーザーをCVへ誘導できます。CTAのないページは導線の抜け穴になります。"
+        },
+        {
+            question: "ジャーニーマップの「感情が下がるステップ」（例：料金を見て躊躇する）に対応するページに置くべきものはどれですか？",
+            options: [
+                "アニメーションやビジュアルエフェクトを増やして印象を高める",
+                "FAQ・口コミ・保証情報などの安心材料",
+                "競合他社との価格比較表を削除して迷わせない",
+                "CTAボタンのサイズを大きくして目立たせる"
+            ],
+            correct: 1,
+            explanation: "離脱リスクの高い場面には、不安を解消するコンテンツ（FAQ・社会的証明・料金の透明性・保証情報）を配置します。人は「損失回避バイアス」があるため、不安を取り除く情報はCVボタンの直前に置くと特に効果的です。"
+        },
+        {
+            question: "サイトマップと導線設計（009）は、006で学んだ6工程のどのフェーズにあたりますか？",
+            options: [
+                "要件定義フェーズ（クライアントとの合意形成）",
+                "ビジュアル設計フェーズ（色・フォントの決定）",
+                "IA（情報設計）フェーズ（構造と流れの設計）",
+                "QA・納品フェーズ（品質確認と最終調整）"
+            ],
+            correct: 2,
+            explanation: "サイトマップ（構造）と導線設計（流れ）を合わせたものがIA（情報設計）です。007の要件定義、008のペルソナ・ジャーニー、009のサイトマップ・導線設計が合わさってIAフェーズが完成します。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

@@ -3,28 +3,703 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>講義スライド - [テーマ名]</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>WEB制作の全体工程マップとアーキテクトの役割【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>WEB制作の全体工程マップと<br>アーキテクトの役割<span>【理論編】</span></h1>
+                <p>設計なき制作は、迷走する</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ「デザインが良いのに成果が出ない」のか？</h2>
+            <div class="content-block">
+                <p>見た目は洗練されている。写真もきれい。配色もモダン。<br>
+                なのに、<strong>問い合わせはゼロ。離脱率は80%超。</strong></p>
+        
+                <h3>よくある失敗パターン</h3>
+                <ul>
+                    <li>ターゲットを決めずにデザインを始めた → 誰にも刺さらないLPが完成</li>
+                    <li>ページ構成を考えずにコーディングした → 情報が迷子になる</li>
+                    <li>公開後の運用を想定していなかった → 更新できず放置サイトに</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 原因はデザインの「質」ではなく、制作工程の<strong>抜け漏れ・上流設計の不足</strong>にある
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日学ぶこと</h2>
+            <div class="content-block">
+                <h3>3つのゴール</h3>
+                <ul>
+                    <li><strong>① WEB制作の6工程を俯瞰する</strong><br>全体像を1枚のマップで把握する</li>
+                    <li><strong>② 各工程の役割を知る</strong><br>上流・中流・下流で何が決まるのかを理解する</li>
+                    <li><strong>③ アーキテクトの立ち位置を理解する</strong><br>「作る人」と「設計して判断する人」の違いを明確にする</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🔗 Block 1で学んだデザイン基礎は、全体工程の「どこ」にあたるのか？<br>今日はその答えが見えます。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 6工程の俯瞰マップ（SVG図解） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">WEB制作の6工程マップ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 上流ラベル -->
+                    <rect x="30" y="20" width="280" height="32" rx="4" fill="#00d4ff" opacity="0.15"/>
+                    <text x="170" y="42" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">上流工程</text>
+        
+                    <!-- 中流ラベル -->
+                    <rect x="340" y="20" width="280" height="32" rx="4" fill="#a78bfa" opacity="0.15"/>
+                    <text x="480" y="42" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold">中流工程</text>
+        
+                    <!-- 下流ラベル -->
+                    <rect x="650" y="20" width="220" height="32" rx="4" fill="#34d399" opacity="0.15"/>
+                    <text x="760" y="42" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">下流工程</text>
+        
+                    <!-- 工程1: 企画 -->
+                    <rect x="30" y="80" width="120" height="80" rx="10" fill="#0e1a2b" stroke="#00d4ff" stroke-width="2.5"/>
+                    <text x="90" y="110" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">❶ 企画</text>
+                    <text x="90" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">何を・誰のために</text>
+                    <text x="90" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">作るか決める</text>
+        
+                    <!-- 矢印1 -->
+                    <polygon points="160,112 160,128 170,120" fill="#00d4ff" opacity="0.7"/>
+        
+                    <!-- 工程2: 情報設計 -->
+                    <rect x="180" y="80" width="120" height="80" rx="10" fill="#0e1a2b" stroke="#00d4ff" stroke-width="2.5"/>
+                    <text x="240" y="110" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">❷ 情報設計</text>
+                    <text x="240" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">情報の構造と</text>
+                    <text x="240" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">導線を設計する</text>
+        
+                    <!-- 矢印2 -->
+                    <polygon points="310,112 310,128 320,120" fill="#a78bfa" opacity="0.7"/>
+        
+                    <!-- 工程3: デザイン -->
+                    <rect x="340" y="80" width="120" height="80" rx="10" fill="#0e1a2b" stroke="#a78bfa" stroke-width="2.5"/>
+                    <text x="400" y="110" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="bold">❸ デザイン</text>
+                    <text x="400" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">見た目と体験を</text>
+                    <text x="400" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">形にする</text>
+        
+                    <!-- 矢印3 -->
+                    <polygon points="470,112 470,128 480,120" fill="#a78bfa" opacity="0.7"/>
+        
+                    <!-- 工程4: 実装 -->
+                    <rect x="500" y="80" width="120" height="80" rx="10" fill="#0e1a2b" stroke="#a78bfa" stroke-width="2.5"/>
+                    <text x="560" y="110" text-anchor="middle" fill="#a78bfa" font-size="15" font-weight="bold">❹ 実装</text>
+                    <text x="560" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">コードで</text>
+                    <text x="560" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">動くものにする</text>
+        
+                    <!-- 矢印4 -->
+                    <polygon points="630,112 630,128 640,120" fill="#34d399" opacity="0.7"/>
+        
+                    <!-- 工程5: 公開 -->
+                    <rect x="650" y="80" width="120" height="80" rx="10" fill="#0e1a2b" stroke="#34d399" stroke-width="2.5"/>
+                    <text x="710" y="110" text-anchor="middle" fill="#34d399" font-size="15" font-weight="bold">❺ 公開</text>
+                    <text x="710" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">世の中に</text>
+                    <text x="710" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">届ける</text>
+        
+                    <!-- 矢印5 -->
+                    <polygon points="780,112 780,128 790,120" fill="#34d399" opacity="0.7"/>
+        
+                    <!-- 工程6: 運用 -->
+                    <rect x="800" y="80" width="100" height="80" rx="10" fill="#0e1a2b" stroke="#34d399" stroke-width="2.5"/>
+                    <text x="850" y="110" text-anchor="middle" fill="#34d399" font-size="15" font-weight="bold">❻ 運用</text>
+                    <text x="850" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">改善し</text>
+                    <text x="850" y="150" text-anchor="middle" fill="#94a3b8" font-size="11">続ける</text>
+        
+                    <!-- 成果物ライン -->
+                    <text x="90" y="200" text-anchor="middle" fill="#64748b" font-size="10">企画書</text>
+                    <text x="90" y="215" text-anchor="middle" fill="#64748b" font-size="10">要件定義書</text>
+        
+                    <text x="240" y="200" text-anchor="middle" fill="#64748b" font-size="10">サイトマップ</text>
+                    <text x="240" y="215" text-anchor="middle" fill="#64748b" font-size="10">ワイヤーフレーム</text>
+        
+                    <text x="400" y="200" text-anchor="middle" fill="#64748b" font-size="10">デザインカンプ</text>
+                    <text x="400" y="215" text-anchor="middle" fill="#64748b" font-size="10">スタイルガイド</text>
+        
+                    <text x="560" y="200" text-anchor="middle" fill="#64748b" font-size="10">HTML/CSS/JS</text>
+                    <text x="560" y="215" text-anchor="middle" fill="#64748b" font-size="10">CMS構築</text>
+        
+                    <text x="710" y="200" text-anchor="middle" fill="#64748b" font-size="10">テスト結果</text>
+                    <text x="710" y="215" text-anchor="middle" fill="#64748b" font-size="10">公開チェック</text>
+        
+                    <text x="850" y="200" text-anchor="middle" fill="#64748b" font-size="10">アクセス解析</text>
+                    <text x="850" y="215" text-anchor="middle" fill="#64748b" font-size="10">改善施策</text>
+        
+                    <!-- Block 1 学習範囲の囲み -->
+                    <rect x="330" y="240" width="300" height="40" rx="8" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="480" y="265" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">⬆ Block 1で学んだ領域（デザイン基礎）</text>
+        
+                    <!-- Block 2 学習範囲の囲み -->
+                    <rect x="20" y="290" width="600" height="40" rx="8" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="320" y="315" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">⬆ Block 2で学ぶ領域（上流設計〜デザイン）</text>
+        
+                    <!-- 成果物ラベル -->
+                    <text x="450" y="370" text-anchor="middle" fill="#475569" font-size="11">▲ 各工程の主な成果物</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド5: 各工程サマリー表 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">6工程サマリー：後から見返せる一覧表</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg">
+                    <!-- テーブルヘッダー -->
+                    <rect x="10" y="10" width="100" height="40" rx="4" fill="#1e293b"/>
+                    <text x="60" y="35" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">工程</text>
+        
+                    <rect x="115" y="10" width="250" height="40" rx="4" fill="#1e293b"/>
+                    <text x="240" y="35" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">やること</text>
+        
+                    <rect x="370" y="10" width="170" height="40" rx="4" fill="#1e293b"/>
+                    <text x="455" y="35" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">主な担当者</text>
+        
+                    <rect x="545" y="10" width="200" height="40" rx="4" fill="#1e293b"/>
+                    <text x="645" y="35" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">成果物</text>
+        
+                    <!-- 行1: 企画 -->
+                    <rect x="10" y="55" width="100" height="45" rx="4" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="60" y="82" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">❶ 企画</text>
+        
+                    <rect x="115" y="55" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="78" fill="#cbd5e1" font-size="11">目的・ターゲット・KPIの決定</text>
+        
+                    <rect x="370" y="55" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="78" fill="#cbd5e1" font-size="11">ディレクター / クライアント</text>
+        
+                    <rect x="545" y="55" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="78" fill="#cbd5e1" font-size="11">企画書・要件定義書</text>
+        
+                    <!-- 行2: 情報設計 -->
+                    <rect x="10" y="105" width="100" height="45" rx="4" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="60" y="132" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">❷ 情報設計</text>
+        
+                    <rect x="115" y="105" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="128" fill="#cbd5e1" font-size="11">サイト構造・ページ構成・導線設計</text>
+        
+                    <rect x="370" y="105" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="128" fill="#cbd5e1" font-size="11">ディレクター / アーキテクト</text>
+        
+                    <rect x="545" y="105" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="128" fill="#cbd5e1" font-size="11">サイトマップ・ワイヤーフレーム</text>
+        
+                    <!-- 行3: デザイン -->
+                    <rect x="10" y="155" width="100" height="45" rx="4" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                    <text x="60" y="182" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">❸ デザイン</text>
+        
+                    <rect x="115" y="155" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="178" fill="#cbd5e1" font-size="11">ビジュアルデザイン・UI設計</text>
+        
+                    <rect x="370" y="155" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="178" fill="#cbd5e1" font-size="11">デザイナー / アーキテクト</text>
+        
+                    <rect x="545" y="155" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="178" fill="#cbd5e1" font-size="11">デザインカンプ・スタイルガイド</text>
+        
+                    <!-- 行4: 実装 -->
+                    <rect x="10" y="205" width="100" height="45" rx="4" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                    <text x="60" y="232" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">❹ 実装</text>
+        
+                    <rect x="115" y="205" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="228" fill="#cbd5e1" font-size="11">コーディング・CMS構築・動作実装</text>
+        
+                    <rect x="370" y="205" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="228" fill="#cbd5e1" font-size="11">エンジニア</text>
+        
+                    <rect x="545" y="205" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="228" fill="#cbd5e1" font-size="11">HTML/CSS/JS・CMS</text>
+        
+                    <!-- 行5: 公開 -->
+                    <rect x="10" y="255" width="100" height="45" rx="4" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="1"/>
+                    <text x="60" y="282" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">❺ 公開</text>
+        
+                    <rect x="115" y="255" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="278" fill="#cbd5e1" font-size="11">テスト・修正・サーバー公開</text>
+        
+                    <rect x="370" y="255" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="278" fill="#cbd5e1" font-size="11">エンジニア / ディレクター</text>
+        
+                    <rect x="545" y="255" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="278" fill="#cbd5e1" font-size="11">テスト結果・公開チェックリスト</text>
+        
+                    <!-- 行6: 運用 -->
+                    <rect x="10" y="305" width="100" height="45" rx="4" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="1"/>
+                    <text x="60" y="332" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">❻ 運用</text>
+        
+                    <rect x="115" y="305" width="250" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="125" y="328" fill="#cbd5e1" font-size="11">効果測定・改善・コンテンツ更新</text>
+        
+                    <rect x="370" y="305" width="170" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="380" y="328" fill="#cbd5e1" font-size="11">運用担当 / マーケター</text>
+        
+                    <rect x="545" y="305" width="200" height="45" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+                    <text x="555" y="328" fill="#cbd5e1" font-size="11">アクセス解析・改善施策</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド6: 上流工程 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">上流工程：企画〜情報設計</h2>
+            <div class="content-block">
+                <h3>「何を作るか」「誰のために作るか」を決める段階</h3>
+                <p>上流工程は、WEB制作の<strong>土台</strong>です。<br>
+                ここが曖昧なまま進むと、デザインも実装も「なんとなく」になり、全工程が迷走します。</p>
+        
+                <h3>企画で決めること</h3>
+                <ul>
+                    <li><strong>目的：</strong>このサイトは何を達成するためにあるのか？（例：問い合わせ獲得、採用応募）</li>
+                    <li><strong>ターゲット：</strong>誰に見てもらうのか？（ペルソナの設定）</li>
+                    <li><strong>KPI：</strong>何をもって「成功」と判断するのか？（例：月間CV数30件）</li>
+                </ul>
+        
+                <h3>情報設計で決めること</h3>
+                <ul>
+                    <li><strong>サイトマップ：</strong>どのページが必要か、どう繋がるか</li>
+                    <li><strong>ワイヤーフレーム：</strong>各ページで何をどこに置くか</li>
+                    <li><strong>導線設計：</strong>ユーザーをどうゴールまで導くか</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ 「デザインが良いのに成果が出ない」の原因は、<strong>ほとんどがここにある</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 中流工程 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">中流工程：デザイン〜実装</h2>
+            <div class="content-block">
+                <h3>上流の設計を「形」にする段階</h3>
+                <p>Block 1で学んだデザイン原則（整列・近接・反復・コントラスト）、色彩理論、タイポグラフィ——<br>
+                <strong>これらはすべて、この「中流工程」で使うスキルでした。</strong></p>
+        
+                <h3>デザイン工程</h3>
+                <ul>
+                    <li>ワイヤーフレームに色・フォント・画像を加えて<strong>デザインカンプ</strong>を制作</li>
+                    <li>ブランドに沿ったスタイルガイドを定義</li>
+                    <li>UIの操作感（ホバー、アニメーション等）を設計</li>
+                </ul>
+        
+                <h3>実装工程</h3>
+                <ul>
+                    <li>デザインカンプをHTML/CSS/JavaScriptで再現</li>
+                    <li>CMSの構築・フォーム実装・レスポンシブ対応</li>
+                    <li>デザインの意図がコードに正しく反映されているか確認</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 Block 1の学びは「中流」の武器。<br>
+                    Block 2では、その<strong>上流にあたる「設計」</strong>を学びます。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 下流工程 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">下流工程：公開〜運用</h2>
+            <div class="content-block">
+                <h3>「作って終わり」ではない。WEBサイトは公開がスタートライン。</h3>
+        
+                <h3>公開工程</h3>
+                <ul>
+                    <li>ブラウザ・デバイスごとの<strong>表示テスト</strong></li>
+                    <li>リンク切れ・フォーム動作・表示速度の確認</li>
+                    <li>クライアント最終確認 → サーバーへの公開</li>
+                </ul>
+        
+                <h3>運用工程</h3>
+                <ul>
+                    <li><strong>アクセス解析：</strong>Google Analytics等でユーザー行動を計測</li>
+                    <li><strong>改善施策：</strong>データをもとにデザインや導線を修正</li>
+                    <li><strong>コンテンツ更新：</strong>情報の鮮度を保ち、検索順位を維持</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🔄 運用で得たデータは、次の「企画」にフィードバックされる<br>
+                    → 6工程は<strong>一方通行ではなく循環する</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: 工程間の受け渡し（2カラム比較） -->
+        <div class="slide-container">
+            <h2 class="slide-title">工程間の「受け渡し」が品質を決める</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ 雑な受け渡し</h3>
+                    <svg class="generated-art" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 人物A -->
+                        <circle cx="80" cy="60" r="25" fill="none" stroke="#ef4444" stroke-width="2"/>
+                        <text x="80" y="65" text-anchor="middle" fill="#ef4444" font-size="11">企画</text>
+                        <!-- 矢印（雑） -->
+                        <line x1="110" y1="60" x2="230" y2="60" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="170" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">口頭のみ</text>
+                        <!-- 人物B -->
+                        <circle cx="260" cy="60" r="25" fill="none" stroke="#ef4444" stroke-width="2"/>
+                        <text x="260" y="65" text-anchor="middle" fill="#ef4444" font-size="11">デザイン</text>
+        
+                        <!-- 結果 -->
+                        <rect x="40" y="110" width="300" height="35" rx="6" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="1"/>
+                        <text x="190" y="132" text-anchor="middle" fill="#ef4444" font-size="12">「そんなつもりじゃなかった」</text>
+        
+                        <rect x="40" y="155" width="300" height="35" rx="6" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="1"/>
+                        <text x="190" y="177" text-anchor="middle" fill="#ef4444" font-size="12">やり直し → スケジュール遅延</text>
+        
+                        <rect x="40" y="200" width="300" height="35" rx="6" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="1"/>
+                        <text x="190" y="222" text-anchor="middle" fill="#ef4444" font-size="12">品質低下 → クライアント不信</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ 丁寧な受け渡し</h3>
+                    <svg class="generated-art" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 人物A -->
+                        <circle cx="80" cy="60" r="25" fill="none" stroke="#34d399" stroke-width="2"/>
+                        <text x="80" y="65" text-anchor="middle" fill="#34d399" font-size="11">企画</text>
+                        <!-- 矢印（丁寧） -->
+                        <line x1="110" y1="60" x2="230" y2="60" stroke="#34d399" stroke-width="2.5"/>
+                        <polygon points="225,52 240,60 225,68" fill="#34d399"/>
+                        <text x="170" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">要件定義書</text>
+                        <!-- 人物B -->
+                        <circle cx="260" cy="60" r="25" fill="none" stroke="#34d399" stroke-width="2"/>
+                        <text x="260" y="65" text-anchor="middle" fill="#34d399" font-size="11">デザイン</text>
+        
+                        <!-- 結果 -->
+                        <rect x="40" y="110" width="300" height="35" rx="6" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="1"/>
+                        <text x="190" y="132" text-anchor="middle" fill="#34d399" font-size="12">認識のズレがない</text>
+        
+                        <rect x="40" y="155" width="300" height="35" rx="6" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="1"/>
+                        <text x="190" y="177" text-anchor="middle" fill="#34d399" font-size="12">手戻りゼロ → 予定通り進行</text>
+        
+                        <rect x="40" y="200" width="300" height="35" rx="6" fill="#34d399" opacity="0.1" stroke="#34d399" stroke-width="1"/>
+                        <text x="190" y="222" text-anchor="middle" fill="#34d399" font-size="12">高品質 → 信頼関係の構築</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: チームの登場人物マップ（SVG図解） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">WEB制作チームの登場人物</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 中央: ディレクター -->
+                    <circle cx="430" cy="180" r="55" fill="#0e1a2b" stroke="#f59e0b" stroke-width="3"/>
+                    <text x="430" y="170" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="bold">ディレクター</text>
+                    <text x="430" y="190" text-anchor="middle" fill="#94a3b8" font-size="10">全体統括・進行管理</text>
+                    <text x="430" y="205" text-anchor="middle" fill="#94a3b8" font-size="10">クライアント窓口</text>
 
-         <!-- クイズセクション -->
+                    <!-- 左上: デザイナー -->
+                    <circle cx="180" cy="100" r="50" fill="#0e1a2b" stroke="#a78bfa" stroke-width="2.5"/>
+                    <text x="180" y="92" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold">デザイナー</text>
+                    <text x="180" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">ビジュアル制作</text>
+                    <line x1="228" y1="118" x2="378" y2="162" stroke="#475569" stroke-width="1.5"/>
+
+                    <!-- 右上: エンジニア -->
+                    <circle cx="680" cy="100" r="50" fill="#0e1a2b" stroke="#38bdf8" stroke-width="2.5"/>
+                    <text x="680" y="92" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">エンジニア</text>
+                    <text x="680" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">コーディング・実装</text>
+                    <line x1="632" y1="118" x2="482" y2="162" stroke="#475569" stroke-width="1.5"/>
+
+                    <!-- 左下: ライター -->
+                    <circle cx="200" cy="300" r="45" fill="#0e1a2b" stroke="#fb923c" stroke-width="2.5"/>
+                    <text x="200" y="295" text-anchor="middle" fill="#fb923c" font-size="14" font-weight="bold">ライター</text>
+                    <text x="200" y="312" text-anchor="middle" fill="#94a3b8" font-size="10">コピー・原稿作成</text>
+                    <line x1="240" y1="280" x2="390" y2="220" stroke="#475569" stroke-width="1.5"/>
+
+                    <!-- デザイナーとライターの接続 -->
+                    <line x1="185" y1="150" x2="195" y2="255" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+
+                    <!-- デザイナーとエンジニアの接続 -->
+                    <line x1="230" y1="100" x2="630" y2="100" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+                    <text x="430" y="92" text-anchor="middle" fill="#475569" font-size="9">デザインデータ受け渡し</text>
+
+                    <!-- 右下: アーキテクト（強調） -->
+                    <rect x="560" y="255" width="180" height="90" rx="12" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="3"/>
+                    <text x="650" y="285" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">アーキテクト</text>
+                    <text x="650" y="305" text-anchor="middle" fill="#00d4ff" font-size="11">設計・判断・品質管理</text>
+                    <text x="650" y="322" text-anchor="middle" fill="#94a3b8" font-size="10">→ あなたの目指す役割</text>
+                    <line x1="610" y1="260" x2="470" y2="220" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6,3"/>
+
+                    <!-- アーキテクトとデザイナーの接続（ディレクター下側を迂回） -->
+                    <path d="M 570,290 C 480,350 280,350 210,148" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4,4"/>
+                    <text x="380" y="365" text-anchor="middle" fill="#00d4ff" font-size="9">設計指示・品質チェック</text>
+
+                    <!-- 凡例 -->
+                    <line x1="50" y1="400" x2="80" y2="400" stroke="#475569" stroke-width="1.5"/>
+                    <text x="90" y="404" fill="#64748b" font-size="10">通常の連携</text>
+
+                    <line x1="200" y1="400" x2="230" y2="400" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+                    <text x="240" y="404" fill="#64748b" font-size="10">情報共有</text>
+
+                    <line x1="380" y1="400" x2="410" y2="400" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6,3"/>
+                    <text x="420" y="404" fill="#00d4ff" font-size="10">アーキテクトの関与</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド11: ビジュアルアーキテクトの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>ビジュアルアーキテクト<br>= 設計して、判断する人</h2>
+            <p>企画〜デザインの「橋渡し役」。<br>AIを活用しながら、最終的な判断は人間が下す。<br><br>
+            <strong>作るのはAI。決めるのは、あなた。</strong></p>
+        </div>
+        
+        <!-- スライド12: デザイナーとアーキテクトの違い（2カラム比較） -->
+        <div class="slide-container">
+            <h2 class="slide-title">デザイナー vs アーキテクト</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>🎨 デザイナー = 作る人</h3>
+                    <svg class="generated-art" viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="340" height="40" rx="6" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                        <text x="190" y="45" text-anchor="middle" fill="#a78bfa" font-size="13">ビジュアルを自ら制作する</text>
+        
+                        <rect x="20" y="70" width="340" height="40" rx="6" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                        <text x="190" y="95" text-anchor="middle" fill="#a78bfa" font-size="13">ツールのプロフェッショナル</text>
+        
+                        <rect x="20" y="120" width="340" height="40" rx="6" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                        <text x="190" y="145" text-anchor="middle" fill="#a78bfa" font-size="13">個別の成果物に責任を持つ</text>
+        
+                        <rect x="20" y="170" width="340" height="40" rx="6" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="1"/>
+                        <text x="190" y="195" text-anchor="middle" fill="#a78bfa" font-size="13">「美しく仕上げる」が最大の価値</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>🏗️ アーキテクト = 設計して判断する人</h3>
+                    <svg class="generated-art" viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="340" height="40" rx="6" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                        <text x="190" y="45" text-anchor="middle" fill="#00d4ff" font-size="13">全体設計と品質判断を行う</text>
+        
+                        <rect x="20" y="70" width="340" height="40" rx="6" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                        <text x="190" y="95" text-anchor="middle" fill="#00d4ff" font-size="13">AIを活用して効率化する</text>
+        
+                        <rect x="20" y="120" width="340" height="40" rx="6" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                        <text x="190" y="145" text-anchor="middle" fill="#00d4ff" font-size="13">プロジェクト全体の成果に責任を持つ</text>
+        
+                        <rect x="20" y="170" width="340" height="40" rx="6" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                        <text x="190" y="195" text-anchor="middle" fill="#00d4ff" font-size="13">「正しく機能する」が最大の価値</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: AI時代にこのポジションが重要な理由 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">AI時代に「アーキテクト」が求められる理由</h2>
+            <div class="content-block">
+                <h3>AIが変えたこと</h3>
+                <p>画像生成AI、デザインAI、コーディングAI——<br>
+                <strong>「作る」のコストは劇的に下がりました。</strong><br>
+                誰でもそれなりのデザインが作れる時代です。</p>
+        
+                <h3>それでもAIにできないこと</h3>
+                <ul>
+                    <li><strong>クライアントの課題を正しく言語化する</strong>（企画力）</li>
+                    <li><strong>ユーザーの行動を予測して導線を設計する</strong>（情報設計力）</li>
+                    <li><strong>複数の選択肢から「これが正解」と判断する</strong>（判断力）</li>
+                    <li><strong>チームの認識を揃えて品質を担保する</strong>（ディレクション力）</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 AIが「作る」を代替する時代だからこそ、<br>
+                    人間は<strong>「決める」「判断する」「設計する」</strong>に集中する。<br>
+                    それがビジュアルアーキテクトの存在意義です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド14: Block 2ロードマップ（SVG図解） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Block 2 ロードマップ：上流設計を体系的に学ぶ</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 860 350" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 6工程マップ（上部・小さく） -->
+                    <text x="430" y="25" text-anchor="middle" fill="#64748b" font-size="11">▼ WEB制作の6工程</text>
+        
+                    <rect x="40" y="35" width="110" height="30" rx="4" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="95" y="55" text-anchor="middle" fill="#00d4ff" font-size="10">❶ 企画</text>
+        
+                    <rect x="165" y="35" width="110" height="30" rx="4" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="220" y="55" text-anchor="middle" fill="#00d4ff" font-size="10">❷ 情報設計</text>
+        
+                    <rect x="290" y="35" width="110" height="30" rx="4" fill="#a78bfa" opacity="0.2" stroke="#a78bfa" stroke-width="1.5"/>
+                    <text x="345" y="55" text-anchor="middle" fill="#a78bfa" font-size="10">❸ デザイン</text>
+        
+                    <rect x="415" y="35" width="110" height="30" rx="4" fill="#94a3b8" opacity="0.1" stroke="#475569" stroke-width="1"/>
+                    <text x="470" y="55" text-anchor="middle" fill="#64748b" font-size="10">❹ 実装</text>
+        
+                    <rect x="540" y="35" width="110" height="30" rx="4" fill="#94a3b8" opacity="0.1" stroke="#475569" stroke-width="1"/>
+                    <text x="595" y="55" text-anchor="middle" fill="#64748b" font-size="10">❺ 公開</text>
+        
+                    <rect x="665" y="35" width="110" height="30" rx="4" fill="#94a3b8" opacity="0.1" stroke="#475569" stroke-width="1"/>
+                    <text x="720" y="55" text-anchor="middle" fill="#64748b" font-size="10">❻ 運用</text>
+        
+                    <!-- Block 2 テーマ一覧 -->
+                    <!-- 006: 現在地（全体俯瞰・特定工程への対応なし） -->
+                    <rect x="30" y="110" width="140" height="70" rx="8" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="2.5"/>
+                    <text x="100" y="135" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">006</text>
+                    <text x="100" y="152" text-anchor="middle" fill="#f59e0b" font-size="10">全体工程マップ</text>
+                    <text x="100" y="168" text-anchor="middle" fill="#f59e0b" font-size="9">→ 今ここ</text>
+        
+                    <!-- 007 -->
+                    <rect x="190" y="110" width="140" height="70" rx="8" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="260" y="135" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">007</text>
+                    <text x="260" y="152" text-anchor="middle" fill="#cbd5e1" font-size="10">ヒアリングと</text>
+                    <text x="260" y="167" text-anchor="middle" fill="#cbd5e1" font-size="10">要件定義</text>
+        
+                    <!-- 008 -->
+                    <rect x="350" y="110" width="140" height="70" rx="8" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="420" y="135" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">008</text>
+                    <text x="420" y="152" text-anchor="middle" fill="#cbd5e1" font-size="10">サイトマップと</text>
+                    <text x="420" y="167" text-anchor="middle" fill="#cbd5e1" font-size="10">情報設計</text>
+        
+                    <!-- 009 -->
+                    <rect x="510" y="110" width="140" height="70" rx="8" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="2"/>
+                    <text x="580" y="135" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">009</text>
+                    <text x="580" y="152" text-anchor="middle" fill="#cbd5e1" font-size="10">ワイヤーフレームと</text>
+                    <text x="580" y="167" text-anchor="middle" fill="#cbd5e1" font-size="10">プロトタイプ</text>
+        
+                    <!-- 010 -->
+                    <rect x="670" y="110" width="140" height="70" rx="8" fill="#a78bfa" opacity="0.1" stroke="#a78bfa" stroke-width="2"/>
+                    <text x="740" y="135" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">010</text>
+                    <text x="740" y="152" text-anchor="middle" fill="#cbd5e1" font-size="10">デザインカンプと</text>
+                    <text x="740" y="167" text-anchor="middle" fill="#cbd5e1" font-size="10">スタイルガイド</text>
+        
+                    <!-- 対応線（6工程 → スライド番号ボックスの上端中央へ） -->
+                    <!-- ❶企画 → 007（ヒアリングと要件定義） -->
+                    <line x1="95" y1="65" x2="260" y2="108" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <!-- ❷情報設計 → 008（サイトマップと情報設計） -->
+                    <line x1="220" y1="65" x2="420" y2="108" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <!-- ❷情報設計 → 009（ワイヤーフレームとプロトタイプ） -->
+                    <line x1="220" y1="65" x2="580" y2="108" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+                    <!-- ❸デザイン → 010（デザインカンプとスタイルガイド） -->
+                    <line x1="345" y1="65" x2="740" y2="108" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+        
+                    <!-- フロー矢印（右向き：006→007→008→009→010） -->
+                    <polygon points="176,138 176,152 186,145" fill="#f59e0b" opacity="0.6"/>
+                    <polygon points="336,138 336,152 346,145" fill="#00d4ff" opacity="0.6"/>
+                    <polygon points="496,138 496,152 506,145" fill="#00d4ff" opacity="0.6"/>
+                    <polygon points="656,138 656,152 666,145" fill="#a78bfa" opacity="0.6"/>
+        
+                    <!-- 学習の流れラベル -->
+                    <rect x="200" y="210" width="460" height="50" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+                    <text x="430" y="232" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Block 2の学習ストーリー</text>
+                    <text x="430" y="250" text-anchor="middle" fill="#94a3b8" font-size="11">全体像を知る → 聞く → 設計する → 形にする → 仕上げる</text>
+        
+                    <!-- Block 1との接続 -->
+                    <rect x="200" y="280" width="460" height="40" rx="8" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,3"/>
+                    <text x="430" y="305" text-anchor="middle" fill="#f59e0b" font-size="11">Block 1（デザイン基礎）→ Block 2（上流設計）→ Block 3（Figma実践）</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド15: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめと次回予告</h2>
+            <div class="content-block">
+                <h3>今日のポイント</h3>
+                <ul>
+                    <li>WEB制作は<strong>6つの工程</strong>で構成される（企画→情報設計→デザイン→実装→公開→運用）</li>
+                    <li>成果が出ない原因の多くは<strong>上流工程の設計不足</strong></li>
+                    <li>ビジュアルアーキテクトは<strong>「設計して判断する人」</strong>であり、AI時代に最も求められるポジション</li>
+                    <li>工程間の<strong>丁寧な受け渡し</strong>が、品質とスケジュールを守る鍵</li>
+                </ul>
+        
+                <h3>次回：007「ヒアリングと要件定義の技術」</h3>
+                <p>上流工程の最初の一歩——<br>
+                <strong>クライアントの「本当の課題」を引き出す技術</strong>を学びます。</p>
+        
+                <div class="highlight-box">
+                    🔜 次回からは、6工程マップの各工程を一つずつ深掘りしていきます。<br>
+                    今日の全体像を「地図」として、常に立ち戻れるようにしておきましょう。
+                </div>
+            </div>
+        </div>
+        
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "WEB制作の6工程を正しい順番で並べたものはどれですか？",
+            options: [
+                "企画 → デザイン → 情報設計 → 実装 → 公開 → 運用",
+                "企画 → 情報設計 → デザイン → 実装 → 公開 → 運用",
+                "情報設計 → 企画 → デザイン → 実装 → 運用 → 公開",
+                "デザイン → 企画 → 情報設計 → 実装 → 公開 → 運用"
+            ],
+            correct: 1,
+            explanation: "WEB制作は「企画 → 情報設計 → デザイン → 実装 → 公開 → 運用」の順で進みます。企画で目的とターゲットを決め、情報設計でサイト構造を設計し、デザインで視覚化、実装でコード化、公開でリリース、運用で改善を繰り返します。"
+        },
+        {
+            question: "「デザインが良いのに成果が出ないWEBサイト」の最も多い原因は何ですか？",
+            options: [
+                "デザイナーのスキル不足",
+                "使用しているツールの性能が低い",
+                "上流工程（企画・情報設計）の設計不足",
+                "公開後のSEO対策が不十分"
+            ],
+            correct: 2,
+            explanation: "見た目が美しくても成果が出ない最大の原因は、上流工程の設計不足です。ターゲットが曖昧、導線が設計されていない、KPIが設定されていない——これらは企画・情報設計の段階で決めるべきことであり、デザインの品質では補えません。"
+        },
+        {
+            question: "ビジュアルアーキテクトとデザイナーの最大の違いは何ですか？",
+            options: [
+                "使用するツールが異なる",
+                "デザイナーは「作る人」、アーキテクトは「設計して判断する人」",
+                "アーキテクトの方が給与が高い",
+                "デザイナーはチームで働き、アーキテクトは一人で働く"
+            ],
+            correct: 1,
+            explanation: "デザイナーはビジュアルを自ら制作する「作る人」であり、アーキテクトは全体設計と品質判断を行う「設計して判断する人」です。AI時代にはAIが「作る」を担当し、人間は「判断する」ことに集中する——それがアーキテクトの役割です。"
+        },
+        {
+            question: "AI時代にビジュアルアーキテクトが重要になる理由として最も適切なものは？",
+            options: [
+                "AIを使うために専門的なプログラミング知識が必要だから",
+                "AIが「作る」を代替する→人間は「決める」「判断する」に集中する必要があるから",
+                "AIが普及すると仕事が減るので新しい職種が必要だから",
+                "AIのデザインは品質が低いので人間がすべて作り直す必要があるから"
+            ],
+            correct: 1,
+            explanation: "AIの進化により「作る」コストは劇的に下がりました。しかし、クライアントの課題を言語化する力、ユーザー導線を設計する力、複数案から最適解を判断する力——これらはAIにはできません。だからこそ「設計して判断する」アーキテクトの価値が高まっています。"
+        },
+        {
+            question: "工程間の受け渡しが雑だと、どのような問題が起きますか？",
+            options: [
+                "デザインの見た目が悪くなる",
+                "プロジェクトの予算が増える（ただし品質は保たれる）",
+                "手戻り・認識のズレが発生し、品質低下とスケジュール遅延につながる",
+                "エンジニアのモチベーションだけが下がる"
+            ],
+            correct: 2,
+            explanation: "工程間の受け渡しが雑（口頭のみ、ドキュメントなし等）だと、「そんなつもりじゃなかった」という認識のズレが発生します。結果として手戻りが増え、スケジュールが遅延し、品質が低下し、クライアントとの信頼関係にも影響します。丁寧なドキュメントでの受け渡しが品質を守る鍵です。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

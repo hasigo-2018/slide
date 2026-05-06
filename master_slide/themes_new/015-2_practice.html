@@ -4,15 +4,290 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>Figma AI機能の活用<span>【実践編】</span></h1>
+        <p>SŌILのWFをAIで効率化・改善する</p>
+    </div>
+</div>
+
+<!-- スライド2: 演習①-Step 1：AIでTOPページの別案を自動生成 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習①-Step 1：AIで「TOPページ別案」を自動生成する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>やること</h3>
+                <ul>
+                    <li>Figma Makeを起動する</li>
+                    <li>以下のプロンプトを入力して生成する</li>
+                    <li>生成後、<strong>011〜014で手動作成したWFと並べて配置</strong>して比較準備をする</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ <strong>目的は「速く作ること」ではない</strong><br>
+                    AI出力を<strong>評価する力をつけること</strong>が目的。まず出させて、次のStepで評価する
+                </div>
+            </div>
+            <div>
+                <h3>プロンプト例</h3>
+                <div class="highlight-box">
+                    D2CオーガニックスキンケアブランドのブランドサイトTOPページ。ナチュラルで信頼感のあるトーン。5セクション構成のTOPページレイアウト
+                </div>
+                <p class="text-note">※ 具体的な操作手順は授業時点のFigma Make UIに合わせて講師が補足する</p>
+                <p class="text-sub">生成された案に名前をつけておく：<strong>「AI案_015」</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 演習①-Step 2：AI出力を3軸で評価する（核） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習①-Step 2：AI出力を3軸で評価する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📋 <strong>評価の記録方法：</strong>Figma上のコメント機能または付箋（Sticky Note）で3軸ごとに記録する
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>軸① 設計意図との整合性</h3>
+                <ul>
+                    <li>ペルソナ（30代・調べて納得してから買う層）に合っているか？</li>
+                    <li>About・Storyなど信頼構築コンテンツの優先度は高いか？</li>
+                    <li>CTA配置は導線設計（サイトマップ）と整合しているか？</li>
+                </ul>
+                <h3>軸② コンポーネント設計との一貫性</h3>
+                <ul>
+                    <li>012の命名規則（<code>Button/Primary</code>等）に沿っているか？</li>
+                    <li>Auto Layout構造になっているか？ → <strong>おそらく沿っていない</strong></li>
+                </ul>
+            </div>
+            <div>
+                <h3>軸③ 実装可能性</h3>
+                <ul>
+                    <li>装飾が過多でHTML/CSSで再現困難でないか？</li>
+                    <li>絶対配置依存・Auto Layout不可能な構造でないか？</li>
+                    <li>エンジニアが見て実装イメージを持てるか？</li>
+                </ul>
+                <div class="highlight-box">
+                    🔑 <strong>気づきのポイント</strong><br>
+                    AIは「見た目のよいもの」を出す。評価なしにそのまま使うと、設計意図・コンポーネント体系・実装の3つが崩れる
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: 演習①-Step 3：評価結果を3分類で整理 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習①-Step 3：評価結果を3分類で整理する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>3分類の定義</h3>
+                <ul>
+                    <li>
+                        <strong>① 使える要素</strong><br>
+                        <span class="text-sub">設計意図に合い、コンポーネントに統合可能。そのまま、または軽微な修正で採用できる</span>
+                    </li>
+                    <li>
+                        <strong>② 参考になるアイデア</strong><br>
+                        <span class="text-sub">設計意図とはズレるが、着想・レイアウトパターンとして価値がある。直接使わないが参照する</span>
+                    </li>
+                    <li>
+                        <strong>③ そのままでは使えない</strong><br>
+                        <span class="text-sub">3軸のいずれかでNG。<strong>必ず理由を1行明記する</strong>（「軸①：ペルソナの行動目的と矛盾」等）</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>なぜ3分類で整理するのか</h3>
+                <p class="text-sub">「使えない」と判断しても、<strong>なぜ使えないかを言語化</strong>することが重要。感覚的な判断を言葉にする訓練</p>
+                <div class="highlight-box">
+                    🚀 <strong>この演習はBlock 6の先取り</strong><br>
+                    035「選球眼」では、AI出力・デザイン案に対してこの評価を本格的に行う。015がその予行演習になる
+                </div>
+                <p class="text-note">各分類をFigmaのフレーム内にグループ分けして整理しておくと、後から振り返りやすい</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: 演習②：既存WFの1セクションにAI改善提案を受ける -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習②：既存WFの1セクションにAI改善提案を受ける</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>対象セクション</h3>
+                <p class="text-sub"><strong>Section_03_Products</strong>（商品カード3枚のレイアウト）を選択</p>
+                <h3>手順</h3>
+                <ul>
+                    <li>Figma Makeまたはプラグインで<strong>レイアウトバリエーションを3案</strong>生成する</li>
+                    <li>3案を3軸で比較評価する</li>
+                    <li>最も優れた案を選び、<strong>「なぜこれを選んだか」をアノテーションで言語化</strong>する</li>
+                    <li>選ばなかった2案にも「なぜ不採用か」を1行記載する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>言語化の例</h3>
+                <div class="highlight-box">
+                    ✅ <strong>採用理由の例：</strong><br>
+                    「3案中Bを選択。商品画像を大きく配置することでSŌILのブランド価値を視覚的に伝えられる。Auto Layoutで実装可能。既存Button/Primaryと整合」
+                </div>
+                <div class="highlight-box">
+                    ❌ <strong>不採用理由の例：</strong><br>
+                    「A案は不採用。カード間の余白が均等でなくAuto Layout設定が困難（軸③）。C案は商品名が読みにくく購買判断に支障（軸①）」
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 演習③：プラグイン試用 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習③：プラグインを試用して評価する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📌 <strong>講師が事前に推奨プラグイン2〜3個を選定し、URLを共有する</strong>（具体名はスライドに固定しない）
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>試用カテゴリと確認ポイント</h3>
+                <ul>
+                    <li>
+                        <strong>コンテンツ生成系</strong><br>
+                        <span class="text-sub">プレースホルダーをSŌILに合った仮テキストに置換。ブランドトーンと合っているか確認</span>
+                    </li>
+                    <li>
+                        <strong>整理系</strong><br>
+                        <span class="text-sub">レイヤー名を自動整理 → 012の命名規則（<code>Button/Primary</code>等）に沿っているか確認</span>
+                    </li>
+                    <li>
+                        <strong>アクセシビリティチェック系</strong><br>
+                        <span class="text-sub">コントラスト比チェック（概念として体験。詳細はBlock 7以降）</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>各プラグイン試用後の判断</h3>
+                <p class="text-sub">試用後、以下の問いに答える：</p>
+                <ul>
+                    <li>自分のワークフローに組み込む<strong>価値があるか？</strong></li>
+                    <li>どの工程で使うと最も効果的か？</li>
+                    <li>信頼性の3基準（評価数・DL数・更新日）は満たしているか？</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 「便利だから使う」ではなく<br>
+                    「<strong>この工程でこの目的に使う</strong>」と言えるか？
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: Block 3総括 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 3 総括：SŌILのWFを一気通貫で完成させた</h2>
+    <div class="content-block svg-centered">
+        <svg class="generated-art" viewBox="0 0 860 300" id="block3-recap-015">
+            <defs>
+                <marker id="recap-arrow-015" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <path d="M0,0 L10,3.5 L0,7" fill="#00d4ff"/>
+                </marker>
+            </defs>
+
+            <!-- 011 -->
+            <rect x="20" y="40" width="130" height="60" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="85" y="65" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">011</text>
+            <text x="85" y="83" text-anchor="middle" fill="white" font-size="11">WF構築</text>
+            <text x="85" y="125" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">PC版 / SP版WF</text>
+
+            <line x1="150" y1="70" x2="183" y2="70" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#recap-arrow-015)"/>
+
+            <!-- 012 -->
+            <rect x="183" y="40" width="130" height="60" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="248" y="65" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">012</text>
+            <text x="248" y="83" text-anchor="middle" fill="white" font-size="11">コンポーネント化</text>
+            <text x="248" y="125" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">コンポーネント一式</text>
+
+            <line x1="313" y1="70" x2="346" y2="70" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#recap-arrow-015)"/>
+
+            <!-- 013 -->
+            <rect x="346" y="40" width="130" height="60" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="411" y="65" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">013</text>
+            <text x="411" y="83" text-anchor="middle" fill="white" font-size="11">レスポンシブ設計</text>
+            <text x="411" y="125" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">SP版 Auto Layout</text>
+
+            <line x1="476" y1="70" x2="509" y2="70" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#recap-arrow-015)"/>
+
+            <!-- 014 -->
+            <rect x="509" y="40" width="130" height="60" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="574" y="65" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">014</text>
+            <text x="574" y="83" text-anchor="middle" fill="white" font-size="11">プロトタイプ</text>
+            <text x="574" y="125" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">URL共有可能デモ</text>
+
+            <line x1="639" y1="70" x2="672" y2="70" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#recap-arrow-015)"/>
+
+            <!-- 015 -->
+            <rect x="672" y="25" width="150" height="90" rx="8" fill="rgba(0,212,255,0.25)" stroke="#00d4ff" stroke-width="2"/>
+            <text x="747" y="55" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">015</text>
+            <text x="747" y="73" text-anchor="middle" fill="white" font-size="11">AI効率化・評価</text>
+            <text x="747" y="90" text-anchor="middle" fill="#00d4ff" font-size="10">← 今ここ</text>
+            <text x="747" y="145" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">AI評価の記録</text>
+
+            <!-- 成果物ラベル -->
+            <rect x="20" y="160" width="810" height="50" rx="6" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+            <text x="430" y="181" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">Block 3 成果物一覧</text>
+            <text x="430" y="200" text-anchor="middle" fill="white" font-size="11">PC版WF　／　SP版WF　／　コンポーネント一式　／　プロトタイプ（URL共有可能）　／　AI評価の記録</text>
+
+            <!-- カリキュラム現在地 -->
+            <rect x="20" y="228" width="810" height="50" rx="6" fill="rgba(255,180,0,0.06)" stroke="rgba(255,180,0,0.3)" stroke-width="1"/>
+            <text x="430" y="249" text-anchor="middle" fill="#ffb400" font-size="12" font-weight="bold">カリキュラムの現在地</text>
+            <text x="430" y="268" text-anchor="middle" fill="white" font-size="11">Block 1〜2「考える」→ Block 3〜4「道具を持つ」。Block 3でFigmaを手に入れた</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド8: 次ブロック予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 4 予告：AI活用基礎（016〜021）</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>Block 4で学ぶこと</h3>
+                <ul>
+                    <li>Figma<strong>以外</strong>のAI活用を本格的に学ぶ</li>
+                    <li>Geminiを使った戦略・コピー・ペルソナ生成</li>
+                    <li>Nano Banana Proを使ったAI画像生成</li>
+                    <li>AIとの対話設計（プロンプトエンジニアリング）</li>
+                </ul>
+                <p class="text-note">Block 4では各テーマでGeminiへのプロンプトを設計し、出力を評価する演習が続く</p>
+            </div>
+            <div>
+                <h3>015の3軸評価力が基盤になる</h3>
+                <p class="text-sub">ツールが変わっても、評価の問いは同じ：</p>
+                <ul>
+                    <li>設計意図と合っているか？</li>
+                    <li>一貫性が保たれているか？</li>
+                    <li>実装・活用可能か？</li>
+                </ul>
+                <div class="highlight-box">
+                    🔑 「どんなAIツールが出てきても、<br>
+                    <strong>3軸でチェックすれば評価できる</strong>」<br>
+                    <span class="text-note">画像生成AI（018）・コピーライティングAI（017）にも同じフレームで適用できる</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +296,65 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "AIが生成したTOPページの別案を評価する際、最初にチェックすべき軸はどれですか？",
+        options: [
+            "軸③ 実装可能性（HTML/CSSで再現できるか）",
+            "軸① 設計意図との整合性（ペルソナの行動目的・導線・トンマナに合っているか）",
+            "軸② コンポーネント設計との一貫性（命名規則・Auto Layoutに沿っているか）",
+            "見た目の完成度（きれいかどうか）"
+        ],
+        correct: 1,
+        explanation: "最初にチェックすべきは軸①「設計意図との整合性」です。どれだけきれいなUIでも、ペルソナの行動目的・サイトマップの導線・トンマナと合っていなければ不採用です。SŌILでは「調べて納得してから買う層」という設計意図が、AI出力のフィルターとして機能します。"
+    },
+    {
+        question: "AI出力の3分類で「使えない」に分類する際、必ず行うべきことはどれですか？",
+        options: [
+            "AIに再生成を依頼して作り直す",
+            "デザインを完全に削除して証拠を残さない",
+            "3軸（設計意図・コンポーネント一貫性・実装可能性）のどれに違反するかを理由として明記する",
+            "講師に相談してから判断する"
+        ],
+        correct: 2,
+        explanation: "「使えない」と判断した際は、3軸のどれに違反するかを理由として明記することが重要です。「軸①：ペルソナの行動目的と矛盾」「軸③：Auto Layout不可能な構造」のように言語化する訓練が、Block 6の論理的言語化（030）・選球眼（035）の準備になります。"
+    },
+    {
+        question: "演習②で選ばなかった案にも「不採用理由」を記載する目的として最も正確なものはどれですか？",
+        options: [
+            "Figmaのレイヤー管理を整理するため",
+            "採用した案の優位性を証明するため",
+            "「なぜ選ばないか」を言語化する訓練。Block 6の論理的言語化（030）と選球眼（035）の準備",
+            "クライアントへの説明資料として提出するため"
+        ],
+        correct: 2,
+        explanation: "不採用理由を記載するのは、「なぜ選ばないか」を言語化する訓練です。感覚的な判断を言葉にする力が、Block 6の030「論理的言語化」と035「選球眼」で本格的に問われます。015での習慣形成がその準備になります。"
+    },
+    {
+        question: "Block 3全体を通してSŌILのWFに蓄積された成果物の組み合わせとして正しいものはどれですか？",
+        options: [
+            "PC版WF / デザインカンプ / スタイルガイド / 開発仕様書",
+            "PC版WF / SP版WF / コンポーネント一式 / プロトタイプ（URL共有可能）/ AI評価の記録",
+            "ペルソナ資料 / サイトマップ / ジャーニーマップ / WFスケッチ",
+            "PC版WF / SP版WF / 完成デザイン / コーディング済みHTML"
+        ],
+        correct: 1,
+        explanation: "Block 3（011〜015）の成果物は「PC版WF / SP版WF / コンポーネント一式 / プロトタイプ（URL共有可能）/ AI評価の記録」の5つです。011でWF、012でコンポーネント、013でSP版レスポンシブ、014でプロトタイプ、015でAI評価の記録を蓄積しました。"
+    },
+    {
+        question: "015で学んだ「3軸の評価力」がBlock 4以降でも使える理由として最も正確なものはどれですか？",
+        options: [
+            "FigmaとGeminiは同じ会社のツールだから",
+            "3軸は特定のAIツールに依存しない普遍的な判断基準で、画像生成AI（018）やコピーライティングAI（017）にも同じフレームで適用できるから",
+            "Block 4以降はFigmaを使わないから、別の評価基準が必要になるから",
+            "3軸評価はGeminiのプロンプト設計に特化したフレームワークだから"
+        ],
+        correct: 1,
+        explanation: "3軸（設計意図との整合性・コンポーネント設計との一貫性・実装可能性）は特定のAIツールに依存しない普遍的な判断基準です。コピーライティングAI（017）では「ターゲットへの整合性・ブランドトーンの一貫性・実際に使えるコピーか」という形で同じフレームが適用できます。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

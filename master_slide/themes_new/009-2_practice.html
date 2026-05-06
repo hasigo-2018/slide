@@ -3,28 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>サイトマップと導線設計【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>サイトマップと導線設計<span>【実践編】</span></h1>
+                <p>整骨院サイトの"地図"と"道順"を設計しよう</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 今日の実践目標 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今日の実践目標</h2>
+            <div class="content-block">
+                <h3>やること：2案を作って比較し、1つ選ぶ</h3>
+                <p>008で洗い出した「必要ページリスト」をもとに、LP型と複数ページ型の<strong>2案のサイトマップ</strong>を作成します。そのうえで根拠を言語化して1案を選び、<strong>導線を図として描ききる</strong>のがゴールです。</p>
+        
+                <h3>手元に用意するもの</h3>
+                <ul>
+                    <li><strong>必要ページリスト（008の成果物）</strong>：どんなページが必要か洗い出したもの</li>
+                    <li><strong>ペルソナシート（008）</strong>：誰に届けるサイトか</li>
+                    <li><strong>ジャーニーマップ（008）</strong>：感情の動きと離脱リスクの把握に使う</li>
+                    <li><strong>要件定義書（007）</strong>：型の選択の最終根拠に使う</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 今日の最大のゴール：「なぜその型を選んだか」を<strong>4つの判断基準で言語化</strong>できること
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: 手順1 Geminiでサイトマップ2案を生成 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 1 / 6：Geminiでサイトマップ2案を生成する</h2>
+            <div class="content-block">
+                <h3>Geminiに入力するプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-1">
+        以下の情報をもとに、整骨院サイトのサイトマップを2案作成してください。
+        
+        【ペルソナ】
+        ・30代後半〜40代の女性、デスクワーク中心
+        ・肩こり・腰痛に悩んでいるが「また行くのが面倒」という過去経験あり
+        ・「効果があるか不安」「料金が不透明だと嫌」という心理的ハードルがある
+        
+        【JTBD（やりたいこと）】
+        ・慢性的な肩こり・腰痛を根本から解消したい
+        ・通いやすく、料金が明確な整骨院を探したい
+        ・「この院なら安心」という根拠がほしい
+        
+        【必要ページ（008で洗い出したもの）】
+        トップ、施術メニュー、料金・プラン、よくある質問、スタッフ紹介、アクセス・予約、お客様の声、院の理念・こだわり
+        
+        ---
+        
+        【案A：LP型】
+        1ページで完結する縦スクロール構成。セクションの順番と、各セクションに入れるべき主な内容を提示してください。中間CTAを入れるタイミングも示してください。
+        
+        【案B：複数ページ型】
+        ナビゲーションで回遊する構成。トップページを起点としたツリー構造で、各ページの役割と、トップとの接続関係を示してください。
+        
+        最後に、この整骨院案件においてどちらの型がより適切か、理由とともに一言コメントをお願いします。
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+        
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    ⚠️ よくある間違い：ペルソナや必要ページを貼らずに「サイトマップ作って」だけ送る<br>
+                    ✅ 正しいやり方：008の成果物を丸ごとコンテキストとして渡す
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: 手順2 AI出力を精査する -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 2 / 6：AI出力を精査する</h2>
+            <div class="content-block">
+                <h3>Geminiの出力をそのまま使ってはいけない</h3>
+                <p>AIは「それっぽい構成」を出してきますが、ジャーニーとの対応を見ると抜けが出ることがあります。以下の3点で必ず精査してください。</p>
+        
+                <h3>精査チェックリスト</h3>
+                <ul>
+                    <li>
+                        <strong>① ジャーニーの各ステップに対応するページが漏れていないか</strong><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;">「不安・躊躇」ステップにFAQや口コミページが対応しているか確認する</span>
+                    </li>
+                    <li>
+                        <strong>② 階層が深すぎないか（3クリックルール）</strong><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;">複数ページ型でトップから3クリック以内に全ページたどり着けるか</span>
+                    </li>
+                    <li>
+                        <strong>③ CVへの優先順位がついているか</strong><br>
+                        <span style="font-size: 0.9em; opacity: 0.8;">「予約・お問い合わせ」ページへの導線が複数箇所から設けられているか</span>
+                    </li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 精査のコツ：008のジャーニーマップの「感情」行を横に置いて、<br>
+                    各ステップと対応するページを1対1で照合する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: 手順3 Figmaでサイトマップ図をレイアウト -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 3 / 6：Figmaでサイトマップ図をレイアウト</h2>
+            <div class="content-block">
+                <h3>2案を横並びで1フレームに収める</h3>
+                <p>LP型と複数ページ型を同じフレーム内に横並びで配置します。比較しやすくすることが目的です。</p>
+        
+                <h3>LP型（案A）の描き方</h3>
+                <ul>
+                    <li>縦に並んだ<strong>セクションのフロー図</strong>として描く</li>
+                    <li>各セクションを矩形で表現し、矢印で縦につなぐ</li>
+                    <li>中間CTAを挿入するタイミングを<strong>赤い矩形</strong>で示す</li>
+                </ul>
+        
+                <h3>複数ページ型（案B）の描き方</h3>
+                <ul>
+                    <li>トップページを頂点とした<strong>ツリー構造</strong>で描く</li>
+                    <li>グローバルナビに入るページは第2階層、その配下を第3階層に</li>
+                    <li>各ページ矩形に「役割メモ」を小さく添える</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：きれいに装飾しようとしてしまう<br>
+                    ✅ 正しいやり方：構造が伝わればOK。色は「CTA」「通常ページ」の2色で十分
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: 手順4 どちらが適切か選ぶ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 4 / 6：どちらが適切か選ぶ</h2>
+            <div class="content-block">
+                <h3>4つの判断基準で根拠を言語化する</h3>
+                <p>「なんとなくこっち」ではなく、判断の根拠を言語化することがアーキテクトの仕事です。007の要件定義に立ち返りながら以下を確認してください。</p>
+        
+                <ul>
+                    <li>
+                        <strong>① 売るもの・伝えるものの数</strong><br>
+                        施術メニューが複数あり、ターゲットによって訴求が変わるなら→複数ページ型
+                    </li>
+                    <li>
+                        <strong>② CVの種類</strong><br>
+                        「予約」1択か、「電話・LINE・フォーム」など複数CVがあるか
+                    </li>
+                    <li>
+                        <strong>③ 情報量</strong><br>
+                        スタッフ紹介・院の理念・アクセスなど1ページに収まりきらないなら→複数ページ型
+                    </li>
+                    <li>
+                        <strong>④ 更新頻度</strong><br>
+                        お客様の声やブログを定期追加するなら→複数ページ型＋CMS
+                    </li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 判断を言語化するフォーマット：<br>
+                    「〇〇という理由で、この案件は△△型が適切と判断しました」<br>
+                    この1文を書けることが今日のゴール
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 手順5 導線をFigma上に描く -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 5 / 6：導線をFigma上に描く</h2>
+            <div class="content-block">
+                <h3>「次にどこへ行くか」をすべてのページに矢印で描く</h3>
+                <p>手順3で作ったサイトマップ図の上に、ユーザーの動線を矢印で重ねます。「矢印が引けないページ」があれば、その設計が抜けているサインです。</p>
+        
+                <h3>描くべき矢印の種類</h3>
+                <ul>
+                    <li><strong>主導線（太い矢印）：</strong>CVへの最短ルート。例）トップ→施術メニュー→料金→予約</li>
+                    <li><strong>補助導線（細い矢印）：</strong>サブページからCTAへの接続。例）スタッフ紹介→予約</li>
+                    <li><strong>中間CTA（赤い矢印）：</strong>LP型の場合、各セクション終わりからCTAへの分岐</li>
+                </ul>
+        
+                <h3>CTAの配置を決める</h3>
+                <ul>
+                    <li>LP型：FV直下・解決策後・安心材料後・最下部の最低4箇所</li>
+                    <li>複数ページ型：全ページのヘッダー・フッター＋各ページ本文末</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：「矢印なしのページ」を放置してしまう<br>
+                    ✅ 正しい設計：全ページに「次の一手」が必ずある状態にする
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: 手順6 離脱ポイントの対策 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">手順 6 / 6：離脱ポイントの対策を設計する</h2>
+            <div class="content-block">
+                <h3>008のジャーニーマップの「感情」行を直接参照する</h3>
+                <p>感情が下がるステップに対応するページを特定し、何を追加すべきか検討します。</p>
+        
+                <h3>整骨院案件の離脱リスクと対策例</h3>
+                <ul>
+                    <li>
+                        <strong>「料金が高そう」と感じるステップ</strong><br>
+                        → 料金ページに「初回限定プラン」「明朗会計の説明」「他院との比較表」を追加
+                    </li>
+                    <li>
+                        <strong>「本当に効くか不安」と感じるステップ</strong><br>
+                        → 施術メニューページに「お客様の声（Before/After）」「実績数」を直前配置
+                    </li>
+                    <li>
+                        <strong>「また通うのが面倒そう」と感じるステップ</strong><br>
+                        → アクセスページに「駐車場あり」「予約はLINEで30秒」などハードルを下げる情報を追加
+                    </li>
+                    <li>
+                        <strong>「問い合わせが面倒そう」と感じるステップ</strong><br>
+                        → 予約フォームを「お名前・電話番号・希望日時」の3項目に絞り「3分で完了」と明記
+                    </li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 対策の配置タイミング：安心材料はCTAボタンの直前に置くと最も効果的
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: グループ共有・フィードバック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">グループ共有・フィードバック</h2>
+            <div class="content-block">
+                <h3>共有のポイント</h3>
+                <p>LP型を選んだ人・複数ページ型を選んだ人、それぞれの<strong>根拠の違い</strong>を中心に議論します。</p>
+        
+                <h3>フィードバック視点</h3>
+                <ul>
+                    <li>
+                        <strong>① 判断根拠は4つの基準で言語化されているか</strong><br>
+                        「なんとなくLP型のほうが良さそう」は根拠にならない
+                    </li>
+                    <li>
+                        <strong>② 導線の見落としはないか</strong><br>
+                        「矢印が引けないページ」「CVに繋がらないページ」がないか確認
+                    </li>
+                    <li>
+                        <strong>③ 離脱対策は008のジャーニーマップと対応しているか</strong><br>
+                        感情が下がるポイントに安心材料が配置されているか
+                    </li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🎯 議論のゴール：「同じ整骨院案件でも、要件定義の読み方で型の選択が変わりうる」<br>
+                    という気づきを共有すること
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: Block 2振り返り -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Block 2 振り返り：上流設計の全成果物</h2>
+            <div class="content-block">
+                <h3>007〜009で作ったものを並べてみる</h3>
+                <p>これがWEB制作の「上流設計」の実態です。デザインツールを触る前に、これだけの思考が必要です。</p>
+        
+                <ul>
+                    <li><strong>要件定義書（007）：</strong>目的・ターゲット・CVの種類・制約条件の文書化</li>
+                    <li><strong>ペルソナシート（008）：</strong>誰に届けるかの人物像の具体化</li>
+                    <li><strong>JTBDシート（008）：</strong>ユーザーが「本当にやりたいこと」の言語化</li>
+                    <li><strong>ジャーニーマップ（008）：</strong>感情の動きと離脱リスクの可視化</li>
+                    <li><strong>サイトマップ（009）：</strong>ページ構造の設計図</li>
+                    <li><strong>導線図（009）：</strong>ユーザーの動線とCTAの配置設計</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    💡 この成果物セットがあれば、Figmaでのワイヤーフレーム作成（Block 3）を<br>
+                    「なんとなく」ではなく「根拠を持って」進められる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回予告：010 UIルールとトンマナ定義</h2>
+            <div class="content-block">
+                <h3>Block 2 最終回：上流設計の仕上げ</h3>
+                <p>009までで「何をどこに置くか」の設計が完成しました。次の010では「どう見せるか」のルールを定義します。</p>
+        
+                <h3>010で定義するもの</h3>
+                <ul>
+                    <li><strong>カラーパレット：</strong>メイン・アクセント・背景・テキストの色ルール</li>
+                    <li><strong>タイポグラフィスケール：</strong>見出し・本文・注釈のフォントサイズ体系</li>
+                    <li><strong>余白のルール：</strong>セクション間・要素間の余白の統一基準</li>
+                    <li><strong>コンポーネント思考：</strong>ボタン・カードなどの再利用可能な部品の考え方</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    🔜 010のトンマナを009のサイトマップに乗せると、Block 2の上流設計が完成。<br>
+                    Block 3のFigmaワイヤーフレームへ進む準備が整います
+                </div>
+            </div>
+        </div>
 
-         <!-- クイズセクション -->
+        <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
             <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "Geminiでサイトマップ2案を生成した後、最初にやるべきことはどれですか？",
+            options: [
+                "Figmaにすぐ転記して見た目を整える",
+                "ジャーニーの各ステップに対応するページが漏れていないか確認する",
+                "クライアントにメールで2案を送って意見を聞く",
+                "AIが薦めた案をそのまま採用する"
+            ],
+            correct: 1,
+            explanation: "AIは「それっぽい構成」を出しますが、ジャーニーとの対応を確認すると抜けが出ることがあります。008のジャーニーマップの各ステップと対応するページを1対1で照合することが最初のステップです。"
+        },
+        {
+            question: "LP型と複数ページ型を選ぶ際、最も重要な判断材料はどれですか？",
+            options: [
+                "クライアントの好みとデザインのイメージ",
+                "制作にかけられる予算と納期",
+                "007の要件定義で定めたサイトの目的とCVの種類",
+                "競合他社サイトの構成"
+            ],
+            correct: 2,
+            explanation: "型の選択は「何を・誰に・どのCVで届けるか」という要件定義の核心に立ち返って決めます。好みや予算ではなく、007で合意した目的とCV設計が最も重要な判断材料です。"
+        },
+        {
+            question: "Figmaで導線を描いているとき、「矢印が引けないページ」があった場合、何を意味しますか？",
+            options: [
+                "そのページはサイトマップから削除すべきである",
+                "Figmaの操作を間違えているので最初からやり直す",
+                "そのページの役割や次のアクションの設計が抜けている",
+                "そのページは目的達成済みで導線不要である"
+            ],
+            correct: 2,
+            explanation: "導線設計の原則は「すべてのページに次の行動がある」こと。矢印が引けないページは、ユーザーがそこで行き止まりになる設計漏れです。役割の見直しかCTAの追加が必要です。"
+        },
+        {
+            question: "整骨院案件で「料金を見て躊躇する」離脱リスクに対して、最も有効な対策はどれですか？",
+            options: [
+                "料金ページを削除して問い合わせに誘導する",
+                "料金ページに「初回限定プラン」「明朗会計の説明」「お客様の声」を追加する",
+                "料金を最もわかりにくい場所に小さく掲載する",
+                "料金ページへの導線をなくしてFVのCTAだけ目立たせる"
+            ],
+            correct: 1,
+            explanation: "離脱対策の基本は「不安を解消する情報をその場に置くこと」。料金への不安には、透明性のある価格説明・特典・実際の利用者の声を組み合わせて安心感を生み出します。CTAの直前に配置すると特に効果的です。"
+        },
+        {
+            question: "009までで完成した成果物の組み合わせとして正しいものはどれですか？",
+            options: [
+                "ペルソナシートとFigmaデザインカンプ",
+                "要件定義書とビジュアルデザイン・コンポーネントリスト",
+                "要件定義書（007）＋ペルソナ・JTBD・ジャーニーマップ（008）＋サイトマップ・導線図（009）",
+                "サイトマップとHTMLコーディングの完成ファイル"
+            ],
+            correct: 2,
+            explanation: "007〜009で完成するのはWEB制作の「上流設計」の成果物セット全体です。この6点（要件定義書・ペルソナシート・JTBDシート・ジャーニーマップ・サイトマップ・導線図）が揃ってはじめてBlock 3のワイヤーフレーム作成に進めます。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

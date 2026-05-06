@@ -4,15 +4,357 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>Atomic Designと<br>コンポーネント設計<span>【理論編】</span></h1>
+                <p>1回作って、何度でも使う</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ「部品化」が必要なのか</h2>
+            <div class="content-block">
+                <h3>011で作ったWFを振り返ってみよう</h3>
+                <p>SŌILのTOPページWFには、ヘッダー・ボタン・商品カードなど<strong>似た要素が複数箇所</strong>に登場していました。</p>
+        
+                <h3>全部バラバラに作ると何が起きるか？</h3>
+                <ul>
+                    <li>修正のたびに<strong>全箇所を手作業</strong>で直す必要がある</li>
+                    <li>修正漏れが発生し、<strong>デザインのブレ</strong>が生まれる</li>
+                    <li>一貫性が崩壊し、ユーザーに違和感を与える</li>
+                </ul>
+        
+                <h3>解決策：「1回作って、使い回す」</h3>
+                <p><strong>Atomic Design</strong> は「部品の分け方」を教えてくれるフレームワーク。<br>
+                <strong>Figmaコンポーネント</strong> は「部品の作り方」を実現するツール機能。<br>
+                この2つを組み合わせることで、効率的で一貫性のあるデザインが可能になります。</p>
+        
+                <div class="highlight-box">
+                    💡 アーキテクトの視点：「同じものを2回作っていたら、それは部品化のサイン」
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: Atomic Design全体像（SVG図解） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Atomic Designの全体像</h2>
+            <div class="content-block svg-centered">
+                <p>Brad Frostが提唱したUIの設計フレームワーク。化学のメタファーで、小さな要素から大きな構造へ積み上げる考え方です。</p>
+                <svg class="generated-art" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 背景ライン -->
+                    <line x1="80" y1="190" x2="820" y2="190" stroke="#00d4ff" stroke-width="1" opacity="0.2" stroke-dasharray="4,4"/>
+        
+                    <!-- Atoms -->
+                    <rect x="20" y="100" width="140" height="180" rx="12" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="90" y="135" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">Atoms</text>
+                    <text x="90" y="155" text-anchor="middle" fill="white" font-size="11">原子</text>
+                    <!-- Atom icons: button, label -->
+                    <rect x="50" y="175" width="80" height="28" rx="14" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="1"/>
+                    <text x="90" y="194" text-anchor="middle" fill="white" font-size="10">ボタン</text>
+                    <rect x="50" y="215" width="80" height="22" rx="4" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+                    <text x="90" y="230" text-anchor="middle" fill="white" font-size="9" opacity="0.7">ラベル / アイコン</text>
+                    <text x="90" y="265" text-anchor="middle" fill="white" font-size="9" opacity="0.5">SŌIL例：CTAボタン</text>
+        
+                    <!-- Arrow 1 -->
+                    <polygon points="170,190 185,183 185,197" fill="#00d4ff" opacity="0.6"/>
+        
+                    <!-- Molecules -->
+                    <rect x="195" y="100" width="140" height="180" rx="12" fill="#e040fb" opacity="0.08" stroke="#e040fb" stroke-width="1.5"/>
+                    <text x="265" y="135" text-anchor="middle" fill="#e040fb" font-size="13" font-weight="bold">Molecules</text>
+                    <text x="265" y="155" text-anchor="middle" fill="white" font-size="11">分子</text>
+                    <!-- Molecule icon: card -->
+                    <rect x="225" y="175" width="80" height="70" rx="6" fill="#e040fb" opacity="0.15" stroke="#e040fb" stroke-width="1"/>
+                    <rect x="232" y="182" width="66" height="28" rx="3" fill="#e040fb" opacity="0.1"/>
+                    <text x="265" y="200" text-anchor="middle" fill="white" font-size="8" opacity="0.6">画像</text>
+                    <text x="265" y="225" text-anchor="middle" fill="white" font-size="8">商品名 + 価格</text>
+                    <text x="265" y="265" text-anchor="middle" fill="white" font-size="9" opacity="0.5">SŌIL例：商品カード</text>
+        
+                    <!-- Arrow 2 -->
+                    <polygon points="345,190 360,183 360,197" fill="#e040fb" opacity="0.6"/>
+        
+                    <!-- Organisms -->
+                    <rect x="370" y="100" width="140" height="180" rx="12" fill="#ffab40" opacity="0.08" stroke="#ffab40" stroke-width="1.5"/>
+                    <text x="440" y="135" text-anchor="middle" fill="#ffab40" font-size="13" font-weight="bold">Organisms</text>
+                    <text x="440" y="155" text-anchor="middle" fill="white" font-size="11">有機体</text>
+                    <!-- Organism icon: header section -->
+                    <rect x="395" y="175" width="90" height="70" rx="6" fill="#ffab40" opacity="0.1" stroke="#ffab40" stroke-width="1"/>
+                    <rect x="402" y="182" width="76" height="12" rx="2" fill="#ffab40" opacity="0.2"/>
+                    <rect x="402" y="200" width="30" height="8" rx="2" fill="#ffab40" opacity="0.15"/>
+                    <rect x="438" y="200" width="30" height="8" rx="2" fill="#ffab40" opacity="0.15"/>
+                    <rect x="402" y="215" width="76" height="20" rx="3" fill="#ffab40" opacity="0.1"/>
+                    <text x="440" y="265" text-anchor="middle" fill="white" font-size="9" opacity="0.5">SŌIL例：ヘッダー全体</text>
+        
+                    <!-- Arrow 3 -->
+                    <polygon points="520,190 535,183 535,197" fill="#ffab40" opacity="0.6"/>
+        
+                    <!-- Templates -->
+                    <rect x="545" y="100" width="140" height="180" rx="12" fill="#69f0ae" opacity="0.08" stroke="#69f0ae" stroke-width="1.5"/>
+                    <text x="615" y="135" text-anchor="middle" fill="#69f0ae" font-size="13" font-weight="bold">Templates</text>
+                    <text x="615" y="155" text-anchor="middle" fill="white" font-size="11">テンプレート</text>
+                    <!-- Template icon: wireframe -->
+                    <rect x="575" y="175" width="80" height="70" rx="6" fill="#69f0ae" opacity="0.1" stroke="#69f0ae" stroke-width="1"/>
+                    <rect x="582" y="182" width="66" height="10" rx="2" fill="#69f0ae" opacity="0.15"/>
+                    <rect x="582" y="198" width="30" height="20" rx="2" fill="#69f0ae" opacity="0.1"/>
+                    <rect x="618" y="198" width="30" height="20" rx="2" fill="#69f0ae" opacity="0.1"/>
+                    <rect x="582" y="224" width="66" height="14" rx="2" fill="#69f0ae" opacity="0.1"/>
+                    <text x="615" y="265" text-anchor="middle" fill="white" font-size="9" opacity="0.5">＝011のWF</text>
+        
+                    <!-- Arrow 4 -->
+                    <polygon points="695,190 710,183 710,197" fill="#69f0ae" opacity="0.6"/>
+        
+                    <!-- Pages -->
+                    <rect x="720" y="100" width="140" height="180" rx="12" fill="#ff5252" opacity="0.08" stroke="#ff5252" stroke-width="1.5"/>
+                    <text x="790" y="135" text-anchor="middle" fill="#ff5252" font-size="13" font-weight="bold">Pages</text>
+                    <text x="790" y="155" text-anchor="middle" fill="white" font-size="11">ページ</text>
+                    <!-- Pages icon: completed page -->
+                    <rect x="750" y="175" width="80" height="70" rx="6" fill="#ff5252" opacity="0.1" stroke="#ff5252" stroke-width="1"/>
+                    <rect x="757" y="182" width="66" height="10" rx="2" fill="#ff5252" opacity="0.2"/>
+                    <rect x="757" y="198" width="30" height="20" rx="2" fill="#ff5252" opacity="0.15"/>
+                    <rect x="793" y="198" width="30" height="20" rx="2" fill="#ff5252" opacity="0.15"/>
+                    <rect x="757" y="224" width="66" height="14" rx="2" fill="#ff5252" opacity="0.15"/>
+                    <text x="790" y="265" text-anchor="middle" fill="white" font-size="9" opacity="0.5">＝Block 5の完成形</text>
+        
+                    <!-- 下部の概念ラベル -->
+                    <text x="90" y="340" text-anchor="middle" fill="white" font-size="10" opacity="0.4">最小要素</text>
+                    <text x="440" y="340" text-anchor="middle" fill="white" font-size="10" opacity="0.4">← 小さい　　　　　　大きい →</text>
+                    <text x="790" y="340" text-anchor="middle" fill="white" font-size="10" opacity="0.4">完成形</text>
+        
+                    <!-- 上部ラベル -->
+                    <text x="450" y="75" text-anchor="middle" fill="white" font-size="12" opacity="0.6">化学のメタファー：原子 → 分子 → 有機体 → 構造体 → 完成物</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド4: Atoms と Molecules（2カラム） -->
+        <div class="slide-container">
+            <h2 class="slide-title">Atoms（原子）と Molecules（分子）</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>Atoms ― 最小のUI要素</h3>
+                    <p>それ以上分解できない<strong>最小の部品</strong>。単体では意味を持たないこともあるが、すべての土台になる。</p>
+                    <ul>
+                        <li>ボタン</li>
+                        <li>テキストラベル</li>
+                        <li>アイコン</li>
+                        <li>入力フィールド</li>
+                        <li>見出しテキスト</li>
+                    </ul>
+                    <div class="highlight-box">
+                        SŌILの例：<br>
+                        「オンラインショップへ」ボタン、ナビ項目1つ、ロゴマーク
+                    </div>
+                </div>
+                <div>
+                    <h3>Molecules ― 機能を持つ小さな組み合わせ</h3>
+                    <p>Atomsを組み合わせて<strong>ひとつの機能</strong>を持たせた単位。ユーザーが「意味のあるかたまり」として認識できるサイズ。</p>
+                    <ul>
+                        <li>検索フォーム（入力欄 + ボタン）</li>
+                        <li>商品カード（画像 + 商品名 + 価格）</li>
+                        <li>ナビゲーションリンク（アイコン + ラベル）</li>
+                    </ul>
+                    <div class="highlight-box">
+                        SŌILの例：<br>
+                        商品カード1枚＝画像枠 + 商品名 + 価格 + リンク
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: Organisms と Templates/Pages（2カラム） -->
+        <div class="slide-container">
+            <h2 class="slide-title">Organisms（有機体）と Templates / Pages</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>Organisms ― ページの独立セクション</h3>
+                    <p>Moleculesやatomsを組み合わせた<strong>ページ内の独立したブロック</strong>。それ自体で意味が完結する。</p>
+                    <ul>
+                        <li>ヘッダー全体（ロゴ + ナビ + CTA）</li>
+                        <li>商品一覧セクション（見出し + カード群）</li>
+                        <li>フッター全体</li>
+                    </ul>
+                    <div class="highlight-box">
+                        SŌILの例：<br>
+                        ヘッダー全体、Section_03_Products全体
+                    </div>
+                </div>
+                <div>
+                    <h3>Templates / Pages ― 全体構造と完成形</h3>
+                    <p><strong>Templates</strong>＝Organismsを配置したレイアウト骨格。コンテンツの入る「枠」だけを定義する。</p>
+                    <p><strong>Pages</strong>＝Templateに実際のテキスト・画像を流し込んだ完成形。</p>
+        
+                    <div class="highlight-box">
+                        カリキュラムとの対応：<br>
+                        Templates ＝ 011で作ったWF<br>
+                        Pages ＝ Block 5の完成ページ
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: なぜ5層に分けるのか -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ5層に分けるのか ― 3つのメリット</h2>
+            <div class="content-block">
+                <h3>① 修正範囲の最小化</h3>
+                <p>Atom（例：ボタンの色）を1箇所修正するだけで、そのAtomを使っている<strong>すべてのMolecules・Organisms</strong>に変更が反映される。100箇所を手作業で直す必要がなくなる。</p>
+        
+                <h3>② チームの共通言語になる</h3>
+                <p>「そのボタンはAtomで定義してあるから、メインコンポーネントを直して」——このひと言で全員が同じ操作をイメージできる。デザイナー・ディレクター・エンジニア間の<strong>認識のズレが減る</strong>。</p>
+        
+                <h3>③ デザインとコードの一致</h3>
+                <p>Atomic Designの考え方はフロントエンド開発（React、Vueなど）のコンポーネント設計と構造が一致する。デザインの「部品」がそのまま<strong>コードの「部品」</strong>になる。</p>
+                <p style="font-size: 0.9rem; opacity: 0.7;">（→ この連携は Block 7のテーマ039「デザインと開発の連携」で詳しく扱います）</p>
+        
+                <div class="highlight-box">
+                    🏗️ アーキテクトの視点：部品のルールを設計し、チームに共有するのがアーキテクトの仕事。「何を部品にするか」の判断力が問われます。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: Figmaコンポーネントの基本 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Figmaコンポーネントの基本</h2>
+            <div class="content-block svg-centered">
+                <p>Atomic Designの「層の考え方」を、Figmaでは<strong>コンポーネント機能</strong>で実現します。</p>
+                <svg class="generated-art" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+                    <!-- メインコンポーネント -->
+                    <rect x="60" y="60" width="200" height="160" rx="12" fill="#9c27b0" opacity="0.1" stroke="#9c27b0" stroke-width="2"/>
+                    <!-- ◇ アイコン -->
+                    <polygon points="160,90 175,105 160,120 145,105" fill="none" stroke="#9c27b0" stroke-width="2"/>
+                    <text x="160" y="148" text-anchor="middle" fill="#9c27b0" font-size="14" font-weight="bold">メインコンポーネント</text>
+                    <text x="160" y="170" text-anchor="middle" fill="white" font-size="11">設計図の「原本」</text>
+                    <text x="160" y="192" text-anchor="middle" fill="white" font-size="10" opacity="0.6">Ctrl + Alt + K で作成</text>
+                    <text x="160" y="210" text-anchor="middle" fill="white" font-size="10" opacity="0.5">アイコン：◇</text>
+        
+                    <!-- 矢印群 -->
+                    <line x1="270" y1="110" x2="380" y2="60" stroke="#00d4ff" stroke-width="1.5" opacity="0.6"/>
+                    <polygon points="380,60 372,55 370,66" fill="#00d4ff" opacity="0.6"/>
+        
+                    <line x1="270" y1="140" x2="380" y2="140" stroke="#00d4ff" stroke-width="1.5" opacity="0.6"/>
+                    <polygon points="380,140 372,133 372,147" fill="#00d4ff" opacity="0.6"/>
+        
+                    <line x1="270" y1="170" x2="380" y2="220" stroke="#00d4ff" stroke-width="1.5" opacity="0.6"/>
+                    <polygon points="380,220 372,214 370,225" fill="#00d4ff" opacity="0.6"/>
+        
+                    <!-- 修正の矢印（上部） -->
+                    <text x="325" y="105" text-anchor="middle" fill="#00d4ff" font-size="10">自動反映</text>
+        
+                    <!-- インスタンス1 -->
+                    <rect x="390" y="30" width="160" height="60" rx="8" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+                    <polygon points="420,55 430,65 420,75 410,65" fill="#00d4ff" opacity="0.6"/>
+                    <text x="480" y="60" text-anchor="middle" fill="white" font-size="11">インスタンス A</text>
+                    <text x="480" y="75" text-anchor="middle" fill="white" font-size="9" opacity="0.5">ヘッダーのボタン</text>
+        
+                    <!-- インスタンス2 -->
+                    <rect x="390" y="110" width="160" height="60" rx="8" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+                    <polygon points="420,135 430,145 420,155 410,145" fill="#00d4ff" opacity="0.6"/>
+                    <text x="480" y="140" text-anchor="middle" fill="white" font-size="11">インスタンス B</text>
+                    <text x="480" y="155" text-anchor="middle" fill="white" font-size="9" opacity="0.5">CTAセクションのボタン</text>
+        
+                    <!-- インスタンス3 -->
+                    <rect x="390" y="190" width="160" height="60" rx="8" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+                    <polygon points="420,215 430,225 420,235 410,225" fill="#00d4ff" opacity="0.6"/>
+                    <text x="480" y="220" text-anchor="middle" fill="white" font-size="11">インスタンス C</text>
+                    <text x="480" y="235" text-anchor="middle" fill="white" font-size="9" opacity="0.5">フッターのボタン</text>
+        
+                    <!-- 修正フロー説明 -->
+                    <rect x="600" y="90" width="180" height="100" rx="10" fill="#ff5252" opacity="0.08" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="4,4"/>
+                    <text x="690" y="120" text-anchor="middle" fill="#ff5252" font-size="12" font-weight="bold">メインを修正すると</text>
+                    <text x="690" y="142" text-anchor="middle" fill="white" font-size="11">全インスタンスが</text>
+                    <text x="690" y="162" text-anchor="middle" fill="white" font-size="11">自動で更新される</text>
+                    <text x="690" y="182" text-anchor="middle" fill="#ff5252" font-size="10" opacity="0.7">◆ = インスタンスの印</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド8: インスタンスの上書きと命名規則 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">インスタンスの上書きと命名規則</h2>
+            <div class="content-block">
+                <h3>インスタンスの上書き（Override）</h3>
+                <p>インスタンスは構造（サイズ・レイアウト）はメインと同期しつつ、<strong>テキスト・画像などの中身だけ個別に変更</strong>できます。</p>
+                <ul>
+                    <li><strong>変更できるもの：</strong>テキスト内容、画像の差し替え、表示/非表示の切り替え</li>
+                    <li><strong>変更できないもの：</strong>レイアウト構造、Auto Layoutの方向、レイヤー構成</li>
+                </ul>
+                <p>例：SŌILの商品カードは、テンプレートは同じでも「商品名」「価格」「画像」が各カードで異なる。</p>
+        
+                <h3>命名規則：スラッシュ階層</h3>
+                <p>コンポーネントの名前には <strong>カテゴリ/種類</strong> の2階層でスラッシュを使います。こうするとアセットパネルでフォルダのように整理されます。</p>
+                <ul>
+                    <li><code>Button/Primary</code> ― メインのCTAボタン</li>
+                    <li><code>Button/Secondary</code> ― サブアクション用ボタン</li>
+                    <li><code>Card/Product</code> ― 商品カード</li>
+                    <li><code>Icon/Instagram</code> ― SNSアイコン</li>
+                </ul>
+        
+                <div class="highlight-box">
+                    ⚠️ よくある間違い：命名に日本語や空白を混在させるとチーム間で混乱しやすい。英語＋スラッシュ階層が推奨です。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: バリアントの基礎 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">バリアントの基礎</h2>
+            <div class="content-block svg-centered">
+                <p>同じコンポーネントの<strong>「状態違い」をひとまとめ</strong>に管理する仕組み。プロパティパネルから切り替えるだけで見た目が変わります。</p>
+                <svg class="generated-art" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+                    <!-- バリアントセット枠（紫の点線） -->
+                    <rect x="100" y="30" width="600" height="190" rx="16" fill="none" stroke="#9c27b0" stroke-width="2" stroke-dasharray="8,4"/>
+                    <text x="400" y="60" text-anchor="middle" fill="#9c27b0" font-size="13" font-weight="bold">Button コンポーネントセット</text>
+        
+                    <!-- Primary バリアント -->
+                    <rect x="150" y="85" width="240" height="110" rx="12" fill="#00d4ff" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="270" y="115" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">Button/Primary</text>
+                    <!-- ボタン見た目 -->
+                    <rect x="200" y="130" width="140" height="44" rx="22" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="270" y="157" text-anchor="middle" fill="white" font-size="13">購入する</text>
+        
+                    <!-- Secondary バリアント -->
+                    <rect x="420" y="85" width="240" height="110" rx="12" fill="#69f0ae" opacity="0.08" stroke="#69f0ae" stroke-width="1.5"/>
+                    <text x="540" y="115" text-anchor="middle" fill="#69f0ae" font-size="12" font-weight="bold">Button/Secondary</text>
+                    <!-- ボタン見た目（枠線のみ） -->
+                    <rect x="470" y="130" width="140" height="44" rx="22" fill="none" stroke="#69f0ae" stroke-width="2"/>
+                    <text x="540" y="157" text-anchor="middle" fill="#69f0ae" font-size="13">詳しく見る</text>
+        
+                    <!-- 切り替え矢印 -->
+                    <line x1="395" y1="140" x2="415" y2="140" stroke="white" stroke-width="1.5" opacity="0.4"/>
+                    <polygon points="413,135 420,140 413,145" fill="white" opacity="0.4"/>
+                    <line x1="415" y1="150" x2="395" y2="150" stroke="white" stroke-width="1.5" opacity="0.4"/>
+                    <polygon points="397,145 390,150 397,155" fill="white" opacity="0.4"/>
+                    <text x="405" y="170" text-anchor="middle" fill="white" font-size="9" opacity="0.5">切替</text>
+                </svg>
+                <p style="font-size: 0.95rem; margin-top: 1rem;">今回の実践範囲では、<strong>ボタンのPrimary / Secondary の2バリアント</strong>を扱います。複雑な掛け合わせ（サイズ×状態×カラー）は後のテーマで学習します。</p>
+            </div>
+        </div>
+        
+        <!-- スライド10: まとめ＋次テーマ予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：Atomic Design × Figmaコンポーネント</h2>
+            <div class="content-block">
+                <h3>今回のポイント</h3>
+                <ul>
+                    <li><strong>Atomic Designの5層</strong>（Atoms → Molecules → Organisms → Templates → Pages）は、UIを論理的に分解するフレームワーク</li>
+                    <li><strong>Figmaコンポーネント</strong>は、メイン＝原本・インスタンス＝コピーの仕組みで「1回作って使い回す」を実現する</li>
+                    <li><strong>バリアント</strong>で同一部品の「状態違い」を1つのコンポーネント内で管理できる</li>
+                    <li><strong>命名規則</strong>（スラッシュ階層）がチームの効率とアセット管理を左右する</li>
+                </ul>
+        
+                <h3>得られるメリット</h3>
+                <p>一貫性の担保、修正コストの大幅削減、チーム間の認識統一。この3つが「部品化」の最大の価値です。</p>
+        
+                <h3>次のテーマ：013 レスポンシブ設計の基礎</h3>
+                <p>今回作成したコンポーネントを、PC表示だけでなく<strong>スマートフォン表示でも適切に表示されるよう調整</strong>する手法を学びます。「同じ部品で、異なる画面サイズに対応する」考え方に進みます。</p>
+            </div>
+        </div>
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +363,66 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "Atomic Designの5層を、最小のものから順に正しく並べたものはどれですか？",
+            options: [
+                "Atoms → Molecules → Organisms → Templates → Pages",
+                "Molecules → Atoms → Organisms → Pages → Templates",
+                "Atoms → Organisms → Molecules → Templates → Pages",
+                "Pages → Templates → Organisms → Molecules → Atoms"
+            ],
+            correct: 0,
+            explanation: "Atomic Designは化学のメタファーで、最小の「原子（Atoms）」から始まり、分子（Molecules）→有機体（Organisms）→テンプレート（Templates）→ページ（Pages）の順に大きくなります。小さな要素を組み合わせて大きな構造を作るという考え方です。"
+        },
+        {
+            question: "SŌILの「商品カード」（画像＋商品名＋価格＋ボタン）は、Atomic Designのどの層に該当しますか？",
+            options: [
+                "Atoms（原子）",
+                "Molecules（分子）",
+                "Organisms（有機体）",
+                "Templates（テンプレート）"
+            ],
+            correct: 1,
+            explanation: "商品カードは、画像・テキスト・ボタンといったAtoms（最小要素）を組み合わせて「1つの機能単位」にしたものです。これはMolecules（分子）に該当します。Organismsはさらに大きなセクション単位（例：商品一覧セクション全体）になります。"
+        },
+        {
+            question: "Figmaでメインコンポーネントの色を変更すると、何が起きますか？",
+            options: [
+                "メインだけが変わり、インスタンスは個別に変更する必要がある",
+                "そのコンポーネントのすべてのインスタンスに自動で反映される",
+                "インスタンスはすべて削除され、新しく配置し直す必要がある",
+                "メインは変わるが、確認ダイアログで1つずつ承認が必要"
+            ],
+            correct: 1,
+            explanation: "メインコンポーネントを修正すると、そこから生成されたすべてのインスタンスに自動的に変更が反映されます。これが「1回作って使い回す」最大のメリットです。ただし、インスタンス側で個別に上書き（Override）されている部分はそのまま維持されます。"
+        },
+        {
+            question: "コンポーネントの命名規則で「Button/Primary」のようにスラッシュを使う理由として最も適切なものはどれですか？",
+            options: [
+                "Figmaの表示速度が速くなるため",
+                "スラッシュがないとコンポーネントとして登録できないため",
+                "アセットパネルで階層的に整理され、検索・配置しやすくなるため",
+                "バリアント機能を使うために必須の書式だから"
+            ],
+            correct: 2,
+            explanation: "スラッシュ（/）を使うと、Figmaのアセットパネルでフォルダのように階層化されます。Button/Primary、Button/Secondaryは「Button」フォルダの中にまとめて表示され、チームメンバーが必要な部品を素早く見つけて配置できるようになります。"
+        },
+        {
+            question: "バリアントを使う場面として最も適切なものはどれですか？",
+            options: [
+                "ヘッダーとフッターなど、構造がまったく異なる要素をまとめる",
+                "同じボタンのPrimary（塗り）とSecondary（枠線のみ）を1つのコンポーネント内で管理する",
+                "テキストの内容だけが異なる商品カードを複数作る",
+                "ページ全体のレイアウトパターンを切り替える"
+            ],
+            correct: 1,
+            explanation: "バリアントは、同じ部品の「状態違い」や「種類違い」を1つのコンポーネントセットとして管理するための機能です。ボタンのPrimary/Secondaryのように、基本構造は同じで見た目のバリエーションがある場合に最適です。テキストだけの違いはインスタンスの上書き（Override）で対応します。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

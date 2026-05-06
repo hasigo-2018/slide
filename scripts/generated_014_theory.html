@@ -1,0 +1,282 @@
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>プロトタイピングと動的デモ<span>【理論編】</span></h1>
+                <p>静止画に"動き"をつけて、触れるデモにする</p>
+            </div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">なぜ「動くもの」を見せる必要があるのか</h2>
+            <div class="content-block">
+                <div class="highlight-box" style="margin-bottom: 1.4rem;">
+                    💬 011〜013で作ったWFは「静止画」。クライアントへ見せると、必ずこう聞かれる<br>
+                    <strong style="font-size: 1.1em;">「このボタンを押したら、どこに移動するの？」</strong>
+                </div>
+                <ul>
+                    <li><strong>画面遷移の流れ</strong>がわからない ― TOPからサービス詳細へどう動くのか</li>
+                    <li><strong>ナビゲーションの動作</strong>がわからない ― ハンバーガーメニューを開いたらどうなるのか</li>
+                    <li><strong>CTAの誘導先</strong>がわからない ― 「今すぐ申し込む」を押した先はどのページなのか</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 1.4rem; border-color: #00d4ff;">
+                    ✅ <strong>プロトタイプ</strong>＝コードを1行も書かずに「触れるデモ」を作れる仕組み。<br>
+                    静止画では伝わらない「体験の流れ」を伝えるのが目的
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: プロトタイプの種類 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">プロトタイプの種類と使いどころ</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1rem; color: #aaa; margin-bottom: 0.6rem;">① ペーパープロトタイプ</h3>
+                        <p style="font-size: 0.9rem;">紙に画面を描いて素早く検証。初期アイデア段階向け。ツール不要・コスト最小</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem; color: #00d4ff; margin-bottom: 0.6rem;">② クリッカブルプロトタイプ ← 今回</h3>
+                        <p style="font-size: 0.9rem;">画面遷移のみを接続。ページの流れ・ナビ動作・CTA誘導先を確認。<strong>WF段階ではこれで十分</strong></p>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1rem;">
+                    <h3 style="font-size: 1rem; color: #888; margin-bottom: 0.5rem;">③ インタラクティブプロトタイプ（紹介のみ）</h3>
+                    <p style="font-size: 0.9rem; color: #aaa;">アニメーション・マイクロインタラクションまで再現。ProtoPie等の専用ツールを使用。<br>UI詳細設計フェーズ以降の作業領域</p>
+                </div>
+                <div class="highlight-box">
+                    📌 <strong>WF段階の鉄則：クリッカブルで十分</strong><br>
+                    アニメーションの凝り具合より、ページの流れが伝わることが最優先
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: フローとコネクション（SVG図解） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Figmaプロトタイプの基本：フローとコネクション</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 800 300" id="proto-014-flow">
+                    <defs>
+                        <marker id="proto-014-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <path d="M0,0 L10,3.5 L0,7" fill="#00d4ff"/>
+                        </marker>
+                        <marker id="proto-014-arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <path d="M0,0 L10,3.5 L0,7" fill="#888"/>
+                        </marker>
+                    </defs>
+
+                    <!-- フレームA: TOPページ -->
+                    <rect x="60" y="80" width="200" height="140" rx="10" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="2"/>
+                    <text x="160" y="105" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">Frame A</text>
+                    <text x="160" y="123" text-anchor="middle" fill="white" font-size="12">TOPページ</text>
+                    <!-- CTA要素（接続元） -->
+                    <rect x="95" y="140" width="130" height="36" rx="6" fill="#00d4ff" opacity="0.8"/>
+                    <text x="160" y="163" text-anchor="middle" fill="white" font-size="12" font-weight="bold">申し込むボタン</text>
+                    <!-- フロー開始ポイント -->
+                    <circle cx="160" cy="88" r="7" fill="#00d4ff"/>
+                    <text x="160" y="68" text-anchor="middle" fill="#00d4ff" font-size="11">▶ スタートポイント</text>
+
+                    <!-- コネクション矢印 -->
+                    <line x1="330" y1="158" x2="445" y2="158" stroke="#00d4ff" stroke-width="2.5" stroke-dasharray="0" marker-end="url(#proto-014-arrow)"/>
+                    <!-- トリガー＋アクション -->
+                    <rect x="330" y="125" width="120" height="50" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,3"/>
+                    <text x="390" y="147" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">On Click</text>
+                    <text x="390" y="164" text-anchor="middle" fill="white" font-size="11">Navigate to</text>
+
+                    <!-- フレームB: 申し込みページ -->
+                    <rect x="460" y="80" width="200" height="140" rx="10" fill="rgba(255,255,255,0.05)" stroke="#666" stroke-width="2"/>
+                    <text x="560" y="105" text-anchor="middle" fill="#888" font-size="13" font-weight="bold">Frame B</text>
+                    <text x="560" y="123" text-anchor="middle" fill="white" font-size="12">申し込みページ</text>
+                    <!-- 内容 -->
+                    <rect x="490" y="135" width="140" height="8" rx="3" fill="#666" opacity="0.5"/>
+                    <rect x="490" y="152" width="100" height="8" rx="3" fill="#666" opacity="0.4"/>
+                    <rect x="490" y="169" width="120" height="8" rx="3" fill="#666" opacity="0.4"/>
+
+                    <!-- 下部ラベル -->
+                    <text x="160" y="255" text-anchor="middle" fill="white" font-size="12" opacity="0.8">要素（ボタン等）</text>
+                    <text x="390" y="255" text-anchor="middle" fill="#00d4ff" font-size="12">コネクション</text>
+                    <text x="560" y="255" text-anchor="middle" fill="white" font-size="12" opacity="0.8">遷移先画面</text>
+                </svg>
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    Prototypeタブに切り替え → 接続元の要素にカーソルを合わせ → 表示された青い丸をドラッグ → 遷移先フレームにドロップ
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド5: トリガーとアクション -->
+        <div class="slide-container">
+            <h2 class="slide-title">トリガーとアクション</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>🖱️ トリガー（何をしたら）</h3>
+                    <ul>
+                        <li><strong>On Click</strong>（最も基本）<br><span style="font-size: 0.88rem; color: #aaa;">タップ・クリックで発火。ほぼすべての操作に使う</span></li>
+                        <li><strong>On Hover</strong><br><span style="font-size: 0.88rem; color: #aaa;">ホバー状態のビジュアル変化に使う（PC向け）</span></li>
+                    </ul>
+                    <div style="background: rgba(0,212,255,0.08); border-radius: 6px; padding: 0.8rem; margin-top: 1rem;">
+                        <p style="font-size: 0.88rem; color: #aaa; margin: 0;">今回はこの2つで完結</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>⚡ アクション（何が起きる）</h3>
+                    <ul>
+                        <li><strong>Navigate to</strong><br><span style="font-size: 0.88rem; color: #aaa;">別ページへの画面遷移。最も多用</span></li>
+                        <li><strong>Open Overlay</strong><br><span style="font-size: 0.88rem; color: #aaa;">メニュー・モーダルを画面上に重ねて表示</span></li>
+                        <li><strong>Scroll to</strong><br><span style="font-size: 0.88rem; color: #aaa;">ページ内の特定セクションへアンカー移動</span></li>
+                        <li><strong>Back</strong><br><span style="font-size: 0.88rem; color: #aaa;">前の画面に戻る。Overlay閉じるボタンにも使う</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド6: トランジション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">トランジション：遷移のアニメーション設定</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">種類</h3>
+                        <ul>
+                            <li><strong>Instant</strong> ― 即切り替え（アニメーションなし）</li>
+                            <li><strong>Dissolve</strong> ― フェード。最も定番・汎用性が高い</li>
+                            <li><strong>Move in / Move out</strong> ― スライドイン/アウト。Overlay向き</li>
+                            <li><strong>Push</strong> ― 押し出し。次画面が前画面を押すイメージ</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Duration（アニメーション時間）の目安</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">適切な範囲：<strong>200〜400ms</strong></p>
+                        <ul>
+                            <li>速すぎる（100ms以下）→ 何が起きたか見えない</li>
+                            <li>遅すぎる（600ms以上）→ 待たされてストレス</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    📐 <strong>SŌILプロジェクト統一ルール</strong><br>
+                    ページ遷移 → <strong>Dissolve 300ms</strong><br>
+                    OverlayのOpen（ドロワーメニュー等）→ <strong>Move in from Right 300ms</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド7: 伝えること vs 伝えなくていいこと -->
+        <div class="slide-container">
+            <h2 class="slide-title">WF段階で「伝えること」と「伝えなくていいこと」</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>✅ プロトタイプで伝えること</h3>
+                    <ul>
+                        <li>ページ間の<strong>遷移フロー</strong>（TOP→詳細→申込）</li>
+                        <li>ナビゲーションの<strong>動作</strong>（ハンバーガー開閉）</li>
+                        <li>CTAの<strong>誘導先</strong>（どのボタンがどこへ飛ぶか）</li>
+                        <li>スクロール後のコンテンツ<strong>流れ</strong></li>
+                        <li><strong>行き止まりがない</strong>こと（必ず戻れる）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>❌ 今は作り込まなくていいこと</h3>
+                    <ul>
+                        <li>ボタンのホバー・フォーカス等の<strong>マイクロインタラクション</strong></li>
+                        <li>ローディングやスケルトンの<strong>ローディング表現</strong></li>
+                        <li>フォームのバリデーション等の<strong>複雑な条件分岐</strong></li>
+                    </ul>
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 6px; padding: 0.8rem; margin-top: 1rem;">
+                        <p style="font-size: 0.88rem; color: #aaa; margin: 0;">UI詳細設計フェーズ（Block 8以降）で対応</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 1.4rem;">
+                💡 プロトタイプは「体験の設計意図を伝えるツール」。<strong>凝った動きが目的ではない</strong>
+            </div>
+        </div>
+
+        <!-- スライド8: まとめ＋次テーマ予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：プロトタイプの3要素と実践へ</h2>
+            <div class="content-block">
+                <div class="two-column tiled" style="margin-bottom: 1.4rem;">
+                    <div>
+                        <h3 style="font-size: 1rem; color: #00d4ff; margin-bottom: 0.8rem;">プロトタイプの3要素</h3>
+                        <ul>
+                            <li><strong>トリガー</strong>：On Click / On Hover</li>
+                            <li><strong>アクション</strong>：Navigate to / Open Overlay / Scroll to / Back</li>
+                            <li><strong>トランジション</strong>：Dissolve or Move in ＋ Duration</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem; color: #00d4ff; margin-bottom: 0.8rem;">SŌILプロジェクト統一ルール</h3>
+                        <ul>
+                            <li>ページ遷移 → Navigate to ＋ Dissolve 300ms</li>
+                            <li>Overlay → Open Overlay ＋ Move in 300ms</li>
+                            <li>ページ内移動 → Scroll to</li>
+                            <li>戻る → Back</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="border-color: #00d4ff;">
+                    🎯 <strong>次のテーマ（実践編）</strong>：SŌILのTOP（PC版）WFに実際にプロトタイプを設定し、<br>
+                    「触れるデモ」として動作させる。プレビューURLの取得まで行う
+                </div>
+            </div>
+        </div>
+
+<script>
+const questions = [
+    {
+        question: "WF段階のプロトタイプとして最も適切な種類はどれですか？",
+        choices: [
+            "ペーパープロトタイプ（紙に手描き）",
+            "クリッカブルプロトタイプ（画面遷移のみ）",
+            "インタラクティブプロトタイプ（マイクロインタラクションまで）",
+            "コードプロトタイプ（実装に近い動作）"
+        ],
+        answer: 1,
+        explanation: "WF段階では「ページの流れとナビ動作が伝わること」が目的です。マイクロインタラクションはUI詳細設計フェーズの作業であり、WF段階では画面遷移のみを接続するクリッカブルプロトタイプで十分です。"
+    },
+    {
+        question: "Figmaプロトタイプの「コネクション」を構成する2つの要素の組み合わせとして正しいのはどれですか？",
+        choices: [
+            "フレーム（Frame）＋ コンポーネント（Component）",
+            "アニメーション（Animation）＋ イージング（Easing）",
+            "トリガー（何をしたら）＋ アクション（何が起きる）",
+            "レイヤー（Layer）＋ グループ（Group）"
+        ],
+        answer: 2,
+        explanation: "コネクションは「トリガー（何をしたら発火するか）＋アクション（その結果何が起きるか）」の組み合わせで定義します。例：On Click（トリガー）＋ Navigate to（アクション）。"
+    },
+    {
+        question: "ハンバーガーメニューのドロワーを表示するのに最適なアクションはどれですか？",
+        choices: [
+            "Navigate to（別ページへ遷移）",
+            "Open Overlay（画面の上に重ねて表示）",
+            "Scroll to（ページ内アンカー移動）",
+            "Back（前の画面に戻る）"
+        ],
+        answer: 1,
+        explanation: "Open Overlayは、現在の画面の上にメニューやモーダルを重ねて表示するアクションです。ドロワーメニューは「別ページへ遷移するのではなく、現在のページ上に重なって表示される」ため、Navigate toではなくOpen Overlayが適切です。"
+    },
+    {
+        question: "ページ遷移のトランジションでDuration（アニメーション時間）として適切な目安はどれですか？",
+        choices: [
+            "50〜100ms（ほぼ瞬時）",
+            "200〜400ms",
+            "600〜800ms（ゆっくり丁寧に）",
+            "1000ms以上（印象的に）"
+        ],
+        answer: 1,
+        explanation: "適切なDurationは200〜400msです。100ms以下は速すぎて何が起きたか認識できず、600ms以上は待たされてストレスになります。今回のSŌILプロジェクトでは300msで統一します。"
+    },
+    {
+        question: "プロトタイプで「行き止まり」を作ってはいけない理由として最も適切なのはどれですか？",
+        choices: [
+            "Figmaのファイルサイズが大きくなるから",
+            "クライアントが操作中に戻れなくなり、サイト全体の遷移フローを体験できなくなるから",
+            "アニメーションの速度が遅くなるから",
+            "コンポーネントの再利用ができなくなるから"
+        ],
+        answer: 1,
+        explanation: "プロトタイプの目的は「サイト全体の体験フローを伝えること」です。行き止まりがあると、クライアントがその先を進めなくなり、遷移フロー全体を体験・確認できません。すべての画面に「戻る」か「次へ進む」接続が必要です。"
+    }
+];
+</script>

@@ -3,16 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>ワイヤーフレーム構築【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ワイヤーフレーム構築<span>【実践編】</span></h1>
+                <p>SŌILブランドサイト TOPページのWFを作る</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: クライアントブリーフ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">クライアントブリーフ：SŌIL</h2>
+            <div class="content-block">
+                <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#aaa; width:30%;">ブランド名</td>
+                        <td style="padding:8px 12px; color:#ddd;">SŌIL（ソイル）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#aaa;">コンセプト</td>
+                        <td style="padding:8px 12px; color:#ddd;">「土から肌へ。」国産オーガニック原料にこだわった自然派スキンケア</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#aaa;">主力商品</td>
+                        <td style="padding:8px 12px; color:#ddd;">フェイスオイル（3,800円）、クレンジングバーム（2,900円）、ハンドクリーム（1,600円）</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#aaa;">ターゲット</td>
+                        <td style="padding:8px 12px; color:#ddd;">28〜38歳女性。成分や背景に関心が高く、自分で調べて納得してから買う層</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#aaa;">現状の課題</td>
+                        <td style="padding:8px 12px; color:#ddd;">Shopifyの商品ページのみで運用中。ブランドの世界観・信頼感・ストーリーが不足</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px; color:#aaa;">サイト構成</td>
+                        <td style="padding:8px 12px; color:#ddd;">TOP / About / Products / Story / Contact（5ページ）</td>
+                    </tr>
+                </table>
+                <div class="highlight-box" style="margin-top:1rem;">
+                    🎯 <strong>今回のゴール：</strong>SŌILのブランドサイトTOPページのLo-Fi WFをFigmaで構築する<br>
+                    制約：グレースケールのみ・装飾なし・プレースホルダーテキスト使用<br>
+                    📌 Block 5の022では同じSŌILの「新商品LP」のWFを作ります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: Step 1 Geminiで構成要素を洗い出す -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 1：AIにTOPの構成要素を洗い出させる</h2>
+            <div class="content-block">
+                <h3>Geminiに以下のプロンプトを入力してください</h3>
+                <p style="font-size:0.9rem; color:#aaa; margin-bottom:0.75rem;">まず「AIが出せるもの」を出し切らせる。取捨選択は次のステップで人間が行います。</p>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-gemini-011-1">以下のブランドのWEBサイトTOPページに配置すべき情報要素を、優先度順にリストアップしてください。
+        
+        ブランド名：SŌIL（ソイル）
+        業種：オーガニックスキンケアD2C
+        コンセプト：「土から肌へ。」
+        ターゲット：28〜38歳女性。成分や製造背景に関心が高く、自分で調べて納得してから買う層
+        状況：立ち上げ1年目、ECのみ
+        サイト構成：TOP / About / Products / Story / Contact
+        
+        TOPページの役割は「ブランドの世界観を伝え、各ページへ回遊させること」です。
+        各要素の優先度の理由も添えてください。</div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-gemini-011-1', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+                <div class="highlight-box" style="margin-top:1rem;">
+                    💡 Geminiへのアクセス：<strong>https://gemini.google.com/app</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: Step 2 取捨選択 -->
+        <div class="slide-container">
+            <h2 class="slide-title">Step 2：ペルソナと導線に照らして取捨選択する</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>📋 AI出力例（10〜12項目）</h3>
+                    <ul style="font-size:0.9rem;">
+                        <li>メインビジュアル（世界観）</li>
+                        <li>ブランドストーリー導入</li>
+                        <li>商品ラインナップ紹介</li>
+                        <li>製造背景・原料へのこだわり</li>
+                        <li>お客様の声・レビュー</li>
+                        <li>Instagram連携</li>
+                        <li>メルマガ登録</li>
+                        <li>FAQ</li>
+                        <li>新着情報・ブログ</li>
+                        <li>ECへの誘導CTA</li>
+                        <li>サステナビリティへの取り組み</li>
+                        <li>プレスメディア掲載実績</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🧠 人間が行う判断プロセス</h3>
+                    <ul style="font-size:0.9rem;">
+                        <li><strong>✅ 優先高：</strong>ブランドストーリー＋About導線<br><small>→「調べて納得する層」に世界観を先に伝える</small></li>
+                        <li><strong>✅ 優先高：</strong>商品カード＋Products導線<br><small>→ 主力商品は必ず見せる</small></li>
+                        <li><strong>✅ 採用：</strong>Instagram連携<br><small>→ SNSで情報収集する層に有効</small></li>
+                        <li><strong>❌ 今回外す：</strong>お客様の声<br><small>→ 1年目でまだレビューが少ない</small></li>
+                        <li><strong>❌ 今回外す：</strong>FAQ・新着情報<br><small>→ フッターリンクで十分</small></li>
+                    </ul>
+                    <div class="highlight-box" style="font-size:0.85rem;">
+                        ⚡ 原則：AIは要素の<strong>「洗い出し」</strong>が得意。<br>
+                        <strong>「優先順位の判断」は人間がやる。</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド5: Step 3 フレーム作成とヘッダー -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 3：フレーム作成とヘッダー＋ナビ</h2>
+            <div class="content-block">
+                <h3>① Figmaでフレームを作成する</h3>
+                <ul>
+                    <li>Desktop フレーム（幅：<strong>1440px</strong>、高さ：任意）を作成</li>
+                    <li>フレーム名：<code>SOIL_TOP_WF</code></li>
+                </ul>
+        
+                <h3>② ヘッダーを作る</h3>
+                <ul>
+                    <li><strong>左：</strong>ブランドロゴ（グレーボックスのプレースホルダー）</li>
+                    <li><strong>中央または右：</strong>ナビ項目を横並びで配置</li>
+                </ul>
+        
+                <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.75rem 0;">
+                    <tr style="background:rgba(255,255,255,0.05);">
+                        <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">About</td>
+                        <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">Products</td>
+                        <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">Story</td>
+                        <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">Contact</td>
+                        <td style="padding:6px 12px; color:#00d4ff; border:1px solid #333;"><strong>Shop ↗</strong></td>
+                    </tr>
+                </table>
+                <p style="font-size:0.85rem; color:#888;">「Shop」はShopify ECへの外部リンクとして、他のナビと視覚的に区別する</p>
+        
+                <div class="highlight-box">
+                    🔧 Auto Layoutで横並び配置 ／ フレーム命名：<code>Header</code>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: Step 4 MV＋コンテンツセクション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 4：メインビジュアル＋コンテンツセクション</h2>
+            <div class="content-block">
+                <h3>① メインビジュアル（MV）</h3>
+                <p>画面幅いっぱいのグレーボックス（高さ：<strong>600〜700px</strong>）でプレースホルダーとして配置<br>
+                フレーム名：<code>Section_01_MV</code></p>
+        
+                <h3>② コンテンツセクションを順番に作る</h3>
+                <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                    <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
+                        <td style="padding:7px 10px; color:#00d4ff; width:35%;"><code>Section_02_About</code></td>
+                        <td style="padding:7px 10px; color:#ccc;">ブランドストーリー導入テキスト ＋「もっと見る」→ Aboutへ</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:7px 10px; color:#00d4ff;"><code>Section_03_Products</code></td>
+                        <td style="padding:7px 10px; color:#ccc;">商品カード × 3 ＋「すべて見る」→ Productsへ</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
+                        <td style="padding:7px 10px; color:#00d4ff;"><code>Section_04_Story</code></td>
+                        <td style="padding:7px 10px; color:#ccc;">原料・製造背景の紹介 ＋「ストーリーを読む」→ Storyへ</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:7px 10px; color:#00d4ff;"><code>Section_05_Instagram</code></td>
+                        <td style="padding:7px 10px; color:#ccc;">グリッド配置（6枚目安）＋ フォロー導線</td>
+                    </tr>
+                </table>
+        
+                <div class="highlight-box" style="margin-top:1rem;">
+                    🔧 各セクション共通：Auto Layoutでセクション間余白を <strong>80〜120px</strong> に統一
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: Step 5 CTA＋フッター -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 5：CTA導線＋フッター</h2>
+            <div class="content-block">
+                <h3>① CTA セクション</h3>
+                <ul>
+                    <li>フレーム名：<code>Section_06_CTA</code></li>
+                    <li>プレースホルダーコピー：「SŌILの製品を試してみる」</li>
+                    <li>ボタン：「オンラインショップへ」→ Shopify EC 外部リンク</li>
+                </ul>
+        
+                <h3>② フッター</h3>
+                <ul>
+                    <li>フレーム名：<code>Footer</code></li>
+                    <li>グローバルナビと同じリンクを再配置</li>
+                    <li>SNSリンクアイコン枠（グレーボックス × 3）</li>
+                    <li>法務リンク（プライバシーポリシー・特定商取引法に基づく表記）</li>
+                    <li>コピーライト表記</li>
+                </ul>
+        
+                <h3>③ 全体確認</h3>
+                <div class="highlight-box">
+                    🔍 Figmaの縮小表示（Ctrl/Cmd + Shift + H）でページ全体を俯瞰し、<br>
+                    <strong>バランスとスクロール量</strong>を確認する
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: Step 6 アノテーション -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 6：アノテーション（設計意図メモ）を添える</h2>
+            <div class="content-block">
+                <h3>アノテーションとは</h3>
+                <p>「なぜこの構成にしたのか」の設計根拠をWFに記録するメモ。<br>
+                クライアントや共同作業者との<strong>認識のズレを防ぐ</strong>ために必須。</p>
+        
+                <h3>Figmaでの記載方法</h3>
+                <ul>
+                    <li>WFフレームの<strong>右横にアノテーション列</strong>を設ける</li>
+                    <li>Figmaのコメント機能、または付箋（FigJam風のSticky Note）を使用</li>
+                </ul>
+        
+                <h3>記載例</h3>
+                <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                    <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
+                        <td style="padding:8px 12px; color:#00d4ff; width:35%;"><code>Section_02_About</code></td>
+                        <td style="padding:8px 12px; color:#ccc;">ターゲットは「調べて納得する層」のため、商品紹介より先にブランドの背景を提示</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #333;">
+                        <td style="padding:8px 12px; color:#00d4ff;"><code>Section_05_Instagram</code></td>
+                        <td style="padding:8px 12px; color:#ccc;">SNSで情報収集する層へのリーチ。1年目はレビューより実際の使用シーン訴求が有効</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px; color:#00d4ff;"><code>Section_06_CTA</code></td>
+                        <td style="padding:8px 12px; color:#ccc;">世界観とストーリーを体験した後の自然な購入誘導。ページ最下部に配置</td>
+                    </tr>
+                </table>
+        
+                <div class="highlight-box" style="margin-top:1rem;">
+                    📝 このアノテーション習慣は、Block 6の「論理的言語化」演習の土台になります
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: Step 7 セルフチェック -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Step 7：提出前セルフチェック</h2>
+            <div class="content-block">
+                <h3>理論編の5項目（構造の確認）</h3>
+                <ul>
+                    <li>☐ ペルソナの行動目的に導線が合っているか</li>
+                    <li>☐ 情報の優先順位がスクロール順に反映されているか</li>
+                    <li>☐ グローバルナビがサイトマップと一致しているか</li>
+                    <li>☐ 抜けているセクション・重複しているセクションがないか</li>
+                    <li>☐ アノテーションが各セクションに記載されているか</li>
+                </ul>
+                <h3>実践特有の3項目（Figma上の確認）</h3>
+                <ul>
+                    <li>☐ フレーム命名が <code>Section_XX_名前</code> で統一されているか</li>
+                    <li>☐ Auto Layoutでセクション間余白が管理されているか</li>
+                    <li>☐ グレースケール以外の色を使っていないか</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- スライド10: まとめ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">まとめ：上流設計がWFに直結した</h2>
+            <div class="content-block">
+                <h3>今日体験したこと</h3>
+                <ul>
+                    <li>Block 2の上流成果物（要件定義・ペルソナ・サイトマップ）が、<br>画面の<strong>情報構造に直結</strong>することを体験した</li>
+                    <li>AIは「要素の洗い出し」に使い、<strong>「優先順位の判断」は人間がやる</strong></li>
+                    <li>WFの段階では見た目を作らず、<strong>構造に集中する</strong></li>
+                </ul>
+        
+                <h3>次のテーマへ</h3>
+                <p><strong>012｜Atomic Designとコンポーネント設計</strong><br>
+                今回WFで配置した要素を「再利用可能な部品」として設計する方法を学ぶ。</p>
+        
+                <div class="highlight-box">
+                    📌 Block 5予告：022では同じSŌILの「新商品LP」のWFを作ります。<br>
+                    LP型とTOP型の構造の違いを、実際に手を動かして体感します。
+                </div>
+            </div>
+        </div>
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +302,66 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "GeminiにTOPページの構成要素を出させた後、最初にすべきことはどれですか？",
+            options: [
+                "出力された全項目をそのままFigmaに配置する",
+                "ペルソナの行動目的とサイトマップの導線に照らして、優先順位を自分で判断する",
+                "もう一度Geminiに「優先度を付けて」と追加プロンプトを送る",
+                "クライアントに全項目を送って、削除するものを選んでもらう"
+            ],
+            correct: 1,
+            explanation: "AIは構成要素の「洗い出し」は得意ですが、このブランド・このターゲット・この時期に「何を優先すべきか」の判断はできません。ペルソナの行動目的とサイトマップを照らし合わせて、人間が優先順位を決めます。"
+        },
+        {
+            question: "SŌILのTOPページでAboutとStoryの導線を上位に配置した主な理由はどれですか？",
+            options: [
+                "AboutとStoryページのデザインが最も完成度が高いから",
+                "GoogleのSEO評価でAboutページが有利になるから",
+                "ターゲットが「調べて納得してから買う層」のため、商品より先にブランド理解を促す設計が適切だから",
+                "競合他社のTOPページがすべて同じ構成だから"
+            ],
+            correct: 2,
+            explanation: "TOPページの情報優先度はペルソナの行動目的から逆算します。SŌILのターゲットは広告に懐疑的で自分で調べる層。世界観やこだわりに共感してから購入する流れを設計するため、ブランド理解を促すAbout・Story導線を上位に置きます。"
+        },
+        {
+            question: "WFのアノテーションに記載すべき最も重要な内容はどれですか？",
+            options: [
+                "そのセクションのデザインで使用する予定のカラーコード",
+                "そのセクションを置いた「理由」と参照した上流成果物（ペルソナ・サイトマップ等）",
+                "そのセクションのHTML実装で使用するタグ名",
+                "そのセクションの制作にかかる予想工数"
+            ],
+            correct: 1,
+            explanation: "アノテーションの目的は「なぜこの構成にしたのか」を記録し、クライアントや共同作業者との認識のズレを防ぐことです。ペルソナのどの行動に対応しているか、どのサイトマップ上の導線を実装しているかを明記することが最重要です。"
+        },
+        {
+            question: "Figmaでフレーム名を`Section_01_MV`のように統一する目的はどれですか？",
+            options: [
+                "Figmaのファイルサイズを小さくするため",
+                "書き出し時のファイル名を自動生成するため",
+                "チーム作業時にセクションの位置と役割を誰でもすぐ把握でき、管理しやすくするため",
+                "CSSのクラス名と一致させてコーディングを楽にするため"
+            ],
+            correct: 2,
+            explanation: "命名規則の統一は、複数人での共同作業・クライアントへのレビュー・後の改修作業すべてで効いてきます。`Section_01_MV`という名前だけで「1番目のセクション＝メインビジュアル」とわかる設計が、コミュニケーションコストを下げます。"
+        },
+        {
+            question: "011の実践編でLP型WFではなくTOP型WFを作った理由はどれですか？",
+            options: [
+                "Figmaの無料プランではLP型が作れないから",
+                "LP型はPCでは閲覧できないから",
+                "LP型WFはBlock 5の022で扱うため、011ではTOP型に集中して学習内容を棲み分けているから",
+                "SŌILはLPを持つ必要がないブランドだから"
+            ],
+            correct: 2,
+            explanation: "カリキュラム全体の設計として、011（Block 3）ではTOP型のブランドサイトWFを学び、022（Block 5）では同じSŌILを使ってLP型のWFを学ぶ棲み分けになっています。同じケーススタディを使うことで、LP型とTOP型の構造の違いを実感として理解できます。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>

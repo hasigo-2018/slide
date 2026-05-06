@@ -67,15 +67,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// タッチ操作（スワイプ）
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleSwipe() {
-    if (touchEndX < touchStartX - 50) nextSlide();
-    if (touchEndX > touchStartX + 50) prevSlide();
-}
-
 // クリック操作
 // function setupClickNavigation() {
 //     wrapper.addEventListener('click', (e) => {
@@ -165,7 +156,7 @@ function checkAnswer(selectedIndex) {
             <h2 style="color: ${isCorrect ? '#00ff9d' : '#ff0080'}; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: clamp(1.5rem, 3vh, 2rem);">
                 ${isCorrect ? '正解!' : '不正解'}
             </h2>
-            <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(1.5rem, 3vh, 2.5rem); max-width: 90%; width: 1280px; text-align: left;">
+            <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(1.5rem, 3vh, 2.5rem); width: 90%; text-align: left;">
                 <p style="font-size: clamp(1.5rem, 2vw, 2rem); margin-bottom: clamp(1rem, 2vh, 1.5rem); color: #fff;">
                     <strong>正解:</strong> ${q.options[q.correct]}
                 </p>
@@ -393,7 +384,7 @@ function addCopyright() {
     const style = document.createElement('style');
     style.textContent = `
         .footer-copyright-wrapper {
-            position: absolute !important;
+            position: fixed !important;
             bottom: clamp(0.8rem, 2vh, 1.5rem);
             left: clamp(0.8rem, 2vw, 1.5rem);
             display: flex;
@@ -414,8 +405,8 @@ function addCopyright() {
     `;
     document.head.appendChild(style);
 
-    slides = document.querySelectorAll('.slide-container');
-    slides.forEach((slide, index) => {
+    const allSlides = document.querySelectorAll('.slide-container');
+    allSlides.forEach((slide, index) => {
         // ラッパー要素を作成
         const wrapper = document.createElement('div');
         wrapper.className = 'footer-copyright-wrapper';
@@ -435,13 +426,32 @@ function addCopyright() {
 
         slide.appendChild(wrapper);
 
+        // コントロールヒント追加
+        const hint = document.createElement('div');
+        hint.className = 'control-hint';
+        hint.textContent = 'Use Arrows/Space to Navigate | Q for Quiz';
+        slide.appendChild(hint);
+
         // ページ番号追加
         const slideNum = document.createElement('div');
         slideNum.className = 'slide-number';
-        slideNum.textContent = `${index + 1} / ${slides.length}`;
+        slideNum.textContent = `${index + 1} / ${allSlides.length}`;
         slide.appendChild(slideNum);
     });
 }
+
+// ========================================
+// スケーリング（1920x1080基準）
+// ========================================
+
+function scalePresentation() {
+    const scaleX = window.innerWidth / 1920;
+    const scaleY = window.innerHeight / 1080;
+    const scale = Math.min(scaleX, scaleY);
+    if (wrapper) wrapper.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('resize', scalePresentation);
 
 // ========================================
 // 初期化
@@ -449,11 +459,20 @@ function addCopyright() {
 
 window.addEventListener('DOMContentLoaded', () => {
     wrapper = document.getElementById('presentation-wrapper');
+    slides = Array.from(document.querySelectorAll('.slide-container'));
     addCopyright();
     addPrintStyles(); // 印刷用CSSを事前に追加
-    setupClickNavigation();
+    moveControlHint();
+    scalePresentation();
     showSlide(0);
 });
+
+function moveControlHint() {
+    const hint = document.querySelector('.control-hint');
+    if (hint && wrapper && !wrapper.contains(hint)) {
+        wrapper.appendChild(hint);
+    }
+}
 
 // ================================================
 // コピーボタン機能（追加分）

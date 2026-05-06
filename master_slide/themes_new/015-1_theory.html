@@ -4,15 +4,325 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>Figma AI機能の活用<span>【理論編】</span></h1>
+        <p>AIに作らせて、自分の目で選ぶ</p>
+    </div>
+</div>
+
+<!-- スライド2: 011〜014の振り返り：AIが効率化できる工程 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 3の振り返り：AIが効率化できる工程はどこか</h2>
+    <div class="content-block svg-centered">
+        <svg class="generated-art" viewBox="0 0 860 340" id="block3-workflow-015">
+            <defs>
+                <marker id="wf-arrow-015" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <path d="M0,0 L10,3.5 L0,7" fill="#00d4ff"/>
+                </marker>
+            </defs>
+
+            <!-- ステップ1: WF作成 (011) -->
+            <rect x="20" y="100" width="140" height="70" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2"/>
+            <text x="90" y="128" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">011</text>
+            <text x="90" y="148" text-anchor="middle" fill="white" font-size="12">WF作成</text>
+
+            <line x1="160" y1="135" x2="195" y2="135" stroke="#00d4ff" stroke-width="2" marker-end="url(#wf-arrow-015)"/>
+
+            <!-- ステップ2: コンポーネント (012-013) -->
+            <rect x="195" y="100" width="155" height="70" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2"/>
+            <text x="272" y="125" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">012〜013</text>
+            <text x="272" y="143" text-anchor="middle" fill="white" font-size="11">コンポーネント</text>
+            <text x="272" y="158" text-anchor="middle" fill="white" font-size="11">設計</text>
+
+            <line x1="350" y1="135" x2="385" y2="135" stroke="#00d4ff" stroke-width="2" marker-end="url(#wf-arrow-015)"/>
+
+            <!-- ステップ3: プロトタイプ (014) -->
+            <rect x="385" y="100" width="145" height="70" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2"/>
+            <text x="457" y="128" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">014</text>
+            <text x="457" y="148" text-anchor="middle" fill="white" font-size="12">プロトタイプ</text>
+
+            <line x1="530" y1="135" x2="565" y2="135" stroke="#00d4ff" stroke-width="2" marker-end="url(#wf-arrow-015)"/>
+
+            <!-- ステップ4: AI活用 (015) ← 今ここ -->
+            <rect x="565" y="85" width="155" height="100" rx="8" fill="rgba(0,212,255,0.25)" stroke="#00d4ff" stroke-width="2.5"/>
+            <text x="642" y="122" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">015</text>
+            <text x="642" y="142" text-anchor="middle" fill="white" font-size="12">Figma AI活用</text>
+            <text x="642" y="160" text-anchor="middle" fill="#00d4ff" font-size="11">← 今ここ</text>
+
+            <!-- AIが得意 ラベル -->
+            <rect x="160" y="200" width="310" height="56" rx="6" fill="rgba(0,212,255,0.07)" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+            <text x="315" y="222" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">🤖 AIが得意な工程</text>
+            <text x="315" y="242" text-anchor="middle" fill="white" font-size="11">UI生成・配置提案・大量パターン生成・テキスト仮挿入</text>
+
+            <!-- 人間がやるべき ラベル -->
+            <rect x="490" y="200" width="310" height="56" rx="6" fill="rgba(255,180,0,0.07)" stroke="rgba(255,180,0,0.35)" stroke-width="1.5"/>
+            <text x="645" y="222" text-anchor="middle" fill="#ffb400" font-size="12" font-weight="bold">🧠 人間がやるべき判断</text>
+            <text x="645" y="242" text-anchor="middle" fill="white" font-size="11">優先順位決定・整合性チェック・設計意図の言語化</text>
+
+            <!-- 接続線 -->
+            <line x1="315" y1="200" x2="315" y2="190" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+            <line x1="315" y1="190" x2="272" y2="190" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+            <line x1="272" y1="190" x2="272" y2="170" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+
+            <line x1="645" y1="200" x2="645" y2="190" stroke="rgba(255,180,0,0.35)" stroke-width="1.5"/>
+            <line x1="645" y1="190" x2="642" y2="190" stroke="rgba(255,180,0,0.35)" stroke-width="1.5"/>
+            <line x1="642" y1="190" x2="642" y2="185" stroke="rgba(255,180,0,0.35)" stroke-width="1.5"/>
+
+            <!-- 注記 -->
+            <text x="430" y="290" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11">※ AIの活用はBlock 4以降も続く。015はFigmaの文脈でのAI活用入門</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド3: Figma公式AI機能の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Figma公式AI機能の概要</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            ⚠️ <strong>重要：</strong>機能名・UIは半年で変わる。授業時点の最新版は講師が補足。
+            重要なのは「<strong>AIに何をさせるか</strong>」の判断力
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>① UIの自動生成</h3>
+                <p class="text-sub">プロンプトからUI要素・画面レイアウトを生成。叩き台として活用する</p>
+                <h3>② レイアウト提案</h3>
+                <p class="text-sub">Auto Layout化・要素の自動整列を提案。構造の見直しに活用</p>
+                <h3>③ テキスト挿入</h3>
+                <p class="text-sub">文脈に合ったダミーテキストを自動生成。ロリパム（Lorem ipsum（ローレム・イプサム））からの脱却</p>
+            </div>
+            <div>
+                <h3>④ 画像生成・置換</h3>
+                <p class="text-sub">Figma内でAI画像を生成・既存画像を置換。ビジュアル案出しに活用</p>
+                <h3>⑤ リネーム・整理</h3>
+                <p class="text-sub">レイヤー名を自動整理。命名規則の維持に役立てる</p>
+                <div class="highlight-box">
+                    📌 <strong>使いどころ：</strong>「大量に出して選ぶ」作業に向いている
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: サードパーティプラグインの活用と選定基準 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">サードパーティプラグインの活用と選定基準</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>カテゴリ</h3>
+                <ul>
+                    <li><strong>UIデザイン生成系</strong> — AIでUI部品・セクションを生成</li>
+                    <li><strong>コンテンツ生成系</strong> — テキスト・画像・アイコンを自動補完</li>
+                    <li><strong>アクセシビリティチェック系</strong> — コントラスト・構造を自動検査</li>
+                    <li><strong>コード変換系</strong> — デザインをHTML/CSSに変換</li>
+                </ul>
+            </div>
+            <div>
+                <h3>信頼性の判断基準</h3>
+                <ul>
+                    <li><strong>★評価数・ダウンロード数</strong>が多いか</li>
+                    <li><strong>最終更新日</strong>が直近か（1年以上前は要注意）</li>
+                    <li>公式ドキュメント・サポートがあるか</li>
+                </ul>
+                <div class="highlight-box">
+                    💬 「プラグインは便利ツール。<br>
+                    主力は<strong>Figma公式AI＋自分の判断力</strong>」
+                </div>
+            </div>
+        </div>
+        <p class="text-note">※ 具体的なプラグイン名は講師が授業前に最新の推奨プラグインを選定して補足する</p>
+    </div>
+</div>
+
+<!-- スライド5: 軸①設計意図との整合性 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">AI出力の評価軸①：設計意図との整合性</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            ✅ <strong>チェックの問い：</strong>AIが生成したUIは、ペルソナの行動目的・サイトマップの導線・トンマナと合っているか？
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>SŌILでの具体例</h3>
+                <ul>
+                    <li>AIが「<strong>今すぐ購入</strong>」ボタンをTOPの最上部に配置するUIを生成</li>
+                    <li>見た目は整っていてきれいなデザイン</li>
+                    <li>しかし…ターゲットは<strong>「調べて納得してから買う層」</strong></li>
+                    <li>上流の設計意図と矛盾 → <strong>不採用</strong></li>
+                </ul>
+            </div>
+            <div>
+                <h3>なぜBlock 2の上流設計が重要か</h3>
+                <p class="text-sub">ペルソナ・ジャーニーマップ・サイトマップが、AI出力の<strong>フィルター</strong>として機能する</p>
+                <p class="text-sub">上流設計がなければ、AI出力の何が正しくて何が間違っているかを判断できない</p>
+                <div class="highlight-box">
+                    🔑 <strong>「きれいなUIより正しいUI」</strong><br>
+                    設計意図と合っているかが第一基準
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 軸②コンポーネント設計との一貫性 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">AI出力の評価軸②：コンポーネント設計との一貫性</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            ✅ <strong>チェックの問い：</strong>AIが生成した要素は、012の命名規則・バリアント構造・Auto Layout設計に沿っているか？
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>SŌILでの具体例</h3>
+                <ul>
+                    <li>AIが新しいスタイルのボタンを生成</li>
+                    <li>既存の <code>Button/Primary</code> や <code>Button/Secondary</code> と異なるデザイン</li>
+                    <li>そのまま使うと<strong>コンポーネント体系が崩壊</strong></li>
+                </ul>
+                <div class="highlight-box">
+                    🔧 <strong>判断の分岐</strong><br>
+                    A) 既存コンポーネントに合わせて修正<br>
+                    B) デザインルール自体を更新して採用
+                </div>
+            </div>
+            <div>
+                <h3>AI出力をそのまま使う危険性</h3>
+                <ul>
+                    <li>命名規則が崩れる（レイヤー名が統一されない）</li>
+                    <li>バリアントが増殖して管理不能になる</li>
+                    <li>Auto Layoutが未設定 → 実装時に崩れる</li>
+                    <li>後からの修正コストが急増する</li>
+                </ul>
+                <p class="text-note">※ 012で学んだコンポーネント命名規則・変数定義が、AI出力の受け入れ基準になる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 軸③実装可能性 + 3軸まとめSVG -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">AI出力の評価軸③：実装可能性 ＋ 3軸まとめ</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <p class="text-sub"><strong>チェックの問い：</strong>実際にHTML/CSSで再現可能か？「エンジニアがこれを実装できるか？」を常に問う</p>
+                <h3>よくある実装不可能なAI出力</h3>
+                <ul>
+                    <li>複雑グリッド（CSS Gridでは再現困難）</li>
+                    <li>絶対配置依存（固定座標に要素が置かれている）</li>
+                    <li>Auto Layout不可能な入れ子構造</li>
+                </ul>
+                <p class="text-note">→ Block 7の039「エンジニアとの連携」に直結するスキル</p>
+            </div>
+            <div class="svg-centered">
+                <svg class="generated-art" viewBox="0 0 380 230" id="three-axis-015">
+                    <!-- 軸① カード -->
+                    <rect x="10" y="15" width="108" height="95" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="64" y="40" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">軸①</text>
+                    <text x="64" y="58" text-anchor="middle" fill="white" font-size="11">設計意図との</text>
+                    <text x="64" y="73" text-anchor="middle" fill="white" font-size="11">整合性</text>
+                    <text x="64" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">ペルソナ・導線・</text>
+                    <text x="64" y="105" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">トンマナと合うか</text>
+
+                    <!-- 軸② カード -->
+                    <rect x="136" y="15" width="108" height="95" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="190" y="40" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">軸②</text>
+                    <text x="190" y="58" text-anchor="middle" fill="white" font-size="11">コンポーネント</text>
+                    <text x="190" y="73" text-anchor="middle" fill="white" font-size="11">設計の一貫性</text>
+                    <text x="190" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">命名・バリアント・</text>
+                    <text x="190" y="105" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">Auto Layoutと合うか</text>
+
+                    <!-- 軸③ カード -->
+                    <rect x="262" y="15" width="108" height="95" rx="8" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="316" y="40" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">軸③</text>
+                    <text x="316" y="58" text-anchor="middle" fill="white" font-size="11">実装可能性</text>
+                    <text x="316" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">HTML/CSSで</text>
+                    <text x="316" y="93" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10">再現できるか</text>
+
+                    <!-- まとめメッセージ -->
+                    <rect x="10" y="128" width="360" height="72" rx="8" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+                    <text x="190" y="152" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">「この3軸でチェックすれば</text>
+                    <text x="190" y="170" text-anchor="middle" fill="white" font-size="12">どんなAI機能が出てきても評価できる」</text>
+                    <text x="190" y="188" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">機能は変わる。評価力は不変。</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: アーキテクトとAIの役割分担 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">アーキテクトとAIの役割分担</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>🤖 AIの役割</h3>
+                <ul>
+                    <li><strong>選択肢の生成</strong>マシン</li>
+                    <li>大量のUIバリエーションを素早く出す</li>
+                    <li>疲れを知らず、何度でもやり直せる</li>
+                    <li>「いい感じ」のものを素早く提示する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🧠 アーキテクトの役割</h3>
+                <ul>
+                    <li><strong>選択肢の選定と根拠の説明</strong></li>
+                    <li>3軸で評価し、採否を決定する</li>
+                    <li>「なぜこれを選んだか」を言語化する</li>
+                    <li>チームへの説明責任を持つ</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">
+            🔄 <strong>011〜014で繰り返してきた原則：</strong>Geminiに「叩かせて取捨選択」。<br>
+            Figma AIでも同じ。<strong>「そのまま納品しない。3軸でチェック→言語化してから使う」</strong><br>
+            <span class="text-note">※ Block 6（030・035）でのデザインレビュー・クライアント提案につながる姿勢</span>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: まとめ＋次ブロック予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 3 まとめ ＋ Block 4 予告</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>📋 015の学習まとめ</h3>
+                <ul>
+                    <li>AI出力の評価基準は<strong>3軸</strong>：設計意図 / コンポーネント一貫性 / 実装可能性</li>
+                    <li>Figma公式AIの5カテゴリ機能を把握</li>
+                    <li>プラグイン選定基準（評価数・更新日）を習得</li>
+                    <li><strong>機能は変わるが、3軸評価は不変</strong></li>
+                </ul>
+                <div class="highlight-box">
+                    ✅ Block 3（011〜015）完了！<br>
+                    SŌILのTOPページWF一式が完成
+                </div>
+            </div>
+            <div>
+                <h3>🚀 Block 4（AI活用基礎）の予告</h3>
+                <ul>
+                    <li>Figma以外のAI活用を本格的に学ぶ</li>
+                    <li>Gemini・Nano Banana Proを使った戦略・コピー生成</li>
+                    <li>AIとの対話設計（プロンプトエンジニアリング）</li>
+                    <li>015で習得した<strong>3軸評価がBlock 4以降すべての基盤</strong>になる</li>
+                </ul>
+                <p class="text-note">Block 4以降では「AIに任せる判断力」がさらに問われるようになる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +331,65 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "AI出力を評価する3つの軸として正しい組み合わせはどれですか？",
+        options: [
+            "①デザインの美しさ ②コストの低さ ③納期の速さ",
+            "①設計意図との整合性 ②コンポーネント設計との一貫性 ③実装可能性",
+            "①色の統一性 ②フォントの一貫性 ③アニメーションの品質",
+            "①ユーザー評価 ②競合分析 ③ブランド整合性"
+        ],
+        correct: 1,
+        explanation: "AI出力を評価する3軸は「①設計意図との整合性（ペルソナ・導線・トンマナと合うか）②コンポーネント設計との一貫性（命名規則・バリアント・Auto Layoutと合うか）③実装可能性（HTML/CSSで再現できるか）」です。機能は変わっても、この3軸は不変のスキルです。"
+    },
+    {
+        question: "AIが「見た目のきれいなUI」を生成しても不採用にすべき場合はどれですか？",
+        options: [
+            "AIが生成したので信頼性が低い",
+            "色使いが派手すぎる場合",
+            "ペルソナの行動目的・サイトマップの導線・トンマナと合っていない場合",
+            "既存コンポーネントと同じデザインだった場合"
+        ],
+        correct: 2,
+        explanation: "評価軸①「設計意図との整合性」に違反する場合は不採用にすべきです。SŌILの例のように、AIが「今すぐ購入」ボタンをTOPに配置しても、ターゲットが「調べて納得してから買う層」であれば設計意図と矛盾します。きれいなUIより正しいUIが優先です。"
+    },
+    {
+        question: "AIが生成したボタンが既存コンポーネント「Button/Primary」と異なるデザインだった場合、正しい対応はどれですか？",
+        options: [
+            "AIが生成したので正しい。そのまま使う",
+            "見た目が良ければ既存コンポーネントを全て削除して置き換える",
+            "既存コンポーネントに合わせて修正するか、デザインルール自体を更新するかを判断する",
+            "AIに再生成を依頼し続け、既存と一致するまで繰り返す"
+        ],
+        correct: 2,
+        explanation: "評価軸②「コンポーネント設計との一貫性」の判断として、2つの選択肢があります。A)既存コンポーネントに合わせて修正する、またはB)デザインルール自体を更新して採用する、のどちらかを意図的に決定する必要があります。AI出力をそのまま使うとコンポーネント体系が崩壊します。"
+    },
+    {
+        question: "サードパーティプラグインの信頼性を判断する基準として最も適切なものはどれですか？",
+        options: [
+            "プラグイン名がカタカナかどうか",
+            "無料で使えるかどうか",
+            "★評価数・ダウンロード数が多く、最終更新日が直近であること",
+            "Figma公式サイトのトップページに掲載されているかどうか"
+        ],
+        correct: 2,
+        explanation: "プラグインの信頼性は「★評価数・ダウンロード数（人気度）」と「最終更新日（メンテナンス状況）」で判断します。1年以上更新のないプラグインは動作しない可能性があります。具体的なプラグイン名は陳腐化するため、この選定基準自体を習得することが重要です。"
+    },
+    {
+        question: "「機能は変わる、評価力は不変」という原則の意味として最も正確なものはどれですか？",
+        options: [
+            "AIツールは毎年廃止されるので使わない方がいい",
+            "Figmaは機能が多すぎて覚えられないので全て暗記する必要がない",
+            "具体的なAIツールの操作方法は変わっても、3軸の評価基準はどんなツールにも適用できる普遍的スキルである",
+            "評価基準は不変なので、一度決めたデザインルールは変更してはいけない"
+        ],
+        correct: 2,
+        explanation: "Figma AIの具体的な機能名・UIは半年で変わりますが、「設計意図との整合性・コンポーネント一貫性・実装可能性」の3軸評価は、どんなAIツールが登場しても適用できる普遍的なスキルです。ツールの操作を覚えるより、評価力を身につけることがビジュアルアーキテクトとして重要です。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

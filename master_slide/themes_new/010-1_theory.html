@@ -3,16 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>ブランド・アイデンティティとトンマナの言語化【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: タイトル -->
+        <div class="slide-container full-bg-image active">
+            <div class="content-overlay">
+                <h1>ブランド・アイデンティティと<br>トンマナの言語化<span>【理論編】</span></h1>
+                <p>設計の最後のピース——"どう見せるか"のルールを決める</p>
+            </div>
+        </div>
+        
+        <!-- スライド2: 問題提起 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">構造は決まった、しかしこれだけではデザイナーは動けない</h2>
+            <div class="content-block">
+                <p>009でサイトの構造と導線は完成しました。ページの数も、情報の流れも決まっています。</p>
+                <p>でも、デザイナーへの発注時にこんな状況が起きていませんか？</p>
+                <ul>
+                    <li>「もっと高級感を出して」と言ったが、何が変わればいいか自分でもわからない</li>
+                    <li>修正のたびに「なんか違う」「もう少し明るく」の感覚的なやり取りが続く</li>
+                    <li>ページによってフォントや色がバラバラで、統一感が出ない</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ トンマナが決まっていないと、デザイン修正は「好み」の議論になる。<br>
+                    ルールがないと、誰も正解を判断できない。
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド3: アジェンダ -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">今回学ぶこと</h2>
+            <div class="content-block">
+                <h3>① トンマナ (Tone & Manner) とは何か</h3>
+                <p>定義・役割・なぜ必要かを理解する</p>
+                <h3>② レギュレーション策定の実務</h3>
+                <p>カラー・フォント・写真・余白・言葉遣い——5つの要素の決め方</p>
+                <h3>③ 簡易スタイルガイドの作り方</h3>
+                <p>デザイナーに渡せる1〜2ページのドキュメントに落とし込む</p>
+                <div class="highlight-box">
+                    💡 Block 2の締めくくり。上流設計の「最後のピース」を完成させます
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド4: トンマナの定義 -->
+        <div class="slide-container big-concept-layout">
+            <h2>トンマナとは<br><span style="font-size:0.6em; opacity:0.8;">Tone &amp; Manner</span></h2>
+            <p>サイト全体の「声のトーン」と「見た目のルール」を言語化したもの。<br>
+            全員が同じ方向を向くための<strong>共通言語</strong>。</p>
+        </div>
+        
+        <!-- スライド5: トンマナあり vs なし（SVG比較） -->
+        <div class="slide-container">
+            <h2 class="slide-title">トンマナがある vs ない</h2>
+            <div class="two-column tiled">
+                <div>
+                    <h3>❌ トンマナなし</h3>
+                    <svg class="generated-art" viewBox="0 0 380 320">
+                        <!-- 背景 -->
+                        <rect width="380" height="320" fill="#1a1a2e" rx="12"/>
+        
+                        <!-- ページA：バラバラな要素 -->
+                        <rect x="20" y="20" width="160" height="50" fill="#e74c3c" rx="4"/>
+                        <text x="100" y="50" text-anchor="middle" fill="white" font-size="12">ページA：赤・ゴシック</text>
+        
+                        <!-- ページB -->
+                        <rect x="200" y="20" width="160" height="50" fill="#27ae60" rx="4"/>
+                        <text x="280" y="50" text-anchor="middle" fill="white" font-size="12">ページB：緑・明朝</text>
+        
+                        <!-- ページC -->
+                        <rect x="20" y="90" width="160" height="50" fill="#8e44ad" rx="4"/>
+                        <text x="100" y="120" text-anchor="middle" fill="white" font-size="12">ページC：紫・大きい余白</text>
+        
+                        <!-- ページD -->
+                        <rect x="200" y="90" width="160" height="50" fill="#e67e22" rx="4"/>
+                        <text x="280" y="120" text-anchor="middle" fill="white" font-size="12">ページD：橙・小さい余白</text>
+        
+                        <!-- 問題ラベル -->
+                        <rect x="20" y="160" width="340" height="110" fill="#2c2c3e" rx="8" stroke="#e74c3c" stroke-width="1.5"/>
+                        <text x="190" y="185" text-anchor="middle" fill="#e74c3c" font-size="12" font-weight="bold">発生する問題</text>
+                        <text x="190" y="205" text-anchor="middle" fill="#aaaacc" font-size="11">・ページごとに雰囲気がバラバラ</text>
+                        <text x="190" y="222" text-anchor="middle" fill="#aaaacc" font-size="11">・修正が「好み」の議論になる</text>
+                        <text x="190" y="239" text-anchor="middle" fill="#aaaacc" font-size="11">・デザイナーが判断できない</text>
+                        <text x="190" y="256" text-anchor="middle" fill="#aaaacc" font-size="11">・手戻りが無限に続く</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3>✅ トンマナあり</h3>
+                    <svg class="generated-art" viewBox="0 0 380 320">
+                        <!-- 背景 -->
+                        <rect width="380" height="320" fill="#1a1a2e" rx="12"/>
+        
+                        <!-- 統一されたページ群 -->
+                        <rect x="20" y="20" width="160" height="50" fill="#00d4ff" rx="4" opacity="0.85"/>
+                        <text x="100" y="40" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">ページA</text>
+                        <text x="100" y="60" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">同じ青・同じフォント</text>
+        
+                        <rect x="200" y="20" width="160" height="50" fill="#00d4ff" rx="4" opacity="0.85"/>
+                        <text x="280" y="40" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">ページB</text>
+                        <text x="280" y="60" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">同じ青・同じフォント</text>
+        
+                        <rect x="20" y="90" width="160" height="50" fill="#00d4ff" rx="4" opacity="0.85"/>
+                        <text x="100" y="110" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">ページC</text>
+                        <text x="100" y="130" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">同じ余白ルール</text>
+        
+                        <rect x="200" y="90" width="160" height="50" fill="#00d4ff" rx="4" opacity="0.85"/>
+                        <text x="280" y="110" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">ページD</text>
+                        <text x="280" y="130" text-anchor="middle" fill="#0a0a1a" font-size="12" font-weight="bold">同じ余白ルール</text>
+        
+                        <!-- スタイルガイドアイコン -->
+                        <text x="190" y="165" text-anchor="middle" fill="#00d4ff" font-size="11">▼ スタイルガイドで統一</text>
+                        <rect x="140" y="173" width="100" height="4" fill="#00d4ff" opacity="0.6" rx="2"/>
+        
+                        <!-- 効果ラベル -->
+                        <rect x="20" y="190" width="340" height="110" fill="#0d2235" rx="8" stroke="#00d4ff" stroke-width="1.5"/>
+                        <text x="190" y="215" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">得られる効果</text>
+                        <text x="190" y="235" text-anchor="middle" fill="#aaccdd" font-size="11">・全ページに統一感が生まれる</text>
+                        <text x="190" y="252" text-anchor="middle" fill="#aaccdd" font-size="11">・修正の判断基準が明確になる</text>
+                        <text x="190" y="269" text-anchor="middle" fill="#aaccdd" font-size="11">・デザイナーが自走できる</text>
+                        <text x="190" y="286" text-anchor="middle" fill="#aaccdd" font-size="11">・手戻りが激減する</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド6: トンマナの5要素 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">トンマナを構成する5つの要素</h2>
+            <div class="content-block">
+                <div class="tiled-content" style="grid-template-columns: repeat(5, 1fr); gap: 1rem;">
+                    <div class="tile">
+                        <div class="icon">🎨</div>
+                        <h3>① カラーパレット</h3>
+                        <p>メイン・サブ・アクセントの3色を決める</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">✍️</div>
+                        <h3>② タイポグラフィ</h3>
+                        <p>見出し・本文・強調用のフォントを決める</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">📷</div>
+                        <h3>③ 写真・画像のトーン</h3>
+                        <p>明るさ・雰囲気・OK/NGを言語化する</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">⬜</div>
+                        <h3>④ 余白・レイアウト</h3>
+                        <p>間隔・密度のルールを決める</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">💬</div>
+                        <h3>⑤ 言葉遣い（声のトーン）</h3>
+                        <p>敬語・専門用語の扱いを統一する</p>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    💡 この5要素がすべて揃ったものが「スタイルガイド」になる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド7: 007との接続 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">ヒアリング（007）がここで生きる</h2>
+            <div class="content-block">
+                <h3>007で聞いた「好み・NG」が、具体的なルールに変換される</h3>
+                <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                    <div class="tile">
+                        <h3>ヒアリングでの回答例</h3>
+                        <p>「清潔感があって信頼感のある感じ」</p>
+                        <p>「ごちゃごちゃしてるのは嫌」</p>
+                        <p>「写真は暗いものはNG」</p>
+                        <p>「堅すぎず、でも軽くもなく」</p>
+                    </div>
+                    <div class="tile">
+                        <h3>トンマナルールへの変換</h3>
+                        <p>→ メイン色：落ち着いたネイビーまたは白</p>
+                        <p>→ 余白広め・情報を詰め込まない</p>
+                        <p>→ 写真：明度高・自然光・笑顔</p>
+                        <p>→ 語尾：「〜です」「〜ます」丁寧体</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    🔗 「感覚的な言葉」を「設計のルール」に翻訳するのがアーキテクトの仕事
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド8: カラーパレットの決め方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">① カラーパレットの決め方</h2>
+            <div class="content-block">
+                <h3>3色の構造で考える</h3>
+                <ul>
+                    <li><strong>メインカラー：</strong>ブランドの顔。最も多く使う色（ヘッダー・ボタンなど）</li>
+                    <li><strong>サブカラー：</strong>メインを引き立てる色。背景や補助的なエリアに使う</li>
+                    <li><strong>アクセントカラー：</strong>CTAボタンや強調部分。面積は小さいが印象を左右する</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">ペルソナ・JTBDから逆算する</h3>
+                <ul>
+                    <li>「安心して予約したい」→ 信頼感：ネイビー・グリーン系</li>
+                    <li>「テンション上げたい」→ 活気・エネルギー：オレンジ・赤系</li>
+                    <li>「上質なものを選びたい」→ 高級感：ゴールド・黒・白</li>
+                </ul>
+                <div class="highlight-box">
+                    📚 003の色彩心理学がここで初めて実案件に適用される。「なんとなく青」ではなく「なぜ青か」を言語化できることが重要
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド9: タイポグラフィの決め方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">② タイポグラフィの決め方</h2>
+            <div class="content-block">
+                <h3>3種類のフォントロールを決める</h3>
+                <ul>
+                    <li><strong>見出し用：</strong>ブランドの「個性」を出す。インパクト優先</li>
+                    <li><strong>本文用：</strong>可読性最優先。長い文章でも疲れないフォント</li>
+                    <li><strong>強調用：</strong>数字・キャッチコピーに使う。見出しと対のフォント</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">ペルソナの年齢・デバイスから逆算する</h3>
+                <ul>
+                    <li>40代以上がターゲット → 本文フォントは14px以上、行間は1.8以上</li>
+                    <li>スマホ主体のサイト → コンパクトで視認性の高いゴシック系</li>
+                    <li>高級・上質感を出したい → 明朝系・セリフ系の組み合わせ</li>
+                </ul>
+                <div class="highlight-box">
+                    📚 003のフォントの性格（ゴシック＝親しみ、明朝＝格式）がここで実案件に適用される
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド10: 写真・画像トーンの決め方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">③ 写真・画像トーンの決め方</h2>
+            <div class="content-block">
+                <h3>言語化すべき4つの軸</h3>
+                <ul>
+                    <li><strong>明るさ・コントラスト：</strong>明るく軽やか？ 落ち着いてシックな雰囲気？</li>
+                    <li><strong>彩度：</strong>鮮やかで華やか？ 淡くナチュラル？ モノトーン？</li>
+                    <li><strong>被写体の雰囲気：</strong>自然光・屋外？ スタジオ・整った印象？</li>
+                    <li><strong>NG基準：</strong>何を使ってはいけないかを先に決める</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">OK/NGの対比例</h3>
+                <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                    <div class="tile" style="border-left: 3px solid #2ecc71;">
+                        <h3>✅ OK例（転職支援LP）</h3>
+                        <p>明るい自然光・笑顔の人物・清潔感のある白背景</p>
+                    </div>
+                    <div class="tile" style="border-left: 3px solid #e74c3c;">
+                        <h3>❌ NG例（同じ案件）</h3>
+                        <p>暗い室内・疲れた表情・古いオフィス感</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド11: 余白・レイアウトルール -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">④ 余白・レイアウトルールの決め方</h2>
+            <div class="content-block">
+                <h3>余白量が印象を決定する</h3>
+                <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                    <div class="tile">
+                        <h3>余白が広い</h3>
+                        <p>高級感・信頼感・落ち着き<br>「じっくり選びたい」ユーザーに合う</p>
+                        <p style="opacity:0.7; font-size:0.9em;">例：高単価サービス、高級ブランド、士業</p>
+                    </div>
+                    <div class="tile">
+                        <h3>余白が狭い</h3>
+                        <p>情報量・活気・賑わい感<br>「今すぐ探したい」ユーザーに合う</p>
+                        <p style="opacity:0.7; font-size:0.9em;">例：ECサイト、クーポン系、求人サイト</p>
+                    </div>
+                </div>
+                <h3 style="margin-top: 1.5rem;">ペルソナの動機から逆算する</h3>
+                <ul>
+                    <li>JTBD「安心して任せたい」→ 余白を広めに取り、視覚的なゆとりを出す</li>
+                    <li>JTBD「すぐに情報を得たい」→ コンパクトに整理、スクロール量を減らす</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- スライド12: 言葉遣いの決め方 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">⑤ 言葉遣い（声のトーン）の決め方</h2>
+            <div class="content-block">
+                <h3>統一すべき3つのポイント</h3>
+                <ul>
+                    <li><strong>敬語の度合い：</strong>「〜です・ます」丁寧体 vs 「〜だ・である」体 vs フランクな話し言葉</li>
+                    <li><strong>専門用語の扱い：</strong>ターゲットが知っている言葉か？ 言い換えが必要か？</li>
+                    <li><strong>CTA（行動喚起）の言い方：</strong>「今すぐ申し込む」「まずは相談する」「詳しく見る」</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">同じ内容でもトーンで印象が変わる</h3>
+                <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                    <div class="tile" style="border-left: 3px solid #00d4ff;">
+                        <h3>フォーマル</h3>
+                        <p>「ご不明点がございましたら、お気軽にお問い合わせください」</p>
+                    </div>
+                    <div class="tile" style="border-left: 3px solid #a29bfe;">
+                        <h3>カジュアル</h3>
+                        <p>「わからないことがあればいつでも聞いてね！」</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    ⚠️ ページによって言葉遣いが混在すると、ブランドへの信頼感が下がる
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド13: アーキテクトの役割 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">アーキテクトの役割：策定して、共有する</h2>
+            <div class="content-block">
+                <h3>よくある誤解</h3>
+                <div class="highlight-box" style="border-left-color: #e74c3c;">
+                    ❌「トンマナを決めるのはデザイナーの仕事では？」
+                </div>
+                <h3 style="margin-top: 1.5rem;">正しい役割分担</h3>
+                <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                    <div class="tile" style="border-left: 3px solid #00d4ff;">
+                        <h3>アーキテクトがやること</h3>
+                        <p>ペルソナ・JTBDをもとにトンマナの方針を策定し、スタイルガイドとしてまとめてデザイナーに渡す</p>
+                    </div>
+                    <div class="tile" style="border-left: 3px solid #a29bfe;">
+                        <h3>デザイナーがやること</h3>
+                        <p>渡されたスタイルガイドをもとに、実際のビジュアルを制作・実装する</p>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.5rem;">
+                    💡 アーキテクトは「何を・なぜ作るか」を決める。「どう作るか」はデザイナーが担う
+                </div>
+            </div>
+        </div>
+        
+        <!-- スライド14: 簡易スタイルガイドの紹介 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">簡易スタイルガイドとは何か</h2>
+            <div class="content-block svg-centered">
+                <h3>カラー＋フォント＋写真トーン＋言葉遣いを1〜2ページに凝縮したドキュメント</h3>
+                <svg class="generated-art" viewBox="0 0 760 280">
+                    <!-- 背景 -->
+                    <rect width="760" height="280" fill="#12122a" rx="12"/>
+                    <!-- ドキュメント枠 -->
+                    <rect x="20" y="20" width="720" height="240" fill="#1a1a3e" rx="10" stroke="#00d4ff" stroke-width="1.5"/>
+                    <!-- タイトル行 -->
+                    <rect x="40" y="35" width="680" height="30" fill="#00d4ff" rx="4" opacity="0.2"/>
+                    <text x="380" y="55" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">スタイルガイド / Style Guide — キャリアリンクファクトリーLP</text>
+        
+                    <!-- カラーセクション -->
+                    <text x="60" y="90" fill="#aaaacc" font-size="11" font-weight="bold">■ カラーパレット</text>
+                    <rect x="60" y="98" width="50" height="30" fill="#1a4a8a" rx="4"/>
+                    <text x="85" y="118" text-anchor="middle" fill="white" font-size="9">メイン</text>
+                    <rect x="120" y="98" width="50" height="30" fill="#5b9bd5" rx="4"/>
+                    <text x="145" y="118" text-anchor="middle" fill="white" font-size="9">サブ</text>
+                    <rect x="180" y="98" width="50" height="30" fill="#f39c12" rx="4"/>
+                    <text x="205" y="118" text-anchor="middle" fill="white" font-size="9">アクセント</text>
+        
+                    <!-- フォントセクション -->
+                    <text x="280" y="90" fill="#aaaacc" font-size="11" font-weight="bold">■ タイポグラフィ</text>
+                    <text x="280" y="108" fill="white" font-size="14" font-weight="bold">見出し：Noto Sans JP Bold</text>
+                    <text x="280" y="124" fill="#ccccdd" font-size="11">本文：Noto Sans JP Regular / 16px / 行間1.8</text>
+        
+                    <!-- 写真トーン -->
+                    <text x="60" y="160" fill="#aaaacc" font-size="11" font-weight="bold">■ 写真トーン</text>
+                    <rect x="60" y="168" width="200" height="60" fill="#2a2a4a" rx="4" stroke="#555577" stroke-width="1"/>
+                    <text x="160" y="192" text-anchor="middle" fill="#2ecc71" font-size="10">✅ OK：明るい自然光・笑顔・白背景</text>
+                    <text x="160" y="208" text-anchor="middle" fill="#e74c3c" font-size="10">❌ NG：暗い・無表情・古いオフィス感</text>
+                    <text x="160" y="222" text-anchor="middle" fill="#aaaacc" font-size="10">彩度：標準〜やや高め</text>
+        
+                    <!-- 言葉遣い -->
+                    <text x="300" y="160" fill="#aaaacc" font-size="11" font-weight="bold">■ 言葉遣い</text>
+                    <rect x="300" y="168" width="420" height="60" fill="#2a2a4a" rx="4" stroke="#555577" stroke-width="1"/>
+                    <text x="510" y="188" text-anchor="middle" fill="#ccccdd" font-size="10">敬語：です・ます体（丁寧）</text>
+                    <text x="510" y="204" text-anchor="middle" fill="#ccccdd" font-size="10">専門用語：なるべく平易な言葉に言い換え</text>
+                    <text x="510" y="220" text-anchor="middle" fill="#ccccdd" font-size="10">CTA：「まずは無料相談する」</text>
+                </svg>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">※ これを実践編でGeminiを使いながら実際に作成していきます</p>
+            </div>
+        </div>
+        
+        <!-- スライド15: Block 2全体振り返り（SVGフロー図） -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">Block 2 完了——上流設計の6点セット</h2>
+            <div class="content-block svg-centered">
+                <svg class="generated-art" viewBox="0 0 820 300">
+                    <!-- 背景 -->
+                    <rect width="820" height="300" fill="#0d0d1f" rx="12"/>
+        
+                    <!-- カード定義：006〜010＋スタイルガイド -->
+                    <!-- 006 -->
+                    <rect x="20" y="90" width="110" height="90" fill="#1a2a4a" rx="8" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="75" y="120" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">006</text>
+                    <text x="75" y="136" text-anchor="middle" fill="#ccddee" font-size="9">要件定義書</text>
+                    <text x="75" y="152" text-anchor="middle" fill="#aabbcc" font-size="8">ヒアリング設計</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="130" y1="130" x2="155" y2="130" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow1)"/>
+                    <defs>
+                        <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- 007 -->
+                    <rect x="155" y="90" width="110" height="90" fill="#1a2a4a" rx="8" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="210" y="120" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">007</text>
+                    <text x="210" y="136" text-anchor="middle" fill="#ccddee" font-size="9">ヒアリング</text>
+                    <text x="210" y="152" text-anchor="middle" fill="#aabbcc" font-size="8">好み・NG収集</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="265" y1="130" x2="290" y2="130" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+                    <defs>
+                        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- 008 -->
+                    <rect x="290" y="90" width="110" height="90" fill="#1a2a4a" rx="8" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="345" y="112" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">008</text>
+                    <text x="345" y="128" text-anchor="middle" fill="#ccddee" font-size="9">ペルソナシート</text>
+                    <text x="345" y="144" text-anchor="middle" fill="#aabbcc" font-size="8">＋</text>
+                    <text x="345" y="158" text-anchor="middle" fill="#ccddee" font-size="9">ジャーニーマップ</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="400" y1="130" x2="425" y2="130" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow3)"/>
+                    <defs>
+                        <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- 009 -->
+                    <rect x="425" y="90" width="110" height="90" fill="#1a2a4a" rx="8" stroke="#00d4ff" stroke-width="1.5"/>
+                    <text x="480" y="112" text-anchor="middle" fill="#00d4ff" font-size="10" font-weight="bold">009</text>
+                    <text x="480" y="128" text-anchor="middle" fill="#ccddee" font-size="9">サイトマップ</text>
+                    <text x="480" y="144" text-anchor="middle" fill="#aabbcc" font-size="8">＋</text>
+                    <text x="480" y="158" text-anchor="middle" fill="#ccddee" font-size="9">導線図</text>
+        
+                    <!-- 矢印（太く・ゴールド） -->
+                    <line x1="535" y1="130" x2="560" y2="130" stroke="#f39c12" stroke-width="2.5" marker-end="url(#arrow4)"/>
+                    <defs>
+                        <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#f39c12"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- 010（ハイライト） -->
+                    <rect x="560" y="70" width="130" height="110" fill="#1a3a2a" rx="8" stroke="#2ecc71" stroke-width="2.5"/>
+                    <text x="625" y="100" text-anchor="middle" fill="#2ecc71" font-size="11" font-weight="bold">010 ← 今ここ</text>
+                    <text x="625" y="118" text-anchor="middle" fill="#aaddbb" font-size="9">スタイルガイド</text>
+                    <text x="625" y="134" text-anchor="middle" fill="#aaddbb" font-size="9">トンマナ策定</text>
+                    <text x="625" y="150" text-anchor="middle" fill="#aaddbb" font-size="8">（カラー・フォント・</text>
+                    <text x="625" y="163" text-anchor="middle" fill="#aaddbb" font-size="8">写真・余白・言葉遣い）</text>
+        
+                    <!-- 完成バッジ -->
+                    <rect x="710" y="90" width="100" height="90" fill="#2a1a3a" rx="8" stroke="#a29bfe" stroke-width="2"/>
+                    <text x="760" y="120" text-anchor="middle" fill="#a29bfe" font-size="11" font-weight="bold">6点</text>
+                    <text x="760" y="138" text-anchor="middle" fill="#ccaaff" font-size="9">セット完成</text>
+                    <text x="760" y="154" text-anchor="middle" fill="#ccaaff" font-size="8">上流設計</text>
+                    <text x="760" y="168" text-anchor="middle" fill="#ccaaff" font-size="8">フルセット</text>
+        
+                    <!-- 矢印 -->
+                    <line x1="690" y1="130" x2="710" y2="130" stroke="#a29bfe" stroke-width="1.5" marker-end="url(#arrow5)"/>
+                    <defs>
+                        <marker id="arrow5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#a29bfe"/>
+                        </marker>
+                    </defs>
+        
+                    <!-- 下部：成果物ラベル -->
+                    <text x="410" y="220" text-anchor="middle" fill="#667799" font-size="10">Block 2の成果物：要件定義書 ／ ペルソナシート ／ ジャーニーマップ ／ サイトマップ ／ 導線図 ／ スタイルガイド</text>
+                    <line x1="40" y1="230" x2="780" y2="230" stroke="#334455" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="410" y="260" text-anchor="middle" fill="#334455" font-size="10">この6点があれば、デザイナー・エンジニアへの発注・管理が迷わずできる</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- スライド16: 次ブロック予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のブロックへ：Block 3「Figmaと構造設計」</h2>
+            <div class="content-block">
+                <h3>上流設計が完成したら、次はビジュアル制作へ</h3>
+                <p>Block 2で作った6点のドキュメントが、Block 3以降の制作作業の「羅針盤」になります。</p>
+                <ul>
+                    <li><strong>スタイルガイド</strong>があるから、Figmaでの制作に迷いがない</li>
+                    <li><strong>ペルソナ・JTBD</strong>があるから、デザインの判断基準がある</li>
+                    <li><strong>サイトマップ・導線図</strong>があるから、何から作るべきかが明確</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 上流設計がしっかりしていれば、制作フェーズで「なんか違う」は起きない。<br>
+                    Block 3では、Figmaを使って「構造をビジュアルに変換する」技術を学びます。
+                </div>
+                <p style="margin-top: 1.5rem; opacity: 0.7;">次回：Block 3-1「Figmaの基本操作とフレーム設計」</p>
+            </div>
+        </div>
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -21,10 +512,66 @@
         </div>
     </div>
     
-    <div class="control-hint">Use Arrows/Space to Navigate | Q for Quiz</div>
     
+    <!-- クイズデータ -->
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+    const questions = [
+        {
+            question: "トンマナを構成する5つの要素はどれか？",
+            options: [
+                "カラーパレット・タイポグラフィ・写真トーン・余白ルール・言葉遣い",
+                "ロゴ・キャッチコピー・フォント・アイコン・レイアウト",
+                "ブランド名・ターゲット・競合・価格帯・サービス内容",
+                "配色・字体・画像点数・ページ数・更新頻度"
+            ],
+            correct: 0,
+            explanation: "トンマナの5要素は「①カラーパレット ②タイポグラフィ ③写真・画像のトーン ④余白・レイアウト ⑤言葉遣い（声のトーン）」です。この5つが揃ったものをスタイルガイドと呼びます。"
+        },
+        {
+            question: "カラーパレットを決める際に「なんとなく青が好き」ではなく、何から逆算して決めるべきか？",
+            options: [
+                "クライアントの会社のロゴカラーに合わせる",
+                "ペルソナ・JTBDから逆算して、ユーザーの感情に合った色を選ぶ",
+                "トレンドのカラーパレットを参考にする",
+                "競合他社が使っていない色を選ぶ"
+            ],
+            correct: 1,
+            explanation: "カラーは「なんとなく」ではなく、ペルソナが何を求めているか（JTBD）から逆算します。「安心して予約したい」なら信頼感のあるネイビー・グリーン系、「テンションを上げたい」ならオレンジ・赤系といったように、003の色彩心理学を実案件に適用します。"
+        },
+        {
+            question: "Block 1の004「ブランド・アイデンティティのシステム化」とBlock 2の010の違いはどれか？",
+            options: [
+                "004は概念理解、010は実案件でのトンマナ策定の実務",
+                "004はビジュアル制作、010は企画立案",
+                "004は個人案件向け、010は企業案件向け",
+                "004は理論編のみ、010は実践編のみ"
+            ],
+            correct: 0,
+            explanation: "004は「ブランドアイデンティティとは何か」という概念理解が目的です。010は「実際の案件でトンマナをどう策定し、スタイルガイドとして渡すか」という実務フローの習得が目的です。概念を知ること（004）と、使えること（010）は別物です。"
+        },
+        {
+            question: "アーキテクトのトンマナに関する正しい役割はどれか？",
+            options: [
+                "自分でビジュアルデザインを制作して完成品を渡す",
+                "デザイナーに「良い感じにして」とおおまかに指示する",
+                "ペルソナ・JTBDをもとにトンマナを策定し、スタイルガイドとしてデザイナーに共有する",
+                "クライアントの好みをそのままデザイナーに伝える"
+            ],
+            correct: 2,
+            explanation: "アーキテクトは「何を・なぜ作るか」を決めてドキュメント化し、デザイナーに渡す役割です。実際のビジュアル制作はデザイナーが担います。感覚的な言葉をルールに変換してスタイルガイドにまとめることが、アーキテクトの最大の貢献です。"
+        },
+        {
+            question: "Block 2で完成する「上流設計の6点セット」に含まれないものはどれか？",
+            options: [
+                "要件定義書・ペルソナシート・ジャーニーマップ",
+                "サイトマップ・導線図・スタイルガイド",
+                "Figmaのワイヤーフレーム・コーディング済みHTML・デザインカンプ",
+                "上の①と②の組み合わせが正解（6点セット）"
+            ],
+            correct: 2,
+            explanation: "Block 2の成果物は「要件定義書・ペルソナシート・ジャーニーマップ・サイトマップ・導線図・スタイルガイド」の6点です。FigmaのワイヤーフレームはBlock 3、コーディングやデザインカンプはさらに後のブロックで扱います。上流設計フェーズでは制作物はまだ生まれません。"
+        }
+    ];
     </script>
     
     <script src="../assets/slide-template.js"></script>
