@@ -1,0 +1,25 @@
+{
+  "file": "master_slide/themes_new/019-1_theory.html",
+  "svgCount": 2,
+  "issues": [
+    {
+      "type": "orphan-line",
+      "severity": "warning",
+      "location": "スライド3 SVG1",
+      "message": "非常に短い線を検出（長さ 1.0px）。不要な線の可能性があります。"
+    },
+    {
+      "type": "orphan-line",
+      "severity": "warning",
+      "location": "スライド3 SVG1",
+      "message": "非常に短い線を検出（長さ 1.0px）。不要な線の可能性があります。"
+    },
+    {
+      "type": "alignment",
+      "severity": "info",
+      "location": "スライド4 SVG2",
+      "message": "横並びのrect要素（8個）の間隔にバラツキがあります（最大偏差: 335px）。"
+    }
+  ],
+  "timestamp": "2026-05-20T02:24:14.438Z"
+}

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/check_svg.js master_slide/themes_new/019-1_theory.html)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/019-2_practice.html generated_019_practice.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/019-2_practice.html)"
+    ]
+  }
+}

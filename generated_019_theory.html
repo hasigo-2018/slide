@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トンマナの統一とシード値管理【理論編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
-        <h1>トンマナの統一と<br>シード値管理<span>【理論編】</span></h1>
+        <h1>トンマナの統一とシード値管理<span>【理論編】</span></h1>
         <p>1枚ずつは良い。でも並べると揃わない——を解決する</p>
     </div>
 </div>
@@ -54,7 +43,7 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">「統一感がある」を分解する：4つの視覚軸</h2>
     <div class="content-block svg-centered">
-        <svg viewBox="0 0 900 402" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="warmCoolGrad19" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stop-color="#ff8c42"/>
@@ -68,7 +57,7 @@
             </defs>
 
             <!-- ① 色温度 -->
-            <rect x="15" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="15" y="10" width="200" height="368" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
             <rect x="15" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
             <circle cx="115" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
             <text x="115" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">①</text>
@@ -79,13 +68,13 @@
             <text x="179" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">寒色</text>
             <text x="115" y="200" text-anchor="middle" fill="white" font-size="13">暖かみ ↔ 知的・信頼感</text>
             <text x="115" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">方向性を全枚数で統一</text>
-            <rect x="30" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+            <rect x="30" y="292" width="170" height="65" rx="6" fill="#00d4ff" opacity="0.1"/>
             <text x="115" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
             <text x="115" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">寒色系（知的・信頼）で</text>
             <text x="115" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数を統一</text>
 
             <!-- ② 明度・彩度 -->
-            <rect x="232" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="232" y="10" width="200" height="368" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
             <rect x="232" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
             <circle cx="332" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
             <text x="332" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">②</text>
@@ -96,13 +85,13 @@
             <text x="396" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">明るい</text>
             <text x="332" y="200" text-anchor="middle" fill="white" font-size="13">明るさと彩度の</text>
             <text x="332" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">レンジをそろえる</text>
-            <rect x="247" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+            <rect x="247" y="292" width="170" height="65" rx="6" fill="#00d4ff" opacity="0.1"/>
             <text x="332" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">BtoBの基本</text>
             <text x="332" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">明るめ・低彩度で</text>
             <text x="332" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">清潔感を統一</text>
 
             <!-- ③ 人物テイスト -->
-            <rect x="449" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="449" y="10" width="200" height="368" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
             <rect x="449" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
             <circle cx="549" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
             <text x="549" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">③</text>
@@ -112,13 +101,13 @@
             <path d="M524 194 Q549 178 574 194" stroke="white" stroke-width="2" fill="none" opacity="0.45"/>
             <text x="549" y="228" text-anchor="middle" fill="white" font-size="13">年齢層・服装・</text>
             <text x="549" y="248" text-anchor="middle" fill="white" font-size="13">表情のトーン</text>
-            <rect x="464" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+            <rect x="464" y="292" width="170" height="65" rx="6" fill="#00d4ff" opacity="0.1"/>
             <text x="549" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
             <text x="549" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">30代・ビジネスカジュアル</text>
             <text x="549" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">自然な表情で統一</text>
 
             <!-- ④ スタイル -->
-            <rect x="666" y="10" width="219" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="666" y="10" width="219" height="368" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
             <rect x="666" y="10" width="219" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
             <circle cx="775" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
             <text x="775" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">④</text>
@@ -132,7 +121,7 @@
             <text x="828" y="178" text-anchor="middle" fill="white" font-size="11" opacity="0.35">illustration</text>
             <text x="775" y="228" text-anchor="middle" fill="white" font-size="13">表現手法（媒体）の</text>
             <text x="775" y="248" text-anchor="middle" fill="white" font-size="13">テイストを統一</text>
-            <rect x="681" y="292" width="188" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+            <rect x="681" y="292" width="188" height="65" rx="6" fill="#00d4ff" opacity="0.1"/>
             <text x="775" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
             <text x="775" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数 photorealistic</text>
             <text x="775" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">で固定</text>
@@ -316,18 +305,8 @@
     </div>
 </div>
 
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
-    </div>
-    
-    
-    <script>
-        const questions = [
+<script>
+const questions = [
     {
         question: "「統一感がある」を構成する4つの視覚軸として正しいものはどれですか？",
         options: [
@@ -384,8 +363,4 @@
         explanation: "ビジュアルガイドラインは「4つの視覚軸＋シード値＋スタイルリファレンスをルール文書にまとめたもの」です。具体的には①カラートーン定義（色温度・明度・彩度の方針）②人物テイスト定義（年齢層・服装・表情の基準）③スタイル定義（photorealistic固定・照明方針）④参照シード値リスト（採用画像のシード値記録）⑤NG例（使ってはいけない画像の具体例）で構成します。ファイル名一覧はファイル管理であり、ガイドラインとは別物です。"
     }
 ];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+</script>

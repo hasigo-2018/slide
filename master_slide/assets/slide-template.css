@@ -247,7 +247,7 @@ h2 + .two-column.tiled {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    /* align-items: center; */
 }
 
 /* --- LAYOUT: THREE COLUMN --- */
@@ -507,4 +507,35 @@ svg.generated-art {
     font-size: 21px;
     line-height: 1.6;
     color: #999;
+}
+
+/* ================================================
+   マージン設計補完（追加分）
+   どの要素の組み合わせでも破綻しないよう整備
+================================================ */
+
+/* h4 の上マージン（h3 の隣接セレクタと同パターン） */
+.slide-container p + h4,
+.slide-container ul + h4,
+.slide-container div + h4,
+.slide-container span + h4 {
+    margin-top: 32px;
+}
+
+/* two-column 内で div が div を直接包む場合（h4が第一子のケース）の間隔補完 */
+.two-column.tiled > div > div + div {
+    margin-top: 28px;
+}
+
+/* highlight-box の下マージン補完（上は32px定義済み・下は未定義だったため追加） */
+.highlight-box {
+    margin-bottom: 12px;
+}
+
+/* text-note / text-sub をブロック化してマージンを機能させる */
+/* ※ <p class="text-note"> は元々ブロックなので影響なし・<span> 使用時に効く */
+.text-note,
+.text-sub {
+    display: block;
+    margin-top: 8px;
 }

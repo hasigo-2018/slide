@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logic Prompt：戦略をAI指示に翻訳する技術【実践編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
         <h1>Logic Prompt：戦略をAI指示に翻訳する技術<span>【実践編】</span></h1>
@@ -45,36 +34,32 @@
     </div>
 </div>
 
-<!-- スライド3: Block 2の目で3ペルソナを読む -->
+<!-- スライド3: TALENTBOARDのケーススタディ説明 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">Block 2の目で3ペルソナを読む</h2>
+    <h2 class="slide-title">ケーススタディ：TALENTBOARD</h2>
     <div class="content-block">
         <div class="two-column tiled">
             <div>
-                <h3>TALENTBOARDの3ペルソナ</h3>
+                <h3>サービス概要</h3>
+                <ul>
+                    <li><strong>サービス名：</strong>TALENTBOARD（タレントボード）</li>
+                    <li><strong>種別：</strong>人材紹介会社向けクラウド型採用管理ツール（ATS）</li>
+                    <li><strong>コンセプト：</strong>「採用の属人化を、チームの仕組みに。」</li>
+                    <li><strong>解決する課題：</strong>候補者情報がExcel・メール・チャットに散在 → 対応漏れ・二重連絡が発生</li>
+                </ul>
+                <div class="highlight-box">
+                    LP訴求の3本柱：<strong>一元管理 / 進捗の可視化 / チーム共有</strong>
+                </div>
+            </div>
+            <div>
+                <h3>3ペルソナ一覧</h3>
                 <p class="text-sub"><strong>👔 人事部長（50代・決裁者）</strong><br>
                 関心事：採用コスト削減・離職率改善・経営層への説明責任</p>
                 <p class="text-sub"><strong>📋 現場リクルーター（30代・実務者）</strong><br>
                 関心事：候補者管理の煩雑さ解消・対応漏れ防止・Excel地獄からの脱却</p>
                 <p class="text-sub"><strong>📈 経営層 CEO/COO（40〜50代・ROI判断者）</strong><br>
                 関心事：採用KPIの可視化・投資対効果・データドリブンな意思決定</p>
-                <div class="highlight-box">
-                    ✏️ <strong>指示：</strong>最も「リアルに感じにくい」ペルソナに印をつける。<br>
-                    そのペルソナへのプロンプト設計が最も苦しくなる。それが自分の課題。
-                </div>
-            </div>
-            <div>
-                <h3>Block 2（008）で使った問いで検証する</h3>
-                <p class="text-sub">見るだけで次に進まない。整骨院でやったあの問いをここでも使う。</p>
-                <ul>
-                    <li>① このペルソナは<strong>平均的すぎないか？</strong><br>
-                    <span class="text-note">エッジはあるか？「なんとなく典型的な人」になっていないか</span></li>
-                    <li>② <strong>行動の理由が見えるか？</strong><br>
-                    <span class="text-note">なぜ今このツールを探しているのか。状況が浮かぶか</span></li>
-                    <li>③ <strong>JTBDの状況が描けるか？</strong><br>
-                    <span class="text-note">「〔状況〕のとき、〔ジョブ〕したい。そうすれば〔望む結果〕になるから」の形式で1パターン書けるか</span></li>
-                </ul>
-                <p class="text-note">🔗 整骨院でやった視点がそのままContextの設計に使われる</p>
+                <p class="text-note">※ Block 5（LP制作）まで同じ題材を使い続ける</p>
             </div>
         </div>
     </div>
@@ -91,7 +76,7 @@
             <div>
                 <h3>条件</h3>
                 <ul>
-                    <li>理論編で学んだ<strong>3層構造（Context〈文脈〉/ Instruction〈指示〉/ Constraint〈制約〉）を必ず使う</strong></li>
+                    <li>理論編で学んだ<strong>3層構造（Context / Instruction / Constraint）を必ず使う</strong></li>
                     <li>まず<strong>人事部長</strong>から設計する</li>
                     <li><strong>Geminiにはまだ投げない</strong>（この段階は設計フェーズ）</li>
                     <li>設計シートを埋めてから自然な文章に変換する</li>
@@ -159,20 +144,20 @@
         </div>
         <div class="two-column tiled">
             <div>
-                <h3>Context（文脈）設計のポイント</h3>
+                <h3>Context設計のポイント</h3>
                 <p class="text-sub">50代の人事部長は「経営層に説明できる根拠」を求めている</p>
                 <ul>
                     <li>「採用コスト削減」「離職率改善」など<strong>数字で語れる課題</strong>を明記する</li>
                     <li>「現場が楽になる」より「<strong>経営に貢献できる</strong>」という視点が刺さる</li>
                 </ul>
-                <h3>Instruction（指示）設計のポイント</h3>
+                <h3>Instruction設計のポイント</h3>
                 <ul>
                     <li>トーン：<strong>BtoB・論理的・信頼感</strong></li>
                     <li>文字数：<strong>20〜30文字</strong>のキャッチコピーが目安</li>
                 </ul>
             </div>
             <div>
-                <h3>Constraint（制約）設計のポイント</h3>
+                <h3>Constraint設計のポイント</h3>
                 <ul>
                     <li>禁止：「<strong>革命</strong>」「<strong>画期的</strong>」「<strong>最高</strong>」など安っぽい誇大表現</li>
                     <li>必須：「TALENTBOARD」を含める</li>
@@ -180,7 +165,7 @@
                 </ul>
                 <div class="highlight-box">
                     ✅ <strong>設計できたら：</strong><br>
-                    隣の人とシートを見せ合い、Constraint（制約）の禁止事項が具体的に書かれているか確認し合う
+                    隣の人とシートを見せ合い、Constraintの禁止事項が具体的に書かれているか確認し合う
                 </div>
             </div>
         </div>
@@ -228,16 +213,16 @@
             <div class="prompt-content" id="prompt-gemini-016-1">
 あなたはBtoBマーケティングを専門とするコピーライターです。
 
-【Context（文脈）】
+【Context】
 人材紹介会社の人事部長（50代・決裁者）に向けたキャッチコピーを作成します。
 この人物の最大の課題は「採用コストの削減」と「経営層への採用成果の説明」です。
 対象サービスはTALENTBOARD（タレントボード）：候補者情報を一元管理し、採用進捗を可視化するクラウド型採用管理ツールです。
 LP（ランディングページ）のファーストビューで読まれる想定です。
 
-【Instruction（指示）】
+【Instruction】
 BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッチコピーを5案作成してください。
 
-【Constraint（制約）】
+【Constraint】
 ・「革命」「画期的」「最高」「圧倒的」などの誇大表現は使用禁止
 ・「TALENTBOARD」という固有名詞を必ず含めること
 ・採用コスト削減または業務効率化に関する具体的なベネフィットを示すこと
@@ -296,16 +281,16 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                     <li>Gemini投入：<strong>各5分</strong></li>
                     <li>評価シート採点：<strong>各10分</strong></li>
                 </ul>
-                <h3>2ペルソナのContext（文脈）の核心</h3>
+                <h3>2ペルソナのContextの核心</h3>
                 <p class="text-sub"><strong>📋 リクルーター（30代）</strong><br>
-                「Excel・メール・チャット散在」「対応漏れ」「二重連絡」など<strong>日常の具体的な痛み</strong>をContext（文脈）に入れる</p>
+                「Excel・メール・チャット散在」「対応漏れ」「二重連絡」など<strong>日常の具体的な痛み</strong>をContextに入れる</p>
                 <p class="text-sub"><strong>📈 経営層（40〜50代）</strong><br>
-                「採用KPIの可視化」「投資対効果」など<strong>データと数値で語れる課題</strong>をContext（文脈）に入れる</p>
+                「採用KPIの可視化」「投資対効果」など<strong>データと数値で語れる課題</strong>をContextに入れる</p>
             </div>
             <div>
                 <h3>講師巡回ポイント</h3>
                 <div class="highlight-box">
-                    ⚠️ <strong>Constraint（制約）が甘い人へのチェック：</strong><br>
+                    ⚠️ <strong>Constraintが甘い人へのチェック：</strong><br>
                     「禁止事項が空欄のまま投げていませんか？」<br>
                     「出力に"採用DX"や"最適化"などの抽象語が混入していませんか？」
                 </div>
@@ -330,7 +315,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                 <h3>改善フレームワーク（4ステップ）</h3>
                 <ul>
                     <li><strong>① 特定：</strong>3軸のどこの評価が低かったか</li>
-                    <li><strong>② 仮説：</strong>3層のどこが原因か（Context〈文脈〉？Instruction〈指示〉？Constraint〈制約〉？）</li>
+                    <li><strong>② 仮説：</strong>3層のどこが原因か（Context？Instruction？Constraint？）</li>
                     <li><strong>③ 修正：</strong>該当する層を書き直す</li>
                     <li><strong>④ 再実行：</strong>Geminiに再投入して出力を比較する</li>
                 </ul>
@@ -339,9 +324,9 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
             <div>
                 <h3>よくある原因と対処</h3>
                 <ul>
-                    <li><strong>ペルソナ適合度が低い</strong> → Context（文脈）のターゲット課題が薄い</li>
-                    <li><strong>具体性が低い</strong> → Constraint（制約）に「具体的なベネフィットを示す」を追加</li>
-                    <li><strong>トーンがずれている</strong> → Instruction（指示）のトーン指定を強化する</li>
+                    <li><strong>ペルソナ適合度が低い</strong> → Contextのターゲット課題が薄い</li>
+                    <li><strong>具体性が低い</strong> → Constraintに「具体的なベネフィットを示す」を追加</li>
+                    <li><strong>トーンがずれている</strong> → Instructionのトーン指定を強化する</li>
                 </ul>
                 <div class="highlight-box">
                     🔑 「いきなり書き直さない」。まず<strong>原因を特定してから修正する</strong>のが設計者の思考
@@ -361,8 +346,8 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                 <ul>
                     <li><strong>改善対象ペルソナ：</strong>（例：リクルーター）</li>
                     <li><strong>弱かった評価軸：</strong>（例：具体性 ★2）</li>
-                    <li><strong>原因の仮説：</strong>（例：Constraint〈制約〉にベネフィット指定がなかった）</li>
-                    <li><strong>修正した層と内容：</strong>（例：Constraint〈制約〉に「対応漏れ件数の削減を示す」を追加）</li>
+                    <li><strong>原因の仮説：</strong>（例：ConstraintにベネフィットのConstraintがなかった）</li>
+                    <li><strong>修正した層と内容：</strong>（例：Constraintに「対応漏れ件数の削減を示す」を追加）</li>
                     <li><strong>修正前の出力例：</strong></li>
                     <li><strong>修正後の出力例：</strong></li>
                     <li><strong>改善後の評価：</strong>（具体性 ★4）</li>
@@ -439,18 +424,8 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
     </div>
 </div>
 
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
-    </div>
-    
-    
-    <script>
-        const questions = [
+<script>
+const questions = [
     {
         question: "プロンプト設計シートで最初に埋めるべき層はどれですか？",
         options: [
@@ -507,8 +482,4 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
         explanation: "今日作った3ペルソナ分のプロンプト・評価済み出力・Before/After改善記録は、Block 5のLP制作でコピー設計の素材として直接使います。「捨てる練習」ではなく「使える成果物を作る」ことが016実践編の設計意図です。"
     }
 ];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+</script>

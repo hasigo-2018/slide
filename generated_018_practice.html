@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>画像生成AIの完全制御【実践編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
         <h1>画像生成AIの完全制御<span>【実践編】</span></h1>
@@ -421,18 +410,8 @@
     </div>
 </div>
 
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
-    </div>
-    
-    
-    <script>
-        const questions = [
+<script>
+const questions = [
     {
         question: "AI生成画像で「手・指の破綻」を回避するための最も確実な方法はどれですか？",
         options: [
@@ -489,8 +468,4 @@
         explanation: "「1枚ずつは良いが並べると揃わない」という問題は、019「トンマナの統一とシード値管理」で解決します。シード値管理（同じ乱数の種でテイストを固定）とスタイルリファレンス（参照画像でテイストを統一）を使うことで、「ブランド全体として統一された画像セット」を完成させます。今日の演習で「バラバラ感」を体験したことが、019の動機づけになります。"
     }
 ];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+</script>

@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>画像生成AIの完全制御【理論編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
         <h1>画像生成AIの完全制御<span>【理論編】</span></h1>
@@ -381,18 +370,8 @@
     </div>
 </div>
 
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
-    </div>
-    
-    
-    <script>
-        const questions = [
+<script>
+const questions = [
     {
         question: "画像プロンプトの5要素として正しいものはどれですか？",
         options: [
@@ -449,8 +428,4 @@
         explanation: "AI生成画像の品質判断の最終基準は「この画像をLPに載せたとき、初めて見た人が違和感を覚えないか」です。解像度・生成速度・プロンプト長ではなく、「実際にLPで使えるか」という実務的な視点が最重要です。違和感ゼロが合格ライン。違和感がある場合は5要素のどの指定が足りなかったかを言語化し、プロンプトを修正して再生成します。"
     }
 ];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+</script>
