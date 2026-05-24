@@ -21,19 +21,13 @@
         <div class="slide-container standard-content-layout">
             <h2 class="slide-title">なぜ「動くもの」を見せる必要があるのか</h2>
             <div class="content-block">
-                <div class="highlight-box" style="margin-bottom: 1.4rem;">
-                    💬 011〜013で作ったWFは「静止画」。クライアントへ見せると、必ずこう聞かれる<br>
-                    <strong style="font-size: 1.1em;">「このボタンを押したら、どこに移動するの？」</strong>
-                </div>
+                <p class="text-sub" style="margin-bottom: 22px;">💬 011〜013で作ったWFは「静止画」。クライアントへ見せると、必ずこう聞かれる — <strong>「このボタンを押したら、どこに移動するの？」</strong></p>
                 <ul>
                     <li><strong>画面遷移の流れ</strong>がわからない ― TOPからサービス詳細へどう動くのか</li>
                     <li><strong>ナビゲーションの動作</strong>がわからない ― ハンバーガーメニューを開いたらどうなるのか</li>
                     <li><strong>CTAの誘導先</strong>がわからない ― 「今すぐ申し込む」を押した先はどのページなのか</li>
                 </ul>
-                <div class="highlight-box" style="margin-top: 1.4rem; border-color: #00d4ff;">
-                    ✅ <strong>プロトタイプ</strong>＝コードを1行も書かずに「触れるデモ」を作れる仕組み。<br>
-                    静止画では伝わらない「体験の流れ」を伝えるのが目的
-                </div>
+                <p class="text-sub" style="margin-top: 22px;">✅ <strong>プロトタイプ</strong>＝コードを1行も書かずに「触れるデモ」を作れる仕組み。静止画では伝わらない「体験の流れ」を伝えるのが目的</p>
             </div>
         </div>
 
@@ -41,17 +35,17 @@
         <div class="slide-container standard-content-layout">
             <h2 class="slide-title">プロトタイプの種類と使いどころ</h2>
             <div class="content-block">
-                <div class="three-column tiled" style="margin-bottom: 1.2rem;">
+                <div class="three-column tiled" style="margin-bottom: 20px;">
                     <div>
-                        <h3 style="font-size: 1.5rem;">① ペーパープロトタイプ</h3>
+                        <h3>① ペーパープロトタイプ</h3>
                         <p>紙に画面を描いて素早く検証。初期アイデア段階向け。ツール不要・コスト最小</p>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.5rem;">② クリッカブルプロトタイプ ← 今回</h3>
+                        <h3>② クリッカブルプロトタイプ ← 今回</h3>
                         <p>画面遷移のみを接続。ページの流れ・ナビ動作・CTA誘導先を確認。<strong>WF段階ではこれで十分</strong></p>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.5rem;">③ インタラクティブプロトタイプ（紹介のみ）</h3>
+                        <h3>③ インタラクティブプロトタイプ（紹介のみ）</h3>
                         <p>アニメーション・マイクロインタラクションまで再現。ProtoPie等の専用ツールを使用。<br>UI詳細設計フェーズ以降の作業領域</p>
                     </div>
                 </div>
@@ -109,9 +103,7 @@
                     <text x="400" y="260" text-anchor="middle" fill="#00d4ff" font-size="12">コネクション</text>
                     <text x="620" y="260" text-anchor="middle" fill="white" font-size="12" opacity="0.8">遷移先画面</text>
                 </svg>
-                <div class="highlight-box" style="margin-top: 1rem;">
-                    Prototypeタブに切り替え → 接続元の要素にカーソルを合わせ → 表示された青い丸をドラッグ → 遷移先フレームにドロップ
-                </div>
+                <p class="text-sub" style="margin-top: 16px;">Prototypeタブに切り替え → 接続元の要素にカーソルを合わせ → 表示された青い丸をドラッグ → 遷移先フレームにドロップ</p>
             </div>
         </div>
 
@@ -122,20 +114,20 @@
                 <div>
                     <h3>🖱️ トリガー（何をしたら）</h3>
                     <ul>
-                        <li><strong>On Click</strong>（最も基本）<br><span style="font-size: 1.5rem; color: #aaa;">タップ・クリックで発火。ほぼすべての操作に使う</span></li>
-                        <li><strong>On Hover</strong><br><span style="font-size: 1.5rem; color: #aaa;">ホバー状態のビジュアル変化に使う（PC向け）</span></li>
+                        <li><strong>On Click</strong>（最も基本）<br><span class="text-note" style="color: #aaa;">タップ・クリックで発火。ほぼすべての操作に使う</span></li>
+                        <li><strong>On Hover</strong><br><span class="text-note" style="color: #aaa;">ホバー状態のビジュアル変化に使う（PC向け）</span></li>
                     </ul>
-                    <div style="background: rgba(0,212,255,0.08); border-radius: 6px; padding: 0.8rem; margin-top: 1rem;">
-                        <p style="font-size: 1.5rem; color: #aaa; margin: 0;">今回はこの2つで完結</p>
+                    <div style="background: rgba(0,212,255,0.08); border-radius: 6px; padding: 12px; margin-top: 16px;">
+                        <p class="text-note" style="color: #aaa; margin: 0;">今回はこの2つで完結</p>
                     </div>
                 </div>
                 <div>
                     <h3>⚡ アクション（何が起きる）</h3>
                     <ul>
-                        <li><strong>Navigate to</strong><br><span style="font-size: 1.5rem; color: #aaa;">別ページへの画面遷移。最も多用</span></li>
-                        <li><strong>Open Overlay</strong><br><span style="font-size: 1.5rem; color: #aaa;">メニュー・モーダルを画面上に重ねて表示</span></li>
-                        <li><strong>Scroll to</strong><br><span style="font-size: 1.5rem; color: #aaa;">ページ内の特定セクションへアンカー移動</span></li>
-                        <li><strong>Back</strong><br><span style="font-size: 1.5rem; color: #aaa;">前の画面に戻る。Overlay閉じるボタンにも使う</span></li>
+                        <li><strong>Navigate to</strong><br><span class="text-note" style="color: #aaa;">別ページへの画面遷移。最も多用</span></li>
+                        <li><strong>Open Overlay</strong><br><span class="text-note" style="color: #aaa;">メニュー・モーダルを画面上に重ねて表示</span></li>
+                        <li><strong>Scroll to</strong><br><span class="text-note" style="color: #aaa;">ページ内の特定セクションへアンカー移動</span></li>
+                        <li><strong>Back</strong><br><span class="text-note" style="color: #aaa;">前の画面に戻る。Overlay閉じるボタンにも使う</span></li>
                     </ul>
                 </div>
             </div>
@@ -145,22 +137,22 @@
         <div class="slide-container standard-content-layout">
             <h2 class="slide-title">トランジション：遷移のアニメーション設定</h2>
             <div class="content-block">
-                <div class="two-column tiled" style="margin-bottom: 1.2rem;">
+                <div class="two-column tiled" style="margin-bottom: 20px;">
                     <div>
-                        <h3 style="font-size: 1.5rem;">種類</h3>
+                        <h3>種類</h3>
                         <ul>
-                            <li><strong>Instant</strong><span style="font-size: 1.5rem;"> ― 即切り替え（アニメーションなし）</span></li>
-                            <li><strong>Dissolve</strong><span style="font-size: 1.5rem;"> ― フェード。最も定番・汎用性が高い</span></li>
-                            <li><strong>Move in / Move out</strong><span style="font-size: 1.5rem;"> ― スライドイン/アウト。Overlay向き</span></li>
-                            <li><strong>Push</strong><span style="font-size: 1.5rem;"> ― 押し出し。次画面が前画面を押すイメージ</span></li>
+                            <li><strong>Instant</strong><span class="text-sub"> ― 即切り替え（アニメーションなし）</span></li>
+                            <li><strong>Dissolve</strong><span class="text-sub"> ― フェード。最も定番・汎用性が高い</span></li>
+                            <li><strong>Move in / Move out</strong><span class="text-sub"> ― スライドイン/アウト。Overlay向き</span></li>
+                            <li><strong>Push</strong><span class="text-sub"> ― 押し出し。次画面が前画面を押すイメージ</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.5rem;">Duration（アニメーション時間）の目安</h3>
-                        <p style="font-size: 1.5rem;">適切な範囲：<strong>200〜400ms</strong></p>
+                        <h3>Duration（アニメーション時間）の目安</h3>
+                        <p class="text-sub">適切な範囲：<strong>200〜400ms</strong></p>
                         <ul>
-                            <li>速すぎる<span style="font-size: 1.5rem;">（100ms以下）→ 何が起きたか見えない</span></li>
-                            <li>遅すぎる<span style="font-size: 1.5rem;">（600ms以上）→ 待たされてストレス</span></li>
+                            <li>速すぎる<span class="text-sub">（100ms以下）→ 何が起きたか見えない</span></li>
+                            <li>遅すぎる<span class="text-sub">（600ms以上）→ 待たされてストレス</span></li>
                         </ul>
                     </div>
                 </div>
@@ -193,43 +185,47 @@
                         <li>ローディングやスケルトンの<strong>ローディング表現</strong></li>
                         <li>フォームのバリデーション等の<strong>複雑な条件分岐</strong></li>
                     </ul>
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 6px; padding: 0.8rem; margin-top: 1rem;">
-                        <p style="font-size: 1.5rem; color: #aaa; margin: 0;">UI詳細設計フェーズ（Block 8以降）で対応</p>
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 6px; padding: 12px; margin-top: 16px;">
+                        <p class="text-note" style="color: #aaa; margin: 0;">UI詳細設計フェーズ（Block 8以降）で対応</p>
                     </div>
                 </div>
             </div>
-            <div class="highlight-box" style="margin-top: 1.4rem;">
+            <div class="highlight-box" style="margin-top: 22px;">
                 💡 プロトタイプは「体験の設計意図を伝えるツール」。<strong>凝った動きが目的ではない</strong>
             </div>
         </div>
 
-        <!-- スライド8: まとめ＋次テーマ予告 -->
+        <!-- スライド8: まとめ -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">まとめ：プロトタイプの3要素と実践へ</h2>
+            <h2 class="slide-title">まとめ：プロトタイプの3要素</h2>
             <div class="content-block">
-                <div class="two-column tiled" style="margin-bottom: 1.4rem;">
+                <div class="two-column tiled">
                     <div>
-                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">プロトタイプの3要素</h3>
+                        <h3 style="color: #00d4ff; margin-bottom: 12px;">プロトタイプの3要素</h3>
                         <ul>
-                            <li><strong>トリガー</strong>：<span style="font-size: 1.8rem; ">On Click / On Hover</span></li>
-                            <li><strong>アクション</strong>：<span style="font-size: 1.8rem; ">Navigate to / Open Overlay / Scroll to / Back</span></li>
-                            <li><strong>トランジション</strong>：<span style="font-size: 1.8rem; ">Dissolve or Move in + Duration</span></li>
+                            <li><strong>トリガー</strong>：<span class="text-sub">On Click / On Hover</span></li>
+                            <li><strong>アクション</strong>：<span class="text-sub">Navigate to / Open Overlay / Scroll to / Back</span></li>
+                            <li><strong>トランジション</strong>：<span class="text-sub">Dissolve or Move in + Duration</span></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.5rem; color: #00d4ff; margin-bottom: 0.8rem;">SŌILプロジェクト統一ルール</h3>
+                        <h3 style="color: #00d4ff; margin-bottom: 12px;">SŌILプロジェクト統一ルール</h3>
                         <ul>
-                            <li>ページ遷移 → <span style="font-size: 1.8rem; ">Navigate to + Dissolve 300ms</span></li>
-                            <li>Overlay → <span style="font-size: 1.8rem; ">Open Overlay + Move in 300ms</span></li>
-                            <li>ページ内移動 → <span style="font-size: 1.8rem; ">Scroll to</span></li>
+                            <li>ページ遷移 → <span class="text-sub">Navigate to + Dissolve 300ms</span></li>
+                            <li>Overlay → <span class="text-sub">Open Overlay + Move in 300ms</span></li>
+                            <li>ページ内移動 → <span class="text-sub">Scroll to</span></li>
                             <li>戻る → Back</li>
                         </ul>
                     </div>
                 </div>
-                <div class="highlight-box" style="border-color: #00d4ff;">
-                    🎯 <strong>次のテーマ（実践編）</strong>：SŌILのTOP（PC版）WFに実際にプロトタイプを設定し、<br>
-                    「触れるデモ」として動作させる。プレビューURLの取得まで行う
-                </div>
+            </div>
+        </div>
+
+        <!-- スライド9: 次テーマ予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のテーマへ：実践編｜プロトタイプを動かす</h2>
+            <div class="content-block">
+                <p>SŌILのTOP（PC版）WFに実際にプロトタイプを設定し、「触れるデモ」として動作させます。プレビューURLの取得まで行います。</p>
             </div>
         </div>
 
@@ -237,7 +233,7 @@
 
         <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <h2>理解度チェック<br><span>Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>

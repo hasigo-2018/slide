@@ -75,7 +75,7 @@
                             </marker>
                         </defs>
                     </svg>
-                    <p style="font-size: 0.95rem; margin-top: 0.8rem;">SP版を先に設計 → PC版で拡張</p>
+                    <p class="text-sub" style="margin-top: 12px;">SP版を先に設計 → PC版で拡張</p>
                     <ul>
                         <li>情報の優先順位が自然と絞られる</li>
                         <li><strong>本来はこちらが推奨</strong></li>
@@ -99,7 +99,7 @@
                         <text x="290" y="82" text-anchor="middle" fill="#aaa" font-size="11">SP版</text>
                         <text x="290" y="155" text-anchor="middle" fill="#aaa" font-size="10">後で調整</text>
                     </svg>
-                    <p style="font-size: 0.95rem; margin-top: 0.8rem;">PC版を先に作成 → SP版で再配置</p>
+                    <p class="text-sub" style="margin-top: 12px;">PC版を先に作成 → SP版で再配置</p>
                     <ul>
                         <li>既存サイトリニューアルに多い</li>
                         <li>BtoB案件で採用されやすい</li>
@@ -107,7 +107,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="highlight-box" style="margin-top: 1.2rem;">
+            <div class="highlight-box" style="margin-top: 20px;">
                 ⚠️ どちらが「正解」ではない。<strong>案件の状況に応じて判断する</strong>のがディレクターの仕事
             </div>
         </div>
@@ -249,7 +249,7 @@
                         <rect x="130" y="192" width="120" height="18" rx="3" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1"/>
                         <text x="190" y="205" text-anchor="middle" fill="#00d4ff" font-size="8">商品B</text>
                     </svg>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">MV内の横並びテキスト+画像も同様に縦積みへ変換</p>
+                    <p class="text-note" style="margin-top: 8px;">MV内の横並びテキスト+画像も同様に縦積みへ変換</p>
                 </div>
                 <div>
                     <h3>② 非表示・省略</h3>
@@ -314,7 +314,7 @@
                         <text x="230" y="198" text-anchor="middle" fill="#7ddfb0" font-size="8">製品一覧</text>
                         <text x="230" y="209" text-anchor="middle" fill="#7ddfb0" font-size="8">ブランド理念...</text>
                     </svg>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">5項目をハンバーガーメニュー内に格納。SP画面の横幅を圧迫しない</p>
+                    <p class="text-note" style="margin-top: 8px;">5項目をハンバーガーメニュー内に格納。SP画面の横幅を圧迫しない</p>
                 </div>
                 <div>
                     <h3>④ 要素サイズの調整</h3>
@@ -417,28 +417,44 @@
             </div>
         </div>
         
-        <!-- スライド9: まとめ＋次テーマ予告 -->
-        <div class="slide-container standard-content-layout">
+        <!-- スライド9: まとめ -->
+        <div class="slide-container tiled-content">
             <h2 class="slide-title">まとめ ― レスポンシブ設計の4パターンを武器にする</h2>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon">📱</div>
+                    <h3>レスポンシブの基本</h3>
+                    <p>同じコンテンツを画面幅に応じてレイアウト最適化。別サイトを作るのではなく1つを適応させる</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">⚖️</div>
+                    <h3>モバイル vs デスクトップF</h3>
+                    <p>どちらが正解ではなく案件ごとに判断。新規はモバイルF、既存リニューアルはデスクトップFが多い</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🔄</div>
+                    <h3>PC→SP変換4パターン</h3>
+                    <p>① 横並び→縦積み　② 非表示・省略　③ ナビ変換　④ サイズ調整。この4つで大半をカバー</p>
+                </div>
+                <div class="tile">
+                    <div class="icon">🎨</div>
+                    <h3>Figmaでの実装方法</h3>
+                    <p>PC版・SP版を別フレームで並べて管理。Auto Layoutの方向切り替え・Wrap・Fill containerで変換を表現</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: 次テーマ予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次のテーマへ：014｜プロトタイピングと動的デモ</h2>
             <div class="content-block">
-                <h3>今日学んだこと</h3>
-                <ul>
-                    <li><strong>レスポンシブデザイン</strong>＝同じコンテンツを、画面幅に応じてレイアウトを最適化</li>
-                    <li>モバイルファースト / デスクトップファーストは<strong>案件ごとに判断</strong></li>
-                    <li>PC→SP変換の<strong>4パターン</strong>で大半のケースをカバー
-                        <br>① 横並び→縦積み　② 非表示・省略　③ ナビ変換　④ サイズ調整</li>
-                    <li>FigmaではPC版・SP版を<strong>別フレームで並べて管理</strong>（ブレークポイントはない）</li>
-                    <li>Auto Layoutの<strong>方向切り替え・Wrap・Fill container</strong>で変換を表現</li>
-                </ul>
-        
-                <h3>🔜 次のテーマ：014 プロトタイピングと動的デモ</h3>
                 <p>今回作成するPC版・SP版のフレームに、画面遷移やインタラクション（ホバー、タップ）をつけて<strong>動くプロトタイプ</strong>を構築します。</p>
             </div>
         </div>
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+            <h2>理解度チェック<br><span>Quiz</span></h2>
             <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
     </div>
