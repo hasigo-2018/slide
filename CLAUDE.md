@@ -6,6 +6,20 @@
 
 ---
 
+## ★作業開始前の必須ルール
+
+**いかなる作業（生成・修正・レイアウト変更など）を始める前に、必ず以下を実行すること：**
+
+```bash
+git add -A && git commit -m "【バックアップ】作業開始前"
+```
+
+- これを省略した場合、ファイルを元に戻せなくなるリスクがある
+- ユーザーが「元に戻して」と言えるのは、コミットがある場合のみ
+- **コミットが完了するまで生成・編集作業を開始してはならない**
+
+---
+
 ## 基本ワークフロー
 
 ユーザーが `./generate.sh XXX` を実行すると、以下の流れで処理します：
@@ -15,6 +29,7 @@
 2. 構成指示書の内容を分析し、**方向性・前提条件・不明点をユーザーに確認する**（★スキップ厳禁）
 3. ユーザーが承認したら、理論編HTMLを生成
 4. `scripts/insert_html.js` で `master_slide/themes_new/XXX-1_theory.html` に自動挿入
+4.5. 挿入完了後、`generated_XXX_theory.html` を削除する（例: `rm generated_${THEME_NUM}_theory.html`）
 5. `scripts/check_svg.js` でSVGチェックを実行し、結果を報告
 6. ユーザーが「理論編OK」と言うまで待機（修正指示があれば対応）
 
@@ -25,6 +40,7 @@
 10. 方向性・前提条件・不明点をユーザーに確認する（★スキップ厳禁）
 11. ユーザーが承認したら、実践編HTMLを生成
 12. `scripts/insert_html.js` で `master_slide/themes_new/XXX-2_practice.html` に自動挿入
+12.5. 挿入完了後、`generated_XXX_practice.html` を削除する（例: `rm generated_${THEME_NUM}_practice.html`）
 13. SVGチェック実行・結果報告
 14. ユーザーが「実践編OK」と言ったら完了
 

@@ -24,6 +24,8 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    -webkit-font-feature-settings: 'palt';
+    font-feature-settings: 'palt';
 }
 
 /* --- PRESENTATION CONTAINER --- */
@@ -112,8 +114,6 @@ h1, h2, h3, h4 {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
     margin: 0;
     line-height: 1.28;
-    -webkit-font-feature-settings: 'palt';
-    font-feature-settings: 'palt';
 }
 h1 {letter-spacing: .024em;}
 h2, h3, h4 {letter-spacing: .064em;}

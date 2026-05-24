@@ -9,7 +9,362 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>カスタムAI（Gem）の<br>構築と運用<span>【理論編】</span></h1>
+        <p>学んだすべてを"自分のAI"に焼く</p>
+    </div>
+</div>
+
+<!-- スライド2: 問題提起 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">「型」も「コピー」も「ガイドライン」も揃った——でも毎回一から書くのか？</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📌 <strong>016〜019で手に入れたもの：</strong>Logic Promptの3層構造（016）・売れるコピーの型（017）・画像生成の5要素（018）・ビジュアルガイドライン（019）。TALENTBOARDの制作に必要な「型」はすべて揃っている
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>まだ残っている問題</h3>
+                <ul>
+                    <li><strong>毎回プロンプトをゼロから書く</strong>：016で学んだ3層構造も、毎回手入力している</li>
+                    <li><strong>品質が人・状況によってブレる</strong>：書き方が少し変わるだけで出力が変わる</li>
+                    <li><strong>再現性がない</strong>：「先週うまくいったプロンプト」が見つからない</li>
+                    <li><strong>拡張性がない</strong>：新しいメンバーに渡せない、引き継げない</li>
+                </ul>
+            </div>
+            <div>
+                <h3>目指すべき状態</h3>
+                <p class="text-sub">「誰がいつやっても、同じ品質の出力が出る仕組み」</p>
+                <ul>
+                    <li>プロンプトを毎回書かなくてよい</li>
+                    <li>ブランドルールが自動的に適用される</li>
+                    <li>設計した「型」が常に機能している</li>
+                </ul>
+                <div class="highlight-box">
+                    🎯 <strong>Block 1への接続：</strong>「デザインは設計である」——設計をAIに固定化する＝再現性のある仕組みを作ること。それがGem（カスタムAI）
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: Gemとは何か -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Gemとは何か——「専属アシスタントを雇う」という発想</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>通常のGemini</h3>
+                <ul>
+                    <li>毎回チャット画面を開く</li>
+                    <li><strong>毎回プロンプトを書く</strong></li>
+                    <li>前の会話の設定は引き継がれない</li>
+                    <li>誰でも同じ「汎用」の状態</li>
+                </ul>
+                <div class="highlight-box">
+                    比喩：何も知らない新入社員に、<br>毎朝「今日の業務手順」を1から説明する
+                </div>
+            </div>
+            <div>
+                <h3>Gem（カスタムAI）</h3>
+                <ul>
+                    <li>自分専用の指示を<strong>永続的に保存</strong>できる</li>
+                    <li>毎回の指定不要——<strong>設定した指示が常に適用</strong></li>
+                    <li>ブランド知識・ルールを「最初から知っている」</li>
+                    <li>特定の専門領域に特化した状態</li>
+                </ul>
+                <div class="highlight-box">
+                    比喩：TALENTBOARDの専門知識をすべて<br>インプット済みの<strong>専属コピーライター</strong>
+                </div>
+            </div>
+        </div>
+        <p class="text-note">※ Gemを作る＝「指示書付きの専門家を雇う」のと同じ。一度設計すれば、以後は「タスクだけ」投げればよい</p>
+    </div>
+</div>
+
+<!-- スライド4: Gem設計の3要素（SVG） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Gem設計の3要素——016の3層構造と同じ思想</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1400 520" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <marker id="arrow020" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+                </marker>
+            </defs>
+
+            <!-- ボックス1: 役割定義 -->
+            <rect x="60" y="60" width="360" height="260" rx="16" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2.5"/>
+            <path d="M 76,60 L 404,60 A 16,16 0 0,1 420,76 L 420,128 L 60,128 L 60,76 A 16,16 0 0,1 76,60 Z" fill="rgba(0,212,255,0.28)"/>
+
+            <text x="240" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">役割定義（Role）</text>
+            <text x="240" y="155" text-anchor="middle" fill="white" font-size="18">このGemは「誰」か</text>
+            <text x="110" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ 専門領域</text>
+            <text x="110" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ 得意なタスク（3つ以内）</text>
+            <text x="110" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 振る舞いの方針</text>
+            <text x="240" y="298" text-anchor="middle" fill="#00d4ff" font-size="15">≒ 016：Context</text>
+
+            <!-- 矢印1 -->
+            <line x1="424" y1="190" x2="506" y2="190" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arrow020)"/>
+
+            <!-- ボックス2: 知識注入 -->
+            <rect x="510" y="60" width="380" height="260" rx="16" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2.5"/>
+            <path d="M 526,60 L 874,60 A 16,16 0 0,1 890,76 L 890,128 L 510,128 L 510,76 A 16,16 0 0,1 526,60 Z" fill="rgba(0,212,255,0.28)"/>
+            <text x="700" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">知識注入（Knowledge）</text>
+            <text x="700" y="155" text-anchor="middle" fill="white" font-size="18">このGemが「知っている」こと</text>
+            <text x="560" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ サービス情報</text>
+            <text x="560" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ ペルソナ詳細</text>
+            <text x="560" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 成功パターン・ガイドライン</text>
+            <text x="700" y="298" text-anchor="middle" fill="#00d4ff" font-size="15">≒ 016：Context + Instruction</text>
+
+            <!-- 矢印2 -->
+            <line x1="894" y1="190" x2="976" y2="190" stroke="#00d4ff" stroke-width="2.5" marker-end="url(#arrow020)"/>
+
+            <!-- ボックス3: 出力制約 -->
+            <rect x="980" y="60" width="360" height="260" rx="16" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2.5"/>
+            <path d="M 996,60 L 1324,60 A 16,16 0 0,1 1340,76 L 1340,128 L 980,128 L 980,76 A 16,16 0 0,1 996,60 Z" fill="rgba(0,212,255,0.28)"/>
+            <text x="1160" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">出力制約（Output Rules）</text>
+            <text x="1160" y="155" text-anchor="middle" fill="white" font-size="18">このGemが「守る」ルール</text>
+            <text x="1030" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ トーンルール</text>
+            <text x="1030" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ フォーマットルール</text>
+            <text x="1030" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 禁止ルール・自己チェック</text>
+            <text x="1160" y="298" text-anchor="middle" fill="#00d4ff" font-size="15">≒ 016：Constraint</text>
+
+            <!-- 下部まとめ -->
+            <rect x="350" y="390" width="700" height="90" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+            <text x="700" y="428" text-anchor="middle" fill="white" font-size="19" font-weight="bold">3要素は016の「3層構造プロンプト」の永続化版</text>
+            <text x="700" y="463" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="16">毎回書いていた構造を「Gemの設定として固定する」——それがGem設計の本質</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド5: 役割定義（Role）の設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素①：役割定義（Role）の設計——「あなたは○○です」だけでは不十分</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            ❌ <strong>不十分な例：</strong>「あなたはコピーライターです」→ 何のコピー？誰向け？どんな文体？がわからず、汎用的な出力しか出ない
+        </div>
+        <h3>効果的な役割定義の3要素</h3>
+        <div class="two-column tiled">
+            <div>
+                <ul>
+                    <li><strong>①専門領域</strong>：どの分野・業界の専門家か<br><span class="text-note">例：BtoBマーケティング専門のコピーライター</span></li>
+                    <li><strong>②得意なタスク</strong>：何ができるか（3つ以内で具体的に）<br><span class="text-note">例：LP用キャッチコピー、セクション見出し、CTAの作成</span></li>
+                    <li><strong>③振る舞いの方針</strong>：どう動くか<br><span class="text-note">例：根拠に基づいた論理的な提案を行い、曖昧な表現を避ける</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>TALENTBOARDでの記述例</h3>
+                <div class="highlight-box">
+                    あなたはBtoB SaaS専門のマーケティングコピーライターです。採用管理ツールTALENTBOARDのLP制作を担当しています。<br><br>
+                    <strong>得意タスク：</strong>FVキャッチコピー・セクション見出し・CTA文の作成<br><br>
+                    <strong>方針：</strong>論理的な根拠を示しながら提案し、感情的な誇大表現は使わない
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 知識注入（Knowledge）の設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素②：知識注入（Knowledge）の設計——量より「構造化」</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>Gemに「読み込ませる」情報の種類</h3>
+                <ul>
+                    <li><strong>サービス情報</strong>：TALENTBOARDの概要・機能・強み・差別化ポイント</li>
+                    <li><strong>ペルソナ情報</strong>：3ペルソナの詳細（016で作成済み）</li>
+                    <li><strong>ビジュアルガイドライン</strong>：019で作成した文書</li>
+                    <li><strong>成功パターン</strong>：017で高評価だったコピー例と選定理由</li>
+                </ul>
+                <p class="text-sub">注入方法：Gemの指示文にテキストとして埋め込む、またはファイルとしてアップロード</p>
+            </div>
+            <div>
+                <h3>構造化の重要性</h3>
+                <div class="highlight-box">
+                    ❌ <strong>悪い例（羅列）：</strong><br>
+                    TALENTBOARDは採用管理ツールです。人材紹介会社向けです。ペルソナは人事部長とCHROと経営者です…
+                </div>
+                <div class="highlight-box">
+                    ✅ <strong>良い例（構造化）：</strong><br>
+                    【サービス情報】タレントボード / BtoB / 採用管理<br>
+                    【ペルソナA】人事部長 / 課題：〇〇<br>
+                    【ビジュアルルール】色：紺×金 / トーン：〇〇
+                </div>
+                <p class="text-note">セクション分けされた情報のほうがGemの出力品質が上がる。箇条書きの羅列では優先順位がわからない</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 出力制約（Output Rules）の設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素③：出力制約（Output Rules）の設計——016のConstraintを「永続化」する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📌 <strong>016のConstraint（制約）</strong>は毎回プロンプトに書いていた。Output Rulesはそれを「Gemの設定として一度書けばずっと適用される」状態にしたもの
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>出力制約の4カテゴリ</h3>
+                <ul>
+                    <li><strong>①トーンルール</strong>：BtoBの信頼感あるトーン（017で定義済み）。カジュアル口語NG</li>
+                    <li><strong>②フォーマットルール</strong>：文字数・出力形式・必ず含める要素（数字・固有名詞など）</li>
+                    <li><strong>③禁止ルール</strong>：誇大表現NG・競合言及NG・根拠のない断定NG</li>
+                    <li><strong>④評価ルール</strong>：出力後に017の5軸で自己チェックしてから返答する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>TALENTBOARDでの記述例</h3>
+                <ul>
+                    <li class="text-sub">「出力は必ず5案。各案に選定理由を1行添える」</li>
+                    <li class="text-sub">「感情語（感動・驚き等）は使用禁止。数値・事実・論理で訴求する」</li>
+                    <li class="text-sub">「出力前に必ず5軸（ペルソナ適合・具体性・独自性・トーン・行動喚起）で採点し、60点未満の案は除外して再生成する」</li>
+                    <li class="text-sub">「競合他社の名前を出さない」</li>
+                </ul>
+                <p class="text-note">制約は「多ければ良い」ではない。矛盾する制約があるとGemが混乱する（→スライド9で詳述）</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: 検証サイクルの設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">検証サイクルの設計——Gemを「作っただけ」で完成と思ってはいけない</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            ⚠️ <strong>よくある勘違い：</strong>Gemを作ったら終わり → 実際には「意図通りの出力が出るか」を検証して初めてGemは完成する
+        </div>
+        <h3>テスト設計の3ステップ</h3>
+        <div class="two-column tiled">
+            <div>
+                <ul>
+                    <li><strong>① テストケースの作成</strong><br>「このペルソナにこのセクションのコピーを書かせる」という具体的な入力を事前に用意する。テストケースが曖昧だと検証にならない</li>
+                    <li><strong>② 期待値の設定</strong><br>「こういう出力が出るべき」の基準を事前に定義する。017のベストコピーを正解例として使う</li>
+                    <li><strong>③ 判定と修正</strong><br>期待値とのギャップを特定し、3要素の<strong>どこ</strong>を修正するかを判断する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>016演習3と同じPDCA</h3>
+                <div class="highlight-box">
+                    <strong>特定</strong>：5軸のどの評価軸が低いか？<br>
+                    <strong>仮説</strong>：原因はRole / Knowledge / Output Rulesのどこか？<br>
+                    <strong>修正</strong>：該当の要素を書き直す<br>
+                    <strong>検証</strong>：同じテストケースを再投入して改善を確認
+                </div>
+                <p class="text-note">このPDCAサイクルは「プロンプトを改善する」思考と同じ。ツールが変わっても思考パターンは変わらない</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: よくある失敗パターン -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">よくある失敗パターンと対処法</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>設計段階の失敗</h3>
+                <ul>
+                    <li>
+                        <strong>❌ 役割が広すぎる</strong><br>
+                        「マーケティング全般を担当するAI」→ 出力がぼやける<br>
+                        <span class="text-note">✅ 得意タスクを3つ以内に絞る</span>
+                    </li>
+                    <li>
+                        <strong>❌ 知識が多すぎる・羅列</strong><br>
+                        情報を詰め込みすぎてAIが優先順位を誤る<br>
+                        <span class="text-note">✅ 最重要情報を冒頭に、補足を後半に。セクション分けで構造化</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>制約・テストの失敗</h3>
+                <ul>
+                    <li>
+                        <strong>❌ 制約が矛盾する</strong><br>
+                        「簡潔に」かつ「必ず根拠を3つ含める」→ どちらを優先すべきかわからない<br>
+                        <span class="text-note">✅ 制約に優先順位を明記する（例：「簡潔さを最優先。根拠は1つで可」）</span>
+                    </li>
+                    <li>
+                        <strong>❌ テストケースが甘い</strong><br>
+                        「簡単なタスク」でしかテストせず、本番で想定外の出力<br>
+                        <span class="text-note">✅ 「一番難しいケース」（未知ペルソナ・未知セクション）でテストする</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">
+            💡 <strong>共通の原則：</strong>曖昧さを減らすほどGemの出力は安定する。Gemを改善するとは「曖昧な部分を具体化していくこと」
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: まとめ -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">本日のまとめ</h2>
+    <div class="tiles-wrapper">
+        <div class="tile">
+            <div class="tile-number">01</div>
+            <h3>Gemの本質</h3>
+            <p>毎回書いていたプロンプトを「永続化」したもの。専属アシスタントに専門知識をインプット済みで雇うのと同じ発想</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">02</div>
+            <h3>設計の3要素</h3>
+            <p>役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）の3つで設計する。016の3層構造と同じ思想</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">03</div>
+            <h3>作っただけでは未完成</h3>
+            <p>テストケース→期待値設定→判定・修正のPDCAが品質を決める。「特定→仮説→修正→検証」は016演習3と同じフレームワーク</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">04</div>
+            <h3>Block 4の集大成</h3>
+            <p>016〜019で積み上げた型・コピー・画像・ガイドラインをすべて1つのGemに統合する。Block 5で実際に使う「実務ツール」を作る</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: 次回予告と実践編への接続 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回予告と実践編への接続</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            🔧 <strong>実践編でやること：</strong>「TALENTBOARDコピーライター」Gemを実際に構築する
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>実践編の流れ</h3>
+                <ul>
+                    <li><strong>演習1</strong>：Gem設計書を先に書く（設計→実行の原則）</li>
+                    <li><strong>演習2</strong>：テスト1サイクル目——017のFVキャッチと比較</li>
+                    <li><strong>演習3</strong>：テスト2サイクル目——未知のタスクで汎用性を検証</li>
+                    <li><strong>演習4</strong>：最終調整・Block 4全体の振り返り</li>
+                </ul>
+            </div>
+            <div>
+                <h3>統合する素材</h3>
+                <ul>
+                    <li>016：Logic Promptの3層構造 → 出力制約の基本設計</li>
+                    <li>017：コピーの型＋評価5軸 → フォーマットと自己チェック基準</li>
+                    <li>017：ペルソナ別ベストコピー → 知識注入（成功パターン）</li>
+                    <li>019：ビジュアルガイドライン → 知識注入（ブランドルール）</li>
+                </ul>
+                <div class="highlight-box">
+                    「設計図は描いた。<br>次は実際に"自分のAI"を組み立てます」
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +375,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "Gem設計の3要素として正しい組み合わせはどれですか？",
+        choices: [
+            "役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）",
+            "目的設定・プロンプト設計・出力フォーマット",
+            "ペルソナ定義・トーン設定・禁止ルール",
+            "Context・Instruction・Constraint"
+        ],
+        correct: 0,
+        explanation: "Gem設計の3要素は「役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）」です。016の3層構造（Context / Instruction / Constraint）と対応していますが、3要素の名前はGem設計の枠組みです。"
+    },
+    {
+        question: "通常のGeminiチャットとGemの最大の違いは何ですか？",
+        choices: [
+            "Gemのほうが回答速度が速い",
+            "Gemは事前に設定した指示が常に適用されるため、毎回プロンプトを書き直す必要がない",
+            "Gemは画像生成に特化した機能である",
+            "Gemは複数人で共有できるが、通常チャットはできない"
+        ],
+        correct: 1,
+        explanation: "Gemの最大の特徴は「事前に設定した指示が永続的に保存・適用される」点です。毎回プロンプトをゼロから書く通常チャットと異なり、設計した役割・知識・制約が常に機能した状態でタスクを投げられます。"
+    },
+    {
+        question: "知識注入（Knowledge）において「量」より重要なのは何ですか？",
+        choices: [
+            "情報の鮮度（最新情報かどうか）",
+            "情報の量（多ければ多いほど良い）",
+            "構造化されているか（セクション分けされフォーマットが揃っているか）",
+            "文字数の少なさ（短ければ短いほど良い）"
+        ],
+        correct: 2,
+        explanation: "知識注入で重要なのは「構造化」です。情報をセクション分けし、最重要情報を冒頭に置くことで、Gemがどのルールをどのタイミングでどう優先するかを正しく理解できます。箇条書きの羅列より、フォーマットが揃った構造化情報のほうが出力品質が上がります。"
+    },
+    {
+        question: "Gemを作った後にテストが必要な理由として最も適切なものはどれですか？",
+        choices: [
+            "GeminiのAPIコストを最適化するため",
+            "「意図通りの出力が出るか」を検証しないと、本番で想定外の出力が出るリスクがあるため",
+            "Gemは作成後24時間以内にテストしないと設定がリセットされるため",
+            "テストしないと他のユーザーにGemが公開されてしまうため"
+        ],
+        correct: 1,
+        explanation: "Gemを「作っただけ」では完成ではありません。設計の意図通りの出力が出るかをテストケース・期待値設定・判定のプロセスで検証し、ギャップを修正して初めてGemは実用レベルになります。"
+    },
+    {
+        question: "Gem設計の3要素と016の3層構造プロンプトの対応として正しいものはどれですか？",
+        choices: [
+            "Role ≒ Instruction / Knowledge ≒ Context / Output Rules ≒ Constraint",
+            "Role ≒ Constraint / Knowledge ≒ Instruction / Output Rules ≒ Context",
+            "Role ≒ Context / Knowledge ≒ Context + Instruction / Output Rules ≒ Constraint",
+            "Role ≒ Instruction / Knowledge ≒ Constraint / Output Rules ≒ Context"
+        ],
+        correct: 2,
+        explanation: "対応関係は「Role ≒ Context（誰として動くか） / Knowledge ≒ Context + Instruction（何を知っており何をするか） / Output Rules ≒ Constraint（何を守るか）」です。GemはこのContext-Instruction-Constraint構造を永続化したものと理解できます。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
