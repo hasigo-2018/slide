@@ -9,7 +9,470 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>カスタムAI（Gem）の<br>構築と運用<span>【実践編】</span></h1>
+        <p>Block 4のすべてを"自分のAI"に焼く</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標——Block 4の集大成を「実務ツール」に仕上げる</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            🎯 <strong>ゴール：</strong>「TALENTBOARDコピーライター」Gemを構築し、テスト→修正を2サイクル回して実用レベルに仕上げる
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>演習の流れ</h3>
+                <ul>
+                    <li><strong>演習1</strong>：Gem設計書の作成 → Gem構築（35分）</li>
+                    <li><strong>演習2</strong>：テスト1サイクル目——既知のタスクで検証（30分）</li>
+                    <li><strong>演習3</strong>：テスト2サイクル目——未知のタスクで汎用性検証（55分）</li>
+                    <li><strong>演習4</strong>：最終調整・Block 4全体振り返り（40分）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>この演習が特別な理由</h3>
+                <ul>
+                    <li>「演習のための演習」ではない</li>
+                    <li>完成したGemは<strong>Block 5のLP制作で実際に使う</strong></li>
+                    <li>016〜019の成果物をすべて1つに統合する</li>
+                    <li>「考える→道具を持つ」フェーズの集大成</li>
+                </ul>
+                <div class="highlight-box">
+                    Block 5「作る」フェーズに入る前の<br>最後の準備
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: Gemに統合する素材の棚卸し -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Gemに統合する素材の棚卸し——016〜019の成果物を確認する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📋 <strong>まず確認：</strong>手元に以下の素材が揃っているか確認しましょう。これらがGem設計の材料になります
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>素材一覧</h3>
+                <ul>
+                    <li><strong>016</strong>：3ペルソナ分のLogic Promptシート<br><span class="text-note">→ Gemの出力制約の基本設計に使う</span></li>
+                    <li><strong>017</strong>：ペルソナ別ベストコピー＋選定理由<br><span class="text-note">→ 知識注入（成功パターン）に使う</span></li>
+                    <li><strong>017</strong>：コピーの3構造パターン＋評価5軸<br><span class="text-note">→ 出力フォーマットと自己チェック基準に使う</span></li>
+                    <li><strong>019</strong>：ビジュアルガイドライン文書<br><span class="text-note">→ 知識注入（ブランドルール）に使う</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>3要素への振り分け</h3>
+                <ul>
+                    <li><strong>役割定義（Role）</strong>へ<br>→ 専門領域・得意タスクを定義</li>
+                    <li><strong>知識注入（Knowledge）</strong>へ<br>→ 017のベストコピー＋019のガイドライン</li>
+                    <li><strong>出力制約（Output Rules）</strong>へ<br>→ 016の3層構造＋017の評価5軸</li>
+                </ul>
+                <p class="text-note">※ペルソナ情報を知識注入に記述する際は、008で学んだWHO×WHY の視点で構造化すること。整骨院ペルソナシートと同じ構造がTALENTBOARDでも使える</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: 演習1の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1の概要：Gem設計書の作成——いきなり作らない</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📌 <strong>016と同じ原則：「設計→実行」の順を守る。</strong>Gemをいきなりツールで組み立てるのではなく、まずテキストで「設計書」を書き出す
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>課題</h3>
+                <p class="text-sub">Gemの指示文を「設計書」として先にテキストで書き出す</p>
+                <h3>設計書のフォーマット</h3>
+                <ul>
+                    <li>【役割定義】○○</li>
+                    <li>【知識注入】○○</li>
+                    <li>【出力制約】○○</li>
+                </ul>
+                <p class="text-note">この3セクション構造がそのままGemの指示文になる</p>
+            </div>
+            <div>
+                <h3>なぜ設計書を先に書くのか</h3>
+                <ul>
+                    <li><strong>構造が整理できる</strong>：3要素の内容が混在しなくなる</li>
+                    <li><strong>見直しができる</strong>：ツールに入力する前に矛盾・抜け漏れを発見できる</li>
+                    <li><strong>修正がしやすい</strong>：どの要素を直せばよいかが明確になる</li>
+                    <li><strong>再利用できる</strong>：次のGemを作るときの参考になる</li>
+                </ul>
+                <div class="highlight-box">
+                    制限時間：30分<br>
+                    <span class="text-note">設計書作成（20分）→ レビュー（5分）→ Gem構築（10分）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: Gem設計書テンプレートと記入ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Gem設計書テンプレートと記入ガイド</h2>
+    <div class="content-block">
+        <div class="prompt-box">
+            <div class="prompt-content" id="gem-template">
+【役割定義（Role）】
+あなたはTALENTBOARD専属のBtoBマーケティングコピーライターです。
+得意タスク：①FVキャッチコピー ②セクション見出し ③CTA文の作成
+方針：論理的根拠を示して提案する。感情的・誇大な表現は使わない。
+
+【知識注入（Knowledge）】
+■ サービス情報
+サービス名：TALENTBOARD（タレントボード）
+カテゴリ：BtoB SaaS / 採用管理ツール
+ターゲット：人材紹介会社
+強み：〇〇（自分で記入）
+
+■ 3ペルソナ（WHO×WHY形式）
+ペルソナA：人事部長 / 課題：〇〇 / ゴール：〇〇
+ペルソナB：CHRO / 課題：〇〇 / ゴール：〇〇
+ペルソナC：経営者 / 課題：〇〇 / ゴール：〇〇
+
+■ 成功パターン（017ベストコピー）
+ペルソナA向けFV：「〇〇〇」（選定理由：〇〇）
+
+■ ビジュアルガイドライン（019）
+トーン：BtoB信頼・論理　禁止：カジュアル語・感情語
+
+【出力制約（Output Rules）】
+・必ず5案出力。各案に選定理由を1行添える
+・出力前に5軸（ペルソナ適合・具体性・独自性・トーン・行動喚起）で自己採点
+・60点未満の案は除外して再生成
+・誇大表現・競合名・根拠のない断定は禁止
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('gem-template', event)">
+                <i class="fas fa-copy"></i> コピー
+            </button>
+        </div>
+        <p class="text-note">※ 〇〇の部分は各自の016〜019の成果物を参照して記入する。コピーボタンでテンプレートをコピーしてメモ帳等に貼り付けてから編集すること</p>
+    </div>
+</div>
+
+<!-- スライド6: 演習1の実行指示 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1の実行指示：設計書作成 → Gem構築</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>手順</h3>
+                <ul>
+                    <li><strong>① 設計書テンプレートを記入</strong>（20分）<br><span class="text-note">前スライドのテンプレートを使い、016〜019の成果物を当てはめる</span></li>
+                    <li><strong>② レビュー</strong>（5分）<br><span class="text-note">隣の人と見比べる。または次のチェックリストで自己確認する</span></li>
+                    <li><strong>③ GeminiのGem作成画面を開く</strong>（5分）<br><span class="text-note">設計書の内容を指示文欄にそのまま貼り付ける</span></li>
+                    <li><strong>④ Gemを保存・命名</strong>（5分）<br><span class="text-note">名前例：「TALENTBOARDコピーライター v1」</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>自己チェックリスト</h3>
+                <ul>
+                    <li>役割定義に<strong>得意タスクが3つ以内</strong>で書かれているか</li>
+                    <li>知識注入がセクション分けされているか（<strong>羅列になっていないか</strong>）</li>
+                    <li>最重要情報（サービス情報・ペルソナ）が<strong>冒頭に</strong>配置されているか</li>
+                    <li>出力制約に<strong>矛盾がないか</strong>（相反するルールがないか）</li>
+                    <li>017の<strong>評価5軸が出力制約に含まれているか</strong></li>
+                </ul>
+                <p class="text-note">1つでも「×」があれば、設計書を修正してからGemを構築する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 演習2の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2の概要：テスト1サイクル目——「既知のタスク」で検証する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            🔬 <strong>テストの目的：</strong>017で手動で生成した「FVキャッチコピー」をGemに同じ条件で投げ、品質を比較する。正解がわかっているタスクで検証するから、ギャップが明確になる
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>テスト入力</h3>
+                <div class="highlight-box">
+                    「人事部長向けのFVキャッチコピーを5案作成してください」
+                </div>
+                <p class="text-sub">これだけ。プロンプトの詳細指示はなし。Gemの設定だけで017と同等の品質が出るかを検証する</p>
+                <p class="text-note">※ 他のペルソナでも試してみること（「CHRO向け」「経営者向け」）</p>
+            </div>
+            <div>
+                <h3>検証の視点</h3>
+                <ul>
+                    <li><strong>017の手動出力と比較</strong>：同じ5軸で採点したとき、点数は同等以上か</li>
+                    <li><strong>プロンプト省略のメリット確認</strong>：毎回書いていた3層構造を書かずに済んでいるか</li>
+                    <li><strong>ブランドルール遵守確認</strong>：019のガイドラインが自動的に反映されているか</li>
+                </ul>
+                <div class="highlight-box">
+                    ここで「017より品質が低い」= Gemの設計に改善余地あり<br>
+                    <span class="text-note">→ 演習2後半で修正を行う</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: テスト実行と評価の手順 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">テスト実行と評価の手順——016演習3と同じPDCAを回す</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>実行手順</h3>
+                <ul>
+                    <li><strong>①</strong> Gemに「人事部長向けのFVキャッチコピーを5案作成してください」を投げる（5分）</li>
+                    <li><strong>②</strong> 出力を017の評価5軸で採点する（10分）<br><span class="text-note">ペルソナ適合・具体性・独自性・トーン・行動喚起</span></li>
+                    <li><strong>③</strong> 017の手動出力と比較する（5分）</li>
+                    <li><strong>④</strong> ギャップを特定する（10分）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>ギャップ分析のフレームワーク</h3>
+                <div class="highlight-box">
+                    <strong>特定</strong>：5軸のどの評価軸が低いか？<br>
+                    <strong>仮説</strong>：原因はGemの3要素のどこか？<br>
+                    <span class="text-note">例：ペルソナ適合が低い → 知識注入のペルソナ情報が不足？</span><br>
+                    <span class="text-note">例：トーンがブレる → 役割定義の方針が曖昧？</span><br>
+                    <strong>修正</strong>：該当の要素を書き直す<br>
+                    <strong>検証</strong>：同じタスクを再投入して改善を確認
+                </div>
+                <p class="text-note">016演習3の「特定→仮説→修正→検証」と同じ思考パターン。ツールが変わっても構造は変わらない</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: 修正の実行 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">修正の実行——テスト結果に基づいてGemを改善する</h2>
+    <div class="content-block">
+        <h3>よくある修正パターン</h3>
+        <div class="two-column tiled">
+            <div>
+                <ul>
+                    <li>
+                        <strong>ペルソナ適合度が低い</strong><br>
+                        原因：知識注入のペルソナ情報が不足<br>
+                        <span class="text-note">✅ 修正：ペルソナの課題・ゴール・言葉遣いをより詳細に追記</span>
+                    </li>
+                    <li>
+                        <strong>具体性が低い・数字がない</strong><br>
+                        原因：出力制約に具体性の指示がない<br>
+                        <span class="text-note">✅ 修正：「必ず数字または固有名詞を1つ含める」を追加</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <strong>トーンがブレる・カジュアルになる</strong><br>
+                        原因：役割定義の振る舞い方針が曖昧<br>
+                        <span class="text-note">✅ 修正：禁止する具体的な表現例を出力制約に追記</span>
+                    </li>
+                    <li>
+                        <strong>フォーマットが不揃い</strong><br>
+                        原因：出力制約にフォーマット例がない<br>
+                        <span class="text-note">✅ 修正：「出力形式：①案文（〇〇字以内）②選定理由（1行）」を追加</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">
+            修正後に同じタスクを再投入して改善を確認する。制限時間：20分。<br>
+            <span class="text-note">1回の修正で完璧にならなくて良い。「どこを直せば何が変わるか」の勘所を掴むことが目的</span>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: 演習2の振り返り -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2の振り返り——Before / After を共有する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>共有のポイント</h3>
+                <ul>
+                    <li>修正前の出力（Before）と修正後の出力（After）を2〜3名で共有する</li>
+                    <li>「Gemの3要素のうち<strong>どこを直したら最も効いたか</strong>」を確認する</li>
+                    <li>修正箇所と改善の因果関係を言語化する</li>
+                </ul>
+                <p class="text-sub">例：「知識注入にペルソナのゴールを追記したら、ペルソナ適合度が上がった」</p>
+            </div>
+            <div>
+                <h3>このサイクルで得られる感覚</h3>
+                <ul>
+                    <li><strong>設計の精度とアウトプットの因果関係</strong>が見えてくる</li>
+                    <li>「なんとなく良い・悪い」から「<strong>どこが原因か</strong>」に思考が変わる</li>
+                    <li>016〜019で学んだことが「Gem改善の言語」になっていることに気づく</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 1回の修正で完璧にはならない。しかし「どこを直せば何が変わるか」の勘所を掴むことが、実務で使えるGemへの近道
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: 演習3の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3の概要：テスト2サイクル目——「未知のタスク」で汎用性を検証する</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            🔬 <strong>テストの目的：</strong>017で扱わなかった「未知のセクション」のコピーをGemに書かせる。「教えていないタスク」にも対応できるかどうかが、実務で使えるGemかどうかの分かれ目
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>テスト入力例（2種類投げる）</h3>
+                <div class="highlight-box">
+                    「FAQ用のQ&Aを5組作成してください」
+                </div>
+                <div class="highlight-box">
+                    「導入事例のタイトルと概要を3案作成してください」
+                </div>
+                <p class="text-note">どちらも017では直接扱わなかったセクション。Gemが知識注入・出力制約を「汎用的に転用」できるかを見る</p>
+            </div>
+            <div>
+                <h3>検証の視点</h3>
+                <ul>
+                    <li><strong>017のコピー品質と同等か？</strong><br>ブランドルールが未知のタスクでも機能しているか</li>
+                    <li><strong>ペルソナ適合は維持されているか？</strong><br>FVキャッチ以外でも人事部長向けの言葉になっているか</li>
+                    <li><strong>「メインペルソナで基本を作り差分だけ上書き」は通用するか？</strong><br>017で学んだ効率化の発想がGemでも機能するか</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: 演習3の実行指示 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3の実行指示——未知のタスクでGemの汎用性を確かめる</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>手順（合計55分）</h3>
+                <ul>
+                    <li><strong>①</strong> 未知のタスクを2種類投げる（各10分）</li>
+                    <li><strong>②</strong> 出力を5軸で評価する（各5分）</li>
+                    <li><strong>③</strong> 品質が基準未達の場合、原因をGemの3要素で仮説立て（10分）</li>
+                    <li><strong>④</strong> 修正→再テスト（15分）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>言語化のポイント</h3>
+                <p class="text-sub">「未知のタスクで品質が下がった原因」を自分の言葉で説明できるか</p>
+                <ul>
+                    <li>「○○のタスクでトーンがブレた理由は、出力制約に○○が明示されていなかったから」</li>
+                    <li>「FAQ向けにペルソナが適合しなかった理由は、知識注入のペルソナ情報が○○の視点でしか書かれていなかったから」</li>
+                </ul>
+                <div class="highlight-box">
+                    原因を言語化できること＝次の修正の精度が上がること
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: 演習4：最終調整と全体振り返り -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習4：最終調整——2サイクルの学びを反映して完成させる</h2>
+    <div class="content-block">
+        <div class="highlight-box">
+            📋 <strong>課題：</strong>2サイクルの修正を反映した最終版のGem指示文を確定し、「TALENTBOARDコピーライター 最終版」として保存する
+        </div>
+        <div class="two-column tiled">
+            <div>
+                <h3>最終確認チェックリスト</h3>
+                <ul>
+                    <li>役割定義は具体的か（得意タスクが明確で3つ以内か）</li>
+                    <li>知識注入は構造化されているか（最重要情報が冒頭か）</li>
+                    <li>出力制約に矛盾はないか</li>
+                    <li>演習2・3で見つかった問題はすべて反映したか</li>
+                    <li>1サイクル目と2サイクル目のBefore/Afterが改善されているか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>完成の定義</h3>
+                <p class="text-sub">「タスクを投げるだけで、毎回017相当の品質が出る状態」</p>
+                <ul>
+                    <li>プロンプトに3層構造を毎回書かなくてよい</li>
+                    <li>ペルソナを指定するだけでブランドルールが自動適用される</li>
+                    <li>FVキャッチ以外の未知のセクションにも対応できる</li>
+                </ul>
+                <p class="text-note">この状態に達したGemがBlock 5で実際に使う「実務ツール」になる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド14: Block 4全体の振り返り -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">Block 4全体の振り返り——016〜020で積み上げたもの</h2>
+    <div class="tiles-wrapper">
+        <div class="tile">
+            <div class="tile-number">016</div>
+            <h3>AIへの指示の型</h3>
+            <p>Logic Promptの3層構造（Context・Instruction・Constraint）で出力品質を設計する力</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">017</div>
+            <h3>売れる言葉の量産力</h3>
+            <p>コピーの3構造パターンと評価5軸で、ペルソナ別のキャッチコピーを設計・選定する力</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">018</div>
+            <h3>意図通りの画像生成力</h3>
+            <p>画像5要素とシード値・スタイルリファレンスで、ブランドと一致する画像を再現する力</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">019</div>
+            <h3>ブランド統一力</h3>
+            <p>ビジュアルガイドラインを設計・運用し、複数の制作物のトンマナを統一する力</p>
+        </div>
+        <div class="tile">
+            <div class="tile-number">020</div>
+            <h3>自分専用AIの構築力</h3>
+            <p>016〜019の知見を1つのGemに統合し、テスト→修正のPDCAで実用レベルに仕上げる力</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド15: 本日の成果物確認と次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">本日の成果物確認と次回予告</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>本日の成果物</h3>
+                <ul>
+                    <li><strong>①「TALENTBOARDコピーライター」Gem（最終版）</strong><br><span class="text-note">テスト・修正済み。Block 5で実際に使うツール</span></li>
+                    <li><strong>②Gem設計書（最終版）</strong><br><span class="text-note">役割定義・知識注入・出力制約が確定したテキスト</span></li>
+                    <li><strong>③テスト記録（2サイクル分のBefore/After）</strong><br><span class="text-note">どこを修正して何が改善したかの記録</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>次回予告</h3>
+                <div class="highlight-box">
+                    <strong>021：AI時代の著作権・商用利用</strong><br><br>
+                    Block 5の「作る」フェーズに入る前の、法的ガードレールを確認する回<br><br>
+                    <span class="text-note">・AIが生成したコピー・画像の権利は誰のもの？</span><br>
+                    <span class="text-note">・商用利用の可否はどう判断する？</span><br>
+                    <span class="text-note">・クライアントへの提出時に必要な配慮とは？</span>
+                </div>
+                <p class="text-sub">「道具は完成した。次はルールを確認して、いよいよ実戦です」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +483,78 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        function copyPrompt(id, event) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const text = el.innerText || el.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.currentTarget;
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fas fa-check"></i> コピーしました';
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<i class="fas fa-copy"></i> コピー';
+        }, 2000);
+    });
+}
+
+const questions = [
+    {
+        question: "Gemの指示文を「いきなり書く」のではなく「設計書を先に書く」理由として最も適切なものはどれですか？",
+        choices: [
+            "Geminiのシステム上、設計書を先に提出しないとGemを作成できないため",
+            "016と同じ「設計→実行」の原則。構造を整理してから組み立てたほうが品質が高く、修正もしやすいため",
+            "設計書を書かないと講師に評価してもらえないため",
+            "テンプレートが用意されているため、先に埋めるほうが効率的なため"
+        ],
+        correct: 1,
+        explanation: "016で学んだ「設計→実行」の原則と同じです。いきなりGemを組み立てると3要素が混在しやすく、どこを修正すればよいかもわかりにくくなります。設計書を先に書くことで構造が整理でき、修正の際もどの要素を直せばよいかが明確になります。"
+    },
+    {
+        question: "テスト1サイクル目で「既知のタスク（017のFVキャッチコピー）」を使う理由として正しいものはどれですか？",
+        choices: [
+            "017で練習したタスクのほうがGemへの入力が簡単だから",
+            "正解（017のベストコピー）がわかっているので、Gemの出力品質を客観的に比較しやすいから",
+            "未知のタスクはGemでは対応できないから",
+            "講師が採点しやすいタスクだから"
+        ],
+        correct: 1,
+        explanation: "テスト1サイクル目に「既知のタスク」を使う理由は、017で作成したベストコピーという「正解」がすでにあるからです。正解がわかっているタスクでテストすることで、Gemの出力との差（ギャップ）を客観的に評価・数値化できます。"
+    },
+    {
+        question: "テスト2サイクル目で「未知のタスク（FAQ・導入事例など）」を使う理由として正しいものはどれですか？",
+        choices: [
+            "Block 5で使うコンテンツを事前に作成するため",
+            "Gemが教えていないタスクにも対応できるか、汎用性を検証するため",
+            "017で扱わなかったセクションを補完するため",
+            "Gemの応答速度を測定するため"
+        ],
+        correct: 1,
+        explanation: "テスト2サイクル目の目的はGemの「汎用性」の検証です。役割定義・知識注入・出力制約の設計が本質を捉えていれば、直接教えていないタスクにも対応できるはずです。未知のタスクで品質が下がった場合、どの要素に改善余地があるかを特定します。"
+    },
+    {
+        question: "Gemの出力品質が低かったとき、最初にすべきことはどれですか？",
+        choices: [
+            "Gemを削除して最初から作り直す",
+            "プロンプトに長い指示を追加して毎回補う",
+            "5軸のどこが弱いかを特定し、Gemの3要素（役割定義・知識注入・出力制約）のどこが原因か仮説を立てる",
+            "同じタスクを繰り返し投げて出力が改善されるのを待つ"
+        ],
+        correct: 2,
+        explanation: "016演習3と同じ「特定→仮説→修正→検証」のフレームワークを適用します。まず評価5軸のどの軸が低いかを特定し、その原因がGemの3要素のどこにあるかを仮説立てます。「ペルソナ適合が低い→知識注入のペルソナ情報が不足」のように因果関係を特定してから修正することで、効率よく改善できます。"
+    },
+    {
+        question: "完成した「TALENTBOARDコピーライター」Gemはこの後どこで使いますか？",
+        choices: [
+            "021の著作権確認の演習で使用する",
+            "Block 5のLP制作で実際にコピー生成に使用する（演習用ではなく実務ツール）",
+            "このGemはあくまで練習用で、実務では新たなGemを作り直す",
+            "Block 4の復習テストで使用する"
+        ],
+        correct: 1,
+        explanation: "完成したGemはBlock 5のLP制作で実際に使う「実務ツール」です。演習のための演習ではなく、Block 5「作る」フェーズで実際にTALENTBOARDのLPコピーを生成するために使用します。だからこそテスト→修正を2サイクル行い、実用レベルに仕上げることが重要です。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
