@@ -66,7 +66,7 @@
             <h2 class="slide-title">AI出力のレビューと方針確定</h2>
             <div class="content-block">
                 <h3>Geminiの出力を以下の観点で確認する</h3>
-                <ul>
+                <ul class="no-bullet">
                     <li><strong>Header → ハンバーガー変換（パターン③）</strong><br>5項目の横並びナビがハンバーガーに格納される提案になっているか</li>
                     <li><strong>商品カード 3列 → 1列（パターン①）</strong><br>横並び→縦積みが提案されているか。2列の提案が出た場合は375pxでの可読性を考えて判断</li>
                     <li><strong>Instagramグリッド → 枚数変更 or レイアウト変更</strong><br>6枚→4枚にするか、3×2→2×3にするか。<strong>正解は1つではない</strong>ので、根拠を持って決める</li>
@@ -164,7 +164,7 @@
             <h2 class="slide-title">完成チェック：PC版・SP版の並列確認</h2>
             <div class="content-block">
                 <h3>セルフチェックリスト</h3>
-                <ul>
+                <ul class="no-bullet">
                     <li>☐ <strong>情報の優先順位</strong>がPC版と一致しているか（セクションの順序が変わっていないか）</li>
                     <li>☐ <strong>タップ領域 44×44px以上</strong>が全てのボタン・リンクで確保されているか</li>
                     <li>☐ <strong>コンポーネントのインスタンス</strong>が再利用されているか（PC版と同じインスタンスを使っているか）</li>
@@ -178,19 +178,24 @@
             </div>
         </div>
         
-        <!-- スライド9: まとめ＋次テーマ予告 -->
+        <!-- スライド9: まとめ -->
         <div class="slide-container standard-content-layout">
             <h2 class="slide-title">まとめ ― 設計してから手を動かす</h2>
             <div class="content-block">
                 <h3>今日やったこと</h3>
-                <ul>
-                    <li>Geminiで変換方針を叩き出し → 自分の判断でレビュー・確定</li>
-                    <li>4つの変換パターンを使ってSŌILのTOPページPC版をSP版に再構成</li>
-                    <li>012で作ったコンポーネントが<strong>PC/SP両方で使い回せる</strong>ことを体験</li>
-                    <li>Instagramグリッドの枚数判断で<strong>「根拠を持って決める」</strong>訓練を実施</li>
-                </ul>
-        
-                <h3>🔜 次のテーマ：014 プロトタイピングと動的デモ</h3>
+                <div class="tiled-content">
+                    <div class="tile"><div class="icon">🤖</div><h3>方針の確定</h3><p>Geminiで変換方針を叩き出し → 自分の判断でレビュー・確定</p></div>
+                    <div class="tile"><div class="icon">📱</div><h3>SP版の再構成</h3><p>4つの変換パターンを使ってSŌILのTOPページPC版をSP版に再構成</p></div>
+                    <div class="tile"><div class="icon">🔁</div><h3>部品の再利用</h3><p>012で作ったコンポーネントがPC/SP両方で使い回せることを体験</p></div>
+                    <div class="tile"><div class="icon">🎯</div><h3>根拠ある判断</h3><p>Instagramグリッドの枚数判断で「根拠を持って決める」訓練を実施</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド9b: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：014「プロトタイピングと動的デモ」</h2>
+            <div class="content-block">
                 <p>PC版・SP版のフレームに<strong>画面遷移やインタラクション</strong>（ホバー、タップ）をつけて動くプロトタイプを構築します。013で保留した<strong>ハンバーガーメニューの展開動作</strong>も014で実装します。</p>
             </div>
         </div>

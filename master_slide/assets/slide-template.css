@@ -345,13 +345,15 @@ h2 + .two-column.tiled {
 }
 
 .standard-content-layout .content-block {
-    background: rgba(255,255,255,0.03);
-    border-radius: 15px;
-    padding: 40px 48px 48px;
+    /* background: rgba(255,255,255,0.03); */
+    /* border-radius: 15px; */
+    /* padding: 40px 48px 48px; */
+    padding-top: 40px;
     width: 100%;
     height: stretch;
     overflow-y: auto;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
+    border-top: 1px dashed #555;
 }
 
 /* SVG中央配置用 */
@@ -532,10 +534,95 @@ svg.generated-art {
     margin-bottom: 12px;
 }
 
+/* ================================================
+   next-box：次回予告・まとめ末尾の引き継ぎ情報用
+   highlight-box と同構造・グレー系で「なじむ」差別化
+================================================ */
+.next-box {
+    background: rgba(107, 114, 128, 0.1);
+    border-left: 4px solid #6b7280;
+    padding: 22px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-size: 28px;
+    color: #e0e0e0;
+    width: 100%;
+}
+
 /* text-note / text-sub をブロック化してマージンを機能させる */
 /* ※ <p class="text-note"> は元々ブロックなので影響なし・<span> 使用時に効く */
 .text-note,
 .text-sub {
     display: block;
     margin-top: 8px;
+}
+
+/* ================================================
+   テーブル共通スタイル
+================================================ */
+.content-block table {
+    font-size: 32px;
+    line-height: 1.6;
+}
+
+/* ================================================
+   テーブル コンポーネント（.slide-table）
+
+   【使用ルール】
+   ✅ 使う場面：
+     - キー・バリュー形式の設定仕様（設定項目 ／ 値）
+     - 対照・比較が目的のリスト（場面 ／ アクション など）
+     - 3行以上の構造化されたデータ
+
+   ❌ 使わない場面：
+     - 手順・ステップ（→ ol を使う）
+     - 箇条書き・チェックリスト（→ ul を使う）
+     - 1〜2行のみの単純な対比（→ highlight-box や p で十分）
+
+   【既存の生テーブル（クラスなし）との使い分け】
+     クラスなし table：スライド内の既存データ表示（font-sizeのみ継承）
+     .slide-table    ：意図的にデザインを当てたい設定仕様・対照表
+================================================ */
+.slide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 26px;
+    line-height: 1.6;
+}
+.slide-table th {
+    background: rgba(0, 212, 255, 0.15);
+    color: #00d4ff;
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #00d4ff;
+}
+.slide-table td {
+    padding: 12px 20px;
+    color: #e0e0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.slide-table tr:last-child td {
+    border-bottom: none;
+}
+.slide-table tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* ================================================
+   リスト マーカー位置補正
+   * { padding: 0 } リセットで ol の数字が枠外に
+   飛び出すのを防ぐ
+================================================ */
+.slide-container ul,
+.slide-container ol {
+    padding-left: 1.5em;
+}
+
+/* ================================================
+   no-bullet：①②③ や ☐ など先頭に独自記号がある
+   リスト用。bullet を非表示にしてインデントを維持。
+================================================ */
+.slide-container ul.no-bullet {
+    list-style: none;
 }

@@ -6,6 +6,50 @@
     <title>【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
+    <style>
+        /* Interactive Checklist */
+        .interactive-checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .interactive-checklist li {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+            user-select: none;
+            transition: opacity 0.2s;
+        }
+        .interactive-checklist li:hover {
+            opacity: 0.8;
+        }
+        .check-box {
+            font-size: 1.4em;
+            min-width: 1.4em;
+            transition: color 0.2s;
+        }
+        .interactive-checklist li.checked .check-box {
+            color: #00d4ff;
+        }
+        .check-label {
+            position: relative;
+            display: inline-block;
+        }
+        .interactive-checklist li.checked .check-label::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            background: #e0e0e0;
+            animation: strikeCheck 0.4s ease forwards;
+        }
+        @keyframes strikeCheck {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
 </head>
 <body>
     <div id="presentation-wrapper">
@@ -265,21 +309,26 @@
             <h2 class="slide-title">セルフチェック＋まとめ</h2>
             <div class="content-block">
                 <h3>完成チェックリスト</h3>
-                <ul>
-                    <li>☐ 命名規則が <code>カテゴリ/種類</code> で統一されているか</li>
-                    <li>☐ メインコンポーネントが<strong>Componentsページ</strong>に集約されているか</li>
-                    <li>☐ WFページの要素がインスタンスに差し替えられているか</li>
-                    <li>☐ バリアント（Button/Primary ↔ Secondary）が正しく切り替わるか</li>
-                    <li>☐ メインを修正 → 全インスタンスに反映されるか</li>
+                <ul class="interactive-checklist">
+                    <li onclick="toggleCheck(this)"><span class="check-box">☐</span><span class="check-label">命名規則が <code>カテゴリ/種類</code> で統一されているか</span></li>
+                    <li onclick="toggleCheck(this)"><span class="check-box">☐</span><span class="check-label">メインコンポーネントが<strong>Componentsページ</strong>に集約されているか</span></li>
+                    <li onclick="toggleCheck(this)"><span class="check-box">☐</span><span class="check-label">WFページの要素がインスタンスに差し替えられているか</span></li>
+                    <li onclick="toggleCheck(this)"><span class="check-box">☐</span><span class="check-label">バリアント（Button/Primary ↔ Secondary）が正しく切り替わるか</span></li>
+                    <li onclick="toggleCheck(this)"><span class="check-box">☐</span><span class="check-label">メインを修正 → 全インスタンスに反映されるか</span></li>
                 </ul>
-        
+
                 <h3>動作確認テスト</h3>
                 <p>ComponentsページのButton/Primaryの高さを<strong>48 → 56に変更</strong>してみてください。WFページのすべてのボタンインスタンスが自動で高さ56に更新されるはずです。確認できたら<strong>48に戻して</strong>ください。</p>
-        
+
                 <h3>今回の成果</h3>
                 <p>011で手作業で並べたWFの要素を、Atomic Designの層に沿って<strong>再構築</strong>しました。同じ見た目のWFでも、裏側の構造がまったく違います。</p>
-        
-                <h3>次テーマ：013 レスポンシブ設計の基礎</h3>
+            </div>
+        </div>
+
+        <!-- スライド10b: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：013「レスポンシブ設計の基礎」</h2>
+            <div class="content-block">
                 <p>今回作成したコンポーネントを、<strong>PC表示だけでなくスマートフォン表示</strong>にも対応させます。同じ部品で異なる画面サイズに対応する考え方を学びます。</p>
             </div>
         </div>
@@ -292,6 +341,22 @@
     </div>
     
     
+    <!-- インタラクティブチェックリスト -->
+    <script>
+    function toggleCheck(li) {
+        const box = li.querySelector('.check-box');
+        if (li.classList.contains('checked')) {
+            li.classList.remove('checked');
+            box.textContent = '☐';
+        } else {
+            li.classList.remove('checked');
+            void li.offsetWidth; // アニメーションをリセット
+            li.classList.add('checked');
+            box.textContent = '✓';
+        }
+    }
+    </script>
+
     <!-- クイズデータ -->
     <script>
     const questions = [

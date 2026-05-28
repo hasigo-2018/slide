@@ -21,7 +21,7 @@
         <div class="slide-container standard-content-layout">
             <h2 class="slide-title">クライアントブリーフ：SŌIL</h2>
             <div class="content-block">
-                <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+                <table style="width:100%; border-collapse:collapse;">
                     <tr style="border-bottom:1px solid #333;">
                         <td style="padding:8px 12px; color:#aaa; width:30%;">ブランド名</td>
                         <td style="padding:8px 12px; color:#ddd;">SŌIL（ソイル）</td>
@@ -60,7 +60,7 @@
             <h2 class="slide-title">Step 1：AIにTOPの構成要素を洗い出させる</h2>
             <div class="content-block">
                 <h3>Geminiに以下のプロンプトを入力してください</h3>
-                <p style="font-size:0.9rem; color:#aaa; margin-bottom:0.75rem;">まず「AIが出せるもの」を出し切らせる。取捨選択は次のステップで人間が行います。</p>
+                <p style="color:#aaa; margin-bottom:0.75rem;">まず「AIが出せるもの」を出し切らせる。取捨選択は次のステップで人間が行います。</p>
                 <div class="prompt-box">
                     <div class="prompt-content" id="prompt-gemini-011-1">以下のブランドのWEBサイトTOPページに配置すべき情報要素を、優先度順にリストアップしてください。
         
@@ -89,7 +89,7 @@
             <div class="two-column tiled">
                 <div>
                     <h3>📋 AI出力例（10〜12項目）</h3>
-                    <ul style="font-size:0.9rem;">
+                    <ul>
                         <li>メインビジュアル（世界観）</li>
                         <li>ブランドストーリー導入</li>
                         <li>商品ラインナップ紹介</li>
@@ -106,14 +106,14 @@
                 </div>
                 <div>
                     <h3>🧠 人間が行う判断プロセス</h3>
-                    <ul style="font-size:0.9rem;">
-                        <li><strong>✅ 優先高：</strong>ブランドストーリー＋About導線<br><small>→「調べて納得する層」に世界観を先に伝える</small></li>
-                        <li><strong>✅ 優先高：</strong>商品カード＋Products導線<br><small>→ 主力商品は必ず見せる</small></li>
-                        <li><strong>✅ 採用：</strong>Instagram連携<br><small>→ SNSで情報収集する層に有効</small></li>
-                        <li><strong>❌ 今回外す：</strong>お客様の声<br><small>→ 1年目でまだレビューが少ない</small></li>
-                        <li><strong>❌ 今回外す：</strong>FAQ・新着情報<br><small>→ フッターリンクで十分</small></li>
+                    <ul>
+                        <li><strong>✅ 優先高：</strong>ブランドストーリー＋About導線<br><span>→「調べて納得する層」に世界観を先に伝える</span></li>
+                        <li><strong>✅ 優先高：</strong>商品カード＋Products導線<br><span>→ 主力商品は必ず見せる</span></li>
+                        <li><strong>✅ 採用：</strong>Instagram連携<br><span>→ SNSで情報収集する層に有効</span></li>
+                        <li><strong>❌ 今回外す：</strong>お客様の声<br><span>→ 1年目でまだレビューが少ない</span></li>
+                        <li><strong>❌ 今回外す：</strong>FAQ・新着情報<br><span>→ フッターリンクで十分</span></li>
                     </ul>
-                    <div class="highlight-box" style="font-size:0.85rem;">
+                    <div class="highlight-box">
                         ⚡ 原則：AIは要素の<strong>「洗い出し」</strong>が得意。<br>
                         <strong>「優先順位の判断」は人間がやる。</strong>
                     </div>
@@ -137,7 +137,7 @@
                     <li><strong>中央または右：</strong>ナビ項目を横並びで配置</li>
                 </ul>
         
-                <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.75rem 0;">
+                <table style="width:100%; border-collapse:collapse; margin:0.75rem 0;">
                     <tr style="background:rgba(255,255,255,0.05);">
                         <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">About</td>
                         <td style="padding:6px 12px; color:#ddd; border:1px solid #333;">Products</td>
@@ -146,7 +146,7 @@
                         <td style="padding:6px 12px; color:#00d4ff; border:1px solid #333;"><strong>Shop ↗</strong></td>
                     </tr>
                 </table>
-                <p style="font-size:0.85rem; color:#888;">「Shop」はShopify ECへの外部リンクとして、他のナビと視覚的に区別する</p>
+                <p style="color:#888;">「Shop」はShopify ECへの外部リンクとして、他のナビと視覚的に区別する</p>
         
                 <div class="highlight-box">
                     🔧 Auto Layoutで横並び配置 ／ フレーム命名：<code>Header</code>
@@ -163,7 +163,7 @@
                 フレーム名：<code>Section_01_MV</code></p>
         
                 <h3>② コンテンツセクションを順番に作る</h3>
-                <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <table style="width:100%; border-collapse:collapse;">
                     <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
                         <td style="padding:7px 10px; color:#00d4ff; width:35%;"><code>Section_02_About</code></td>
                         <td style="padding:7px 10px; color:#ccc;">ブランドストーリー導入テキスト ＋「もっと見る」→ Aboutへ</td>
@@ -231,7 +231,7 @@
                 </ul>
         
                 <h3>記載例</h3>
-                <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <table style="width:100%; border-collapse:collapse;">
                     <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
                         <td style="padding:8px 12px; color:#00d4ff; width:35%;"><code>Section_02_About</code></td>
                         <td style="padding:8px 12px; color:#ccc;">ターゲットは「調べて納得する層」のため、商品紹介より先にブランドの背景を提示</td>
@@ -240,7 +240,7 @@
                         <td style="padding:8px 12px; color:#00d4ff;"><code>Section_05_Instagram</code></td>
                         <td style="padding:8px 12px; color:#ccc;">SNSで情報収集する層へのリーチ。1年目はレビューより実際の使用シーン訴求が有効</td>
                     </tr>
-                    <tr>
+                    <tr style="border-bottom:1px solid #333; background:rgba(255,255,255,0.04);">
                         <td style="padding:8px 12px; color:#00d4ff;"><code>Section_06_CTA</code></td>
                         <td style="padding:8px 12px; color:#ccc;">世界観とストーリーを体験した後の自然な購入誘導。ページ最下部に配置</td>
                     </tr>
@@ -257,7 +257,7 @@
             <h2 class="slide-title">Step 7：提出前セルフチェック</h2>
             <div class="content-block">
                 <h3>理論編の5項目（構造の確認）</h3>
-                <ul>
+                <ul class="no-bullet">
                     <li>☐ ペルソナの行動目的に導線が合っているか</li>
                     <li>☐ 情報の優先順位がスクロール順に反映されているか</li>
                     <li>☐ グローバルナビがサイトマップと一致しているか</li>
@@ -265,7 +265,7 @@
                     <li>☐ アノテーションが各セクションに記載されているか</li>
                 </ul>
                 <h3>実践特有の3項目（Figma上の確認）</h3>
-                <ul>
+                <ul class="no-bullet">
                     <li>☐ フレーム命名が <code>Section_XX_名前</code> で統一されているか</li>
                     <li>☐ Auto Layoutでセクション間余白が管理されているか</li>
                     <li>☐ グレースケール以外の色を使っていないか</li>
@@ -278,20 +278,20 @@
             <h2 class="slide-title">まとめ：上流設計がWFに直結した</h2>
             <div class="content-block">
                 <h3>今日体験したこと</h3>
-                <ul>
-                    <li>Block 2の上流成果物（要件定義・ペルソナ・サイトマップ）が、<br>画面の<strong>情報構造に直結</strong>することを体験した</li>
-                    <li>AIは「要素の洗い出し」に使い、<strong>「優先順位の判断」は人間がやる</strong></li>
-                    <li>WFの段階では見た目を作らず、<strong>構造に集中する</strong></li>
-                </ul>
-        
-                <h3>次のテーマへ</h3>
-                <p><strong>012｜Atomic Designとコンポーネント設計</strong><br>
-                今回WFで配置した要素を「再利用可能な部品」として設計する方法を学ぶ。</p>
-        
-                <div class="highlight-box">
-                    📌 Block 5予告：022では同じSŌILの「新商品LP」のWFを作ります。<br>
-                    LP型とTOP型の構造の違いを、実際に手を動かして体感します。
+                <div class="tiled-content">
+                    <div class="tile"><div class="icon">📐</div><h3>上流設計の直結</h3><p>要件定義・ペルソナ・サイトマップが、画面の情報構造に直結することを体験した</p></div>
+                    <div class="tile"><div class="icon">🤖</div><h3>AIの使い方</h3><p>AIは「要素の洗い出し」に使い、「優先順位の判断」は人間がやる</p></div>
+                    <div class="tile"><div class="icon">🏗️</div><h3>構造への集中</h3><p>WFの段階では見た目を作らず、構造に集中する</p></div>
                 </div>
+            </div>
+        </div>
+
+        <!-- スライド10b: 次回予告 -->
+        <div class="slide-container standard-content-layout">
+            <h2 class="slide-title">次回：012「Atomic Designとコンポーネント設計」</h2>
+            <div class="content-block">
+                <p>今回WFで配置した要素を「再利用可能な部品」として設計する方法を学ぶ。</p>
+                <p class="text-sub">📌 Block 5予告：022では同じSŌILの「新商品LP」のWFを作ります。LP型とTOP型の構造の違いを、実際に手を動かして体感します。</p>
             </div>
         </div>
 
