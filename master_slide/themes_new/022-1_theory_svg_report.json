@@ -1,0 +1,90 @@
+{
+  "file": "master_slide/themes_new/022-1_theory.html",
+  "svgCount": 2,
+  "issues": [
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"192,198 208,190 208,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "192,198 208,190 208,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"367,198 383,190 383,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "367,198 383,190 383,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"542,198 558,190 558,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "542,198 558,190 558,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"717,198 733,190 733,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "717,198 733,190 733,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"892,198 908,190 908,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "892,198 908,190 908,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"1067,198 1083,190 1083,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "1067,198 1083,190 1083,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド2 SVG1",
+      "message": "左向き矢印を検出（points=\"1242,198 1258,190 1258,206\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "1242,198 1258,190 1258,206"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド11 SVG2",
+      "message": "左向き矢印を検出（points=\"242,70 258,62 258,78\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "242,70 258,62 258,78"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド11 SVG2",
+      "message": "左向き矢印を検出（points=\"462,70 478,62 478,78\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "462,70 478,62 478,78"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド11 SVG2",
+      "message": "左向き矢印を検出（points=\"682,70 698,62 698,78\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "682,70 698,62 698,78"
+    },
+    {
+      "type": "arrow",
+      "severity": "warning",
+      "location": "スライド11 SVG2",
+      "message": "左向き矢印を検出（points=\"902,70 918,62 918,78\"）。流れが左→右の場合、逆向きの可能性があります。",
+      "points": "902,70 918,62 918,78"
+    },
+    {
+      "type": "alignment",
+      "severity": "info",
+      "location": "スライド11 SVG2",
+      "message": "横並びのrect要素（16個）の間隔にバラツキがあります（最大偏差: 169px）。"
+    }
+  ],
+  "timestamp": "2026-06-03T03:01:19.366Z"
+}

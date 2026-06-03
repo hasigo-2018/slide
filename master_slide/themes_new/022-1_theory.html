@@ -3,13 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
+    <title>LP設計：要件定義からWFへの落とし込み実践【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>LP設計：要件定義から<br>WFへの落とし込み実践<span>【理論編】</span></h1>
+        <p>Block 1–4のすべてを、1枚のLPに統合する</p>
+    </div>
+</div>
+
+<!-- スライド2: Block 5の全体地図 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 5の全体地図——8テーマ・55コマの流れを一望する</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:560px;">
+            <!-- 背景レール -->
+            <!-- <rect x="20" y="200" width="1360" height="6" rx="3" fill="white" opacity="0.15"/> -->
+
+            <!-- 022: 今日 -->
+            <rect x="10" y="120" width="160" height="140" rx="12" fill="#00d4ff" opacity="0.9"/>
+            <text x="90" y="158" text-anchor="middle" fill="white" font-size="20" font-weight="bold">022</text>
+            <text x="90" y="184" text-anchor="middle" fill="white" font-size="15">設計図を引く</text>
+            <text x="90" y="206" text-anchor="middle" fill="white" font-size="13">要件定義・WF</text>
+            <text x="90" y="240" text-anchor="middle" fill="#003a4a" font-size="13" font-weight="bold">← 今日</text>
+
+            <!-- 矢印 022→023 -->
+            <polygon points="179,182 179,198 195,190" fill="white" opacity="0.5"/>
+
+            <!-- 023 -->
+            <rect x="200" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="272" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">023</text>
+            <text x="272" y="202" text-anchor="middle" fill="white" font-size="14">FV設計</text>
+            <text x="272" y="222" text-anchor="middle" fill="white" font-size="12">ファーストビュー</text>
+
+            <!-- 矢印 -->
+            <polygon points="354,182 354,198 370,190" fill="white" opacity="0.5"/>
+
+            <!-- 024 -->
+            <rect x="375" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="447" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">024</text>
+            <text x="447" y="202" text-anchor="middle" fill="white" font-size="14">信頼構築</text>
+            <text x="447" y="222" text-anchor="middle" fill="white" font-size="12">実績・数字・声</text>
+
+            <!-- 矢印 -->
+            <polygon points="529,182 529,198 545,190" fill="white" opacity="0.5"/>
+
+            <!-- 025 -->
+            <rect x="550" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="622" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">025</text>
+            <text x="622" y="202" text-anchor="middle" fill="white" font-size="14">CTA・フォーム</text>
+            <text x="622" y="222" text-anchor="middle" fill="white" font-size="12">行動設計</text>
+
+            <!-- 矢印 -->
+            <polygon points="704,182 704,198 720,190" fill="white" opacity="0.5"/>
+
+            <!-- 026 -->
+            <rect x="725" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="797" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">026</text>
+            <text x="797" y="202" text-anchor="middle" fill="white" font-size="14">ビジュアル実装</text>
+            <text x="797" y="222" text-anchor="middle" fill="white" font-size="12">色・画像・型</text>
+
+            <!-- 矢印 -->
+            <polygon points="879,182 879,198 895,190" fill="white" opacity="0.5"/>
+
+            <!-- 027 -->
+            <rect x="900" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="972" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">027</text>
+            <text x="972" y="202" text-anchor="middle" fill="white" font-size="14">プロト・共有</text>
+            <text x="972" y="222" text-anchor="middle" fill="white" font-size="12">検証・フィードバック</text>
+
+            <!-- 矢印 -->
+            <polygon points="1054,182 1054,198 1070,190" fill="white" opacity="0.5"/>
+
+            <!-- 028 -->
+            <rect x="1075" y="140" width="145" height="100" rx="12" fill="white" opacity="0.12"/>
+            <text x="1147" y="178" text-anchor="middle" fill="white" font-size="20" font-weight="bold">028</text>
+            <text x="1147" y="202" text-anchor="middle" fill="white" font-size="14">仕様書・引き渡し</text>
+            <text x="1147" y="222" text-anchor="middle" fill="white" font-size="12">開発連携</text>
+
+            <!-- 矢印 -->
+            <polygon points="1229,182 1229,198 1245,190" fill="white" opacity="0.5"/>
+
+            <!-- 029 -->
+            <rect x="1250" y="120" width="140" height="140" rx="12" fill="white" opacity="0.18"/>
+            <text x="1320" y="158" text-anchor="middle" fill="white" font-size="20" font-weight="bold">029</text>
+            <text x="1320" y="182" text-anchor="middle" fill="white" font-size="14">統合・言語化</text>
+            <text x="1320" y="204" text-anchor="middle" fill="white" font-size="12">100文字根拠文</text>
+            <text x="1320" y="240" text-anchor="middle" fill="#00d4ff" font-size="13" font-weight="bold">← 完成</text>
+
+            <!-- 下部ラベル -->
+            <text x="700" y="360" text-anchor="middle" fill="white" opacity="0.6" font-size="24">022のWFが 023〜028 すべての演習ベースになる</text>
+            <text x="700" y="410" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">今日が「設計の一歩目」——ここで決めたことが全体を規定する</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド3: Block 4素材の棚卸し -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 4で手元に何があるか？——素材の棚卸し</h2>
+    <div class="content-block">
+        <p>実践編に入る前に、すでに持っている素材を確認する。「これから新しく作る」のではなく、「持っている素材を設計で組み立てる」フェーズに入る。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>テキスト系素材</h3>
+                <ul>
+                    <li><strong>017：</strong>ペルソナ別ベストコピー9案・セクション見出し・CTA文</li>
+                    <li><strong>016：</strong>3ペルソナ分のプロンプト設計シート（ペルソナ情報として活用）</li>
+                    <li><strong>020：</strong>Gem「TALENTBOARDコピーライター」（不足テキストの追加生成に使用）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>ビジュアル系素材</h3>
+                <ul>
+                    <li><strong>018–019：</strong>統一トンマナの画像セット5枚＋ビジュアルガイドライン</li>
+                    <li><strong>021：</strong>著作権チェック済み素材一式（使用可否が確定済み）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 素材はすべて揃っている。今日の仕事は「何を・誰に・どの順番で」という設計を決めること</div>
+    </div>
+</div>
+
+<!-- スライド4: 「素材がある」≠「LPが作れる」 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">「素材がある」と「LPが作れる」は違う</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>素材をただ並べると何が起きるか</h3>
+                <ul>
+                    <li>ターゲットが曖昧なまま「全員向け」の文章を並べる</li>
+                    <li>訴求軸がブレてコピーが矛盾する</li>
+                    <li>情報の順番に根拠がなく、読者がCTAに到達しない</li>
+                    <li>結果：素材の品質に関係なく、成果が出ない</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Block 001を思い出す</h3>
+                <ul>
+                    <li>キャリアリンクファクトリーの1回目LP——素材は揃っていたが成果が出なかった</li>
+                    <li>なぜか？「製造業全般に"何でもできます"」という設計のなさ</li>
+                    <li>001で学んだ原点：<strong>デザイン＝設計</strong></li>
+                    <li>見た目を作る前に「設計」がある</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 今日のテーマは「設計」。素材の品質が高くても、設計がなければ機能しない</div>
+    </div>
+</div>
+
+<!-- スライド5: LP要件定義の3ステップ（核心） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">LP要件定義の3ステップ——Block 2をLP文脈に翻訳する</h2>
+    <div class="content-block">
+        <p>Block 2で学んだ要件定義の考え方を、このLPで「実際にどう決めるか」に落とし込む。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>3ステップの全体像</h3>
+                <ul>
+                    <li><strong>ステップ1：ターゲットの確定</strong><br>3ペルソナのうち、このLPのメインターゲットは誰か？</li>
+                    <li><strong>ステップ2：訴求軸の確定</strong><br>メインターゲットに最も刺さるメッセージは何か？</li>
+                    <li><strong>ステップ3：情報設計の確定</strong><br>どの順番で伝えれば、ターゲットがCTAに到達するか？</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Block 2との違い</h3>
+                <ul>
+                    <li>Block 2は「概念」を学んだ——ペルソナとは何か・要件定義の考え方</li>
+                    <li>022は「実行」する——<em>このLPで実際にどう決めるか</em></li>
+                    <li>抽象論ではなく、TALENTBOARDの具体に落とす</li>
+                    <li>決定した内容が WF に直接反映される</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 ステップ1→2→3は順番通りに進める。ターゲットが決まらないと訴求軸は決められない。訴求軸が決まらないと情報の順番は決められない</div>
+    </div>
+</div>
+
+<!-- スライド6: ステップ1の深掘り：メインターゲット選定 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ステップ1：メインターゲットを1人に絞る</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>TALENTBOARDの3ペルソナ</h3>
+                <ul>
+                    <li><strong>人事部長（50代・決裁者）</strong><br>課題：採用コスト・リスク管理。関心：ROI・ガバナンス</li>
+                    <li><strong>現場リクルーター（30代・実務者）</strong><br>課題：候補者管理の煩雑さ。関心：効率化・ミス撲滅</li>
+                    <li><strong>経営層（40〜50代・ROI判断者）</strong><br>課題：採用の可視化。関心：投資対効果・スピード</li>
+                </ul>
+            </div>
+            <div>
+                <h3>選定の考え方</h3>
+                <ul>
+                    <li>1つのLPで全員に刺そうとすると、誰にも刺さらない</li>
+                    <li>001の失敗例（「製造業全般に何でもできます"」）の再現になる</li>
+                    <li>メインターゲットを1人に絞り、サブターゲットを設定する</li>
+                    <li>サブターゲットへの配慮は「読まれても違和感ない程度」に留める</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 「誰に言わないかを決めること」が設計の第一歩。全員向けは誰も向けていない</div>
+    </div>
+</div>
+
+<!-- スライド7: ステップ2の深掘り：訴求軸の設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ステップ2：訴求軸を設計する——課題と理想のギャップを埋める</h2>
+    <div class="content-block">
+        <p>Block 2のペルソナ設計 ＋ Block 4のLogic Promptの3層構造を接続し、「最も刺さるメッセージ」を1本に絞る。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>訴求軸の設計式</h3>
+                <ul>
+                    <li><strong>課題（現在地）：</strong>今、メインターゲットが感じている痛み</li>
+                    <li><strong>理想（目指す姿）：</strong>ターゲットが本当に欲しいゴール状態</li>
+                    <li><strong>ギャップ：</strong>課題→理想を埋めるTALENTBOARDの価値</li>
+                    <li><strong>訴求軸：</strong>ギャップを一言で言語化したキャッチライン</li>
+                </ul>
+            </div>
+            <div>
+                <h3>TALENTBOARDの例（リクルーター向け）</h3>
+                <ul>
+                    <li>課題：候補者管理がExcelで限界——対応漏れ・二重連絡が発生</li>
+                    <li>理想：一画面で全候補者の進捗が見える</li>
+                    <li>ギャップ：情報の散在→一元管理</li>
+                    <li>訴求軸：<strong>「Excel地獄から、1クリックで全体把握へ」</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 訴求軸が決まると、コピー9案の中から「使う1案」が自然に決まる。迷いがなくなる</div>
+    </div>
+</div>
+
+<!-- スライド8: ステップ3の深掘り：LPの導線設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ステップ3：LPの導線設計——セクション構成に「理由」を持たせる</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>BtoB LPの「型」</h3>
+                <ul>
+                    <li><strong>FV</strong>：3秒で価値を伝える</li>
+                    <li><strong>課題提起</strong>：読者の痛みに共感する</li>
+                    <li><strong>解決策</strong>：TALENTBOARDがどう解決するか</li>
+                    <li><strong>機能紹介</strong>：具体的にできること</li>
+                    <li><strong>信頼構築</strong>：導入実績・数字・お客様の声</li>
+                    <li><strong>CTA</strong>：今すぐ行動させる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>なぜこの順番か——Block 1（005）と接続</h3>
+                <ul>
+                    <li>人間の意思決定プロセスそのもの</li>
+                    <li>課題認識 → 解決策の検討 → 信頼の確認 → 行動</li>
+                    <li>この順番を破ると読者が離脱する</li>
+                    <li>「型」は縛りではなく、人間心理に基づく最適解</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 「課題→解決→信頼→行動」は行動心理学の意思決定プロセス。LP構成はその設計図</div>
+    </div>
+</div>
+
+<!-- スライド9: セクション構成表の書き方 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">セクション構成表——実践編で記入するフォーマット</h2>
+    <div class="content-block">
+        <p>各セクションに対して3つの要素を定義する。このフォーマットがWF設計の起点になる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>定義する3要素</h3>
+                <ul>
+                    <li><strong>目的：</strong>このセクションは何を達成するか<br><span class="text-note">例：FV → 「3秒で価値命題を伝え、続きを読む気にさせる」</span></li>
+                    <li><strong>配置コンテンツ：</strong>テキスト・画像・CTAの種類と量<br><span class="text-note">例：FV → 「キャッチコピー1文＋サブコピー2行＋CTA1個＋画面モック1枚」</span></li>
+                    <li><strong>使用素材：</strong>Block 4のどの素材を割り当てるか<br><span class="text-note">例：FV → 「017のコピーB案＋018の画像No.2」</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>記入の順番</h3>
+                <ul>
+                    <li>Step 1：セクション名を列挙（FV〜CTA）</li>
+                    <li>Step 2：各セクションの「目的」を1文で書く</li>
+                    <li>Step 3：配置するコンテンツ要素をリストアップ</li>
+                    <li>Step 4：使用する素材を016〜021から選ぶ</li>
+                    <li>Step 5：Gemの「TALENTBOARDコピーライター」で不足テキストを補う</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: WFとは何か -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">WFとは何か——何を決めて、何を決めないか</h2>
+    <div class="content-block">
+        <p>Block 3（011）のFigma WF構築を振り返り、LP文脈での役割を明確化する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>WFで決めること</h3>
+                <ul>
+                    <li><strong>情報の優先順位：</strong>上にあるものほど重要。何を最初に見せるか</li>
+                    <li><strong>セクションの面積配分：</strong>重要度＝画面占有率。FVに何%割くか</li>
+                    <li><strong>CTAの配置ポイント：</strong>どのタイミングで行動を促すか</li>
+                    <li><strong>PC→SP変換方針：</strong>2カラムをどう折り返すか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>WFで決めないこと</h3>
+                <ul>
+                    <li>色・フォントの選定 → 026で扱う</li>
+                    <li>画像の細部・実際の素材 → 026〜027で扱う</li>
+                    <li>アニメーション・インタラクション → 027で扱う</li>
+                    <li>実装コードの詳細 → 028で扱う</li>
+                </ul>
+                <p class="text-sub">WFは「骨格」。肉付けは後の演習で行う。今は構造の正確さだけに集中する</p>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ WFに色を付けたくなったら要注意。それは「見た目で決めている」証拠——設計が骨格を失う</div>
+    </div>
+</div>
+
+<!-- スライド11: BtoB LP WFの参考パターン -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">BtoB LP WFの参考パターン——TALENTBOARDの骨格</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1110 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:1200px;">
+            <!-- FV -->
+            <rect x="10" y="10" width="220" height="120" rx="8" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="120" y="38" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">FV</text>
+            <rect x="25" y="48" width="100" height="60" rx="4" fill="white" opacity="0.1"/>
+            <text x="75" y="74" text-anchor="middle" fill="white" font-size="10">テキスト</text>
+            <text x="75" y="90" text-anchor="middle" fill="white" opacity="0.6" font-size="9">H1＋サブ＋CTA</text>
+            <rect x="140" y="48" width="75" height="60" rx="4" fill="white" opacity="0.1"/>
+            <text x="177" y="78" text-anchor="middle" fill="white" font-size="10">画面モック</text>
+            <text x="120" y="118" text-anchor="middle" fill="white" opacity="0.5" font-size="9">左テキスト ＋ 右ビジュアル</text>
+
+            <!-- 矢印 -->
+            <polygon points="237,62 237,78 253,70" fill="white" opacity="0.4"/>
+
+            <!-- 課題提起 -->
+            <rect x="260" y="10" width="190" height="120" rx="8" fill="white" opacity="0.08" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
+            <text x="355" y="38" text-anchor="middle" fill="white" font-size="14" font-weight="bold">課題提起</text>
+            <rect x="275" y="48" width="50" height="65" rx="4" fill="white" opacity="0.08"/>
+            <text x="300" y="85" text-anchor="middle" fill="white" font-size="9">📊</text>
+            <rect x="335" y="48" width="50" height="65" rx="4" fill="white" opacity="0.08"/>
+            <text x="360" y="85" text-anchor="middle" fill="white" font-size="9">📊</text>
+            <rect x="395" y="48" width="50" height="65" rx="4" fill="white" opacity="0.08"/>
+            <text x="420" y="85" text-anchor="middle" fill="white" font-size="9">📊</text>
+            <text x="355" y="118" text-anchor="middle" fill="white" opacity="0.5" font-size="9">3カラム アイコン＋テキスト</text>
+
+            <!-- 矢印 -->
+            <polygon points="457,62 457,78 473,70" fill="white" opacity="0.4"/>
+
+            <!-- 解決策 -->
+            <rect x="480" y="10" width="190" height="120" rx="8" fill="white" opacity="0.08" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
+            <text x="575" y="38" text-anchor="middle" fill="white" font-size="14" font-weight="bold">解決策</text>
+            <rect x="495" y="48" width="75" height="65" rx="4" fill="white" opacity="0.08"/>
+            <text x="532" y="85" text-anchor="middle" fill="white" font-size="9">画像</text>
+            <rect x="580" y="48" width="75" height="65" rx="4" fill="white" opacity="0.08"/>
+            <text x="617" y="85" text-anchor="middle" fill="white" font-size="9">テキスト</text>
+            <text x="575" y="118" text-anchor="middle" fill="white" opacity="0.5" font-size="9">左右交互レイアウト</text>
+
+            <!-- 矢印 -->
+            <polygon points="677,62 677,78 693,70" fill="white" opacity="0.4"/>
+
+            <!-- 信頼構築 -->
+            <rect x="700" y="10" width="190" height="120" rx="8" fill="white" opacity="0.08" stroke="white" stroke-width="1" stroke-opacity="0.3"/>
+            <text x="795" y="38" text-anchor="middle" fill="white" font-size="14" font-weight="bold">信頼構築</text>
+            <rect x="715" y="48" width="160" height="20" rx="3" fill="white" opacity="0.1"/>
+            <text x="795" y="62" text-anchor="middle" fill="white" font-size="9">導入企業ロゴ帯</text>
+            <rect x="715" y="74" width="70" height="25" rx="3" fill="white" opacity="0.08"/>
+            <text x="750" y="91" text-anchor="middle" fill="white" font-size="9">数字×3</text>
+            <rect x="795" y="74" width="80" height="40" rx="3" fill="white" opacity="0.08"/>
+            <text x="835" y="97" text-anchor="middle" fill="white" font-size="9">お客様の声</text>
+            <text x="795" y="118" text-anchor="middle" fill="white" opacity="0.5" font-size="9">ロゴ帯＋数字＋声カード</text>
+
+            <!-- 矢印 -->
+            <polygon points="897,62 897,78 913,70" fill="white" opacity="0.4"/>
+
+            <!-- CTA -->
+            <rect x="920" y="10" width="180" height="120" rx="8" fill="#00d4ff" opacity="0.25" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="1010" y="38" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">CTA</text>
+            <rect x="935" y="48" width="150" height="65" rx="6" fill="#00d4ff" opacity="0.2"/>
+            <text x="1010" y="82" text-anchor="middle" fill="white" font-size="11">フルワイド CTAバー</text>
+            <text x="1010" y="118" text-anchor="middle" fill="white" opacity="0.5" font-size="9">無料デモ申込み</text>
+
+            <!-- 下部注記 -->
+            <text x="555" y="180" text-anchor="middle" fill="white" opacity="0.5" font-size="16">※ これは参考パターン。自分の要件定義（ステップ1〜3）に基づいて構成を判断すること</text>
+
+            <!-- 凡例 -->
+            <text x="555" y="220" text-anchor="middle" fill="#00d4ff" font-size="24">022 のWFは、このパターンを起点に自分のターゲット・訴求軸で最適化する</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド12: PC版とSP版のWF設計方針 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">PC版・SP版のWF設計方針——Block 3のレスポンシブ設計を接続</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>LP特有のSP設計ポイント</h3>
+                <ul>
+                    <li><strong>FV：</strong>テキスト＋画像は縦積み。テキストを上・画像を下</li>
+                    <li><strong>2カラム→1カラム変換：</strong>コンテンツの優先順位で上から並べ直す</li>
+                    <li><strong>CTAボタン：</strong>サムゾーン（親指が届く画面下部）内に配置</li>
+                    <li><strong>追従CTA：</strong>スクロールしても常に表示されるCTA帯の検討</li>
+                </ul>
+            </div>
+            <div>
+                <h3>022の進め方</h3>
+                <ul>
+                    <li>まずPC版WFを完成させる（構造の骨格を確定）</li>
+                    <li>その後SP版に変換する（PC→SPの変換方針を明示）</li>
+                    <li>Block 3（013）で学んだ「コンテンツ優先・グリッド変換」を適用</li>
+                    <li>SP版も023〜028の演習でそのまま使用する</li>
+                </ul>
+                <p class="text-sub">SP比率が高い場合でも「PCファースト設計 → SP変換」の順は崩さない。構造の整合性を保つため</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: 実践編の予告と準備 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">まとめ：理論編で設計図の骨格が決まった</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>理論編で確認したこと</h3>
+                <ul>
+                    <li>Block 4の持ち込み素材の全量</li>
+                    <li>LP要件定義の3ステップ（ターゲット→訴求軸→情報設計）</li>
+                    <li>BtoB LPのセクション構成の「型」と論理的根拠</li>
+                    <li>WFで決めること・決めないことの境界線</li>
+                    <li>PC版→SP版の変換方針</li>
+                </ul>
+            </div>
+            <div>
+                <h3>実践編でやること</h3>
+                <ul>
+                    <li><strong>演習1：</strong>LP要件定義書の作成（ターゲット・訴求軸を決定）</li>
+                    <li><strong>演習2：</strong>セクション構成表の作成（素材の割り当て）</li>
+                    <li><strong>演習3：</strong>Figma WF構築——PC版→SP版の順で完成</li>
+                </ul>
+                <p class="text-sub">完成したWFは023〜028の全演習でそのまま使用する。今日の設計がBlock 5全体を規定する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド14: まとめタイル -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">まとめ：LP設計の4つの核心</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">🗂️</div>
+            <h3>素材の棚卸し</h3>
+            <p>Block 4で揃えたコピー9案・画像セット・Gemを把握する。「これから作る」ではなく「すでにある素材を設計で組み立てる」フェーズへ</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🎯</div>
+            <h3>LP要件定義3ステップ</h3>
+            <p>①ターゲット確定（1人に絞る）→ ②訴求軸の設計（課題と理想のギャップ）→ ③情報設計（人間の意思決定順）。この3ステップが設計の骨格</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🏗️</div>
+            <h3>WFの役割と境界線</h3>
+            <p>WFで決めるのは「情報の優先順位・面積・CTAポイント・PC→SP方針」。色・フォント・画像の細部はWFの仕事ではない</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🔗</div>
+            <h3>022が全体のベース</h3>
+            <p>今日作る要件定義書・セクション構成表・WFは023〜028の全演習で使い続ける。設計の精度が最終LPの品質を決める</p>
+        </div>
+    </div>
+    <div class="highlight-box">💡 「誰に言わないかを決めること」が設計の第一歩——001の原点がここに戻ってくる</div>
+</div>
+
+<!-- スライド15: 次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回：実践編——設計図を引いてFigma WFを完成させる</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>実践編の3演習</h3>
+                <ul>
+                    <li>演習1：LP要件定義書に記入（ターゲット・訴求軸を確定）</li>
+                    <li>演習2：セクション構成表を作成（Block 4素材の配置決定）</li>
+                    <li>演習3：FigmaでPC版WF → SP版WFを完成させる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>準備しておくこと</h3>
+                <ul>
+                    <li>Block 4（016〜021）の素材をFigmaに整理しておく</li>
+                    <li>コピー9案・画像セット5枚・Gemへのアクセスを確認</li>
+                    <li>著作権チェック済みリスト（021）を手元に用意</li>
+                </ul>
+                <p class="text-sub">実践編で完成したWFは023以降のすべての演習のベースになります</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド16: クイズへの誘導 -->
+<div class="slide-container section-title-layout">
+    <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+    <p>5問のクイズで今日の内容を確認しましょう</p>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +530,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "LP要件定義の3ステップを正しい順番で並べたものはどれか？",
+        options: [
+            "情報設計の確定 → ターゲットの確定 → 訴求軸の確定",
+            "ターゲットの確定 → 訴求軸の確定 → 情報設計の確定",
+            "訴求軸の確定 → ターゲットの確定 → 情報設計の確定",
+            "情報設計の確定 → 訴求軸の確定 → ターゲットの確定"
+        ],
+        correct: 1,
+        explanation: "LP要件定義は①ターゲットの確定 → ②訴求軸の確定 → ③情報設計の確定の順で進めます。ターゲットが決まらなければ訴求軸は決められず、訴求軸が決まらなければ情報の順番も決められません。この順番は設計の論理的な依存関係によるものです。"
+    },
+    {
+        question: "TALENTBOARDには3つのペルソナ（人事部長・リクルーター・経営層）がいる。LPのメインターゲットをどう決めるべきか？",
+        options: [
+            "全員を均等にターゲットにして、どのペルソナにも刺さる汎用的なメッセージを作る",
+            "ランダムに1人を選ぶ。どれを選んでも同じ結果になる",
+            "1人のペルソナをメインに絞り、サブターゲットを設定する",
+            "ターゲットは決めず、訴求軸の設計から始める"
+        ],
+        correct: 2,
+        explanation: "3ペルソナ全員に刺そうとすると、誰にも刺さらないLPになります。001のキャリアリンクファクトリー1回目LP（製造業全般に「何でもできます」）の失敗がその実例です。メインターゲットを1人に絞り、サブターゲットへの配慮は「読まれても違和感ない程度」に留めるのが正しいアプローチです。"
+    },
+    {
+        question: "BtoB LPのセクション構成「FV→課題提起→解決策→信頼構築→CTA」の順番に根拠はあるか？",
+        options: [
+            "ない。慣習的に使われているだけで、どの順番でも成果は変わらない",
+            "ある。人間の意思決定プロセス（課題認識→解決策検討→信頼確認→行動）に沿っている",
+            "ある。検索エンジンのアルゴリズムに合わせた順番だから",
+            "ある。CTA→信頼構築→FVの逆順のほうが効果的だが、慣習上この順番になっている"
+        ],
+        correct: 1,
+        explanation: "「課題→解決→信頼→行動」はBlock 1（005）の行動心理学で学んだ人間の意思決定プロセスそのものです。読者は自分の課題を認識し、解決策を検討し、信頼を確認した上で行動に移ります。LP構成はその心理プロセスを設計した「地図」です。"
+    },
+    {
+        question: "ワイヤーフレーム（WF）で決めるべきこととして正しいものはどれか？",
+        options: [
+            "使用する色・フォント・アニメーション",
+            "情報の優先順位・セクションの面積配分・CTAの配置・PC→SP変換方針",
+            "実際に使用する画像の細部・素材の選定",
+            "実装コードの詳細・ブラウザ対応の方針"
+        ],
+        correct: 1,
+        explanation: "WFで決めるのは「情報の優先順位（上にあるものほど重要）・セクションの面積配分・CTAの配置ポイント・PC→SP変換方針」の4点です。色・フォント・画像の細部は026以降の仕事であり、WFには持ち込みません。WFに色を付けたくなったときは「見た目で決めている」サインです。"
+    },
+    {
+        question: "Block 4で作った素材をLPに「ただ並べる」のと「設計して配置する」のは何が違うか？",
+        options: [
+            "素材の品質が高ければ、並べ方は関係なく成果が出る",
+            "設計して配置すると時間がかかるだけで、成果に差はない",
+            "素材の品質は同じでも、ターゲット・訴求軸・情報の順番という「設計」がなければ成果は出ない",
+            "「ただ並べる」ほうが読者にとって自然に見えるため、成果が出やすい"
+        ],
+        correct: 2,
+        explanation: "001のキャリアリンクファクトリー1回目LP（素材は揃っていたが設計が弱く成果が出なかった）が実証しているように、素材の品質と設計の質は別物です。001で学んだ「デザイン＝設計」という原点に立ち返ると、見た目を整える前に「誰に・何を・どの順番で」という設計が不可欠です。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

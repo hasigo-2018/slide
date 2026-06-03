@@ -3,13 +3,578 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
+    <title>LP設計：要件定義からWFへの落とし込み実践【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>LP設計：要件定義から<br>WFへの落とし込み実践<span>【実践編】</span></h1>
+        <p>設計図なきLP制作は、地図なきドライブ</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標——3つの成果物を完成させる</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>今日のゴール</h3>
+                <ul class="no-bullet">
+                    <li><strong>①LP要件定義書</strong>（誰に・何を・なぜ）</li>
+                    <li><strong>②セクション構成表</strong>（どの順番で・何を使って）</li>
+                    <li><strong>③Figma WF</strong>（PC版＋SP版）</li>
+                </ul>
+                <p class="text-sub">この3点が023〜028の全演習のベースになる。今日の設計精度がBlock 5全体の品質を決める</p>
+            </div>
+            <div>
+                <h3>演習の流れ</h3>
+                <ul>
+                    <li><strong>演習1：LP要件定義書</strong>（2コマ・100分）<br>考える——誰に・何を・なぜ</li>
+                    <li><strong>演習2：セクション構成表</strong>（2コマ・100分）<br>決める——どの順番で・何を使って</li>
+                    <li><strong>演習3：Figma WF構築</strong>（2コマ・100分）<br>形にする——画面構造に落とし込む</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 順番厳守：要件定義書 → 構成表 → WFの順で進める。Figmaは演習3まで開かない</div>
+    </div>
+</div>
+
+<!-- スライド3: Block 2との接続（核心） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Block 2でやったあの型を使う——整骨院からTALENTBOARDへ</h2>
+    <div class="content-block">
+        <p><strong>今すぐBlock 2の整骨院要件定義書を手元に出してください。</strong> 演習1では、あのシートと同じ構造をTALENTBOARDで埋めます。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>整骨院（Block 2での練習）</h3>
+                <ul>
+                    <li><strong>業種：</strong>BtoC / 地域密着型サービス</li>
+                    <li><strong>ターゲット：</strong>腰痛・肩こりを抱える患者</li>
+                    <li><strong>CV：</strong>予約獲得</li>
+                    <li><strong>課題：</strong>「どこに行けばいいか分からない」</li>
+                    <li><strong>訴求軸：</strong>「あなたの痛みの原因を見つける」</li>
+                </ul>
+            </div>
+            <div>
+                <h3>TALENTBOARD（今日の実戦）</h3>
+                <ul>
+                    <li><strong>業種：</strong>BtoB / クラウド型ATSツール</li>
+                    <li><strong>ターゲット：</strong>採用担当者（3ペルソナから選定）</li>
+                    <li><strong>CV：</strong>資料請求・デモ申込</li>
+                    <li><strong>課題：</strong>候補者情報の散在・対応漏れ</li>
+                    <li><strong>訴求軸：</strong>演習1で設計する</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 変わるのは「業種・ターゲット・課題の中身」だけ。「ペルソナ→課題→訴求軸→情報設計」の順序は同じ。整骨院で詰まった箇所は今回も詰まる——それが自分の課題だ</div>
+    </div>
+</div>
+
+<!-- スライド4: 素材の準備確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">素材の準備確認——Block 4の成果物はすべて手元にあるか</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>確認チェックリスト</h3>
+                <ul class="no-bullet">
+                    <li>☐ <strong>016：</strong>3ペルソナ分のプロンプト設計シート</li>
+                    <li>☐ <strong>017：</strong>ペルソナ別ベストコピー9案＋セクション見出し＋CTA</li>
+                    <li>☐ <strong>018–019：</strong>統一トンマナの画像セット5枚＋ビジュアルガイドライン</li>
+                    <li>☐ <strong>020：</strong>Gem「TALENTBOARDコピーライター」（Geminiからアクセス可能か確認）</li>
+                    <li>☐ <strong>021：</strong>著作権チェック済み素材一式（使用可否確定済み）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Figmaの準備</h3>
+                <ul>
+                    <li>新規プロジェクト「TALENTBOARD_LP」を作成</li>
+                    <li>ページ構成：<br>
+                        ・<strong>参考</strong>（リファレンス画像置き場）<br>
+                        ・<strong>素材</strong>（Block 4素材の整理）<br>
+                        ・<strong>WF_PC</strong>（PC版WF作業ページ）<br>
+                        ・<strong>WF_SP</strong>（SP版WF作業ページ）
+                    </li>
+                </ul>
+                <p class="text-sub">素材が不足している場合：Gemで再生成 / 講師に確認。不足を確認してから演習1を開始すること</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: 演習1の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：LP要件定義書の作成</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>この演習でやること</h3>
+                <ul>
+                    <li>理論編で学んだ3ステップを実際に記入する</li>
+                    <li>ステップ1：メインターゲットを3ペルソナから1人に選定</li>
+                    <li>ステップ2：訴求軸を1文で設計</li>
+                    <li>ステップ3：LP全体のトーンとKPIを確定</li>
+                </ul>
+                <p class="text-sub">出力物：LP要件定義書（テキストドキュメント）</p>
+            </div>
+            <div>
+                <h3>時間配分</h3>
+                <ul>
+                    <li><strong>60分：</strong>個人記入</li>
+                    <li><strong>20分：</strong>2〜3名が発表・フィードバック</li>
+                    <li><strong>20分：</strong>修正・確定</li>
+                </ul>
+                <p class="text-sub">完成した要件定義書は演習2・3でそのまま使用する。曖昧なまま進めない</p>
+            </div>
+        </div>
+        <div class="highlight-box">📌 ①メインターゲットの選定理由 と ④訴求軸 が最重要。ここがブレると023〜028すべてがブレる</div>
+    </div>
+</div>
+
+<!-- スライド6: LP要件定義書テンプレート -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">LP要件定義書テンプレート——6項目を埋める</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>記入項目（必須）</h3>
+                <ul class="no-bullet">
+                    <li><strong>①メインターゲット</strong><br>3ペルソナから1人を選定＋選定理由（2〜3文）</li>
+                    <li><strong>②サブターゲット</strong><br>残り2ペルソナのうち、副次的に拾えるのは誰か</li>
+                    <li><strong>③メインターゲットの課題</strong><br>最も強い痛みを1つだけ選ぶ</li>
+                    <li><strong>④訴求軸</strong><br>課題→理想のギャップを埋めるメッセージ（1文）</li>
+                    <li><strong>⑤LP全体のトーン</strong><br>Block 4のビジュアルガイドラインから転記＋補足</li>
+                    <li><strong>⑥KPI</strong><br>資料請求 or デモ申込、目標件数（仮でも設定する）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>記入の際に参照する素材</h3>
+                <ul class="no-bullet">
+                    <li><strong>①②の選定：</strong>016のプロンプト設計シート（3ペルソナ情報）</li>
+                    <li><strong>③④の設計：</strong>017のペルソナ別ベストコピー9案</li>
+                    <li><strong>⑤のトーン：</strong>019のビジュアルガイドライン</li>
+                    <li><strong>⑥のKPI：</strong>BtoB SaaSの業界標準（LP→CV率1〜3%）を参考に仮設定</li>
+                </ul>
+                <p class="text-sub">①と④は後から変えるほど全体のやり直しが増える。この段階で丁寧に考える</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 記入ガイド：メインターゲットの選定 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">記入ガイド①：メインターゲットをどう選ぶか</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>TALENTBOARDの3ペルソナ比較</h3>
+                <ul>
+                    <li><strong>人事部長（50代・決裁者）</strong><br>関心：コスト削減・ガバナンス・ROI。LP経由CVは稀（営業が直接アプローチ）</li>
+                    <li><strong>現場リクルーター（30代・実務者）</strong><br>関心：業務効率化・ミス撲滅。LP検索→比較検討→デモ申込という行動をとりやすい</li>
+                    <li><strong>経営層（40〜50代・ROI判断者）</strong><br>関心：採用速度・投資対効果。紹介・展示会経由が多い</li>
+                </ul>
+            </div>
+            <div>
+                <h3>選定の判断基準</h3>
+                <ul>
+                    <li>「このLPを検索して見て、CVする可能性が最も高いのは誰か」</li>
+                    <li>BtoB SaaSのLP経由CVは<strong>現場の実務者</strong>が入口になることが多い</li>
+                    <li>決裁者への訴求は「実務者がデモ申込→社内説得」の流れで行う</li>
+                    <li>ただし正解は1つではない。<strong>自分の論理で選び、理由を言語化できること</strong>が重要</li>
+                </ul>
+                <p class="text-sub">ヒントを参考にしつつ、最終的には自分の判断で決める。「なぜこの人を選んだか」を2〜3文で書けること</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: 記入ガイド：訴求軸の設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">記入ガイド②：訴求軸を1文に絞り込む</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>訴求軸の設計手順</h3>
+                <ul>
+                    <li><strong>Step 1：</strong>メインターゲットの「最も強い課題」を1つ書く</li>
+                    <li><strong>Step 2：</strong>その課題が解決した「理想の状態」を1文で書く</li>
+                    <li><strong>Step 3：</strong>課題→理想のギャップを埋めるTALENTBOARDの価値を言語化</li>
+                    <li><strong>Step 4：</strong>017のコピー9案から共通するキーワードを抽出→1文に昇華</li>
+                </ul>
+            </div>
+            <div>
+                <h3>良い訴求軸・NG例</h3>
+                <ul class="no-bullet">
+                    <li>❌ <strong>NG：</strong>「採用業務が便利になります」<br>→ 抽象的すぎて誰にも刺さらない</li>
+                    <li>❌ <strong>NG：</strong>「高機能な採用管理ツール」<br>→ 競合と差別化できていない</li>
+                    <li>✅ <strong>OK：</strong>「Excel地獄から、1クリックで全体把握へ」<br>→ 課題（Excel）と理想（全体把握）が具体的</li>
+                    <li>✅ <strong>OK：</strong>「対応漏れゼロの採用チームをつくる」<br>→ ターゲットの痛みと解決後の姿が明確</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 訴求軸が決まると、コピー9案の中から「使う1案」が自然に決まる。「一番刺さるコピーはどれか」ではなく「訴求軸に合うコピーはどれか」で選ぶ</div>
+    </div>
+</div>
+
+<!-- スライド9: 演習1の提出と共有 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：提出と共有——「決めた理由」を話す</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>発表内容（2〜3名）</h3>
+                <ul class="no-bullet">
+                    <li>①メインターゲットを誰にしたか＋選定理由</li>
+                    <li>④訴求軸（1文）＋設計の根拠</li>
+                    <li>⑥KPI（資料請求 or デモ申込・目標件数）</li>
+                </ul>
+                <p class="text-sub">発表時間：1人3分以内。根拠を言語化する訓練。読み上げではなく、自分の言葉で話す</p>
+            </div>
+            <div>
+                <h3>フィードバックの観点</h3>
+                <ul>
+                    <li>メインターゲットの選定理由は論理的か（「なんとなく」になっていないか）</li>
+                    <li>訴求軸は具体的か（「便利です」「高機能です」レベルになっていないか）</li>
+                    <li>課題と理想のギャップが1文に凝縮されているか</li>
+                    <li>整骨院のときの要件定義と照らして、成長があるか</li>
+                </ul>
+                <p class="text-sub">フィードバック後、修正時間10分。確定した要件定義書は演習2でそのまま使用する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: 演習2の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：セクション構成表の作成</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>この演習でやること</h3>
+                <ul>
+                    <li>演習1で確定した要件定義をもとに、LPの全セクションを設計する</li>
+                    <li>各セクションの「目的・コンテンツ・使用素材」を定義</li>
+                    <li>セクションの順番と理由を言語化する</li>
+                    <li>不足テキストはGem「TALENTBOARDコピーライター」で追加生成</li>
+                </ul>
+                <p class="text-sub">出力物：セクション構成表（6〜8セクション分）</p>
+            </div>
+            <div>
+                <h3>時間配分</h3>
+                <ul>
+                    <li><strong>60分：</strong>個人記入（Gemを使った追加生成含む）</li>
+                    <li><strong>20分：</strong>2〜3名が発表・フィードバック</li>
+                    <li><strong>20分：</strong>修正・確定</li>
+                </ul>
+                <p class="text-sub">完成したセクション構成表は演習3のWF構築で直接参照する。「構成表通りにFigmaを組む」が演習3の前提</p>
+            </div>
+        </div>
+        <div class="highlight-box">📌 構成表なしにFigmaを開くことは禁止。「形にする前に、言語で決める」がBlock 5の哲学</div>
+    </div>
+</div>
+
+<!-- スライド11: セクション構成表テンプレートと記入ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">セクション構成表テンプレート——5列で全セクションを定義する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>テンプレートの5列</h3>
+                <ul>
+                    <li><strong>セクション名：</strong>FV / 課題提起 / 解決策 … など</li>
+                    <li><strong>目的：</strong>このセクションが達成すること（1文）</li>
+                    <li><strong>メインコンテンツ：</strong>テキスト・画像・図の種類と量</li>
+                    <li><strong>使用するBlock 4素材：</strong>016〜021のどれを使うか</li>
+                    <li><strong>CTAの有無と種類：</strong>ボタン文言・配置の意図</li>
+                </ul>
+            </div>
+            <div>
+                <h3>推奨セクション構成（型）</h3>
+                <ul class="no-bullet">
+                    <li>①FV（3秒で価値を伝える）</li>
+                    <li>②課題提起（読者の痛みに共感）</li>
+                    <li>③解決策・サービス概要</li>
+                    <li>④機能紹介（具体的にできること）</li>
+                    <li>⑤信頼構築（実績・数字・お客様の声）</li>
+                    <li>⑥料金 or 導入の流れ</li>
+                    <li>⑦FAQ</li>
+                    <li>⑧最終CTA</li>
+                </ul>
+                <p class="text-sub">「型を知った上で、自分の要件定義に基づいて崩す」ことがOK。追加・削除・順番変更は論理的な根拠があれば可</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: Gemで不足テキストを追加生成 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Gemで不足テキストを追加生成する——実務ツールとして初めて動かす</h2>
+    <div class="content-block">
+        <p>017で作ったコピーはFV・セクション見出し・CTAが中心です。構成表を埋めていく中で「課題提起の本文がない」「FAQの内容がない」等の不足が発生したら、Gem「TALENTBOARDコピーライター」に依頼します。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>課題提起本文を生成するプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-022-p-01">課題提起セクションの本文を書いてください。
+ターゲット：現場リクルーター（30代）
+課題：候補者情報がExcel・メール・チャットに散在し、対応漏れや二重連絡が発生している
+トーン：共感的・問いかけ型
+文字数：80〜120文字
+形式：本文テキスト（箇条書きなし）</div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-022-p-01', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+            </div>
+            <div>
+                <h3>FAQを生成するプロンプト例</h3>
+                <div class="prompt-box">
+                    <div class="prompt-content" id="prompt-022-p-02">TALENTBOARDのFAQセクション用に、よくある質問と回答を5セット作成してください。
+ターゲット：初めてATSツールを検討している採用担当者
+懸念点：導入コスト・操作の複雑さ・既存システムとの連携・サポート体制・セキュリティ
+各回答：60〜100文字で簡潔に</div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt-022-p-02', event)">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="highlight-box">💡 Gemは「ゼロから作る道具」ではなく「不足を補う実務ツール」。構成表で"穴"を特定してから使う</div>
+    </div>
+</div>
+
+<!-- スライド13: 演習2の提出と共有 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：提出と共有——セクションの「なぜ」を話す</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>発表内容（2〜3名）</h3>
+                <ul>
+                    <li>採用したセクション構成（何セクション・どの順番）</li>
+                    <li>型から変えた箇所がある場合、その理由</li>
+                    <li>各セクションに割り当てたBlock 4素材</li>
+                </ul>
+                <p class="text-sub">発表時間：1人3〜4分。構成表を画面共有しながら説明する</p>
+            </div>
+            <div>
+                <h3>フィードバックの観点</h3>
+                <ul>
+                    <li>セクションの順番に論理的な根拠はあるか（「なんとなく」になっていないか）</li>
+                    <li>各セクションの「目的」が明確か（「情報を並べただけ」になっていないか）</li>
+                    <li>Block 4素材の割り当てに抜け・ムダがないか</li>
+                    <li>要件定義書との一貫性があるか（ターゲット・訴求軸とズレていないか）</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-sub">フィードバック後、修正して確定。ここで要件定義書とセクション構成表の両方が確定する。演習3のWF構築に進む</p>
+    </div>
+</div>
+
+<!-- スライド14: 演習3の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：Figma WFの構築——設計図を画面に落とし込む</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>この演習でやること</h3>
+                <ul>
+                    <li>演習2のセクション構成表を画面構造に落とし込む</li>
+                    <li>Block 3（011）のFigma WF構築スキルの実戦投入</li>
+                    <li>PC版WFを先に完成させ、次にSP版に変換</li>
+                    <li>グレースケール＋プレースホルダーで構成（色・フォントは入れない）</li>
+                </ul>
+                <p class="text-sub">出力物：Figma WF（PC版＋SP版）</p>
+            </div>
+            <div>
+                <h3>時間配分</h3>
+                <ul>
+                    <li><strong>50分：</strong>PC版WF構築</li>
+                    <li><strong>20分：</strong>SP版WFへの変換</li>
+                    <li><strong>10分：</strong>自己チェックリスト確認</li>
+                    <li><strong>20分：</strong>完成物の確認・フィードバック</li>
+                </ul>
+                <p class="text-sub">Figmaページ「WF_PC」「WF_SP」を使用。Block 3のWFコンポーネントを活用する</p>
+            </div>
+        </div>
+        <div class="highlight-box">📌 WFに色をつけない。フォントを選ばない。画像の細部を入れない——骨格だけを作る</div>
+    </div>
+</div>
+
+<!-- スライド15: PC版WF構築の手順と基準 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">PC版WF構築の手順——構成表通りに組む</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>構築手順（4ステップ）</h3>
+                <ul>
+                    <li><strong>Step 1：</strong>構成表の順番通りにセクション枠を縦に配置</li>
+                    <li><strong>Step 2：</strong>各セクション内のレイアウトを決定<br>（1カラム / 2カラム / 左右交互 / 3カラム等）</li>
+                    <li><strong>Step 3：</strong>テキスト配置エリアと画像配置エリアをプレースホルダーで明示</li>
+                    <li><strong>Step 4：</strong>CTAボタンの配置ポイントをマーク（最低3箇所：FV・中盤・最終）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>WFの品質基準</h3>
+                <ul>
+                    <li><strong>情報の優先順位：</strong>上にあるものほど重要。FVが最優先</li>
+                    <li><strong>面積配分：</strong>重要なセクションほど画面占有率が高い</li>
+                    <li><strong>プレースホルダー：</strong>「画像エリア」「見出しテキスト」「本文テキスト」と明示</li>
+                    <li><strong>グレースケール：</strong>黒・白・グレーのみ。色は一切使わない</li>
+                </ul>
+                <p class="text-sub">迷ったら「これはWFで決めることか？」と自問する。色・フォント・素材の細部は「NO」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド16: SP版WFへの変換手順 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">SP版WFへの変換——情報を削るのではなく、配置を変える</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>変換の4ルール（Block 3・013を適用）</h3>
+                <ul class="no-bullet">
+                    <li><strong>①2カラム → 1カラム：</strong>左右を縦積みに変換。上に来るのは「優先度の高い方」</li>
+                    <li><strong>②FVの縦積み：</strong>テキスト先（上）→ 画像後（下）の順で配置</li>
+                    <li><strong>③CTAボタン：</strong>サムゾーン（画面下部・親指が届く範囲）内に配置</li>
+                    <li><strong>④追従CTAの検討：</strong>スクロール量が多いLPでは、常時表示CTAバーが有効</li>
+                </ul>
+            </div>
+            <div>
+                <h3>よくある変換ミス</h3>
+                <ul class="no-bullet">
+                    <li>❌ PC版の情報をSP版で削ってしまう（→ 配置を変えるだけ）</li>
+                    <li>❌ 2カラムをそのままSP画面に詰め込む（→ 必ず縦積みに変換）</li>
+                    <li>❌ CTAボタンをFVのすぐ下にしか置かない（→ 中盤・最終にも配置）</li>
+                    <li>❌ SP版でフォントサイズを小さくしすぎる（→ 視認性を最優先）</li>
+                </ul>
+                <p class="text-sub">PC版とSP版の情報量は同じ。変わるのはレイアウトの構造だけ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド17: WF完成後の自己チェックリスト -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">WF完成後の自己チェックリスト——提出前に必ず確認</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>構造の整合性チェック</h3>
+                <ul class="no-bullet">
+                    <li>☐ セクションの順番は要件定義書・構成表と一致しているか</li>
+                    <li>☐ 各セクションの目的が画面構造から読み取れるか</li>
+                    <li>☐ CTAは最低3箇所（FV・中盤・最終）に配置されているか</li>
+                    <li>☐ Block 4の素材がどこに配置されるか明示されているか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>PC版↔SP版チェック</h3>
+                <ul class="no-bullet">
+                    <li>☐ PC版→SP版で情報の欠落がないか</li>
+                    <li>☐ 2カラムは正しく1カラムに変換されているか</li>
+                    <li>☐ FVのテキスト＋画像は縦積み（テキスト上）になっているか</li>
+                    <li>☐ CTAボタンはサムゾーン内に収まっているか</li>
+                </ul>
+                <p class="text-sub">すべて「☑」になったら提出。1つでも「☐」が残っていたら、その箇所を修正してから提出する</p>
+            </div>
+        </div>
+        <div class="highlight-box">📌 このWFで「OK」を出すということは、023〜028の全演習でこの構造を使うということ。曖昧なまま進めない</div>
+    </div>
+</div>
+
+<!-- スライド18: 成果物の確認と次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の成果物——設計図が完成した</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>今日完成した3つの成果物</h3>
+                <ul>
+                    <li><strong>①LP要件定義書：</strong>誰に・何を・なぜ伝えるかが確定</li>
+                    <li><strong>②セクション構成表：</strong>何を・どの順番で・どの素材で伝えるかが確定</li>
+                    <li><strong>③Figma WF（PC版＋SP版）：</strong>画面構造として可視化</li>
+                </ul>
+                <p class="text-sub">この3点を使って、023〜028の全演習を進める。変更が必要になった場合は要件定義書に戻って判断する</p>
+            </div>
+            <div>
+                <h3>次回：023「FVの視覚設計」</h3>
+                <ul>
+                    <li>022で引いた設計図の最初のセクション——FVを実際にデザインする</li>
+                    <li>理論編：「3秒で価値を伝える」FVの設計原則</li>
+                    <li>実践編：TALENTBOARDのFVをFigmaで完成させる</li>
+                </ul>
+                <p class="text-sub">「設計図は描けた。次はそこに色と形を入れる」。022のWFを必ずFigmaで開いた状態で023に臨んでください</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド19: まとめ -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">まとめ：LP設計実践の3段階</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">🎯</div>
+            <h3>演習1：要件定義書</h3>
+            <p>「誰に・何を・なぜ」を決める。メインターゲット1人に絞り、訴求軸を1文で設計する。ここが全体の起点</p>
+        </div>
+        <div class="tile">
+            <div class="icon">📋</div>
+            <h3>演習2：構成表</h3>
+            <p>「どの順番で・何を使って」を決める。各セクションの目的・コンテンツ・使用素材をGemも活用して定義する</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🏗️</div>
+            <h3>演習3：Figma WF</h3>
+            <p>「どう見せるか」を骨格で決める。グレースケール＋プレースホルダーでPC版→SP版の順に構築する</p>
+        </div>
+    </div>
+    <div class="highlight-box">💡 「考える→決める→形にする」の順序は崩さない。この設計図が023〜028すべての土台になる</div>
+</div>
+
+<!-- スライド20: 次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回予告：023「FV設計」——設計図に最初の色と形を入れる</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>023で学ぶこと</h3>
+                <ul>
+                    <li>FV（ファーストビュー）の視覚設計原則</li>
+                    <li>「3秒で価値を伝える」ために何をどこに置くか</li>
+                    <li>キャッチコピー・ビジュアル・CTAの配置設計</li>
+                    <li>022のWFを土台にFigmaで実装する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>023への準備</h3>
+                <ul>
+                    <li>022のFigma WFを完成・保存済みの状態にする</li>
+                    <li>LP要件定義書・セクション構成表も手元に置く</li>
+                    <li>017のFV向けベストコピーを確認しておく</li>
+                </ul>
+                <p class="text-sub">022の設計精度が023の出来を直接左右する。WFに曖昧な部分が残っていたら今のうちに解消しておく</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド21: クイズへの誘導 -->
+<div class="slide-container section-title-layout">
+    <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+    <p>5問のクイズで今日の内容を確認しましょう</p>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +585,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "LP要件定義書で最初に確定すべきことはどれか？",
+        options: [
+            "LP全体のトーン（色・フォントの方向性）",
+            "メインターゲット（誰に向けたLPか）",
+            "セクション構成（何セクション作るか）",
+            "KPI（目標CV件数）"
+        ],
+        correct: 1,
+        explanation: "最初に確定すべきはメインターゲットです。訴求軸もセクション構成もKPIも、「誰に向けたLPか」が決まらなければ定義できません。理論編の3ステップ通り、①ターゲット確定 → ②訴求軸確定 → ③情報設計確定の順序を守ります。"
+    },
+    {
+        question: "3ペルソナがいるとき「全員に刺さるLPを作ろう」としたらどうなるか？",
+        options: [
+            "より多くのターゲットに届くため、CV数が増える",
+            "001のキャリアリンクファクトリー1回目と同じ失敗になる——ターゲットが広すぎて誰にも刺さらない",
+            "汎用的なメッセージになるため、業界標準のLPができる",
+            "3ペルソナすべてがCVするため、目標を3倍に設定できる"
+        ],
+        correct: 1,
+        explanation: "「全員向け＝誰にも刺さらない」は001の実践で学んだ最初の失敗です。キャリアリンクファクトリーが製造業全般に「何でもできます」と訴求して成果が出なかった例と同じ構造です。メインターゲット1人に絞り、そのターゲットへの訴求を最大化することが設計の基本です。"
+    },
+    {
+        question: "セクション構成表で各セクションに「目的」を書く理由として最も適切なものはどれか？",
+        options: [
+            "スライドの文字数を増やして、情報量が多いように見せるため",
+            "「なんとなくここに置いた」を排除し、セクションの存在理由を言語化するため",
+            "クライアントへの提出資料として体裁を整えるため",
+            "Figma上でレイアウトを自動決定するため"
+        ],
+        correct: 1,
+        explanation: "セクションの「目的」を書くのは、根拠のない配置を排除するためです。「なんとなくここに置いた」というレベルのWFでは、フィードバックに論理的に答えられません。また、Block 6で求められる「論理的言語化」の下地となる習慣です。"
+    },
+    {
+        question: "WFを作る前に要件定義書とセクション構成表を先に作る理由はどれか？",
+        options: [
+            "Figmaが重くなるため、先に情報を整理してからファイルを開く",
+            "「何を・誰に・どの順番で伝えるか」が決まっていない状態でWFを組むと、見た目の都合で情報設計がゆがむ",
+            "講師が採点しやすいように、提出物を段階的に増やすため",
+            "Block 2のワークショップ形式を引き継ぐため"
+        ],
+        correct: 1,
+        explanation: "設計の思考順序を守ることが重要です。Figmaを先に開くと「このコンポーネントが使えるから、ここにこのセクションを置こう」という「見た目ファースト」の設計になりがちです。「考える（要件定義）→決める（構成表）→形にする（WF）」の順序が設計の論理的整合性を守ります。"
+    },
+    {
+        question: "Gem「TALENTBOARDコピーライター」を022の演習で使う場面として正しいものはどれか？",
+        options: [
+            "演習1の最初に、メインターゲットをGemに選ばせる",
+            "演習3のWF構築中に、Figmaのレイアウトを自動生成させる",
+            "演習2のセクション構成表作成時に、Block 4で未生成のテキスト（課題提起本文・FAQ等）を追加生成する",
+            "演習1の発表準備として、要件定義書の文章をGemに清書させる"
+        ],
+        correct: 2,
+        explanation: "Gemを使うのは演習2のセクション構成表作成時、不足テキストの追加生成が必要になった場面です。017で作ったコピーはFV・見出し・CTAが中心のため、課題提起本文やFAQなどが不足することがあります。Gemは「ゼロから考える道具」ではなく「構成表で特定した穴を補う実務ツール」として使います。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

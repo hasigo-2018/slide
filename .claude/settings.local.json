@@ -11,7 +11,11 @@
       "Bash(node scripts/insert_html.js master_slide/themes_new/020-2_practice.html generated_020_practice.html && node scripts/check_svg.js master_slide/themes_new/020-2_practice.html)",
       "Bash(node scripts/insert_html.js 021 theory)",
       "Bash(node scripts/insert_html.js master_slide/themes_new/021-2_practice.html generated_021_practice.html)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(node scripts/insert_html.js generated_022_theory.html master_slide/themes_new/022-1_theory.html)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/022-1_theory.html generated_022_theory.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/022-1_theory.html)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/022-2_practice.html generated_022_practice.html)"
     ]
   }
 }
