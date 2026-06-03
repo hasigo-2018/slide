@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
         <h1>FV（ファーストビュー）の<br>視覚設計<span>【理論編】</span></h1>
@@ -310,73 +299,71 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">BtoB SaaS FVの参考パターン——3つの構成骨格</h2>
     <div class="content-block svg-centered">
-        <svg viewBox="0 0 1300 580" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:560px;">
+        <svg viewBox="0 0 1300 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:480px;">
 
             <!-- ===== パターンA ===== -->
-            <text x="215" y="38" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="bold">パターンA</text>
-            <text x="215" y="66" text-anchor="middle" fill="white" opacity="0.85" font-size="18">左テキスト＋右画面モック</text>
+            <text x="215" y="40" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">パターンA</text>
+            <text x="215" y="64" text-anchor="middle" fill="white" opacity="0.8" font-size="15">左テキスト＋右画面モック</text>
             <!-- 外枠 -->
-            <rect x="30" y="80" width="370" height="360" rx="10" fill="white" opacity="0.06" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+            <rect x="30" y="78" width="370" height="280" rx="10" fill="white" opacity="0.06" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
             <!-- 左：テキストエリア -->
-            <rect x="46" y="98" width="162" height="80" rx="6" fill="#00d4ff" opacity="0.22"/>
-            <text x="127" y="138" text-anchor="middle" fill="white" font-size="17" font-weight="bold">キャッチコピー</text>
-            <text x="127" y="162" text-anchor="middle" fill="white" opacity="0.7" font-size="14">（20〜30文字）</text>
-            <rect x="46" y="192" width="162" height="54" rx="6" fill="white" opacity="0.1"/>
-            <text x="127" y="224" text-anchor="middle" fill="white" opacity="0.8" font-size="16">サブコピー</text>
-            <rect x="46" y="260" width="152" height="46" rx="23" fill="#00d4ff" opacity="0.75"/>
-            <text x="122" y="289" text-anchor="middle" fill="white" font-size="16" font-weight="bold">CTAボタン</text>
+            <rect x="46" y="94" width="162" height="60" rx="6" fill="#00d4ff" opacity="0.2"/>
+            <text x="127" y="128" text-anchor="middle" fill="white" font-size="13">キャッチコピー</text>
+            <rect x="46" y="166" width="162" height="40" rx="6" fill="white" opacity="0.1"/>
+            <text x="127" y="191" text-anchor="middle" fill="white" opacity="0.7" font-size="12">サブコピー</text>
+            <rect x="46" y="220" width="140" height="34" rx="17" fill="#00d4ff" opacity="0.7"/>
+            <text x="116" y="242" text-anchor="middle" fill="white" font-size="12">CTAボタン</text>
             <!-- 右：画面モック -->
-            <rect x="224" y="98" width="158" height="264" rx="6" fill="white" opacity="0.1"/>
-            <text x="303" y="236" text-anchor="middle" fill="white" opacity="0.75" font-size="17">画面モック</text>
+            <rect x="224" y="94" width="160" height="200" rx="6" fill="white" opacity="0.1"/>
+            <text x="304" y="194" text-anchor="middle" fill="white" opacity="0.7" font-size="13">画面モック</text>
             <!-- 評価 -->
-            <text x="215" y="468" text-anchor="middle" fill="white" opacity="0.9" font-size="18">◎ BtoB SaaSで最も一般的</text>
-            <text x="215" y="494" text-anchor="middle" fill="white" opacity="0.65" font-size="16">信頼性×論理性を両立</text>
+            <text x="215" y="388" text-anchor="middle" fill="white" opacity="0.8" font-size="13">◎ BtoB SaaSで最も一般的</text>
+            <text x="215" y="408" text-anchor="middle" fill="white" opacity="0.6" font-size="12">信頼性×論理性を両立</text>
 
             <!-- ===== パターンB ===== -->
-            <text x="650" y="38" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="bold">パターンB</text>
-            <text x="650" y="66" text-anchor="middle" fill="white" opacity="0.85" font-size="18">中央コピー＋下に画面モック</text>
+            <text x="650" y="40" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">パターンB</text>
+            <text x="650" y="64" text-anchor="middle" fill="white" opacity="0.8" font-size="15">中央コピー＋下に画面モック</text>
             <!-- 外枠 -->
-            <rect x="465" y="80" width="370" height="360" rx="10" fill="white" opacity="0.06" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+            <rect x="465" y="78" width="370" height="280" rx="10" fill="white" opacity="0.06" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
             <!-- 上：テキストエリア（中央） -->
-            <rect x="488" y="98" width="324" height="72" rx="6" fill="#00d4ff" opacity="0.22"/>
-            <text x="650" y="132" text-anchor="middle" fill="white" font-size="17" font-weight="bold">キャッチコピー（中央揃え）</text>
-            <text x="650" y="158" text-anchor="middle" fill="white" opacity="0.7" font-size="14">（フル幅で最も大きく）</text>
-            <rect x="530" y="184" width="240" height="42" rx="6" fill="white" opacity="0.1"/>
-            <text x="650" y="210" text-anchor="middle" fill="white" opacity="0.8" font-size="16">サブコピー</text>
+            <rect x="490" y="94" width="320" height="55" rx="6" fill="#00d4ff" opacity="0.2"/>
+            <text x="650" y="126" text-anchor="middle" fill="white" font-size="13">キャッチコピー（中央揃え）</text>
+            <rect x="540" y="162" width="220" height="30" rx="6" fill="white" opacity="0.1"/>
+            <text x="650" y="182" text-anchor="middle" fill="white" opacity="0.7" font-size="12">サブコピー</text>
             <!-- CTA（中央） -->
-            <rect x="556" y="240" width="188" height="44" rx="22" fill="#00d4ff" opacity="0.75"/>
-            <text x="650" y="268" text-anchor="middle" fill="white" font-size="16" font-weight="bold">CTAボタン</text>
+            <rect x="565" y="203" width="170" height="30" rx="15" fill="#00d4ff" opacity="0.7"/>
+            <text x="650" y="223" text-anchor="middle" fill="white" font-size="12">CTAボタン</text>
             <!-- 下：画面モック -->
-            <rect x="500" y="298" width="300" height="126" rx="6" fill="white" opacity="0.1"/>
-            <text x="650" y="366" text-anchor="middle" fill="white" opacity="0.75" font-size="17">画面モック（下部）</text>
+            <rect x="510" y="245" width="280" height="96" rx="6" fill="white" opacity="0.1"/>
+            <text x="650" y="298" text-anchor="middle" fill="white" opacity="0.7" font-size="13">画面モック（下部）</text>
             <!-- 評価 -->
-            <text x="650" y="468" text-anchor="middle" fill="white" opacity="0.9" font-size="18">○ コピー訴求型。決裁者向け</text>
-            <text x="650" y="494" text-anchor="middle" fill="white" opacity="0.65" font-size="16">Fパターンに近い構成</text>
+            <text x="650" y="388" text-anchor="middle" fill="white" opacity="0.8" font-size="13">○ コピー訴求型。決裁者向け</text>
+            <text x="650" y="408" text-anchor="middle" fill="white" opacity="0.6" font-size="12">Fパターンに近い構成</text>
 
             <!-- ===== パターンC ===== -->
-            <text x="1085" y="38" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="bold">パターンC</text>
-            <text x="1085" y="66" text-anchor="middle" fill="white" opacity="0.85" font-size="18">フル幅ビジュアル＋オーバーレイ</text>
+            <text x="1085" y="40" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">パターンC</text>
+            <text x="1085" y="64" text-anchor="middle" fill="white" opacity="0.8" font-size="15">フル幅ビジュアル＋オーバーレイ</text>
             <!-- 外枠（フル幅ビジュアル） -->
-            <rect x="900" y="80" width="370" height="360" rx="10" fill="white" opacity="0.1" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+            <rect x="900" y="78" width="370" height="280" rx="10" fill="white" opacity="0.1" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
             <!-- 背景ビジュアルイメージ -->
-            <rect x="900" y="80" width="370" height="360" rx="10" fill="#00d4ff" opacity="0.1"/>
+            <rect x="900" y="78" width="370" height="280" rx="10" fill="#00d4ff" opacity="0.08"/>
             <!-- オーバーレイ -->
-            <rect x="900" y="80" width="370" height="360" rx="10" fill="#000" opacity="0.38"/>
+            <rect x="900" y="78" width="370" height="280" rx="10" fill="#000" opacity="0.35"/>
             <!-- テキスト（中央） -->
-            <text x="1085" y="218" text-anchor="middle" fill="white" font-size="19" font-weight="bold">キャッチコピー</text>
-            <text x="1085" y="250" text-anchor="middle" fill="white" opacity="0.85" font-size="16">サブコピー</text>
-            <rect x="998" y="268" width="174" height="44" rx="22" fill="#00d4ff" opacity="0.85"/>
-            <text x="1085" y="296" text-anchor="middle" fill="white" font-size="16" font-weight="bold">CTAボタン</text>
+            <text x="1085" y="185" text-anchor="middle" fill="white" font-size="13" font-weight="bold">キャッチコピー</text>
+            <text x="1085" y="210" text-anchor="middle" fill="white" opacity="0.8" font-size="12">サブコピー</text>
+            <rect x="1010" y="225" width="150" height="28" rx="14" fill="#00d4ff" opacity="0.8"/>
+            <text x="1085" y="244" text-anchor="middle" fill="white" font-size="11">CTAボタン</text>
             <!-- 評価 -->
-            <text x="1085" y="468" text-anchor="middle" fill="white" opacity="0.9" font-size="18">△ 没入感は高い／可読性に注意</text>
-            <text x="1085" y="494" text-anchor="middle" fill="white" opacity="0.65" font-size="16">B2C・クリエイティブ系で有効</text>
+            <text x="1085" y="388" text-anchor="middle" fill="white" opacity="0.8" font-size="13">△ 没入感は高い／可読性に注意</text>
+            <text x="1085" y="408" text-anchor="middle" fill="white" opacity="0.6" font-size="12">B2C・クリエイティブ系で有効</text>
 
             <!-- 区切り線 -->
-            <line x1="445" y1="55" x2="445" y2="510" stroke="white" opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
-            <line x1="880" y1="55" x2="880" y2="510" stroke="white" opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
+            <line x1="445" y1="60" x2="445" y2="430" stroke="white" opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
+            <line x1="880" y1="60" x2="880" y2="430" stroke="white" opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
 
             <!-- 下部注釈 -->
-            <text x="650" y="548" text-anchor="middle" fill="white" opacity="0.55" font-size="16">実践編では3パターンすべてを試作し、TALENTBOARDに最適なものを選定する</text>
+            <text x="650" y="450" text-anchor="middle" fill="white" opacity="0.5" font-size="13">実践編では3パターンすべてを試作し、TALENTBOARDに最適なものを選定する</text>
         </svg>
     </div>
 </div>
@@ -461,22 +448,20 @@
     </div>
 </div>
 
-
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
+<!-- スライド14: クイズ誘導 -->
+<div class="slide-container section-title-layout">
+    <div class="section-content">
+        <p class="section-label">理解度チェック</p>
+        <h2>Quiz</h2>
+        <p class="section-subtitle">FV視覚設計の理解を確認しよう</p>
     </div>
-    
-    
-    <script>
-        const questions = [
+</div>
+
+<script>
+const quizData = [
     {
-        question: "FVに必要な3要素として正しいものはどれか？",
-        options: [
+        question: "Q1. FVに必要な3要素として正しいものはどれか？",
+        choices: [
             "キャッチコピー・機能一覧・CTAボタン",
             "キャッチコピー・メインビジュアル・CTAボタン",
             "ナビゲーション・メインビジュアル・SNSボタン",
@@ -486,8 +471,8 @@
         explanation: "FVに必要なのはキャッチコピー（誰の課題をどう解決するか）・メインビジュアル（世界観を伝える画像）・CTAボタン（次の行動）の3つだけ。機能一覧・料金表・SNSボタンはFV下のセクションに置く。情報を削る設計がFVの鉄則。"
     },
     {
-        question: "BtoB SaaSのLPでZパターンが多く採用される理由として最も適切なものはどれか？",
-        options: [
+        question: "Q2. BtoB SaaSのLPでZパターンが多く採用される理由として最も適切なものはどれか？",
+        choices: [
             "Zパターンは最も多くの情報を詰め込めるから",
             "テキスト（左）とビジュアル（右）を分離でき、論理的・信頼感のある印象を与えるから",
             "Zパターンはモバイルでも自動的に最適化されるから",
@@ -497,8 +482,8 @@
         explanation: "BtoB SaaSは論理的な意思決定者が相手。左にテキスト（コピー・補足）・右にビジュアル（画面モック）を分離するZパターンは「整理された・信頼できる」印象を与えやすい。なお、Zパターンは1カラムのSPでは成立しない。"
     },
     {
-        question: "AI生成画像をFVに統合する3つの使い方のうち、BtoB SaaSで最も一般的なものはどれか？",
-        options: [
+        question: "Q3. AI生成画像をFVに統合する3つの使い方のうち、BtoB SaaSで最も一般的なものはどれか？",
+        choices: [
             "背景として全面に敷く（バックグラウンド使用）",
             "アイコン・装飾として小さく使う（アクセント使用）",
             "コピーの横または下に配置する（メインビジュアル使用）",
@@ -508,8 +493,8 @@
         explanation: "BtoB SaaSでは「画面モック・利用シーン」などをコピーの横（Zパターン右）や下に配置するメインビジュアル使いが最も一般的。背景使いは可読性の課題が大きく、アクセント使いはFVの主役にならない。"
     },
     {
-        question: "SP版FVでPC版のZパターンがそのまま使えない理由として正しいものはどれか？",
-        options: [
+        question: "Q4. SP版FVでPC版のZパターンがそのまま使えない理由として正しいものはどれか？",
+        choices: [
             "SPのブラウザはCSSのflexboxをサポートしていないから",
             "SP版は縦長デザインが義務付けられているから",
             "画面幅が狭いため、左右に分割するZ字の横移動が成立しないから",
@@ -519,8 +504,8 @@
         explanation: "ZパターンはPC画面の横幅を前提にした視線誘導。SPは幅が狭くZの横移動が物理的に成立しない。SP版は1カラム縦積み（コピー→サブコピー→CTA→ビジュアルの順）が基本。技術的な制約ではなく「視線誘導の成立条件」の問題。"
     },
     {
-        question: "FVの「3秒テスト」とは何を確認するテストか？",
-        options: [
+        question: "Q5. FVの「3秒テスト」とは何を確認するテストか？",
+        choices: [
             "FVの読み込み速度が3秒以内かを測定するテスト",
             "CTAボタンを3秒以内にクリックできるかを確認するテスト",
             "初見で「何のサービスか」「自分に関係あるか」が3秒以内にわかるかを確認するテスト",
@@ -530,8 +515,76 @@
         explanation: "訪問者はFVを約3〜5秒で評価して離脱するかを判断する。3秒テストは「初めて見る人に3秒だけ見せて、何のサービスか・自分に関係あるかを答えてもらう」確認方法。読み込み速度ではなく「情報伝達の速度」をテストする。"
     }
 ];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+
+let currentQuiz = 0;
+let score = 0;
+
+function loadQuiz() {
+    const slide = document.getElementById('quiz-slide');
+    if (!slide) return;
+    const q = quizData[currentQuiz];
+    slide.innerHTML = `
+        <div class="quiz-header">
+            <span class="quiz-counter">${currentQuiz + 1} / ${quizData.length}</span>
+            <h3 class="quiz-question">${q.question}</h3>
+        </div>
+        <div class="quiz-choices">
+            ${q.choices.map((c, i) => `
+                <button class="quiz-choice" onclick="selectAnswer(${i})">${c}</button>
+            `).join('')}
+        </div>
+        <div class="quiz-explanation" id="quiz-exp" style="display:none;"></div>
+        <div class="quiz-nav" id="quiz-nav" style="display:none;">
+            <button class="quiz-next-btn" onclick="nextQuiz()">${currentQuiz < quizData.length - 1 ? '次の問題 →' : '結果を見る'}</button>
+        </div>
+    `;
+}
+
+function selectAnswer(idx) {
+    const q = quizData[currentQuiz];
+    const buttons = document.querySelectorAll('.quiz-choice');
+    buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.correct) btn.classList.add('correct');
+        else if (i === idx) btn.classList.add('wrong');
+    });
+    if (idx === q.correct) score++;
+    const exp = document.getElementById('quiz-exp');
+    exp.textContent = q.explanation;
+    exp.style.display = 'block';
+    document.getElementById('quiz-nav').style.display = 'flex';
+}
+
+function nextQuiz() {
+    currentQuiz++;
+    if (currentQuiz < quizData.length) {
+        loadQuiz();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    const slide = document.getElementById('quiz-slide');
+    slide.innerHTML = `
+        <div class="quiz-result">
+            <h3>Quiz 完了！</h3>
+            <p class="quiz-score">${score} / ${quizData.length} 正解</p>
+            <p>${score === quizData.length ? '全問正解！FV視覚設計の理論は完璧です。' : score >= 3 ? '良い理解度です。間違えた問題を復習しましょう。' : 'もう一度理論編を振り返ってみましょう。'}</p>
+        </div>
+    `;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadQuiz();
+});
+</script>
+
+<div class="slide-container standard-content-layout" id="quiz-wrapper">
+    <h2 class="slide-title">理解度チェック</h2>
+    <div class="content-block">
+        <div id="quiz-slide" class="quiz-container">
+            <!-- クイズがここに動的に挿入される -->
+        </div>
+    </div>
+</div>
