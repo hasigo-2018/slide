@@ -8,7 +8,10 @@
       "Bash(node scripts/check_svg.js master_slide/themes_new/020-1_theory.html)",
       "Bash(git checkout:*)",
       "Bash(git -C /Users/akihirotakahashi/Documents/slide diff HEAD master_slide/assets/slide-template.css | wc -l)",
-      "Bash(node scripts/insert_html.js master_slide/themes_new/020-2_practice.html generated_020_practice.html && node scripts/check_svg.js master_slide/themes_new/020-2_practice.html)"
+      "Bash(node scripts/insert_html.js master_slide/themes_new/020-2_practice.html generated_020_practice.html && node scripts/check_svg.js master_slide/themes_new/020-2_practice.html)",
+      "Bash(node scripts/insert_html.js 021 theory)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/021-2_practice.html generated_021_practice.html)",
+      "Bash(git add:*)"
     ]
   }
 }
