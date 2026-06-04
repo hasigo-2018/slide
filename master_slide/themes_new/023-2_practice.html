@@ -9,7 +9,449 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>FV（ファーストビュー）の<br>視覚設計<span>【実践編】</span></h1>
+        <p>3パターン作って、ベストを選び、理由を語る</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>ゴール</h3>
+                <ul>
+                    <li>PC版FVを<strong>3パターン</strong>制作・比較</li>
+                    <li><strong>5基準</strong>でベストパターンを選定し、理由を100文字で言語化</li>
+                    <li>SP版FVに変換（375×812px）</li>
+                    <li>A/B案を作成し、差異と予想を言語化</li>
+                </ul>
+                <p class="text-sub">FVはLPの「顔」。ここの品質がページ全体の第一印象を決める。</p>
+            </div>
+            <div>
+                <h3>演習の流れと時間配分</h3>
+                <ul>
+                    <li><strong>演習1：</strong>PC版FV 3パターン制作＋ベスト選定（3コマ・150分）</li>
+                    <li><strong>演習2：</strong>SP版FV変換（1コマ・50分）</li>
+                    <li><strong>演習3：</strong>A/B案作成＋言語化（1コマ・50分）</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 「作っては見て直す」の試行錯誤が最も成長を生む。完璧を目指すより、3パターン全部を形にすることを優先する。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 素材の確認と配置準備 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">素材の確認と配置準備——制作前に揃えるもの</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>Figmaで確認する3素材</h3>
+                <ul class="no-bullet">
+                    <li><strong>① コピー：</strong>022の要件定義書で確定したメインキャッチ＋サブコピー＋CTAテキスト</li>
+                    <li><strong>② 画像：</strong>018–019の統一トンマナ画像セットからFV候補を2〜3枚ピックアップ</li>
+                    <li><strong>③ WF：</strong>022のFVセクションの情報構造を再確認</li>
+                </ul>
+                <p class="text-sub">「新しく作る」のではなく「組み立てる」作業。素材はすでにFigmaにある。</p>
+            </div>
+            <div>
+                <h3>Figmaの準備手順</h3>
+                <ul>
+                    <li>Figmaでプロジェクトファイルを開く</li>
+                    <li>新規ページを作成 → ページ名：<strong>「023_FV」</strong></li>
+                    <li>フレームを3つ作成し、それぞれ名前をつける<br>
+                        <span class="text-sub">「FV_PatternA」「FV_PatternB」「FV_PatternC」</span></li>
+                    <li>各フレームサイズ：<strong>1440×800px</strong>（PC FV標準）</li>
+                </ul>
+                <div class="highlight-box">
+                    📌 022のWFが手元にない場合は先に確認する。設計と視覚化を同時に考えると両方がブレる。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: 演習1 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：PC版FV 3パターン制作＋ベスト選定</h2>
+    <div class="content-block">
+        <p>理論編で学んだ3つの構成パターンをすべてFigmaで実際に制作する。1パターンだけ作っても比較対象がなく「どれがいいか」を判断できない。3つ作って並べて初めて、違いが「見えて」言語化できる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>制作する3パターン</h3>
+                <ul>
+                    <li><strong>パターンA：</strong>左テキスト＋右画面モック（Zパターン）</li>
+                    <li><strong>パターンB：</strong>中央コピー＋下に画面モック（Fパターン寄り）</li>
+                    <li><strong>パターンC：</strong>フル幅ビジュアル＋オーバーレイテキスト</li>
+                </ul>
+            </div>
+            <div>
+                <h3>時間配分（合計150分）</h3>
+                <ul>
+                    <li>パターンA制作：<strong>40分</strong></li>
+                    <li>パターンB制作：<strong>35分</strong>（Aを参考に速くなる）</li>
+                    <li>パターンC制作：<strong>30分</strong>（慣れで最速に）</li>
+                    <li>比較・選定・言語化：<strong>25分</strong></li>
+                    <li>共有・フィードバック：<strong>20分</strong></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-sub">ここで完璧を目指さない。「配置と情報階層が伝わる」レベルでOK。</p>
+    </div>
+</div>
+
+<!-- スライド5: パターンA制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">パターンA制作ガイド：左テキスト＋右画面モック</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>制作手順</h3>
+                <ul>
+                    <li>フレーム：<strong>1440×800px</strong>（FV_PatternA）</li>
+                    <li>左50%：メインキャッチ（32〜40px）→ サブコピー（16〜18px）→ CTAボタン</li>
+                    <li>右50%：画面モック or サービスイメージ画像を配置</li>
+                    <li>配色：Block 4のビジュアルガイドラインに従う</li>
+                </ul>
+                <h3>視線誘導の確認</h3>
+                <ul>
+                    <li>Z字の流れ：<strong>左上 → 右上 → 左下 → 右下</strong>の順に目線が動くか</li>
+                    <li>左上にキャッチコピーが来ているか</li>
+                    <li>CTAが左下エリアに配置されているか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>チェックポイント（40分以内）</h3>
+                <ul class="no-bullet">
+                    <li>□ メインキャッチが最も目立つ要素になっているか</li>
+                    <li>□ サブコピーがキャッチの補足として機能しているか</li>
+                    <li>□ CTAボタンの色が背景に対して十分に目立つか</li>
+                    <li>□ 左右のビジュアルバランスが取れているか</li>
+                    <li>□ テキストと画像が重なっていないか</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 BtoB SaaSの王道パターン。Zパターンの論理性と信頼感がTALENTBOARDのターゲット（人材紹介会社の担当者）に刺さりやすい。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: パターンB制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">パターンB制作ガイド：中央コピー＋下に画面モック</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>制作手順</h3>
+                <ul>
+                    <li>フレーム：<strong>1440×800px</strong>（FV_PatternB）</li>
+                    <li>上部60%：メインキャッチ（<strong>中央揃え・40〜48px</strong>）→ サブコピー（中央揃え・16〜18px）→ CTAボタン（中央配置）</li>
+                    <li>下部40%：画面モックを横幅いっぱいに配置</li>
+                    <li>Fパターンの視線誘導を意識：上から下へ視線が流れる設計</li>
+                </ul>
+            </div>
+            <div>
+                <h3>パターンBのトレードオフ</h3>
+                <ul>
+                    <li><strong>メリット：</strong>コピーのインパクトを最大化できる。決裁者が「何のサービスか」を一瞬で理解しやすい</li>
+                    <li><strong>デメリット：</strong>画面モックの面積が小さくなる。サービスの具体的な機能が伝わりにくい</li>
+                </ul>
+                <p class="text-sub">判断のポイント：メインターゲットが「コピーで動く人」か「機能で動く人」かによってA vs Bの優劣が変わる。</p>
+                <div class="highlight-box">
+                    📌 中央揃えのコピーは「重さ」と「格式」を感じさせる。訴求軸が感情的・インパクト重視のときに有効。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: パターンC制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">パターンC制作ガイド：フル幅ビジュアル＋オーバーレイ</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>制作手順</h3>
+                <ul>
+                    <li>フレーム：<strong>1440×800px</strong>（FV_PatternC）</li>
+                    <li>背景：018–019の画像をフレーム全面に配置</li>
+                    <li>オーバーレイ：<strong>半透明の暗色レイヤー</strong>を背景の上に重ねる（不透明度50〜70%が目安）</li>
+                    <li>テキスト：メインキャッチ＋サブコピー＋CTAをオーバーレイの上に配置</li>
+                </ul>
+            </div>
+            <div>
+                <h3>パターンCの注意点</h3>
+                <ul>
+                    <li><strong>可読性リスク：</strong>背景画像の明暗によってテキストが読めなくなる。必ずオーバーレイ不透明度を調整して確認</li>
+                    <li><strong>信頼感のリスク：</strong>BtoBでは「ビジュアル重視＝信頼性が低い」と感じさせることがある</li>
+                    <li><strong>有効なケース：</strong>「人の表情」や「働く現場」の写真を使うと、感情的共感を引き出せる場合がある</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ オーバーレイなしで画像の上に白テキストを置くのは禁止。必ず可読性を確保すること。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: 3パターンの比較選定 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">3パターンの比較選定——5基準で評価する</h2>
+    <div class="content-block">
+        <p>3パターンを横に並べ、以下の5基準で★5段階（★=1点、★★★★★=5点）で採点する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>5つの評価基準</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 3秒テスト：</strong>3秒で「何のサービスか」「自分に関係あるか」が伝わるか</li>
+                    <li><strong>② 視線の流れ：</strong>Z・Fパターンの視線誘導が成立しているか</li>
+                    <li><strong>③ コピーの可読性：</strong>キャッチコピーが背景に対して読みやすいか</li>
+                    <li><strong>④ CTAの視認性：</strong>ボタンが目立ち、3秒以内に気づけるか</li>
+                    <li><strong>⑤ SP変換のしやすさ：</strong>375px幅でも成立するか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>選定の考え方</h3>
+                <ul>
+                    <li>合計点が最高でも、それがベストとは限らない</li>
+                    <li>「<strong>メインターゲットにとって</strong>最適か」の視点で最終判断する</li>
+                    <li>同じ素材でもパターンによって「印象」が変わることを体感する</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 選定理由を<strong>100文字で書く</strong>。「なぜこのパターンか」「5基準のどこが決め手か」「ターゲットにどう刺さるか」を盛り込む。
+                </div>
+                <p class="text-sub">ここで書いた判断の言語化が、034（A/Bテストシミュレーション）の伏線になる。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: 選定結果の共有とフィードバック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">選定結果の共有とフィードバック</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>発表の内容</h3>
+                <ul>
+                    <li>選んだパターン（A・B・C）</li>
+                    <li>選定理由を100文字で読み上げる</li>
+                    <li>他のパターンを選ばなかった理由（1文でOK）</li>
+                </ul>
+                <h3>発表者：2〜3名</h3>
+                <p class="text-sub">同じ素材・同じターゲットでも選ぶパターンが違う場合がある。違いが出たときほど、クラスで議論する価値がある。</p>
+            </div>
+            <div>
+                <h3>講師のフィードバック観点</h3>
+                <ul>
+                    <li>選定理由が<strong>5基準に基づいているか</strong>（感覚論になっていないか）</li>
+                    <li><strong>メインターゲットの視点</strong>で判断できているか（「自分が好き」ではなく「ターゲットに刺さるか」）</li>
+                    <li>同じ素材でもパターンによって印象が変わることを<strong>体感</strong>できたか</li>
+                </ul>
+                <div class="highlight-box">
+                    📌 「なんとなく好き」は選定理由にならない。5基準のどれかに紐づく根拠が必ず必要。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: 演習2 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：SP版FVへの変換</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>演習2の概要</h3>
+                <ul>
+                    <li>演習1で選定した<strong>ベストパターン</strong>をSP版に変換する</li>
+                    <li>出力物：Figma SP版FVフレーム（<strong>375×812px</strong>・iPhone基準）</li>
+                    <li>制限時間：30分（変換20分＋確認10分）</li>
+                </ul>
+                <p class="text-sub">「PC版をそのまま縮小」は誤り。SP版は「再設計」が必要。</p>
+            </div>
+            <div>
+                <h3>PC版からSP版で変わること</h3>
+                <ul>
+                    <li>2カラム → <strong>1カラム縦積み</strong>に変換</li>
+                    <li>視線誘導がZ/Fパターン → <strong>上から下の一方向</strong>に変わる</li>
+                    <li>画面モックを「横に並べる」スペースがなくなる</li>
+                    <li>CTAボタンを<strong>サムゾーン（下部40%）</strong>内に再配置</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: SP版変換の手順 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">SP版変換の手順——5ステップ</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>変換手順</h3>
+                <ul class="no-bullet">
+                    <li><strong>① レイアウト再構成：</strong>PC版の2カラムを1カラム縦積みに変換。順序：メインキャッチ → サブコピー → CTAボタン → 画像</li>
+                    <li><strong>② テキスト階層の調整：</strong>メインキャッチ（24〜28px）→ サブコピー（14〜16px）に縮小</li>
+                    <li><strong>③ 画像の扱い：</strong>PC版で右に置いた画面モックを下に移動 or 縮小。コピー＋CTAだけで伝わる場合は省略も選択肢</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="no-bullet">
+                    <li><strong>④ CTAボタン：</strong>サムゾーン（スクリーン下部40%）内に配置。横幅はフレーム幅の<strong>90%以上</strong>を推奨</li>
+                    <li><strong>⑤ 追従CTAの検討：</strong>スクロール時に常にCTAが見える設計（Figmaのプロトタイプで検証可能）</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 画像は「なくても伝わるか」を基準に判断する。読み込みが遅いSP環境では、画像が表示される前にユーザーが離脱することも想定する。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: SP版の自己チェック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">SP版の自己チェック——提出前の5項目</h2>
+    <div class="content-block">
+        <p>変換後、以下の5項目を自分でチェックしてから提出する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>チェック項目</h3>
+                <ul class="no-bullet">
+                    <li>□ <strong>全文表示：</strong>メインキャッチがスクロールなしで全文見えるか</li>
+                    <li>□ <strong>CTA認知：</strong>CTAボタンに3秒以内に気づけるか</li>
+                    <li>□ <strong>画像なし耐性：</strong>画像がなくても「何のサービスか」が伝わるか</li>
+                    <li>□ <strong>タップ領域：</strong>CTAボタンのタップ領域が44×44px以上あるか</li>
+                    <li>□ <strong>情報欠落なし：</strong>PC版に含めた情報がSP版で抜け落ちていないか</li>
+                </ul>
+            </div>
+            <div>
+                <h3>よくある失敗パターン</h3>
+                <ul>
+                    <li>PC版をそのまま縮小してテキストが極小になっている</li>
+                    <li>CTAボタンが画面上部にあり、スクロールしないと押せない</li>
+                    <li>画面モックが小さすぎて何のサービスかわからない</li>
+                    <li>行間が詰まりすぎて読みにくくなっている</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ SP版は「小さいPC版」ではなく「SP用に再設計されたFV」。変換ではなく再設計の意識で臨む。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: 演習3 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：A/B案の作成——1要素だけ変える</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>演習3の概要</h3>
+                <ul>
+                    <li>演習1のベストパターン＝<strong>A案</strong></li>
+                    <li>A案から<strong>1要素だけ変えた</strong>B案を作成する</li>
+                    <li>制限時間：25分（B案制作20分＋言語化5分）</li>
+                </ul>
+                <h3>変える要素の候補</h3>
+                <ul>
+                    <li>キャッチコピーを変える（同じ訴求軸の別表現）</li>
+                    <li>ビジュアルを変える（画面モック → 人物写真）</li>
+                    <li>CTAのコピーを変える<br>（「資料ダウンロード」→「3分デモを見る」）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>A/Bテストの鉄則</h3>
+                <ul>
+                    <li>一度に変えるのは<strong>1要素だけ</strong></li>
+                    <li>複数変えると、結果の差が「コピーのおかげ」か「画像のおかげ」か切り分けられない</li>
+                    <li>034（A/Bテストシミュレーション）では、ここで作ったA/B案を使って検証を行う</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 「何を変えるか」の選択自体が仮説設計。「〇〇を変えれば△△が改善されるはず」という根拠を持って変える要素を選ぶ。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド14: A/B案の言語化 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">A案とB案の違いを言語化する</h2>
+    <div class="content-block">
+        <p>A/B案を作ったら、以下の3点をそれぞれ100文字で書く。この言語化が、034での検証に活きる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>書く内容</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 何を変えたか：</strong>A案から変えた要素とその内容を具体的に（例：CTAコピーを「資料ダウンロード」から「3分デモを見る」に変更）</li>
+                    <li><strong>② なぜその要素を変えたか：</strong>変更の意図・仮説（例：「今すぐ試せる」という行動誘発力がDL系より高いと考えたため）</li>
+                    <li><strong>③ どちらが効果的か（予想と根拠）：</strong>理論編の5基準や行動心理学の観点から予想を書く</li>
+                </ul>
+            </div>
+            <div>
+                <h3>良い言語化の例</h3>
+                <p class="text-sub">（CTAコピー変更の場合）</p>
+                <p>「『資料DL』はコスト感があるため離脱を招く可能性がある。『3分デモを見る』は具体的な時間と低コスト感を示し、BtoB決裁者の試し行動を引き出しやすい。B案がクリック率で上回ると予想する。」（100文字）</p>
+                <div class="highlight-box">
+                    📌 「なんとなくBの方がいい気がする」は言語化ではない。5基準・ターゲット行動・心理的根拠の3つのどれかに紐づけること。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド15: まとめ -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">まとめ：今日の成果物と次回予告</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">🖥️</div>
+            <h3>PC版FV 3パターン</h3>
+            <p>A（左テキスト＋右モック）・B（中央コピー）・C（フル幅ビジュアル）をFigmaで制作</p>
+        </div>
+        <div class="tile">
+            <div class="icon">📊</div>
+            <h3>選定理由の言語化</h3>
+            <p>5基準の★評価＋ベスト選定理由を100文字で。「なぜこのパターンか」を根拠で語る</p>
+        </div>
+        <div class="tile">
+            <div class="icon">📱</div>
+            <h3>SP版FV</h3>
+            <p>375×812pxで再設計。1カラム縦積み＋サムゾーンCTA配置＋5項目の自己チェック完了</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🔬</div>
+            <h3>A/B案＋言語化</h3>
+            <p>1要素だけ変えたB案＋「何を・なぜ・どう変えたか」を各100文字で記録</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド16: 次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回予告：024「信頼構築のセクション設計」</h2>
+    <div class="content-block">
+        <p>FVで「自分に関係ある」と感じた訪問者が次に考えること：<strong>「この会社（サービス）を信じていいのか？」</strong></p>
+        <p>FVを通過したユーザーの疑問を視覚的にどう解消するか——それが024のテーマだ。</p>
+        <ul>
+            <li>信頼構築に使われる要素（実績・社名・testimonial）の配置原則</li>
+            <li>「信頼されるデザイン」と「信頼されないデザイン」の分岐点</li>
+            <li>TALENTBOARDの信頼構築セクションをFigmaで設計する</li>
+        </ul>
+        <p class="text-sub">023で作ったFVが「入口」。024ではFVを通過した訪問者の不安を取り除く「廊下」を設計する。</p>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +462,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "FVを1パターンではなく3パターン作る最大の理由はどれか？",
+        options: [
+            "Figmaの操作量を増やし、ツールに慣れるため",
+            "1パターンだけでは比較対象がなく、良し悪しの判断と言語化ができないため",
+            "3パターン作ることで講師の評価対象が増えるため",
+            "複数案を提示することがクライアントへのマナーだから"
+        ],
+        correct: 1,
+        explanation: "1パターンだけでは比較対象がないため「なぜこれがベストか」を言語化できない。3つ作って並べることで初めて差異が見え、判断基準が鍛えられる。これは034（A/Bテストシミュレーション）への伏線でもある。"
+    },
+    {
+        question: "3パターンの5基準★評価で、合計点が最高のパターンを必ずベストとして選ばなければならないか？",
+        options: [
+            "はい。客観的な数値評価が最優先されるべきだから",
+            "いいえ。合計点だけでは不十分で、メインターゲットにとって最適かという視点で最終判断する",
+            "はい。主観を排除するために数値化している",
+            "いいえ。最もデザインが美しいパターンを選ぶべきだから"
+        ],
+        correct: 1,
+        explanation: "合計点は参考指標。最終判断は「メインターゲットにとって最適か」。3秒テストの点が同じでも、ターゲットが感情で動く人か論理で動く人かによって刺さるパターンが違う。数値と文脈の両方で判断するのがビジュアルアーキテクトの仕事。"
+    },
+    {
+        question: "SP版FVで、PC版の画面モックを省略する判断はありか？",
+        options: [
+            "なし。PC版と同じ情報量を必ず保持しなければならない",
+            "なし。画面モックはサービスの具体性を示す必須要素だから",
+            "あり。SPではコピー＋CTAだけで伝わる場合があり、読み込み速度も考慮する",
+            "あり。SPでは画像は一切使わない設計が基本だから"
+        ],
+        correct: 2,
+        explanation: "SP版では「コピー＋CTAだけで十分な場合」に画像を省略できる。画像は読み込み速度に影響し、遅い環境ではユーザー離脱を招く。「なくても伝わるか」を基準に判断する。情報の欠落ではなく、意図的な取捨選択がSP設計の要点。"
+    },
+    {
+        question: "A/Bテストで「一度に変える要素を1つに限定する」理由として正しいものはどれか？",
+        options: [
+            "制作時間を節約するため",
+            "Figmaのコンポーネント管理が複雑になるから",
+            "複数要素を同時に変えると、結果の差が何の変更によるものか切り分けられないから",
+            "クライアントが混乱するから"
+        ],
+        correct: 2,
+        explanation: "コピーと画像を同時に変えると、CTR（クリック率）が上がっても「コピーのおかげか、画像のおかげか」が不明になる。1要素だけ変えることで因果関係が明確になり、次の改善仮説が立てられる。これが科学的なテスト設計の基本。"
+    },
+    {
+        question: "023の実践編でFigma上の022のWFを事前に確認する理由として最も適切なものはどれか？",
+        options: [
+            "022の作業に間違いがないか確認するため",
+            "WFで「FVに何を配置するか」の情報設計が決定済みのため、023では視覚化に集中できる",
+            "コピーをWFから直接コピー&ペーストするため",
+            "022と023が同じファイルに保存されているから"
+        ],
+        correct: 1,
+        explanation: "022のWFでFVの情報設計（何をどの順で配置するか）は決定済み。023ではその決定を「どう見せるか」の視覚設計に集中できる。設計と見た目を同時に考えると両方がブレる。これが「設計と実装を分離する」ビジュアルアーキテクトの思考法。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
