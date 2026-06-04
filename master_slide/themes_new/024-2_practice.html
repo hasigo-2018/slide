@@ -9,7 +9,571 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>信頼構築のセクション設計<span>【実践編】</span></h1>
+        <p>数字・物語・声で「信じていい」を設計する</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標——信頼構築セクション4型をFigmaで完成させる</h2>
+    <div class="content-block">
+        <p>理論編で学んだ4つの型を、Figmaのワイヤーフレームとして実装する。022で設計した導線の「信頼構築」ブロックに、今日の演習で中身を入れていく。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>今日のゴール</h3>
+                <ul>
+                    <li>TALENTBOARDの信頼構築セクション4型（数字実績・導入事例・お客様の声・ロゴ帯）をFigmaで完成させる</li>
+                    <li>各セクションのPC版＋SP版を制作する</li>
+                    <li>FV→信頼構築→CTA（025）の導線を通しで確認する</li>
+                    <li>各レイアウト選択の理由を100文字で言語化する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>演習の流れ</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 演習1：</strong>数字実績セクション（1.5コマ・75分）</li>
+                    <li><strong>② 演習2：</strong>導入事例Before/Afterセクション（2コマ・100分）</li>
+                    <li><strong>③ 演習3：</strong>お客様の声＋ロゴ帯＋導線確認（1.5コマ・75分）</li>
+                </ul>
+                <p class="text-sub">架空データはすでに用意済み。「何を書くか」ではなく「どう見せるか」に集中する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 架空データの確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">架空データの確認——今日使う素材を整理する</h2>
+    <div class="content-block">
+        <p>今日の演習で使うデータは以下の通りだ。内容を覚える必要はない。「何がどこにあるか」を把握し、演習中に参照できる状態にしておく。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>数字実績（4指標）</h3>
+                <table class="slide-table">
+                    <thead><tr><th>指標</th><th>数値・補足</th></tr></thead>
+                    <tbody>
+                        <tr><td>導入社数</td><td>200社突破（2024年12月時点）</td></tr>
+                        <tr><td>採用工数削減率</td><td>平均50%削減（導入6ヶ月後）</td></tr>
+                        <tr><td>候補者対応スピード</td><td>平均2.3倍に向上</td></tr>
+                        <tr><td>継続率</td><td>98.5%（12ヶ月継続率）</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>導入企業3社の事例</h3>
+                <table class="slide-table">
+                    <thead><tr><th>企業名</th><th>業種・規模</th><th>成果数字</th></tr></thead>
+                    <tbody>
+                        <tr><td>テクノブリッジ</td><td>IT / 150名</td><td>工数60%削減</td></tr>
+                        <tr><td>丸山物産</td><td>小売 / 400名</td><td>コスト20%削減</td></tr>
+                        <tr><td>共立精機</td><td>製造 / 80名</td><td>推薦数1.5倍増</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-note">※ Before/After詳細・担当者コメントは理論編の構成指示書を参照</p>
+            </div>
+        </div>
+        <div class="highlight-box">📌 データは「与えられた素材」として使う。正確さより「どう見せるか」のデザインに集中すること</div>
+    </div>
+</div>
+
+<!-- スライド4: 演習1概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：数字実績セクションのデザイン</h2>
+    <div class="content-block">
+        <p>4つの数字（200社・50%・2.3倍・98.5%）を「パッと見て信頼できる」セクションに仕上げる。数字のインパクトを最大化しつつ、ラベルと補足で意味を補う3層構造を実装する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>出力物</h3>
+                <ul>
+                    <li>Figma PC版：数字実績セクション（4カラム横並び）</li>
+                    <li>Figma SP版：2×2グリッド or 縦1カラムに変換</li>
+                    <li>レイアウト選択の理由（100文字）</li>
+                </ul>
+                <h3>制限時間の目安</h3>
+                <ul class="no-bullet">
+                    <li>⏱ PC版デザイン：35分</li>
+                    <li>⏱ SP版変換：10分</li>
+                    <li>⏱ 言語化（100文字）：10分</li>
+                    <li>⏱ 合計：55分</li>
+                </ul>
+            </div>
+            <div>
+                <h3>今日の演習で身につけること</h3>
+                <ul>
+                    <li>数字の「3層構造」（ラベル ＋ 数値 ＋ 補足）をFigmaで実装する</li>
+                    <li>フォントサイズ・ウェイトで「数字が飛び込んでくる」状態を作る</li>
+                    <li>PC版とSP版で同じ情報をどうレイアウト変換するかを体験する</li>
+                    <li>「なぜこのレイアウトを選んだか」を言葉にする習慣を身につける</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: 数字実績セクションの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">数字実績セクション——制作ガイド</h2>
+    <div class="content-block">
+        <p>PC版は「4カラム横並び」が基本形だ。各カラムの中に「3層構造」を実装し、数値が視覚的に最も大きく見えるよう設計する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>各カラムの3層構造</h3>
+                <table class="slide-table">
+                    <thead><tr><th>層</th><th>内容</th><th>フォントサイズ目安</th></tr></thead>
+                    <tbody>
+                        <tr><td>ラベル</td><td>採用工数 / 導入社数</td><td>12〜14px</td></tr>
+                        <tr><td>数値</td><td>50% / 200社</td><td>40〜56px・ブランドカラー</td></tr>
+                        <tr><td>補足</td><td>導入6ヶ月後の平均</td><td>11〜12px・グレー</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-note">※ このスライドシステムのpx指定はFigmaのpx値として参考にすること</p>
+            </div>
+            <div>
+                <h3>背景・区切りの設計判断</h3>
+                <ul>
+                    <li><strong>背景：</strong>ブランドカラーの薄い背景（opacity 10〜15%）か白地＋区切り線のどちらかを選ぶ</li>
+                    <li><strong>区切り線：</strong>4カラムの場合は縦の区切り線を入れると読みやすくなる</li>
+                    <li><strong>セクション見出し：</strong>「TALENTBOARDが選ばれる理由」等を上部に添える</li>
+                    <li><strong>SP版変換：</strong>2×2グリッドが最も自然。スペースがなければ縦1カラムに</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ 数値のフォントはセクション内で最大にすること。ラベルや補足が数値より大きくなるとインパクトが消える</div>
+    </div>
+</div>
+
+<!-- スライド6: 数字の視覚的強調テクニック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">数字の視覚的強調テクニック——「パッと見て数字が飛び込む」状態</h2>
+    <div class="content-block">
+        <p>数字実績セクションのデザインゴールは「3秒で4つの数字が目に入る」状態を作ることだ。そのためのテクニックを整理する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>フォントの操作</h3>
+                <ul>
+                    <li><strong>数値：</strong>フォントウェイト Bold or ExtraBold / ブランドカラー（#00d4ff等）</li>
+                    <li><strong>単位（%・社・倍）：</strong>数値より1〜2サイズ小さく。数値と同じ色でOK</li>
+                    <li><strong>ラベル・補足：</strong>グレー（#999等）でフォントウェイトはRegular</li>
+                    <li><strong>コントラスト：</strong>数値が「目立つ色」、それ以外が「控える色」の2色構成が基本</li>
+                </ul>
+            </div>
+            <div>
+                <h3>アイコンと区切り線の判断</h3>
+                <ul>
+                    <li><strong>アイコンを添える場合：</strong>Figmaのプラグイン（Iconify等）からシンプルな線画を使う。塗りつぶしアイコンは数字と競合するので避ける</li>
+                    <li><strong>区切り線の有無：</strong>4カラムなら縦線を入れたほうが視覚的なグループが明確になる。3カラムなら不要なことも多い</li>
+                    <li><strong>選んだ理由を言語化：</strong>区切り線を入れた/入れなかった判断も100文字の根拠に含める</li>
+                </ul>
+                <p class="text-sub">📌 選んだレイアウトの理由を100文字で書く（例：「4カラム横並びは…〇〇の理由から視線の流れが…」）</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 演習2概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：導入事例Before/Afterセクションのデザイン</h2>
+    <div class="content-block">
+        <p>3社分の導入事例を「Before/After構造」でデザインする。情報量が最大の演習で、「物語を視覚で伝える」技術を身につける。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>出力物</h3>
+                <ul>
+                    <li>Figma PC版：導入事例Before/Afterセクション（3社分）</li>
+                    <li>Figma SP版：選択したレイアウトを縦変換</li>
+                    <li>レイアウト選択の理由（100文字）</li>
+                </ul>
+                <h3>制限時間の目安</h3>
+                <ul class="no-bullet">
+                    <li>⏱ 1社目フルデザイン（テクノブリッジ）：40分</li>
+                    <li>⏱ 2〜3社目の展開（複製・差し替え）：20分</li>
+                    <li>⏱ SP版変換：10分</li>
+                    <li>⏱ 言語化（100文字）：10分</li>
+                </ul>
+            </div>
+            <div>
+                <h3>設計の核心</h3>
+                <ul>
+                    <li>「3つのレイアウト型」から1つを選んで制作する（次スライドで詳細）</li>
+                    <li>選択の判断基準：022のメインターゲットにとってどの型が最も効果的か</li>
+                    <li>1社目をコンポーネント化し、2〜3社目は複製＋差し替えで展開（Block 3・Atomic Designの実践）</li>
+                    <li>Before（グレー系）/ After（ブランドカラー系）の色分けを必ず実装する</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: レイアウト選択：3つの型（SVG） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">レイアウトの選択——3つの型から1つを選ぶ</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:700px;">
+            <rect width="960" height="420" fill="#0a0a1a"/>
+            <defs>
+                <marker id="arrB" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#00d4ff"/></marker>
+                <marker id="arrC" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#00d4ff"/></marker>
+            </defs>
+
+            <!-- 型A：カード型 (x=15〜315) -->
+            <rect x="15" y="15" width="300" height="390" rx="10" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="165" y="50" text-anchor="middle" font-size="20" fill="#00d4ff" font-weight="bold">型A：カード型</text>
+
+            <!-- 3枚のカード横並び -->
+            <rect x="28" y="65" width="82" height="120" rx="6" fill="white" fill-opacity="0.1" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="69" y="88" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.6">テクノブリッジ</text>
+            <rect x="33" y="98" width="72" height="16" rx="3" fill="#555" fill-opacity="0.5"/>
+            <rect x="33" y="120" width="72" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="33" y="136" width="56" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="33" y="153" width="72" height="16" rx="3" fill="#00d4ff" fill-opacity="0.5"/>
+
+            <rect x="118" y="65" width="82" height="120" rx="6" fill="white" fill-opacity="0.1" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="159" y="88" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.6">丸山物産</text>
+            <rect x="123" y="98" width="72" height="16" rx="3" fill="#555" fill-opacity="0.5"/>
+            <rect x="123" y="120" width="72" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="123" y="136" width="56" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="123" y="153" width="72" height="16" rx="3" fill="#00d4ff" fill-opacity="0.5"/>
+
+            <rect x="208" y="65" width="82" height="120" rx="6" fill="white" fill-opacity="0.1" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="249" y="88" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.6">共立精機</text>
+            <rect x="213" y="98" width="72" height="16" rx="3" fill="#555" fill-opacity="0.5"/>
+            <rect x="213" y="120" width="72" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="213" y="136" width="56" height="10" rx="3" fill="#00d4ff" fill-opacity="0.3"/>
+            <rect x="213" y="153" width="72" height="16" rx="3" fill="#00d4ff" fill-opacity="0.5"/>
+
+            <text x="165" y="220" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9" font-weight="bold">一覧性が高い</text>
+            <text x="165" y="245" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.6">3社を同時に比較できる</text>
+            <text x="165" y="268" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.6">情報は要約になる</text>
+            <text x="165" y="320" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.8">業種の多様性を見せたい</text>
+            <text x="165" y="343" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.8">場合に特に有効</text>
+
+            <!-- 型B：タブ切り替え型 (x=330〜630) -->
+            <rect x="330" y="15" width="300" height="390" rx="10" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="480" y="50" text-anchor="middle" font-size="20" fill="#00d4ff" font-weight="bold">型B：タブ切り替え型</text>
+
+            <!-- タブ -->
+            <rect x="341" y="65" width="88" height="28" rx="4" fill="#00d4ff" fill-opacity="0.3"/>
+            <text x="385" y="84" text-anchor="middle" font-size="13" fill="white">テクノブリッジ</text>
+            <rect x="436" y="65" width="88" height="28" rx="4" fill="white" fill-opacity="0.08"/>
+            <text x="480" y="84" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.5">丸山物産</text>
+            <rect x="531" y="65" width="88" height="28" rx="4" fill="white" fill-opacity="0.08"/>
+            <text x="575" y="84" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.5">共立精機</text>
+
+            <!-- コンテンツ（Before/After） -->
+            <rect x="341" y="100" width="277" height="115" rx="6" fill="white" fill-opacity="0.08" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+            <rect x="348" y="108" width="125" height="97" rx="4" fill="#555" fill-opacity="0.3"/>
+            <text x="410" y="162" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.5">Before</text>
+            <line x1="476" y1="157" x2="486" y2="157" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrB)"/>
+            <rect x="490" y="108" width="122" height="97" rx="4" fill="#00d4ff" fill-opacity="0.15"/>
+            <text x="551" y="162" text-anchor="middle" font-size="14" fill="#00d4ff" fill-opacity="0.9">After</text>
+
+            <text x="480" y="248" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9" font-weight="bold">詳細を伝えやすい</text>
+            <text x="480" y="273" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.6">1社分をフルサイズで表示</text>
+            <text x="480" y="296" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.6">2〜3社目は初期表示で非表示</text>
+            <text x="480" y="343" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.8">詳細重視・物語を読ませたい</text>
+            <text x="480" y="366" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.8">場合に有効</text>
+
+            <!-- 型C：フル展開＋サマリー型 (x=645〜945) -->
+            <rect x="645" y="15" width="300" height="390" rx="10" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="795" y="44" text-anchor="middle" font-size="18" fill="#00d4ff" font-weight="bold">型C：フル展開＋サマリー型</text>
+
+            <!-- フルカード（テクノブリッジ） -->
+            <rect x="656" y="58" width="278" height="95" rx="6" fill="white" fill-opacity="0.12" stroke="#00d4ff" stroke-opacity="0.5" stroke-width="1.5"/>
+            <text x="795" y="80" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.7">テクノブリッジ（フル展開）</text>
+            <rect x="663" y="88" width="118" height="55" rx="4" fill="#555" fill-opacity="0.3"/>
+            <text x="722" y="121" text-anchor="middle" font-size="13" fill="white" fill-opacity="0.5">Before</text>
+            <line x1="783" y1="116" x2="793" y2="116" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrC)"/>
+            <rect x="797" y="88" width="130" height="55" rx="4" fill="#00d4ff" fill-opacity="0.15"/>
+            <text x="862" y="121" text-anchor="middle" font-size="13" fill="#00d4ff">After</text>
+
+            <!-- サマリー2枚 -->
+            <rect x="656" y="163" width="128" height="70" rx="6" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="720" y="190" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.6">丸山物産</text>
+            <rect x="663" y="203" width="114" height="22" rx="3" fill="#00d4ff" fill-opacity="0.15"/>
+
+            <rect x="796" y="163" width="138" height="70" rx="6" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="865" y="190" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.6">共立精機</text>
+            <rect x="803" y="203" width="124" height="22" rx="3" fill="#00d4ff" fill-opacity="0.15"/>
+
+            <text x="795" y="270" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9" font-weight="bold">詳細と一覧のバランス型</text>
+            <text x="795" y="295" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.6">代表事例を深く見せつつ</text>
+            <text x="795" y="343" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.8">多様性もサマリーで補完</text>
+        </svg>
+        <p class="text-sub">判断基準：022のメインターゲットにとってどの型が「最も自分ごと化しやすいか」で選ぶ</p>
+    </div>
+</div>
+
+<!-- スライド9: Before/Afterの視覚的対比の作り方（SVG） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Before/Afterの視覚的対比——色と構造で「変化」を見せる</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 900 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:680px;">
+            <rect width="900" height="370" fill="#0a0a1a"/>
+
+            <!-- Before側 -->
+            <rect x="15" y="15" width="375" height="335" rx="10" fill="#444" fill-opacity="0.18" stroke="#888" stroke-width="1.5"/>
+            <text x="202" y="53" text-anchor="middle" font-size="22" fill="#aaa" font-weight="bold">Before（課題）</text>
+            <line x1="30" y1="63" x2="378" y2="63" stroke="#888" stroke-opacity="0.3" stroke-width="1"/>
+
+            <!-- 企業プロフィール -->
+            <text x="32" y="92" font-size="16" fill="white" fill-opacity="0.5">テクノブリッジ株式会社 / IT / 150名</text>
+
+            <!-- Before箇条書き -->
+            <circle cx="33" cy="122" r="6" fill="#888" fill-opacity="0.6"/>
+            <text x="50" y="128" font-size="17" fill="#bbb">候補者管理がExcel＋メール</text>
+            <circle cx="33" cy="162" r="6" fill="#888" fill-opacity="0.6"/>
+            <text x="50" y="168" font-size="17" fill="#bbb">人事2名で月50名の対応に疲弊</text>
+            <circle cx="33" cy="202" r="6" fill="#888" fill-opacity="0.6"/>
+            <text x="50" y="208" font-size="17" fill="#bbb">日程調整1件に平均5往復</text>
+
+            <!-- コメント引用 -->
+            <rect x="25" y="242" width="355" height="92" rx="6" fill="white" fill-opacity="0.04" stroke="#888" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="38" y="272" font-size="16" fill="#999">"Excelの管理表の更新に</text>
+            <text x="38" y="298" font-size="16" fill="#999">毎日2時間取られていた"</text>
+
+            <!-- 矢印（中央） -->
+            <text x="450" y="182" text-anchor="middle" font-size="44" fill="#00d4ff">→</text>
+            <rect x="420" y="194" width="60" height="24" rx="4" fill="#00d4ff" fill-opacity="0.15"/>
+            <text x="450" y="211" text-anchor="middle" font-size="14" fill="#00d4ff">導入後</text>
+
+            <!-- After側 -->
+            <rect x="510" y="15" width="375" height="335" rx="10" fill="#00d4ff" fill-opacity="0.06" stroke="#00d4ff" stroke-width="2"/>
+            <text x="697" y="53" text-anchor="middle" font-size="22" fill="#00d4ff" font-weight="bold">After（成果）</text>
+            <line x1="525" y1="63" x2="873" y2="63" stroke="#00d4ff" stroke-opacity="0.3" stroke-width="1"/>
+
+            <!-- 企業プロフィール -->
+            <text x="527" y="92" font-size="16" fill="white" fill-opacity="0.5">テクノブリッジ株式会社 / IT / 150名</text>
+
+            <!-- After箇条書き（成果強調） -->
+            <circle cx="528" cy="122" r="6" fill="#00d4ff" fill-opacity="0.8"/>
+            <text x="545" y="128" font-size="17" fill="white">候補者管理を一元化</text>
+            <circle cx="528" cy="162" r="6" fill="#00d4ff" fill-opacity="0.8"/>
+            <text x="545" y="168" font-size="17" fill="white">工数<tspan font-weight="bold" fill="#00d4ff">60%削減</tspan>・月80名の対応が可能に</text>
+            <circle cx="528" cy="202" r="6" fill="#00d4ff" fill-opacity="0.8"/>
+            <text x="545" y="208" font-size="17" fill="white">日程調整の自動化でゼロ往復</text>
+
+            <!-- コメント引用 -->
+            <rect x="520" y="242" width="355" height="92" rx="6" fill="#00d4ff" fill-opacity="0.07" stroke="#00d4ff" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="533" y="272" font-size="16" fill="#e0e0e0">"候補者との面談の質を上げることに</text>
+            <text x="533" y="298" font-size="16" fill="#e0e0e0">集中できている" — 人事部 田中様</text>
+        </svg>
+        <p class="text-sub">色分けのポイント：Before ＝ グレー系で「重さ・停滞感」を表現 / After ＝ ブランドカラーで「変化・前進」を表現</p>
+    </div>
+</div>
+
+<!-- スライド10: 1社目フルデザイン→2〜3社目への展開 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">1社目をコンポーネント化し2〜3社目へ展開する</h2>
+    <div class="content-block">
+        <p>事例セクションは「1社を丁寧に作り、コンポーネント化してから複製する」ワークフローが最も効率的だ。Block 3（012・Atomic Design）で学んだ「1つ作って展開する」原則の実践になる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>作業の流れ（4ステップ）</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 1社目（テクノブリッジ）をフルデザイン</strong><br>企業プロフィール・Before・After・コメントの全要素を完成させる</li>
+                    <li><strong>② コンポーネント化</strong><br>完成した1社目の全要素を選択してコンポーネント（Ctrl/Cmd + Alt + K）に変換する</li>
+                    <li><strong>③ 2〜3社目のインスタンスを作成</strong><br>コンポーネントを複製し（Alt+ドラッグ）、テキストと数字だけを差し替える</li>
+                    <li><strong>④ レイアウト全体を確認</strong><br>3社並べたときの高さ・余白・色が揃っているか確認する</li>
+                </ul>
+            </div>
+            <div>
+                <h3>コンポーネント化の利点</h3>
+                <ul>
+                    <li><strong>修正が一括反映：</strong>フォントサイズや余白を変えると3社全部に反映される</li>
+                    <li><strong>一貫性が保たれる：</strong>3社でレイアウトがバラバラになるミスが防げる</li>
+                    <li><strong>SP版変換が楽：</strong>コンポーネントのプロパティでPC/SPを切り替えられる</li>
+                </ul>
+                <div class="highlight-box">⚠️ テキストを差し替えるときに高さが変わる場合がある。Auto Layoutを使って高さを可変に設定しておくと差し替え時に崩れない</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: 演習3概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：お客様の声 ＋ ロゴ帯 ＋ 導線の通し確認</h2>
+    <div class="content-block">
+        <p>信頼構築セクションの最後の2型（お客様の声・ロゴ帯）をデザインし、022の導線全体を通しでスクロールして確認する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>出力物</h3>
+                <ul>
+                    <li>Figma：お客様の声セクション（PC版3カラム）</li>
+                    <li>Figma：ロゴ帯セクション（横1列）</li>
+                    <li>022のWFへの組み込みと通し確認</li>
+                    <li>各セクションの言語化（各100文字）</li>
+                </ul>
+                <h3>制限時間の目安</h3>
+                <ul class="no-bullet">
+                    <li>⏱ お客様の声セクション：20分</li>
+                    <li>⏱ ロゴ帯セクション：15分</li>
+                    <li>⏱ 導線の通し確認：10分</li>
+                    <li>⏱ 言語化（100文字）：10分</li>
+                </ul>
+            </div>
+            <div>
+                <h3>演習3のポイント</h3>
+                <ul>
+                    <li>お客様の声のカードは「誰が言ったか」が見えるデザインにする（名前・役職・企業名を必ず入れる）</li>
+                    <li>ロゴ帯はFigmaの矩形＋テキストで代用し、グレースケールに統一</li>
+                    <li>通し確認では「見る側の視点」でスクロールし、離脱したくなる箇所がないか確認する</li>
+                    <li>演習1〜3の成果物を横に並べ、全体の整合性を確かめる</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: お客様の声セクションの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">お客様の声セクション——制作ガイド</h2>
+    <div class="content-block">
+        <p>「誰が言ったか」を明示するカード形式で3社分のコメントを横並びにする。コメントの信頼性は「具体的な変化＋発言者の属性」で決まる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>各カードの構造（上から順に）</h3>
+                <table class="slide-table">
+                    <thead><tr><th>要素</th><th>内容・備考</th></tr></thead>
+                    <tbody>
+                        <tr><td>引用符（"）</td><td>大きめのデコレーション文字</td></tr>
+                        <tr><td>コメント本文</td><td>具体的な変化が含まれるもの</td></tr>
+                        <tr><td>顔写真プレースホルダー</td><td>グレーの円（実物は納品時に差し替え）</td></tr>
+                        <tr><td>担当者名</td><td>田中様 / 鈴木様 / 共立様</td></tr>
+                        <tr><td>役職・企業名</td><td>人事部 / 人事本部長 / 代表取締役</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>レイアウトの判断</h3>
+                <ul>
+                    <li><strong>PC版：</strong>3カラム横並びが基本。コメントの長さが不揃いの場合は最も長いコメントに高さを揃える（Auto Layout使用）</li>
+                    <li><strong>SP版：</strong>横スクロールのカルーセル形式 or 縦積み（3枚目が省略されることを想定して優先順位をつける）</li>
+                    <li><strong>カードの背景色：</strong>ブランドカラーの薄い背景か白 / 角丸でやわらかさを出す</li>
+                </ul>
+                <p class="text-sub">📌 「良かったです」系のコメントは使わない。「工数が○%削減」など数字入りの言葉を優先する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: ロゴ帯セクションの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ロゴ帯セクション——制作ガイド</h2>
+    <div class="content-block">
+        <p>ロゴ帯はFigmaで最も短時間で実装できるセクションだ。しかし「整列・統一・余白」の基本が崩れると一気に安っぽくなる。丁寧に揃えることが信頼感の源泉になる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>Figmaでの実装手順</h3>
+                <ul class="no-bullet">
+                    <li><strong>① セクション見出し</strong><br>「200社以上の企業が導入」をセクション上部に配置</li>
+                    <li><strong>② ロゴ代替の作成</strong><br>幅160px・高さ60px程度のグレー矩形（fill:#666）を作成し、中央に社名テキストを入れる</li>
+                    <li><strong>③ 7〜10社分を横一列に等間隔で配置</strong><br>Auto Layoutで間隔を統一（gap: 48px程度）</li>
+                    <li><strong>④ 高さを揃える</strong><br>全ロゴ代替を選択してAlignで高さ中央を揃える</li>
+                </ul>
+            </div>
+            <div>
+                <h3>設計の判断ポイント</h3>
+                <ul>
+                    <li><strong>背景色：</strong>やや暗めのグレー（#1a1a2e等）かブランドカラー極薄背景。前後のセクションとの視覚的区切りを作る</li>
+                    <li><strong>ロゴのグレースケール：</strong>矩形をグレーにすることで統一感を担保（実際のロゴ差し替え時も同様の指示をクライアントに伝える）</li>
+                    <li><strong>知名度の高い企業を中央に：</strong>視線が中央に集まる性質を活用する</li>
+                </ul>
+                <div class="highlight-box">📌 ロゴは「並べるだけ」に見えるが、整列・間隔・サイズの統一が崩れると瞬時に信頼感が下がる。Alignツールを必ず使うこと</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド14: 導線の通し確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">導線の通し確認——スクロールして「切れ目」を探す</h2>
+    <div class="content-block">
+        <p>演習1〜3で完成した4セクションを022のWFに組み込み、FVから信頼構築セクション全体までをFigmaでスクロールして確認する。「設計者の目」ではなく「初めて見る訪問者の目」で見ることが重要だ。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>確認する順番</h3>
+                <p>FV（023）→ 課題提起 → 解決策 → <strong>ロゴ帯 → 数字実績 → 導入事例 → お客様の声</strong></p>
+                <h3>チェックポイント4点</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 余白：</strong>セクション間の余白は適切か（狭すぎると窮屈・広すぎると導線が切れる）</li>
+                    <li><strong>② 色調：</strong>セクションごとに背景色が変わる場合、統一感があるか</li>
+                    <li><strong>③ 視線の流れ：</strong>上から下へ自然にスクロールしたくなるか</li>
+                    <li><strong>④ 情報の重複：</strong>数字実績と事例で同じ数字が出る場合、意図的な強調か不注意な重複か</li>
+                </ul>
+            </div>
+            <div>
+                <h3>よくある修正パターン</h3>
+                <ul>
+                    <li>セクション間の余白が狭すぎて「つながり感がない」→ 各セクションの上下padding（80〜120px）を統一する</li>
+                    <li>背景色の変化が激しすぎて「チカチカする」→ 背景を白・淡グレー・ブランドカラー薄めの3色以内に抑える</li>
+                    <li>ロゴ帯から数字実績への移行が唐突に感じる → セクション見出しを添えて「なぜここに数字があるのか」を示す</li>
+                </ul>
+                <p class="text-sub">📌 確認後に気づいた修正点を箇条書きでメモしておく。言語化10分の中でまとめる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド15: 成果物の確認と次回予告 -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">今日の成果物まとめ</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">📊</div>
+            <h3>数字実績セクション</h3>
+            <p>4指標の3層構造（PC版＋SP版）。フォントサイズと色でインパクトを設計済み</p>
+        </div>
+        <div class="tile">
+            <div class="icon">↔️</div>
+            <h3>導入事例 Before/After</h3>
+            <p>3社分の事例。選択した型（カード/タブ/フル）とコンポーネント展開（PC版＋SP版）</p>
+        </div>
+        <div class="tile">
+            <div class="icon">💬</div>
+            <h3>お客様の声 ＋ ロゴ帯</h3>
+            <p>カード形式の声セクション（3社）とグレースケール統一ロゴ帯</p>
+        </div>
+        <div class="tile">
+            <div class="icon">✍️</div>
+            <h3>言語化（各100文字）</h3>
+            <p>各セクションのレイアウト選択理由。「なぜこの型を選んだか」を言葉で説明できる状態</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド16: 次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回予告：025「CTA・EFOの設計」</h2>
+    <div class="content-block">
+        <p>信頼構築で「信じていい」と思った訪問者に、最後の一押しをする。025では022の導線設計の「ゴール」となるCTAとフォームを設計する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>025で扱うこと</h3>
+                <ul>
+                    <li>CTAボタンのコピー・色・サイズの設計原則</li>
+                    <li>EFO（エントリーフォーム最適化）——フォームの項目数・順番の設計</li>
+                    <li>「申し込みたい」という気持ちを最後に邪魔しない設計</li>
+                    <li>022の導線設計を「ゴール」まで完成させる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>今日の演習との接続</h3>
+                <ul>
+                    <li>今日設計した信頼構築セクションの「次」にCTAが来る</li>
+                    <li>「信じていい」と確信した訪問者が躊躇なく行動できる状態を作るのが025の仕事</li>
+                    <li>次回までに：今日のWFを保存し、信頼構築セクション末尾のCTA配置場所を確認しておく</li>
+                </ul>
+                <p class="text-sub">📌 次回の演習で使います。今日完成したFigmaファイルを保存しておいてください</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +584,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "導入事例のレイアウト型（カード型・タブ切り替え型・フル展開＋サマリー型）を選ぶ判断基準として最も適切なものはどれですか？",
+        choices: [
+            "制作時間が最も短い型を選ぶ",
+            "022で確定したメインターゲットにとってどの型が最も効果的か（一覧性・詳細度・バランス）で判断する",
+            "事例の数が多い方の型を選ぶ",
+            "Figmaのコンポーネント機能が使いやすい型を選ぶ"
+        ],
+        correct: 1,
+        explanation: "レイアウト型の選択は「022で設計したメインターゲットにとって最も効果的か」が判断基準です。一覧性を重視するならカード型、詳細な物語を伝えたいならタブ型、詳細と多様性のバランスが必要ならフル展開＋サマリー型を選びます。デザイン上の都合より受け手の視点で判断することが重要です。"
+    },
+    {
+        question: "Before/Afterセクションで「Before＝グレー系、After＝ブランドカラー系」の色分けを使う理由として最も正確なものはどれですか？",
+        choices: [
+            "Figmaのデフォルトカラーパレットに合わせるため",
+            "Before（課題・痛み）とAfter（変化・成果）の違いを、テキストを読まなくても瞬時に認識させるため",
+            "企業ブランドのガイドラインに従うため",
+            "スクロールアニメーションをつけやすくするため"
+        ],
+        correct: 1,
+        explanation: "色分けは「変化の方向性を視覚的に即座に伝える」ためです。テキストだけでは読まないと伝わりませんが、色は見るだけで「暗い（課題）→明るい（解決）」という変化を認識させます。これはBlock 1（005）で学んだ「視覚は言語より速い」の実践です。"
+    },
+    {
+        question: "1社目をフルデザインしてコンポーネント化し、2〜3社目を複製＋差し替えで展開する手法の主な利点はどれですか？",
+        choices: [
+            "各社のデザインを個別に最適化できるため",
+            "1回の設計で複数事例に展開でき、修正も全インスタンスに一括反映される。Block 3（Atomic Design）の実践でもある",
+            "Figmaのファイルサイズを最小化できるため",
+            "クライアントへの納品が容易になるため"
+        ],
+        correct: 1,
+        explanation: "コンポーネント化の最大の利点は「1回の設計変更がすべてのインスタンスに反映される」ことです。3社分を個別に作ると修正のたびに3箇所を直す必要がありますが、コンポーネント化すれば1箇所の修正で済みます。これはBlock 3（012・Atomic Design）で学んだ「再利用可能な最小単位を作る」原則の実践です。"
+    },
+    {
+        question: "ロゴ帯を信頼構築セクションの冒頭（または数字実績の前）に配置する設計上の理由はどれですか？",
+        choices: [
+            "ロゴは著作権があるため最初に免責事項として表示するため",
+            "ロゴを「見る」だけで完結する最も認知負荷が低い社会的証明で、後続の詳細セクションを読む動機付けになるため",
+            "FVとの色の統一性を保つために最初に配置するため",
+            "検索エンジンがロゴを優先的にインデックスするため"
+        ],
+        correct: 1,
+        explanation: "ロゴ帯は4つの型の中で最も「認知負荷が低い」信頼構築です。読む・計算するといった処理が不要で、「見るだけ」で「この企業も使っているのか」という社会的証明が形成されます。冒頭に置くことで、後続の数字実績や事例を「読もう」という動機が生まれます。"
+    },
+    {
+        question: "導線の通し確認で「セクション間の余白」をチェックポイントに含める理由として最も適切なものはどれですか？",
+        choices: [
+            "余白が広いほどデザインが洗練されて見えるため、できる限り広くするため",
+            "余白が狭すぎるとセクション間の区切りが曖昧になり、広すぎると導線が切れて離脱リスクが高まるため",
+            "余白はSEOスコアに直接影響するため",
+            "Figmaの自動レイアウト機能が余白の統一を要求するため"
+        ],
+        correct: 1,
+        explanation: "余白は「情報の区切り」と「導線の連続性」の両方を担います。狭すぎるとセクション間の境界が曖昧になり「全部同じ話」に見えます。広すぎると「スクロールが途切れる感覚」が生まれ、訪問者が離脱するリスクが上がります。余白はコンテンツと同じく設計の対象です。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

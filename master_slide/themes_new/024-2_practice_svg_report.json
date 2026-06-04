@@ -1,0 +1,13 @@
+{
+  "file": "master_slide/themes_new/024-2_practice.html",
+  "svgCount": 2,
+  "issues": [
+    {
+      "type": "alignment",
+      "severity": "info",
+      "location": "スライド9 SVG2",
+      "message": "横並びのrect要素（5個）の間隔にバラツキがあります（最大偏差: 306px）。"
+    }
+  ],
+  "timestamp": "2026-06-04T07:44:07.048Z"
+}

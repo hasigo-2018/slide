@@ -19,7 +19,12 @@
       "Bash(node scripts/insert_html.js generated_023_theory.html master_slide/themes_new/023-1_theory.html 2>&1)",
       "Bash(node scripts/check_svg.js master_slide/themes_new/023-1_theory.html 2>&1)",
       "Bash(node scripts/insert_html.js master_slide/themes_new/023-2_practice.html generated_023_practice.html 2>&1)",
-      "Bash(node scripts/check_svg.js master_slide/themes_new/023-2_practice.html 2>&1)"
+      "Bash(node scripts/check_svg.js master_slide/themes_new/023-2_practice.html 2>&1)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/024-1_theory.html generated_024_theory.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/024-1_theory.html 2>/dev/null || node scripts/check_svg.js master_slide/themes_new/024-1_theory.html)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/024-2_practice.html generated_024_practice.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/024-2_practice.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/024-1_theory.html)"
     ]
   }
 }
