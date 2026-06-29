@@ -3,13 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
+    <title>CTA・EFOの設計【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>CTA・EFOの設計<span>【理論編】</span></h1>
+        <p>「信じた」を「行動した」に変える最後の設計</p>
+    </div>
+</div>
+
+<!-- スライド2: CTAとは何か -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">CTAとは何か——LPの導線における「最後の一押し」</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1000 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:480px;">
+            <rect width="1000" height="220" fill="#0a0a1a"/>
+            <g transform="translate(67,0)">
+            <defs>
+                <marker id="arr-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-d" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+            </defs>
+
+            <!-- FV -->
+            <rect x="20" y="55" width="130" height="65" rx="8" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="85" y="85" text-anchor="middle" font-size="22" fill="white">FV</text>
+            <text x="85" y="108" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.5">（023）</text>
+
+            <line x1="150" y1="87" x2="183" y2="87" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-a)"/>
+
+            <!-- 課題提起 -->
+            <rect x="183" y="55" width="130" height="65" rx="8" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="248" y="91" text-anchor="middle" font-size="22" fill="white">課題提起</text>
+
+            <line x1="313" y1="87" x2="346" y2="87" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-b)"/>
+
+            <!-- 解決策 -->
+            <rect x="346" y="55" width="130" height="65" rx="8" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="411" y="91" text-anchor="middle" font-size="22" fill="white">解決策</text>
+
+            <line x1="476" y1="87" x2="509" y2="87" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-c)"/>
+
+            <!-- 信頼構築 -->
+            <rect x="509" y="55" width="145" height="65" rx="8" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="581" y="85" text-anchor="middle" font-size="22" fill="white">信頼構築</text>
+            <text x="581" y="108" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.5">（024）</text>
+
+            <line x1="654" y1="87" x2="687" y2="87" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-d)"/>
+
+            <!-- CTA（強調） -->
+            <rect x="687" y="42" width="160" height="91" rx="8" fill="#00d4ff" fill-opacity="0.18" stroke="#00d4ff" stroke-width="2.5"/>
+            <text x="767" y="85" text-anchor="middle" font-size="24" fill="#00d4ff" font-weight="bold">CTA</text>
+            <text x="767" y="112" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.9">（このテーマ）</text>
+
+            <!-- ラベル（下段） -->
+            <text x="85" y="148" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.5">「関係ある」</text>
+            <text x="581" y="148" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.5">「信じていい」</text>
+            <text x="767" y="158" text-anchor="middle" font-size="15" fill="#00d4ff" fill-opacity="0.9">「今すぐ行動する」</text>
+            </g>
+        </svg>
+        <p>FVで「自分に関係ある」、信頼構築で「信じていい」と感じた訪問者に対し、「今すぐ行動する」最後の一押しをするのがCTAの仕事。CTAの設計が弱いと、せっかくの導線が「見て終わり」になる。</p>
+        <div class="highlight-box">💡 CTAの役割は「売り込む」ことではなく、すでに動機づけられた訪問者の背中を押すこと</div>
+    </div>
+</div>
+
+<!-- スライド3: CTAボタン設計の4軸 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">CTAボタン設計の4軸——「押したくなる」を構成する要素</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1100 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:700px;">
+            <rect width="1100" height="430" fill="#0a0a1a"/>
+
+            <!-- 軸①：色 -->
+            <rect x="15" y="15" width="255" height="400" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="142" y="68" text-anchor="middle" font-size="48" fill="#00d4ff">①</text>
+            <text x="142" y="112" text-anchor="middle" font-size="28" fill="white" font-weight="bold">色</text>
+            <line x1="30" y1="132" x2="255" y2="132" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="142" y="172" text-anchor="middle" font-size="18" fill="white" fill-opacity="0.8">周囲との「対比」が本質</text>
+            <text x="142" y="205" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">赤・緑が高CVRは通説</text>
+            <text x="142" y="233" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">→ 真実は「目立つ色」</text>
+            <text x="142" y="295" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">004（色彩）接続</text>
+
+            <!-- 軸②：サイズ -->
+            <rect x="285" y="15" width="255" height="400" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="412" y="68" text-anchor="middle" font-size="48" fill="#00d4ff">②</text>
+            <text x="412" y="112" text-anchor="middle" font-size="28" fill="white" font-weight="bold">サイズ</text>
+            <line x1="300" y1="132" x2="525" y2="132" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="412" y="172" text-anchor="middle" font-size="18" fill="white" fill-opacity="0.8">SP: タップ領域44×44px以上</text>
+            <text x="412" y="205" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">PC: 横幅200px以上</text>
+            <text x="412" y="240" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">小さい→見落とす</text>
+            <text x="412" y="270" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">大きすぎる→押し売り感</text>
+
+            <!-- 軸③：コピー（核） -->
+            <rect x="555" y="15" width="255" height="400" rx="12" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="2.5"/>
+            <text x="682" y="68" text-anchor="middle" font-size="48" fill="#00d4ff">③</text>
+            <text x="682" y="112" text-anchor="middle" font-size="28" fill="#00d4ff" font-weight="bold">コピー</text>
+            <line x1="570" y1="132" x2="795" y2="132" stroke="#00d4ff" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="682" y="172" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.5">❌「送信」「申込」</text>
+            <text x="682" y="208" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.9">✅「3分でわかる資料を</text>
+            <text x="682" y="233" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.9">　無料ダウンロード」</text>
+            <text x="682" y="295" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">ベネフィット＋低ハードル</text>
+
+            <!-- 軸④：配置 -->
+            <rect x="825" y="15" width="260" height="400" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="955" y="68" text-anchor="middle" font-size="48" fill="#00d4ff">④</text>
+            <text x="955" y="112" text-anchor="middle" font-size="28" fill="white" font-weight="bold">配置</text>
+            <line x1="840" y1="132" x2="1070" y2="132" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="955" y="172" text-anchor="middle" font-size="18" fill="white" fill-opacity="0.8">最低3ポイント</text>
+            <text x="955" y="210" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">FV（最初の接触）</text>
+            <text x="955" y="240" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">中盤（信頼構築の直後）</text>
+            <text x="955" y="270" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.6">最終（フッター直前）</text>
+        </svg>
+        <div class="highlight-box">📌 コピー軸が最も見落とされやすい。「何が得られるか（ベネフィット）」＋「ハードルの低さ」の両方を1文に含めること</div>
+    </div>
+</div>
+
+<!-- スライド4: マイクロコピーの力 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">マイクロコピーの力——ボタン周辺の1行がCVRを動かす</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>ボタン上のマイクロコピー（ハードル低減）</h3>
+                <ul>
+                    <li>「無料・30秒で完了」</li>
+                    <li>「今すぐ確認できます」</li>
+                    <li>「登録なしで閲覧可能」</li>
+                    <li>→ ボタンを押すコストを小さく見せる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>ボタン下のマイクロコピー（不安払拭）</h3>
+                <ul>
+                    <li>「※営業電話は一切しません」</li>
+                    <li>「※いつでも解約可能」</li>
+                    <li>「※クレジットカード不要」</li>
+                    <li>→ ボタンを押すリスクをゼロにする</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ Block 1（005）の損失回避：人は「得られるもの」より「失うもの」に敏感。「クレジットカード不要」を追記しただけでCVRが1.3倍になった事例がある</div>
+        <p class="text-note">TALENTBOARDへの適用：資料DLボタンの下に「※ダウンロード後に営業電話は行いません」と入れるだけで、「申し込んだら電話が来るのでは？」という不安を打ち消せる</p>
+    </div>
+</div>
+
+<!-- スライド5: 2種類のCVと使い分け -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">2種類のCV——「ライトCV」と「ヘビーCV」の使い分け</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>ライトCV（資料ダウンロード）</h3>
+                <ul>
+                    <li><strong>配置：</strong>FV・中盤（信頼構築前）</li>
+                    <li><strong>フォーム項目：</strong>メール＋氏名の最小限</li>
+                    <li><strong>コピー例：</strong>「3分でわかる資料を無料ダウンロード」</li>
+                    <li><strong>対象：</strong>まだ検討初期の訪問者</li>
+                </ul>
+            </div>
+            <div>
+                <h3>ヘビーCV（デモ申込・個別相談）</h3>
+                <ul>
+                    <li><strong>配置：</strong>最終CTA（信頼構築後）</li>
+                    <li><strong>フォーム項目：</strong>会社名・役職・課題感まで</li>
+                    <li><strong>コピー例：</strong>「TALENTBOARDの無料デモを予約する」</li>
+                    <li><strong>対象：</strong>十分に動機づけられた訪問者</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 TALENTBOARDの設計：FV・中盤→ライトCV（資料DL）、最終→ヘビーCV（デモ申込）。配置位置によって「何を求めるか」を変える</div>
+        <div class="highlight-box">⚠️ ヘビーCVをFVに置くのは禁止。訪問者がまだ「信じていい」状態になっていない段階で高い行動コストを求めると、そのまま離脱する</div>
+    </div>
+</div>
+
+<!-- スライド6: EFOの原則 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">EFO（エントリーフォーム最適化）の4原則——離脱を防ぐフォームの設計</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:680px;">
+            <rect width="1100" height="380" fill="#0a0a1a"/>
+
+            <!-- 原則①：項目数最小化 -->
+            <rect x="15" y="15" width="255" height="350" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="142" y="68" text-anchor="middle" font-size="44" fill="#00d4ff">①</text>
+            <text x="142" y="110" text-anchor="middle" font-size="22" fill="white" font-weight="bold">項目数を</text>
+            <text x="142" y="138" text-anchor="middle" font-size="22" fill="white" font-weight="bold">最小限に</text>
+            <line x1="30" y1="158" x2="255" y2="158" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="142" y="195" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">BtoBでも</text>
+            <text x="142" y="222" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">「会社名・氏名・メール」</text>
+            <text x="142" y="249" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">の3項目でCVは取れる</text>
+            <text x="142" y="310" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">1項目増→CVR -5〜10%</text>
+
+            <!-- 原則②：ステップ分割 -->
+            <rect x="285" y="15" width="255" height="350" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="412" y="68" text-anchor="middle" font-size="44" fill="#00d4ff">②</text>
+            <text x="412" y="110" text-anchor="middle" font-size="22" fill="white" font-weight="bold">ステップ</text>
+            <text x="412" y="138" text-anchor="middle" font-size="22" fill="white" font-weight="bold">分割</text>
+            <line x1="300" y1="158" x2="525" y2="158" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="412" y="195" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">7項目以上は</text>
+            <text x="412" y="222" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">1画面に詰めない</text>
+            <text x="412" y="249" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">「ステップ1/3：基本情報」</text>
+            <text x="412" y="310" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">進捗表示で離脱を防ぐ</text>
+
+            <!-- 原則③：リアルタイムバリデーション（核） -->
+            <rect x="555" y="15" width="255" height="350" rx="12" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="2.5"/>
+            <text x="682" y="68" text-anchor="middle" font-size="44" fill="#00d4ff">③</text>
+            <text x="682" y="110" text-anchor="middle" font-size="22" fill="#00d4ff" font-weight="bold">リアルタイム</text>
+            <text x="682" y="138" text-anchor="middle" font-size="22" fill="#00d4ff" font-weight="bold">バリデーション</text>
+            <line x1="570" y1="158" x2="795" y2="158" stroke="#00d4ff" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="682" y="195" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9">入力中に即時フィードバック</text>
+            <text x="682" y="222" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9">「OK」「エラー」を表示</text>
+            <text x="682" y="249" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.9">アイコン＋色で表現（Figma）</text>
+            <text x="682" y="310" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">送信後エラーの不満を防ぐ</text>
+
+            <!-- 原則④：ラベル常時表示 -->
+            <rect x="825" y="15" width="260" height="350" rx="12" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="955" y="68" text-anchor="middle" font-size="44" fill="#00d4ff">④</text>
+            <text x="955" y="110" text-anchor="middle" font-size="22" fill="white" font-weight="bold">ラベルの</text>
+            <text x="955" y="138" text-anchor="middle" font-size="22" fill="white" font-weight="bold">常時表示</text>
+            <line x1="840" y1="158" x2="1070" y2="158" stroke="white" stroke-opacity="0.12" stroke-width="1"/>
+            <text x="955" y="195" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">プレースホルダーだけは</text>
+            <text x="955" y="222" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">入力後に何のフィールド</text>
+            <text x="955" y="249" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.7">か分からなくなる</text>
+            <text x="955" y="310" text-anchor="middle" font-size="16" fill="#00d4ff" fill-opacity="0.9">常時表示ラベルが安全</text>
+        </svg>
+        <p class="text-note">フォームはCVの最大の離脱ポイント。技術的な実装ではなく、デザイン上の工夫だけで離脱率を大きく改善できる</p>
+    </div>
+</div>
+
+<!-- スライド7: 追従CTAの設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">追従CTAの設計——スクロールしても「常に見える」一押し</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>PC版の配置パターン</h3>
+                <ul>
+                    <li><strong>画面右下フロート：</strong>本文に重ならない位置に固定表示</li>
+                    <li><strong>ヘッダー固定：</strong>ナビゲーション内にCTAボタンを常設</li>
+                    <li><strong>表示タイミング：</strong>FVをスクロールで超えたタイミングで出現</li>
+                    <li>本文コンテンツを隠さないよう十分な余白を確保</li>
+                </ul>
+            </div>
+            <div>
+                <h3>SP版の配置パターン</h3>
+                <ul>
+                    <li><strong>画面下部固定バー：</strong>スマートフォンで最も有効</li>
+                    <li><strong>高さ：</strong>コンテンツ表示領域を圧迫しない最小限</li>
+                    <li><strong>デザイン：</strong>控えめなトンマナ×十分な視認性を両立</li>
+                    <li>「常に表示されている」ことで押し売り感が出ないよう配慮</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 追従CTAの目的は「訪問者がどの位置にいてもいつでも行動できる状態を維持」すること。TALENTBOARDのように複数セクションを持つ長いLPで特に有効</div>
+    </div>
+</div>
+
+<!-- スライド8: Bad CTA vs Good CTA -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Bad CTA vs Good CTA——なぜCVRに差が出るのか</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>❌ Bad CTAの典型例</h3>
+                <ul>
+                    <li>ボタンラベルが「送信」「申込」のみ</li>
+                    <li>ボタン色が背景に馴染む灰色で視認性が低い</li>
+                    <li>フォーム項目が10個以上あり1画面に全部表示</li>
+                    <li>ボタン周辺にマイクロコピーが一切ない</li>
+                    <li>CTAがFVにしかなく中盤・最終に存在しない</li>
+                </ul>
+            </div>
+            <div>
+                <h3>✅ Good CTAの設計</h3>
+                <ul>
+                    <li>「3分でわかる資料を無料ダウンロード」の緑ボタン</li>
+                    <li>ボタン上：「30秒で完了」でハードルを下げる</li>
+                    <li>ボタン下：「※営業電話は一切しません」で不安を消す</li>
+                    <li>フォーム3項目＋ステップ分割で圧迫感を排除</li>
+                    <li>FV・中盤・最終の3ポイントに適切なCVを配置</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ Bad CTAとGood CTAの差は「行動心理学の原則が実装されているか否か」。4軸×マイクロコピー×EFO4原則——Block 1の理論がここに集約される</div>
+    </div>
+</div>
+
+<!-- スライド9: 実践編の予告と準備 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">実践編の予告と準備——次のコマで行うこと</h2>
+    <div class="content-block">
+        <h3>実践編の演習構成（3演習）</h3>
+        <ul>
+            <li><strong>演習1（1.5コマ）：</strong>CTAボタンのバリエーション制作＋選定 — 色・サイズ・コピー・マイクロコピーをFigmaでバリアント作成し、評価基準をもとに選択する</li>
+            <li><strong>演習2（2コマ）：</strong>フォームデザイン — EFOの4原則を適用したTALENTBOARDのデモ申込フォームをFigmaで設計する</li>
+            <li><strong>演習3（1.5コマ）：</strong>LP全体のCTA配置確認＋追従CTA — 022のWFに実際のCTAを当てはめ、配置の妥当性を検証する</li>
+        </ul>
+        <h3>事前準備（Figmaで確認しておくこと）</h3>
+        <ul>
+            <li>022のWFに記載したCTA配置ポイント（FV・中盤・最終）の確認</li>
+            <li>024で完成した信頼構築セクションの最終デザイン</li>
+            <li>TALENTBOARDのブランドカラー（ベースカラー・アクセントカラー）</li>
+        </ul>
+        <div class="next-box">📌 次のコマから実践編へ。理論編で学んだ「CTAボタン4軸 × マイクロコピー × EFO4原則」をTALENTBOARDに実装していきます。</div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +334,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "CTAボタン設計の4軸をすべて答えてください。",
+        choices: [
+            "色・サイズ・コピー・配置",
+            "コピー・レイアウト・色・フォント",
+            "ビジュアル・テキスト・配置・余白",
+            "色・余白・フォント・コピー"
+        ],
+        correct: 0,
+        explanation: "CTAボタン設計の4軸は「色・サイズ・コピー・配置」です。色は背景との対比が本質（004の色彩接続）、サイズはSP44px以上・PC200px以上、コピーはベネフィット＋低ハードルを含める、配置はFV・中盤・最終の最低3ポイントが基本です。"
+    },
+    {
+        question: "CTAボタンのコピーで「送信」「申込」が弱い理由として最も適切なものはどれですか？",
+        choices: [
+            "文字数が短すぎてボタンとして認識されないため",
+            "「何が得られるか（ベネフィット）」と「ハードルの低さ」が伝わらず、行動する理由が与えられていないため",
+            "検索エンジン最適化（SEO）の観点から不利なため",
+            "デザイン的に目立たないため"
+        ],
+        correct: 1,
+        explanation: "「送信」「申込」はアクション（動詞）のみで、訪問者が得られるベネフィットとハードルの低さを伝えていません。「3分でわかる資料を無料ダウンロード」のように「何が得られるか（資料）＋ハードルの低さ（3分・無料）」を含めることで、行動を後押しできます。"
+    },
+    {
+        question: "EFOの原則として「フォーム項目が1つ増えるとCVRにどう影響する」とされていますか？",
+        choices: [
+            "ほぼ影響はない（0〜1%程度）",
+            "約2〜3%下がる",
+            "約5〜10%下がる",
+            "約15〜20%下がる"
+        ],
+        correct: 2,
+        explanation: "フォーム項目が1つ増えるごとにCVRは約5〜10%下がると言われています。そのため項目数を最小限にすることがEFOの最重要原則です。BtoBであっても「会社名・氏名・メール」の3項目でコンバージョンを取ることは十分可能です。"
+    },
+    {
+        question: "「ライトCV」と「ヘビーCV」の使い分けの基準として最も適切なものはどれですか？",
+        choices: [
+            "コンバージョン単価の高低で判断し、単価が高いものをFVに置く",
+            "業種によって固定的に決まり、BtoBは常にヘビーCVのみ使用する",
+            "スマートフォンにはライトCV、PCにはヘビーCVを使い分ける",
+            "訪問者の動機づけの深さで判断し、ライトCVはFV・中盤に、ヘビーCVは信頼構築後の最終CTAに配置する"
+        ],
+        correct: 3,
+        explanation: "ライトCV（資料DL等）はまだ検討初期の訪問者向けにFV・中盤に配置し、ハードルを低くします。ヘビーCV（デモ申込等）は信頼構築を経て十分に動機づけられた訪問者向けに最終CTAとして配置します。TALENTBOARDもFV・中盤→資料DL、最終→デモ申込と使い分けます。"
+    },
+    {
+        question: "マイクロコピー「※営業電話は一切しません」が効果的な理由を、Block 1（005）の理論で説明してください。",
+        choices: [
+            "権威性の表示により、ブランドへの信頼感が高まるため",
+            "損失回避（Block 1・005）により、人は「得られるもの」より「失うもの」に敏感なため、フォーム送信後に「営業電話がかかってくるかも」という不安（損失の予期）をマイクロコピーが打ち消し、行動のハードルが下がる",
+            "社会的証明の効果が高まり、他ユーザーと同じ行動を促すため",
+            "認知負荷（Block 1・003）を下げることで、フォームを「簡単そう」と感じさせるため"
+        ],
+        correct: 1,
+        explanation: "損失回避（Block 1・005）のプロスペクト理論では、人は利得よりも損失に強く反応します。フォーム入力前に「営業電話が来るかもしれない」という損失の予期が行動のブレーキになっています。「※営業電話は一切しません」というマイクロコピーがその不安を消すことで、ハードルが下がりCVRが向上します。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

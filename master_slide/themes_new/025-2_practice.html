@@ -3,13 +3,533 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
+    <title>CTA・EFOの設計【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>CTA・EFOの設計<span>【実践編】</span></h1>
+        <p>押したくなるボタン、離脱しないフォームを設計する</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標——何を作り、何を完成させるか</h2>
+    <div class="content-block">
+        <h3>最終成果物（5点）</h3>
+        <ul>
+            <li><strong>CTAボタン2種：</strong>ライトCV用＋ヘビーCV用のFigmaコンポーネント</li>
+            <li><strong>フォーム2種：</strong>ライトCV用（3項目）＋ヘビーCV用（ステップ分割・7項目）のPC版・SP版</li>
+            <li><strong>追従CTA：</strong>PC版（右下フロート）＋SP版（固定バー）</li>
+            <li><strong>LP全体のCTA配置済みデザイン：</strong>022のWFに全CTAを組み込んだ状態</li>
+            <li><strong>選定理由の言語化：</strong>各CTAの選定理由（各100文字）</li>
+        </ul>
+        <h3>演習の流れ</h3>
+        <ul>
+            <li><strong>演習1（1.5コマ・75分）：</strong>CTAボタンのバリエーション制作＋選定</li>
+            <li><strong>演習2（2コマ・100分）：</strong>フォームデザイン（ライト用＋ヘビー用＋SP版）</li>
+            <li><strong>演習3（1.5コマ・75分）：</strong>LP全体のCTA配置＋追従CTA＋導線確認</li>
+        </ul>
+        <div class="highlight-box">💡 CTAが完成すれば、023（FV）→024（信頼構築）→025（CTA）の「②セクション設計系」が揃う。022の設計図の上にすべてのセクションが乗った状態になる</div>
+    </div>
+</div>
+
+<!-- スライド3: CTA配置戦略の確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">CTA配置戦略の確認——022のWFで決めた「どこに・何を置くか」</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:640px;">
+            <rect width="1000" height="380" fill="#0a0a1a"/>
+
+            <!-- LP縦スクロールのイメージ（左側） -->
+            <text x="90" y="28" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.5">LP（上から下へスクロール）</text>
+
+            <!-- FV -->
+            <rect x="20" y="40" width="140" height="48" rx="6" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="90" y="69" text-anchor="middle" font-size="19" fill="white">FV（023）</text>
+
+            <!-- 矢印 -->
+            <line x1="90" y1="88" x2="90" y2="102" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+
+            <!-- 課題提起・解決策 -->
+            <rect x="20" y="102" width="140" height="48" rx="6" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+            <text x="90" y="126" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.6">課題提起</text>
+            <text x="90" y="144" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.6">解決策</text>
+
+            <line x1="90" y1="150" x2="90" y2="164" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+
+            <!-- 信頼構築 -->
+            <rect x="20" y="164" width="140" height="48" rx="6" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+            <text x="90" y="192" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.6">信頼構築（024）</text>
+
+            <line x1="90" y1="212" x2="90" y2="226" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+
+            <!-- 中盤CTA -->
+            <rect x="20" y="226" width="140" height="36" rx="6" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="90" y="248" text-anchor="middle" font-size="17" fill="#00d4ff">中盤CTA</text>
+
+            <line x1="90" y1="262" x2="90" y2="276" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+
+            <!-- FAQ -->
+            <rect x="20" y="276" width="140" height="36" rx="6" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+            <text x="90" y="299" text-anchor="middle" font-size="17" fill="white" fill-opacity="0.6">FAQ</text>
+
+            <line x1="90" y1="312" x2="90" y2="326" stroke="white" stroke-opacity="0.2" stroke-width="1.5"/>
+
+            <!-- 最終CTA -->
+            <rect x="20" y="326" width="140" height="36" rx="6" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="90" y="348" text-anchor="middle" font-size="17" fill="#00d4ff">最終CTA</text>
+
+            <!-- 区切り線 -->
+            <line x1="200" y1="30" x2="200" y2="370" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+
+            <!-- 配置ポイント詳細（右側） -->
+            <!-- ①FV内 -->
+            <line x1="160" y1="64" x2="220" y2="64" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="220" y="36" width="360" height="56" rx="8" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="240" y="58" font-size="16" fill="#00d4ff">① FV内（023で設計済み）</text>
+            <text x="240" y="80" font-size="15" fill="white" fill-opacity="0.7">ライトCV（資料DL）　まだ信頼構築前→ハードルを低く</text>
+
+            <!-- ②信頼構築直後 -->
+            <line x1="160" y1="240" x2="220" y2="240" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="220" y="212" width="360" height="64" rx="8" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="240" y="234" font-size="16" fill="#00d4ff">② 信頼構築セクション直後</text>
+            <text x="240" y="256" font-size="15" fill="white" fill-opacity="0.7">ライトCV＋ヘビーCVの並列</text>
+            <text x="240" y="272" font-size="15" fill="white" fill-opacity="0.7">信頼が高まった段階で選択肢を提示</text>
+
+            <!-- ③最終CTA -->
+            <line x1="160" y1="344" x2="220" y2="344" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <rect x="220" y="316" width="360" height="56" rx="8" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="240" y="338" font-size="16" fill="#00d4ff">③ LP最下部（最終CTA）</text>
+            <text x="240" y="360" font-size="15" fill="white" fill-opacity="0.7">ヘビーCV（デモ申込）　最後まで読んだ＝最高動機</text>
+
+            <!-- ④追従CTA -->
+            <rect x="620" y="130" width="360" height="120" rx="8" fill="#00d4ff" fill-opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="800" y="158" text-anchor="middle" font-size="16" fill="#00d4ff">④ 追従CTA（スクロール中ずっと）</text>
+            <line x1="620" y1="175" x2="980" y2="175" stroke="#00d4ff" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="800" y="200" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.7">ライトCV（資料DL）</text>
+            <text x="800" y="225" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.7">スクロール中いつでもアクセス可能</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド4: 演習1概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：CTAボタンのバリエーション制作＋選定</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>やること</h3>
+                <ul>
+                    <li>ライトCV用ボタンを3バリエーション制作</li>
+                    <li>ヘビーCV用ボタンを3バリエーション制作</li>
+                    <li>各自のベストを選定し、理由を100文字で書く</li>
+                    <li>出力物：Figma CTAボタンコンポーネント（ライト用＋ヘビー用）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>時間配分（計75分）</h3>
+                <ul>
+                    <li><strong>20分：</strong>ライトCV 3バリエーション制作</li>
+                    <li><strong>20分：</strong>ヘビーCV 3バリエーション制作</li>
+                    <li><strong>15分：</strong>選定＋100文字の言語化</li>
+                    <li><strong>20分：</strong>共有・フィードバック</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 3バリエーションはFigmaのVariants（バリアント）機能で作成する。色・コピー・マイクロコピーを変えて横に並べ、視覚的に比較できる状態にすること</div>
+    </div>
+</div>
+
+<!-- スライド5: ライトCVボタンの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ライトCVボタンの制作ガイド——「気軽さ」を前面に</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>コピー候補3案（1案を選ぶか自分で考える）</h3>
+                <ul class="non-bullet">
+                    <li>①「無料で資料をダウンロード」</li>
+                    <li>②「3分でわかる資料を見る」</li>
+                    <li>③「TALENTBOARDの全機能を確認する」</li>
+                </ul>
+                <h3>マイクロコピーの例</h3>
+                <ul>
+                    <li>ボタン上：「30秒で完了」</li>
+                    <li>ボタン下：「※メールアドレスだけでOK」</li>
+                </ul>
+            </div>
+            <div>
+                <h3>設計のポイント（4軸）</h3>
+                <ul>
+                    <li><strong>色：</strong>ヘビーCVより控えめ。ただし背景とは十分なコントラスト</li>
+                    <li><strong>サイズ：</strong>PC横幅200px以上、SP高さ44px以上</li>
+                    <li><strong>コピー：</strong>ベネフィット（得られるもの）＋ハードルの低さ</li>
+                    <li><strong>配置：</strong>FV内・中盤・追従CTAに使用</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ ライトCVとヘビーCVを並列配置する場合、ライトCVは「サブボタン」扱い（テキストリンクまたはアウトラインボタン）にすること。主従関係を色・サイズで明示する</div>
+    </div>
+</div>
+
+<!-- スライド6: ヘビーCVボタンの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ヘビーCVボタンの制作ガイド——「確信を行動に変える」一押し</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>コピー候補3案（1案を選ぶか自分で考える）</h3>
+                <ul class="non-bullet">
+                    <li>①「無料デモを申し込む」</li>
+                    <li>②「実際の画面を30分で体験する」</li>
+                    <li>③「導入の相談をする（無料）」</li>
+                </ul>
+                <h3>マイクロコピーの例</h3>
+                <ul>
+                    <li>ボタン下：「※営業電話は一切しません」</li>
+                    <li>ボタン下：「※日程はご都合に合わせます」</li>
+                </ul>
+            </div>
+            <div>
+                <h3>設計のポイント（ライトCVとの違い）</h3>
+                <ul>
+                    <li><strong>色：</strong>ライトCVより強い色。最も目立つアクセントカラーを使う</li>
+                    <li><strong>サイズ：</strong>ライトCVより大きく。LP最下部ではフル幅も可</li>
+                    <li><strong>不安払拭：</strong>マイクロコピーで「押すリスクゼロ」を示す</li>
+                    <li><strong>配置：</strong>信頼構築直後（メイン）・LP最下部の2箇所</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 並列配置のレイアウト：ヘビーCV（メインボタン＝塗り）＋ライトCV（サブボタン＝アウトライン or テキストリンク）。訪問者の目が自然にヘビーCVに向かう主従関係を作る</div>
+    </div>
+</div>
+
+<!-- スライド7: ベスト選定と言語化 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ベスト選定と言語化——なぜそのボタンを選んだか</h2>
+    <div class="content-block">
+        <h3>選定基準（4つ）</h3>
+        <ul class="non-bullet">
+            <li><strong>①コピーの具体性：</strong>「何が得られるか」が一読で伝わるか</li>
+            <li><strong>②ハードルの低さ：</strong>マイクロコピーが不安・抵抗感を払拭しているか</li>
+            <li><strong>③視認性：</strong>背景色との十分なコントラストが確保されているか</li>
+            <li><strong>④トンマナの一貫性：</strong>LP全体のデザインから浮いていないか</li>
+        </ul>
+        <h3>言語化の形式（各ボタン100文字）</h3>
+        <ul>
+            <li>「このボタンを選んだ理由は〇〇である。コピーは〜と表現することで〇〇の効果があり、マイクロコピーは〜によって〇〇の不安を払拭する。色は〜と判断した。」</li>
+        </ul>
+        <div class="highlight-box">📌 Block 5以降の提出はすべて100文字の根拠文が必要。「なんとなく良かった」は不可。4つの選定基準のうち最も重要だと思う点を起点に書くと書きやすい</div>
+    </div>
+</div>
+
+<!-- スライド8: 演習2概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：フォームデザイン——EFO4原則をUIに「翻訳」する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>やること</h3>
+                <ul>
+                    <li>ライトCV用フォーム（3項目）をFigmaでデザイン</li>
+                    <li>ヘビーCV用フォーム（7項目・ステップ分割）をFigmaでデザイン</li>
+                    <li>各フォームのSP版に変換</li>
+                    <li>出力物：フォームコンポーネント2種（PC版＋SP版）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>時間配分（計100分）</h3>
+                <ul>
+                    <li><strong>25分：</strong>ライトCV用フォーム（PC版）</li>
+                    <li><strong>40分：</strong>ヘビーCV用フォーム（PC版・ステップ分割）</li>
+                    <li><strong>15分：</strong>両フォームのSP版変換</li>
+                    <li><strong>20分：</strong>共有・フィードバック</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 フォームは「入力フィールド・ラベル・バリデーション・ステップ・ボタン・マイクロコピー」と要素が多い。一つひとつをEFO4原則に照らして設計する</div>
+    </div>
+</div>
+
+<!-- スライド9: ライトCV用フォームの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ライトCV用フォームの制作ガイド——3項目のシンプル設計</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>フォーム項目（3項目）</h3>
+                <ul>
+                    <li><strong>メールアドレス</strong>（必須）</li>
+                    <li><strong>氏名</strong>（必須）</li>
+                    <li><strong>会社名</strong>（任意）</li>
+                </ul>
+                <h3>フォーム全体のレイアウト案</h3>
+                <ul>
+                    <li>コピー（左カラム）＋フォーム（右カラム）の2カラム</li>
+                    <li>またはフルワイド1カラム（SP基準で設計）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>設計ポイント（EFO4原則の適用）</h3>
+                <ul class="non-bullet">
+                    <li><strong>①項目数最小限：</strong>3項目。電話番号は聞かない</li>
+                    <li><strong>②ラベル常時表示：</strong>入力欄の上にラベルを固定配置</li>
+                    <li><strong>③必須/任意の表示：</strong>必須は赤アスタリスク（*）</li>
+                    <li><strong>④送信ボタン：</strong>演習1で選定したライトCVボタンを使用</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">📌 フォームを囲むカードまたはセクション背景色で「ここに入力する」領域を明示する。背景と同化したフォームは入力開始のきっかけが生まれない</div>
+    </div>
+</div>
+
+<!-- スライド10: ヘビーCV用フォームの制作ガイド -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ヘビーCV用フォームの制作ガイド——7項目をステップ分割</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:560px;">
+            <rect width="1000" height="300" fill="#0a0a1a"/>
+
+            <!-- ステップインジケーター -->
+            <text x="500" y="30" text-anchor="middle" font-size="16" fill="white" fill-opacity="0.5">ステップインジケーター（プログレスバー）</text>
+            <rect x="100" y="40" width="800" height="6" rx="3" fill="white" fill-opacity="0.1"/>
+            <rect x="100" y="40" width="400" height="6" rx="3" fill="#00d4ff" fill-opacity="0.8"/>
+            <circle cx="100" cy="43" r="8" fill="#00d4ff"/>
+            <text x="100" y="65" text-anchor="middle" font-size="14" fill="#00d4ff">ステップ1</text>
+            <circle cx="500" cy="43" r="8" fill="#00d4ff"/>
+            <text x="500" y="65" text-anchor="middle" font-size="14" fill="#00d4ff">ステップ2</text>
+            <circle cx="900" cy="43" r="8" fill="white" fill-opacity="0.2"/>
+            <text x="900" y="65" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.4">送信</text>
+
+            <!-- ステップ1 -->
+            <rect x="30" y="80" width="440" height="200" rx="10" fill="white" fill-opacity="0.06" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="250" y="108" text-anchor="middle" font-size="18" fill="#00d4ff" font-weight="bold">ステップ1 / 2：基本情報</text>
+            <line x1="50" y1="120" x2="450" y2="120" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+            <text x="70" y="148" font-size="16" fill="white" fill-opacity="0.8">会社名（必須）</text>
+            <text x="70" y="174" font-size="16" fill="white" fill-opacity="0.8">部署名（任意）</text>
+            <text x="70" y="200" font-size="16" fill="white" fill-opacity="0.8">氏名（必須）</text>
+            <text x="70" y="226" font-size="16" fill="white" fill-opacity="0.8">メールアドレス（必須）</text>
+            <rect x="200" y="245" width="180" height="24" rx="6" fill="#00d4ff" fill-opacity="0.8"/>
+            <text x="290" y="262" text-anchor="middle" font-size="15" fill="white" font-weight="bold">次へ →</text>
+
+            <!-- ステップ2 -->
+            <rect x="530" y="80" width="440" height="200" rx="10" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="750" y="108" text-anchor="middle" font-size="18" fill="white" fill-opacity="0.5" font-weight="bold">ステップ2 / 2：詳細情報</text>
+            <line x1="550" y1="120" x2="950" y2="120" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+            <text x="570" y="148" font-size="16" fill="white" fill-opacity="0.5">電話番号（必須）</text>
+            <text x="570" y="174" font-size="16" fill="white" fill-opacity="0.5">従業員規模（必須・セレクト）</text>
+            <text x="570" y="200" font-size="16" fill="white" fill-opacity="0.5">現在の採用管理方法（任意・セレクト）</text>
+            <text x="660" y="245" font-size="14" fill="white" fill-opacity="0.3">← 戻る</text>
+            <rect x="730" y="232" width="200" height="28" rx="6" fill="white" fill-opacity="0.1"/>
+            <text x="830" y="251" text-anchor="middle" font-size="15" fill="white" fill-opacity="0.4">デモを申し込む（送信）</text>
+        </svg>
+        <p class="text-note">ステップ1（4項目）→ ステップ2（3項目）に分割。1画面の項目数が減ることで「これなら入力できそう」と感じさせる</p>
+    </div>
+</div>
+
+<!-- スライド11: フォームの4状態デザイン -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">フォームの4状態デザイン——Figmaでバリアント化する</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:560px;">
+            <rect width="1000" height="280" fill="#0a0a1a"/>
+
+            <!-- 状態①：デフォルト -->
+            <rect x="20" y="20" width="220" height="240" rx="10" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="130" y="55" text-anchor="middle" font-size="17" fill="white" font-weight="bold">① デフォルト</text>
+            <text x="130" y="80" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.5">未入力状態</text>
+            <text x="40" y="115" font-size="13" fill="white" fill-opacity="0.7">メールアドレス</text>
+            <rect x="40" y="122" width="180" height="32" rx="4" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+            <text x="50" y="143" font-size="13" fill="white" fill-opacity="0.3">例）name@company.com</text>
+
+            <!-- 状態②：フォーカス -->
+            <rect x="260" y="20" width="220" height="240" rx="10" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="370" y="55" text-anchor="middle" font-size="17" fill="white" font-weight="bold">② フォーカス</text>
+            <text x="370" y="80" text-anchor="middle" font-size="14" fill="#00d4ff" fill-opacity="0.8">入力中</text>
+            <text x="280" y="115" font-size="13" fill="white" fill-opacity="0.7">メールアドレス</text>
+            <rect x="280" y="122" width="180" height="32" rx="4" fill="white" fill-opacity="0.05" stroke="#00d4ff" stroke-width="2"/>
+            <text x="290" y="143" font-size="13" fill="white" fill-opacity="0.8">name@company</text>
+
+            <!-- 状態③：成功 -->
+            <rect x="500" y="20" width="220" height="240" rx="10" fill="white" fill-opacity="0.05" stroke="#00ff9d" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="610" y="55" text-anchor="middle" font-size="17" fill="white" font-weight="bold">③ 成功</text>
+            <text x="610" y="80" text-anchor="middle" font-size="14" fill="#00ff9d" fill-opacity="0.9">入力完了</text>
+            <text x="520" y="115" font-size="13" fill="white" fill-opacity="0.7">メールアドレス</text>
+            <rect x="520" y="122" width="180" height="32" rx="4" fill="white" fill-opacity="0.05" stroke="#00ff9d" stroke-opacity="0.8" stroke-width="1.5"/>
+            <text x="530" y="143" font-size="13" fill="white" fill-opacity="0.7">name@company.com</text>
+            <text x="690" y="143" font-size="16" fill="#00ff9d">✓</text>
+
+            <!-- 状態④：エラー -->
+            <rect x="740" y="20" width="240" height="240" rx="10" fill="white" fill-opacity="0.05" stroke="#ff4d6d" stroke-opacity="0.4" stroke-width="1"/>
+            <text x="860" y="55" text-anchor="middle" font-size="17" fill="white" font-weight="bold">④ エラー</text>
+            <text x="860" y="80" text-anchor="middle" font-size="14" fill="#ff4d6d" fill-opacity="0.9">入力不備</text>
+            <text x="760" y="115" font-size="13" fill="white" fill-opacity="0.7">メールアドレス</text>
+            <rect x="760" y="122" width="200" height="32" rx="4" fill="#ff4d6d" fill-opacity="0.05" stroke="#ff4d6d" stroke-width="1.5"/>
+            <text x="770" y="143" font-size="13" fill="white" fill-opacity="0.7">name@</text>
+            <text x="760" y="175" font-size="12" fill="#ff4d6d" fill-opacity="0.9">正しいメールアドレスを入力してください</text>
+        </svg>
+        <div class="highlight-box">📌 Figmaのコンポーネント→バリアントで4状態を1セットとして管理する。Block 3（012）のAtomic Designの実践。エンジニアへのハンドオフ（Block 7）でもこの定義が必要になる</div>
+    </div>
+</div>
+
+<!-- スライド12: SP版フォームへの変換 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">SP版フォームへの変換——スマートフォンでの操作性を最優先</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>PC版からの変更点（5点）</h3>
+                <ul class="non-bullet">
+                    <li><strong>①フィールド幅：</strong>横幅100%（画面全幅）</li>
+                    <li><strong>②間隔：</strong>ラベルとフィールドの縦間隔を広めに確保（タップしやすく）</li>
+                    <li><strong>③セレクトボックス：</strong>ネイティブUIを使用（OSの選択UIが開く想定）</li>
+                    <li><strong>④送信ボタン：</strong>フレーム幅の90%以上で配置</li>
+                    <li><strong>⑤キーボード対策：</strong>画面下半分がキーボードで覆われる前提で確認</li>
+                </ul>
+            </div>
+            <div>
+                <h3>SP版で特に確認すること</h3>
+                <ul>
+                    <li>最後の入力フィールドが送信ボタンより上にあるか（ボタンが見えているか）</li>
+                    <li>必須/任意バッジがフィールドサイズに対して適切な大きさか</li>
+                    <li>エラーメッセージがフィールドのすぐ下に表示されているか</li>
+                    <li>ステップインジケーターがSP幅（375px基準）に収まるか</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-note">FigmaではFrameを375×812px（iPhone 14基準）に変更し、PC版コンポーネントを配置してから調整すると効率的</p>
+    </div>
+</div>
+
+<!-- スライド13: 演習3概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：LP全体のCTA配置＋追従CTA＋導線確認</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>やること</h3>
+                <ul>
+                    <li>演習1・2のCTAボタン・フォームを022のWFの各配置ポイントに組み込む</li>
+                    <li>追従CTAをPC版・SP版でデザインする</li>
+                    <li>LP全体をスクロールして導線を通しで確認する</li>
+                    <li>出力物：CTA配置済みLP全体デザイン＋追従CTAコンポーネント</li>
+                </ul>
+            </div>
+            <div>
+                <h3>時間配分（計75分）</h3>
+                <ul>
+                    <li><strong>20分：</strong>各配置ポイントへのCTA組み込み</li>
+                    <li><strong>15分：</strong>追従CTA設計（PC版＋SP版）</li>
+                    <li><strong>10分：</strong>導線の通し確認（スクロール）</li>
+                    <li><strong>10分：</strong>言語化（100文字）</li>
+                    <li><strong>20分：</strong>共有・フィードバック</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 演習3は「②セクション設計系」の統合仕上げ。029の最終統合のミニリハーサルでもある。022（WF）→023（FV）→024（信頼構築）→025（CTA）の一本道を自分の目で確認する</div>
+    </div>
+</div>
+
+<!-- スライド14: 各配置ポイントへのCTA組み込み -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">各配置ポイントへのCTA組み込み——3箇所の設計</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>① FV内（023で設計済み）</h3>
+                <ul>
+                    <li>ライトCVボタンを配置済み</li>
+                    <li>必要に応じてボタンコピー・マイクロコピーを調整</li>
+                </ul>
+                <h3>② 信頼構築セクション直後</h3>
+                <ul>
+                    <li>見出し例：「まずは資料で確認、または実際の画面を体験」</li>
+                    <li>ヘビーCVボタン（メイン）＋ライトCVボタン（サブ）を並列配置</li>
+                    <li>各ボタンの下にマイクロコピーを配置</li>
+                </ul>
+            </div>
+            <div>
+                <h3>③ LP最下部（最終CTA）</h3>
+                <ul>
+                    <li>見出し例：「TALENTBOARDを体験する」</li>
+                    <li>ヘビーCV用フォーム（ステップ分割版）をフルワイドで配置</li>
+                    <li>フォームの上に「デモで確認できること」を箇条書きで添える</li>
+                    <li>フォームのマイクロコピー（「※営業電話なし」等）を忘れずに</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ マイクロコピーは各CTAに必ず配置する。ボタンだけ置いて周辺テキストがないCTAは未完成状態</div>
+    </div>
+</div>
+
+<!-- スライド15: 追従CTAの設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">追従CTAの設計——「×」で閉じられる選択肢を与える</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>PC版（画面右下フロートボタン）</h3>
+                <ul>
+                    <li>ライトCVボタン「資料DL」を右下に固定</li>
+                    <li>サイズは控えめ（本文コンテンツを妨げない）</li>
+                    <li>FVをスクロールで超えた時点で出現</li>
+                    <li>「×」クローズボタンを右上に配置</li>
+                </ul>
+            </div>
+            <div>
+                <h3>SP版（画面下部固定バー）</h3>
+                <ul>
+                    <li>高さ60px程度の固定バー（画面最下部）</li>
+                    <li>ライトCVボタンを中央配置</li>
+                    <li>本文との間に十分な余白（バーが本文を隠さない）</li>
+                    <li>「×」クローズボタンを右端に配置</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ 「×」クローズボタンは必須。閉じられない追従CTAは「押し売り」と感じられ、ブランド印象を毀損する。ユーザーの自由意思を尊重する設計</div>
+    </div>
+</div>
+
+<!-- スライド16: LP全体の導線通し確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">LP全体の導線通し確認——5つのチェックポイント</h2>
+    <div class="content-block">
+        <p>FV（023）→ 課題提起 → 解決策 → ロゴ帯 → 数字実績 → 導入事例 → お客様の声 → 中盤CTA → FAQ → 最終CTA の順にFigmaでスクロールして確認する。</p>
+        <ul class="no-bullet">
+            <li>① CTAの種類が配置位置に合っているか（序盤＝ライト、終盤＝ヘビー）</li>
+            <li>② CTAボタンのデザインがLP全体のトンマナと一貫しているか</li>
+            <li>③ マイクロコピーが各CTAに配置されているか（ボタン上・下）</li>
+            <li>④ フォームの位置は「十分に動機づけされた後」にあるか（ヘビーCVフォームがFVにないか）</li>
+            <li>⑤ 追従CTAが本文コンテンツを妨げていないか</li>
+        </ul>
+        <div class="highlight-box">💡 5つ全部に「◯」がついた状態が今日の完成形。1つでも「×」があれば修正してから次へ進む</div>
+    </div>
+</div>
+
+<!-- スライド17: 成果物の確認と次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">成果物の確認と次回予告——②セクション設計系が完了</h2>
+    <div class="content-block">
+        <h3>今日の成果物（5点）</h3>
+        <ul class="no-bullet">
+            <li><strong>①CTAボタン2種：</strong>ライトCV＋ヘビーCV（選定理由100文字つき）</li>
+            <li><strong>②フォーム2種：</strong>ライトCV用（3項目）＋ヘビーCV用（ステップ分割）のPC版・SP版</li>
+            <li><strong>③追従CTA：</strong>PC版（右下フロート）＋SP版（固定バー）</li>
+            <li><strong>④LP全体のCTA配置済みデザイン：</strong>022のWFに全CTAが組み込まれた状態</li>
+            <li><strong>⑤導線確認チェック：</strong>5項目すべて◯</li>
+        </ul>
+        <div class="highlight-box">💡 022（WF）→023（FV）→024（信頼構築）→025（CTA）が揃い、「②セクション設計系」が完了。LPの導線が一本通った</div>
+        <div class="next-box">📌 次回：026「AI画像加工の実践」。③素材制作系に入り、Block 4で生成した画像をLP品質に仕上げる。Figmaファイルを保存して次回に備えること。</div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +540,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "ライトCVとヘビーCVをLP上で配置し分ける理由として最も適切なものはどれですか？",
+        choices: [
+            "ライトCVはデザインが簡単なので先に配置し、ヘビーCVは制作コストが高いので最小限にするため",
+            "訪問者の動機の強さが配置位置によって異なるため。FV付近はまだ動機が弱くハードルの低いライトCV、LP最下部は動機が最も高くヘビーCVが適切",
+            "ライトCVはSP向け、ヘビーCVはPC向けに最適化されているため、デバイスで使い分ける",
+            "2種類のCTAを配置することでA/Bテストが実施しやすくなり、データを収集しやすいため"
+        ],
+        correct: 1,
+        explanation: "訪問者の動機づけの深さが配置位置によって異なります。FV付近はまだ「信じていい」状態になっていないためハードルの低いライトCV（資料DL）が適切。LP最下部まで読んだ訪問者は動機が最も高いのでヘビーCV（デモ申込）を求めることができます。"
+    },
+    {
+        question: "フォーム項目が7つある場合にステップ分割が有効な理由として最も適切なものはどれですか？",
+        choices: [
+            "Figmaでのコンポーネント管理がしやすくなるため、制作効率が上がる",
+            "エンジニアが実装しやすい構造になり、開発コストを削減できるため",
+            "1画面に7項目並ぶと「面倒」と感じて離脱する。ステップ分割で1画面あたりの項目数が減り、「これなら入力できそう」と感じさせることができるため",
+            "ステップ分割するとページ表示速度が向上し、SEOに有利になるため"
+        ],
+        correct: 2,
+        explanation: "EFOの原則②「ステップ分割」の効果です。7項目を1画面に並べると認知的な圧迫感（「面倒くさい」）を生み離脱につながります。ステップ1（4項目）とステップ2（3項目）に分割することで、1画面あたりの負荷が下がり完了率が改善します。"
+    },
+    {
+        question: "フォームの4状態（デフォルト・フォーカス・成功・エラー）をすべてFigmaでデザインする理由として最も適切なものはどれですか？",
+        choices: [
+            "4状態をデザインしないと実装時にエンジニアが独自判断でUIを作りUI品質がブレる。Block 7のハンドオフへの伏線でもあるため",
+            "Figmaのバリアント機能の練習として最適な演習だから",
+            "4状態をすべて作るとFigmaファイルの完成度が高く見え、ポートフォリオとして評価されるため",
+            "デフォルト状態だけでは実装できず、必ずすべての状態のコードが必要になるため"
+        ],
+        correct: 0,
+        explanation: "デザインで状態が定義されていない部分はエンジニアが独自判断で実装するため、UIの品質が設計意図からズレます。4状態を明示的に定義することがBlock 7（ハンドオフ）の基礎であり、「設計者がUIの振る舞いをコントロールする」ビジュアルアーキテクトとしての仕事です。"
+    },
+    {
+        question: "追従CTAに「×」クローズボタンを付ける理由として最も適切なものはどれですか？",
+        choices: [
+            "法律上、広告的な要素にはクローズボタンが義務付けられているため",
+            "クローズボタンがあると逆にCTAに注目が集まり、クリック率が上がるという調査結果があるため",
+            "Figmaのインタラクション機能を使った演習に必要なコンポーネントだから",
+            "ユーザーの自由意思を尊重するため。閉じられない追従CTAは「押し売り」と感じられ、ブランド印象を毀損する"
+        ],
+        correct: 3,
+        explanation: "追従CTAは常に表示され続けるため、ユーザーにとって鬱陶しく感じられるリスクがあります。「×」で非表示にできる選択肢を与えることで、ユーザーの自由意思を尊重し、ブランドへの好意的な印象を守ります。無理に表示し続けるCTAは離脱や離反を招きます。"
+    },
+    {
+        question: "025で「②セクション設計系」が完了することの意味として最も適切なものはどれですか？",
+        choices: [
+            "TALENTBOARDのLP制作が全て完了し、納品できる状態になったということ",
+            "022のWFの上に、FV（023）・信頼構築（024）・CTA/フォーム（025）が全て乗り、LPの「導線」が一本通った状態になったということ",
+            "Block 5の全テーマ（022〜029）が完了し、次のBlockに進めるということ",
+            "デザインカンプが完成したため、コーディング（実装）フェーズに進める状態になったということ"
+        ],
+        correct: 1,
+        explanation: "022（WF）で設計した導線の上に、023（FV）・024（信頼構築）・025（CTA/フォーム）の各セクションが設計され、LP全体の「訪問者を動かす導線」が完成した状態です。残りは③素材制作系（026〜028）で画像を仕上げ、029で最終統合・言語化を行います。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

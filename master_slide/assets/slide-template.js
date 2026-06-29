@@ -125,7 +125,7 @@ function showQuestion() {
                 ${q.question}
             </p>
             <div id="quiz-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); width: 90%; max-width: 1280px;">
-                ${q.options.map((opt, i) => `
+                ${q.choices.map((opt, i) => `
                     <button onclick="checkAnswer(${i})"
                             style="padding: clamp(1rem, 2vh, 1.5rem);
                                 font-size: clamp(1.25rem, 1.25vw, 1.75rem);
@@ -158,7 +158,7 @@ function checkAnswer(selectedIndex) {
             </h2>
             <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: clamp(1.5rem, 3vh, 2.5rem); width: 90%; text-align: left;">
                 <p style="font-size: clamp(1.5rem, 2vw, 2rem); margin-bottom: clamp(1rem, 2vh, 1.5rem); color: #fff;">
-                    <strong>正解:</strong> ${q.options[q.correct]}
+                    <strong>正解:</strong> ${q.choices[q.correct]}
                 </p>
                 <p style="font-size: clamp(1.25rem, 1.25vw, 1.75rem); line-height: 1.8; color: #e0e0e0;">
                     ${q.explanation}

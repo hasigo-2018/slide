@@ -24,7 +24,11 @@
       "Bash(node scripts/check_svg.js master_slide/themes_new/024-1_theory.html 2>/dev/null || node scripts/check_svg.js master_slide/themes_new/024-1_theory.html)",
       "Bash(node scripts/insert_html.js master_slide/themes_new/024-2_practice.html generated_024_practice.html)",
       "Bash(node scripts/check_svg.js master_slide/themes_new/024-2_practice.html)",
-      "Bash(node scripts/check_svg.js master_slide/themes_new/024-1_theory.html)"
+      "Bash(node scripts/check_svg.js master_slide/themes_new/024-1_theory.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/025-1_theory.html)",
+      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/check_svg.js master_slide/themes_new/025-1_theory.html)",
+      "Bash(node scripts/insert_html.js master_slide/themes_new/025-2_practice.html generated_025_practice.html)",
+      "Bash(node scripts/check_svg.js master_slide/themes_new/025-2_practice.html && rm generated_025_practice.html)"
     ]
   }
 }

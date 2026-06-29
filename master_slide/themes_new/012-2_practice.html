@@ -71,7 +71,7 @@
                 <h3>Geminiに入力するプロンプト</h3>
                 <div class="prompt-box">
                     <div class="prompt-content" id="prompt-gemini-012-1">
-以下はオーガニックスキンケアブランド「SŌIL」のTOPページワイヤーフレームの構成要素です。これらをAtomic Designの5層（Atoms / Molecules / Organisms / Templates / Pages）に分類してください。
+以下はオーガニックスキンケアブランド「SŌIL」のTOPページワイヤーフレームの構成要素です。これらをAtomic Designの5層（Atoms（原子） / Molecules（分子） / Organisms（生物） / Templates / Pages）に分類してください。
 
 【構成要素】
 - Header：ロゴ、ナビゲーション（5項目）、CTAボタン「オンラインショップへ」
@@ -102,7 +102,7 @@
             <div class="two-column tiled">
                 <div>
                     <h3>Gemini出力例（分類結果）</h3>
-                    <p><strong>Atoms：</strong></p>
+                    <p><strong>Atoms（原子）：</strong></p>
                     <ul>
                         <li>CTAボタン</li>
                         <li>ナビ項目（テキストリンク）</li>
@@ -112,12 +112,12 @@
                         <li>テキストブロック</li>
                         <li>画像枠</li>
                     </ul>
-                    <p><strong>Molecules：</strong></p>
+                    <p><strong>Molecules（分子）：</strong></p>
                     <ul>
                         <li>商品カード（画像＋名前＋価格＋リンク）</li>
                         <li>Instagramグリッドセル</li>
                     </ul>
-                    <p><strong>Organisms：</strong></p>
+                    <p><strong>Organisms（生物）：</strong></p>
                     <ul>
                         <li>Header / Footer / 各Section全体</li>
                     </ul>
@@ -166,9 +166,9 @@
             </div>
         </div>
         
-        <!-- スライド5: 演習②-Atomsを作る -->
+        <!-- スライド5: 演習②-Atoms（原子）を作る -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習②：Atomsを作る ― ボタン＋バリアント</h2>
+            <h2 class="slide-title">演習②：Atoms（原子）を作る ― ボタン＋バリアント</h2>
             <div class="content-block">
                 <h3>CTAボタンのコンポーネント化</h3>
                 <p><strong>1.</strong> Componentsページに移動</p>
@@ -182,7 +182,7 @@
                 <p><strong>7.</strong> 新しいバリアントの塗りを「なし」、枠線を追加（1px、グレー）</p>
                 <p><strong>8.</strong> プロパティ名を <code>Type</code>、値を <code>Primary</code> / <code>Secondary</code> に設定</p>
         
-                <h3>その他のAtomsも同様にコンポーネント化</h3>
+                <h3>その他のAtoms（原子）も同様にコンポーネント化</h3>
                 <ul>
                     <li><code>Heading/Section</code> ― セクション見出し（バリアント不要）</li>
                     <li><code>Link/Text</code> ― テキストリンク（バリアント不要）</li>
@@ -195,9 +195,9 @@
             </div>
         </div>
         
-        <!-- スライド6: 演習③-Moleculesを作る①：商品カード -->
+        <!-- スライド6: 演習③-Molecules（分子）を作る①：商品カード -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習③-A：Moleculesを作る ― 商品カード</h2>
+            <h2 class="slide-title">演習③-A：Molecules（分子）を作る ― 商品カード</h2>
             <div class="content-block">
                 <h3>商品カードの構築手順</h3>
                 <p><strong>1.</strong> Componentsページで、以下の要素を縦に並べる：</p>
@@ -226,9 +226,9 @@
             </div>
         </div>
         
-        <!-- スライド7: 演習③-Moleculesを作る②：Instagramグリッド -->
+        <!-- スライド7: 演習③-Molecules（分子）を作る②：Instagramグリッド -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習③-B：Moleculesを作る ― Instagramグリッド</h2>
+            <h2 class="slide-title">演習③-B：Molecules（分子）を作る ― Instagramグリッド</h2>
             <div class="content-block">
                 <h3>同じ原理を違う文脈で使う</h3>
                 <p>商品カードと同じ「コンポーネント化 → インスタンス配置」の流れを、まったく違うUIパーツで体験します。</p>
@@ -252,9 +252,9 @@
             </div>
         </div>
         
-        <!-- スライド8: 演習④-Organismsを作る①：ヘッダー -->
+        <!-- スライド8: 演習④-Organisms（生物）を作る①：ヘッダー -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習④-A：Organismsを作る ― ヘッダー</h2>
+            <h2 class="slide-title">演習④-A：Organisms（生物）を作る ― ヘッダー</h2>
             <div class="content-block">
                 <h3>ヘッダー全体のコンポーネント化</h3>
                 <p><strong>1.</strong> WFページで <code>Header</code> フレーム全体を選択</p>
@@ -263,7 +263,7 @@
                 <p><strong>4.</strong> WFページに戻り、元のHeaderを削除 → アセットパネルから <code>Organism/Header</code> のインスタンスを配置</p>
         
                 <h3>確認ポイント</h3>
-                <p>ヘッダー内のCTAボタンが <code>Button/Primary</code> の<strong>インスタンス</strong>であることを確認してください。Organismsの中にAtomsのインスタンスが含まれている ＝ Atomic Designの入れ子構造です。</p>
+                <p>ヘッダー内のCTAボタンが <code>Button/Primary</code> の<strong>インスタンス</strong>であることを確認してください。Organisms（生物）の中にAtoms（原子）のインスタンスが含まれている ＝ Atomic Designの入れ子構造です。</p>
         
                 <h3>5ページ共通化のメリット</h3>
                 <p>SŌILサイトが5ページ構成だとすると、ヘッダーの修正が<strong>メイン1回で5ページ分</strong>反映されます。ナビの項目追加、CTAボタンの色変更、ロゴの差し替え——すべてComponentsページだけで完結します。</p>
@@ -274,9 +274,9 @@
             </div>
         </div>
         
-        <!-- スライド9: 演習④-Organismsを作る②：商品一覧セクション -->
+        <!-- スライド9: 演習④-Organisms（生物）を作る②：商品一覧セクション -->
         <div class="slide-container standard-content-layout">
-            <h2 class="slide-title">演習④-B：Organismsを作る ― 商品一覧セクション</h2>
+            <h2 class="slide-title">演習④-B：Organisms（生物）を作る ― 商品一覧セクション</h2>
             <div class="content-block">
                 <h3>Section_03_Products全体のコンポーネント化</h3>
                 <p><strong>1.</strong> WFページで <code>Section_03_Products</code> フレーム全体を選択</p>
@@ -292,7 +292,7 @@
                     <li>　├ <strong>Molecule</strong>：Card/Product（商品カード×3）</li>
                     <li>　│　└ <strong>Atom</strong>：Button/Secondary（ボタン）</li>
                 </ul>
-                <p>Atoms → Molecules → Organisms が実際に<strong>入れ子で積み上がっている</strong>のが見えます。これが理論編で学んだ「小さい部品から大きい構造へ」の実体です。</p>
+                <p>Atoms（原子） → Molecules（分子） → Organisms（生物） が実際に<strong>入れ子で積み上がっている</strong>のが見えます。これが理論編で学んだ「小さい部品から大きい構造へ」の実体です。</p>
         
                                 <p>🏗️ この瞬間が最重要：理論編の図解が、自分のFigmaファイルの中で「実物」として存在していることを確認してください。</p>
             </div>
@@ -356,7 +356,7 @@
     const questions = [
         {
             question: "コンポーネント化する対象を選ぶ際の最も重要な判断基準はどれですか？",
-            options: [
+            choices: [
                 "デザインが複雑かどうか",
                 "2回以上使うかどうか",
                 "ファイルサイズが大きいかどうか",
@@ -367,7 +367,7 @@
         },
         {
             question: "商品カードのインスタンスで商品名と価格だけを変えたい場合、どうすればよいですか？",
-            options: [
+            choices: [
                 "メインコンポーネントを3つ複製して、それぞれのテキストを変える",
                 "インスタンスをDetach（切り離し）してからテキストを編集する",
                 "インスタンスの上書き機能でテキストを個別に変更する",
@@ -378,7 +378,7 @@
         },
         {
             question: "ヘッダーをOrganismとしてコンポーネント化する最大のメリットはどれですか？",
-            options: [
+            choices: [
                 "ヘッダーのデザインが自動的に美しくなる",
                 "ヘッダーのファイルサイズが小さくなる",
                 "5ページ分のヘッダーをメイン1つの修正で全ページに反映できる",
@@ -389,7 +389,7 @@
         },
         {
             question: "メインコンポーネントをComponentsページに分けて管理する理由として最も適切なものはどれですか？",
-            options: [
+            choices: [
                 "Figmaの処理速度が速くなるため",
                 "WFページにメインコンポーネントを置くとエラーが出るため",
                 "メインコンポーネントの管理場所を1箇所にまとめ、アセット管理を整理するため",
@@ -400,7 +400,7 @@
         },
         {
             question: "Organism（商品一覧セクション）の中にMolecule（商品カード）やAtom（ボタン）が含まれている構造を何と呼びますか？",
-            options: [
+            choices: [
                 "フラット構造",
                 "入れ子構造（ネスト）",
                 "並列構造（パラレル）",
