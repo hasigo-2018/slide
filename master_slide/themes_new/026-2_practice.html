@@ -3,13 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実践編】</title>
+    <title>AI画像加工の実践【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>AI画像加工の実践<span>【実践編】</span></h1>
+        <p>Figma上で加工→配置→確認を一気通貫で</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標</h2>
+    <div class="content-block">
+        <p><strong>ゴール：</strong>TALENTBOARDのLP用画像5枚をすべて加工し、023–025のデザインカンプへの配置を完了する。</p>
+        <div class="tile-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="tile">
+                <div class="icon">🖼️</div>
+                <h3>演習1（1.5コマ）</h3>
+                <p>FV用画像の加工。023のFVデザインカンプにメインビジュアルを配置する</p>
+            </div>
+            <div class="tile">
+                <div class="icon">📐</div>
+                <h3>演習2（1.5コマ）</h3>
+                <p>セクション用画像の加工。024・025のデザインカンプへ各セクション画像を配置する</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🎯</div>
+                <h3>演習3（1コマ）</h3>
+                <p>バナー用素材の加工。027のタイムアタックに向けて素材を整備する</p>
+            </div>
+        </div>
+        <div class="highlight-box">💡 画像が入った瞬間、LPが一気に「リアル」になる。今日はその体験をする日</div>
+    </div>
+</div>
+
+<!-- スライド3: 加工前の準備 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">加工前の準備</h2>
+    <div class="content-block">
+        <h3>Figmaで「026_画像加工」ページを作成する</h3>
+        <ul class="no-bullet">
+            <li>① Figmaファイルに「026_画像加工」という新規ページを作成する</li>
+            <li>② Block 4で生成した画像セット5枚を一旦すべてこのページに配置する</li>
+            <li>③ 各画像の横に配置先をメモする（例：「画像1→FV右側」「画像3→導入事例」など）</li>
+            <li>④ 023–025のデザインカンプを別タブで開き、各配置エリアのサイズ（幅×高さ）を確認する</li>
+        </ul>
+        <table class="slide-table">
+            <thead>
+                <tr><th>画像</th><th>内容</th><th>配置先</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>画像1</td><td>オフィスでの採用管理シーン</td><td>FVメインビジュアル</td></tr>
+                <tr><td>画像2</td><td>ダッシュボード操作シーン</td><td>FVまたは機能紹介</td></tr>
+                <tr><td>画像3</td><td>面接風景</td><td>導入事例セクション</td></tr>
+                <tr><td>画像4</td><td>チームミーティング</td><td>信頼構築セクション</td></tr>
+                <tr><td>画像5</td><td>人事担当者ポートレート</td><td>お客様の声セクション</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- スライド4: 演習1 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：FV用画像の加工</h2>
+    <div class="content-block">
+        <p>023で設計したFVデザインカンプにメインビジュアル（画像1）を配置する。WF→デザインカンプ→実画像配置という流れが初めて完結する演習。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>項目</th><th>内容</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>出力物</td><td>FVデザインカンプに実画像を配置した完成版</td></tr>
+                <tr><td>制限時間</td><td>55分（加工35分 ＋ 配置・確認10分 ＋ 再加工10分）</td></tr>
+                <tr><td>対象画像</td><td>画像1（オフィスでの採用管理シーン）＋ 必要に応じて画像2</td></tr>
+                <tr><td>レイアウト</td><td>Zパターン（左テキスト＋右画像）に合わせたアスペクト比調整が必要</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">💡 加工の方向は「どこに置くか」が決めるもの。まず023のFVカンプで配置エリアのサイズを確認してから加工を始める</div>
+    </div>
+</div>
+
+<!-- スライド5: FV用画像の加工手順 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">FV用画像の加工手順（4ステップ）</h2>
+    <div class="content-block">
+        <ul class="no-bullet">
+            <li>① <strong>アスペクト比の調整</strong><br>FV配置エリアのサイズに合わせてFigma AIの「画像を展開」で背景拡張。Zパターンの右半分なら縦長に近い比率が必要な場合がある</li>
+            <li>② <strong>アーティファクト確認・除去</strong><br>人物の指・顔・テクスチャを拡大して確認。不自然な点がある場合はFigma AIの「不要物除去」で対象を選択して消去する</li>
+            <li>③ <strong>色調調整</strong><br>Figma標準の明るさ・コントラスト・彩度スライダーで調整し、019のビジュアルガイドラインの色調に合わせる（クレジット消費なし）</li>
+            <li>④ <strong>可読性確認</strong><br>FVに配置した状態でキャッチコピーが画像の上で読めるか確認。読みにくい場合は画像の明度を下げるか、テキスト側にオーバーレイを追加する</li>
+        </ul>
+        <div class="highlight-box">⚠️ ④の可読性確認は「加工後」ではなく「FVカンプに配置した状態」で行う。単体で見て問題なくても、テキストと重なると読めない場合がある</div>
+    </div>
+</div>
+
+<!-- スライド6: 5基準でジャッジ→再加工 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">5基準でジャッジ → 再加工</h2>
+    <div class="content-block">
+        <p>加工した画像をFVデザインカンプに配置し、理論編の5基準でチェックする。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>基準</th><th>OK の状態</th><th>NGなら</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>① 自然さ</td><td>指・顔・テクスチャに破綻がない</td><td>不要物除去で再修正</td></tr>
+                <tr><td>② トンマナ整合</td><td>019のビジュアルガイドラインと色調が一致</td><td>Figma標準で再調整</td></tr>
+                <tr><td>③ 配置適合</td><td>配置エリアのアスペクト比に収まっている</td><td>背景拡張 or トリミング</td></tr>
+                <tr><td>④ 可読性</td><td>キャッチコピーが画像の上で読める</td><td>明度を下げてコントラスト確保</td></tr>
+                <tr><td>⑤ BtoB適切性</td><td>清潔感・信頼感がある</td><td>Nano Banana Proで再生成</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">💡 1回で完璧にならなくて当然。修正サイクルを回すことが加工の本質。NG項目を特定して一つずつ潰す</div>
+    </div>
+</div>
+
+<!-- スライド7: 演習2 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：セクション用画像の加工</h2>
+    <div class="content-block">
+        <p>024（信頼構築）・025（CTA周辺）に配置する画像（画像2〜5）を加工する。セクション画像はFVより小さいサイズで使うことが多く、「印象」より<strong>「情報伝達」</strong>が加工の重点になる。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>項目</th><th>内容</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>出力物</td><td>024・025のデザインカンプに実画像を配置した完成版</td></tr>
+                <tr><td>制限時間</td><td>55分（加工35分 ＋ 配置・確認10分 ＋ 再加工10分）</td></tr>
+                <tr><td>対象画像</td><td>画像2（ダッシュボード）・画像3（面接）・画像4（ミーティング）・画像5（ポートレート）</td></tr>
+            </tbody>
+        </table>
+        <p class="text-note">※ FV用とは加工の性質が異なる。各セクションの役割に合わせた加工方針を確認してから始める</p>
+    </div>
+</div>
+
+<!-- スライド8: 導入事例・お客様の声用画像の加工 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">導入事例・お客様の声用画像の加工</h2>
+    <div class="content-block">
+        <h3>画像3：面接風景（導入事例セクション）</h3>
+        <ul>
+            <li>セクション内のカードサイズに合わせてトリミングする</li>
+            <li>人物が不自然でないか（アーティファクト）を拡大確認し、必要に応じて不要物除去</li>
+            <li>Before/Afterで使う場合は、左右で同じサイズ・同じアスペクト比に揃える</li>
+        </ul>
+        <h3>画像5：人事担当者ポートレート（お客様の声セクション）</h3>
+        <ul class="no-bullet">
+            <li>① Figma AIで「背景を除去」して透過画像にする</li>
+            <li>② 顔が中央に来るよう位置を調整する</li>
+            <li>③ Figmaの円形フレームにマスクとして適用する</li>
+            <li>④ 担当者の信頼感が伝わる自然なトーンか5基準で確認する</li>
+        </ul>
+        <div class="highlight-box">⚠️ 背景除去後、髪の毛や輪郭が不自然になりやすい。Figma AIの不要物除去で境界線を整えてから円形マスクを適用する</div>
+    </div>
+</div>
+
+<!-- スライド9: 機能紹介・信頼構築セクション用画像の加工 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">機能紹介・信頼構築セクション用画像の加工</h2>
+    <div class="content-block">
+        <h3>画像2：ダッシュボード操作シーン（機能紹介）</h3>
+        <ul>
+            <li>Figma AIで背景を除去し、画面部分だけを残す</li>
+            <li>Figmaのフレーム機能で画面を囲み、「画面の中に画面がある」モックアップ風の見せ方を作る</li>
+            <li>実際の操作画面らしく見えることで、ツールの信頼感が高まる</li>
+        </ul>
+        <h3>画像4：チームミーティング（信頼構築セクション）</h3>
+        <ul>
+            <li>Figma AIの「画像を展開」でセクション幅に合わせて背景拡張する</li>
+            <li>Figma標準の彩度・色温度スライダーで、他の画像と色調を統一する（019のビジュアルガイドライン参照）</li>
+            <li>拡張後の背景に不自然な部分がないかを確認し、あれば不要物除去で修正する</li>
+        </ul>
+        <div class="highlight-box">💡 色調統一は「1枚ずつ調整」ではなく「画像4→画像1を並べて比較しながら調整」するとトンマナのズレを発見しやすい</div>
+    </div>
+</div>
+
+<!-- スライド10: セクション画像の配置と導線確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">セクション画像の配置と導線確認</h2>
+    <div class="content-block">
+        <p>加工した画像を024・025のデザインカンプに配置したら、<strong>FV（023）からスクロールして通し確認</strong>を行う。個別セクションで問題なくても、スクロールの流れで違和感が出ることがある。</p>
+        <h3>通し確認の3チェックポイント</h3>
+        <ul class="no-bullet">
+            <li>① <strong>トーンの一貫性</strong>——セクション間で画像の色調・明るさが急に変わっていないか</li>
+            <li>② <strong>テキストとの共存</strong>——画像が隣接するテキストの読みやすさを妨げていないか</li>
+            <li>③ <strong>情報量のバランス</strong>——画像のサイズがセクションの情報量に対して適切か（大きすぎると画像ばかりのLPになる）</li>
+        </ul>
+        <div class="highlight-box">💡 このスクロール確認が「画像の合格判定」の最終関門。1枚ずつのジャッジに合格しても、流れで見ると浮く画像がある</div>
+    </div>
+</div>
+
+<!-- スライド11: 演習3 概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：バナー用素材の加工</h2>
+    <div class="content-block">
+        <p>027（バナー量産・タイムアタック）で使う画像素材を事前に加工しておく。027では<strong>「30分でバナー3枚」</strong>のスピードが求められるため、素材の準備を今日中に完成させる。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>項目</th><th>内容</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>出力物</td><td>バナー用加工済み素材一式（Figmaの「027_バナー素材」ページに整理）</td></tr>
+                <tr><td>制限時間</td><td>35分（加工25分 ＋ 整理・書き出し10分）</td></tr>
+                <tr><td>加工の性質</td><td>LPより小さいサイズで使うため、トリミング＋背景除去が中心</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">⚠️ 演習3は「027の前準備」として位置づける。027当日に素材加工をしていると、デザインに集中する時間がなくなる</div>
+    </div>
+</div>
+
+<!-- スライド12: バナー用素材の加工手順 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">バナー用素材の加工手順</h2>
+    <div class="content-block">
+        <h3>加工する3パターン</h3>
+        <div class="tile-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="tile">
+                <div class="icon">👤</div>
+                <h3>人物素材</h3>
+                <p>背景除去 → 透過PNG。画像5のポートレートを複数サイズにトリミング</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🖥️</div>
+                <h3>サービス画面素材</h3>
+                <p>トリミング → 角丸マスクを適用。画像2のダッシュボードを使う</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🏢</div>
+                <h3>オフィスシーン素材</h3>
+                <p>トリミング → 色調統一。画像1・4をバナーサイズに切り出す</p>
+            </div>
+        </div>
+        <p>各パターンで2〜3サイズのバリエーションを作成する（GDN用 / SNS用 / メルマガ用）。加工済み素材はFigmaの「027_バナー素材」ページに整理して配置する。</p>
+    </div>
+</div>
+
+<!-- スライド13: 成果物確認と次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">成果物確認と次回予告</h2>
+    <div class="content-block">
+        <h3>今日の成果物</h3>
+        <ul class="no-bullet">
+            <li>① <strong>FVデザインカンプ（023）</strong>に実画像を配置した完成版</li>
+            <li>② <strong>セクションデザインカンプ（024・025）</strong>に実画像を配置した完成版</li>
+            <li>③ <strong>バナー用加工済み素材一式</strong>（Figmaの「027_バナー素材」ページ）</li>
+        </ul>
+        <p>LP全体に画像が入り、「デザインカンプ」から「ほぼ完成形」に近づいた状態になった。WF→デザインカンプ→実画像配置という一連の流れが今日で完結する。</p>
+        <div class="next-box">📌 次回：027「バナー・SNSクリエイティブの高速量産とタイムアタック」。今日準備したバナー用素材を使って、30分でバナー3枚を作るスピード実践に入る。027_バナー素材ページを保存しておくこと</div>
+    </div>
+</div>
+
+<!-- スライド14: クイズへの誘導（既存流用） -->
+<div class="slide-container section-title-layout">
+    <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+    <p>5問のクイズで今日の内容を確認しましょう</p>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +276,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "FV用画像（画像1）を加工する前に、最初に確認すべきことはどれですか？",
+        choices: [
+            "Figma AIのクレジット残量を確認する",
+            "023のFVデザインカンプで配置エリアのサイズとレイアウトを確認する",
+            "Figma標準で画像の明るさをひとまず上げておく",
+            "人物のアーティファクトがないか画像を拡大して確認する"
+        ],
+        correct: 1,
+        explanation: "加工ワークフローの最初は「配置先の確認」。023のFVカンプでどのエリアに何のサイズで置くかが決まれば、必要なアスペクト比・切り抜き範囲・色調の方向が決まります。目的地を決めずに加工を始めると方向性が定まりません。"
+    },
+    {
+        question: "Figma AIで背景除去した画像の境界線が不自然に見える場合、どう対処しますか？",
+        choices: [
+            "Figma標準の彩度スライダーで色調を調整してごまかす",
+            "画像を削除して、Block 4からやり直す",
+            "すぐにNano Banana Proで背景ごと再生成する",
+            "まずFigma AIの不要物除去で境界線を修正し、それでも不自然ならNano Banana Proで再生成する"
+        ],
+        correct: 3,
+        explanation: "対処の順序が重要です。まずFigma AIの不要物除去（部分修正）を試みて、それで解決できない場合にはじめてNano Banana Proで再生成します。いきなり再生成に頼ると時間もクレジットも余分に消費します。"
+    },
+    {
+        question: "色調の微調整にFigma AIではなくFigma標準のスライダーを使うべき理由として、最も適切なものはどれですか？",
+        choices: [
+            "クレジットを消費せず、トンマナに「合わせる」レベルの調整ならFigma標準で十分だから",
+            "Figma AIよりFigma標準の方が色調調整の精度が高いから",
+            "Figma AIは色調調整機能に対応していないから",
+            "Figma標準の方が操作ステップが少なくて速いから"
+        ],
+        correct: 0,
+        explanation: "「AI加工で大きく変える → Figma標準で微調整する」が基本ワークフロー。明るさ・コントラスト・彩度の微調整はFigma標準機能で十分対応できるうえ、クレジットを消費しません。大きな変更のときだけFigma AIを使います。"
+    },
+    {
+        question: "セクション画像を配置したあと、FVからスクロールして通しで確認する主な理由はどれですか？",
+        choices: [
+            "スクロール操作でFV画像が崩れるバグを事前に防ぐため",
+            "個別の画像では確認できない解像度の問題を検出するため",
+            "LP全体をスクロールしたときにセクション間の画像トーンが一貫しているかを確認するため",
+            "配置エリアのサイズが正しく設定されているかを再確認するため"
+        ],
+        correct: 2,
+        explanation: "個別スライドで5基準をクリアしても、スクロールの流れで画像のトーンが急に変わると訪問者に違和感を与えます。LP全体の視覚的一貫性はスクロールしながらでないと確認できません。"
+    },
+    {
+        question: "バナー用素材を027（バナー量産）の当日ではなく、026で事前に加工しておく理由はどれですか？",
+        choices: [
+            "バナーはLPより高い解像度が必要なため、書き出し設定に時間がかかるから",
+            "027のタイムアタック（30分でバナー3枚）では素材加工に時間を取られず、デザインに集中するため",
+            "Figma AIのクレジットを演習3で使い切る必要があるから",
+            "バナー用画像は必ずNano Banana Proで新たに生成し直す必要があるから"
+        ],
+        correct: 1,
+        explanation: "027は「30分でバナー3枚」という時間制約のあるタイムアタック形式。当日に素材加工をしていたら、デザインに使える時間が大幅に削られます。026で素材を完成させておくことで、027では「バナーのデザイン」だけに集中できます。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>

@@ -3,13 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
+    <title>AI画像加工の実践【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>AI画像加工の実践<span>【理論編】</span></h1>
+        <p>生成した画像を「LP品質」に仕上げる</p>
+    </div>
+</div>
+
+<!-- スライド2: 「生成」と「加工」は別の仕事 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">「生成」と「加工」は別の仕事</h2>
+    <div class="content-block">
+        <p>Block 4では画像を「生成」した。026では、生成した画像を<strong>「LP上で違和感なく機能する状態」</strong>に加工する。生成したままの画像がLPでそのまま使えない理由は4つある。</p>
+        <ul class="no-bullet">
+            <li>① <strong>アーティファクト</strong>——指の異常・テクスチャの破綻・顔の不自然さなど、AI生成特有の破綻が残っている</li>
+            <li>② <strong>アスペクト比の不一致</strong>——LP上の配置エリア（横長・縦長・正方形）と生成画像の比率が合っていない</li>
+            <li>③ <strong>色調のトンマナズレ</strong>——019で定義したビジュアルガイドラインと微妙に色調が合っていない</li>
+            <li>④ <strong>背景の不要要素</strong>——配置エリアで隠れるはずの背景に余計なオブジェクトや文字が写り込んでいる</li>
+        </ul>
+        <div class="highlight-box">💡 「いい画像が生成できた」と「LPに使える画像になった」は別のゴールライン</div>
+    </div>
+</div>
+
+<!-- スライド3: LP品質の5つのチェックポイント -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">LP品質の基準線：5つのチェックポイント</h2>
+    <div class="content-block">
+        <p>加工後の画像をジャッジする5つの基準。TALENTBOARDのLPに使う画像はすべてこの基準を通過させる。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>基準</th><th>確認内容</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>① 自然さ</td><td>AI生成と気づかれないレベルか（指・顔・テクスチャの破綻がないか）</td></tr>
+                <tr><td>② トンマナ整合</td><td>019で定義したビジュアルガイドラインと色調が合っているか</td></tr>
+                <tr><td>③ 配置適合</td><td>023–025のデザインカンプの配置エリアに収まるアスペクト比か</td></tr>
+                <tr><td>④ 可読性</td><td>テキストの上に重ねる場合、十分なコントラストがあるか</td></tr>
+                <tr><td>⑤ BtoB適切性</td><td>清潔感・信頼感があるか（018の判断基準を再確認）</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">💡 5基準は「OK / NG の二値判断」。「なんとなくいい感じ」で通過させない</div>
+    </div>
+</div>
+
+<!-- スライド4: Figma AIの画像加工機能全体像 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Figma AIの画像加工機能：5つの操作</h2>
+    <div class="content-block">
+        <p>画像を選択するとツールバーに表示されるAI加工機能。操作はいずれもワンクリック〜数ステップで完結する。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>機能</th><th>操作方法</th><th>主な用途</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>① 背景除去</td><td>画像選択 →「背景を除去」</td><td>人物・オブジェクトだけを切り抜く</td></tr>
+                <tr><td>② オブジェクト分離</td><td>対象を選択 → 背景透過で分離</td><td>複数の要素を個別レイヤーに分ける</td></tr>
+                <tr><td>③ 不要物除去</td><td>対象を選択 →「消去」</td><td>アーティファクト・不要な背景要素を消す</td></tr>
+                <tr><td>④ 背景拡張</td><td>画像をリサイズ →「画像を展開」</td><td>アスペクト比をLP配置エリアに合わせる</td></tr>
+                <tr><td>⑤ 画像生成・編集</td><td>テキスト指示で画像を生成・修正</td><td>細部の修正・色調の変更</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">⚠️ いずれの機能もFigma AIクレジットを消費する。受講環境のクレジット上限を事前に確認しておくこと</div>
+    </div>
+</div>
+
+<!-- スライド5: Figma標準の画像調整機能 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Figma標準の画像調整：クレジットを使わない微調整</h2>
+    <div class="content-block">
+        <p>Figma AIとは別に、Figma標準機能として使える画像調整がある。クレジットを消費しないため、色調の微調整はこちらを優先して使う。</p>
+        <div class="tile-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="tile">
+                <div class="icon">☀️</div>
+                <h3>明るさ・コントラスト</h3>
+                <p>全体の明暗バランスを調整。背景が暗すぎる・明るすぎる場合に使う</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🎨</div>
+                <h3>彩度・色温度</h3>
+                <p>トンマナの色調に合わせる。寒色系・暖色系への偏りを補正する</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🔅</div>
+                <h3>ぼかし・露出</h3>
+                <p>テキストを重ねる箇所の背景をぼかし、可読性に必要なコントラストを確保する</p>
+            </div>
+        </div>
+        <div class="highlight-box">💡 「AI加工で大きく変える → Figma標準で微調整する」の2段階ワークフローが基本</div>
+    </div>
+</div>
+
+<!-- スライド6: Nano Banana Proの出番 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Nano Banana Proの出番：Figma AIでは足りないとき</h2>
+    <div class="content-block">
+        <p>Figma AIで対応できるのは「部分的な除去・拡張」まで。以下のような<strong>再生成レベルの変更</strong>が必要なときは、Block 4で使い慣れたNano Banana Proに戻る。</p>
+        <ul>
+            <li><strong>背景を根本的に変更したい</strong>——オフィス背景 → 会議室、屋外 → 室内など、背景ごと作り直す場合</li>
+            <li><strong>人物を別の人物に差し替えたい</strong>——年齢・性別・スタイルが合わない場合</li>
+            <li><strong>構図を大幅に変更したい</strong>——縦構図 → 横構図、正面 → 斜めなど</li>
+        </ul>
+        <p>手順：Nano Banana Proで加工 → 書き出し → Figmaに配置。Block 4で使い慣れているツールなので追加の学習は不要。</p>
+        <div class="highlight-box">⚠️ Figma AIでNGになった画像をすぐにNano Banana Proで再生成しないこと。まず「部分的な除去・拡張で対応できないか」を先に検討する</div>
+    </div>
+</div>
+
+<!-- スライド7: 加工ワークフロー全体像 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">加工ワークフロー：6ステップ</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1100 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:440px;">
+            <rect width="1100" height="260" fill="#0a0a1a"/>
+            <defs>
+                <marker id="arr-wf1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-wf2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-wf3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-wf4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-wf5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00ff88"/>
+                </marker>
+                <marker id="arr-ng" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#ff6b6b"/>
+                </marker>
+            </defs>
+
+            <!-- Step 1 -->
+            <rect x="15" y="35" width="148" height="84" rx="8" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="89" y="60" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">① デザインカンプ確認</text>
+            <text x="89" y="82" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">配置エリアの</text>
+            <text x="89" y="98" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">サイズを把握</text>
+            <line x1="163" y1="77" x2="188" y2="77" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-wf1)"/>
+
+            <!-- Step 2 -->
+            <rect x="193" y="35" width="148" height="84" rx="8" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="267" y="60" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">② アスペクト比調整</text>
+            <text x="267" y="82" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">背景拡張 or</text>
+            <text x="267" y="98" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">トリミング</text>
+            <line x1="341" y1="77" x2="366" y2="77" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-wf2)"/>
+
+            <!-- Step 3 -->
+            <rect x="371" y="35" width="148" height="84" rx="8" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="445" y="60" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">③ アーティファクト除去</text>
+            <text x="445" y="82" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">不要物除去・</text>
+            <text x="445" y="98" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">背景除去</text>
+            <line x1="519" y1="77" x2="544" y2="77" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-wf3)"/>
+
+            <!-- Step 4 -->
+            <rect x="549" y="35" width="148" height="84" rx="8" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="623" y="60" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">④ 色調微調整</text>
+            <text x="623" y="82" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">Figma標準で</text>
+            <text x="623" y="98" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">明るさ・彩度調整</text>
+            <line x1="697" y1="77" x2="722" y2="77" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr-wf4)"/>
+
+            <!-- Step 5: Judge (highlighted) -->
+            <rect x="727" y="25" width="148" height="104" rx="8" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="2"/>
+            <text x="801" y="53" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">⑤ 5基準でジャッジ</text>
+            <text x="801" y="75" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.8">自然さ・トンマナ</text>
+            <text x="801" y="91" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.8">配置・可読性・BtoB</text>
+            <!-- OK label -->
+            <text x="890" y="67" text-anchor="middle" font-size="13" fill="#00ff88" font-weight="bold">OK</text>
+            <line x1="875" y1="77" x2="910" y2="77" stroke="#00ff88" stroke-width="2" marker-end="url(#arr-wf5)"/>
+
+            <!-- Step 6 -->
+            <rect x="915" y="35" width="165" height="84" rx="8" fill="white" fill-opacity="0.07" stroke="#00ff88" stroke-width="1.5"/>
+            <text x="997" y="60" text-anchor="middle" font-size="13" fill="#00ff88" font-weight="bold">⑥ デザインカンプに配置</text>
+            <text x="997" y="82" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">023–025の</text>
+            <text x="997" y="98" text-anchor="middle" font-size="12" fill="white" fill-opacity="0.65">カンプへ配置完了</text>
+
+            <!-- NG return arrow -->
+            <text x="801" y="158" text-anchor="middle" font-size="13" fill="#ff6b6b">NG</text>
+            <path d="M801,129 L801,175 L445,175 L445,119" fill="none" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-ng)"/>
+            <text x="620" y="192" text-anchor="middle" font-size="12" fill="#ff6b6b" fill-opacity="0.8">③ に戻って再加工</text>
+        </svg>
+        <p>加工の出発点は「どこに置くか」の確認。配置エリアが決まれば、必要なアスペクト比・切り抜き範囲・色調の方向が決まる。</p>
+    </div>
+</div>
+
+<!-- スライド8: 実践編の予告と準備 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">実践編の予告と準備</h2>
+    <div class="content-block">
+        <h3>実践内容（3演習）</h3>
+        <ul class="no-bullet">
+            <li>① <strong>演習1：FV用画像の加工</strong>（1.5コマ）——ファーストビューに使うメイン画像をLP品質に仕上げる</li>
+            <li>② <strong>演習2：セクション用画像の加工</strong>（1.5コマ）——各セクションの補足画像を加工・配置する</li>
+            <li>③ <strong>演習3：バナー用素材の加工</strong>（1コマ）——027のバナー量産に向けた素材を加工・整理する</li>
+        </ul>
+        <h3>準備するもの</h3>
+        <ul>
+            <li>Block 4で生成した画像セット（5枚）をFigma上で確認</li>
+            <li>023–025のデザインカンプをFigmaで開く</li>
+            <li>各配置エリアのサイズ（幅×高さ）を事前にメモしておく</li>
+        </ul>
+        <div class="next-box">📌 実践編の開始前に「どの画像をどこに配置するか」をデザインカンプ上で確認しておくと、加工の方向が決まってスムーズに進む</div>
+    </div>
+</div>
+
+<!-- スライド9: クイズへの誘導（既存流用） -->
+<div class="slide-container section-title-layout">
+    <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+    <p>5問のクイズで今日の内容を確認しましょう</p>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +231,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "AI生成画像がLPにそのまま使えない主な理由として、正しい組み合わせはどれですか？",
+        choices: [
+            "ファイルサイズが大きすぎてページ速度が低下するから",
+            "AI生成画像には商用利用の制限があるから",
+            "アーティファクト・アスペクト比の不一致・色調のトンマナズレ・背景の不要要素が残っているから",
+            "Figmaに読み込めるファイル形式に対応していないから"
+        ],
+        correct: 2,
+        explanation: "AI生成画像がそのまま使えない主な理由は4つ：①AIアーティファクト（指・テクスチャの破綻）、②アスペクト比の不一致、③色調のトンマナズレ、④背景の不要要素。ファイルサイズや著作権の問題は今回の加工の対象外です。"
+    },
+    {
+        question: "LP品質の5つのチェックポイントとして、正しいものはどれですか？",
+        choices: [
+            "自然さ・トンマナ整合・配置適合・可読性・BtoB適切性",
+            "解像度・ファイルサイズ・色数・背景の有無・ファイル形式",
+            "明るさ・コントラスト・彩度・シャープネス・ノイズ除去",
+            "オリジナリティ・完成度・統一感・インパクト・独自性"
+        ],
+        correct: 0,
+        explanation: "LP品質の5基準は「自然さ・トンマナ整合・配置適合・可読性・BtoB適切性」。技術的なスペック（解像度・ファイルサイズ等）は今回の基準に含まれません。5基準はLP上で「機能する画像かどうか」を判断するためのものです。"
+    },
+    {
+        question: "Figma AIの加工機能とFigma標準の画像調整の使い分けとして、最も適切な説明はどれですか？",
+        choices: [
+            "Figma AIはすべての加工に使うべきで、Figma標準の調整機能は使わなくてよい",
+            "Figma標準の調整は精度が高いため、AI加工の前に必ず実施する",
+            "Figma AIは明るさ・コントラスト調整に使い、Figma標準は背景除去に使う",
+            "Figma AIで背景除去・不要物除去など大きな変更をし、Figma標準の調整機能でクレジットを消費せず微調整する"
+        ],
+        correct: 3,
+        explanation: "「AI加工で大きく変える → Figma標準で微調整する」が正しいワークフロー。Figma標準の明るさ・コントラスト・彩度調整はクレジットを消費しないため、色調の微調整にはFigma標準を使う方が効率的です。"
+    },
+    {
+        question: "Figma AIではなくNano Banana Proを使うべき場面として、最も適切なのはどれですか？",
+        choices: [
+            "画像の明るさを少し上げたいとき",
+            "背景をオフィスから会議室へ根本的に変更したいとき",
+            "画像内の小さなゴミや汚れを消去したいとき",
+            "画像のアスペクト比を16:9から4:3に変更したいとき"
+        ],
+        correct: 1,
+        explanation: "Nano Banana Proを使うのは「再生成レベルの変更」が必要なとき：背景の根本的変更・人物の差し替え・構図の大幅変更。明るさ調整はFigma標準、小さなゴミ除去や背景拡張（アスペクト比調整）はFigma AIで対応できます。"
+    },
+    {
+        question: "加工ワークフローで最初に行うべきことはどれですか？",
+        choices: [
+            "Figma AIで背景を除去して、人物だけを切り抜く",
+            "5つのチェックポイントで現状の画像をジャッジする",
+            "023–025のデザインカンプで配置エリアのサイズを確認する",
+            "Nano Banana Proで画像を再生成して品質を上げる"
+        ],
+        correct: 2,
+        explanation: "加工ワークフローの最初のステップは「デザインカンプで配置エリアを確認すること」。どこに置くかが決まれば、必要なアスペクト比・切り抜き範囲・色調の方向が自動的に決まります。目的地を決めずに加工を始めると方向性が定まりません。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
