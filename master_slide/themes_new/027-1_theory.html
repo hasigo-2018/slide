@@ -3,13 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
+    <title>バナー・SNSクリエイティブの高速量産とタイムアタック【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>バナー・SNSクリエイティブの<br>高速量産とタイムアタック<span>【理論編】</span></h1>
+        <p>80点を30分で。速さも品質の一部</p>
+    </div>
+</div>
+
+<!-- スライド2: なぜ「速さ」を訓練するのか -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">なぜ「速さ」を訓練するのか</h2>
+    <div class="content-block">
+        <p>実務のデザイナーは1案に何時間もかけない。クライアントワークの基本サイクルは「80点を速く出す → フィードバックで磨く」だ。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>❌ 100点を1枚に3時間</h3>
+                <ul>
+                    <li>比較対象がなく、「なぜこれがベストか」を判断できない</li>
+                    <li>フィードバックが1回しか回らない</li>
+                    <li>方向性が間違っていたとき、ダメージが大きい</li>
+                </ul>
+            </div>
+            <div>
+                <h3>✅ 80点を30分で3枚</h3>
+                <ul>
+                    <li>3枚を比較することで「なぜこれがベストか」を言語化できる</li>
+                    <li>フィードバックサイクルが3倍速く回る</li>
+                    <li>方向性の修正コストが低い</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight-box">💡 速さは「手を抜く」ことではなく、「判断の精度を上げるための量をこなす」こと。大量に作った中から選ぶ力がビジュアルアーキテクトの核心</div>
+    </div>
+</div>
+
+<!-- スライド3: バナーの型：3つの構成パターン -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">バナーの型：3つの構成パターン</h2>
+    <div class="content-block">
+        <p>バナーはゼロから設計しない。まず「どの型を使うか」を決めることで、制作時間を大幅に短縮できる。</p>
+        <div class="tile-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="tile">
+                <div class="icon">🖼️</div>
+                <h3>パターン1：画像メイン型</h3>
+                <p>画像70% ＋ テキスト30%。ビジュアルで惹きつけ、テキストは最小限。BtoC・感情訴求に向く</p>
+            </div>
+            <div class="tile">
+                <div class="icon">📝</div>
+                <h3>パターン2：テキストメイン型</h3>
+                <p>テキスト70% ＋ 画像30%。コピーの訴求力で勝負。画像は背景またはアクセント。BtoB SaaSに多い</p>
+            </div>
+            <div class="tile">
+                <div class="icon">⚖️</div>
+                <h3>パターン3：50:50型</h3>
+                <p>画像とテキストを均等配分。バランス型。幅広い用途に対応できる汎用パターン</p>
+            </div>
+        </div>
+        <div class="highlight-box">💡 TALENTBOARDはBtoB SaaS。論理的訴求が重要なため、パターン2・3を基本とする。「何が解決できるか」をコピーで先に伝える</div>
+    </div>
+</div>
+
+<!-- スライド4: サイズ別テンプレートの紹介 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">サイズ別テンプレート：5サイズの構造</h2>
+    <div class="content-block">
+        <p>Figmaコンポーネントとして提供する5つのテンプレート。複製してテキストと画像を差し替えるだけでバナーが完成する「型」を手に入れる。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>用途</th><th>サイズ（px）</th><th>比率</th><th>設計の特徴</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>GDN レクタングル</td><td>300×250</td><td>6:5</td><td>配信量最多。情報量は最小限に絞る</td></tr>
+                <tr><td>GDN ビッグバナー</td><td>728×90</td><td>8:1</td><td>横長。テキスト＋CTAの1行構成が基本</td></tr>
+                <tr><td>SNS フィード</td><td>1200×628</td><td>約1.91:1</td><td>Facebook/Instagram広告の標準。画像＋テキスト＋CTA</td></tr>
+                <tr><td>SNS ストーリー</td><td>1080×1920</td><td>9:16</td><td>縦型フルスクリーン。インパクト重視</td></tr>
+                <tr><td>メルマガヘッダー</td><td>600×200</td><td>3:1</td><td>横長。キャッチ＋サービス名が読めれば十分</td></tr>
+            </tbody>
+        </table>
+        <p class="text-note">※ 各テンプレートの構造：キャッチコピーエリア ＋ 画像エリア ＋ CTAボタンエリア ＋ ロゴエリアで構成</p>
+    </div>
+</div>
+
+<!-- スライド5: 高速ワークフローの設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">高速ワークフロー：30分で1枚を完成させる</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 1100 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:380px;">
+            <rect width="1100" height="210" fill="#0a0a1a"/>
+            <defs>
+                <marker id="arr-s1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-s2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-s3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-s4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-s5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff"/>
+                </marker>
+                <marker id="arr-s6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#00ff88"/>
+                </marker>
+            </defs>
+
+            <!-- Step 1: テンプレート複製 -->
+            <rect x="12" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="78" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">① 複製</text>
+            <text x="78" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">テンプレートを</text>
+            <text x="78" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">複製する</text>
+            <text x="78" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">1分</text>
+            <line x1="144" y1="72" x2="162" y2="72" stroke="#00d4ff" stroke-width="1.8" marker-end="url(#arr-s1)"/>
+
+            <!-- Step 2: 画像配置 -->
+            <rect x="166" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="232" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">② 画像配置</text>
+            <text x="232" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">026の加工済み</text>
+            <text x="232" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">素材を配置</text>
+            <text x="232" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">3分</text>
+            <line x1="298" y1="72" x2="316" y2="72" stroke="#00d4ff" stroke-width="1.8" marker-end="url(#arr-s2)"/>
+
+            <!-- Step 3: コピー配置 -->
+            <rect x="320" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="386" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">③ コピー配置</text>
+            <text x="386" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">017のコピーを</text>
+            <text x="386" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">配置・サイズ調整</text>
+            <text x="386" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">5分</text>
+            <line x1="452" y1="72" x2="470" y2="72" stroke="#00d4ff" stroke-width="1.8" marker-end="url(#arr-s3)"/>
+
+            <!-- Step 4: CTA配置 -->
+            <rect x="474" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="540" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">④ CTA配置</text>
+            <text x="540" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">CTAボタンを</text>
+            <text x="540" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">配置する</text>
+            <text x="540" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">2分</text>
+            <line x1="606" y1="72" x2="624" y2="72" stroke="#00d4ff" stroke-width="1.8" marker-end="url(#arr-s4)"/>
+
+            <!-- Step 5: 色・余白調整 -->
+            <rect x="628" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="694" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">⑤ 色・余白</text>
+            <text x="694" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">色調整・</text>
+            <text x="694" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">余白調整</text>
+            <text x="694" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">5分</text>
+            <line x1="760" y1="72" x2="778" y2="72" stroke="#00d4ff" stroke-width="1.8" marker-end="url(#arr-s5)"/>
+
+            <!-- Step 6: 全体確認 -->
+            <rect x="782" y="28" width="132" height="88" rx="7" fill="white" fill-opacity="0.07" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+            <text x="848" y="52" text-anchor="middle" font-size="13" fill="#00d4ff" font-weight="bold">⑥ 全体確認</text>
+            <text x="848" y="72" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">80点チェック・</text>
+            <text x="848" y="87" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.65">微調整</text>
+            <text x="848" y="106" text-anchor="middle" font-size="12" fill="#00d4ff" fill-opacity="0.7">4分</text>
+            <line x1="914" y1="72" x2="932" y2="72" stroke="#00ff88" stroke-width="1.8" marker-end="url(#arr-s6)"/>
+
+            <!-- Step 7: 2枚目へ -->
+            <rect x="936" y="18" width="148" height="108" rx="7" fill="#00ff88" fill-opacity="0.1" stroke="#00ff88" stroke-width="1.8"/>
+            <text x="1010" y="45" text-anchor="middle" font-size="13" fill="#00ff88" font-weight="bold">⑦ 2枚目へ</text>
+            <text x="1010" y="68" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.8">残り10分で</text>
+            <text x="1010" y="83" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.8">次のバリエーション</text>
+            <text x="1010" y="98" text-anchor="middle" font-size="11" fill="white" fill-opacity="0.8">に着手する</text>
+            <text x="1010" y="116" text-anchor="middle" font-size="12" fill="#00ff88" fill-opacity="0.8">10分</text>
+
+            <!-- Time total -->
+            <text x="550" y="165" text-anchor="middle" font-size="14" fill="white" fill-opacity="0.5">① 1分 ＋ ② 3分 ＋ ③ 5分 ＋ ④ 2分 ＋ ⑤ 5分 ＋ ⑥ 4分 ＝ 20分（1枚目完成）→ 残り10分で2枚目</text>
+        </svg>
+        <div class="highlight-box">💡 「何から手をつけるか」の順番を事前に決めておくことで、迷う時間をゼロにする。テンプレート複製から始めることで、サイズ設定だけで数分失うことを防ぐ</div>
+    </div>
+</div>
+
+<!-- スライド6: 「80点」の判断基準 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">「80点」の判断基準：3つのチェック項目</h2>
+    <div class="content-block">
+        <p>100点を目指して悩むより、この3項目を満たせば「80点合格」として次に進む。</p>
+        <div class="tile-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="tile">
+                <div class="icon">👁️</div>
+                <h3>① 伝わる</h3>
+                <p>3秒で「何のサービスか」「何をしてほしいか」がわかるか。3秒で伝わらないバナーは存在しないのと同じ</p>
+            </div>
+            <div class="tile">
+                <div class="icon">📐</div>
+                <h3>② 整っている</h3>
+                <p>テキストの可読性・画像の品質・要素の整列。Block 1の4原則（近接・整列・反復・対比）を瞬時に確認する</p>
+            </div>
+            <div class="tile">
+                <div class="icon">🎨</div>
+                <h3>③ ブランド一貫性</h3>
+                <p>019のビジュアルガイドラインから逸脱していないか。色・フォント・トーンがTALENTBOARDのブランドと合っているか</p>
+            </div>
+        </div>
+        <div class="highlight-box">⚠️ 3項目をすべて「OK」と言えるなら合格。「なんとなく気になる」は100点へのこだわりであり、80点の敵。次の1枚に時間を使う</div>
+    </div>
+</div>
+
+<!-- スライド7: 実践編の予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">実践編の予告：タイムアタック3ラウンド</h2>
+    <div class="content-block">
+        <h3>実践の流れ（4コマ構成）</h3>
+        <ul class="no-bullet">
+            <li>① <strong>演習1（3コマ）：タイムアタック3ラウンド</strong>——1ラウンド30分・バナー3枚以上。3ラウンドで合計9枚以上を制作</li>
+            <li>② <strong>演習2（1コマ）：ベスト選定・言語化</strong>——9枚以上の中からベスト3を選び、選定理由を言語化する</li>
+        </ul>
+        <h3>タイムアタックのルール</h3>
+        <ul>
+            <li>タイマーは講師が管理する</li>
+            <li>30分で終わらなくても途中で止める（厳格なルール）</li>
+            <li>終わらなかった場合は「何に時間がかかったか」を振り返る</li>
+            <li>使う素材：026で加工済みのバナー用画像 ＋ 017のペルソナ別ベストコピー</li>
+        </ul>
+        <div class="next-box">📌 次回（027実践編）の開始前に：026_バナー素材ページが保存されているかFigmaで確認しておくこと</div>
+    </div>
+</div>
+
+<!-- スライド8: クイズへの誘導（既存流用） -->
+<div class="slide-container section-title-layout">
+    <h2>理解度チェック<br><span style="font-size: 1.2em;">Quiz</span></h2>
+    <p>5問のクイズで今日の内容を確認しましょう</p>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +244,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "「100点を1枚に3時間かける」より「80点を30分で3枚出す」ほうが良い主な理由はどれですか？",
+        choices: [
+            "3時間かけると疲れてしまい、クリエイティブの品質が下がるから",
+            "クライアントに3つの選択肢を提示できるから",
+            "比較対象があることで判断でき、フィードバックサイクルも速く回せるから",
+            "30分という制限時間が集中力を高めるから"
+        ],
+        correct: 2,
+        explanation: "「80点を3枚」の本質は「比較対象を作ること」。3枚を並べて初めて「なぜこれがベストか」を判断・言語化できます。フィードバックサイクルも3倍速くなり、方向性の修正コストが低くなります。"
+    },
+    {
+        question: "BtoB SaaSのバナーでテキストメイン型（パターン2）が多い理由として、最も適切なものはどれですか？",
+        choices: [
+            "BtoBは論理的訴求が重要で、「何が解決できるか」をコピーで伝えるほうがCVにつながりやすいから",
+            "BtoBターゲットはビジュアルより文字情報を好む傾向があるから",
+            "AI生成画像の品質がBtoB水準に達していないため、テキストで補う必要があるから",
+            "BtoBのバナーはSNS広告よりメルマガで配信することが多く、画像が表示されないことがあるから"
+        ],
+        correct: 0,
+        explanation: "BtoBは意思決定に論理的な根拠が必要です。「採用管理の工数が30%削減できる」のようにコピーで具体的な価値を伝えることがCVにつながります。ビジュアルのインパクトより訴求内容の明確さが優先されます。"
+    },
+    {
+        question: "高速ワークフローで「最初にやるべきこと」はどれですか？",
+        choices: [
+            "017のコピーを配置して、文字サイズを調整する",
+            "CTAボタンの色とテキストを決める",
+            "Figma標準の色調整スライダーで画像を整える",
+            "Figmaのテンプレートを複製する"
+        ],
+        correct: 3,
+        explanation: "最初はテンプレートの複製。ゼロからフレームを作り始めると、サイズ設定だけで数分を失います。テンプレートを複製することで、サイズ・構造・レイアウトが即座に決まり、あとはテキストと画像を差し替えるだけになります。"
+    },
+    {
+        question: "バナーの「80点」を判断する3つのチェック項目として、正しいものはどれですか？",
+        choices: [
+            "解像度・ファイルサイズ・配色の統一",
+            "伝わる（3秒テスト）・整っている（可読性・整列）・ブランド一貫性",
+            "オリジナリティ・完成度・クリエイティブのインパクト",
+            "コピーの品質・画像のクオリティ・CTAボタンのデザイン"
+        ],
+        correct: 1,
+        explanation: "80点の3基準は「①伝わる（3秒で何のサービスか・何をしてほしいかがわかる）②整っている（可読性・整列・Block 1の4原則）③ブランド一貫性（019のビジュアルガイドラインと合っているか）」。この3項目を満たせば合格として次の1枚に進む。"
+    },
+    {
+        question: "タイムアタックで「30分で終わらなくても途中で止める」厳格なルールがある理由として、最も適切なものはどれですか？",
+        choices: [
+            "制作時間を記録することで、スキルの成長を数値で可視化するため",
+            "残り時間で他の受講生の作品をレビューする時間を確保するため",
+            "時間内に完成させるプレッシャーの中で判断力が鍛えられ、未完成の場合は「何に時間がかかったか」の振り返りが学びになるから",
+            "受講生間の制作時間を揃えることで、公平な比較ができるから"
+        ],
+        correct: 2,
+        explanation: "「途中で止める」ルールの目的は2つ。①時間プレッシャーの中で「今できる最善の判断をする力」を鍛えること。②完成しなかった場合は「何に時間がかかったか」を特定し、次のラウンドで改善することが学びになります。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
