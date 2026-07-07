@@ -9,7 +9,7 @@
 - **ケーススタディ:** SŌIL（Block 3共通）
 
 ## 重要な設計意図
-- Geminiは使わない。接続設定は011〜013で設計した導線をそのまま反映するFigma操作が中心
+- ChatGPTは使わない。接続設定は011〜013で設計した導線をそのまま反映するFigma操作が中心
 - 013で保留していた「ハンバーガーメニューの展開」をOpen Overlayで回収。Block 3のテーマ間接続が完結する
 - 下層ページのダミーフレームは最小限（ヘッダー＋タイトルのみ）。中身の作り込みは不要
 - 012のヘッダーコンポーネントがダミーページでも再利用される。部品化メリットの継続実証
@@ -21,6 +21,14 @@
 - WF段階では遷移フロー・ナビ動作・CTA導線・スクロール導線を伝える。マイクロインタラクションは不要
 - 行き止まり（戻れないページ）を作らない
 
+## ビジュアルアーキテクト育成上の位置づけ
+
+このテーマは、題材「プロトタイピングと動的デモ」を通じて、ビジュアルアーキテクトに必要な「目的に沿って設計・判断・説明する力」を鍛える位置づけである。単に作業手順やツール操作を覚えるのではなく、このテーマの目的（SŌILのTOPページWF（PC版）にFigmaプロトタイプを設定し、クリッカブルな動的デモを作る）に向けて、何を選び、なぜそうするかを自分の言葉で説明できる状態をゴールとする。
+
+## 視覚化方針
+
+このテーマでは、文章説明だけでなく、必要に応じてSVG図解・画像生成・既存アセットを使い分ける。特に、初学者が状況を想像しづらい箇所、Before/After、判断基準、成果物イメージ、実務での使用場面は視覚化候補として扱う。スライド生成時は「画像があると理解が速くなるか」「SVGで構造化した方がよいか」「既存素材で具体化できるか」を確認し、視覚要素が学習目的を支える場合に採用する。
+
 ---
 
 ## スライド構成
@@ -28,15 +36,16 @@
 | No. | 種別 | レイアウト | 内容 |
 |-----|------|-----------|------|
 | 1 | 表紙 | full-bg-image | 「プロトタイピングと動的デモ【実践編】」サブタイトル：SŌILのWFを"触れるデモ"にする |
-| 2 | **新規** | standard | **演習①-準備：下層ページのダミーフレーム作成。** About / Products / Story / Contact の4ページ分（1440px幅）。各フレームに①`Organism/Header`のインスタンス（012のコンポーネント再利用）②ページタイトル③「TOPに戻る」導線。Shop＝「外部サイトへ遷移します」のダミー画面1枚。中身の作り込みは不要 |
-| 3 | **新規** | standard | **演習②-Step 1：ナビの画面遷移。** Prototypeタブに切り替え。ヘッダーナビ各項目→対応ダミーフレームへNavigate to / Dissolve 300ms。About / Products / Story / Contact / Shop の5接続を設定 |
-| 4 | **新規** | standard | **演習②-Step 2：各ページからTOPへの戻り導線。** 各ダミーフレームのヘッダーロゴ→TOPフレームへNavigate to / Dissolve 300ms。外部遷移ダミーの「戻る」ボタン→Back。TOP→各ページ→TOPの往復確認。行き止まりがないことを確認 |
-| 5 | **新規** | standard | **演習③：セクション内の導線リンク設定。** Section_02_About「もっと見る」→AboutへNavigate to。Section_03_Products「すべて見る」→ProductsへNavigate to。Section_04_Story「ストーリーを読む」→StoryへNavigate to。Section_05_Instagram「フォロー」→外部遷移ダミーへ。Section_06_CTA「オンラインショップへ」→外部遷移ダミーへ。Footerナビ→各ダミーフレーム（ヘッダーナビと同じ接続先）。使い分け整理：ページ内＝Scroll to、別ページ＝Navigate to、外部＝ダミーへNavigate to |
-| 6 | **新規・核** | standard | **演習④-Step 1：ドロワーメニューのフレーム作成。** 013で保留した「ハンバーガーメニュー展開」をOpen Overlayで実現。新フレーム「Drawer_Menu」（幅300px×高さ812px）。内部にナビ項目を縦積み（Auto Layout Vertical、Gap 16px、Padding 24px）。各項目にNavigate to設定。上部に「✕」閉じるボタン配置 |
-| 7 | **新規・核** | standard | **演習④-Step 2：Overlayの接続設定。** ヘッダーのハンバーガーアイコン→On Click→Open Overlay→Drawer_Menuフレーム。位置＝Top Right、アニメーション＝Move in from Right 300ms、背景クリックで閉じる＝ON。「✕」ボタン→On Click→Back。プレビューで確認：アイコンクリック→右からスライドイン→ナビで遷移→✕で閉じる。補足：PC版での練習だが、SP版ハンバーガーで同じ手法を使う |
-| 8 | **新規** | standard（チェックリスト） | **プレビュー確認＋セルフチェック。** Present（▶）でプレビュー。Flow開始地点＝TOPページ。☐ナビ遷移が全ページ正しく動くか ☐各ページからTOPに戻れるか ☐各セクションのリンクが正しい遷移先か ☐Overlayの開閉が自然か ☐トランジションが統一されているか。プレビューURL取得：Share→Copy link→ブラウザで操作確認 |
-| 9 | **新規** | standard | **まとめ。** Navigate to・Scroll to・Open Overlayの3アクションでWF段階のプロトタイプに必要な動きをカバーした。プレビューURL共有でクライアントに「触れるデモ」を体験してもらえる。次テーマ：015（Figma AI機能の活用）では、ここまで手動で行ってきた作業をAIで効率化する最新手法を学ぶ。Block 3最終テーマ |
-| 10 | 既存流用 | section-title | クイズへの誘導 |
+| 2 | **新規・ナビ** | standard | **今日の実践目標：SŌILのWFを「触れるデモ」にする。** 位置づけ＝011〜013で作った静的WFに、画面遷移とインタラクションを加える回。成果物タイプ＝Figmaプロトタイプ、下層ダミーフレーム、ナビ遷移、SPドロワーのOverlay、共有用プレビューURL。使用ツール＝Figma Prototype。完了条件＝TOP→下層→TOPの往復、CTA/外部遷移ダミー、ドロワー開閉がプレビューで確認できる |
+| 3 | **新規** | standard | **演習①-準備：下層ページのダミーフレーム作成。** About / Products / Story / Contact の4ページ分（1440px幅）。各フレームに①`Organism/Header`のインスタンス（012のコンポーネント再利用）②ページタイトル③「TOPに戻る」導線。Shop＝「外部サイトへ遷移します」のダミー画面1枚。中身の作り込みは不要 |
+| 4 | **新規** | standard | **演習②-Step 1：ナビの画面遷移。** Prototypeタブに切り替え。ヘッダーナビ各項目→対応ダミーフレームへNavigate to / Dissolve 300ms。About / Products / Story / Contact / Shop の5接続を設定 |
+| 5 | **新規** | standard | **演習②-Step 2：各ページからTOPへの戻り導線。** 各ダミーフレームのヘッダーロゴ→TOPフレームへNavigate to / Dissolve 300ms。外部遷移ダミーの「戻る」ボタン→Back。TOP→各ページ→TOPの往復確認。行き止まりがないことを確認 |
+| 6 | **新規** | standard | **演習③：セクション内の導線リンク設定。** Section_02_About「もっと見る」→AboutへNavigate to。Section_03_Products「すべて見る」→ProductsへNavigate to。Section_04_Story「ストーリーを読む」→StoryへNavigate to。Section_05_Instagram「フォロー」→外部遷移ダミーへ。Section_06_CTA「オンラインショップへ」→外部遷移ダミーへ。Footerナビ→各ダミーフレーム（ヘッダーナビと同じ接続先）。使い分け整理：ページ内＝Scroll to、別ページ＝Navigate to、外部＝ダミーへNavigate to |
+| 7 | **新規・核** | standard | **演習④-Step 1：ドロワーメニューのフレーム作成。** 013で保留した「ハンバーガーメニュー展開」をOpen Overlayで実現。新フレーム「Drawer_Menu」（幅300px×高さ812px）。内部にナビ項目を縦積み（Auto Layout Vertical、Gap 16px、Padding 24px）。各項目にNavigate to設定。上部に「✕」閉じるボタン配置 |
+| 8 | **新規・核** | standard | **演習④-Step 2：Overlayの接続設定。** ヘッダーのハンバーガーアイコン→On Click→Open Overlay→Drawer_Menuフレーム。位置＝Top Right、アニメーション＝Move in from Right 300ms、背景クリックで閉じる＝ON。「✕」ボタン→On Click→Back。プレビューで確認：アイコンクリック→右からスライドイン→ナビで遷移→✕で閉じる。補足：PC版での練習だが、SP版ハンバーガーで同じ手法を使う |
+| 9 | **新規** | standard（チェックリスト） | **プレビュー確認＋セルフチェック。** Present（▶）でプレビュー。Flow開始地点＝TOPページ。☐ナビ遷移が全ページ正しく動くか ☐各ページからTOPに戻れるか ☐各セクションのリンクが正しい遷移先か ☐Overlayの開閉が自然か ☐トランジションが統一されているか。プレビューURL取得：Share→Copy link→ブラウザで操作確認 |
+| 10 | **新規** | standard | **まとめ。** Navigate to・Scroll to・Open Overlayの3アクションでWF段階のプロトタイプに必要な動きをカバーした。プレビューURL共有でクライアントに「触れるデモ」を体験してもらえる。次テーマ：015（Figma AI機能の活用）では、ここまで手動で行ってきた作業をAIで効率化する最新手法を学ぶ。Block 3最終テーマ |
+| 11 | 既存流用 | section-title | クイズへの誘導 |
 
 ---
 
