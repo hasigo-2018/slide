@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdfinfo 014-1_theory.pdf)",
+      "Bash(python3 -c \"import fitz; print\\('ok'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
