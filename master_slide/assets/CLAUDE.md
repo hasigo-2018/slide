@@ -347,4 +347,5 @@ node scripts/insert_html.js master_slide/themes_new/021-2_practice.html generate
 - 第1引数は**雛形HTMLのフルパス**（ファイル名まで含む）。`021` や `theory` などの省略形は不可
 - 第2引数は生成したHTMLファイルのパス
 - 実行前に必ずスクリプトの引数が正しいか確認してから実行する
-- 実行するとバックアップ（`.bak`）が自動生成される
+- 実行するとバックアップ（`.bak`）が雛形HTMLと同階層の `_backup/` フォルダに自動生成される（例: `master_slide/themes_new/_backup/021-1_theory.html.bak`）
+- `scripts/check_svg.js` のレポート（`_svg_report.json`）も同様に `_backup/` フォルダに出力される

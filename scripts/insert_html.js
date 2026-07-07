@@ -118,8 +118,10 @@ async function main() {
     // テンプレート読み込み
     const templateHTML = fs.readFileSync(templatePath, 'utf-8');
 
-    // バックアップ作成
-    const backupPath = templatePath + '.bak';
+    // バックアップ作成（雛形HTMLと同階層の _backup フォルダにまとめる）
+    const backupDir = path.join(path.dirname(templatePath), '_backup');
+    fs.mkdirSync(backupDir, { recursive: true });
+    const backupPath = path.join(backupDir, path.basename(templatePath) + '.bak');
     fs.writeFileSync(backupPath, templateHTML);
     console.log(`📁 バックアップ作成: ${backupPath}`);
 

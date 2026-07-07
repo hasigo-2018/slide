@@ -231,7 +231,7 @@ function printSlides() {
     }
     
     // ユーザーへの案内を表示
-    alert('印刷ダイアログが開きます。\n\n【PDF保存の設定】\n1. 送信先：「PDFに保存」を選択\n2. 詳細設定 → 「背景のグラフィック」にチェック\n3. 用紙：横向き（自動設定済み）');
+    alert('印刷ダイアログが開きます。\n\n【PDF保存の設定】\n1. 送信先：「PDFに保存」を選択\n2. 詳細設定 → 「背景のグラフィック」にチェック\n3. 用紙サイズ：16:9（自動設定済み）');
     
     // 印刷実行
     window.print();
@@ -242,17 +242,23 @@ function addPrintStyles() {
     printStyle.id = 'print-styles';
     printStyle.textContent = `
         @media print {
-            /* ページ設定 */
+            /* ページ設定（1920x1080px基準の16:9。96px/inchで換算し実寸px設計と1:1にする） */
             @page {
-                size: landscape;
+                size: 20in 11.25in;
                 margin: 0;
             }
-            
+
             /* 全体リセット */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
                 color-adjust: exact !important;
+            }
+
+            /* テキスト選択のハイライトが印刷結果に焼き込まれるのを防止 */
+            ::selection {
+                background: transparent !important;
+                color: inherit !important;
             }
             
             html, body {
@@ -262,8 +268,9 @@ function addPrintStyles() {
                 background: #000 !important;
                 margin: 0 !important;
                 padding: 0 !important;
+                display: block !important;
             }
-            
+
             /* プレゼンテーションラッパー */
             #presentation-wrapper {
                 position: static !important;
@@ -271,6 +278,7 @@ function addPrintStyles() {
                 height: auto !important;
                 max-width: none !important;
                 max-height: none !important;
+                transform: none !important;
             }
             
             /* 全スライドを表示 */

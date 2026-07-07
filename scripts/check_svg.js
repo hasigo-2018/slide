@@ -14,6 +14,7 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 
 const targetPath = process.argv[2];
 const autoFix = process.argv.includes('--fix');
@@ -272,9 +273,11 @@ if (issues.length === 0) {
     }
 }
 
-// --- JSON出力（Claude Codeが解析しやすいように） ---
-const reportPath = targetPath.replace('.html', '_svg_report.json');
-fs.writeFileSync(reportPath, JSON.stringify({ 
+// --- JSON出力（Claude Codeが解析しやすいように。雛形HTMLと同階層の _backup フォルダにまとめる） ---
+const reportDir = path.join(path.dirname(targetPath), '_backup');
+fs.mkdirSync(reportDir, { recursive: true });
+const reportPath = path.join(reportDir, path.basename(targetPath).replace('.html', '_svg_report.json'));
+fs.writeFileSync(reportPath, JSON.stringify({
     file: targetPath,
     svgCount: svgs.length,
     issues: issues,
