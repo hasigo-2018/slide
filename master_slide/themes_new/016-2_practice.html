@@ -28,9 +28,9 @@
             <div>
                 <h3>今日の3ステップ</h3>
                 <ul>
-                    <li><strong>演習1</strong>：設計する（3層構造でプロンプトを組み立てる）</li>
-                    <li><strong>演習2</strong>：回して評価する（Geminiに投入・3軸で採点）</li>
-                    <li><strong>演習3</strong>：改善する（弱い部分を特定して書き直す）</li>
+                    <li><strong>演習1</strong>：仮説を立てる（「このペルソナには何が刺さるか」を設計する）</li>
+                    <li><strong>演習2</strong>：仮説をAIに壁打ちする（AI Chatに投入・出力と仮説の差分を確認）</li>
+                    <li><strong>演習3</strong>：差分を読んで改善する（弱い評価軸の原因を特定して修正）</li>
                 </ul>
             </div>
             <div>
@@ -78,7 +78,7 @@
 
 <!-- スライド4: 演習1の概要と指示 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習1：3層構造でプロンプトを設計する（Geminiにはまだ投げない）</h2>
+    <h2 class="slide-title">演習1：3層構造でプロンプトを設計する（AI Chatにはまだ投げない）</h2>
     <div class="content-block">
         <p class="text-sub">
             📝 <strong>課題：</strong>TALENTBOARDの「一元管理」機能を、3ペルソナそれぞれに刺さるコピーとして書かせるプロンプトを設計する
@@ -89,7 +89,7 @@
                 <ul>
                     <li>理論編で学んだ<strong>3層構造（Context〈文脈〉/ Instruction〈指示〉/ Constraint〈制約〉）を必ず使う</strong></li>
                     <li>まず<strong>人事部長</strong>から設計する</li>
-                    <li><strong>Geminiにはまだ投げない</strong>（この段階は設計フェーズ）</li>
+                    <li><strong>AI Chatにはまだ投げない</strong>（この段階は設計フェーズ）</li>
                     <li>設計シートを埋めてから自然な文章に変換する</li>
                 </ul>
             </div>
@@ -101,7 +101,7 @@
                     <li>「正解」はない。自分なりの設計を信じて埋める</li>
                 </ul>
                 <div class="highlight-box">
-                    💡 <strong>ポイント：</strong>シートを先に埋めずにGeminiに投げると、3層のどこが弱かったかが後でわからなくなる
+                    💡 <strong>ポイント：</strong>シートを先に埋めずにAI Chatに投げると、3層のどこが弱かったかが後でわからなくなる
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">プロンプト設計シートの使い方</h2>
     <div class="content-block">
-        <p class="text-sub">このシートを埋めてから、自然な文章に変換してGeminiに投げる</p>
+        <p class="text-sub">このシートを埋めてから、自然な文章に変換してAI Chatに投げる</p>
         <div class="two-column tiled">
             <div>
                 <h3>① Context（文脈）</h3>
@@ -122,7 +122,19 @@
                     <li><strong>サービス概要：</strong>TALENTBOARDとは何か</li>
                     <li><strong>使用場面：</strong>どんな状況で読まれるか</li>
                 </ul>
-                <h3>② Instruction（指示）</h3>
+                <h3>② 自分の仮説</h3>
+                <ul>
+                    <li><strong>刺さる訴求軸：</strong>このペルソナには何が響くと思うか</li>
+                    <li><strong>その理由：</strong>なぜそう思うか（Block 2の知識をベースに）</li>
+                    <li><strong>自信がない点：</strong>確信が持てない仮定・不明点</li>
+                </ul>
+                <h3>③ AIに検討してほしいこと</h3>
+                <ul>
+                    <li><strong>仮説の妥当性：</strong>この訴求軸は本当に刺さるか</li>
+                    <li><strong>反論・抜け漏れ：</strong>見落としていることはないか</li>
+                    <li><strong>代替切り口：</strong>他に有効なアプローチはあるか</li>
+                </ul>
+                <h3>④ Instruction（指示）</h3>
                 <ul>
                     <li><strong>出力形式：</strong>キャッチコピー / 本文 / 箇条書き</li>
                     <li><strong>出力数：</strong>何案出すか</li>
@@ -130,14 +142,14 @@
                 </ul>
             </div>
             <div>
-                <h3>③ Constraint（制約）</h3>
+                <h3>⑤ Constraint（制約）</h3>
                 <ul>
                     <li><strong>禁止事項：</strong>誇大表現・抽象語の禁止</li>
                     <li><strong>必須要素：</strong>「TALENTBOARD」を含める、数字を使う 等</li>
                     <li><strong>その他条件：</strong>文字数制限など</li>
                 </ul>
                                 <p>🔄 <strong>変換の流れ</strong><br>
-                    シートを埋める → 3層を自然文にまとめる → Geminiに投入</p>
+                    シートを埋める → 3層を自然文にまとめる → AI Chatに投入</p>
                 <p class="text-note">※ Constraintが空欄のまま投げると、AIが「革命」「画期的」などの誇大表現を使いやすくなる</p>
             </div>
         </div>
@@ -181,17 +193,17 @@
 
 <!-- スライド7: 演習2の概要と指示 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習2：Geminiに投入して出力を評価する</h2>
+    <h2 class="slide-title">演習2：AI Chatに投入して出力を評価する</h2>
     <div class="content-block">
         <p class="text-sub">
-            📝 <strong>課題：</strong>設計したプロンプトをGeminiに投入し、出力5案を3軸で採点する
+            📝 <strong>課題：</strong>設計したプロンプトをAI Chatに投入し、出力5案を3軸で採点する
         </p>
         <div class="two-column tiled">
             <div>
                 <h3>手順</h3>
                 <ul class="no-bullet">
                     <li><strong>①</strong> 設計シートを自然な文章（1段落）に変換する</li>
-                    <li><strong>②</strong> Geminiに投入する</li>
+                    <li><strong>②</strong> AI Chatに投入する</li>
                     <li><strong>③</strong> 出力を評価シートで採点する</li>
                 </ul>
                 <p class="text-note">制限時間：<strong>20分</strong></p>
@@ -211,13 +223,13 @@
     </div>
 </div>
 
-<!-- スライド8: Geminiプロンプト投入デモ -->
+<!-- スライド8: AI Chatプロンプト投入デモ -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">デモ：設計シート → Gemini投入プロンプト（人事部長向け）</h2>
+    <h2 class="slide-title">デモ：設計シート → AI Chat投入プロンプト（人事部長向け）</h2>
     <div class="content-block">
         <p class="text-sub">設計シートを自然文に変換するとこうなる。これ自体が「3層構造の実例」</p>
         <div class="prompt-box">
-            <div class="prompt-content" id="prompt-gemini-016-1">
+            <div class="prompt-content" id="prompt-chatgpt-016-1">
 あなたはBtoBマーケティングを専門とするコピーライターです。
 
 【Context（文脈）】
@@ -225,6 +237,16 @@
 この人物の最大の課題は「採用コストの削減」と「経営層への採用成果の説明」です。
 対象サービスはTALENTBOARD（タレントボード）：候補者情報を一元管理し、採用進捗を可視化するクラウド型採用管理ツールです。
 LP（ランディングページ）のファーストビューで読まれる想定です。
+
+【自分の仮説】
+この人事部長には「経営層への説明責任」と「採用コストの数値化」という訴求が最も刺さると考えます。
+「現場が楽になる」より「経営に貢献できる根拠が示せる」視点のほうが意思決定につながると思います。
+自信がない点：「属人化解消」と「コスト削減」どちらを前面に出すべきか。
+
+【AIに検討してほしいこと】
+・上記の仮説（経営説明・数値化訴求）は人事部長に対して妥当か
+・見落としている訴求軸や反論があれば教えてほしい
+・「コスト削減」以外に有効な切り口があれば提案してほしい
 
 【Instruction（指示）】
 BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッチコピーを5案作成してください。
@@ -234,7 +256,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
 ・「TALENTBOARD」という固有名詞を必ず含めること
 ・採用コスト削減または業務効率化に関する具体的なベネフィットを示すこと
             </div>
-            <button class="copy-btn" onclick="copyPrompt('prompt-gemini-016-1', event)">
+            <button class="copy-btn" onclick="copyPrompt('prompt-chatgpt-016-1', event)">
                 <i class="fas fa-copy"></i> コピー
             </button>
         </div>
@@ -283,7 +305,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                 <h3>作業手順（各ペルソナ）</h3>
                 <ul>
                     <li>設計シート記入：<strong>各10分</strong></li>
-                    <li>Gemini投入：<strong>各5分</strong></li>
+                    <li>AI Chat投入：<strong>各5分</strong></li>
                     <li>評価シート採点：<strong>各10分</strong></li>
                 </ul>
                 <h3>2ペルソナのContext（文脈）の核心</h3>
@@ -320,7 +342,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                     <li><strong>① 特定：</strong>3軸のどこの評価が低かったか</li>
                     <li><strong>② 仮説：</strong>3層のどこが原因か（Context〈文脈〉？Instruction〈指示〉？Constraint〈制約〉？）</li>
                     <li><strong>③ 修正：</strong>該当する層を書き直す</li>
-                    <li><strong>④ 再実行：</strong>Geminiに再投入して出力を比較する</li>
+                    <li><strong>④ 再実行：</strong>AI Chatに再投入して出力を比較する</li>
                 </ul>
                 <p class="text-note">制限時間：<strong>20分</strong></p>
             </div>
@@ -377,7 +399,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                 <h3>① 3ペルソナ分の完成プロンプト</h3>
                 <p class="text-sub">設計シートに記入した3層構造プロンプト（人事部長・リクルーター・経営層）</p>
 
-                <h3>② 各ペルソナのGemini出力（評価済み）</h3>
+                <h3>② 各ペルソナのAI Chat出力（評価済み）</h3>
                 <p class="text-sub">評価シートに★が埋まった状態の出力5案。「なぜこれを選んだか」のメモも含む</p>
             </div>
             <div>
@@ -403,7 +425,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
                 <h3>次回：017「AIコピーライティング」</h3>
                 <ul>
                     <li>016で身につけた「3層構造の型」を使い、LP全体のコピーを量産する</li>
-                    <li>FV（ファーストビュー）・セクション見出し・CTA（行動喚起）すべてのコピーをGeminiで生成する</li>
+                    <li>FV（ファーストビュー）・セクション見出し・CTA（行動喚起）すべてのコピーをAI Chatで生成する</li>
                     <li>「型で書く → 評価する → 選ぶ」のサイクルを高速で回す</li>
                 </ul>
             </div>
@@ -461,7 +483,7 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
             "Instructionが異なるから。2つのペルソナで出力形式を変えているから",
             "Constraintが異なるから。禁止事項がペルソナによって変わるから",
             "Contextに書いたペルソナの課題が異なるから。関心事が違えばAIへの文脈も変わる",
-            "Geminiの設定が異なるから。ペルソナごとに別のアカウントを使うべきだから"
+            "AI Chatの設定が異なるから。ペルソナごとに別のアカウントを使うべきだから"
         ],
         correct: 2,
         explanation: "同じサービスでも、人事部長のContextには「採用コスト削減・経営層への説明」、リクルーターのContextには「Excel地獄・対応漏れ・二重連絡」という異なる課題が入ります。Contextのペルソナ課題が変わればAIの出力トーンも変わる。これがBlock 2のペルソナ設計がBlock 4の基盤になる理由です。"
@@ -469,9 +491,9 @@ BtoBトーンで（論理的・信頼感を重視）、20〜30文字のキャッ
     {
         question: "AI出力の品質が低かったとき、最初にすべき正しい行動はどれですか？",
         choices: [
-            "すぐにプロンプト全体を書き直してGeminiに再投入する",
+            "すぐにプロンプト全体を書き直してAI Chatに再投入する",
             "3軸のどこが弱いか特定し、3層のどこが原因か仮説を立ててから修正する",
-            "Geminiに「もっと良くして」と追加指示を出す",
+            "AI Chatに「もっと良くして」と追加指示を出す",
             "別のAIツールで試してみる"
         ],
         correct: 1,
