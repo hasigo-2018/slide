@@ -82,7 +82,7 @@
     <div class="content-block">
         <p class="text-sub">016のプロンプト設計シートに<strong>「構造パターンの指定」を1行追加</strong>する。新しい型を覚える必要はない</p>
         <div class="prompt-box">
-            <div class="prompt-content" id="prompt-gemini-017-1">【Context（文脈）】
+            <div class="prompt-content" id="prompt-chatgpt-017-1">【Context（文脈）】
 対象：人材紹介会社の人事部長（50代・採用コスト削減が最重要課題）
 商品：クラウド型採用管理ツール「TALENTBOARD」
 課題：候補者情報がExcel・メール・チャットに散在し、対応漏れが頻発している
@@ -97,7 +97,7 @@ FV用キャッチコピーを5案作成してください。
 ・誇大表現・抽象語（革命・最高・圧倒的・DX）禁止
 ・「TALENTBOARD」を少なくとも1案に含める
 ・感情的・BtoC的表現は使わない</div>
-            <button class="copy-btn" onclick="copyPrompt('prompt-gemini-017-1', event)">
+            <button class="copy-btn" onclick="copyPrompt('prompt-chatgpt-017-1', event)">
                 <i class="fas fa-copy"></i> コピー
             </button>
         </div>
@@ -113,7 +113,7 @@ FV用キャッチコピーを5案作成してください。
             <div>
                 <h3>手順</h3>
                 <ul class="no-bullet">
-                    <li>① 人事部長向け5案をGeminiで生成<span class="text-note">（10分）</span></li>
+                    <li>① 人事部長向け5案をAI Chatで生成<span class="text-note">（10分）</span></li>
                     <li>② 5軸で評価しベスト案を選定<span class="text-note">（5分）</span></li>
                     <li>③ リクルーター向け5案を生成<span class="text-note">（10分）</span></li>
                     <li>④ 評価・選定<span class="text-note">（5分）</span></li>
@@ -194,7 +194,7 @@ FV用キャッチコピーを5案作成してください。
     <div class="content-block">
         <p class="text-sub">016の型からContextの「使用場面」を書き換えるだけ。FV用プロンプトの応用</p>
         <div class="prompt-box">
-            <div class="prompt-content" id="prompt-gemini-017-2">【Context（文脈）】
+            <div class="prompt-content" id="prompt-chatgpt-017-2">【Context（文脈）】
 対象：人材紹介会社の人事部長（50代・採用コスト削減が最重要課題）
 商品：クラウド型採用管理ツール「TALENTBOARD」
 課題：候補者情報がExcel・メール・チャットに散在し、対応漏れが頻発している
@@ -210,7 +210,7 @@ FV用キャッチコピーを5案作成してください。
 ・誇大表現・抽象語禁止
 ・そのセクションの内容を要約しつつ「次を読みたい」と思わせること
 ・感情的・BtoC的表現は使わない</div>
-            <button class="copy-btn" onclick="copyPrompt('prompt-gemini-017-2', event)">
+            <button class="copy-btn" onclick="copyPrompt('prompt-chatgpt-017-2', event)">
                 <i class="fas fa-copy"></i> コピー
             </button>
         </div>
@@ -430,7 +430,7 @@ FV用キャッチコピーを5案作成してください。
         question: "演習2で「全セクション×全ペルソナ」のコピーを生成しなかった理由として最も適切なものはどれですか？",
         choices: [
             "時間が足りなかったから",
-            "Geminiが一度に大量生成できないから",
+            "AI Chatが一度に大量生成できないから",
             "メインペルソナで土台を作り、差分が出るセクションだけサブペルソナで上書きする方が効率的だから",
             "全ペルソナ共通のコピーで十分だから"
         ],
@@ -453,7 +453,7 @@ FV用キャッチコピーを5案作成してください。
         choices: [
             "授業の宿題提出フォーマットを統一するため",
             "「なんとなく良い」を排除し、Block 5の100文字エビデンスとBlock 6の論理的言語化につなげるため",
-            "Geminiへのフィードバック指示を改善するため",
+            "AI Chatへのフィードバック指示を改善するため",
             "選んだコピーの著作権を記録するため"
         ],
         correct: 1,

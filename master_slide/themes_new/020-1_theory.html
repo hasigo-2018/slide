@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カスタムAI（Gem）の構築と運用【理論編】</title>
+    <title>カスタムGPT（GPTs）の構築と運用【理論編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
@@ -12,7 +12,7 @@
         <!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
-        <h1>カスタムAI（Gem）の<br>構築と運用<span>【理論編】</span></h1>
+        <h1>カスタムGPT（GPTs）の<br>構築と運用<span>【理論編】</span></h1>
         <p>学んだすべてを"自分のAI"に焼く</p>
     </div>
 </div>
@@ -40,19 +40,19 @@
                     <li>ブランドルールが自動的に適用される</li>
                     <li>設計した「型」が常に機能している</li>
                 </ul>
-                                <p>🎯 <strong>Block 1への接続：</strong>「デザインは設計である」——設計をAIに固定化する＝再現性のある仕組みを作ること。それがGem（カスタムAI）</p>
+                                <p>🎯 <strong>Block 1への接続：</strong>「デザインは設計である」——設計をAIに固定化する＝再現性のある仕組みを作ること。それがGPT（カスタムAI）</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- スライド3: Gemとは何か -->
+<!-- スライド3: GPTとは何か -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">Gemとは何か——「専属アシスタントを雇う」という発想</h2>
+    <h2 class="slide-title">GPTとは何か——「専属アシスタントを雇う」という発想</h2>
     <div class="content-block">
         <div class="two-column tiled">
             <div>
-                <h3>通常のGemini</h3>
+                <h3>通常のChatGPT</h3>
                 <ul>
                     <li>毎回チャット画面を開く</li>
                     <li><strong>毎回プロンプトを書く</strong></li>
@@ -62,7 +62,7 @@
                 <p class="text-sub" style="margin-top: 16px;">比喩：何も知らない新入社員に、毎朝「今日の業務手順」を1から説明する</p>
             </div>
             <div>
-                <h3>Gem（カスタムAI）</h3>
+                <h3>GPT（カスタムAI）</h3>
                 <ul>
                     <li>自分専用の指示を<strong>永続的に保存</strong>できる</li>
                     <li>毎回の指定不要——<strong>設定した指示が常に適用</strong></li>
@@ -72,13 +72,13 @@
                 <p class="text-sub" style="margin-top: 16px;">比喩：TALENTBOARDの専門知識をすべてインプット済みの<strong>専属コピーライター</strong></p>
             </div>
         </div>
-        <p class="text-note">※ Gemを作る＝「指示書付きの専門家を雇う」のと同じ。一度設計すれば、以後は「タスクだけ」投げればよい</p>
+        <p class="text-note">※ GPTを作る＝「指示書付きの専門家を雇う」のと同じ。一度設計すれば、以後は「タスクだけ」投げればよい</p>
     </div>
 </div>
 
-<!-- スライド4: Gem設計の3要素（SVG） -->
+<!-- スライド4: GPT設計の3要素（SVG） -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">Gem設計の3要素——016の3層構造と同じ思想</h2>
+    <h2 class="slide-title">GPT設計の3要素——016の3層構造と同じ思想</h2>
     <div class="content-block svg-centered">
         <svg viewBox="0 0 1400 520" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <defs>
@@ -92,7 +92,7 @@
             <path d="M 76,60 L 404,60 A 16,16 0 0,1 420,76 L 420,128 L 60,128 L 60,76 A 16,16 0 0,1 76,60 Z" fill="rgba(0,212,255,0.28)"/>
 
             <text x="240" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">役割定義（Role）</text>
-            <text x="240" y="155" text-anchor="middle" fill="white" font-size="18">このGemは「誰」か</text>
+            <text x="240" y="155" text-anchor="middle" fill="white" font-size="18">このGPTは「誰」か</text>
             <text x="110" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ 専門領域</text>
             <text x="110" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ 得意なタスク（3つ以内）</text>
             <text x="110" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 振る舞いの方針</text>
@@ -105,7 +105,7 @@
             <rect x="510" y="60" width="380" height="260" rx="16" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2.5"/>
             <path d="M 526,60 L 874,60 A 16,16 0 0,1 890,76 L 890,128 L 510,128 L 510,76 A 16,16 0 0,1 526,60 Z" fill="rgba(0,212,255,0.28)"/>
             <text x="700" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">知識注入（Knowledge）</text>
-            <text x="700" y="155" text-anchor="middle" fill="white" font-size="18">このGemが「知っている」こと</text>
+            <text x="700" y="155" text-anchor="middle" fill="white" font-size="18">このGPTが「知っている」こと</text>
             <text x="560" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ サービス情報</text>
             <text x="560" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ ペルソナ詳細</text>
             <text x="560" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 成功パターン・ガイドライン</text>
@@ -118,7 +118,7 @@
             <rect x="980" y="60" width="360" height="260" rx="16" fill="rgba(0,212,255,0.12)" stroke="#00d4ff" stroke-width="2.5"/>
             <path d="M 996,60 L 1324,60 A 16,16 0 0,1 1340,76 L 1340,128 L 980,128 L 980,76 A 16,16 0 0,1 996,60 Z" fill="rgba(0,212,255,0.28)"/>
             <text x="1160" y="105" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="bold">出力制約（Output Rules）</text>
-            <text x="1160" y="155" text-anchor="middle" fill="white" font-size="18">このGemが「守る」ルール</text>
+            <text x="1160" y="155" text-anchor="middle" fill="white" font-size="18">このGPTが「守る」ルール</text>
             <text x="1030" y="192" fill="rgba(255,255,255,0.85)" font-size="16">・ トーンルール</text>
             <text x="1030" y="222" fill="rgba(255,255,255,0.85)" font-size="16">・ フォーマットルール</text>
             <text x="1030" y="252" fill="rgba(255,255,255,0.85)" font-size="16">・ 禁止ルール・自己チェック</text>
@@ -127,7 +127,7 @@
             <!-- 下部まとめ -->
             <rect x="350" y="390" width="700" height="90" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
             <text x="700" y="428" text-anchor="middle" fill="white" font-size="19" font-weight="bold">3要素は016の「3層構造プロンプト」の永続化版</text>
-            <text x="700" y="463" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="16">毎回書いていた構造を「Gemの設定として固定する」——それがGem設計の本質</text>
+            <text x="700" y="463" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="16">毎回書いていた構造を「GPTの設定として固定する」——それがGPT設計の本質</text>
         </svg>
     </div>
 </div>
@@ -162,20 +162,20 @@
     <div class="content-block">
         <div class="two-column tiled">
             <div>
-                <h3>Gemに「読み込ませる」情報の種類</h3>
+                <h3>GPTに「読み込ませる」情報の種類</h3>
                 <ul>
                     <li><strong>サービス情報</strong>：TALENTBOARDの概要・機能・強み・差別化ポイント</li>
                     <li><strong>ペルソナ情報</strong>：3ペルソナの詳細（016で作成済み）</li>
                     <li><strong>ビジュアルガイドライン</strong>：019で作成した文書</li>
                     <li><strong>成功パターン</strong>：017で高評価だったコピー例と選定理由</li>
                 </ul>
-                <p class="text-sub">注入方法：Gemの指示文にテキストとして埋め込む、またはファイルとしてアップロード</p>
+                <p class="text-sub">注入方法：GPTの指示文にテキストとして埋め込む、またはファイルとしてアップロード</p>
             </div>
             <div>
                 <h3>構造化の重要性</h3>
                 <p class="text-sub" style="margin-top: 16px;">❌ <strong>悪い例（羅列）：</strong>TALENTBOARDは採用管理ツールです。人材紹介会社向けです。ペルソナは人事部長とCHROと経営者です…</p>
                 <p class="text-sub" style="margin-top: 12px;">✅ <strong>良い例（構造化）：</strong>【サービス情報】タレントボード / BtoB / 採用管理　【ペルソナA】人事部長 / 課題：〇〇　【ビジュアルルール】色：紺×金 / トーン：〇〇</p>
-                <p class="text-note">セクション分けされた情報のほうがGemの出力品質が上がる。箇条書きの羅列では優先順位がわからない</p>
+                <p class="text-note">セクション分けされた情報のほうがGPTの出力品質が上がる。箇条書きの羅列では優先順位がわからない</p>
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">要素③：出力制約（Output Rules）の設計——016のConstraintを「永続化」する</h2>
     <div class="content-block">
-                <p>📌 <strong>016のConstraint（制約）</strong>は毎回プロンプトに書いていた。Output Rulesはそれを「Gemの設定として一度書けばずっと適用される」状態にしたもの</p>
+                <p>📌 <strong>016のConstraint（制約）</strong>は毎回プロンプトに書いていた。Output Rulesはそれを「GPTの設定として一度書けばずっと適用される」状態にしたもの</p>
         <div class="two-column tiled">
             <div>
                 <h3>出力制約の4カテゴリ</h3>
@@ -204,7 +204,7 @@
                     <li class="text-sub">「出力前に必ず5軸（ペルソナ適合・具体性・独自性・トーン・行動喚起）で採点し、60点未満の案は除外して再生成する」</li>
                     <li class="text-sub">「競合他社の名前を出さない」</li>
                 </ul>
-                <p class="text-note">制約は「多ければ良い」ではない。矛盾する制約があるとGemが混乱する（→スライド9で詳述）</p>
+                <p class="text-note">制約は「多ければ良い」ではない。矛盾する制約があるとGPTが混乱する（→スライド9で詳述）</p>
             </div>
         </div>
     </div>
@@ -212,10 +212,10 @@
 
 <!-- スライド8: 検証サイクルの設計 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">検証サイクルの設計——Gemを「作っただけ」で完成と思ってはいけない</h2>
+    <h2 class="slide-title">検証サイクルの設計——GPTを「作っただけ」で完成と思ってはいけない</h2>
     <div class="content-block">
         <div class="highlight-box">
-            ⚠️ <strong>よくある勘違い：</strong>Gemを作ったら終わり → 実際には「意図通りの出力が出るか」を検証して初めてGemは完成する
+            ⚠️ <strong>よくある勘違い：</strong>GPTを作ったら終わり → 実際には「意図通りの出力が出るか」を検証して初めてGPTは完成する
         </div>
         <h3>テスト設計の3ステップ</h3>
         <div class="two-column tiled">
@@ -275,7 +275,7 @@
             </div>
         </div>
         <div class="highlight-box">
-            💡 <strong>共通の原則：</strong>曖昧さを減らすほどGemの出力は安定する。Gemを改善するとは「曖昧な部分を具体化していくこと」
+            💡 <strong>共通の原則：</strong>曖昧さを減らすほどGPTの出力は安定する。GPTを改善するとは「曖昧な部分を具体化していくこと」
         </div>
     </div>
 </div>
@@ -286,7 +286,7 @@
     <div class="tile-grid">
         <div class="tile">
             <div class="icon">🤖</div>
-            <h3>Gemの本質</h3>
+            <h3>GPTの本質</h3>
             <p>毎回書いていたプロンプトを「永続化」したもの。専属アシスタントに専門知識をインプット済みで雇うのと同じ発想</p>
         </div>
         <div class="tile">
@@ -302,7 +302,7 @@
         <div class="tile">
             <div class="icon">🎯</div>
             <h3>Block 4の集大成</h3>
-            <p>016〜019で積み上げた型・コピー・画像・ガイドラインをすべて1つのGemに統合する。Block 5で実際に使う「実務ツール」を作る</p>
+            <p>016〜019で積み上げた型・コピー・画像・ガイドラインをすべて1つのGPTに統合する。Block 5で実際に使う「実務ツール」を作る</p>
         </div>
     </div>
 </div>
@@ -311,12 +311,12 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">次回予告と実践編への接続</h2>
     <div class="content-block">
-        <p class="text-sub">🔧 <strong>実践編でやること：</strong>「TALENTBOARDコピーライター」Gemを実際に構築する</p>
+        <p class="text-sub">🔧 <strong>実践編でやること：</strong>「TALENTBOARDコピーライター」GPTを実際に構築する</p>
         <div class="two-column tiled">
             <div>
                 <h3>実践編の流れ</h3>
                 <ul>
-                    <li><strong>演習1</strong>：Gem設計書を先に書く（設計→実行の原則）</li>
+                    <li><strong>演習1</strong>：GPT設計書を先に書く（設計→実行の原則）</li>
                     <li><strong>演習2</strong>：テスト1サイクル目——017のFVキャッチと比較</li>
                     <li><strong>演習3</strong>：テスト2サイクル目——未知のタスクで汎用性を検証</li>
                     <li><strong>演習4</strong>：最終調整・Block 4全体の振り返り</li>
@@ -349,7 +349,7 @@
     <script>
         const questions = [
     {
-        question: "Gem設計の3要素として正しい組み合わせはどれですか？",
+        question: "GPT設計の3要素として正しい組み合わせはどれですか？",
         choices: [
             "役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）",
             "目的設定・プロンプト設計・出力フォーマット",
@@ -357,18 +357,18 @@
             "Context・Instruction・Constraint"
         ],
         correct: 0,
-        explanation: "Gem設計の3要素は「役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）」です。016の3層構造（Context / Instruction / Constraint）と対応していますが、3要素の名前はGem設計の枠組みです。"
+        explanation: "GPT設計の3要素は「役割定義（Role）・知識注入（Knowledge）・出力制約（Output Rules）」です。016の3層構造（Context / Instruction / Constraint）と対応していますが、3要素の名前はGPT設計の枠組みです。"
     },
     {
-        question: "通常のGeminiチャットとGemの最大の違いは何ですか？",
+        question: "通常のChatGPTチャットとGPTの最大の違いは何ですか？",
         choices: [
-            "Gemのほうが回答速度が速い",
-            "Gemは事前に設定した指示が常に適用されるため、毎回プロンプトを書き直す必要がない",
-            "Gemは画像生成に特化した機能である",
-            "Gemは複数人で共有できるが、通常チャットはできない"
+            "GPTのほうが回答速度が速い",
+            "GPTは事前に設定した指示が常に適用されるため、毎回プロンプトを書き直す必要がない",
+            "GPTは画像生成に特化した機能である",
+            "GPTは複数人で共有できるが、通常チャットはできない"
         ],
         correct: 1,
-        explanation: "Gemの最大の特徴は「事前に設定した指示が永続的に保存・適用される」点です。毎回プロンプトをゼロから書く通常チャットと異なり、設計した役割・知識・制約が常に機能した状態でタスクを投げられます。"
+        explanation: "GPTの最大の特徴は「事前に設定した指示が永続的に保存・適用される」点です。毎回プロンプトをゼロから書く通常チャットと異なり、設計した役割・知識・制約が常に機能した状態でタスクを投げられます。"
     },
     {
         question: "知識注入（Knowledge）において「量」より重要なのは何ですか？",
@@ -379,21 +379,21 @@
             "文字数の少なさ（短ければ短いほど良い）"
         ],
         correct: 2,
-        explanation: "知識注入で重要なのは「構造化」です。情報をセクション分けし、最重要情報を冒頭に置くことで、Gemがどのルールをどのタイミングでどう優先するかを正しく理解できます。箇条書きの羅列より、フォーマットが揃った構造化情報のほうが出力品質が上がります。"
+        explanation: "知識注入で重要なのは「構造化」です。情報をセクション分けし、最重要情報を冒頭に置くことで、GPTがどのルールをどのタイミングでどう優先するかを正しく理解できます。箇条書きの羅列より、フォーマットが揃った構造化情報のほうが出力品質が上がります。"
     },
     {
-        question: "Gemを作った後にテストが必要な理由として最も適切なものはどれですか？",
+        question: "GPTを作った後にテストが必要な理由として最も適切なものはどれですか？",
         choices: [
-            "GeminiのAPIコストを最適化するため",
+            "ChatGPTのAPIコストを最適化するため",
             "「意図通りの出力が出るか」を検証しないと、本番で想定外の出力が出るリスクがあるため",
-            "Gemは作成後24時間以内にテストしないと設定がリセットされるため",
-            "テストしないと他のユーザーにGemが公開されてしまうため"
+            "GPTは作成後24時間以内にテストしないと設定がリセットされるため",
+            "テストしないと他のユーザーにGPTが公開されてしまうため"
         ],
         correct: 1,
-        explanation: "Gemを「作っただけ」では完成ではありません。設計の意図通りの出力が出るかをテストケース・期待値設定・判定のプロセスで検証し、ギャップを修正して初めてGemは実用レベルになります。"
+        explanation: "GPTを「作っただけ」では完成ではありません。設計の意図通りの出力が出るかをテストケース・期待値設定・判定のプロセスで検証し、ギャップを修正して初めてGPTは実用レベルになります。"
     },
     {
-        question: "Gem設計の3要素と016の3層構造プロンプトの対応として正しいものはどれですか？",
+        question: "GPT設計の3要素と016の3層構造プロンプトの対応として正しいものはどれですか？",
         choices: [
             "Role ≒ Instruction / Knowledge ≒ Context / Output Rules ≒ Constraint",
             "Role ≒ Constraint / Knowledge ≒ Instruction / Output Rules ≒ Context",
@@ -401,7 +401,7 @@
             "Role ≒ Instruction / Knowledge ≒ Constraint / Output Rules ≒ Context"
         ],
         correct: 2,
-        explanation: "対応関係は「Role ≒ Context（誰として動くか） / Knowledge ≒ Context + Instruction（何を知っており何をするか） / Output Rules ≒ Constraint（何を守るか）」です。GemはこのContext-Instruction-Constraint構造を永続化したものと理解できます。"
+        explanation: "対応関係は「Role ≒ Context（誰として動くか） / Knowledge ≒ Context + Instruction（何を知っており何をするか） / Output Rules ≒ Constraint（何を守るか）」です。GPTはこのContext-Instruction-Constraint構造を永続化したものと理解できます。"
     }
 ];
     </script>

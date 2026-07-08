@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カスタムAI（Gem）の構築と運用【実践編】</title>
+    <title>カスタムGPT（GPTs）の構築と運用【実践編】</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/slide-template.css">
 </head>
@@ -12,7 +12,7 @@
         <!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
-        <h1>カスタムAI（Gem）の<br>構築と運用<span>【実践編】</span></h1>
+        <h1>カスタムGPT（GPTs）の<br>構築と運用<span>【実践編】</span></h1>
         <p>Block 4のすべてを"自分のAI"に焼く</p>
     </div>
 </div>
@@ -21,12 +21,12 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">今日の実践目標——Block 4の集大成を「実務ツール」に仕上げる</h2>
     <div class="content-block">
-        <p>🎯 <strong>ゴール：</strong>「TALENTBOARDコピーライター」Gemを構築し、テスト→修正を2サイクル回して実用レベルに仕上げる</p>
+        <p>🎯 <strong>ゴール：</strong>「TALENTBOARDコピーライター」GPTを構築し、テスト→修正を2サイクル回して実用レベルに仕上げる</p>
         <div class="two-column tiled">
             <div>
                 <h3>演習の流れ</h3>
                 <ul>
-                    <li><strong>演習1</strong>：Gem設計書の作成 → Gem構築（35分）</li>
+                    <li><strong>演習1</strong>：GPT設計書の作成 → GPT構築（35分）</li>
                     <li><strong>演習2</strong>：テスト1サイクル目——既知のタスクで検証（30分）</li>
                     <li><strong>演習3</strong>：テスト2サイクル目——未知のタスクで汎用性検証（55分）</li>
                     <li><strong>演習4</strong>：最終調整・Block 4全体振り返り（40分）</li>
@@ -36,7 +36,7 @@
                 <h3>この演習が特別な理由</h3>
                 <ul>
                     <li>「演習のための演習」ではない</li>
-                    <li>完成したGemは<strong>Block 5のLP制作で実際に使う</strong></li>
+                    <li>完成したGPTは<strong>Block 5のLP制作で実際に使う</strong></li>
                     <li>016〜019の成果物をすべて1つに統合する</li>
                     <li>「考える→道具を持つ」フェーズの集大成</li>
                 </ul>
@@ -46,16 +46,16 @@
     </div>
 </div>
 
-<!-- スライド3: Gemに統合する素材の棚卸し -->
+<!-- スライド3: GPTに統合する素材の棚卸し -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">Gemに統合する素材の棚卸し——016〜019の成果物を確認する</h2>
+    <h2 class="slide-title">GPTに統合する素材の棚卸し——016〜019の成果物を確認する</h2>
     <div class="content-block">
-        <p>📋 <strong>まず確認：</strong>手元に以下の素材が揃っているか確認しましょう。これらがGem設計の材料になります</p>
+        <p>📋 <strong>まず確認：</strong>手元に以下の素材が揃っているか確認しましょう。これらがGPT設計の材料になります</p>
         <div class="two-column tiled">
             <div>
                 <h3>素材一覧</h3>
                 <ul>
-                    <li><strong>016</strong>：3ペルソナ分のLogic Promptシート<br><span class="text-note">→ Gemの出力制約の基本設計に使う</span></li>
+                    <li><strong>016</strong>：3ペルソナ分のLogic Promptシート<br><span class="text-note">→ GPTの出力制約の基本設計に使う</span></li>
                     <li><strong>017</strong>：ペルソナ別ベストコピー＋選定理由<br><span class="text-note">→ 知識注入（成功パターン）に使う</span></li>
                     <li><strong>017</strong>：コピーの3構造パターン＋評価5軸<br><span class="text-note">→ 出力フォーマットと自己チェック基準に使う</span></li>
                     <li><strong>019</strong>：ビジュアルガイドライン文書<br><span class="text-note">→ 知識注入（ブランドルール）に使う</span></li>
@@ -76,20 +76,20 @@
 
 <!-- スライド4: 演習1の概要 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習1の概要：Gem設計書の作成——いきなり作らない</h2>
+    <h2 class="slide-title">演習1の概要：GPT設計書の作成——いきなり作らない</h2>
     <div class="content-block">
-        <p>📌 <strong>016と同じ原則：「設計→実行」の順を守る。</strong>Gemをいきなりツールで組み立てるのではなく、まずテキストで「設計書」を書き出す</p>
+        <p>📌 <strong>016と同じ原則：「設計→実行」の順を守る。</strong>GPTをいきなりツールで組み立てるのではなく、まずテキストで「設計書」を書き出す</p>
         <div class="two-column tiled">
             <div>
                 <h3>課題</h3>
-                <p class="text-sub">Gemの指示文を「設計書」として先にテキストで書き出す</p>
+                <p class="text-sub">GPTの指示文を「設計書」として先にテキストで書き出す</p>
                 <h3>設計書のフォーマット</h3>
                 <ul>
                     <li>【役割定義】○○</li>
                     <li>【知識注入】○○</li>
                     <li>【出力制約】○○</li>
                 </ul>
-                <p class="text-note">この3セクション構造がそのままGemの指示文になる</p>
+                <p class="text-note">この3セクション構造がそのままGPTの指示文になる</p>
             </div>
             <div>
                 <h3>なぜ設計書を先に書くのか</h3>
@@ -97,20 +97,20 @@
                     <li><strong>構造が整理できる</strong>：3要素の内容が混在しなくなる</li>
                     <li><strong>見直しができる</strong>：ツールに入力する前に矛盾・抜け漏れを発見できる</li>
                     <li><strong>修正がしやすい</strong>：どの要素を直せばよいかが明確になる</li>
-                    <li><strong>再利用できる</strong>：次のGemを作るときの参考になる</li>
+                    <li><strong>再利用できる</strong>：次のGPTを作るときの参考になる</li>
                 </ul>
-                <p>⏱️ <strong>制限時間：30分</strong>　設計書作成（20分）→ レビュー（5分）→ Gem構築（10分）</p>
+                <p>⏱️ <strong>制限時間：30分</strong>　設計書作成（20分）→ レビュー（5分）→ GPT構築（10分）</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- スライド5: Gem設計書テンプレートと記入ガイド -->
+<!-- スライド5: GPT設計書テンプレートと記入ガイド -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">Gem設計書テンプレートと記入ガイド</h2>
+    <h2 class="slide-title">GPT設計書テンプレートと記入ガイド</h2>
     <div class="content-block">
         <div class="prompt-box">
-            <div class="prompt-content" id="gem-template">
+            <div class="prompt-content" id="gpt-template">
 【役割定義（Role）】
 あなたはTALENTBOARD専属のBtoBマーケティングコピーライターです。
 得意タスク：①FVキャッチコピー ②セクション見出し ③CTA文の作成
@@ -140,7 +140,7 @@
 ・60点未満の案は除外して再生成
 ・誇大表現・競合名・根拠のない断定は禁止
             </div>
-            <button class="copy-btn" onclick="copyPrompt('gem-template', event)">
+            <button class="copy-btn" onclick="copyPrompt('gpt-template', event)">
                 <i class="fas fa-copy"></i> コピー
             </button>
         </div>
@@ -150,7 +150,7 @@
 
 <!-- スライド6: 演習1の実行指示 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習1の実行指示：設計書作成 → Gem構築</h2>
+    <h2 class="slide-title">演習1の実行指示：設計書作成 → GPT構築</h2>
     <div class="content-block">
         <div class="two-column tiled">
             <div>
@@ -158,8 +158,8 @@
                 <ul class="no-bullet">
                     <li><strong>① 設計書テンプレートを記入</strong>（20分）<br><span class="text-note">前スライドのテンプレートを使い、016〜019の成果物を当てはめる</span></li>
                     <li><strong>② レビュー</strong>（5分）<br><span class="text-note">隣の人と見比べる。または次のチェックリストで自己確認する</span></li>
-                    <li><strong>③ GeminiのGem作成画面を開く</strong>（5分）<br><span class="text-note">設計書の内容を指示文欄にそのまま貼り付ける</span></li>
-                    <li><strong>④ Gemを保存・命名</strong>（5分）<br><span class="text-note">名前例：「TALENTBOARDコピーライター v1」</span></li>
+                    <li><strong>③ ChatGPTのGPT作成画面（GPTsメニュー）を開く</strong>（5分）<br><span class="text-note">設計書の内容を指示文欄にそのまま貼り付ける</span></li>
+                    <li><strong>④ GPTを保存・命名</strong>（5分）<br><span class="text-note">名前例：「TALENTBOARDコピーライター v1」</span></li>
                 </ul>
             </div>
             <div>
@@ -171,7 +171,7 @@
                     <li>出力制約に<strong>矛盾がないか</strong>（相反するルールがないか）</li>
                     <li>017の<strong>評価5軸が出力制約に含まれているか</strong></li>
                 </ul>
-                <p class="text-note">1つでも「×」があれば、設計書を修正してからGemを構築する</p>
+                <p class="text-note">1つでも「×」があれば、設計書を修正してからGPTを構築する</p>
             </div>
         </div>
     </div>
@@ -181,12 +181,12 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">演習2の概要：テスト1サイクル目——「既知のタスク」で検証する</h2>
     <div class="content-block">
-        <p>🔬 <strong>テストの目的：</strong>017で手動で生成した「FVキャッチコピー」をGemに同じ条件で投げ、品質を比較する。正解がわかっているタスクで検証するから、ギャップが明確になる</p>
+        <p>🔬 <strong>テストの目的：</strong>017で手動で生成した「FVキャッチコピー」をGPTに同じ条件で投げ、品質を比較する。正解がわかっているタスクで検証するから、ギャップが明確になる</p>
         <div class="two-column tiled">
             <div>
                 <h3>テスト入力</h3>
                 <p>「人事部長向けのFVキャッチコピーを5案作成してください」</p>
-                <p class="text-sub">これだけ。プロンプトの詳細指示はなし。Gemの設定だけで017と同等の品質が出るかを検証する</p>
+                <p class="text-sub">これだけ。プロンプトの詳細指示はなし。GPTの設定だけで017と同等の品質が出るかを検証する</p>
                 <p class="text-note">※ 他のペルソナでも試してみること（「CHRO向け」「経営者向け」）</p>
             </div>
             <div>
@@ -196,7 +196,7 @@
                     <li><strong>プロンプト省略のメリット確認</strong>：毎回書いていた3層構造を書かずに済んでいるか</li>
                     <li><strong>ブランドルール遵守確認</strong>：019のガイドラインが自動的に反映されているか</li>
                 </ul>
-                                <p>ここで「017より品質が低い」= Gemの設計に改善余地あり<br>
+                                <p>ここで「017より品質が低い」= GPTの設計に改善余地あり<br>
                     <span class="text-note">→ 演習2後半で修正を行う</span></p>
             </div>
         </div>
@@ -211,7 +211,7 @@
             <div>
                 <h3>実行手順</h3>
                 <ul class="no-bullet">
-                    <li><strong>①</strong> Gemに「人事部長向けのFVキャッチコピーを5案作成してください」を投げる（5分）</li>
+                    <li><strong>①</strong> GPTに「人事部長向けのFVキャッチコピーを5案作成してください」を投げる（5分）</li>
                     <li><strong>②</strong> 出力を017の評価5軸で採点する（10分）<br><span class="text-note">ペルソナ適合・具体性・独自性・トーン・行動喚起</span></li>
                     <li><strong>③</strong> 017の手動出力と比較する（5分）</li>
                     <li><strong>④</strong> ギャップを特定する（10分）</li>
@@ -220,7 +220,7 @@
             <div>
                 <h3>ギャップ分析のフレームワーク</h3>
                                 <p><strong>特定</strong>：5軸のどの評価軸が低いか？<br>
-                    <strong>仮説</strong>：原因はGemの3要素のどこか？<br>
+                    <strong>仮説</strong>：原因はGPTの3要素のどこか？<br>
                     <span class="text-note">例：ペルソナ適合が低い → 知識注入のペルソナ情報が不足？</span><br>
                     <span class="text-note">例：トーンがブレる → 役割定義の方針が曖昧？</span><br>
                     <strong>修正</strong>：該当の要素を書き直す<br>
@@ -233,7 +233,7 @@
 
 <!-- スライド9: 修正の実行 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">修正の実行——テスト結果に基づいてGemを改善する</h2>
+    <h2 class="slide-title">修正の実行——テスト結果に基づいてGPTを改善する</h2>
     <div class="content-block">
         <h3>よくある修正パターン</h3>
         <div class="two-column tiled">
@@ -280,7 +280,7 @@
                 <h3>共有のポイント</h3>
                 <ul>
                     <li>修正前の出力（Before）と修正後の出力（After）を2〜3名で共有する</li>
-                    <li>「Gemの3要素のうち<strong>どこを直したら最も効いたか</strong>」を確認する</li>
+                    <li>「GPTの3要素のうち<strong>どこを直したら最も効いたか</strong>」を確認する</li>
                     <li>修正箇所と改善の因果関係を言語化する</li>
                 </ul>
                 <p class="text-sub">例：「知識注入にペルソナのゴールを追記したら、ペルソナ適合度が上がった」</p>
@@ -290,10 +290,10 @@
                 <ul>
                     <li><strong>設計の精度とアウトプットの因果関係</strong>が見えてくる</li>
                     <li>「なんとなく良い・悪い」から「<strong>どこが原因か</strong>」に思考が変わる</li>
-                    <li>016〜019で学んだことが「Gem改善の言語」になっていることに気づく</li>
+                    <li>016〜019で学んだことが「GPT改善の言語」になっていることに気づく</li>
                 </ul>
                 <div class="highlight-box">
-                    💡 1回の修正で完璧にはならない。しかし「どこを直せば何が変わるか」の勘所を掴むことが、実務で使えるGemへの近道
+                    💡 1回の修正で完璧にはならない。しかし「どこを直せば何が変わるか」の勘所を掴むことが、実務で使えるGPTへの近道
                 </div>
             </div>
         </div>
@@ -304,20 +304,20 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">演習3の概要：テスト2サイクル目——「未知のタスク」で汎用性を検証する</h2>
     <div class="content-block">
-        <p>🔬 <strong>テストの目的：</strong>017で扱わなかった「未知のセクション」のコピーをGemに書かせる。「教えていないタスク」にも対応できるかどうかが、実務で使えるGemかどうかの分かれ目</p>
+        <p>🔬 <strong>テストの目的：</strong>017で扱わなかった「未知のセクション」のコピーをGPTに書かせる。「教えていないタスク」にも対応できるかどうかが、実務で使えるGPTかどうかの分かれ目</p>
         <div class="two-column tiled">
             <div>
                 <h3>テスト入力例（2種類投げる）</h3>
                 <p>「FAQ用のQ&Aを5組作成してください」</p>
                 <p>「導入事例のタイトルと概要を3案作成してください」</p>
-                <p class="text-note">どちらも017では直接扱わなかったセクション。Gemが知識注入・出力制約を「汎用的に転用」できるかを見る</p>
+                <p class="text-note">どちらも017では直接扱わなかったセクション。GPTが知識注入・出力制約を「汎用的に転用」できるかを見る</p>
             </div>
             <div>
                 <h3>検証の視点</h3>
                 <ul>
                     <li><strong>017のコピー品質と同等か？</strong><br>ブランドルールが未知のタスクでも機能しているか</li>
                     <li><strong>ペルソナ適合は維持されているか？</strong><br>FVキャッチ以外でも人事部長向けの言葉になっているか</li>
-                    <li><strong>「メインペルソナで基本を作り差分だけ上書き」は通用するか？</strong><br>017で学んだ効率化の発想がGemでも機能するか</li>
+                    <li><strong>「メインペルソナで基本を作り差分だけ上書き」は通用するか？</strong><br>017で学んだ効率化の発想がGPTでも機能するか</li>
                 </ul>
             </div>
         </div>
@@ -326,7 +326,7 @@
 
 <!-- スライド12: 演習3の実行指示 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習3の実行指示——未知のタスクでGemの汎用性を確かめる</h2>
+    <h2 class="slide-title">演習3の実行指示——未知のタスクでGPTの汎用性を確かめる</h2>
     <div class="content-block">
         <div class="two-column tiled">
             <div>
@@ -334,7 +334,7 @@
                 <ul class="no-bullet">
                     <li><strong>①</strong> 未知のタスクを2種類投げる（各10分）</li>
                     <li><strong>②</strong> 出力を5軸で評価する（各5分）</li>
-                    <li><strong>③</strong> 品質が基準未達の場合、原因をGemの3要素で仮説立て（10分）</li>
+                    <li><strong>③</strong> 品質が基準未達の場合、原因をGPTの3要素で仮説立て（10分）</li>
                     <li><strong>④</strong> 修正→再テスト（15分）</li>
                 </ul>
             </div>
@@ -355,7 +355,7 @@
 <div class="slide-container standard-content-layout">
     <h2 class="slide-title">演習4：最終調整——2サイクルの学びを反映して完成させる</h2>
     <div class="content-block">
-        <p>📋 <strong>課題：</strong>2サイクルの修正を反映した最終版のGem指示文を確定し、「TALENTBOARDコピーライター 最終版」として保存する</p>
+        <p>📋 <strong>課題：</strong>2サイクルの修正を反映した最終版のGPT指示文を確定し、「TALENTBOARDコピーライター 最終版」として保存する</p>
         <div class="two-column tiled">
             <div>
                 <h3>最終確認チェックリスト</h3>
@@ -375,7 +375,7 @@
                     <li>ペルソナを指定するだけでブランドルールが自動適用される</li>
                     <li>FVキャッチ以外の未知のセクションにも対応できる</li>
                 </ul>
-                <p class="text-note">この状態に達したGemがBlock 5で実際に使う「実務ツール」になる</p>
+                <p class="text-note">この状態に達したGPTがBlock 5で実際に使う「実務ツール」になる</p>
             </div>
         </div>
     </div>
@@ -408,7 +408,7 @@
         <div class="tile">
             <div class="icon">🤖</div>
             <h3>自分専用AIの構築力</h3>
-            <p>016〜019の知見を1つのGemに統合し、テスト→修正のPDCAで実用レベルに仕上げる力</p>
+            <p>016〜019の知見を1つのGPTに統合し、テスト→修正のPDCAで実用レベルに仕上げる力</p>
         </div>
     </div>
 </div>
@@ -419,12 +419,12 @@
     <div class="tiled-content">
         <div class="tile">
             <div class="icon">🤖</div>
-            <h3>Gem（最終版）</h3>
+            <h3>GPT（最終版）</h3>
             <p>「TALENTBOARDコピーライター」テスト・修正済み。Block 5で実際に使うツール</p>
         </div>
         <div class="tile">
             <div class="icon">📄</div>
-            <h3>Gem設計書（最終版）</h3>
+            <h3>GPT設計書（最終版）</h3>
             <p>役割定義・知識注入・出力制約が確定したテキスト</p>
         </div>
         <div class="tile">
@@ -477,59 +477,59 @@
 
 const questions = [
     {
-        question: "Gemの指示文を「いきなり書く」のではなく「設計書を先に書く」理由として最も適切なものはどれですか？",
+        question: "GPTの指示文を「いきなり書く」のではなく「設計書を先に書く」理由として最も適切なものはどれですか？",
         choices: [
-            "Geminiのシステム上、設計書を先に提出しないとGemを作成できないため",
+            "ChatGPTのシステム上、設計書を先に提出しないとGPTを作成できないため",
             "016と同じ「設計→実行」の原則。構造を整理してから組み立てたほうが品質が高く、修正もしやすいため",
             "設計書を書かないと講師に評価してもらえないため",
             "テンプレートが用意されているため、先に埋めるほうが効率的なため"
         ],
         correct: 1,
-        explanation: "016で学んだ「設計→実行」の原則と同じです。いきなりGemを組み立てると3要素が混在しやすく、どこを修正すればよいかもわかりにくくなります。設計書を先に書くことで構造が整理でき、修正の際もどの要素を直せばよいかが明確になります。"
+        explanation: "016で学んだ「設計→実行」の原則と同じです。いきなりGPTを組み立てると3要素が混在しやすく、どこを修正すればよいかもわかりにくくなります。設計書を先に書くことで構造が整理でき、修正の際もどの要素を直せばよいかが明確になります。"
     },
     {
         question: "テスト1サイクル目で「既知のタスク（017のFVキャッチコピー）」を使う理由として正しいものはどれですか？",
         choices: [
-            "017で練習したタスクのほうがGemへの入力が簡単だから",
-            "正解（017のベストコピー）がわかっているので、Gemの出力品質を客観的に比較しやすいから",
-            "未知のタスクはGemでは対応できないから",
+            "017で練習したタスクのほうがGPTへの入力が簡単だから",
+            "正解（017のベストコピー）がわかっているので、GPTの出力品質を客観的に比較しやすいから",
+            "未知のタスクはGPTでは対応できないから",
             "講師が採点しやすいタスクだから"
         ],
         correct: 1,
-        explanation: "テスト1サイクル目に「既知のタスク」を使う理由は、017で作成したベストコピーという「正解」がすでにあるからです。正解がわかっているタスクでテストすることで、Gemの出力との差（ギャップ）を客観的に評価・数値化できます。"
+        explanation: "テスト1サイクル目に「既知のタスク」を使う理由は、017で作成したベストコピーという「正解」がすでにあるからです。正解がわかっているタスクでテストすることで、GPTの出力との差（ギャップ）を客観的に評価・数値化できます。"
     },
     {
         question: "テスト2サイクル目で「未知のタスク（FAQ・導入事例など）」を使う理由として正しいものはどれですか？",
         choices: [
             "Block 5で使うコンテンツを事前に作成するため",
-            "Gemが教えていないタスクにも対応できるか、汎用性を検証するため",
+            "GPTが教えていないタスクにも対応できるか、汎用性を検証するため",
             "017で扱わなかったセクションを補完するため",
-            "Gemの応答速度を測定するため"
+            "GPTの応答速度を測定するため"
         ],
         correct: 1,
-        explanation: "テスト2サイクル目の目的はGemの「汎用性」の検証です。役割定義・知識注入・出力制約の設計が本質を捉えていれば、直接教えていないタスクにも対応できるはずです。未知のタスクで品質が下がった場合、どの要素に改善余地があるかを特定します。"
+        explanation: "テスト2サイクル目の目的はGPTの「汎用性」の検証です。役割定義・知識注入・出力制約の設計が本質を捉えていれば、直接教えていないタスクにも対応できるはずです。未知のタスクで品質が下がった場合、どの要素に改善余地があるかを特定します。"
     },
     {
-        question: "Gemの出力品質が低かったとき、最初にすべきことはどれですか？",
+        question: "GPTの出力品質が低かったとき、最初にすべきことはどれですか？",
         choices: [
-            "Gemを削除して最初から作り直す",
+            "GPTを削除して最初から作り直す",
             "プロンプトに長い指示を追加して毎回補う",
-            "5軸のどこが弱いかを特定し、Gemの3要素（役割定義・知識注入・出力制約）のどこが原因か仮説を立てる",
+            "5軸のどこが弱いかを特定し、GPTの3要素（役割定義・知識注入・出力制約）のどこが原因か仮説を立てる",
             "同じタスクを繰り返し投げて出力が改善されるのを待つ"
         ],
         correct: 2,
-        explanation: "016演習3と同じ「特定→仮説→修正→検証」のフレームワークを適用します。まず評価5軸のどの軸が低いかを特定し、その原因がGemの3要素のどこにあるかを仮説立てます。「ペルソナ適合が低い→知識注入のペルソナ情報が不足」のように因果関係を特定してから修正することで、効率よく改善できます。"
+        explanation: "016演習3と同じ「特定→仮説→修正→検証」のフレームワークを適用します。まず評価5軸のどの軸が低いかを特定し、その原因がGPTの3要素のどこにあるかを仮説立てます。「ペルソナ適合が低い→知識注入のペルソナ情報が不足」のように因果関係を特定してから修正することで、効率よく改善できます。"
     },
     {
-        question: "完成した「TALENTBOARDコピーライター」Gemはこの後どこで使いますか？",
+        question: "完成した「TALENTBOARDコピーライター」GPTはこの後どこで使いますか？",
         choices: [
             "021の著作権確認の演習で使用する",
             "Block 5のLP制作で実際にコピー生成に使用する（演習用ではなく実務ツール）",
-            "このGemはあくまで練習用で、実務では新たなGemを作り直す",
+            "このGPTはあくまで練習用で、実務では新たなGPTを作り直す",
             "Block 4の復習テストで使用する"
         ],
         correct: 1,
-        explanation: "完成したGemはBlock 5のLP制作で実際に使う「実務ツール」です。演習のための演習ではなく、Block 5「作る」フェーズで実際にTALENTBOARDのLPコピーを生成するために使用します。だからこそテスト→修正を2サイクル行い、実用レベルに仕上げることが重要です。"
+        explanation: "完成したGPTはBlock 5のLP制作で実際に使う「実務ツール」です。演習のための演習ではなく、Block 5「作る」フェーズで実際にTALENTBOARDのLPコピーを生成するために使用します。だからこそテスト→修正を2サイクル行い、実用レベルに仕上げることが重要です。"
     }
 ];
     </script>

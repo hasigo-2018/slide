@@ -121,7 +121,7 @@
 
 <!-- スライド6: 演習2の概要 -->
 <div class="slide-container standard-content-layout">
-    <h2 class="slide-title">演習2：クライアント説明文の作成——Geminiでドラフトを作り、自分の言葉に直す</h2>
+    <h2 class="slide-title">演習2：クライアント説明文の作成——AI Chatでドラフトを作り、自分の言葉に直す</h2>
     <div class="content-block">
         <p>📋 <strong>課題：</strong>TALENTBOARDのクライアントに送る「AI使用に関する説明文」を作成してください</p>
         <p class="text-sub">説明文に含めるべき要素：<br>
@@ -130,13 +130,13 @@
             ③著作権リスクへの対策（類似度チェック済み等）<br>
             ④問題発生時の対応方針
         </p>
-        <p>まずGeminiで下記のプロンプトを使ってドラフトを生成し、自分の言葉で加筆修正してください</p>
+        <p>まずAI Chatで下記のプロンプトを使ってドラフトを生成し、自分の言葉で加筆修正してください</p>
         <div class="prompt-box">
-            <div class="prompt-content" id="prompt-gemini-021-1">
+            <div class="prompt-content" id="prompt-chatgpt-021-1">
 あなたはWebデザイナーです。クライアントに送るメールの文面を作成してください。
 
 【状況】
-- 今回のLP制作において、Gemini（Google）とNano Banana Pro（AI画像生成）を制作補助として使用しました
+- 今回のLP制作において、AI Chat（ChatGPT/Geminiなど）とNano Banana Pro（AI画像生成）を制作補助として使用しました
 - 両ツールとも利用規約上、商用利用が認められています
 - 生成した画像はGoogle画像検索で類似チェックを実施済みです
 
@@ -148,7 +148,7 @@
 - 200〜300文字程度
 - 件名も含める
             </div>
-            <button class="copy-btn" onclick="copyPrompt('prompt-gemini-021-1', event)">
+            <button class="copy-btn" onclick="copyPrompt('prompt-chatgpt-021-1', event)">
                 <i class="fas fa-copy"></i> コピー
             </button>
         </div>
@@ -163,7 +163,7 @@
             <div>
                 <h3>手順</h3>
                 <ol>
-                    <li>Geminiで説明文ドラフトを生成する（5分）</li>
+                    <li>AI Chatで説明文ドラフトを生成する（5分）</li>
                     <li>自分のケースに合わせて加筆修正する（7分）<br><span class="text-note">使用したツール名・チェック結果・対応方針を自分の言葉に直す</span></li>
                     <li>1〜2名に発表してもらい、全員でフィードバックする（8分）</li>
                 </ol>
@@ -279,7 +279,7 @@
         choices: [
             "デザインの鑑賞力・プロンプト入力・画像加工・フォント選定・ブランド設計・契約知識",
             "AIへの指示の型・売れる言葉の量産・意図通りの画像生成・ブランド統一・専属AI構築・法的ガードレール",
-            "Figma操作・Gemini活用・Canva活用・SNS戦略・LP設計・著作権知識",
+            "Figma操作・AI Chat活用・Canva活用・SNS戦略・LP設計・著作権知識",
             "コンセプト立案・ペルソナ作成・ビジュアル設計・コピー検証・プレゼン・クライアント管理"
         ],
         correct: 1,
