@@ -9,7 +9,551 @@
 </head>
 <body>
     <div id="presentation-wrapper">
-        <!-- AIが生成するスライドをここに貼り付け -->
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>AI生成素材のUI統合と<br>画像最適化<span>【実践編】</span></h1>
+        <p>全画像を最適化し、029への引き渡しを完了する</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標と成果物 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標と成果物</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>🎯 今日のゴール</h3>
+                <ul>
+                    <li>LP用画像（FV＋セクション計5枚）をWebP変換・圧縮</li>
+                    <li>バナー画像（9枚以上）をWebP変換・圧縮</li>
+                    <li>命名規則・フォルダ構成で整理して029に渡せる状態にする</li>
+                    <li>各画像の最適化判断を「自分の言葉で説明できる」こと</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📦 今日の成果物</h3>
+                <ul>
+                    <li>✅ WebP変換・圧縮済みのLP用画像一式</li>
+                    <li>✅ WebP変換・圧縮済みのバナー画像一式</li>
+                    <li>✅ 命名規則・フォルダ構成で整理された画像フォルダ</li>
+                    <li>✅ 画像管理表（ファイル名・配置先・サイズ一覧）</li>
+                </ul>
+                <p class="text-note">※ 成果物はLPデザインそのものではなく「029に渡す画像データ」</p>
+            </div>
+        </div>
+        <div class="highlight-box">💡 演習の流れ：最適化仮説の記入 → 演習1（LP用画像 / 1.5コマ）→ 演習2（バナー＋全体検証 / 1コマ）→ 演習3（029への引き渡し準備 / 0.5コマ）</div>
+    </div>
+</div>
+
+<!-- スライド3: 最適化ワークフローの確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">最適化ワークフローの確認</h2>
+    <div class="content-block">
+        <p>理論編で学んだ手順を再確認する。この7ステップを全画像に対して繰り返す。2〜3枚目から手順が体に入り、スピードが上がってくる。</p>
+        <div class="content-block svg-centered">
+            <svg viewBox="0 0 1100 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+                <!-- Step 1 -->
+                <rect x="10" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="74" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">🎨</text>
+                <text x="74" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Figma書き出し</text>
+                <text x="74" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">PNG / 1x＋2x</text>
+                <!-- 矢印 -->
+                <line x1="138" y1="65" x2="150" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="142,57 142,73 156,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 2 -->
+                <rect x="160" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="224" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">📂</text>
+                <text x="224" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Squooshで開く</text>
+                <text x="224" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">D&amp;Dで読み込み</text>
+                <!-- 矢印 -->
+                <line x1="288" y1="65" x2="300" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="292,57 292,73 306,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 3 -->
+                <rect x="310" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="374" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">⚙️</text>
+                <text x="374" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">WebP・品質80%</text>
+                <text x="374" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">フォーマット設定</text>
+                <!-- 矢印 -->
+                <line x1="438" y1="65" x2="450" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="442,57 442,73 456,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 4 -->
+                <rect x="460" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="524" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">🔍</text>
+                <text x="524" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">目視確認</text>
+                <text x="524" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">Before/Afterで比較</text>
+                <!-- 矢印 -->
+                <line x1="588" y1="65" x2="600" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="592,57 592,73 606,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 5 -->
+                <rect x="610" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="674" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">⬇️</text>
+                <text x="674" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">ダウンロード</text>
+                <text x="674" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">.webpで保存</text>
+                <!-- 矢印 -->
+                <line x1="738" y1="65" x2="750" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="742,57 742,73 756,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 6 -->
+                <rect x="760" y="10" width="128" height="110" rx="10" fill="white" fill-opacity="0.08"/>
+                <text x="824" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">🏷️</text>
+                <text x="824" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">リネーム</text>
+                <text x="824" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">命名規則に従う</text>
+                <!-- 矢印 -->
+                <line x1="888" y1="65" x2="900" y2="65" stroke="#00d4ff" stroke-opacity="0.6" stroke-width="2"/>
+                <polygon points="892,57 892,73 906,65" fill="#00d4ff" fill-opacity="0.6"/>
+                <!-- Step 7 -->
+                <rect x="910" y="10" width="180" height="110" rx="10" fill="#00d4ff" fill-opacity="0.15"/>
+                <text x="1000" y="46" text-anchor="middle" fill="#00d4ff" font-size="22">📁</text>
+                <text x="1000" y="72" text-anchor="middle" fill="white" font-size="16" font-weight="bold">フォルダ分類</text>
+                <text x="1000" y="94" text-anchor="middle" fill="white" fill-opacity="0.7" font-size="14">lp / banner / common</text>
+            </svg>
+        </div>
+        <div class="highlight-box">📌 最適化仮説を先に書く：「この画像は画質優先→品質85%から始める」「透過が必要→WebP透過で書き出す」など。Squooshの結果と照合して判断の精度を上げる</div>
+    </div>
+</div>
+
+<!-- スライド4: 演習1の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：LP用画像の最適化</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>📋 演習1の概要</h3>
+                <ul>
+                    <li>対象：026で加工済み・023〜025で配置済みのLP用画像</li>
+                    <li>枚数：FV画像（PC＋SP）＋セクション画像 計5〜7枚</li>
+                    <li>出力物：WebP変換＋圧縮済みのLP用画像一式</li>
+                </ul>
+                <h3 style="margin-top:24px;">⏱️ 時間配分（55分）</h3>
+                <ul>
+                    <li>UI統合の最終チェック：15分</li>
+                    <li>最適化の実行：30分</li>
+                    <li>検証：10分</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📦 最適化対象ファイル一覧</h3>
+                <table class="slide-table">
+                    <thead>
+                        <tr><th>画像</th><th>目標サイズ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>FVメインビジュアル（PC）</td><td>200KB以下</td></tr>
+                        <tr><td>FVメインビジュアル（SP）</td><td>150KB以下</td></tr>
+                        <tr><td>導入事例画像 × 3枚</td><td>150KB以下/枚</td></tr>
+                        <tr><td>お客様の声ポートレート</td><td>100KB以下</td></tr>
+                        <tr><td>機能紹介ダッシュボード</td><td>150KB以下</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: UI統合の最終チェック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Step 1：UI統合の最終チェック（15分）</h2>
+    <div class="content-block">
+        <p>最適化に入る前に、Figmaのデザインカンプを通しで確認する。<strong>最適化後に画像を差し替えると二度手間</strong>になるため、ここで統合品質を確定させてから次へ進む。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>チェック</th><th>確認内容</th><th>問題があれば</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>① エッジ</td>
+                    <td>背景除去画像のハロー（白縁）がないか</td>
+                    <td>026に戻って再処理</td>
+                </tr>
+                <tr>
+                    <td>② オーバーレイ</td>
+                    <td>テキスト下の画像、透明度は適切か</td>
+                    <td>Figmaでオーバーレイ不透明度を調整</td>
+                </tr>
+                <tr>
+                    <td>③ トーン統一</td>
+                    <td>スクロールして画像間のトーンジャンプがないか</td>
+                    <td>色調補正を再適用</td>
+                </tr>
+                <tr>
+                    <td>④ SP表示</td>
+                    <td>SP版で画像がはみ出していないか</td>
+                    <td>SP用フレームで確認・調整</td>
+                </tr>
+                <tr>
+                    <td>⑤ alt属性</td>
+                    <td>各画像の説明テキストを1文で準備できているか</td>
+                    <td>各画像レイヤー名に内容を記入</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">⚠️ 5項目すべてにOKが出たら最適化に進む。1つでも未確認のまま進めない。ここが「デザイン品質確定」のゲート</div>
+    </div>
+</div>
+
+<!-- スライド6: FV画像の最適化デモ -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Step 2：FV画像の最適化（デモ）</h2>
+    <div class="content-block">
+        <p>手順のデモとしてFVメインビジュアルを一緒に最適化する。<strong>まず最適化仮説を書いてから</strong>実行する。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>🧠 最適化仮説（先に書く）</h3>
+                <p class="text-sub">「FVは画質が最重要。品質80%で劣化が出たら85%に上げる。PC版は200KB以下、SP版は150KB以下が目標」</p>
+                <h3 style="margin-top:20px;">① Figmaから書き出す</h3>
+                <ul>
+                    <li>FV画像レイヤーを選択</li>
+                    <li>右パネル「Export」→ PNG / 1x＋2x</li>
+                    <li>SP版は別フレームから同様に書き出し</li>
+                </ul>
+                <h3 style="margin-top:20px;">② Squooshで変換する</h3>
+                <ul>
+                    <li>書き出したPNGをSquooshにドラッグ</li>
+                    <li>フォーマット → WebP / 品質 → 80%</li>
+                    <li>Before/Afterで目視確認</li>
+                    <li>ファイルサイズを確認（200KB以下か）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>③ ダウンロード＆リネーム</h3>
+                <table class="slide-table">
+                    <thead>
+                        <tr><th>画像</th><th>正しいファイル名</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>FV（PC）1440px</td><td>fv_main_1440.webp</td></tr>
+                        <tr><td>FV（SP）750px</td><td>fv_main_750.webp</td></tr>
+                    </tbody>
+                </table>
+                <h3 style="margin-top:20px;">④ 結果を仮説と比較する</h3>
+                <ul>
+                    <li>目視劣化はなかったか？ → 品質80%で合格</li>
+                    <li>サイズ目標をクリアできたか？</li>
+                    <li>仮説通りだったか、なぜ違ったか</li>
+                </ul>
+                <p class="text-note">※ この「仮説→実行→検証」のサイクルが100文字エビデンスの練習になる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: セクション画像の最適化 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Step 3：セクション画像を自力で最適化</h2>
+    <div class="content-block">
+        <p>FVで手順を覚えたら、残りのセクション画像を自力で最適化する。<strong>2〜3枚目から手順が体に入り、スピードが自然と上がる</strong>。焦らず1枚ずつ丁寧に処理すること。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>画像</th><th>ポイント</th><th>命名例</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>導入事例 3社分</td>
+                    <td>企業ロゴや文字を含む場合は劣化に注意。品質85%で開始してもよい</td>
+                    <td>trust_case01_600.webp</td>
+                </tr>
+                <tr>
+                    <td>お客様の声ポートレート</td>
+                    <td><strong>背景透過が必要</strong>→ WebP（透過対応）で書き出す。PNG書き出しのままSquooshでWebP変換すればOK</td>
+                    <td>trust_voice01_200.webp</td>
+                </tr>
+                <tr>
+                    <td>機能紹介ダッシュボード</td>
+                    <td>UI画面のスクリーンショット系。テキストが多いため80%で目視確認を慎重に</td>
+                    <td>feature_dashboard_800.webp</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">📌 透過が必要な画像（ポートレート等）は必ずPNGでFigmaから書き出し、Squooshで「WebP（Lossless or Quality）」に変換する。JPEGで書き出すと透過情報が失われる</div>
+    </div>
+</div>
+
+<!-- スライド8: LP用画像の検証 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Step 4：LP用画像の検証</h2>
+    <div class="content-block">
+        <p>最適化済み画像をFigmaのデザインカンプに差し替えて確認する。チェックリストを使って全画像を検証してから演習2に進む。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>確認項目</th><th>基準</th><th>NGなら</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>目視劣化</td>
+                    <td>文字・エッジ・グラデーションに劣化がないか</td>
+                    <td>品質85%に上げて再変換</td>
+                </tr>
+                <tr>
+                    <td>ファイルサイズ</td>
+                    <td>FV 200KB以下 / セクション 150KB以下</td>
+                    <td>解像度を見直すか圧縮率を下げる</td>
+                </tr>
+                <tr>
+                    <td>PC/SP表示</td>
+                    <td>両サイズで画像に問題がないか</td>
+                    <td>SP版の書き出し解像度を確認</td>
+                </tr>
+                <tr>
+                    <td>命名規則</td>
+                    <td>「セクション名_用途_幅.webp」で統一されているか</td>
+                    <td>ファイル名を修正してリネーム</td>
+                </tr>
+                <tr>
+                    <td>フォルダ</td>
+                    <td>images/lp/ に正しく格納されているか</td>
+                    <td>フォルダ構成を修正</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-sub">全項目がOKになったらLP用画像の最適化は完了。演習2のバナー最適化に進む。</p>
+    </div>
+</div>
+
+<!-- スライド9: 演習2の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：バナー画像の最適化＋全体検証</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>📋 演習2の概要</h3>
+                <ul>
+                    <li>対象：027で制作したバナー画像（9枚以上）</li>
+                    <li>出力物：WebP変換＋圧縮済みのバナー画像一式</li>
+                    <li>ファイルサイズ目標：<strong>100KB以下/枚</strong></li>
+                </ul>
+                <h3 style="margin-top:24px;">⏱️ 時間配分（50分）</h3>
+                <ul>
+                    <li>バナーの最適化：30分</li>
+                    <li>全体検証（LP用＋バナー）：20分</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🎯 バナー最適化の目標サイズ</h3>
+                <table class="slide-table">
+                    <thead>
+                        <tr><th>バナー種別</th><th>サイズ</th><th>目標</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>GDNレクタングル</td><td>300×250px</td><td>100KB以下</td></tr>
+                        <tr><td>SNSフィード</td><td>1200×628px</td><td>100KB以下</td></tr>
+                        <tr><td>SNSストーリー</td><td>1080×1920px</td><td>100KB以下</td></tr>
+                        <tr><td>メルマガヘッダー</td><td>600×200px</td><td>50KB以下</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-note">※ バナーはLP用より小さいため、1枚あたりの処理が速い</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: バナー画像の一括最適化 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">バナー画像の一括最適化</h2>
+    <div class="content-block">
+        <p>バナーはサイズが統一されているため、<strong>同じ設定（WebP・品質80%）で一気に処理できる</strong>。Squooshは1枚ずつだが、設定を変えなければ「ドラッグ→確認→ダウンロード」の繰り返しで高速に回せる。</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>⚡ 高速処理のコツ</h3>
+                <ul>
+                    <li>品質設定は変えない（全バナー80%統一）</li>
+                    <li>Squooshのタブを開いたまま、次の画像をD&amp;Dで上書き</li>
+                    <li>Before/Afterは5秒で判断してOKなら即ダウンロード</li>
+                    <li>命名はダウンロード直後にリネームして積み上げる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🏷️ バナーの命名規則</h3>
+                <table class="slide-table">
+                    <thead>
+                        <tr><th>種別</th><th>命名例</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>GDNレクタングル</td><td>gdn_rect_300x250_01.webp</td></tr>
+                        <tr><td>SNSフィード①</td><td>sns_feed_1200x628_01.webp</td></tr>
+                        <tr><td>SNSストーリー①</td><td>sns_story_1080x1920_01.webp</td></tr>
+                        <tr><td>メルマガヘッダー</td><td>mail_header_600x200_01.webp</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-note">命名規則：「配信先_サイズ_連番.webp」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: 全体検証 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">全体検証：最適化チェックリストの総確認</h2>
+    <div class="content-block">
+        <p>LP用＋バナー全画像に対してチェックリストを通す。<strong>1枚でもNGがあれば再処理</strong>。全画像が合格したら「③素材制作系」完了。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>確認項目</th><th>基準</th><th>LP用</th><th>バナー</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>📄 フォーマット</td>
+                    <td>全画像がWebP（透過はWebP/PNG）</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+                <tr>
+                    <td>🗜️ 圧縮品質</td>
+                    <td>80〜85%で目視劣化なし</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+                <tr>
+                    <td>⚡ ファイルサイズ</td>
+                    <td>FV 200KB / セクション 150KB / バナー 100KB以下</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+                <tr>
+                    <td>🏷️ 命名規則</td>
+                    <td>「セクション名_用途_幅.webp」で統一</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+                <tr>
+                    <td>📁 フォルダ分類</td>
+                    <td>lp / banner / common に正しく格納</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+                <tr>
+                    <td>🎯 仮説との整合</td>
+                    <td>最初の最適化仮説に対して結果は妥当か</td>
+                    <td>✅ / ❌</td>
+                    <td>✅ / ❌</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">💡 全画像が合格 ＝「③素材制作系（026〜028）」完了。「作る」フェーズが終わり、029で「統合・言語化」に入る</div>
+    </div>
+</div>
+
+<!-- スライド12: 演習3の概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：029への引き渡し準備（25分）</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>📋 演習3の概要</h3>
+                <ul>
+                    <li>029で必要な素材がすべて揃っているか最終確認</li>
+                    <li>フォルダ構成を整理し、命名が統一されているか確認</li>
+                    <li>画像管理表を作成して成果物を整える</li>
+                </ul>
+                <h3 style="margin-top:24px;">📦 最終的なフォルダ構造</h3>
+                <div class="content-block svg-centered">
+                    <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+                        <text x="16" y="34" fill="white" font-size="22" font-weight="bold">📁 TALENTBOARD_LP/</text>
+                        <text x="44" y="70" fill="#00d4ff" font-size="19">📁 images/</text>
+                        <text x="72" y="104" fill="#00d4ff" font-size="17">📂 lp/</text>
+                        <text x="100" y="128" fill="white" fill-opacity="0.7" font-size="15">fv_main_1440.webp …</text>
+                        <text x="72" y="160" fill="#00d4ff" font-size="17">📂 banner/</text>
+                        <text x="100" y="184" fill="white" fill-opacity="0.7" font-size="15">gdn_rect_300x250_01.webp …</text>
+                        <text x="72" y="216" fill="#00d4ff" font-size="17">📂 common/</text>
+                        <text x="100" y="238" fill="white" fill-opacity="0.7" font-size="15">logo_talentboard.svg …</text>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <h3>✅ 引き渡し前の最終確認リスト</h3>
+                <ul>
+                    <li>LP用画像がすべてimages/lp/に格納されているか</li>
+                    <li>バナー画像がすべてimages/banner/に格納されているか</li>
+                    <li>共通素材（ロゴ・アイコン等）がimages/common/に格納されているか</li>
+                    <li>ファイル名に全角・スペース・大文字が混在していないか</li>
+                    <li>画像管理表が完成しているか</li>
+                </ul>
+                <p class="text-note">※ ファイル名は半角英数字＋アンダースコアのみ使用。スペース・全角・大文字はNG</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: 画像管理表の作成 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">画像管理表の作成</h2>
+    <div class="content-block">
+        <p>全画像の一覧表を作成する。この管理表は<strong>029の提出物の一部</strong>であり、Block 7（039・エンジニアへのハンドオフ）で実装者に渡す資料の雛形になる。</p>
+        <table class="slide-table">
+            <thead>
+                <tr><th>ファイル名</th><th>配置先セクション</th><th>サイズ（px）</th><th>サイズ（KB）</th><th>フォーマット</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>fv_main_1440.webp</td>
+                    <td>FV（PC）</td>
+                    <td>1440×810</td>
+                    <td>182KB</td>
+                    <td>WebP</td>
+                </tr>
+                <tr>
+                    <td>fv_main_750.webp</td>
+                    <td>FV（SP）</td>
+                    <td>750×1200</td>
+                    <td>98KB</td>
+                    <td>WebP</td>
+                </tr>
+                <tr>
+                    <td>trust_case01_600.webp</td>
+                    <td>導入事例 社1</td>
+                    <td>600×400</td>
+                    <td>64KB</td>
+                    <td>WebP</td>
+                </tr>
+                <tr>
+                    <td>trust_voice01_200.webp</td>
+                    <td>お客様の声 人1</td>
+                    <td>200×200</td>
+                    <td>28KB</td>
+                    <td>WebP（透過）</td>
+                </tr>
+                <tr>
+                    <td>gdn_rect_300x250_01.webp</td>
+                    <td>バナー GDN</td>
+                    <td>300×250</td>
+                    <td>42KB</td>
+                    <td>WebP</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-sub">Figma上にテーブルとして作成するか、テキストファイル（CSV）で管理する。実際のファイルサイズは各自のSquoosh処理結果に合わせて記入すること。</p>
+    </div>
+</div>
+
+<!-- スライド14: 成果物の確認と次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">成果物の確認と次回予告</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>✅ 028の成果物（4点）</h3>
+                <ul>
+                    <li>🖼️ WebP変換・圧縮済みのLP用画像一式</li>
+                    <li>📢 WebP変換・圧縮済みのバナー画像一式</li>
+                    <li>📁 命名規則・フォルダ構成で整理された画像フォルダ</li>
+                    <li>📋 画像管理表（ファイル名・配置先・サイズ一覧）</li>
+                </ul>
+                <div class="highlight-box">💡 ここまでで「③素材制作系」（026〜028）が完了。Block 5の8テーマ中7テーマが終わった</div>
+            </div>
+            <div>
+                <h3>🔜 次回：029「LPデザイン案の完成と100文字エビデンス」</h3>
+                <p>Block 5の集大成。これまでの成果物を統合し、全セクションに「なぜこう作ったか」を言語化して提出する。</p>
+                <ul>
+                    <li>022で引いた設計図</li>
+                    <li>023〜025で組み上げたセクション</li>
+                    <li>026〜028で仕上げた素材</li>
+                </ul>
+                <p class="text-sub">これら3つを統合し、全セクションに100文字の根拠文を付けて「ビジュアルアーキテクトとしての最終提出物」を完成させる。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
          <!-- クイズセクション -->
         <div class="slide-container section-title-layout">
@@ -20,7 +564,63 @@
     
     
     <script>
-        // AIが生成するクイズデータをここに貼り付け
+        const questions = [
+    {
+        question: "最適化に入る前にUI統合の最終チェックを行う理由として、最も適切なものはどれか？",
+        choices: [
+            "Squooshが最適化前の画像しか処理できないため",
+            "最適化後に画像を差し替えると二度手間になるため",
+            "FigmaのExport機能はチェック後にしか使えないため",
+            "WebP変換をする前にFigmaのデータを確定する必要があるため"
+        ],
+        correct: 1,
+        explanation: "最適化後に「やっぱりこの画像を差し替えたい」となると、再度Figmaで修正→書き出し→Squooshで変換→リネーム→フォルダ整理という二度手間になる。統合品質（デザイン品質）を確定させてから最適化に入ることが正しい順序。"
+    },
+    {
+        question: "WebP・品質80%で圧縮した画像の目視劣化が気になる場合、次にとるべき行動はどれか？",
+        choices: [
+            "品質50%まで下げてファイルサイズを優先する",
+            "品質100%（無劣化）に戻してWebP変換をやめる",
+            "品質を85%に上げて再変換し、ファイルサイズとのトレードオフを確認する",
+            "JPEGフォーマットに切り替えて再変換する"
+        ],
+        correct: 2,
+        explanation: "品質80%で劣化が気になる場合は85%に上げて再変換する。ただしファイルサイズが目標を超えないか必ず確認する。100%（無劣化）はファイルサイズが大きすぎるため非推奨。ファイルサイズと画質のトレードオフを判断しながら最適な品質を見つけることが重要。"
+    },
+    {
+        question: "画像ファイルを「fv_main_1440.webp」のように命名規則を統一する最大の効果はどれか？",
+        choices: [
+            "Squooshが自動でフォルダに振り分けてくれる",
+            "ファイル名だけで「どこに使う画像か」「どのサイズか」が即座にわかり、Block 7のハンドオフ時に実装者が迷わない",
+            "Figmaのレイヤー名と自動同期されてミスが減る",
+            "WebPフォーマットが命名規則を必要とするため"
+        ],
+        correct: 1,
+        explanation: "命名規則を統一することで、ファイル名を見るだけで「FVに使うPC版1440px幅の画像」と即座に判断できる。Block 7（039・エンジニアへのハンドオフ）で実装者が「この画像はどこに使うのか」と確認する工数をゼロにするための、管理品質の核心。"
+    },
+    {
+        question: "バナー画像のファイルサイズ目標がLP用画像より小さい（100KB以下）主な理由はどれか？",
+        choices: [
+            "バナーはWebP形式への変換が難しいため、圧縮率を高くする必要がある",
+            "バナーはGDNやSNS広告として配信されるため表示速度への影響が大きく、広告プラットフォームのファイルサイズ制限もある",
+            "バナーは解像度が低いため、自然とファイルサイズが小さくなる",
+            "Figmaのバナーテンプレートが100KB以下のみ対応しているため"
+        ],
+        correct: 1,
+        explanation: "バナーはGDNやSNS広告として不特定多数のユーザーに配信されるため、表示速度が直接CVRに影響する。また、GoogleやMeta等の広告プラットフォームには独自のファイルサイズ制限があることが多い。LP用画像より厳しい基準が求められる理由はここにある。"
+    },
+    {
+        question: "画像管理表を作成する主な理由として正しいものはどれか？",
+        choices: [
+            "Squooshの処理結果を記録してバグ報告に使うため",
+            "Figmaのバージョン管理に必要なドキュメントだから",
+            "029の提出物として全体像を示すためと、Block 7のハンドオフ時に実装者へ「画像一覧＋配置先」を一目で伝えるため",
+            "命名規則に誤りがないか自動でチェックするツールだから"
+        ],
+        correct: 2,
+        explanation: "画像管理表は2つの目的がある。①029の最終提出物として「何枚の画像をどこに配置したか」の全体像を言語化・整理して提出するため。②Block 7（039・エンジニアへのハンドオフ）で実装者に画像一覧と配置先を一目で伝え、実装ミスを防ぐため。ビジュアルアーキテクトは「作る」だけでなく「整理して渡す」ことも仕事の一部。"
+    }
+];
     </script>
     
     <script src="../assets/slide-template.js"></script>
