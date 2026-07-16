@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【理論編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
+<!-- スライド1: 表紙 -->
 <div class="slide-container full-bg-image active">
     <div class="content-overlay">
         <h1>【課題提出】LPデザイン案の完成と<br>「100文字エビデンス」<span>【理論編】</span></h1>
@@ -116,21 +105,21 @@
                 <text x="125" y="100" text-anchor="middle" fill="white" font-size="21" font-weight="bold">① PC版スクロール</text>
                 <text x="125" y="130" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">導線の一貫性</text>
                 <text x="125" y="155" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">＋視覚的一貫性</text>
-                <polygon points="240,88 240,112 260,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="240,100 260,88 260,112" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="270" y="20" width="230" height="160" rx="12" fill="white" fill-opacity="0.08"/>
                 <text x="385" y="64" text-anchor="middle" fill="#00d4ff" font-size="28">🔍</text>
                 <text x="385" y="100" text-anchor="middle" fill="white" font-size="21" font-weight="bold">② 各セクション拡大</text>
                 <text x="385" y="130" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">4原則チェック</text>
                 <text x="385" y="155" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">＋視線誘導確認</text>
-                <polygon points="500,88 500,112 520,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="500,100 520,88 520,112" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="530" y="20" width="230" height="160" rx="12" fill="white" fill-opacity="0.08"/>
                 <text x="645" y="64" text-anchor="middle" fill="#00d4ff" font-size="28">📱</text>
                 <text x="645" y="100" text-anchor="middle" fill="white" font-size="21" font-weight="bold">③ SP版スクロール</text>
                 <text x="645" y="130" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">レスポンシブ確認</text>
                 <text x="645" y="155" text-anchor="middle" fill="white" fill-opacity="0.75" font-size="18">（崩れ・欠落なし？）</text>
-                <polygon points="760,88 760,112 780,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="760,100 780,88 780,112" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="790" y="20" width="300" height="160" rx="12" fill="#00d4ff" fill-opacity="0.15"/>
                 <text x="940" y="64" text-anchor="middle" fill="#00d4ff" font-size="28">🛠️</text>
@@ -280,25 +269,25 @@
                 <text x="110" y="88" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">029</text>
                 <text x="110" y="122" text-anchor="middle" fill="white" font-size="19">LP一式</text>
                 <text x="110" y="148" text-anchor="middle" fill="white" font-size="19">＋エビデンス提出</text>
-                <polygon points="210,86 210,114 238,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="210,100 238,86 238,114" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="248" y="30" width="200" height="140" rx="14" fill="white" fill-opacity="0.08"/>
                 <text x="348" y="88" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">030</text>
                 <text x="348" y="122" text-anchor="middle" fill="white" font-size="19">デザインの</text>
                 <text x="348" y="148" text-anchor="middle" fill="white" font-size="19">論理的言語化</text>
-                <polygon points="448,86 448,114 476,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="448,100 476,86 476,114" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="486" y="30" width="200" height="140" rx="14" fill="white" fill-opacity="0.08"/>
                 <text x="586" y="88" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">033</text>
                 <text x="586" y="120" text-anchor="middle" fill="white" font-size="19">公開添削①</text>
                 <text x="586" y="148" text-anchor="middle" fill="white" font-size="17">LP＋エビデンス評価</text>
-                <polygon points="686,86 686,114 714,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="686,100 714,86 714,114" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="724" y="30" width="200" height="140" rx="14" fill="white" fill-opacity="0.08"/>
                 <text x="824" y="88" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">036</text>
                 <text x="824" y="120" text-anchor="middle" fill="white" font-size="19">公開添削②</text>
                 <text x="824" y="148" text-anchor="middle" fill="white" font-size="17">改善提案・確定</text>
-                <polygon points="924,86 924,114 952,100" fill="#00d4ff" fill-opacity="0.6"/>
+                <polygon points="924,100 952,86 952,114" fill="#00d4ff" fill-opacity="0.6"/>
 
                 <rect x="962" y="30" width="128" height="140" rx="14" fill="white" fill-opacity="0.08"/>
                 <text x="1026" y="88" text-anchor="middle" fill="#00d4ff" font-size="21" font-weight="bold">Portfolio</text>
@@ -338,21 +327,21 @@
                 <text x="132" y="98" text-anchor="middle" fill="white" font-size="20">全セクション統合</text>
                 <text x="132" y="126" text-anchor="middle" fill="white" font-size="20">通し確認</text>
                 <text x="132" y="160" text-anchor="middle" fill="white" fill-opacity="0.5" font-size="17">2コマ</text>
-                <polygon points="255,88 255,112 275,100" fill="#00d4ff" fill-opacity="0.55"/>
+                <polygon points="255,100 275,88 275,112" fill="#00d4ff" fill-opacity="0.55"/>
 
                 <rect x="285" y="20" width="245" height="160" rx="12" fill="white" fill-opacity="0.08"/>
                 <text x="407" y="64" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">演習2</text>
                 <text x="407" y="98" text-anchor="middle" fill="white" font-size="20">100文字</text>
                 <text x="407" y="126" text-anchor="middle" fill="white" font-size="20">エビデンス執筆</text>
                 <text x="407" y="160" text-anchor="middle" fill="white" fill-opacity="0.5" font-size="17">3コマ</text>
-                <polygon points="530,88 530,112 550,100" fill="#00d4ff" fill-opacity="0.55"/>
+                <polygon points="530,100 550,88 550,112" fill="#00d4ff" fill-opacity="0.55"/>
 
                 <rect x="560" y="20" width="245" height="160" rx="12" fill="white" fill-opacity="0.08"/>
                 <text x="682" y="64" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">演習3</text>
                 <text x="682" y="98" text-anchor="middle" fill="white" font-size="20">ペアレビュー</text>
                 <text x="682" y="126" text-anchor="middle" fill="white" font-size="20">＋修正</text>
                 <text x="682" y="160" text-anchor="middle" fill="white" fill-opacity="0.5" font-size="17">2コマ</text>
-                <polygon points="805,88 805,112 825,100" fill="#00d4ff" fill-opacity="0.55"/>
+                <polygon points="805,100 825,88 825,112" fill="#00d4ff" fill-opacity="0.55"/>
 
                 <rect x="835" y="20" width="255" height="160" rx="12" fill="#00d4ff" fill-opacity="0.15"/>
                 <text x="962" y="64" text-anchor="middle" fill="#00d4ff" font-size="24" font-weight="bold">演習4</text>
@@ -517,32 +506,27 @@
     </div>
 </div>
 
-
-
-    </div>
-
-
-    <script>
+<script>
 const quizData = [
     {
         correct: 0,
-        explanation: '正解はA。統合チェックリストの5カテゴリは「①導線の一貫性（022）②視覚的一貫性（019+Block 1）③レイアウトの4原則（Block 1・002）④視線誘導（Block 1・003）⑤レスポンシブ（Block 3・013）」です。いずれもBlock 1〜3で学んだ知識を自分のLPに適用する観点です。'
+        explanation: "正解はA。統合チェックリストの5カテゴリは「①導線の一貫性（022）②視覚的一貫性（019+Block 1）③レイアウトの4原則（Block 1・002）④視線誘導（Block 1・003）⑤レスポンシブ（Block 3・013）」です。いずれもBlock 1〜3で学んだ知識を自分のLPに適用する観点です。"
     },
     {
         correct: 1,
-        explanation: '正解はB。100文字エビデンスには「①目的（このセクションは何を達成するためにあるか）②判断根拠（なぜこの配置・色・コピー・画像を選んだか）③期待効果（ターゲットにどう感じてほしいか）」の3要素が必要です。この3要素が揃って初めて「なぜ」を説明したことになります。'
+        explanation: "正解はB。100文字エビデンスには「①目的（このセクションは何を達成するためにあるか）②判断根拠（なぜこの配置・色・コピー・画像を選んだか）③期待効果（ターゲットにどう感じてほしいか）」の3要素が必要です。この3要素が揃って初めて「なぜ」を説明したことになります。"
     },
     {
         correct: 2,
-        explanation: '正解はC。「いい感じ」は主観的な感想であり、誰にとって・何の知識に基づいて・なぜその判断をしたかが一切ない状態です。エビデンスとは「なんとなく」を「なぜなら」に変換することが本質。Bad例には「なぜ」「誰に」「何に基づいて」のすべてが欠けています。'
+        explanation: "正解はC。「いい感じ」は主観的な感想であり、誰にとって・何の知識に基づいて・なぜその判断をしたかが一切ない状態です。エビデンスとは「なんとなく」を「なぜなら」に変換することが本質。Bad例には「なぜ」「誰に」「何に基づいて」のすべてが欠けています。"
     },
     {
         correct: 1,
-        explanation: '正解はB。批判は相手を防御的にさせ「でも…」という反論を生みます。一方「なぜこうしたのか教えてもらえますか？」という質問は、相手が自分の判断を再検討するきっかけになります。Block 6の公開添削でも同じ姿勢が求められます。'
+        explanation: "正解はB。批判は相手を防御的にさせ「でも…」という反論を生みます。一方「なぜこうしたのか教えてもらえますか？」という質問は、相手が自分の判断を再検討するきっかけになります。Block 6の公開添削でも同じ姿勢が求められます。"
     },
     {
         correct: 2,
-        explanation: '正解はC。029のLPと100文字エビデンスは、Block 6の030（論理的言語化）・033（公開添削①）・036（公開添削②）で講師と他の受講生が評価する素材になります。エビデンスの質が高ければ議論が深まり、「なんとなく」だと「なぜ？」に答えられない状態になります。'
+        explanation: "正解はC。029のLPと100文字エビデンスは、Block 6の030（論理的言語化）・033（公開添削①）・036（公開添削②）で講師と他の受講生が評価する素材になります。エビデンスの質が高ければ議論が深まり、「なんとなく」だと「なぜ？」に答えられない状態になります。"
     }
 ];
 
@@ -576,8 +560,4 @@ function checkAnswer(quizIndex) {
         '</p><p class="quiz-explanation">' + data.explanation + '</p>';
     resultEl.style.display = 'block';
 }
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
-</html>
+</script>
