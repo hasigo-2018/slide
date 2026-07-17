@@ -371,211 +371,72 @@
     </div>
 </div>
 
-<!-- スライド11: クイズ誘導 -->
-<div class="slide-container section-title-layout">
-    <h2>理解度チェック</h2>
-    <p>Quiz</p>
-</div>
-
-<!-- クイズ1 -->
-<div class="slide-container standard-content-layout quiz-slide" data-quiz-index="0">
-    <h2 class="slide-title">Q1．統合チェックリストの5カテゴリとは？</h2>
-    <div class="content-block">
-        <p class="quiz-question">LPの統合チェックで確認する5つのカテゴリをすべて含む選択肢はどれですか？</p>
-        <div class="quiz-options">
-            <div class="quiz-option" onclick="selectOption(this, 0, 0)">
-                <span class="option-label">A</span>
-                <span>導線の一貫性・視覚的一貫性・レイアウトの4原則・視線誘導・レスポンシブ</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 0, 1)">
-                <span class="option-label">B</span>
-                <span>配色・フォント・余白・アイコン・アニメーション</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 0, 2)">
-                <span class="option-label">C</span>
-                <span>ファーストビュー・ナビゲーション・フッター・CTA・フォーム</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 0, 3)">
-                <span class="option-label">D</span>
-                <span>視覚的一貫性・4原則・視線誘導・ファイルサイズ・フォント統一</span>
-            </div>
+<!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br>Quiz</h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
         </div>
-        <button class="quiz-btn" onclick="checkAnswer(0)">答えを確認</button>
-        <div class="quiz-result" id="quiz-result-0"></div>
-    </div>
-</div>
-
-<!-- クイズ2 -->
-<div class="slide-container standard-content-layout quiz-slide" data-quiz-index="1">
-    <h2 class="slide-title">Q2．100文字エビデンスに含めるべき3要素は？</h2>
-    <div class="content-block">
-        <p class="quiz-question">100文字エビデンスに必ず含めるべき3要素として正しいものはどれですか？</p>
-        <div class="quiz-options">
-            <div class="quiz-option" onclick="selectOption(this, 1, 0)">
-                <span class="option-label">A</span>
-                <span>ツール名・作業時間・使用フォント</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 1, 1)">
-                <span class="option-label">B</span>
-                <span>目的（何を達成するか）・判断根拠（なぜこう作ったか）・期待効果（ターゲットにどう感じてほしいか）</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 1, 2)">
-                <span class="option-label">C</span>
-                <span>ターゲット年齢・デバイス・業界</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 1, 3)">
-                <span class="option-label">D</span>
-                <span>Before・After・改善率</span>
-            </div>
-        </div>
-        <button class="quiz-btn" onclick="checkAnswer(1)">答えを確認</button>
-        <div class="quiz-result" id="quiz-result-1"></div>
-    </div>
-</div>
-
-<!-- クイズ3 -->
-<div class="slide-container standard-content-layout quiz-slide" data-quiz-index="2">
-    <h2 class="slide-title">Q3．「いい感じだと思います」がエビデンスとして不適格な理由は？</h2>
-    <div class="content-block">
-        <p class="quiz-question">「FVにキャッチコピーと画像を配置しました。いい感じだと思います。」がエビデンスとして不適格である最大の理由はどれですか？</p>
-        <div class="quiz-options">
-            <div class="quiz-option" onclick="selectOption(this, 2, 0)">
-                <span class="option-label">A</span>
-                <span>100文字に達していないから</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 2, 1)">
-                <span class="option-label">B</span>
-                <span>FV以外のセクションについて書かれていないから</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 2, 2)">
-                <span class="option-label">C</span>
-                <span>「なぜ」がなく、誰にとって・何に基づいているかが不明で、「なんとなく」を「なぜなら」に変換できていないから</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 2, 3)">
-                <span class="option-label">D</span>
-                <span>ツール（Figma / Gemini）の名前が入っていないから</span>
-            </div>
-        </div>
-        <button class="quiz-btn" onclick="checkAnswer(2)">答えを確認</button>
-        <div class="quiz-result" id="quiz-result-2"></div>
-    </div>
-</div>
-
-<!-- クイズ4 -->
-<div class="slide-container standard-content-layout quiz-slide" data-quiz-index="3">
-    <h2 class="slide-title">Q4．ペアレビューでコメントを「質問」の形で書く理由は？</h2>
-    <div class="content-block">
-        <p class="quiz-question">ペアレビューでは「批判」ではなく「質問」の形でコメントを書くことが求められます。その理由として最も適切なものはどれですか？</p>
-        <div class="quiz-options">
-            <div class="quiz-option" onclick="selectOption(this, 3, 0)">
-                <span class="option-label">A</span>
-                <span>質問の方が文字数が多くなり、フィードバックの量が増えるから</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 3, 1)">
-                <span class="option-label">B</span>
-                <span>批判は相手を守りに入らせるが、質問は「考え直すきっかけ」になり、Block 6の公開添削でも同じ姿勢が必要だから</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 3, 2)">
-                <span class="option-label">C</span>
-                <span>相手のスキルが低い場合に失礼にならないようにするため</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 3, 3)">
-                <span class="option-label">D</span>
-                <span>講師が後でコメントを採点しやすくなるため</span>
-            </div>
-        </div>
-        <button class="quiz-btn" onclick="checkAnswer(3)">答えを確認</button>
-        <div class="quiz-result" id="quiz-result-3"></div>
-    </div>
-</div>
-
-<!-- クイズ5 -->
-<div class="slide-container standard-content-layout quiz-slide" data-quiz-index="4">
-    <h2 class="slide-title">Q5．029のエビデンスはBlock 6でどう使われるか？</h2>
-    <div class="content-block">
-        <p class="quiz-question">029で提出したLPと100文字エビデンスがBlock 6でどのように使われるか、最も正確に説明しているものはどれですか？</p>
-        <div class="quiz-options">
-            <div class="quiz-option" onclick="selectOption(this, 4, 0)">
-                <span class="option-label">A</span>
-                <span>Block 6では新しい技術を習得するため、029の成果物は参照されない</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 4, 1)">
-                <span class="option-label">B</span>
-                <span>成績の評価にのみ使われ、他の受講生には公開されない</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 4, 2)">
-                <span class="option-label">C</span>
-                <span>030〜036で講師と他の受講生がLPとエビデンスを公開添削・評価する素材となり、エビデンスの質が議論の深さを決める</span>
-            </div>
-            <div class="quiz-option" onclick="selectOption(this, 4, 3)">
-                <span class="option-label">D</span>
-                <span>Block 6の開始前にすべてのエビデンスを書き直す機会が設けられる</span>
-            </div>
-        </div>
-        <button class="quiz-btn" onclick="checkAnswer(4)">答えを確認</button>
-        <div class="quiz-result" id="quiz-result-4"></div>
-    </div>
-</div>
-
-
 
     </div>
-
 
     <script>
-const quizData = [
+        const questions = [
     {
+        question: "LPの統合チェックで確認する5つのカテゴリをすべて含む選択肢はどれですか？",
+        choices: [
+            "導線の一貫性・視覚的一貫性・レイアウトの4原則・視線誘導・レスポンシブ",
+            "配色・フォント・余白・アイコン・アニメーション",
+            "ファーストビュー・ナビゲーション・フッター・CTA・フォーム",
+            "視覚的一貫性・4原則・視線誘導・ファイルサイズ・フォント統一"
+        ],
         correct: 0,
-        explanation: '正解はA。統合チェックリストの5カテゴリは「①導線の一貫性（022）②視覚的一貫性（019+Block 1）③レイアウトの4原則（Block 1・002）④視線誘導（Block 1・003）⑤レスポンシブ（Block 3・013）」です。いずれもBlock 1〜3で学んだ知識を自分のLPに適用する観点です。'
+        explanation: "正解はA。統合チェックリストの5カテゴリは「①導線の一貫性（022）②視覚的一貫性（019+Block 1）③レイアウトの4原則（Block 1・002）④視線誘導（Block 1・003）⑤レスポンシブ（Block 3・013）」です。いずれもBlock 1〜3で学んだ知識を自分のLPに適用する観点です。"
     },
     {
+        question: "100文字エビデンスに必ず含めるべき3要素として正しいものはどれですか？",
+        choices: [
+            "ツール名・作業時間・使用フォント",
+            "目的（何を達成するか）・判断根拠（なぜこう作ったか）・期待効果（ターゲットにどう感じてほしいか）",
+            "ターゲット年齢・デバイス・業界",
+            "Before・After・改善率"
+        ],
         correct: 1,
-        explanation: '正解はB。100文字エビデンスには「①目的（このセクションは何を達成するためにあるか）②判断根拠（なぜこの配置・色・コピー・画像を選んだか）③期待効果（ターゲットにどう感じてほしいか）」の3要素が必要です。この3要素が揃って初めて「なぜ」を説明したことになります。'
+        explanation: "正解はB。100文字エビデンスには「①目的（このセクションは何を達成するためにあるか）②判断根拠（なぜこの配置・色・コピー・画像を選んだか）③期待効果（ターゲットにどう感じてほしいか）」の3要素が必要です。この3要素が揃って初めて「なぜ」を説明したことになります。"
     },
     {
+        question: "「FVにキャッチコピーと画像を配置しました。いい感じだと思います。」がエビデンスとして不適格である最大の理由はどれですか？",
+        choices: [
+            "100文字に達していないから",
+            "FV以外のセクションについて書かれていないから",
+            "「なぜ」がなく、誰にとって・何に基づいているかが不明で、「なんとなく」を「なぜなら」に変換できていないから",
+            "ツール（Figma / Gemini）の名前が入っていないから"
+        ],
         correct: 2,
-        explanation: '正解はC。「いい感じ」は主観的な感想であり、誰にとって・何の知識に基づいて・なぜその判断をしたかが一切ない状態です。エビデンスとは「なんとなく」を「なぜなら」に変換することが本質。Bad例には「なぜ」「誰に」「何に基づいて」のすべてが欠けています。'
+        explanation: "正解はC。「いい感じ」は主観的な感想であり、誰にとって・何の知識に基づいて・なぜその判断をしたかが一切ない状態です。エビデンスとは「なんとなく」を「なぜなら」に変換することが本質。Bad例には「なぜ」「誰に」「何に基づいて」のすべてが欠けています。"
     },
     {
+        question: "ペアレビューでは「批判」ではなく「質問」の形でコメントを書くことが求められます。その理由として最も適切なものはどれですか？",
+        choices: [
+            "質問の方が文字数が多くなり、フィードバックの量が増えるから",
+            "批判は相手を守りに入らせるが、質問は「考え直すきっかけ」になり、Block 6の公開添削でも同じ姿勢が必要だから",
+            "相手のスキルが低い場合に失礼にならないようにするため",
+            "講師が後でコメントを採点しやすくなるため"
+        ],
         correct: 1,
-        explanation: '正解はB。批判は相手を防御的にさせ「でも…」という反論を生みます。一方「なぜこうしたのか教えてもらえますか？」という質問は、相手が自分の判断を再検討するきっかけになります。Block 6の公開添削でも同じ姿勢が求められます。'
+        explanation: "正解はB。批判は相手を防御的にさせ「でも…」という反論を生みます。一方「なぜこうしたのか教えてもらえますか？」という質問は、相手が自分の判断を再検討するきっかけになります。Block 6の公開添削でも同じ姿勢が求められます。"
     },
     {
+        question: "029で提出したLPと100文字エビデンスがBlock 6でどのように使われるか、最も正確に説明しているものはどれですか？",
+        choices: [
+            "Block 6では新しい技術を習得するため、029の成果物は参照されない",
+            "成績の評価にのみ使われ、他の受講生には公開されない",
+            "030〜036で講師と他の受講生がLPとエビデンスを公開添削・評価する素材となり、エビデンスの質が議論の深さを決める",
+            "Block 6の開始前にすべてのエビデンスを書き直す機会が設けられる"
+        ],
         correct: 2,
-        explanation: '正解はC。029のLPと100文字エビデンスは、Block 6の030（論理的言語化）・033（公開添削①）・036（公開添削②）で講師と他の受講生が評価する素材になります。エビデンスの質が高ければ議論が深まり、「なんとなく」だと「なぜ？」に答えられない状態になります。'
+        explanation: "正解はC。029のLPと100文字エビデンスは、Block 6の030（論理的言語化）・033（公開添削①）・036（公開添削②）で講師と他の受講生が評価する素材になります。エビデンスの質が高ければ議論が深まり、「なんとなく」だと「なぜ？」に答えられない状態になります。"
     }
 ];
-
-const selectedOptions = [-1, -1, -1, -1, -1];
-
-function selectOption(el, quizIndex, optionIndex) {
-    const options = el.closest('.quiz-options').querySelectorAll('.quiz-option');
-    options.forEach(function(o) { o.classList.remove('selected'); });
-    el.classList.add('selected');
-    selectedOptions[quizIndex] = optionIndex;
-}
-
-function checkAnswer(quizIndex) {
-    const resultEl = document.getElementById('quiz-result-' + quizIndex);
-    const selected = selectedOptions[quizIndex];
-    if (selected === -1) {
-        resultEl.innerHTML = '<p class="quiz-feedback incorrect">選択肢を選んでください。</p>';
-        resultEl.style.display = 'block';
-        return;
-    }
-    const data = quizData[quizIndex];
-    const slide = resultEl.closest('.quiz-slide');
-    const options = slide.querySelectorAll('.quiz-option');
-    options.forEach(function(o, i) {
-        if (i === data.correct) { o.classList.add('correct'); }
-        else if (i === selected && selected !== data.correct) { o.classList.add('incorrect'); }
-    });
-    const isCorrect = selected === data.correct;
-    resultEl.innerHTML = '<p class="quiz-feedback ' + (isCorrect ? 'correct' : 'incorrect') + '">' +
-        (isCorrect ? '✅ 正解！' : '❌ 不正解') +
-        '</p><p class="quiz-explanation">' + data.explanation + '</p>';
-    resultEl.style.display = 'block';
-}
     </script>
     
     <script src="../assets/slide-template.js"></script>
