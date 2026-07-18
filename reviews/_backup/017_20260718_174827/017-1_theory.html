@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIコピーライティング【理論編】</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+<!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>AIコピーライティング<span>【理論編】</span></h1>
+        <p>016の型で"弾"を量産する ― 構造パターンと訴求軸の設計</p>
+    </div>
+</div>
+
+<!-- スライド2: 問題提起 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">型は手に入った。でも「何を言うか」はまだ決まっていない</h2>
+    <div class="content-block">
+        <p class="text-sub">💬 <strong>前回（016）で得たもの：</strong>Context（文脈）・Instruction（指示）・Constraint（制約）の3層構造でAIに指示できるようになった</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>016で解決したこと</h3>
+                <ul>
+                    <li>「どう指示するか」＝<strong>プロンプトの構造</strong>が決まった</li>
+                    <li>ペルソナをContext（文脈）に変換する方法を習得した</li>
+                    <li>Constraint（制約）で誇大表現を防ぐ術を知った</li>
+                </ul>
+            </div>
+            <div>
+                <h3>まだ解決していないこと</h3>
+                <ul>
+                    <li>「<strong>どんな構造で</strong>コピーを書くか」が決まっていない</li>
+                    <li>「<strong>どんな訴求軸で</strong>刺さる言葉を選ぶか」が曖昧</li>
+                    <li>「<strong>どんなトーン</strong>で書くか」の基準がない</li>
+                </ul>
+                <p class="text-sub" style="margin-top: 16px;">🎯 <strong>今日のゴール：</strong>コピーの「型」と「評価基準」を手に入れる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: キャッチコピーの3構造パターン（核） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">キャッチコピーの3つの構造パターン</h2>
+    <div class="content-block">
+                <p>📌 <strong>ケーススタディ：TALENTBOARD</strong>（人材紹介会社向けクラウド型採用管理ツール）</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>① ベネフィット型</h3>
+                <p class="text-sub">導入後の<strong>未来の状態</strong>を提示する。「こうなれる」を伝える</p>
+                <p class="text-note">例：「採用コストを40%削減する管理ツール」<br>「候補者管理をチームの仕組みに変える」</p>
+
+                <h3>② 課題提起型</h3>
+                <p class="text-sub">現状の<strong>痛み・不便・矛盾</strong>を言語化する。「あるある」で共感を生む</p>
+                <p class="text-note">例：「候補者の対応漏れ、まだExcelで管理していますか？」<br>「面接記録がチャット・メール・紙にバラバラ」</p>
+            </div>
+            <div>
+                <h3>③ 数字型</h3>
+                <p class="text-sub"><strong>具体的な数値</strong>で信頼と根拠を担保する。「証拠があるから信じられる」</p>
+                <p class="text-note">例：「導入企業の87%が3ヶ月以内に採用効率を改善」<br>「月平均20時間の工数削減を実現」</p>
+
+                <div class="highlight-box">
+                    🔑 <strong>重要：</strong>3パターンのどれが刺さるかは<strong>ペルソナによって異なる</strong>。型を知ることで、ペルソナに合わせて選択できる
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: ペルソナ別訴求軸マッピング（SVG） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">ペルソナ別訴求軸マッピング：役割と関心から逆算する</h2>
+    <div class="content-block svg-centered">
+        <svg class="generated-art" viewBox="0 0 760 340" id="persona-mapping-017">
+            <defs>
+                <marker id="map-arrow-017" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+                    <path d="M0,0 L9,3.5 L0,7" fill="#00d4ff"/>
+                </marker>
+            </defs>
+
+            <!-- 左列ラベル -->
+            <text x="130" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="13">ペルソナ（役割）</text>
+
+            <!-- 人事部長ボックス -->
+            <rect x="20" y="32" width="220" height="74" rx="8" fill="rgba(0,212,255,0.13)" stroke="#00d4ff" stroke-width="1.8"/>
+            <text x="130" y="58" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">👔 人事部長（決裁者）</text>
+            <text x="130" y="78" text-anchor="middle" fill="white" font-size="12">50代・採用コスト削減が最重要課題</text>
+            <text x="130" y="96" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">ROI・投資根拠を求める</text>
+
+            <!-- リクルーターボックス -->
+            <rect x="20" y="133" width="220" height="74" rx="8" fill="rgba(0,212,255,0.10)" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
+            <text x="130" y="159" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">📋 リクルーター（実務者）</text>
+            <text x="130" y="179" text-anchor="middle" fill="white" font-size="12">30代・候補者50名以上を同時管理</text>
+            <text x="130" y="197" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">日常の痛みに共感を求める</text>
+
+            <!-- 経営層ボックス -->
+            <rect x="20" y="234" width="220" height="74" rx="8" fill="rgba(0,212,255,0.10)" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
+            <text x="130" y="260" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">📈 経営層（ROI判断者）</text>
+            <text x="130" y="280" text-anchor="middle" fill="white" font-size="12">40〜50代・KPI可視化が優先</text>
+            <text x="130" y="298" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11">データで意思決定する</text>
+
+            <!-- 右列ラベル -->
+            <text x="630" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="13">刺さる構造パターン</text>
+
+            <!-- ベネフィット型ボックス -->
+            <rect x="520" y="42" width="220" height="56" rx="8" fill="rgba(0,212,255,0.16)" stroke="#00d4ff" stroke-width="1.8"/>
+            <text x="630" y="66" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">① ベネフィット型</text>
+            <text x="630" y="86" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="12">「こうなれる」未来を提示</text>
+
+            <!-- 課題提起型ボックス -->
+            <rect x="520" y="152" width="220" height="56" rx="8" fill="rgba(0,212,255,0.16)" stroke="#00d4ff" stroke-width="1.8"/>
+            <text x="630" y="176" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">② 課題提起型</text>
+            <text x="630" y="196" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="12">「あるある」で共感を生む</text>
+
+            <!-- 数字型ボックス -->
+            <rect x="520" y="262" width="220" height="56" rx="8" fill="rgba(0,212,255,0.16)" stroke="#00d4ff" stroke-width="1.8"/>
+            <text x="630" y="286" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">③ 数字型</text>
+            <text x="630" y="306" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="12">数値で信頼と根拠を担保</text>
+
+            <!-- 接続線：人事部長 → ベネフィット型（強） -->
+            <line x1="242" y1="62" x2="518" y2="68" stroke="#00d4ff" stroke-width="2.2" marker-end="url(#map-arrow-017)"/>
+
+            <!-- 接続線：人事部長 → 数字型（強） -->
+            <line x1="242" y1="76" x2="480" y2="280" stroke="#00d4ff" stroke-width="2.2" stroke-dasharray="6,3" marker-end="url(#map-arrow-017)"/>
+            <line x1="480" y1="280" x2="518" y2="286" stroke="#00d4ff" stroke-width="2.2" marker-end="url(#map-arrow-017)"/>
+
+            <!-- 接続線：リクルーター → 課題提起型（強） -->
+            <line x1="242" y1="175" x2="518" y2="178" stroke="#00d4ff" stroke-width="2.2" marker-end="url(#map-arrow-017)"/>
+
+            <!-- 接続線：経営層 → 数字型（強） -->
+            <line x1="242" y1="275" x2="518" y2="286" stroke="#00d4ff" stroke-width="2.2" marker-end="url(#map-arrow-017)"/>
+
+            <!-- 中央注記 -->
+            <text x="380" y="326" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="12">ペルソナの「役割」と「関心事」から訴求軸を逆算する</text>
+        </svg>
+    </div>
+</div>
+
+<!-- スライド5: BtoBコピーのトーン設計 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">BtoBコピーのトーン設計：信頼・論理・具体性が基本</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>BtoB — TALENTBOARDが属するゾーン</h3>
+                <ul>
+                    <li><strong>信頼</strong>：実績・導入事例・数値根拠</li>
+                    <li><strong>論理</strong>：課題→解決→効果の構造</li>
+                    <li><strong>具体性</strong>：「業務時間を月20時間削減」</li>
+                    <li><strong>一貫性</strong>：文体・語調が全体で統一</li>
+                </ul>
+                <p class="text-sub" style="margin-top: 16px;">✅ <strong>BtoBの例</strong>：「導入実績200社。面接管理からオファーまで一元化し、採用コストを平均32%削減」</p>
+            </div>
+            <div>
+                <h3>BtoC — 参考・比較対象</h3>
+                <ul>
+                    <li><strong>共感</strong>：感情・体験・ストーリー</li>
+                    <li><strong>衝動</strong>：今すぐ行動したくなる言葉</li>
+                    <li><strong>感情</strong>：喜び・不安・憧れを刺激</li>
+                    <li><strong>親しみ</strong>：カジュアル・くだけた語感</li>
+                </ul>
+                <p class="text-sub" style="margin-top: 16px;">❌ <strong>BtoCトーンをBtoBで使うと</strong>：「楽しい採用体験を！」「あなたの毎日が変わる。」→ 信頼感が損なわれる</p>
+                <p class="text-note">ただしリクルーター（実務者）向けには「共感」要素を混ぜてもよい。ペルソナが実務者の場合は例外的に感情に寄せた表現が効く</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: LP内コピー3種とその役割 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">LP内のコピー3種：役割が違えば書き方も違う</h2>
+    <div class="content-block">
+        <p class="text-sub">LPには役割の異なる3種類のコピーがある。実践編ではこの3種を3ペルソナ分、計9セットAIで量産する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>① FVキャッチコピー</h3>
+                <p class="text-sub">3秒で価値を伝える。LP全体で最も重要なコピー</p>
+                <ul>
+                    <li>目安：<strong>20〜30文字</strong></li>
+                    <li>3パターン中で最も短く・最も鋭く</li>
+                    <li>スクロールせずに読む人を止める</li>
+                </ul>
+                <h3>② セクション見出し</h3>
+                <p class="text-sub">各セクションの要約と興味喚起を担う</p>
+                <ul>
+                    <li>目安：<strong>15〜25文字</strong></li>
+                    <li>読み飛ばしユーザーを各ブロックに引き込む</li>
+                </ul>
+            </div>
+            <div>
+                <h3>③ CTAコピー</h3>
+                <p class="text-sub">行動を促す。ボタンテキスト＋補助テキストの2層構造</p>
+                <ul>
+                    <li>ボタン例：「無料で資料請求する」「デモを申し込む」</li>
+                    <li>補助テキスト例：「導入実績200社・3営業日以内に返信」</li>
+                    <li>不安を先に取り除いてから行動を促す</li>
+                </ul>
+                <div class="highlight-box">
+                    🔑 <strong>設計の順序：</strong>FV → セクション見出し → CTA<br>
+                    全体の「物語の流れ」を先に設計してからコピーを当てはめる
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: コピー評価の5段階チェック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">コピー評価の5段階チェック：016の3軸に2つ追加</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>016から継承する3軸</h3>
+                <div>
+                    <h4>① ペルソナ適合度</h4>
+                    <span class="text-note">ターゲットの課題・関心キーワードが反映されているか</span>
+                    <p class="text-sub">❌ 「採用をもっと楽しく！」</p>
+                    <p class="text-sub">✅ 「採用コストを32%削減。人事部長が選ぶ理由がある」</p>
+                    <span class="text-note">ポイント：決裁者の関心事（コスト・根拠）に直接刺さる言葉を選ぶ</span>
+                </div>
+                <div>
+                    <h4>② 具体性</h4>
+                    <span class="text-note">抽象的美辞麗句ではなく具体的ベネフィットがあるか</span>
+                    <p class="text-sub">❌ 「採用業務を効率化します」</p>
+                    <p class="text-sub">✅ 「月平均20時間の工数削減を200社が実証」</p>
+                    <span class="text-note">ポイント：数値と事実で「どう効率化するか」を明示する</span>
+                </div>
+                <div>
+                    <h4>③ トーン一貫性</h4>
+                    <span class="text-note">BtoBで指定したのにBtoC的表現が混入していないか</span>
+                    <p class="text-sub">❌ 「あなたの採用、変わります。」</p>
+                    <p class="text-sub">✅ 「面接管理からオファーまで一元化。採用フローを標準化する」</p>
+                    <span class="text-note">ポイント：BtoBは感情語を避け、論理・構造・動詞で締める</span>
+                </div>
+            </div>
+            <div>
+                <h3>017で追加する2軸</h3>
+                <div>
+                    <h4>④ 独自性</h4>
+                    <span class="text-note">競合と同じことを言っていないか。「業務効率化」だけでは差別化にならない。TALENTBOARDにしか言えない言葉か</span>
+                    <p class="text-sub">❌ 「採用管理ツールの決定版」</p>
+                    <p class="text-sub">✅ 「候補者管理・面接記録・オファーを1画面で完結するのはTALENTBOARDだけ」</p>
+                    <span class="text-note">ポイント：「自社にしか言えない機能・事実」を具体的に言語化する</span>
+                </div>
+                <div>
+                    <h4>⑤ 行動喚起力</h4>
+                    <span class="text-note">読んだ後に「詳しく知りたい」と思えるか。止まる・クリックする動機があるか</span>
+                    <p class="text-sub">❌ 「優秀な人材を採用しましょう」</p>
+                    <p class="text-sub">✅ 「3営業日以内に返信。まず資料だけ見てみる」</p>
+                    <span class="text-note">ポイント：読後の「次の一歩」を小さく・具体的に示す。不安を先に取り除く</span>
+                    <span class="text-note">※この軸はFVキャッチに特に重要。セクション見出しは興味喚起止まりでも可</span>
+                </div>
+                <div class="highlight-box">
+                    ⚠️ 5軸中1軸でも★1なら<strong>再生成</strong>。AI Chatへのフィードバックに軸名を使って指示する
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: まとめと実践編への接続 -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">本日のまとめ：3つの型 × 5軸評価で「売れる言葉」を設計する</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">✍️</div>
+            <h3>① コピーの3構造パターン</h3>
+            <p>ベネフィット型・課題提起型・数字型。どれを選ぶかはペルソナの「役割と関心」から逆算する</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🤝</div>
+            <h3>② BtoBコピーのトーン</h3>
+            <p>信頼・論理・具体性が基本。感情・衝動・ストーリーはBtoC領域（実務者向けに例外あり）</p>
+        </div>
+        <div class="tile">
+            <div class="icon">📊</div>
+            <h3>③ 3種コピー × 5軸評価</h3>
+            <p>LPのFV・見出し・CTAは役割が異なる。評価は016の3軸＋独自性・行動喚起力の5軸で行う</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: 実践編への接続 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">実践編へ：9セットのコピーを設計・評価する</h2>
+    <div class="content-block">
+        <p>TALENTBOARDの<strong>3ペルソナ × 3種（FV・見出し・CTA）＝計9セット</strong>のコピーをAI Chatで量産し、5軸で評価・選定します。</p>
+    </div>
+</div>
+
+         <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span>Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+
+
+    <script>
+        const questions = [
+    {
+        question: "キャッチコピーの3つの構造パターンとして正しいものはどれですか？",
+        choices: [
+            "ストーリー型・論理型・感情型",
+            "ベネフィット型・課題提起型・数字型",
+            "ブランド型・製品型・サービス型",
+            "問題型・解決型・行動型"
+        ],
+        correct: 1,
+        explanation: "キャッチコピーの3構造パターンは「①ベネフィット型（導入後の未来を提示）②課題提起型（現状の痛みを言語化）③数字型（具体的な数値で信頼を担保）」の3つです。どれが刺さるかはペルソナの役割と関心事によって異なります。"
+    },
+    {
+        question: "人事部長（決裁者・50代）に最も刺さりやすい構造パターンはどれですか？その理由として最も適切なものを選んでください。",
+        choices: [
+            "課題提起型。現場の日常業務の苦労に共感してもらえるから",
+            "ストーリー型。感情移入しやすく印象に残るから",
+            "数字型またはベネフィット型。決裁者は投資の根拠とROIを求めるから",
+            "感情型。人情で動く人が多いから"
+        ],
+        correct: 2,
+        explanation: "人事部長（決裁者）は「採用コスト削減・ROI・投資根拠」が最大の関心事です。そのため「導入企業の87%が3ヶ月以内に採用効率を改善」のような数字型や、「採用コストを40%削減する管理ツール」のようなベネフィット型が刺さります。課題提起型は現場実務者（リクルーター）向けです。"
+    },
+    {
+        question: "BtoBコピーのトーンとして最も適切な要素の組み合わせはどれですか？",
+        choices: [
+            "共感・衝動・ストーリー・親しみやすさ",
+            "感情・緊迫感・期間限定感・ユーモア",
+            "信頼・論理・具体性・一貫性",
+            "インスピレーション・ビジョン・夢・情熱"
+        ],
+        correct: 2,
+        explanation: "BtoBコピーのトーンの基本は「信頼（実績・導入事例）・論理（課題→解決→効果の構造）・具体性（月20時間削減など）・一貫性（文体・語調の統一）」です。共感・衝動・感情・ストーリーはBtoCのトーンです。ただし実務者（リクルーター）向けには例外的に共感要素を混ぜることがあります。"
+    },
+    {
+        question: "LP内に必要な3種のコピーとそれぞれの役割について、正しい説明はどれですか？",
+        choices: [
+            "タイトル（ブランド訴求）・本文（製品説明）・注意事項（免責）",
+            "ヘッドライン・サブコピー・ボトムライン（どれも同じ役割）",
+            "FVキャッチ（3秒で価値を伝える）・セクション見出し（要約と興味喚起）・CTAコピー（行動を促す）",
+            "フック（注目獲得）・クレーム（主張）・クロージング（成約）"
+        ],
+        correct: 2,
+        explanation: "LPには役割の異なる3種のコピーがあります。①FVキャッチコピー＝3秒で価値を伝える最重要コピー（20〜30文字）②セクション見出し＝各セクションの要約と興味喚起（15〜25文字）③CTAコピー＝ボタンテキスト＋補助テキストで行動を促す。実践編ではこの3種を3ペルソナ分、計9セット量産します。"
+    },
+    {
+        question: "016の評価3軸（ペルソナ適合度・具体性・トーン一貫性）に加えて、017で追加された2つの評価軸はどれですか？",
+        choices: [
+            "SEO最適化・ブランド整合性",
+            "文字数の適切さ・フォントの選択",
+            "視覚的インパクト・感情的共鳴",
+            "独自性（競合との差別化）・行動喚起力（読後に行動したくなるか）"
+        ],
+        correct: 3,
+        explanation: "017で追加された2軸は「④独自性（競合と同じことを言っていないか。TALENTBOARDにしか言えない言葉か）⑤行動喚起力（読んだ後に『詳しく知りたい』と思えるか）」です。5軸すべてが★3以上を合格ラインとし、1軸でも★1なら再生成します。このフレームワークはAI Chatへのフィードバック指示にもそのまま使えます。"
+    }
+];
+    </script>
+
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>
