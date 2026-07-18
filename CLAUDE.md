@@ -17,6 +17,7 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 - これを省略した場合、ファイルを元に戻せなくなるリスクがある
 - ユーザーが「元に戻して」と言えるのは、コミットがある場合のみ
 - **コミットが完了するまで生成・編集作業を開始してはならない**
+- 教材生成・レビュー・改善を行う前に、`教材品質判断基準.md` を読む。ユーザーの判断傾向と品質基準を構成・コピー・視覚化・実例選定へ反映する
 
 ---
 
@@ -30,7 +31,12 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 3. ユーザーが承認したら、理論編HTMLを生成
 4. `scripts/insert_html.js` で `master_slide/themes_new/XXX-1_theory.html` に自動挿入
 4.5. 挿入完了後、`generated_XXX_theory.html` を削除する（例: `rm generated_${THEME_NUM}_theory.html`）
+4.6. `scripts/format_html.js` でインデントと改行を整える
 5. `scripts/check_svg.js` でSVGチェックを実行し、結果を報告
+5.5. 生成直後のHTMLと構成指示書を `reviews/_backup/XXX_YYYYMMDD_HHMMSS/` に保存する
+5.6. `reviews/REVIEW_TEMPLATE.md` に従い、9観点（編集AI・教育者AI・受講生AI・専門家AI・視覚QA・アクセシビリティAI・評価設計AI・根拠・出典・権利AI・実装チェックAI・統括AI）でレビューする
+5.7. レビュー結果を `reviews/XXX_theory_review.md` に保存し、改善案を High / Middle / Low の優先順位付きでユーザーへ提示する
+5.8. AIレビューの改善案は自動で全反映しない。**ユーザーが承認した項目だけ**をHTMLへ反映する
 6. ユーザーが「理論編OK」と言うまで待機（修正指示があれば対応）
 
 ### Step 2: 実践編の生成
@@ -41,8 +47,55 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 11. ユーザーが承認したら、実践編HTMLを生成
 12. `scripts/insert_html.js` で `master_slide/themes_new/XXX-2_practice.html` に自動挿入
 12.5. 挿入完了後、`generated_XXX_practice.html` を削除する（例: `rm generated_${THEME_NUM}_practice.html`）
+12.6. `scripts/format_html.js` でインデントと改行を整える
 13. SVGチェック実行・結果報告
+13.5. 9観点レビュー実行 → `reviews/XXX_practice_review.md` に保存 → 改善案をユーザーへ提示
 14. ユーザーが「実践編OK」と言ったら完了
+15. 各Blockの最終テーマで実践編が承認された後、`reviews/BLOCK_REVIEW_TEMPLATE.md` に従いカリキュラム設計AIがBlock全体を横断レビューし、`reviews/block_N_review.md` に保存する
+
+---
+
+## 教材品質レビュー・改善サイクル
+
+1テーマの品質改善は、次の1サイクルとして扱う。
+
+1. **生成**: 構成指示書と生成前承認に基づいてHTMLを作る
+2. **レビュー**: 9観点で内容・学習効果・初学者の理解・専門的正確性・実画面・アクセシビリティ・評価設計・根拠と権利・実装を確認する
+3. **統括**: 重複する指摘をまとめ、High / Middle / Low へ整理する
+4. **ユーザー判断**: 改善案・代替案・推奨案と理由を示し、採用判断を待つ
+5. **改善**: 承認された項目だけを関連ファイルへ一貫して反映する
+6. **再検証**: 構造検査とレビュー記録の更新を行い、未対応項目を明示する
+
+### 9観点レビューの内容
+
+| 観点 | 確認ポイント |
+|------|------------|
+| 編集AI | 構成・文章量・重複・読み順・見出しと本文の一致・コピーの自然さ |
+| 教育者AI | 学習目標・段階設計・理論と実践の接続・判断・説明できる状態への到達 |
+| 受講生AI | 初学者のつまずき・専門用語・説明不足・情報過多 |
+| 専門家AI | 用語・数値・因果関係・実務妥当性・倫理・誤用リスク |
+| 視覚QA・アクセシビリティAI | 実寸表示・はみ出し・切れ・余白・色コントラスト・alt・キーボード操作 |
+| 評価設計AI | クイズが学習目標を測っているか・誤答の質・解説の誤解修正・正解位置の偏り |
+| 根拠・出典・権利AI | 数値・研究結果・時点依存情報・画像・引用の一次資料と権利確認 |
+| 実装チェックAI | HTML構造・コメント連番・画像パス・クイズキー・禁止記法・SVG |
+| 統括AI | High / Middle / Low への優先整理・代替案・推奨案 |
+
+レビューでは「なぜ初学者がつまずくか」「実務でどう誤用されるか」「どの修正が最も学習効果を上げるか」まで説明する。
+
+視覚QA・アクセシビリティAIがブラウザ実寸確認を実施できない場合は「AIブラウザ実寸確認は未実施」と明記し、ユーザーの目視確認と区別する。
+
+カリキュラム設計AIは通常レビューに常設せず、各Blockの最終テーマ実践編承認後にBlock全体を横断確認する。
+
+## 表示確認ステータス管理
+
+AIによるブラウザ確認とユーザーの目視確認は別状態として扱い、`reviews/REVIEW_TEMPLATE.md` の「表示・目視確認ステータス」に記録する。
+
+- `確認OK` / `目視確認OK` / `表示確認OK` は直前の文脈の対象スライドのユーザー目視確認完了として記録する
+- `スライドN確認OK` は指定範囲のみ。編全体を確認済みにしない
+- コピー案・改善案への単なる `OK` は表示確認として扱わない
+- `理論編OK` / `実践編OK` は直前に全スライド表示確認を求めていた場合に目視確認完了も記録する
+- 確認後に表示へ影響する変更（HTML・CSS・JS・画像）を行った場合、変更範囲のみ `要再確認` へ戻す
+- 有効な `確認OK` 記録があり確認後に表示変更がない場合、同じ対象に目視確認を繰り返し依頼しない
 
 ---
 
@@ -66,6 +119,8 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 - `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`, `<style>` タグは一切含めない
 - スライドコンテンツ（`<div class="slide-container">` の連続）とクイズ用 `<script>` タグのみ出力
 - 外部CSS/JS（slide-template.css, slide-template.js）使用前提
+- 各 `slide-container` の直前には `<!-- スライドN: スライド内容 -->` 形式のコメントを必ず付ける。N は表紙を1として実際の表示順に連番（欠番・重複禁止）
+- 表紙スライドの `h1` には編名を必ず入れる。理論編は `<br><span class="title-edition-label">【理論編】</span>`、実践編は `<br><span class="title-edition-label">【実践編】</span>` とする
 
 ### 文字サイズルール（厳守）
 
@@ -110,6 +165,13 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 | Before/After | `.two-column.tiled` |
 | 補足理論 | `.bleed-image-layout` |
 | まとめ | `.tiled-content` |
+| タイルグリッド（標準） | `tile-grid tile-grid--2x2`（4項目） |
+| タイルグリッド（横並び3） | `tile-grid tile-grid--3cols` |
+| タイルグリッド（横並び4） | `tile-grid tile-grid--4cols` |
+| タイルグリッド（3×2） | `tile-grid tile-grid--3x2` |
+| 次回予告・引き継ぎ | `next-box` |
+| 補足・注釈 | `text-note` |
+| 箇条書き記号なし | `no-bullet` |
 
 ### `.highlight-box` の使用ルール
 
@@ -153,6 +215,7 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 - タイル数は3〜4個が基本（内容に応じて判断）
 - **同じアイコンの繰り返し禁止**。各タイルの内容に合った絵文字を使う
 - `tiles-wrapper` は使用禁止（縦積みになるため）。必ず `tile-grid` を使う
+- `tile-grid` には形状クラスを必ず併記する（例：3項目 → `tile-grid tile-grid--3cols`、4項目 → `tile-grid tile-grid--2x2`、6項目 → `tile-grid tile-grid--3x2`）
 
 **`highlight-box` の使用**
 
@@ -171,6 +234,7 @@ git add -A && git commit -m "【バックアップ】作業開始前"
 **次回予告スライドのルール**
 
 - `highlight-box` は使用禁止
+- `next-box` または通常の本文を使う
 - 補足情報は `p.text-sub` で記載する
 
 ### SVG生成ルール
@@ -302,10 +366,32 @@ master_slide/themes_new/XXX-2_practice.html
 
 ---
 
+## 挿入・検証コマンド
+
+理論編：
+```bash
+node scripts/insert_html.js master_slide/themes_new/XXX-1_theory.html generated_XXX_theory.html
+rm generated_XXX_theory.html
+node scripts/format_html.js master_slide/themes_new/XXX-1_theory.html
+node scripts/check_svg.js master_slide/themes_new/XXX-1_theory.html
+```
+
+実践編：
+```bash
+node scripts/insert_html.js master_slide/themes_new/XXX-2_practice.html generated_XXX_practice.html
+rm generated_XXX_practice.html
+node scripts/format_html.js master_slide/themes_new/XXX-2_practice.html
+node scripts/check_svg.js master_slide/themes_new/XXX-2_practice.html
+```
+
+---
+
 ## 合図ルール
 
 | 合図 | 意味 |
 |------|------|
+| 「確認OK」/「目視確認OK」/「表示確認OK」 | 直前の文脈の対象スライドのユーザー目視確認を記録 |
+| 「スライドN確認OK」 | 指定スライドのみのユーザー目視確認を記録 |
 | 「理論編OK」 | 理論編完成 → 「実践編に進みますか？」と確認 |
 | 「実践編OK」 | 実践編完成 → 「このテーマは完了です」と返答 |
 | 「理論編に戻って」 | 理論編の修正モードに切り替え |
