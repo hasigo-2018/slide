@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像生成AIの完全制御【理論編】</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>画像生成AIの完全制御<span>【理論編】</span></h1>
+        <p>言葉で"絵"を設計する ― 5要素でコントロールする画像プロンプト</p>
+    </div>
+</div>
+
+<!-- スライド2: 問題提起 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">テキストの次は「絵」。しかし「いい感じで」では狙い通りには出ない</h2>
+    <div class="content-block">
+                <p>📌 <strong>016で得たもの：</strong>Logic Prompt（Context・Instruction・Constraint）でAIへの指示を構造化できるようになった。この思想は画像生成でも同じく機能する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>テキスト生成で解決したこと</h3>
+                <ul>
+                    <li>「何を・どう・どこまで」の<strong>3層構造</strong>で指示できる</li>
+                    <li>ペルソナをContextに変換し、精度の高い文章を生成</li>
+                    <li>Constraintで誇大表現・誤情報を制御できる</li>
+                </ul>
+            </div>
+            <div>
+                <h3>画像生成で直面する問題</h3>
+                <ul>
+                    <li>「おしゃれなオフィスの画像」→ AIが好き勝手に解釈</li>
+                    <li>「いい感じのビジネス写真」→ 毎回異なる方向性</li>
+                    <li>AIっぽい不自然な画像が出ても、何を直せばいいか分からない</li>
+                </ul>
+                <p class="text-sub">🎯 <strong>今日のゴール：</strong>「プロンプトは設計である」を画像にも適用し、<strong>1枚の画像を意図通りに出す</strong>制御技術を習得する</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 画像プロンプトの5要素（核） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">画像プロンプトの5要素：意図通りに出すための制御パラメータ</h2>
+    <div class="content-block svg-centered">
+        <svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+            <!-- 接続ライン -->
+            <line x1="450" y1="155" x2="450" y2="92" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+            <line x1="516" y1="180" x2="594" y2="148" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+            <line x1="506" y1="278" x2="554" y2="348" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+            <line x1="394" y1="278" x2="346" y2="348" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+            <line x1="384" y1="180" x2="306" y2="148" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+
+            <!-- 中心円 -->
+            <circle cx="450" cy="220" r="65" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="2"/>
+            <text x="450" y="212" text-anchor="middle" fill="white" font-size="18" font-weight="bold">画像</text>
+            <text x="450" y="234" text-anchor="middle" fill="white" font-size="18" font-weight="bold">プロンプト</text>
+
+            <!-- 要素① 被写体（上） -->
+            <circle cx="450" cy="60" r="48" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="450" y="52" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">① 被写体</text>
+            <text x="450" y="68" text-anchor="middle" fill="white" font-size="11">Subject</text>
+            <text x="450" y="83" text-anchor="middle" fill="white" font-size="10" opacity="0.7">何を描くか</text>
+
+            <!-- 要素② 構図（右上） -->
+            <circle cx="630" cy="130" r="48" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="630" y="122" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">② 構図</text>
+            <text x="630" y="138" text-anchor="middle" fill="white" font-size="11">Composition</text>
+            <text x="630" y="153" text-anchor="middle" fill="white" font-size="10" opacity="0.7">どう配置するか</text>
+
+            <!-- 要素③ 照明（右下） -->
+            <circle cx="576" cy="370" r="48" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="576" y="362" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">③ 照明</text>
+            <text x="576" y="378" text-anchor="middle" fill="white" font-size="11">Lighting</text>
+            <text x="576" y="393" text-anchor="middle" fill="white" font-size="10" opacity="0.7">どんな光か</text>
+
+            <!-- 要素④ スタイル（左下） -->
+            <circle cx="324" cy="370" r="48" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="324" y="362" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">④ スタイル</text>
+            <text x="324" y="378" text-anchor="middle" fill="white" font-size="11">Style</text>
+            <text x="324" y="393" text-anchor="middle" fill="white" font-size="10" opacity="0.7">どんなテイストか</text>
+
+            <!-- 要素⑤ 雰囲気（左上） -->
+            <circle cx="270" cy="130" r="48" fill="white" opacity="0.08" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="270" y="122" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">⑤ 雰囲気</text>
+            <text x="270" y="138" text-anchor="middle" fill="white" font-size="11">Mood</text>
+            <text x="270" y="153" text-anchor="middle" fill="white" font-size="10" opacity="0.7">どんな印象か</text>
+        </svg>
+        <p class="text-note">※ 016のLogic Promptとの対応：Context＝被写体・雰囲気 / Instruction＝構図・スタイル / Constraint＝照明の制約・ネガティブプロンプト</p>
+    </div>
+</div>
+
+<!-- スライド4: 要素①②：被写体と構図 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素①②：被写体と構図 ― 「何を」「どこに」置くか</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>① 被写体（Subject）＝主役は何か</h3>
+                <p class="text-sub">人物・オブジェクト・風景・UI画面など、画像の中心に置くものを明示する</p>
+                <ul>
+                    <li>曖昧：「ビジネスパーソンの画像」</li>
+                    <li>明確：「<strong>30代女性リクルーター、ノートPCを操作</strong>」</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ 指定が曖昧だとAIが独自解釈する。<strong>性別・年齢・職業・行動</strong>を具体的に書く
+                </div>
+            </div>
+            <div>
+                <h3>② 構図（Composition）＝カメラアングルと配置</h3>
+                <p class="text-sub">構図パターンと与える印象：</p>
+                <ul>
+                    <li><strong>正面アイレベル</strong>：信頼感・親近感（BtoBのFVに最適）</li>
+                    <li><strong>斜め45度</strong>：動き・活気・プロフェッショナル感</li>
+                    <li><strong>俯瞰（上から）</strong>：全体把握・整然とした印象</li>
+                    <li><strong>上半身クロップ</strong>：手指の破綻リスクを自然に回避できる</li>
+                </ul>
+                <p class="text-note">TALENTBOARD例：「30代女性リクルーター、アイレベル、上半身、やや斜め45度」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: 要素③④：照明とスタイル -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素③④：照明とスタイル ― 「どんな光で」「どんなテイストで」</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>③ 照明（Lighting）＝光の種類と方向</h3>
+                <ul>
+                    <li><strong>natural light（自然光）</strong>：窓辺の柔らかい光。温かみと親近感。サービス系に◎</li>
+                    <li><strong>studio lighting（スタジオ）</strong>：均一で清潔。製品・人物撮影の定番</li>
+                    <li><strong>backlit（バックライト）</strong>：ドラマチックだがBtoBには重すぎることが多い</li>
+                </ul>
+                <div class="highlight-box">
+                    ✅ BtoBの基本は<strong>natural light または studio lighting</strong>。指定しないとAIがランダムに選ぶ
+                </div>
+            </div>
+            <div>
+                <h3>④ スタイル（Style）＝画像のテイスト</h3>
+                <ul>
+                    <li><strong>photorealistic</strong>：写真調。BtoB LP用途の主流</li>
+                    <li><strong>flat design / illustration</strong>：アイコン・図解に。人物には不向き</li>
+                    <li><strong>isometric</strong>：立体的な概念図。SaaSのサービス説明によく使う</li>
+                    <li><strong>cinematic</strong>：映画的。重厚なブランド向け</li>
+                </ul>
+                <p class="text-note">スタイルを指定しないとAIがランダムに選択し、毎回異なるテイストが出てしまう。必ず明示する。</p>
+                                <p>✅ TALENTBOARDのFV：<strong>photorealistic</strong> 一択</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 要素⑤：雰囲気とネガティブプロンプト -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">要素⑤：雰囲気 + ネガティブプロンプト ― 「印象」と「排除」を制御する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>⑤ 雰囲気（Mood）＝画像全体の印象</h3>
+                <p class="text-sub">形容詞で指定する。BtoBで有効なキーワード：</p>
+                <ul>
+                    <li><strong>professional</strong>：プロフェッショナルな</li>
+                    <li><strong>trustworthy</strong>：信頼感のある</li>
+                    <li><strong>clean / minimal</strong>：清潔感・ミニマル</li>
+                    <li><strong>modern</strong>：現代的・洗練された</li>
+                    <li><strong>warm</strong>：親しみやすい（人事・医療系に◎）</li>
+                </ul>
+                <p class="text-note">複数組み合わせ可。「professional, modern, trustworthy」のように並列で指定</p>
+            </div>
+            <div>
+                <h3>ネガティブプロンプト＝016のConstraintと同じ思想</h3>
+                <p class="text-sub">出てほしくない要素を明示的に排除するガードレール</p>
+                <div class="highlight-box">
+                    ❌ ネガティブプロンプトなしで起きること：<br>
+                    アニメ調・ドラマ的な演出・暗い照明・雑然とした背景が混入
+                </div>
+                <p class="text-sub">BtoB画像の基本排除リスト：</p>
+                <p class="text-note">cartoon, illustration, anime, dark mood, cluttered background, text, watermark, low quality, blurry, oversaturated</p>
+                <div class="highlight-box">
+                    🔑 「何を入れるか」と同じくらい「何を<strong>除くか</strong>」が品質を決める
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: BtoBの信頼感を作る視覚要素（核） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">BtoB画像の特性：「信頼感」を作る4つの視覚要素</h2>
+    <div class="content-block">
+                <p>📌 BtoB LP用画像の目的は「買いたい」ではなく「信頼できる」「問い合わせしても安心」と感じさせること</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>① 清潔感</h3>
+                <p class="text-sub">明るい照明・整った背景・適度な余白が「秩序」を印象づける</p>
+                <p class="text-note">ごちゃごちゃしたオフィス背景は「この会社、大丈夫？」という不安を生む</p>
+
+                <h3>② 人物の自然さ</h3>
+                <p class="text-sub">過度なポーズや演技的な笑顔はAI感・安っぽさに直結する</p>
+                <p class="text-note">「業務中の自然なひとコマ」を意図して指定：「natural expression, candid moment」</p>
+            </div>
+            <div>
+                <h3>③ 色温度</h3>
+                <p class="text-sub">寒色寄り（ブルー・グレー系）が知的・信頼の印象を与える</p>
+                <p class="text-note">暖色は親しみやすさだが「軽さ」も出る。BtoBの基本は寒色。TALENTBOARDのブランドカラーと整合させる</p>
+
+                <h3>④ 背景の情報量</h3>
+                <p class="text-sub">多すぎず少なすぎず。「情報の密度」がブランドの質感を決める</p>
+                <p class="text-note">真っ白背景：安っぽい / 雑然としたオフィス：散漫 / 適度にぼかしたオフィス：プロフェッショナル</p>
+                <p class="text-sub">✅ 正解例：「blurred office background, shallow depth of field」</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: Bad Image vs Good Image（核） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">Bad Image vs Good Image：BtoBの品質を判断する眼</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>❌ Bad Example：LPに載せてはいけない</h3>
+                <ul>
+                    <li><strong>AIっぽい不自然な笑顔</strong>：歯が整いすぎ・目が光りすぎ。「人間っぽくない」</li>
+                    <li><strong>過度に完璧すぎるオフィス</strong>：ガラス張り・広大な空間。「自分たちとは無関係」</li>
+                    <li><strong>手や指の破綻</strong>：AI生成の最頻出エラー。手が多い・指が溶ける</li>
+                    <li><strong>文字が溶けたUI画面</strong>：ロゴ・テキストが歪んで読めない</li>
+                    <li><strong>文化・地域のミスマッチ</strong>：明らかに欧米人・欧米オフィスの画像</li>
+                </ul>
+                <div class="highlight-box">
+                    ⚠️ これらはプロンプトで防ぐか、手を見せない構図で回避する
+                </div>
+            </div>
+            <div>
+                <h3>✅ Good Example：LPに使える画像の条件</h3>
+                <ul>
+                    <li><strong>自然な表情の業務シーン</strong>：PCを見ながら微笑む・書類を手に取る</li>
+                    <li><strong>現実的なオフィス環境</strong>：適度にぼかした背景。「あり得る職場」感</li>
+                    <li><strong>手は見せない構図</strong>：上半身クロップ・手元を画角外に出す</li>
+                    <li><strong>UI画面は後から合成</strong>：Figmaで作ったデザインを別途重ねる</li>
+                </ul>
+                <div class="highlight-box">
+                    🔑 <strong>品質判断の最終基準：</strong><br>
+                    「この画像をLPに載せたとき、初めて見た人が違和感を覚えないか？」<br>
+                    違和感ゼロが合格ライン
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: 5要素テンプレート -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">プロンプトの型：5要素設計シート ― まず埋めてから生成する</h2>
+    <div class="content-block">
+                <p>📋 016の「プロンプト設計シート（3層構造）」と同じ思想。シートを埋める → 自然文に変換 → 生成 → 評価</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>画像プロンプト設計シート</h3>
+                <ul>
+                    <li><strong>【被写体】</strong>誰が / 何が / 何をしているか</li>
+                    <li><strong>【構図】</strong>カメラアングル / フレーミング</li>
+                    <li><strong>【照明】</strong>光の種類と方向</li>
+                    <li><strong>【スタイル】</strong>画像のテイスト</li>
+                    <li><strong>【雰囲気】</strong>伝えたい印象・形容詞</li>
+                    <li><strong>【ネガティブ】</strong>出てほしくない要素</li>
+                </ul>
+            </div>
+            <div>
+                <h3>変換例：シート → プロンプト文</h3>
+                <p class="text-sub">設計シートを埋めたあと、Nano Banana Proへの入力文に変換する：</p>
+                <p class="text-note">被写体：30代女性リクルーター、PCを見ながら微笑む<br>構図：アイレベル、上半身、やや斜め<br>照明：窓辺の自然光<br>スタイル：photorealistic<br>雰囲気：professional, modern, trustworthy<br>ネガティブ：cartoon, dark, cluttered, blurry</p>
+                                <p>✅ このワークフローにより「なんか違う」から「ここを直せば良い」の判断ができるようになる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: TALENTBOARDで実演 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">TALENTBOARDで実演：FVメインビジュアルのプロンプト設計</h2>
+    <div class="content-block">
+                <p>📌 <strong>ケーススタディ：TALENTBOARD</strong> FVメインビジュアル用画像を5要素テンプレートで設計する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>設計シート（記入済み）</h3>
+                <ul>
+                    <li><strong>【被写体】</strong>30代女性リクルーター、ノートPCの画面を見ながら微笑む</li>
+                    <li><strong>【構図】</strong>アイレベル、上半身、やや斜め45度</li>
+                    <li><strong>【照明】</strong>窓辺の自然光（natural window light）</li>
+                    <li><strong>【スタイル】</strong>photorealistic</li>
+                    <li><strong>【雰囲気】</strong>professional, modern, trustworthy, clean</li>
+                    <li><strong>【ネガティブ】</strong>cartoon, illustration, dark, cluttered, text, watermark, blurry</li>
+                </ul>
+            </div>
+            <div>
+                <h3>変換後のプロンプト文（Nano Banana Pro入力）</h3>
+                <p class="text-sub">設計シートを自然文に変換：</p>
+                <p class="text-note">30代の女性リクルーターがノートPCを見ながら自然に微笑んでいる。アイレベル、上半身、やや斜め45度のアングル。窓辺の柔らかい自然光。photorealistic、プロフェッショナルでモダンな印象、清潔感のある雰囲気。ネガティブ：cartoon、illustration、dark、cluttered、text、watermark、blurry</p>
+                <div class="highlight-box">
+                    🔑 <strong>設計の順序が品質を決める：</strong><br>
+                    「なんとなく生成」→「シートを埋めてから生成」へ思考を切り替える
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: まとめ -->
+<div class="slide-container tiled-content">
+    <h2 class="slide-title">本日のまとめ：5要素で「意図通りの1枚」を設計する</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <div class="icon">🖼️</div>
+            <h3>① 5要素で構造化する</h3>
+            <p>被写体・構図・照明・スタイル・雰囲気の5要素で設計。016の「プロンプトは設計である」が画像にも適用できる</p>
+        </div>
+        <div class="tile">
+            <div class="icon">💼</div>
+            <h3>② BtoBの基本トーン</h3>
+            <p>清潔感・自然さ・信頼感が基本。寒色系の照明、自然な人物表情、適度にぼかした背景が「プロフェッショナル」を作る</p>
+        </div>
+        <div class="tile">
+            <div class="icon">🚫</div>
+            <h3>③ ネガティブプロンプト</h3>
+            <p>Constraintと同じ思想。出てほしくないものを明示的に排除するガードレール。これがないと品質が安定しない</p>
+        </div>
+        <div class="tile">
+            <div class="icon">👁️</div>
+            <h3>④ 品質判断の最終基準</h3>
+            <p>「LPに載せたとき、初めて見た人が違和感を覚えないか」。AIっぽさの排除が実務水準の合格ライン</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11.5: 実践編への接続 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">実践編へ：LP用画像を実際に生成する</h2>
+    <div class="content-block">
+        <p>TALENTBOARDのLP用画像をNano Banana Proで実際に生成します。<strong>FVメインビジュアル＋セクション用サブビジュアル</strong>の2種が対象です。</p>
+    </div>
+</div>
+
+<!-- スライド12: 次回予告と実践編への接続 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回：設計図を持って、実際に"絵"を出しにいく</h2>
+    <div class="content-block">
+                <p>📋 <strong>今日作ったもの：</strong>5要素設計シート（TALENTBOARDのFVメインビジュアル用）</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>実践編でやること</h3>
+                <ul>
+                    <li>Nano Banana Proで<strong>FVメインビジュアル</strong>を実際に生成</li>
+                    <li>生成結果を5要素で評価し、プロンプトを修正</li>
+                    <li><strong>セクション用サブビジュアル</strong>も設計・生成</li>
+                    <li>生成した画像の「合格・不合格」判断を実際に行う</li>
+                </ul>
+            </div>
+            <div>
+                <h3>判断眼を使うための準備</h3>
+                <ul>
+                    <li>理論編で学んだ<strong>Bad/Goodの判断基準</strong>を持って臨む</li>
+                    <li>「違和感ゼロ」を自分で判定できるようになる</li>
+                    <li>修正が必要な箇所を5要素で言語化して再指示する</li>
+                </ul>
+                <p class="text-sub">🎯 設計図ができた。次は実際に<strong>"絵"を出します</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+         <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br><span>Quiz</span></h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    
+    <script>
+        const questions = [
+    {
+        question: "画像プロンプトの5要素として正しいものはどれですか？",
+        choices: [
+            "色彩・構図・テキスト・フォント・レイアウト",
+            "被写体・構図・照明・スタイル・雰囲気",
+            "ペルソナ・課題・解決策・CTA・トーン",
+            "テーマ・キャラクター・背景・エフェクト・フィルター"
+        ],
+        correct: 1,
+        explanation: "画像プロンプトの5要素は「①被写体（Subject）＝何を描くか ②構図（Composition）＝どう配置するか ③照明（Lighting）＝どんな光か ④スタイル（Style）＝どんなテイストか ⑤雰囲気（Mood）＝どんな印象を与えるか」の5つです。この5要素を設計シートとして埋めてからプロンプト文に変換することで、意図通りの画像を出せるようになります。"
+    },
+    {
+        question: "BtoB LP用の画像生成で「AIっぽさ」の典型的な問題として最も当てはまるものはどれですか？",
+        choices: [
+            "背景が白すぎて地味に見える",
+            "色温度が高すぎて明るすぎる",
+            "手や指の破綻・不自然すぎる笑顔・文字が溶けたUI画面",
+            "人物が中央に配置されすぎている"
+        ],
+        correct: 2,
+        explanation: "AI生成画像の典型的な問題は「手や指の破綻（指が多い・溶ける）」「不自然すぎる笑顔（歯が整いすぎ・目が光りすぎ）」「文字が溶けたUI画面（ロゴやテキストが歪む）」などです。手の破綻は「上半身クロップ」の構図指定で回避でき、UI画面はFigmaで作ったデザインを後から合成するのが実務的な解決策です。"
+    },
+    {
+        question: "ネガティブプロンプトの役割は、016のLogic Promptの3層構造でいうとどれに相当しますか？",
+        choices: [
+            "Context（文脈）：AIに背景情報を与える",
+            "Instruction（指示）：AIに何をするかを伝える",
+            "Constraint（制約）：出てほしくない要素を排除するガードレール",
+            "Output（出力形式）：結果の見せ方を指定する"
+        ],
+        correct: 2,
+        explanation: "ネガティブプロンプトは016のLogic Promptにおける「Constraint（制約）」と同じ思想です。テキスト生成でのConstraintが「誇大表現NG・競合名称NG」という禁止事項の明示だったように、画像生成でのネガティブプロンプトは「cartoon, illustration, dark mood, cluttered background」など出てほしくない要素を明示的に排除するガードレールです。"
+    },
+    {
+        question: "BtoB LP用画像で「信頼感」を作る視覚要素として正しい組み合わせはどれですか？",
+        choices: [
+            "暗めの照明・強いコントラスト・ドラマチックなポーズ・情報量の多い背景",
+            "清潔感のある照明・自然な人物表情・寒色寄りの色温度・適度にぼかした背景",
+            "白背景・正面向き・過度に笑顔・シンプルな構図",
+            "暖色系の光・カジュアルな服装・オープンスペース・俯瞰アングル"
+        ],
+        correct: 1,
+        explanation: "BtoB LP用画像で「信頼感」を作る4要素は「①清潔感（明るい照明・整った背景）②人物の自然さ（過度なポーズNG・業務シーン）③色温度（寒色寄り＝知的・信頼の印象）④背景の情報量（多すぎず少なすぎず。ぼかしたオフィスが理想）」です。真っ白背景は安っぽく、雑然としたオフィスは散漫な印象を与えます。"
+    },
+    {
+        question: "AI生成画像の品質を判断する際、最も重要な基準はどれですか？",
+        choices: [
+            "解像度が4K以上かどうか",
+            "生成にかかった時間が短かったかどうか",
+            "「LPに載せたとき、初めて見た人が違和感を覚えないか」",
+            "プロンプトの文字数が100文字以上かどうか"
+        ],
+        correct: 2,
+        explanation: "AI生成画像の品質判断の最終基準は「この画像をLPに載せたとき、初めて見た人が違和感を覚えないか」です。解像度・生成速度・プロンプト長ではなく、「実際にLPで使えるか」という実務的な視点が最重要です。違和感ゼロが合格ライン。違和感がある場合は5要素のどの指定が足りなかったかを言語化し、プロンプトを修正して再生成します。"
+    }
+];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>

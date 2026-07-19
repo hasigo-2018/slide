@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像生成AIの完全制御【実践編】</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/slide-template.css">
+</head>
+<body>
+    <div id="presentation-wrapper">
+        <!-- スライド1: 表紙 -->
+<div class="slide-container full-bg-image active">
+    <div class="content-overlay">
+        <h1>画像生成AIの完全制御<span>【実践編】</span></h1>
+        <p>TALENTBOARDのLP用画像素材を生成する ― 5要素で設計し、BtoBの基準で選定する</p>
+    </div>
+</div>
+
+<!-- スライド2: 今日の実践目標 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">今日の実践目標：LP用画像素材を生成・選定して手元に揃える</h2>
+    <div class="content-block">
+        <p>🎯 <strong>ゴール：</strong>FVメインビジュアル1枚＋セクション用サブビジュアル3〜4枚を生成・選定する。この素材は019でトンマナ統一し、Block 5のLPに実装する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>必要な画像素材リスト</h3>
+                <ul>
+                    <li><strong>FVメインビジュアル</strong>：採用管理ツールを使うオフィスシーン（1枚）</li>
+                    <li><strong>課題提起セクション</strong>：書類・Excelに埋もれる業務シーン（1枚）</li>
+                    <li><strong>機能紹介セクション</strong>：ダッシュボードを操作するシーン（1〜2枚）</li>
+                    <li><strong>導入メリットセクション</strong>：チームで画面を共有するシーン（1枚）</li>
+                    <li><strong>導入事例セクション</strong>：人事担当者のイメージ（1枚・時間があれば）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>本日の演習の流れ</h3>
+                <ul>
+                    <li><strong>演習1：</strong>FVメインビジュアル（50分）</li>
+                    <li><strong>演習2：</strong>セクション用サブビジュアル（60分）</li>
+                    <li><strong>演習3：</strong>品質判断・総合ワーク（30分）</li>
+                </ul>
+                                <p>📌 <strong>TALENTBOARDのトーン方針：</strong><br>
+                    清潔感・信頼感・modern / 寒色寄り / 自然光ベース</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: 演習1概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1：FVメインビジュアルを3案生成し、ベスト1枚を選定する</h2>
+    <div class="content-block">
+        <p>📋 <strong>課題：</strong>TALENTBOARDのファーストビュー用メインビジュアルを3案生成し、BtoBの品質基準でベスト1枚を選定する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>FVメインビジュアルの要件</h3>
+                <ul>
+                    <li>採用管理ツールを使うオフィスシーン</li>
+                    <li>清潔感・信頼感・モダンな印象</li>
+                    <li>人物は30代前後のリクルーター・人事担当者</li>
+                    <li>「AIっぽさ」がなく、LPのトップに載せて違和感がない</li>
+                </ul>
+            </div>
+            <div>
+                <h3>制限時間：50分</h3>
+                <ul>
+                    <li>5要素テンプレート記入：<strong>10分</strong></li>
+                    <li>生成・微調整（2〜3回の試行）：<strong>30分</strong></li>
+                    <li>評価・選定＋選定理由を1文で記述：<strong>10分</strong></li>
+                </ul>
+                <div class="highlight-box">
+                    🔑 「1回で完璧を出す」ではなく「生成→評価→要素を微調整→再生成」のサイクルを回すことが目的
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: 5要素テンプレートの記入デモ -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">5要素テンプレートの記入デモ：FVメインビジュアル</h2>
+    <div class="content-block">
+        <p>📝 まず設計シートを埋める。埋めてから自然文に変換してNano Banana Proに入力する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>設計シート（記入例）</h3>
+                <ul>
+                    <li><strong>【被写体】</strong>30代女性リクルーター、ノートPCの画面を見ながら微笑む、清潔感のあるオフィス</li>
+                    <li><strong>【構図】</strong>アイレベル、上半身、やや斜め45度</li>
+                    <li><strong>【照明】</strong>窓辺の自然光、柔らかい影</li>
+                    <li><strong>【スタイル】</strong>photorealistic, high quality</li>
+                    <li><strong>【雰囲気】</strong>professional, modern, trustworthy</li>
+                    <li><strong>【ネガティブ】</strong>cartoon, illustration, dark mood, cluttered, hands close-up</li>
+                </ul>
+            </div>
+            <div>
+                <h3>自然文への変換</h3>
+                <p class="text-sub">設計シートをそのまま文章にして入力する：</p>
+                <p class="text-note">30代の女性リクルーターがノートPCを見ながら自然に微笑んでいる。アイレベル、上半身、やや斜め45度。窓辺の柔らかい自然光。photorealistic, high quality。professional、modern、trustworthy。ネガティブ：cartoon, illustration, dark mood, cluttered, hands close-up</p>
+                <div class="highlight-box">
+                    💡 <strong>ポイント：</strong>「なんとなく生成」から「シートを埋めてから生成」へ。設計の順序が品質を決める
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: よくある失敗と回避テクニック -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">よくある失敗と回避テクニック：設計で防ぐ、構図で回避する</h2>
+    <div class="content-block">
+        <div class="two-column tiled">
+            <div>
+                <h3>❌ 失敗パターンと対処法</h3>
+                <ul>
+                    <li>
+                        <strong>手・指の破綻</strong>（最頻出）<br>
+                        <span class="text-note">→ 「上半身クロップ」「腕組み」「PC操作で手が隠れる角度」で構図から回避</span>
+                    </li>
+                    <li>
+                        <strong>UI画面の文字溶け</strong><br>
+                        <span class="text-note">→ 画面は空白またはぼかしで生成し、スクリーンショットは後からFigmaで合成</span>
+                    </li>
+                    <li>
+                        <strong>不自然すぎる笑顔</strong><br>
+                        <span class="text-note">→ 「subtle smile」「natural expression」「candid moment」と指定する</span>
+                    </li>
+                    <li>
+                        <strong>背景のノイズ・ごちゃごちゃ感</strong><br>
+                        <span class="text-note">→ 「minimal background」「clean office」「blurred background」で制御</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>失敗は技術不足ではない</h3>
+                <p class="text-sub">これらはAIの現時点の限界。「なぜ失敗するか」を知った上で、回避する設計力を持つことがプロの技術</p>
+                <div class="highlight-box">
+                    🔑 <strong>回避の思想：</strong><br>
+                    問題が起きる場所を最初から「構図で見せない」「後から合成する」という設計判断が、ビジュアルアーキテクトとしての価値
+                </div>
+                <div class="highlight-box">
+                    ⚠️ <strong>生成がうまくいかないとき：</strong><br>
+                    5要素のどれが原因か特定して1つだけ変えて再生成。全部変えると何が効いたか分からなくなる
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: 演習1の実行指示 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1 スタート：5要素テンプレートを記入してFVを生成する</h2>
+    <div class="content-block">
+        <p>⏱️ <strong>制限時間：50分</strong>　ツール：Nano Banana Pro</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>手順</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 5要素テンプレートを記入</strong>（10分）<br><span class="text-note">被写体・構図・照明・スタイル・雰囲気・ネガティブの6項目をすべて埋める</span></li>
+                    <li><strong>② プロンプト文に変換して入力</strong>（5分）<br><span class="text-note">シートを自然文にしてNano Banana Proへ</span></li>
+                    <li><strong>③ 生成結果を確認・問題点を特定</strong>（5分）<br><span class="text-note">BtoBの品質基準で「違和感の箇所」を5要素で言語化する</span></li>
+                    <li><strong>④ 1要素だけ微調整して再生成</strong>（15分・2〜3回）<br><span class="text-note">全部変えない。1つ変えて違いを確認するのが上達の鍵</span></li>
+                    <li><strong>⑤ 3案からベスト1枚を選定</strong>（10分）<br><span class="text-note">選定理由を1文で書く（「なぜこれを選んだか」を言語化する）</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>確認ポイント</h3>
+                <ul>
+                    <li>ネガティブプロンプトが<strong>空のまま</strong>進んでいないか確認する</li>
+                    <li>構図の指定が<strong>曖昧</strong>（「自然な感じで」など）になっていないか確認する</li>
+                    <li>失敗したときは<strong>全部書き直さず</strong>、1要素ずつ変えて再生成する</li>
+                </ul>
+                <div class="highlight-box">
+                    💡 <strong>詰まったら：</strong><br>
+                    スライド5の「回避テクニック」に戻って、どの要素を変えるか確認する
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: 演習1の共有と振り返り -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習1 振り返り：ベスト案を共有し、選定理由を発表する</h2>
+    <div class="content-block">
+        <p>🗣️ 2〜3名にベスト案を表示してもらい、選定理由を発表する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>発表のポイント</h3>
+                <ul>
+                    <li>「なぜこの1枚を選んだか」を5要素で説明する<br><span class="text-note">例：「照明を自然光に変えたら清潔感が出た」「上半身クロップにして手の破綻を回避した」</span></li>
+                    <li>何回試行して、どの要素を変えたか共有する</li>
+                    <li>「まだ気になる箇所」があれば正直に言う</li>
+                </ul>
+            </div>
+            <div>
+                <h3>発表を聞きながら確認すること</h3>
+                <ul>
+                    <li><strong>BtoBの信頼感が出ているか</strong>（清潔感・自然な人物・寒色系）</li>
+                    <li><strong>LPのFVに載せて違和感がないか</strong>（「違和感ゼロ」が合格ライン）</li>
+                </ul>
+                                <p>🔑 <strong>全体共有テーマ：</strong><br>
+                    「5要素のうち、どれを調整したら出力が最も変わったか？」<br>
+                    <span class="text-note">（多くの場合、照明・雰囲気・ネガティブプロンプトが効きやすい）</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: 演習2概要 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2：セクション用サブビジュアルを生成する</h2>
+    <div class="content-block">
+        <p>📋 <strong>課題：</strong>LPの各セクションに対応する画像を生成する。FVとの違いを理解し、被写体と雰囲気を差し替えることで複数のセクション画像を効率よく生成する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>FVとセクション画像の違い</h3>
+                <ul>
+                    <li><strong>FV：</strong>「このサービスを信頼できる」と感じさせる。ポジティブ・清潔・モダン</li>
+                    <li><strong>課題提起：</strong>「今の状態の痛み」を視覚化する。あえてネガティブな状況を描写する</li>
+                    <li><strong>機能紹介：</strong>「ツールを使っている業務シーン」。ダッシュボード・操作感</li>
+                    <li><strong>導入メリット：</strong>「成功後の状態」。チームの連携・笑顔・前向きな雰囲気</li>
+                </ul>
+            </div>
+            <div>
+                <h3>制限時間：60分</h3>
+                <ul>
+                    <li>課題提起セクション：<strong>20分</strong></li>
+                    <li>機能紹介セクション：<strong>20分</strong></li>
+                    <li>導入メリットセクション：<strong>20分</strong></li>
+                </ul>
+                <div class="highlight-box">
+                    💡 <strong>コツ：</strong>FVで使った設計シートをベースに「被写体」と「雰囲気」だけ差し替える。スタイル・照明・構図は共通にすることでLP全体のテイストが揃いやすい
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: セクション画像のプロンプト設計ガイド（コピーボタン付き） -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">セクション画像のプロンプト設計ガイド：被写体と雰囲気を差し替える</h2>
+    <div class="content-block">
+        <p class="text-sub">以下のプロンプト例をコピーしてNano Banana Proに貼り付け、必要に応じて微調整してください</p>
+
+        <h3>課題提起セクション用</h3>
+        <div class="prompt-box">
+            <div class="prompt-content" id="prompt-nano-018-1">
+散乱した書類とExcelが映るPCの画面の前で、疲れた表情の30代男性人事担当者。デスクに書類が積まれている。やや俯瞰アングル、上半身。蛍光灯の白い照明。photorealistic, high quality。stressful, overwhelming, tired。ネガティブ：cartoon, illustration, bright mood, cluttered to the point of unreadable, blurry
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('prompt-nano-018-1', event)">
+                <i class="fas fa-copy"></i> コピー
+            </button>
+        </div>
+
+        <h3>機能紹介セクション用</h3>
+        <div class="prompt-box">
+            <div class="prompt-content" id="prompt-nano-018-2">
+30代女性リクルーターがタブレットのダッシュボード画面を操作している。画面の内容はぼかされている。アイレベル、上半身、斜め45度。窓辺の自然光。photorealistic, high quality。professional, focused, modern, clean。ネガティブ：cartoon, illustration, dark, cluttered, text on screen readable, blurry
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('prompt-nano-018-2', event)">
+                <i class="fas fa-copy"></i> コピー
+            </button>
+        </div>
+
+        <h3>導入メリットセクション用</h3>
+        <div class="prompt-box">
+            <div class="prompt-content" id="prompt-nano-018-3">
+30代の男女混合チーム3名がオフィスのモニターを囲んで画面を共有しながら打ち合わせている。全員が自然な笑顔。やや広角アングル、上半身から。窓辺の自然光。photorealistic, high quality。collaborative, positive, trustworthy, modern, clean。ネガティブ：cartoon, illustration, dark, overly posed, text on screen, blurry
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('prompt-nano-018-3', event)">
+                <i class="fas fa-copy"></i> コピー
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: 演習2の実行指示 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習2 スタート：各セクション用画像を生成・選定する</h2>
+    <div class="content-block">
+        <p>⏱️ <strong>制限時間：60分</strong>　ツール：Nano Banana Pro</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>各セクションの手順（各20分）</h3>
+                <ul class="no-bullet">
+                    <li><strong>① プロンプト例をコピー</strong>して必要に応じて微調整</li>
+                    <li><strong>② 生成して問題点を確認</strong>（1〜2回の試行で十分）</li>
+                    <li><strong>③ ベスト1枚を選定</strong>して保存</li>
+                </ul>
+                                <p>📌 セクション画像はFVほど厳密でなくてよいが、<br>「LPに載せて違和感がないか」は必ずチェック</p>
+            </div>
+            <div>
+                <h3>効率よく進めるコツ</h3>
+                <ul>
+                    <li>FVで使った設計シートをベースに「被写体」と「雰囲気」だけ変える</li>
+                    <li>「照明・スタイル・ネガティブ」は共通のまま使い回す</li>
+                    <li>時間が余ったら<strong>導入事例セクション用</strong>にも挑戦する<br><span class="text-note">（導入企業の人事担当者イメージ：FVと同じ設定でOK）</span></li>
+                </ul>
+                <div class="highlight-box">
+                    💡 <strong>目標：</strong>演習終了時点で5枚の画像素材が揃っている状態。この素材が019とBlock 5の起点になる
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: 演習3・品質判断の総合ワーク -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">演習3：全画像を並べて「LP全体の統一感」を確認する</h2>
+    <div class="content-block">
+        <p>📋 <strong>課題：</strong>演習1・2で生成した全画像（5〜7枚）を並べて表示し、LP全体としての統一感を自己評価する</p>
+        <div class="two-column tiled">
+            <div>
+                <h3>チェック項目（4点）</h3>
+                <ul class="no-bullet">
+                    <li><strong>① 色温度が揃っているか</strong><br><span class="text-note">寒色・暖色が混在していないか</span></li>
+                    <li><strong>② 照明の方向性が統一されているか</strong><br><span class="text-note">左から光・右から光がバラバラになっていないか</span></li>
+                    <li><strong>③ 人物のテイストが揃っているか</strong><br><span class="text-note">年齢層・服装・表情の雰囲気が一貫しているか</span></li>
+                    <li><strong>④ スタイルが統一されているか</strong><br><span class="text-note">写真調・イラスト調が混在していないか</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3>この演習の目的</h3>
+                <p class="text-sub">「1枚ずつは良いのに、並べるとバラバラに見える」という経験を意図的にさせる</p>
+                <div class="highlight-box">
+                    🔑 <strong>気づきのポイント：</strong><br>
+                    各画像のプロンプトは「良い設計」だった。でも<strong>画像間の統一設計</strong>がなかった。これが019（トンマナ統一・シード値管理）で解決する問題
+                </div>
+                <p class="text-note">「バラバラ感」を自覚した時点がスタートライン。次回019でシード値とスタイルリファレンスを使い、「ブランドとして統一された画像セット」を完成させる</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド12: 本日の成果物確認 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">本日の成果物確認：手元に何が揃っているか</h2>
+    <div class="content-block">
+        <h3>この時点で手元に揃っているべきもの</h3>
+        <div class="two-column tiled">
+            <div>
+                <h3>生成済み画像（選定済み）</h3>
+                <ul>
+                    <li>✅ <strong>FVメインビジュアル</strong>　1枚</li>
+                    <li>✅ <strong>課題提起セクション用</strong>　1枚</li>
+                    <li>✅ <strong>機能紹介セクション用</strong>　1〜2枚</li>
+                    <li>✅ <strong>導入メリットセクション用</strong>　1枚</li>
+                    <li>（余力があれば）<strong>導入事例用</strong>　1枚</li>
+                </ul>
+            </div>
+            <div>
+                <h3>記録・知見</h3>
+                <ul>
+                    <li>✅ <strong>各画像の5要素テンプレート</strong>（プロンプト記録）<br><span class="text-note">→ Block 5のLP制作で再利用</span></li>
+                    <li>✅ <strong>「並べるとバラバラ感がある」という自覚</strong><br><span class="text-note">→ 019（トンマナ統一）への明確な動機</span></li>
+                </ul>
+                                <p>🎯 <strong>習得したこと：</strong><br>
+                    5要素で設計する → 生成 → BtoBの基準で評価 → 微調整して再生成<br>
+                    この「設計→生成→評価のサイクル」が画像制作の基本ワークフロー</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド13: 次回予告 -->
+<div class="slide-container standard-content-layout">
+    <h2 class="slide-title">次回予告：パーツは揃った。次は全体を揃えます</h2>
+    <div class="content-block">
+        <h3>📅 次回：019「トンマナの統一とシード値管理」</h3>
+        <div class="two-column tiled">
+            <div>
+                <h3>今日体験したこと（問題）</h3>
+                <ul>
+                    <li>「1枚ずつは良いが、並べると揃っていない」</li>
+                    <li>色温度・照明・人物テイストが画像ごとにブレている</li>
+                    <li>FVだけ出来が良くて他がバラバラ、という状態</li>
+                </ul>
+            </div>
+            <div>
+                <h3>019で解決すること</h3>
+                <ul>
+                    <li><strong>シード値管理</strong>：同じ「乱数の種」を使って、テイストを固定する</li>
+                    <li><strong>スタイルリファレンス</strong>：参照画像を使って統一感を維持する</li>
+                    <li>結果：<strong>ブランド全体として統一された画像セット</strong>の完成</li>
+                </ul>
+                <p class="text-sub">🎯 パーツは揃った。次は<strong>全体を揃えます</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+         <!-- クイズセクション -->
+        <div class="slide-container section-title-layout">
+            <h2>理解度チェック<br>Quiz</h2>
+            <p>5問のクイズで今日の内容を確認しましょう</p>
+        </div>
+    </div>
+    
+    
+    <script>
+        const questions = [
+    {
+        question: "AI生成画像で「手・指の破綻」を回避するための最も確実な方法はどれですか？",
+        choices: [
+            "ネガティブプロンプトに「no hands」と入力する",
+            "解像度を最大設定にして生成する",
+            "構図で手を見せない設計にする（上半身クロップ・腕組み・PC操作で隠れる角度）",
+            "複数回生成して破綻していない画像を選ぶ"
+        ],
+        correct: 2,
+        explanation: "「手・指の破綻」はAI画像生成の最頻出エラーです。最も確実な回避方法は「構図で手を見せない設計にする」こと。上半身クロップ・腕組み・PC操作で手が隠れる角度を指定することで、そもそも手が映らないようにします。ネガティブプロンプトの「no hands」は補助的には有効ですが、それだけでは不確実です。"
+    },
+    {
+        question: "FV用とセクション用の画像プロンプトで、最も差し替えが必要な5要素はどれですか？",
+        choices: [
+            "照明とスタイル",
+            "被写体と雰囲気",
+            "構図とネガティブプロンプト",
+            "スタイルと構図"
+        ],
+        correct: 1,
+        explanation: "セクション画像を効率よく生成するコツは「FVの設計シートをベースに、被写体と雰囲気だけ差し替えること」です。課題提起セクションなら被写体を「書類に埋もれる人事担当者」に、雰囲気を「stressful, overwhelming」に変える。スタイル・照明・ネガティブプロンプトはLP全体で共通にすることでテイストが揃いやすくなります。"
+    },
+    {
+        question: "生成した画像の品質判断で最も重要な基準はどれですか？",
+        choices: [
+            "生成にかかった時間が10秒以内かどうか",
+            "プロンプトが100文字以上書けているかどうか",
+            "「LPに載せたとき、初めて見た人が違和感を覚えないか」",
+            "5要素がすべて埋まっているかどうか"
+        ],
+        correct: 2,
+        explanation: "品質判断の最終基準は「この画像をLPに載せたとき、初めて見た人が違和感を覚えないか」です。5要素がすべて埋まっていても、プロンプトが長くても、結果の画像がLPで使えなければ意味がありません。「違和感ゼロが合格ライン」という実務的な基準で判断します。"
+    },
+    {
+        question: "全画像を並べたとき「バラバラ感」が出る主な原因として最も正しいものはどれですか？",
+        choices: [
+            "各画像のファイルサイズが違うから",
+            "色温度・照明方向・人物テイスト・スタイルが画像ごとに揃っていないから",
+            "使用したプロンプトの文字数が統一されていないから",
+            "生成に使ったツールが同じだから"
+        ],
+        correct: 1,
+        explanation: "LP全体を並べたときのバラバラ感は「色温度（寒色・暖色の混在）・照明方向（左から/右からがバラバラ）・人物テイスト（年齢層・服装・表情のブレ）・スタイル（写真調とイラスト調の混在）」が統一されていないことが原因です。1枚ずつのプロンプト設計が良くても、画像間の統一設計がなければブランドとして成立しません。"
+    },
+    {
+        question: "演習3で「バラバラ感」を自覚したあと、次回019で使う解決手段はどれですか？",
+        choices: [
+            "すべての画像を同じプロンプトで再生成する",
+            "Figmaのオートレイアウトで画像サイズを統一する",
+            "シード値管理とスタイルリファレンスを使い、ブランド全体のトンマナを統一する",
+            "画像をモノクロに変換してカラーの違いを消す"
+        ],
+        correct: 2,
+        explanation: "「1枚ずつは良いが並べると揃わない」という問題は、019「トンマナの統一とシード値管理」で解決します。シード値管理（同じ乱数の種でテイストを固定）とスタイルリファレンス（参照画像でテイストを統一）を使うことで、「ブランド全体として統一された画像セット」を完成させます。今日の演習で「バラバラ感」を体験したことが、019の動機づけになります。"
+    }
+];
+    </script>
+    
+    <script src="../assets/slide-template.js"></script>
+</body>
+</html>
