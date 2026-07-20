@@ -1,396 +1,398 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トンマナの統一とシード値管理【理論編】</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/slide-template.css">
-</head>
-<body>
-    <div id="presentation-wrapper">
-        <!-- スライド1: 表紙 -->
-<div class="slide-container full-bg-image active">
-    <div class="content-overlay">
-        <h1>トンマナの統一と<br>シード値管理<span>【理論編】</span></h1>
-        <p>1枚ずつは良い。でも並べると揃わない——を解決する</p>
-    </div>
-</div>
-
-<!-- スライド2: 問題の再確認 -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">「1枚ずつは良い。並べるとバラバラ」——その原因を解明する</h2>
-    <div class="content-block">
-                <p>📌 <strong>018実践編で体験したこと：</strong>TALENTBOARDのLP用画像を5要素で設計・生成した。1枚ずつ見れば品質はOK。しかしFVとサブビジュアルを並べると……揃っていない</p>
-        <div class="two-column tiled">
-            <div>
-                <h3>何がバラバラなのか</h3>
-                <ul>
-                    <li><strong>色温度がずれている</strong>：1枚目は暖色寄り、2枚目は寒色寄り</li>
-                    <li><strong>照明の方向が違う</strong>：左からの光と右からの光、自然光とスタジオ光</li>
-                    <li><strong>人物のテイストが異なる</strong>：年齢層・表情・服装のトーンにズレ</li>
-                    <li><strong>全体の雰囲気がちぐはぐ</strong>：「この3枚、同じブランド？」と感じさせてしまう</li>
-                </ul>
-            </div>
-            <div>
-                <h3>なぜバラバラになるのか</h3>
-                <p class="text-sub">AIは毎回「白紙」から画像を生成する</p>
-                <ul>
-                    <li>プロンプトに<strong>書いた要素は制御できる</strong></li>
-                    <li>書かなかった無数の要素は<strong>AIがランダムに決める</strong></li>
-                    <li>「揃える」という指示を明示しない限り、<strong>揃わない</strong>のが前提</li>
-                </ul>
-                <p class="text-sub">🎯 <strong>今日のゴール：</strong>「複数の画像を意図的に統一する」技術を習得する。シード値・スタイルリファレンス・ビジュアルガイドラインの3つが武器になる</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- スライド3: 統一感の4軸分解（核） -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">「統一感がある」を分解する：4つの視覚軸</h2>
-    <div class="content-block svg-centered">
-        <svg viewBox="0 0 900 402" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="warmCoolGrad19" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#ff8c42"/>
-                    <stop offset="100%" stop-color="#4da6ff"/>
-                </linearGradient>
-                <linearGradient id="brightnessGrad19" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#2a2a3a"/>
-                    <stop offset="50%" stop-color="#888888"/>
-                    <stop offset="100%" stop-color="#ffffff"/>
-                </linearGradient>
-            </defs>
-
-            <!-- ① 色温度 -->
-            <rect x="15" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
-            <rect x="15" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
-            <circle cx="115" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="115" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">①</text>
-            <text x="115" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">色温度</text>
-            <text x="115" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Color Temperature</text>
-            <rect x="35" y="134" width="160" height="13" rx="5" fill="url(#warmCoolGrad19)" opacity="0.85"/>
-            <text x="35" y="165" fill="white" font-size="11" opacity="0.7">暖色</text>
-            <text x="179" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">寒色</text>
-            <text x="115" y="200" text-anchor="middle" fill="white" font-size="13">暖かみ ↔ 知的・信頼感</text>
-            <text x="115" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">方向性を全枚数で統一</text>
-            <rect x="30" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
-            <text x="115" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
-            <text x="115" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">寒色系（知的・信頼）で</text>
-            <text x="115" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数を統一</text>
-
-            <!-- ② 明度・彩度 -->
-            <rect x="232" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
-            <rect x="232" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
-            <circle cx="332" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="332" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">②</text>
-            <text x="332" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">明度・彩度</text>
-            <text x="332" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Brightness / Saturation</text>
-            <rect x="252" y="134" width="160" height="13" rx="5" fill="url(#brightnessGrad19)" opacity="0.85"/>
-            <text x="252" y="165" fill="white" font-size="11" opacity="0.7">暗い</text>
-            <text x="396" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">明るい</text>
-            <text x="332" y="200" text-anchor="middle" fill="white" font-size="13">明るさと彩度の</text>
-            <text x="332" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">レンジをそろえる</text>
-            <rect x="247" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
-            <text x="332" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">BtoBの基本</text>
-            <text x="332" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">明るめ・低彩度で</text>
-            <text x="332" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">清潔感を統一</text>
-
-            <!-- ③ 人物テイスト -->
-            <rect x="449" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
-            <rect x="449" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
-            <circle cx="549" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="549" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">③</text>
-            <text x="549" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">人物テイスト</text>
-            <text x="549" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Person Style</text>
-            <circle cx="549" cy="158" r="16" fill="none" stroke="white" stroke-width="2" opacity="0.45"/>
-            <path d="M524 194 Q549 178 574 194" stroke="white" stroke-width="2" fill="none" opacity="0.45"/>
-            <text x="549" y="228" text-anchor="middle" fill="white" font-size="13">年齢層・服装・</text>
-            <text x="549" y="248" text-anchor="middle" fill="white" font-size="13">表情のトーン</text>
-            <rect x="464" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
-            <text x="549" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
-            <text x="549" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">30代・ビジネスカジュアル</text>
-            <text x="549" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">自然な表情で統一</text>
-
-            <!-- ④ スタイル -->
-            <rect x="666" y="10" width="219" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
-            <rect x="666" y="10" width="219" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
-            <circle cx="775" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="775" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">④</text>
-            <text x="775" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">スタイル</text>
-            <text x="775" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Style / Medium</text>
-            <rect x="683" y="134" width="88" height="55" rx="5" fill="white" opacity="0.12" stroke="white" stroke-width="1.5"/>
-            <text x="727" y="162" text-anchor="middle" fill="white" font-size="12" opacity="0.9">写真調</text>
-            <text x="727" y="178" text-anchor="middle" fill="white" font-size="11" opacity="0.7">photorealistic</text>
-            <rect x="784" y="134" width="88" height="55" rx="5" fill="white" opacity="0.05" stroke="white" stroke-width="1" stroke-dasharray="4,3"/>
-            <text x="828" y="162" text-anchor="middle" fill="white" font-size="12" opacity="0.45">イラスト調</text>
-            <text x="828" y="178" text-anchor="middle" fill="white" font-size="11" opacity="0.35">illustration</text>
-            <text x="775" y="228" text-anchor="middle" fill="white" font-size="13">表現手法（媒体）の</text>
-            <text x="775" y="248" text-anchor="middle" fill="white" font-size="13">テイストを統一</text>
-            <rect x="681" y="292" width="188" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
-            <text x="775" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
-            <text x="775" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数 photorealistic</text>
-            <text x="775" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">で固定</text>
-        </svg>
-        <p class="text-note">※ Block 2（010）でトンマナを言語化した。019ではその言語化を4軸の「視覚ルール」に変換する——言葉から設計へ</p>
-    </div>
-</div>
-
-<!-- スライド4: シード値とは何か（核） -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">シード値：AIの生成を「同じ出発点」から始める仕組み</h2>
-    <div class="content-block svg-centered">
-        <svg viewBox="0 0 900 358" xmlns="http://www.w3.org/2000/svg">
-            <!-- Header -->
-            <rect x="20" y="8" width="860" height="52" rx="8" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
-            <text x="450" y="30" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">シード値（Seed）= AIが画像を生成するときの「乱数の出発点」</text>
-            <text x="450" y="50" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じプロンプトでもシード値が違えば別の画像。固定すれば「同じ感性」のAIが毎回生成する</text>
-
-            <!-- Left: シード値なし -->
-            <text x="190" y="88" text-anchor="middle" fill="white" font-size="15" font-weight="bold">シード値なし</text>
-            <text x="190" y="106" text-anchor="middle" fill="white" font-size="12" opacity="0.6">毎回ランダムな出発点</text>
-
-            <!-- Box 1: warm -->
-            <rect x="15" y="116" width="108" height="78" rx="7" fill="#ff8c42" opacity="0.18" stroke="#ff8c42" stroke-width="1.5"/>
-            <circle cx="55" cy="142" r="13" fill="#ff8c42" opacity="0.4"/>
-            <path d="M36 185 Q55 171 74 185" stroke="#ff8c42" stroke-width="1.5" fill="none" opacity="0.4"/>
-            <text x="82" y="136" fill="white" font-size="11" opacity="0.7">暖色系</text>
-            <text x="82" y="152" fill="white" font-size="10" opacity="0.55">カジュアル</text>
-
-            <!-- Box 2: green -->
-            <rect x="136" y="116" width="108" height="78" rx="7" fill="#88cc88" opacity="0.16" stroke="#88cc88" stroke-width="1.5"/>
-            <circle cx="176" cy="142" r="13" fill="#88cc88" opacity="0.4"/>
-            <path d="M157 185 Q176 171 195 185" stroke="#88cc88" stroke-width="1.5" fill="none" opacity="0.4"/>
-            <text x="203" y="136" fill="white" font-size="11" opacity="0.7">緑系</text>
-            <text x="203" y="152" fill="white" font-size="10" opacity="0.55">ナチュラル</text>
-
-            <!-- Box 3: purple -->
-            <rect x="257" y="116" width="108" height="78" rx="7" fill="#cc88ff" opacity="0.15" stroke="#cc88ff" stroke-width="1.5"/>
-            <circle cx="297" cy="142" r="13" fill="#cc88ff" opacity="0.4"/>
-            <path d="M278 185 Q297 171 316 185" stroke="#cc88ff" stroke-width="1.5" fill="none" opacity="0.4"/>
-            <text x="324" y="136" fill="white" font-size="11" opacity="0.7">紫系</text>
-            <text x="324" y="152" fill="white" font-size="10" opacity="0.55">個性的</text>
-
-            <!-- Left result -->
-            <text x="190" y="222" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">× バラバラ</text>
-            <text x="190" y="242" text-anchor="middle" fill="white" font-size="12" opacity="0.65">色味・テイストが統一されない</text>
-
-            <!-- Center arrow -->
-            <rect x="398" y="90" width="104" height="45" rx="7" fill="#00d4ff" opacity="0.15"/>
-            <text x="450" y="111" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">シード値</text>
-            <text x="450" y="128" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">を固定</text>
-            <line x1="400" y1="155" x2="497" y2="155" stroke="#00d4ff" stroke-width="2.5"/>
-            <polygon points="497,148 512,155 497,162" fill="#00d4ff"/>
-
-            <!-- Right: シード値あり -->
-            <text x="700" y="88" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">シード値あり</text>
-            <text x="700" y="106" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じ出発点から生成</text>
-
-            <!-- Box A: cool -->
-            <rect x="524" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
-            <circle cx="564" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
-            <path d="M545 185 Q564 171 583 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <text x="592" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
-            <text x="592" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
-
-            <!-- Box B: cool -->
-            <rect x="645" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
-            <circle cx="685" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
-            <path d="M666 185 Q685 171 704 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <text x="713" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
-            <text x="713" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
-
-            <!-- Box C: cool -->
-            <rect x="766" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
-            <circle cx="806" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
-            <path d="M787 185 Q806 171 825 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <text x="834" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
-            <text x="834" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
-
-            <!-- Right result -->
-            <text x="700" y="222" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">✓ 統一感</text>
-            <text x="700" y="242" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じ感性のAIが一貫した雰囲気で生成</text>
-
-            <!-- Divider -->
-            <line x1="20" y1="265" x2="880" y2="265" stroke="white" stroke-width="0.5" opacity="0.2"/>
-
-            <!-- Bottom text -->
-            <text x="450" y="290" text-anchor="middle" fill="white" font-size="13" opacity="0.9">実務での使い方：①気に入った画像のシード値を記録　②被写体・構図を変えて同じシード値で再生成</text>
-            <text x="450" y="312" text-anchor="middle" fill="#00d4ff" font-size="13" opacity="0.9">→ 色味・雰囲気が維持されたまま、バリエーション展開ができる</text>
-            <text x="450" y="340" text-anchor="middle" fill="white" font-size="12" opacity="0.55">※ Nano Banana Proでは生成後の画像情報からシード値を確認・コピーして次の生成に再利用できる</text>
-        </svg>
-    </div>
-</div>
-
-<!-- スライド5: スタイルリファレンスの活用 -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">スタイルリファレンス：「お手本」を渡して雰囲気を揃える</h2>
-    <div class="content-block">
-                <p>📌 スタイルリファレンス＝参考画像をAIに渡して「この雰囲気に揃えて生成して」と指示する手法。シード値が「同じ生成エンジン設定の固定」なら、スタイルリファレンスは「お手本の提示」</p>
-        <div class="two-column tiled">
-            <div>
-                <h3>シード値との使い分け</h3>
-                <ul>
-                    <li><strong>シード値を使う場面</strong>：自分が生成した画像の雰囲気を維持したいとき。「あの1枚の感じのまま、被写体だけ変えたい」</li>
-                    <li><strong>スタイルリファレンスを使う場面</strong>：外部の参考画像（競合LP・ストック写真）に寄せたいとき。「この企業サイトのトーンに近づけたい」</li>
-                </ul>
-                <div class="highlight-box">
-                    🔑 <strong>最強の組み合わせ：</strong>両方を同時に使う。シード値で出発点を固定しつつ、スタイルリファレンスでお手本の方向に引き寄せる
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>トンマナの統一とシード値管理【理論編】</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="../assets/slide-template.css">
+    </head>
+    <body>
+        <div id="presentation-wrapper">
+            <!-- スライド1: 表紙 -->
+            <div class="slide-container full-bg-image active">
+                <div class="content-overlay">
+                    <h1>トンマナの統一と<br>シード値管理<br><span class="title-edition-label">【理論編】</span>
+                    </h1>
+                    <p>1枚ずつは良い。でも並べると揃わない——を解決する</p>
                 </div>
             </div>
-            <div>
-                <h3>TALENTBOARDでの活用例</h3>
-                <p class="text-sub">実践編で行うワークフロー：</p>
-                <ul>
-                    <li><strong>Step 1</strong>：018実践で生成した「最良の1枚」のシード値を記録</li>
-                    <li><strong>Step 2</strong>：TALENTBOARDのブランドに近い参考画像をスタイルリファレンスに指定</li>
-                    <li><strong>Step 3</strong>：FV・サブビジュアル・バナーの複数種を同一シード値で生成</li>
-                    <li><strong>Step 4</strong>：4軸（色温度・明度彩度・人物テイスト・スタイル）で揃っているか評価</li>
-                </ul>
-                <p class="text-note">※ Nano Banana Proではリファレンス画像をURLまたは添付ファイルで指定可能</p>
+            <!-- スライド2: 問題の再確認 -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">「1枚ずつは良い。並べるとバラバラ」——その原因を解明する</h2>
+                <div class="content-block">
+                    <p>📌 <strong>018実践編で体験したこと：</strong>TALENTBOARDのLP用画像を5要素で設計・生成した。1枚ずつ見れば品質はOK。しかしFVとサブビジュアルを並べると……揃っていない</p>
+                    <div class="two-column tiled">
+                        <div>
+                            <h3>何がバラバラなのか</h3>
+                            <ul>
+                                <li>
+                                    <strong>色温度がずれている</strong>：1枚目は暖色寄り、2枚目は寒色寄り</li>
+                                <li>
+                                    <strong>照明の方向が違う</strong>：左からの光と右からの光、自然光とスタジオ光</li>
+                                <li>
+                                    <strong>人物のテイストが異なる</strong>：年齢層・表情・服装のトーンにズレ</li>
+                                <li>
+                                    <strong>全体の雰囲気がちぐはぐ</strong>：「この3枚、同じブランド？」と感じさせてしまう</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>なぜバラバラになるのか</h3>
+                            <p class="text-sub">AIは毎回「白紙」から画像を生成する</p>
+                            <ul>
+                                <li>プロンプトに<strong>書いた要素は制御できる</strong>
+                                </li>
+                                <li>書かなかった無数の要素は<strong>AIがランダムに決める</strong>
+                                </li>
+                                <li>「揃える」という指示を明示しない限り、<strong>揃わない</strong>のが前提</li>
+                            </ul>
+                            <p class="text-sub">🎯 <strong>今日のゴール：</strong>「複数の画像を意図的に統一する」技術を習得する。シード値・スタイルリファレンス・ビジュアルガイドラインの3つが武器になる</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド3: 統一感の4軸分解（核） -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">「統一感がある」を分解する：4つの視覚軸</h2>
+                <div class="content-block svg-centered">
+                    <svg viewBox="0 0 900 402" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="warmCoolGrad19" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#ff8c42"/>
+                            <stop offset="100%" stop-color="#4da6ff"/>
+                            </linearGradient>
+                            <linearGradient id="brightnessGrad19" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#2a2a3a"/>
+                            <stop offset="50%" stop-color="#888888"/>
+                            <stop offset="100%" stop-color="#ffffff"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- ① 色温度 -->
+                        <rect x="15" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+                        <rect x="15" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="115" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                        <text x="115" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">①</text>
+                        <text x="115" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">色温度</text>
+                        <text x="115" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Color Temperature</text>
+                        <rect x="35" y="134" width="160" height="13" rx="5" fill="url(#warmCoolGrad19)" opacity="0.85"/>
+                        <text x="35" y="165" fill="white" font-size="11" opacity="0.7">暖色</text>
+                        <text x="179" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">寒色</text>
+                        <text x="115" y="200" text-anchor="middle" fill="white" font-size="13">暖かみ ↔ 知的・信頼感</text>
+                        <text x="115" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">方向性を全枚数で統一</text>
+                        <rect x="30" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+                        <text x="115" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
+                        <text x="115" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">寒色系（知的・信頼）で</text>
+                        <text x="115" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数を統一</text>
+                        <!-- ② 明度・彩度 -->
+                        <rect x="232" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+                        <rect x="232" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="332" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                        <text x="332" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">②</text>
+                        <text x="332" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">明度・彩度</text>
+                        <text x="332" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Brightness / Saturation</text>
+                        <rect x="252" y="134" width="160" height="13" rx="5" fill="url(#brightnessGrad19)" opacity="0.85"/>
+                        <text x="252" y="165" fill="white" font-size="11" opacity="0.7">暗い</text>
+                        <text x="396" y="165" fill="white" font-size="11" opacity="0.7" text-anchor="end">明るい</text>
+                        <text x="332" y="200" text-anchor="middle" fill="white" font-size="13">明るさと彩度の</text>
+                        <text x="332" y="220" text-anchor="middle" fill="white" font-size="12" opacity="0.8">レンジをそろえる</text>
+                        <rect x="247" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+                        <text x="332" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">BtoBの基本</text>
+                        <text x="332" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">明るめ・低彩度で</text>
+                        <text x="332" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">清潔感を統一</text>
+                        <!-- ③ 人物テイスト -->
+                        <rect x="449" y="10" width="200" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+                        <rect x="449" y="10" width="200" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="549" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                        <text x="549" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">③</text>
+                        <text x="549" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">人物テイスト</text>
+                        <text x="549" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Person Style</text>
+                        <circle cx="549" cy="158" r="16" fill="none" stroke="white" stroke-width="2" opacity="0.45"/>
+                        <path d="M524 194 Q549 178 574 194" stroke="white" stroke-width="2" fill="none" opacity="0.45"/>
+                        <text x="549" y="228" text-anchor="middle" fill="white" font-size="13">年齢層・服装・</text>
+                        <text x="549" y="248" text-anchor="middle" fill="white" font-size="13">表情のトーン</text>
+                        <rect x="464" y="292" width="170" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+                        <text x="549" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
+                        <text x="549" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">30代・ビジネスカジュアル</text>
+                        <text x="549" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">自然な表情で統一</text>
+                        <!-- ④ スタイル -->
+                        <rect x="666" y="10" width="219" height="380" rx="10" fill="white" opacity="0.05" stroke="#00d4ff" stroke-width="1.5"/>
+                        <rect x="666" y="10" width="219" height="7" rx="4" fill="#00d4ff" opacity="0.7"/>
+                        <circle cx="775" cy="52" r="20" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1.5"/>
+                        <text x="775" y="59" text-anchor="middle" fill="white" font-size="18" font-weight="bold">④</text>
+                        <text x="775" y="94" text-anchor="middle" fill="#00d4ff" font-size="17" font-weight="bold">スタイル</text>
+                        <text x="775" y="114" text-anchor="middle" fill="white" font-size="12" opacity="0.7">Style / Medium</text>
+                        <rect x="683" y="134" width="88" height="55" rx="5" fill="white" opacity="0.12" stroke="white" stroke-width="1.5"/>
+                        <text x="727" y="162" text-anchor="middle" fill="white" font-size="12" opacity="0.9">写真調</text>
+                        <text x="727" y="178" text-anchor="middle" fill="white" font-size="11" opacity="0.7">photorealistic</text>
+                        <rect x="784" y="134" width="88" height="55" rx="5" fill="white" opacity="0.05" stroke="white" stroke-width="1" stroke-dasharray="4,3"/>
+                        <text x="828" y="162" text-anchor="middle" fill="white" font-size="12" opacity="0.45">イラスト調</text>
+                        <text x="828" y="178" text-anchor="middle" fill="white" font-size="11" opacity="0.35">illustration</text>
+                        <text x="775" y="228" text-anchor="middle" fill="white" font-size="13">表現手法（媒体）の</text>
+                        <text x="775" y="248" text-anchor="middle" fill="white" font-size="13">テイストを統一</text>
+                        <rect x="681" y="292" width="188" height="80" rx="6" fill="#00d4ff" opacity="0.1"/>
+                        <text x="775" y="316" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">TALENTBOARD方針</text>
+                        <text x="775" y="336" text-anchor="middle" fill="white" font-size="12" opacity="0.9">全枚数 photorealistic</text>
+                        <text x="775" y="356" text-anchor="middle" fill="white" font-size="12" opacity="0.9">で固定</text>
+                    </svg>
+                    <p class="text-note">※ Block 2（010）でトンマナを言語化した。019ではその言語化を4軸の「視覚ルール」に変換する——言葉から設計へ</p>
+                </div>
+            </div>
+            <!-- スライド4: シード値とは何か（核） -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">シード値：AIの生成を「同じ出発点」から始める仕組み</h2>
+                <div class="content-block svg-centered">
+                    <svg viewBox="0 0 900 358" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Header -->
+                        <rect x="20" y="8" width="860" height="52" rx="8" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+                        <text x="450" y="30" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">シード値（Seed）= AIが画像を生成するときの「乱数の出発点」</text>
+                        <text x="450" y="50" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じプロンプトでもシード値が違えば別の画像。固定すれば「同じ感性」のAIが毎回生成する</text>
+                        <!-- Left: シード値なし -->
+                        <text x="190" y="88" text-anchor="middle" fill="white" font-size="15" font-weight="bold">シード値なし</text>
+                        <text x="190" y="106" text-anchor="middle" fill="white" font-size="12" opacity="0.6">毎回ランダムな出発点</text>
+                        <!-- Box 1: warm -->
+                        <rect x="15" y="116" width="108" height="78" rx="7" fill="#ff8c42" opacity="0.18" stroke="#ff8c42" stroke-width="1.5"/>
+                        <circle cx="55" cy="142" r="13" fill="#ff8c42" opacity="0.4"/>
+                        <path d="M36 185 Q55 171 74 185" stroke="#ff8c42" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <text x="82" y="136" fill="white" font-size="11" opacity="0.7">暖色系</text>
+                        <text x="82" y="152" fill="white" font-size="10" opacity="0.55">カジュアル</text>
+                        <!-- Box 2: green -->
+                        <rect x="136" y="116" width="108" height="78" rx="7" fill="#88cc88" opacity="0.16" stroke="#88cc88" stroke-width="1.5"/>
+                        <circle cx="176" cy="142" r="13" fill="#88cc88" opacity="0.4"/>
+                        <path d="M157 185 Q176 171 195 185" stroke="#88cc88" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <text x="203" y="136" fill="white" font-size="11" opacity="0.7">緑系</text>
+                        <text x="203" y="152" fill="white" font-size="10" opacity="0.55">ナチュラル</text>
+                        <!-- Box 3: purple -->
+                        <rect x="257" y="116" width="108" height="78" rx="7" fill="#cc88ff" opacity="0.15" stroke="#cc88ff" stroke-width="1.5"/>
+                        <circle cx="297" cy="142" r="13" fill="#cc88ff" opacity="0.4"/>
+                        <path d="M278 185 Q297 171 316 185" stroke="#cc88ff" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <text x="324" y="136" fill="white" font-size="11" opacity="0.7">紫系</text>
+                        <text x="324" y="152" fill="white" font-size="10" opacity="0.55">個性的</text>
+                        <!-- Left result -->
+                        <text x="190" y="222" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="bold">× バラバラ</text>
+                        <text x="190" y="242" text-anchor="middle" fill="white" font-size="12" opacity="0.65">色味・テイストが統一されない</text>
+                        <!-- Center arrow -->
+                        <text x="450" y="111" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">シード値</text>
+                        <text x="450" y="128" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">を固定</text>
+                        <line x1="400" y1="155" x2="497" y2="155" stroke="#00d4ff" stroke-width="2.5"/>
+                        <polygon points="497,148 512,155 497,162" fill="#00d4ff"/>
+                        <!-- Right: シード値あり -->
+                        <text x="700" y="88" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold">シード値あり</text>
+                        <text x="700" y="106" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じ出発点から生成</text>
+                        <!-- Box A: cool -->
+                        <rect x="524" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="564" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
+                        <path d="M545 185 Q564 171 583 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <text x="592" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
+                        <text x="592" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
+                        <!-- Box B: cool -->
+                        <rect x="645" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="685" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
+                        <path d="M666 185 Q685 171 704 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <text x="713" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
+                        <text x="713" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
+                        <!-- Box C: cool -->
+                        <rect x="766" y="116" width="108" height="78" rx="7" fill="#4da6ff" opacity="0.22" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="806" cy="142" r="13" fill="#00d4ff" opacity="0.5"/>
+                        <path d="M787 185 Q806 171 825 185" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
+                        <text x="834" y="136" fill="white" font-size="11" opacity="0.9">寒色系</text>
+                        <text x="834" y="152" fill="white" font-size="10" opacity="0.8">統一感</text>
+                        <!-- Right result -->
+                        <text x="700" y="222" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold">✓ 統一感</text>
+                        <text x="700" y="242" text-anchor="middle" fill="white" font-size="12" opacity="0.8">同じ感性のAIが一貫した雰囲気で生成</text>
+                        <!-- Divider -->
+                        <line x1="20" y1="265" x2="880" y2="265" stroke="white" stroke-width="0.5" opacity="0.2"/>
+                        <!-- Bottom text -->
+                        <text x="450" y="290" text-anchor="middle" fill="white" font-size="13" opacity="0.9">実務での使い方：①気に入った画像のシード値を記録　②被写体・構図を変えて同じシード値で再生成</text>
+                        <text x="450" y="312" text-anchor="middle" fill="#00d4ff" font-size="13" opacity="0.9">→ 色味・雰囲気が維持されたまま、バリエーション展開ができる</text>
+                        <text x="450" y="340" text-anchor="middle" fill="white" font-size="12" opacity="0.55">※ Nano Banana Proでは生成後の画像情報からシード値を確認・コピーして次の生成に再利用できる</text>
+                    </svg>
+                </div>
+            </div>
+            <!-- スライド5: スタイルリファレンスの活用 -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">スタイルリファレンス：「お手本」を渡して雰囲気を揃える</h2>
+                <div class="content-block">
+                    <p>📌 スタイルリファレンス＝参考画像をAIに渡して「この雰囲気に揃えて生成して」と指示する手法。シード値が「同じ生成エンジン設定の固定」なら、スタイルリファレンスは「お手本の提示」</p>
+                    <div class="two-column tiled">
+                        <div>
+                            <h3>シード値との使い分け</h3>
+                            <ul>
+                                <li>
+                                    <strong>シード値を使う場面</strong>：自分が生成した画像の雰囲気を維持したいとき。「あの1枚の感じのまま、被写体だけ変えたい」</li>
+                                <li>
+                                    <strong>スタイルリファレンスを使う場面</strong>：外部の参考画像（競合LP・ストック写真）に寄せたいとき。「この企業サイトのトーンに近づけたい」</li>
+                            </ul>
+                            <div class="highlight-box">
+                                🔑 <strong>最強の組み合わせ：</strong>両方を同時に使う。シード値で出発点を固定しつつ、スタイルリファレンスでお手本の方向に引き寄せる
+                            </div>
+                        </div>
+                        <div>
+                            <h3>TALENTBOARDでの活用例</h3>
+                            <p class="text-sub">実践編で行うワークフロー：</p>
+                            <ul>
+                                <li>
+                                    <strong>Step 1</strong>：018実践で生成した「最良の1枚」のシード値を記録</li>
+                                <li>
+                                    <strong>Step 2</strong>：TALENTBOARDのブランドに近い参考画像をスタイルリファレンスに指定</li>
+                                <li>
+                                    <strong>Step 3</strong>：FV・サブビジュアル・バナーの複数種を同一シード値で生成</li>
+                                <li>
+                                    <strong>Step 4</strong>：4軸（色温度・明度彩度・人物テイスト・スタイル）で揃っているか評価</li>
+                            </ul>
+                            <p class="text-note">※ Nano Banana Proではリファレンス画像をURLまたは添付ファイルで指定可能</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド6: ビジュアルガイドラインとは -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">ビジュアルガイドライン：統一ルールを「文書」にする</h2>
+                <div class="content-block">
+                    <p>📋 4つの視覚軸 ＋ シード値 ＋ スタイルリファレンスを「ルール文書」にまとめたものがビジュアルガイドライン。実務ではデザイナーが作り、制作チーム全員が参照する</p>
+                    <div class="two-column tiled">
+                        <div>
+                            <h3>なぜ文書化するのか</h3>
+                            <ul>
+                                <li>頭の中の「この感じ」は<strong>共有できない</strong>
+                                </li>
+                                <li>文書があれば<strong>誰が生成しても同じ水準</strong>に保てる</li>
+                                <li>修正・改版のたびに「ゼロから再設計」しなくて済む</li>
+                                <li>AIへの指示を<strong>再現性ある形で保存</strong>できる</li>
+                            </ul>
+                            <p class="text-sub">✅ ビジュアルアーキテクトは「作る人」ではなく「ルールを設計する人」。ガイドラインの作成こそが本質的な仕事</p>
+                        </div>
+                        <div>
+                            <h3>TALENTBOARDガイドライン（実践編で作成）</h3>
+                            <p class="text-sub">実践編で作る「TALENTBOARDビジュアルガイドライン（簡易版）」の構成：</p>
+                            <ul class="no-bullet">
+                                <li>
+                                    <strong>① カラートーン定義</strong>：色温度・明度・彩度の方針（寒色系・明るめ・低彩度）</li>
+                                <li>
+                                    <strong>② 人物テイスト定義</strong>：年齢層・服装・表情の基準（30代・ビジネスカジュアル）</li>
+                                <li>
+                                    <strong>③ スタイル定義</strong>：photorealistic固定・照明方針（自然光基本）</li>
+                                <li>
+                                    <strong>④ 参照シード値リスト</strong>：採用した画像のシード値を記録・管理</li>
+                                <li>
+                                    <strong>⑤ NG例</strong>：使ってはいけない画像の具体例（暖色系・派手・アニメ調 等）</li>
+                            </ul>
+                            <p class="text-note">このガイドラインがあれば、6ヶ月後に別の人が続きを作っても同じトンマナが維持される</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド7: まとめ -->
+            <div class="slide-container tiled-content">
+                <h2 class="slide-title">本日のまとめ：「バラバラ」は設計で解決できる</h2>
+                <div class="tile-grid">
+                    <div class="tile">
+                        <div class="icon">📐</div>
+                        <h3>① 統一感は4軸に分解できる</h3>
+                        <p>色温度・明度彩度・人物テイスト・スタイルの4軸。Block 2のトンマナを視覚ルールに変換する</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🎯</div>
+                        <h3>② シード値で雰囲気を固定</h3>
+                        <p>シード値を固定するとAIの「生成の出発点」が揃う。色味・雰囲気を保ったままバリエーション展開ができる</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">🖼️</div>
+                        <h3>③ スタイルリファレンス</h3>
+                        <p>参考画像を渡すことで外部のお手本に雰囲気を近づけられる。シード値との併用が最も強力な統一手法</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon">📋</div>
+                        <h3>④ ガイドラインとして文書化</h3>
+                        <p>4軸＋シード値＋リファレンスをビジュアルガイドラインにまとめる。「作る人」でなく「ルールを設計する人」の仕事</p>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド8: 実践編への接続 -->
+            <div class="slide-container standard-content-layout">
+                <h2 class="slide-title">実践編へ：ビジュアルガイドラインを作成する</h2>
+                <div class="content-block">
+                    <p>018で生成した画像セットをシード値・スタイルリファレンスで統一し直し、TALENTBOARDの<strong>ビジュアルガイドライン（簡易版）</strong>を作成します。</p>
+                    <div class="next-box">
+                        <h3>実践編でやること</h3>
+                        <ul class="no-bullet">
+                            <li>
+                                <strong>Step 1：</strong>018実践編で生成した画像からシード値を記録する</li>
+                            <li>
+                                <strong>Step 2：</strong>スタイルリファレンスを設定し、全セクション画像のテイストを統一する</li>
+                            <li>
+                                <strong>Step 3：</strong>4軸（色温度・明度彩度・人物テイスト・スタイル）の方針をまとめ、TALENTBOARDビジュアルガイドライン（簡易版）を作成する</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- クイズセクション -->
+            <div class="slide-container section-title-layout">
+                <h2>理解度チェック<br>
+                <span>Quiz</span>
+                </h2>
+                <p>5問のクイズで今日の内容を確認しましょう</p>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- スライド6: ビジュアルガイドラインとは -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">ビジュアルガイドライン：統一ルールを「文書」にする</h2>
-    <div class="content-block">
-                <p>📋 4つの視覚軸 ＋ シード値 ＋ スタイルリファレンスを「ルール文書」にまとめたものがビジュアルガイドライン。実務ではデザイナーが作り、制作チーム全員が参照する</p>
-        <div class="two-column tiled">
-            <div>
-                <h3>なぜ文書化するのか</h3>
-                <ul>
-                    <li>頭の中の「この感じ」は<strong>共有できない</strong></li>
-                    <li>文書があれば<strong>誰が生成しても同じ水準</strong>に保てる</li>
-                    <li>修正・改版のたびに「ゼロから再設計」しなくて済む</li>
-                    <li>AIへの指示を<strong>再現性ある形で保存</strong>できる</li>
-                </ul>
-                                <p>✅ ビジュアルアーキテクトは「作る人」ではなく「ルールを設計する人」。ガイドラインの作成こそが本質的な仕事</p>
-            </div>
-            <div>
-                <h3>TALENTBOARDガイドライン（実践編で作成）</h3>
-                <p class="text-sub">実践編で作る「TALENTBOARDビジュアルガイドライン（簡易版）」の構成：</p>
-                <ul class="no-bullet">
-                    <li><strong>① カラートーン定義</strong>：色温度・明度・彩度の方針（寒色系・明るめ・低彩度）</li>
-                    <li><strong>② 人物テイスト定義</strong>：年齢層・服装・表情の基準（30代・ビジネスカジュアル）</li>
-                    <li><strong>③ スタイル定義</strong>：photorealistic固定・照明方針（自然光基本）</li>
-                    <li><strong>④ 参照シード値リスト</strong>：採用した画像のシード値を記録・管理</li>
-                    <li><strong>⑤ NG例</strong>：使ってはいけない画像の具体例（暖色系・派手・アニメ調 等）</li>
-                </ul>
-                <p class="text-note">このガイドラインがあれば、6ヶ月後に別の人が続きを作っても同じトンマナが維持される</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- スライド7: まとめ -->
-<div class="slide-container tiled-content">
-    <h2 class="slide-title">本日のまとめ：「バラバラ」は設計で解決できる</h2>
-    <div class="tile-grid">
-        <div class="tile">
-            <div class="icon">📐</div>
-            <h3>① 統一感は4軸に分解できる</h3>
-            <p>色温度・明度彩度・人物テイスト・スタイルの4軸。Block 2のトンマナを視覚ルールに変換する</p>
-        </div>
-        <div class="tile">
-            <div class="icon">🎯</div>
-            <h3>② シード値で雰囲気を固定</h3>
-            <p>シード値を固定するとAIの「生成の出発点」が揃う。色味・雰囲気を保ったままバリエーション展開ができる</p>
-        </div>
-        <div class="tile">
-            <div class="icon">🖼️</div>
-            <h3>③ スタイルリファレンス</h3>
-            <p>参考画像を渡すことで外部のお手本に雰囲気を近づけられる。シード値との併用が最も強力な統一手法</p>
-        </div>
-        <div class="tile">
-            <div class="icon">📋</div>
-            <h3>④ ガイドラインとして文書化</h3>
-            <p>4軸＋シード値＋リファレンスをビジュアルガイドラインにまとめる。「作る人」でなく「ルールを設計する人」の仕事</p>
-        </div>
-    </div>
-</div>
-
-<!-- スライド8: 実践編への接続 -->
-<div class="slide-container standard-content-layout">
-    <h2 class="slide-title">実践編へ：ビジュアルガイドラインを作成する</h2>
-    <div class="content-block">
-        <p>018で生成した画像セットをシード値・スタイルリファレンスで統一し直し、TALENTBOARDの<strong>ビジュアルガイドライン（簡易版）</strong>を作成します。</p>
-    </div>
-</div>
-
-
-
-         <!-- クイズセクション -->
-        <div class="slide-container section-title-layout">
-            <h2>理解度チェック<br><span>Quiz</span></h2>
-            <p>5問のクイズで今日の内容を確認しましょう</p>
-        </div>
-    </div>
-    
-    
-    <script>
-        const questions = [
-    {
-        question: "「統一感がある」を構成する4つの視覚軸として正しいものはどれですか？",
-        choices: [
+        <script>
+            const questions = [
+            {
+            question: "「統一感がある」を構成する4つの視覚軸として正しいものはどれですか？",
+            choices: [
             "解像度・ファイル形式・アスペクト比・カラープロファイル",
             "色温度・明度/彩度・人物テイスト・スタイル",
             "被写体・構図・照明・雰囲気",
             "コントラスト・彩度・シャープネス・ノイズ"
-        ],
-        correct: 1,
-        explanation: "統一感を作る4つの視覚軸は「①色温度（暖色/寒色の方向性が揃っているか）②明度・彩度（明るさと鮮やかさのレンジが揃っているか）③人物テイスト（年齢層・服装・表情のトーンが揃っているか）④スタイル（写真調/イラスト調などの表現手法が揃っているか）」の4つです。選択肢3は018で学んだ画像プロンプトの5要素の一部です。4軸は「作るときのパラメータ」ではなく「複数枚が揃っているかを判断するための評価軸」です。"
-    },
-    {
-        question: "シード値を固定する主な目的はどれですか？",
-        choices: [
+            ],
+            correct: 1,
+            explanation: "統一感を作る4つの視覚軸は「①色温度（暖色/寒色の方向性が揃っているか）②明度・彩度（明るさと鮮やかさのレンジが揃っているか）③人物テイスト（年齢層・服装・表情のトーンが揃っているか）④スタイル（写真調/イラスト調などの表現手法が揃っているか）」の4つです。選択肢3は018で学んだ画像プロンプトの5要素の一部です。4軸は「作るときのパラメータ」ではなく「複数枚が揃っているかを判断するための評価軸」です。"
+            },
+            {
+            question: "シード値を固定する主な目的はどれですか？",
+            choices: [
             "画像の解像度と出力サイズを上げるため",
             "生成速度を速くしてコストを下げるため",
             "プロンプトの微調整による変化だけを比較できるようにし、色味・雰囲気を維持したまま被写体や構図を変えるため",
             "生成した画像に著作権を付与するため"
-        ],
-        correct: 2,
-        explanation: "シード値はAIの「乱数の出発点」です。固定することで「同じ感性のAI」が生成するため、色味・雰囲気が維持されます。実務での使い方は①気に入った画像のシード値を記録、②被写体や構図を変えても同じシード値で再生成、③複数枚に同じ雰囲気を持たせる、です。解像度・速度・著作権には影響しません。"
-    },
-    {
-        question: "シード値とスタイルリファレンスの使い分けとして正しいものはどれですか？",
-        choices: [
+            ],
+            correct: 2,
+            explanation: "シード値はAIの「乱数の出発点」です。固定することで「同じ感性のAI」が生成するため、色味・雰囲気が維持されます。実務での使い方は①気に入った画像のシード値を記録、②被写体や構図を変えても同じシード値で再生成、③複数枚に同じ雰囲気を持たせる、です。解像度・速度・著作権には影響しません。"
+            },
+            {
+            question: "シード値とスタイルリファレンスの使い分けとして正しいものはどれですか？",
+            choices: [
             "シード値は外部の参考画像に寄せたいとき、スタイルリファレンスは自分の画像の雰囲気を維持したいとき",
             "シード値は自分が生成した画像の雰囲気を維持したいとき、スタイルリファレンスは外部の参考画像に寄せたいとき",
             "シード値は彩度の調整、スタイルリファレンスは明度の調整に使う",
             "どちらも同じ用途であり、同時には使えない"
-        ],
-        correct: 1,
-        explanation: "シード値は「自分が生成した画像の雰囲気を維持したいとき」に使います。対してスタイルリファレンスは「外部の参考画像（競合LP・ストック写真など）に雰囲気を寄せたいとき」に使います。最強の使い方は両方の併用です。シード値で出発点を固定しつつ、スタイルリファレンスでお手本の方向に引き寄せることで、より精度の高い統一感を作れます。"
-    },
-    {
-        question: "Block 2（010：トンマナの言語化）と019の関係として最も正しいものはどれですか？",
-        choices: [
+            ],
+            correct: 1,
+            explanation: "シード値は「自分が生成した画像の雰囲気を維持したいとき」に使います。対してスタイルリファレンスは「外部の参考画像（競合LP・ストック写真など）に雰囲気を寄せたいとき」に使います。最強の使い方は両方の併用です。シード値で出発点を固定しつつ、スタイルリファレンスでお手本の方向に引き寄せることで、より精度の高い統一感を作れます。"
+            },
+            {
+            question: "Block 2（010：トンマナの言語化）と019の関係として最も正しいものはどれですか？",
+            choices: [
             "010と019は全く別のテーマで、内容に接続はない",
             "019の内容が010を上書きするため、010の知識は不要になる",
-            "010で言葉として定義したトンマナを、019では4つの視覚軸という具体的な画像ルールに変換する",
-            "019は010の復習であり、新しい内容は含まれない"
-        ],
-        correct: 2,
-        explanation: "010では「TALENTBOARDらしさ」を言語化しました（例：誠実・スマート・清潔感）。019では、その言語化を4軸（色温度・明度彩度・人物テイスト・スタイル）という具体的な画像生成ルールに変換します。「言語化 → 視覚ルール化」という接続です。010と019は互いを補完するテーマであり、010の言語化がなければ019のルール設計は曖昧になります。"
-    },
-    {
-        question: "ビジュアルガイドラインに含めるべき項目として、最も完全な選択肢はどれですか？",
-        choices: [
-            "Figmaのコンポーネント一覧とフォント設定のみ",
-            "使用するAIツールの料金表と利用規約",
+            "019は010の復習であり、新しい内容は含まれない",
+            "010で言葉として定義したトンマナを、019では4つの視覚軸という具体的な画像ルールに変換する"
+            ],
+            correct: 3,
+            explanation: "010では「TALENTBOARDらしさ」を言語化しました（例：誠実・スマート・清潔感）。019では、その言語化を4軸（色温度・明度彩度・人物テイスト・スタイル）という具体的な画像生成ルールに変換します。「言語化 → 視覚ルール化」という接続です。010と019は互いを補完するテーマであり、010の言語化がなければ019のルール設計は曖昧になります。"
+            },
+            {
+            question: "ビジュアルガイドラインに含めるべき項目として、最も完全な選択肢はどれですか？",
+            choices: [
             "カラートーン定義・人物テイスト定義・スタイル定義・参照シード値リスト・NG例",
+            "使用するAIツールの料金表と利用規約",
+            "Figmaのコンポーネント一覧とフォント設定のみ",
             "生成した画像のファイル名と保存場所の管理一覧"
-        ],
-        correct: 2,
-        explanation: "ビジュアルガイドラインは「4つの視覚軸＋シード値＋スタイルリファレンスをルール文書にまとめたもの」です。具体的には①カラートーン定義（色温度・明度・彩度の方針）②人物テイスト定義（年齢層・服装・表情の基準）③スタイル定義（photorealistic固定・照明方針）④参照シード値リスト（採用画像のシード値記録）⑤NG例（使ってはいけない画像の具体例）で構成します。ファイル名一覧はファイル管理であり、ガイドラインとは別物です。"
-    }
-];
-    </script>
-    
-    <script src="../assets/slide-template.js"></script>
-</body>
+            ],
+            correct: 0,
+            explanation: "ビジュアルガイドラインは「4つの視覚軸＋シード値＋スタイルリファレンスをルール文書にまとめたもの」です。具体的には①カラートーン定義（色温度・明度・彩度の方針）②人物テイスト定義（年齢層・服装・表情の基準）③スタイル定義（photorealistic固定・照明方針）④参照シード値リスト（採用画像のシード値記録）⑤NG例（使ってはいけない画像の具体例）で構成します。ファイル名一覧はファイル管理であり、ガイドラインとは別物です。"
+            }
+            ];
+        </script>
+        <script src="../assets/slide-template.js">
+        </script>
+    </body>
 </html>

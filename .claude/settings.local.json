@@ -53,7 +53,10 @@
       "Bash(node scripts/check_svg.js master_slide/themes_new/018-1_theory.html)",
       "Bash(node scripts/format_html.js master_slide/themes_new/018-1_theory.html && node scripts/check_svg.js master_slide/themes_new/018-1_theory.html)",
       "Bash(node scripts/check_svg.js master_slide/themes_new/018-2_practice.html)",
-      "Bash(node scripts/format_html.js master_slide/themes_new/018-2_practice.html && node scripts/check_svg.js master_slide/themes_new/018-2_practice.html)"
+      "Bash(node scripts/format_html.js master_slide/themes_new/018-2_practice.html && node scripts/check_svg.js master_slide/themes_new/018-2_practice.html)",
+      "Bash(node scripts/format_html.js master_slide/themes_new/019-1_theory.html && node scripts/check_svg.js master_slide/themes_new/019-1_theory.html)",
+      "Bash(node scripts/format_html.js master_slide/themes_new/019-1_theory.html)",
+      "Bash(node scripts/format_html.js master_slide/themes_new/019-2_practice.html && node scripts/check_svg.js master_slide/themes_new/019-2_practice.html)"
     ]
   }
 }
