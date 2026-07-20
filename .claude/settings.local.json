@@ -58,7 +58,11 @@
       "Bash(node scripts/format_html.js master_slide/themes_new/019-1_theory.html)",
       "Bash(node scripts/format_html.js master_slide/themes_new/019-2_practice.html && node scripts/check_svg.js master_slide/themes_new/019-2_practice.html)",
       "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/format_html.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-1_theory.html)",
-      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/check_svg.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html && date +\"%Y%m%d_%H%M%S\")"
+      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/check_svg.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html && date +\"%Y%m%d_%H%M%S\")",
+      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/format_html.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html && grep -n \"カスタムGPT\\\\|GPTs\\\\|GPT（カスタム\" /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html)",
+      "Bash(grep -n \" GPT\" /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html | grep -v \"マイGPT\\\\|ChatGPT\" && node /Users/akihirotakahashi/Documents/slide/scripts/format_html.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html)",
+      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/format_html.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/020-2_practice.html)",
+      "Bash(node /Users/akihirotakahashi/Documents/slide/scripts/check_svg.js /Users/akihirotakahashi/Documents/slide/master_slide/themes_new/021-1_theory.html && date +\"%Y%m%d_%H%M%S\")"
     ]
   }
 }
